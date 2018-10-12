@@ -167,6 +167,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Recursos\RecursosSistema.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursosSistema.resx</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\PersonalVM.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -310,6 +315,12 @@
       <Project>{A79E5360-FAC2-47BF-9213-526EF4F0E10A}</Project>
       <Name>AppDigitalCv.Repository</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Recursos\RecursosSistema.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursosSistema.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
