@@ -47,9 +47,9 @@ namespace AppDigitalCv.Controllers
         {
             string resultado = string.Empty;
             PersonalVM personalVM = new PersonalVM();
-            personalVM.strNombre = "prueba1";
-            personalVM.strApellidoPaterno = "prueba2";
-            personalVM.strApellidoMaterno = "prueba3";
+            personalVM.Nombre = "prueba1";
+            personalVM.ApellidoPaterno = "prueba2";
+            personalVM.ApellidoMaterno = "prueba3";
             personalVM.idPersonal =100000;
 
             PersonalDomainModel personalDM = new PersonalDomainModel();
