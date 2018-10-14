@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+///implementamos la libreria de expression para el delegado
+using System.Linq.Expressions;
 
 namespace AppDigitalCv.Business
 {
@@ -67,5 +69,26 @@ namespace AppDigitalCv.Business
             , ApellidoMaterno= p.strApellidoMaterno,Curp=p.strCurp,Rfc=p.strRfc,idPersonal =p.idPersonal}).ToList();
             return lista;
         }
+
+        /// <summary>
+        /// este metodo se encarga de buscar a una persona por su id
+        /// </summary>
+        /// <param name="idPersonal">el identificador de la persona</param>
+        /// <returns>regresa una persona en la capa de dominio</returns>
+        public PersonalDomainModel GetPersonalById(int idPersonal)
+        {
+            Expression<Func<tblPersonal, bool>> predicado = p=> p.idPersonal.Equals(idPersonal);
+            PersonalDomainModel personalDM = new PersonalDomainModel();
+            tblPersonal TblPersonal= personalRepository.SingleOrDefault(predicado);
+            personalDM.Nombre = TblPersonal.strNombre;
+            personalDM.ApellidoPaterno = TblPersonal.strApellidoPaterno;
+            personalDM.ApellidoMaterno = TblPersonal.strApellidoMaterno;
+            personalDM.Curp = TblPersonal.strCurp;
+            personalDM.Rfc = TblPersonal.strRfc;
+            personalDM.Homoclave = TblPersonal.strHomoclave;
+            return personalDM;
+        }
+
+
     }
 }

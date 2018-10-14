@@ -21,12 +21,8 @@ namespace AppDigitalCv.Controllers
             IPersonalBussines = _PersonalBussiness;
         }
 
-        /// <summary>
-        /// Metodo Get
-        /// este metodo se encarga de realziar la presentación de los datos en la vista
-        /// </summary>
-
-
+        
+        #region Crear 
         [HttpGet]
         public ActionResult Create()
         {
@@ -47,6 +43,28 @@ namespace AppDigitalCv.Controllers
             }
         }
 
+        #endregion
+
+        #region Detalles de la Informacion en Vista
+        /// <summary>
+        /// Este metodo se encarga de mostrar la información previamente guardada por el usuario
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult InfoPersonal()
+        {
+            int idPersonal = 1; ///este es un parametro temporal
+            //creamos el objeto que representara los datos en la vista
+            PersonalVM personalVM = new PersonalVM();
+            //obtenemos el objeto del modelo de dominio
+            PersonalDomainModel personaDominio = IPersonalBussines.GetPersonalById(idPersonal);
+            ///mapaeamos el objeto con los valores del modelo de dominio
+            AutoMapper.Mapper.Map(personaDominio, personalVM);
+            ViewBag.NombreCompleto = personalVM.Nombre + " " + personalVM.ApellidoPaterno + " " + personalVM.ApellidoMaterno;
+            return View(personalVM);
+        }
+        #endregion
+
         // GET: Personal
         public ActionResult Index()
         {
@@ -58,19 +76,23 @@ namespace AppDigitalCv.Controllers
             return View();
         }
 
+        #region Estos metodos y vista seran borrados
+
         [HttpGet]
         public ActionResult DatosPersonales()
         {
-            IPersonalBussines.GetEmpleado();
+            ViewBag.PersonalList =IPersonalBussines.GetEmpleado();
             return View();
         }
 
         [HttpPost]
         public ActionResult DatosPersonales(PersonalVM personalVM)
         {
-            IPersonalBussines.GetEmpleado();
-            return View();
+            //mando los datos ya editados del personal.
+            this.AddEditPersonal(personalVM);
+            return View(personalVM);
         }
+        #endregion
 
         #region Agregar o Editar una entidad
 
@@ -82,6 +104,16 @@ namespace AppDigitalCv.Controllers
 
             resultado = IPersonalBussines.AddUpdatePersonal(personalDM);
             return resultado;
+        }
+        #endregion
+
+
+        #region Consultar Datos del Personal
+        [HttpGet]
+        public JsonResult ConsultarDatosPersonal()
+        {
+            var personal = IPersonalBussines.GetEmpleado();
+            return Json(personal, JsonRequestBehavior.AllowGet);
         }
         #endregion
 

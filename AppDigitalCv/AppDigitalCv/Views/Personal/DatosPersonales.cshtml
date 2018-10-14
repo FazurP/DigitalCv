@@ -17,16 +17,53 @@
                 <th>Rfc</th>
             </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+            @if (ViewBag.PersonalList != null)
+            {
+
+                foreach (var item in ViewBag.PersonalList)
+                {
+            <tr id="row_@item.idPersonal">
+                <td>@item.Nombre</td>
+                <td>@item.ApellidoPaterno</td>
+                <td>@item.ApellidoMaterno</td>
+                <td>@item.Curp</td>
+                <td>@item.Rfc</td>
+                <td><a href="#" class="btn btn-success" onclick="AddEditEmployee(@item.idPersonal)"><i class="glyphicon glyphicon-pencil"></i> </a> </td>
+
+            </tr>
+
+                }
+            }
+        </tbody>
     </table>
+    <div class="modal fade" id="myModal1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h3 class="modal-title">Editar Datos Personales</h3>
+                </div>
+                <div class="modal-body" id="myModalBodyDiv1">
 
 
+                </div>
 
+
+            </div>
+
+        </div>
+
+    </div>
+    <input type="hidden" id="hiddenEmployeeId" />
 </div>
 
 
 
-<div>
+
+
+
+@*<div>
     <h4>tblPersonal</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -179,21 +216,21 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.idPersonal }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@
 
-<script src="~/Scripts/jtable/jquery.jtable.min.js"></script>
+@*<script src="~/Scripts/jtable/jquery.jtable.min.js"></script>*@
 <script>
     $(document).ready(function () {
 
         var GetDatosPersonales = function () {
             $.ajax({
                 type: "Get",
-                url: "",
+                url: "/Personal/ConsultarDatosPersonal",
                 success: function (response) {
                     BindDataTable(response);
                 }
 
-            })
+            });
 
         }
         var BindDataTable = function (response) {
@@ -209,15 +246,25 @@
                     { "mData": "Curp" },
                     { "mData": "Rfc" },
                     {
-                        "mData": "IdPersonal",
-                        "render": function (IdPersonal,type,full,meta) {
-                            return '<a href="#" onclick="AddEditPersonal('+IdPersonal+')"><i class="glyphicon glyphicon-pencil"></i></a>'
+                        "mData": "idPersonal",
+                        "render": function (IdPersonal, type, full, meta) {
+                            return '<a href="#" onclick="AddEditPersonal(' + IdPersonal + ')"><i class="glyphicon glyphicon-pencil"></i></a>'
                         }
                     },
                 ]
             });
         }
 
+        var AddEditPersonal = function (personalId) {
+            //voy a buscar al personal por id
+            var url = "/Test/AddEditEmployee?EmployeeId=" + employeeId;
+
+            $("#myModalBodyDiv1").load(url, function () {
+                $("#myModal1").modal("show");
+
+            });
+
+        }
 
     });
 

@@ -15,7 +15,7 @@
         else { <span>Guardar</span>}</a>
     </form>
     <div style="text-align:center;display:none" id="lodaerDiv">
-        <img src="#" width="100"/>
+        <img src="~/Imagenes/material-loader.gif" width="100"/>
     </div>
 </div>
 <script>
@@ -31,7 +31,7 @@
             $.ajax({
 
                 type: "POST",
-                url: "/Test/Index",
+                url: "/Personal/DatosPersonales",
                 data: myformdata,
                 success: function () {
                     $("#loaderDiv").hide();

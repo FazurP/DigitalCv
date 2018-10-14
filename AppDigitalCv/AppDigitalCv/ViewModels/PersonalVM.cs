@@ -9,7 +9,7 @@ namespace AppDigitalCv.ViewModels
 {
     public class PersonalVM
     {
-
+        
         public int idPersonal { get; set; }
 
         [Required(ErrorMessage = "El nombre es requerido")]
