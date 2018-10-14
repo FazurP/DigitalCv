@@ -9,15 +9,15 @@ namespace AppDigitalCv.Domain
     public class PersonalDomainModel
     {
         public int idPersonal { get; set; }
-        public string strNombre { get; set; }
-        public string strApellidoPaterno { get; set; }
-        public string strApellidoMaterno { get; set; }
-        public string strCurp { get; set; }
-        public string strRfc { get; set; }
+        public string Nombre { get; set; }
+        public string ApellidoPaterno { get; set; }
+        public string ApellidoMaterno { get; set; }
+        public string Curp { get; set; }
+        public string Rfc { get; set; }
         public string archivoRfc { get; set; }
-        public string strHomoclave { get; set; }
-        public System.DateTime dteFechaNacimiento { get; set; }
-        public string strLogros { get; set; }
+        public string Homoclave { get; set; }
+        public System.DateTime FechaNacimiento { get; set; }
+        public string Logros { get; set; }
         public string strUrlFoto { get; set; }
         public string strUrlCurp { get; set; }
         public string strUrlRfc { get; set; }

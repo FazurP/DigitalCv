@@ -14,14 +14,18 @@ namespace AppDigitalCv.Infraestructure
         {
             CreateMap<PersonalDomainModel, PersonalVM>();
             CreateMap<PersonalVM, PersonalDomainModel>();
+           
+
         }
 
 
         public static void Run()
         {
-            AutoMapper.Mapper.Initialize(a=>
+
+            AutoMapper.Mapper.Initialize(a =>
             {
                 a.AddProfile<AutomaperWebProfile>();
+
 
             });
         }

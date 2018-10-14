@@ -1,0 +1,224 @@
+﻿@model AppDigitalCv.Repository.tblPersonal
+
+@{
+    ViewBag.Title = "DatosPersonales";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+    <table class="table table-bordered" id="MyDataTable">
+        <thead>
+            <tr>
+                <th>Identificador</th>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Curp</th>
+                <th>Rfc</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+
+
+</div>
+
+
+
+<div>
+    <h4>tblPersonal</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.strNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strApellidoPaterno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strApellidoPaterno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strApellidoMaterno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strApellidoMaterno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strCurp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strCurp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strRfc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strRfc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.archivoRfc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.archivoRfc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strHomoclave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strHomoclave)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dteFechaNacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dteFechaNacimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strLogros)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strLogros)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strUrlFoto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strUrlFoto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strUrlCurp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strUrlCurp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strUrlRfc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strUrlRfc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.strGenero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.strGenero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.catDireccion.strCalle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.catDireccion.strCalle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.catEstadoCivil.strDescripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.catEstadoCivil.strDescripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.catFamiliar.strNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.catFamiliar.strNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.catTipoSangre.strDescripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.catTipoSangre.strDescripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.catUsuarios.strEmailInstitucional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.catUsuarios.strEmailInstitucional)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idPersonal }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<script src="~/Scripts/jtable/jquery.jtable.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        var GetDatosPersonales = function () {
+            $.ajax({
+                type: "Get",
+                url: "",
+                success: function (response) {
+                    BindDataTable(response);
+                }
+
+            })
+
+        }
+        var BindDataTable = function (response) {
+
+            $("MyDataTable").DataTable({
+
+                "aaData": response,
+                "aoColumns": [
+
+                    { "mData": "Nombre" },
+                    { "mData": "ApellidoPaterno" },
+                    { "mData": "ApellidoMaterno" },
+                    { "mData": "Curp" },
+                    { "mData": "Rfc" },
+                    {
+                        "mData": "IdPersonal",
+                        "render": function (IdPersonal,type,full,meta) {
+                            return '<a href="#" onclick="AddEditPersonal('+IdPersonal+')"><i class="glyphicon glyphicon-pencil"></i></a>'
+                        }
+                    },
+                ]
+            });
+        }
+
+
+    });
+
+</script>

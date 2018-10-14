@@ -1,0 +1,49 @@
+﻿@model AppDigitalCv.ViewModels.PersonalVM
+
+<div>
+    <form id="myform">
+
+        @Html.HiddenFor(m=>m.idPersonal)
+        @Html.TextBoxFor(model=>model.Nombre, new {@class="form-control",@placeholder="Nombre" })
+        @Html.TextBoxFor(model=>model.ApellidoPaterno, new {@class="form-control",@placeholder="Apellido Paterno" })
+        @Html.TextBoxFor(model=>model.ApellidoMaterno,new {@class="form-control",@placeholder="Apellido Materno" })
+
+        <a href="#" id="btnSubmit" class="btn btn-success">@if (Model.idPersonal > 0)
+        {
+            <span>Actualizar</span>
+        }
+        else { <span>Guardar</span>}</a>
+    </form>
+    <div style="text-align:center;display:none" id="lodaerDiv">
+        <img src="#" width="100"/>
+    </div>
+</div>
+<script>
+
+    $(document).ready(function () {
+
+        $("#btnSubmit").click(function () {
+
+            $("#loaderDiv").show();
+
+            var myformdata = $("#myForm").serialize();
+
+            $.ajax({
+
+                type: "POST",
+                url: "/Test/Index",
+                data: myformdata,
+                success: function () {
+                    $("#loaderDiv").hide();
+                    $("#myModal").modal("hide");
+                    window.location.href = "/Test/Index";
+
+                }
+
+            })
+        })
+
+    })
+
+
+</script>

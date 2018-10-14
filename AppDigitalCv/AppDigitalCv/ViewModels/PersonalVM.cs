@@ -24,7 +24,7 @@ namespace AppDigitalCv.ViewModels
         [RegularExpression("^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$", ErrorMessage = "Ingresa solo caracteres validos")]
         public string ApellidoMaterno { get; set; }
 
-        [RegularExpression("^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\\d]{3})?$", ErrorMessage = "Ingresa un RFC valido")]
+        //[RegularExpression("^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\\d]{3})?$", ErrorMessage = "Ingresa un RFC valido")]
         [Required(ErrorMessage = "El RFC es requerido")]
         public string RFC { get; set; }
 
@@ -34,7 +34,7 @@ namespace AppDigitalCv.ViewModels
         [Required(ErrorMessage = "La HomoClave es requerido")]
         public string HomoClave { get; set; }
 
-        [Required(ErrorMessage = "La Fecha de Nacimiento es requerida")]
+        //[Required(ErrorMessage = "La Fecha de Nacimiento es requerida")]
         public DateTime FechaNacimiento { get; set; }
 
         ///[Required(ErrorMessage ="La evidencia en archivo es obligatoria")]
@@ -46,7 +46,7 @@ namespace AppDigitalCv.ViewModels
         [DataType(DataType.Upload)]
         public HttpPostedFileBase ArchivoCurp { get; set; }
 
-        [Required(ErrorMessage = "Logros Personales son requeridos")]
+        //[Required(ErrorMessage = "Logros Personales son requeridos")]
         public string Logros { get; set; }
 
     }

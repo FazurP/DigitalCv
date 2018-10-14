@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
 using System.Data.Entity;
+using System.Data.Linq;
 
 namespace AppDigitalCv.Repository.Infraestructure
 {

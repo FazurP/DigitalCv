@@ -73,10 +73,10 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<tblEnfermedadPersonal> tblEnfermedadPersonal { get; set; }
         public virtual DbSet<tblIdiomaDialectoPersonal> tblIdiomaDialectoPersonal { get; set; }
         public virtual DbSet<tblPasatiempo> tblPasatiempo { get; set; }
-        public virtual DbSet<tblPersonal> tblPersonal { get; set; }
         public virtual DbSet<tblPersonalAsociaciones> tblPersonalAsociaciones { get; set; }
         public virtual DbSet<tblPremiosDocente> tblPremiosDocente { get; set; }
         public virtual DbSet<tblTelefono> tblTelefono { get; set; }
         public virtual DbSet<tblUsuarioRol> tblUsuarioRol { get; set; }
+        public virtual DbSet<tblPersonal> tblPersonal { get; set; }
     }
 }

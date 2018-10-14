@@ -42,17 +42,17 @@ namespace AppDigitalCv.Repository
         public string strRfc { get; set; }
         public string archivoRfc { get; set; }
         public string strHomoclave { get; set; }
-        public System.DateTime dteFechaNacimiento { get; set; }
+        public Nullable<System.DateTime> dteFechaNacimiento { get; set; }
         public string strLogros { get; set; }
         public string strUrlFoto { get; set; }
         public string strUrlCurp { get; set; }
         public string strUrlRfc { get; set; }
         public string strGenero { get; set; }
-        public int idEstadoCivil { get; set; }
-        public int idUsuario { get; set; }
-        public int idTipoSangre { get; set; }
-        public int idDireccion { get; set; }
-        public int idFamiliar { get; set; }
+        public Nullable<int> idEstadoCivil { get; set; }
+        public Nullable<int> idUsuario { get; set; }
+        public Nullable<int> idTipoSangre { get; set; }
+        public Nullable<int> idDireccion { get; set; }
+        public Nullable<int> idFamiliar { get; set; }
     
         public virtual catDireccion catDireccion { get; set; }
         public virtual catEstadoCivil catEstadoCivil { get; set; }

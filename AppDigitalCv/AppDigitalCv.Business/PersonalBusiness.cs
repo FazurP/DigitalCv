@@ -33,11 +33,12 @@ namespace AppDigitalCv.Business
                 tblPersonal personal = personalRepository.SingleOrDefault(p => p.idPersonal == personalDM.idPersonal);
                 if (personal != null)
                 {
-                    personal.strNombre = personalDM.strNombre;
-                    personal.strApellidoPaterno = personalDM.strApellidoPaterno;
-                    personal.strApellidoMaterno = personalDM.strApellidoMaterno;
-                    personal.strCurp = personalDM.strCurp;
-                    personal.strRfc = personalDM.strRfc;
+                    personal.strNombre = personalDM.Nombre;
+                    personal.strApellidoPaterno = personalDM.ApellidoPaterno;
+                    personal.strApellidoMaterno = personalDM.ApellidoMaterno;
+                    personal.strCurp = personalDM.Curp;
+                    personal.strRfc = personalDM.Rfc;
+                    personal.strHomoclave = personalDM.Homoclave;
                     //actualizamos los datos en la base de datos.
                     personalRepository.Update(personal);
                     resultado = "Se Actualizo correctamente";
@@ -47,11 +48,13 @@ namespace AppDigitalCv.Business
             else
             {
                 tblPersonal personal = new tblPersonal();
-                personal.strNombre = personalDM.strNombre;
-                personal.strApellidoPaterno = personalDM.strApellidoPaterno;
-                personal.strApellidoMaterno = personalDM.strApellidoMaterno;
-                personal.strCurp = personalDM.strCurp;
-                personal.strRfc = personalDM.strRfc;
+                personal.strNombre = personalDM.Nombre;
+                personal.strApellidoPaterno = personalDM.ApellidoPaterno;
+                personal.strApellidoMaterno = personalDM.ApellidoMaterno;
+                personal.strCurp = personalDM.Curp;
+                personal.strRfc = personalDM.Rfc;
+               /***********/ personal.archivoRfc = "archivo temporal"; /*********************/
+                personal.strHomoclave = personalDM.Homoclave;
                 var record = personalRepository.Insert(personal);
                 resultado = "Se insertaron correctamente los valores";
             }
@@ -60,7 +63,8 @@ namespace AppDigitalCv.Business
 
         public List<PersonalDomainModel> GetEmpleado() {
             List<PersonalDomainModel> lista = null; 
-            lista =personalRepository.GetAll().Select(p=> new PersonalDomainModel {strNombre = p.strNombre}).ToList();
+            lista =personalRepository.GetAll().Select(p=> new PersonalDomainModel {Nombre = p.strNombre, ApellidoPaterno = p.strApellidoPaterno
+            , ApellidoMaterno= p.strApellidoMaterno,Curp=p.strCurp,Rfc=p.strRfc,idPersonal =p.idPersonal}).ToList();
             return lista;
         }
     }

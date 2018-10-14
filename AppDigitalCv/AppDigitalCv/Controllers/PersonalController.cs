@@ -26,9 +26,25 @@ namespace AppDigitalCv.Controllers
         /// este metodo se encarga de realziar la presentación de los datos en la vista
         /// </summary>
 
+
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Nombre,ApellidoPaterno,ApellidoMaterno,RFC,Curp,HomoClave,")] PersonalVM personalVM)
+        {
+            if (ModelState.IsValid)
+            {
+                this.AddEditPersonal(personalVM);
+                return View();
+            }
+            else {
+                return View("Create");
+            }
         }
 
         // GET: Personal
@@ -42,23 +58,32 @@ namespace AppDigitalCv.Controllers
             return View();
         }
 
-
-        public string AddEditPersonal()
+        [HttpGet]
+        public ActionResult DatosPersonales()
         {
-            string resultado = string.Empty;
-            PersonalVM personalVM = new PersonalVM();
-            personalVM.Nombre = "prueba1";
-            personalVM.ApellidoPaterno = "prueba2";
-            personalVM.ApellidoMaterno = "prueba3";
-            personalVM.idPersonal =100000;
-
-            PersonalDomainModel personalDM = new PersonalDomainModel();
-            AutoMapper.Mapper.Map(personalVM,personalDM);///hacemos el mapeado de la entidad
-            resultado= IPersonalBussines.AddUpdatePersonal(personalDM);
-            return resultado;
-
+            IPersonalBussines.GetEmpleado();
+            return View();
         }
 
+        [HttpPost]
+        public ActionResult DatosPersonales(PersonalVM personalVM)
+        {
+            IPersonalBussines.GetEmpleado();
+            return View();
+        }
+
+        #region Agregar o Editar una entidad
+
+        public string AddEditPersonal(PersonalVM personalVM)
+        {
+            string resultado = string.Empty;
+            PersonalDomainModel personalDM = new PersonalDomainModel();
+            AutoMapper.Mapper.Map(personalVM, personalDM);///hacemos el mapeado de la entidad
+
+            resultado = IPersonalBussines.AddUpdatePersonal(personalDM);
+            return resultado;
+        }
+        #endregion
 
         public ActionResult borrarPersonal(int _idPersonal)
         {
