@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using AppDigitalCv.Business.Interface;
 using AppDigitalCv.Domain;
 using AppDigitalCv.ViewModels;
+using System.IO;
 
 namespace AppDigitalCv.Controllers
 {
@@ -132,6 +133,24 @@ namespace AppDigitalCv.Controllers
             // return Json(resultado,JsonRequestBehavior.AllowGet);
             return View();
         }
+
+        #region Subir Imagen
+        public JsonResult ImageUpload(PersonalVM modelo)
+        {
+            var file = modelo.ImageFile;
+            if (file != null)
+            {
+                //obtenemos el nombre del archivo
+                var fileName = Path.GetFileName(file.FileName);
+                var extension = Path.GetExtension(file.FileName);
+                var fileNameSinExtension = Path.GetFileNameWithoutExtension(file.FileName);
+                file.SaveAs(Server.MapPath("/Imagenes/" + file.FileName));
+                
+            }
+            return Json(file.FileName,JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
 
     }
 }

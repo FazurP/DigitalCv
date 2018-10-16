@@ -49,6 +49,8 @@ namespace AppDigitalCv.ViewModels
         //[Required(ErrorMessage = "Logros Personales son requeridos")]
         public string Logros { get; set; }
 
+        public HttpPostedFileWrapper ImageFile { get; set; }
+
     }
 
 

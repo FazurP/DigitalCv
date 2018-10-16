@@ -120,8 +120,9 @@
 
 <div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div> 
 <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
 <script>
    $(document).ready(function () {
                 $("#fotoInputFile").change(function () {
@@ -132,7 +133,7 @@
                     }
                 })
             })
-   var ReadImage = function (file) {
+      var ReadImage = function (file) {
 
                 var reader = new FileReader;
                 var image = new Image;
@@ -150,10 +151,30 @@
                         $("#targetImg").attr('src', _file.target.result);
                         $("#description").text("Tamaño de la Foto: " + size);
                         $("imgPreview").show();
+                        //toastr.success("Fotografía es Cargada Correctamente").show();
                     }
 
                 }
 
-            }
+    }
+    ///esta funcion se encarga de subir una imagen hacia el servidor
+      var Uploadimage = function () {
+
+          var file = $("#targetImg").get(0).files[0];
+          var data = new FormData;
+          data.append("ImageFile", file[0]);
+          $.ajax({
+              type: "Post",
+              url: "/",
+              data: data,
+              contentType: false,
+              processData: false,
+              success: function (response) {
+                  //toastr.success("Fotografía es Cargada Correctamente").show();
+              }
+          })
+      } 
+    
+
 </script>
    
