@@ -46,7 +46,8 @@
                             <b>HomoClave:</b> <a class="pull-right">@Html.DisplayFor(model => model.HomoClave, new { @class = "text-muted" })</a>
                         </li>
                     </ul>
-                    <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-default"><b>Editar</b></a>
+                    <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-default" onclick="EditPersonal(@Model.idPersonal)"><b>Editar</b></a>
+                   
                 </div>
             </div>
         </div>
@@ -161,26 +162,66 @@
         </div>
     </div>
     <!--empezamos el model como prupuesta-->
-    <div class="modal modal-default fade" id="modal-default" style="display: none;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                    <h4 class="modal-title">Modificar Datos Personales</h4>
-                </div>
-                <div class="modal-body">
-                    <p>One fine body…</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
+    
     <!-- /.modal -->
 </section>
+<div class="modal modal-default fade" id="modal-default" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Modificar Datos Personales</h4>
+            </div>
+            <div class="modal-body">
+                <form id="myform">
+                    @Html.HiddenFor(m => m.idPersonal)
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="etNombre">Nombre:</label>
+                            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @placeholder = "Nombre" })
+                        </div>
+                        <div class="form-group">
+                            <label for="etNombre">Apellido Paterno:</label>
+                            @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control", @placeholder = "Apellido Paterno" })
+                        </div>
+                        <div class="form-group">
+                            <label for="etNombre">Apellido Materno:</label>
+                            @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control", @placeholder = "Apellido Materno" })
+                        </div>
+                        <div class="form-group">
+                            <a href="#" id="btnSubmit" class="btn btn-success">
+                                @if (Model.idPersonal > 0)
+                                {
+                                    <span>Actualizar</span>}
+                                else
+                                {<span>Guardar</span>}
+                        </a>
+                    </div>
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Actualizar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<script>
+
+    //esta función se encarga de procesar los datos para editar al personal
+    var EditPersonal=function(personalId){
+
+        var url = "/Personal/EditarDatosPersonales?idPersonal=" + personalId;
+
+        $("#modal-default").load(url,function(){
+            $("#modal-default").modal("show");
+
+        })
+
+    }
+</script>

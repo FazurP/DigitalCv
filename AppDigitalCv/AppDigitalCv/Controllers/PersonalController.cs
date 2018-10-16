@@ -90,7 +90,16 @@ namespace AppDigitalCv.Controllers
         {
             //mando los datos ya editados del personal.
             this.AddEditPersonal(personalVM);
-            return View(personalVM);
+            return PartialView("_Editar", personalVM);
+            //return View(personalVM);
+        }
+
+        public ActionResult EditarDatosPersonales(int idPersonal)
+        {
+            PersonalDomainModel personalDM = IPersonalBussines.GetPersonalById(idPersonal);
+            PersonalVM personalVM = new PersonalVM();
+            AutoMapper.Mapper.Map(personalDM, personalVM);///hacemos el mapeado de la entidad
+            return PartialView("_Editar",personalVM);
         }
         #endregion
 

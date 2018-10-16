@@ -1,108 +1,112 @@
 ﻿@model AppDigitalCv.ViewModels.PersonalVM
 <link href="~/Content/css/cardview.css" rel="stylesheet" />
 
-    @using (Html.BeginForm("Create", "Personal", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        @Html.AntiForgeryToken()
-        <div class="bs-container">
-            <div class="row">
-                <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Datos Generales</h3>
+@using (Html.BeginForm("Create", "Personal", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="bs-container">
+        <div class="row">
+            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Datos Generales</h3>
+                    </div>
+                    <div role="form">
+                        <div class="box-body">
+
+                            <div class="form-group">
+                                <label for="etNombre">Nombre:</label>
+                                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control input-sm", placeholder = "Tu Nombre" })
+                                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="form-group">
+                                <label for="etApellidoPaterno">Apellido Paterno:</label>
+                                @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control input-sm", placeholder = "Tu Apellido Paterno" })
+                                @Html.ValidationMessageFor(model => model.ApellidoPaterno, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Apellido Materno:</label>
+                                @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control input-sm", placeholder = "Tu Apellido Materno" })
+                                @Html.ValidationMessageFor(model => model.ApellidoMaterno, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="etcurp">Curp:</label>
+                                @Html.TextBoxFor(model => model.Curp, new { @class = "form-control input-sm", placeholder = "Tu Curp" })
+                                @Html.ValidationMessageFor(model => model.Curp, "", new { @class = "text-danger" })
+                            </div>
+
+                           <div class="form-group">
+                                <label for="etrfc">Rfc:</label>
+                                @Html.TextBoxFor(model => model.RFC, new { @class = "form-control input-sm", placeholder = "Tu Rfc" })
+                                @Html.ValidationMessageFor(model => model.RFC, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="ethomoclave">Homoclave:</label>
+                                @Html.TextBoxFor(model => model.HomoClave, new { @class = "form-control input-sm", placeholder = "Homoclave" })
+                                @Html.ValidationMessageFor(model => model.HomoClave, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputFile">Cargar Foto:</label>
+                                <input type="file" id="fotoInputFile" class="btn btn-file btn-github" required>
+
+                                <p class="help-block">Carga tu fotografía, para tu perfil.</p>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">Recordarme
+                                </label>
+                            </div>
                         </div>
-                        <div role="form">
-                            <div class="box-body">
-                                
-                                    <div class="form-group">
-                                        <label for="etNombre">Nombre:</label>
-                                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control input-sm", placeholder = "Tu Nombre" })
-                                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-                                        @*<input type="text" class="form-control" id="txtNombre" placeholder="Tu Nombre">*@
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="etApellidoPaterno">Apellido Paterno:</label>
-                                        @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control input-sm", placeholder = "Tu Apellido Paterno" })
-                                        @Html.ValidationMessageFor(model => model.ApellidoPaterno, "", new { @class = "text-danger" })
-                                    </div>
-                                    
-                                
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Apellido Materno:</label>
-                                        @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control input-sm", placeholder = "Tu Apellido Materno" })
-                                        @Html.ValidationMessageFor(model => model.ApellidoMaterno, "", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="etcurp">Curp:</label>
-                                        @Html.TextBoxFor(model => model.Curp, new { @class = "form-control input-sm", placeholder = "Tu Curp" })
-                                        @Html.ValidationMessageFor(model => model.Curp, "", new { @class = "text-danger" })
-                                    </div>
-                                
-                                
-                                <div class="form-group">
-                                    <label for="etrfc">Rfc:</label>
-                                    @Html.TextBoxFor(model => model.RFC, new { @class = "form-control input-sm", placeholder = "Tu Rfc" })
-                                    @Html.ValidationMessageFor(model => model.RFC, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="form-group">
-                                    <label for="ethomoclave">Homoclave:</label>
-                                    @Html.TextBoxFor(model=>model.HomoClave, new { @class="form-control input-sm", placeholder="Homoclave"})
-                                    @Html.ValidationMessageFor(model=> model.HomoClave,"", new {@class="text-danger" })
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="exampleInputFile">Cargar Foto:</label>
-                                    <input type="file" id="fotoInputFile">
-
-                                    <p class="help-block">Carga tu fotografía, para tu perfil.</p>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox">Recordarme
-                                    </label>
-                                </div>
+                        <div class="box-footer">
+                            <div>
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             </div>
-                            <div class="box-footer">
-                                <div>
-                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                </div>
-                                <input type="submit" value="Guardar" class="btn btn-primary"/>
-                            </div>
+                            <input type="submit" value="Guardar" class="btn btn-primary" />
                         </div>
                     </div>
-
                 </div>
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                    <div class="row">
-                        <div class="box box-info">
-                            <div class="box-body box-profile">
-                                <img alt="User profile picture" src="~/Imagenes/anonimo_perfil.jpg" class="profile-user-img img-responsive img-circle">
-                                <h3 class="profile-username text-center">User Admin.</h3>
-                                <p class="text-muted text-center">Ingeniero en Software.</p>
-                                <ul class="list-group list-group-unbordered">
-                                    <li class="list-group-item">
-                                        <b>A tu perfil le falta un detalle</b>
-                                        <a class="pull-right"><span class="glyphicon glyphicon-camera"></span></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Añade una foto de inicio de perfil para completar tu información.
-                                        <a class="pull-right"><span class="fa fa-file-photo-o"></span></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#" class="btn btn-linkedin"><span class="fa fa-user-plus"></span> Sigue a tus colaboradores</a>
-                                    </li>
-                                </ul>
+
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <div class="row">
+                    <div class="box box-info">
+                        <div class="box-body box-profile">
+                            <div id="imgPreview">
+                                <img id="targetImg" alt="User profile picture" src="~/Imagenes/anonimo_perfil.jpg" class="profile-user-img img-responsive img-circle">
                             </div>
+                            <h3 class="profile-username text-center">User Admin.</h3>
+                            <p class="text-muted text-center">Ingeniero en Software.</p>
+                            <ul class="list-group list-group-unbordered">
+                                <li class="list-group-item">
+                                    <b id="description" class="text-navy">Datos de la Foto: </b>
+                                    <a class="pull-right"><span class="fa  fa-camera"></span></a>
+                                </li>
+                                @*<li class="list-group-item">
+                                    <b>A tu perfil le falta un detalle</b>
+                                    <a class="pull-right"><span class="glyphicon glyphicon-camera"></span></a>
+                                </li>*@
+                                <li class="list-group-item">
+                                    Añade una foto de inicio de perfil para completar tu información.
+                                    <a class="pull-right"><span class="fa fa-file-photo-o"></span></a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#" class="btn btn-linkedin"><span class="fa fa-user-plus"></span> Sigue a tus colaboradores</a>
+                                </li>
 
+                            </ul>
                         </div>
+
                     </div>
-
-
                 </div>
+
+
             </div>
         </div>
-        @*<div class="form-horizontal">
+    </div>
+    @*<div class="form-horizontal">
             <h4>PersonalVM</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -112,12 +116,44 @@
                 </div>
             </div>
         </div>*@
-    }
+}
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script src="~/Scripts/jquery-1.9.1.min.js"></script>
+<script>
+   $(document).ready(function () {
+                $("#fotoInputFile").change(function () {
 
-    @*@section Scripts {
-            @Scripts.Render("~/bundles/jqueryval")
-        }*@
+                    var File = this.files;
+                    if (File && File[0]) {
+                        ReadImage(File[0]);
+                    }
+                })
+            })
+   var ReadImage = function (file) {
+
+                var reader = new FileReader;
+                var image = new Image;
+                ///leemos un documento de una URL
+                reader.readAsDataURL(file);
+                reader.onload = function (_file) {
+                    image.src = _file.target.result;
+                    image.onload = function () {
+
+                        var height = this.height;
+                        var width = this.width;
+                        var type = file.type;
+                        var size = ~~(file.size / 1024) + "KB";
+
+                        $("#targetImg").attr('src', _file.target.result);
+                        $("#description").text("Tamaño de la Foto: " + size);
+                        $("imgPreview").show();
+                    }
+
+                }
+
+            }
+</script>
+   

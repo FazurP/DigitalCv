@@ -80,6 +80,7 @@ namespace AppDigitalCv.Business
             Expression<Func<tblPersonal, bool>> predicado = p=> p.idPersonal.Equals(idPersonal);
             PersonalDomainModel personalDM = new PersonalDomainModel();
             tblPersonal TblPersonal= personalRepository.SingleOrDefault(predicado);
+            personalDM.idPersonal = TblPersonal.idPersonal;
             personalDM.Nombre = TblPersonal.strNombre;
             personalDM.ApellidoPaterno = TblPersonal.strApellidoPaterno;
             personalDM.ApellidoMaterno = TblPersonal.strApellidoMaterno;
