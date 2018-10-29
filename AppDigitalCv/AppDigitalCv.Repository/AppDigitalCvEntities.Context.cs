@@ -29,7 +29,6 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<catArea> catArea { get; set; }
         public virtual DbSet<catAsociaciones> catAsociaciones { get; set; }
         public virtual DbSet<catCategoria> catCategoria { get; set; }
-        public virtual DbSet<catColonia> catColonia { get; set; }
         public virtual DbSet<catCompetencias> catCompetencias { get; set; }
         public virtual DbSet<catCompetenciaTI> catCompetenciaTI { get; set; }
         public virtual DbSet<catCuerpoAcademico> catCuerpoAcademico { get; set; }
@@ -39,15 +38,12 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<catDocumentos> catDocumentos { get; set; }
         public virtual DbSet<catEdificio> catEdificio { get; set; }
         public virtual DbSet<catEnfermedad> catEnfermedad { get; set; }
-        public virtual DbSet<catEstado> catEstado { get; set; }
         public virtual DbSet<catEstadoCivil> catEstadoCivil { get; set; }
         public virtual DbSet<catFamiliar> catFamiliar { get; set; }
         public virtual DbSet<catFrecuencia> catFrecuencia { get; set; }
         public virtual DbSet<catIdioma> catIdioma { get; set; }
         public virtual DbSet<catInstitucionSuperior> catInstitucionSuperior { get; set; }
-        public virtual DbSet<catMunicipio> catMunicipio { get; set; }
         public virtual DbSet<catNivelSalarial> catNivelSalarial { get; set; }
-        public virtual DbSet<catPais> catPais { get; set; }
         public virtual DbSet<catParentesco> catParentesco { get; set; }
         public virtual DbSet<catProgramaEducativo> catProgramaEducativo { get; set; }
         public virtual DbSet<catRoles> catRoles { get; set; }
@@ -78,5 +74,9 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<tblTelefono> tblTelefono { get; set; }
         public virtual DbSet<tblUsuarioRol> tblUsuarioRol { get; set; }
         public virtual DbSet<tblPersonal> tblPersonal { get; set; }
+        public virtual DbSet<CatColonia> CatColonia { get; set; }
+        public virtual DbSet<CatEstado> CatEstado { get; set; }
+        public virtual DbSet<CatMunicipio> CatMunicipio { get; set; }
+        public virtual DbSet<CatPais> CatPais { get; set; }
     }
 }

@@ -368,6 +368,7 @@
     <Content Include="Views\Personal\InfoPersonal.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\Direccion\RegistrarDireccion.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -377,6 +378,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Controllers\DireccionController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Infraestructure\AutomaperWebProfile.cs" />
     <Compile Include="Models\PersonaDomainModel.cs" />
@@ -389,6 +391,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecursosSistema.resx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\ColoniaVM.cs" />
+    <Compile Include="ViewModels\DireccionVM.cs" />
+    <Compile Include="ViewModels\EstadoVM.cs" />
+    <Compile Include="ViewModels\MunicipioVM.cs" />
+    <Compile Include="ViewModels\PaisVM.cs" />
     <Compile Include="ViewModels\PersonalVM.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -26,8 +26,8 @@ namespace AppDigitalCv.Repository
         public string strNumeroExterior { get; set; }
         public int idColonia { get; set; }
     
-        public virtual catColonia catColonia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblPersonal> tblPersonal { get; set; }
+        public virtual CatColonia CatColonia { get; set; }
     }
 }

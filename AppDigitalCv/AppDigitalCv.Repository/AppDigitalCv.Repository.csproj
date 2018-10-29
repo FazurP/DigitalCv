@@ -78,7 +78,7 @@
     <Compile Include="catCategoria.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="catColonia.cs">
+    <Compile Include="CatColonia.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="catCompetencias.cs">
@@ -108,7 +108,7 @@
     <Compile Include="catEnfermedad.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="catEstado.cs">
+    <Compile Include="CatEstado.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="catEstadoCivil.cs">
@@ -126,13 +126,13 @@
     <Compile Include="catInstitucionSuperior.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="catMunicipio.cs">
+    <Compile Include="CatMunicipio.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="catNivelSalarial.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="catPais.cs">
+    <Compile Include="CatPais.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="catParentesco.cs">
@@ -175,6 +175,7 @@
     <Compile Include="Infraestructure\Contract\IBaseRepository.cs" />
     <Compile Include="Infraestructure\Contract\IUnitOfWork.cs" />
     <Compile Include="Infraestructure\UnitOfWork.cs" />
+    <Compile Include="PaisRepository.cs" />
     <Compile Include="PersonalRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sysdiagrams.cs">

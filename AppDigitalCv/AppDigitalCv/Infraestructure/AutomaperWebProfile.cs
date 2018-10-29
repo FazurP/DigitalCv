@@ -12,10 +12,17 @@ namespace AppDigitalCv.Infraestructure
 
         public AutomaperWebProfile()
         {
+            // Personal
             CreateMap<PersonalDomainModel, PersonalVM>();
             CreateMap<PersonalVM, PersonalDomainModel>();
-           
 
+            /* Direccion
+            CreateMap<DireccionDomainModel, DireccionVM>();
+            CreateMap<DireccionVM, DireccionDomainModel>();
+    */
+
+            CreateMap<PaisDomainModel, PaisVM>();
+            CreateMap<PaisVM, PaisDomainModel>(); 
         }
 
 

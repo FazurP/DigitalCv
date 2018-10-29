@@ -41,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColoniaDomainModel.cs" />
+    <Compile Include="DireccionDomainModel.cs" />
+    <Compile Include="EstadoDomainModel.cs" />
+    <Compile Include="MunicipioDomainModel.cs" />
+    <Compile Include="PaisDomainModel.cs" />
     <Compile Include="PersonalDomainModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
