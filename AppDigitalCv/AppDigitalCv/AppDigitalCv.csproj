@@ -366,6 +366,7 @@
     <Content Include="Scripts\jtable\themes\basic\jtable_basic.less" />
     <Content Include="Views\Personal\_Editar.cshtml" />
     <Content Include="Views\Personal\InfoPersonal.cshtml" />
+    <Content Include="Views\Personal\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

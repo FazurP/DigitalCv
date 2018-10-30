@@ -109,6 +109,16 @@ namespace AppDigitalCv.Controllers
             AutoMapper.Mapper.Map(personalDM, personalVM);///hacemos el mapeado de la entidad
             return PartialView("_Editar",personalVM);
         }
+
+
+       
+        public ActionResult Details()
+        {
+            ViewBag.PersonalList = IPersonalBussines.GetEmpleado();
+            return PartialView("Details");
+        }
+
+
         #endregion
 
         #region Agregar o Editar una entidad
