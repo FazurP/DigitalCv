@@ -10,10 +10,11 @@ namespace AppDigitalCv.Domain
     {
 
         //catDireccion
-        public int IdDireccion { get; set; }
-        public string Calle { get; set; }
-        public string NoInterior { get; set; }
-        public string NoExterior { get; set; }
+        public int idDireccion { get; set; }
+        public string strCalle { get; set; }
+        public string strNumeroInterior { get; set; }
+        public string strNumeroExterior { get; set; }
+        public int idColonia { get; set; }
 
     }
 }

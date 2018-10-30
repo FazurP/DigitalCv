@@ -16,13 +16,26 @@ namespace AppDigitalCv.Infraestructure
             CreateMap<PersonalDomainModel, PersonalVM>();
             CreateMap<PersonalVM, PersonalDomainModel>();
 
-            /* Direccion
+            //Direccion
             CreateMap<DireccionDomainModel, DireccionVM>();
             CreateMap<DireccionVM, DireccionDomainModel>();
-    */
-
+    
+            //Pais
             CreateMap<PaisDomainModel, PaisVM>();
-            CreateMap<PaisVM, PaisDomainModel>(); 
+            CreateMap<PaisVM, PaisDomainModel>();
+
+            //Estado
+            CreateMap<EstadoDomainModel, EstadoVM>();
+            CreateMap<EstadoVM, EstadoDomainModel>();
+
+            //Municipio
+            CreateMap<MunicipioDomainModel, MunicipioVM>();
+            CreateMap<MunicipioVM, MunicipioDomainModel>();
+
+            //Colonia
+            CreateMap<ColoniaDomainModel, ColoniaVM>();
+            CreateMap<ColoniaVM, ColoniaDomainModel>();
+
         }
 
 

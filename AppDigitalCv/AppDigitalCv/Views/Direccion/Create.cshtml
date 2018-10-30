@@ -1,9 +1,9 @@
-﻿
+﻿@model AppDigitalCv.ViewModels.DireccionVM
+
 @{
-    //ViewBag.Title = "RegistrarDireccion";
+    ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 <div class="bs-container">
 
@@ -83,35 +83,20 @@
                             </div>
                         </div>
 
+                        <!-- Aqui se llena el dropdownloist de estados y se ponen algunas validaciones -->
                         <div class="form-group">
                             <div class="form-group ">
                                 <label>Estado</label>
-                                <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
-                                <span class="select2 select2-container select2-container--default select2-container--below" dir="ltr" style="width: 100%;">
-                                    <span class="selection">
-                                        <span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-n38d-container">
-                                            <span class="select2-selection__rendered" id="select2-n38d-container" title="hola2">hola2</span><span class="select2-selection__arrow" role="presentation">
-                                                <b role="presentation"></b>
-                                            </span>
-                                        </span>
-                                    </span><span class="dropdown-wrapper" aria-hidden="true"></span>
-                                </span>
+                                
                             </div>
                         </div>
 
+                        <!-- Aqui se llena el dropdownlist de paises y se ponen algunas validaciones -->
                         <div class="form-group">
                             <div class="form-group ">
                                 <label>País</label>
-                                <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
-                                <span class="select2 select2-container select2-container--default select2-container--below" dir="ltr" style="width: 100%;">
-                                    <span class="selection">
-                                        <span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-n38d-container">
-                                            <span class="select2-selection__rendered" id="select2-n38d-container" title="hola4">hola4</span><span class="select2-selection__arrow" role="presentation">
-                                                <b role="presentation"></b>
-                                            </span>
-                                        </span>
-                                    </span><span class="dropdown-wrapper" aria-hidden="true"></span>
-                                </span>
+                                @Html.DropDownList("Pais", null, htmlAttributes: new { @class = "form-control input-sm", required = "required" })
+                                @Html.ValidationMessageFor(model => model.IdPais, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
@@ -121,3 +106,4 @@
         </div>
     </div>
 </div>
+

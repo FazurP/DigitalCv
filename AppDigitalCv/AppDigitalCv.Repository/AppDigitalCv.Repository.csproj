@@ -171,6 +171,7 @@
     <Compile Include="catUsuarios.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="EstadoRepository.cs" />
     <Compile Include="Infraestructure\BaseRepository.cs" />
     <Compile Include="Infraestructure\Contract\IBaseRepository.cs" />
     <Compile Include="Infraestructure\Contract\IUnitOfWork.cs" />

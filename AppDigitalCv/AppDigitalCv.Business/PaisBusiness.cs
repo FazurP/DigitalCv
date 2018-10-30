@@ -24,7 +24,11 @@ namespace AppDigitalCv.Business
 
         public List<PaisDomainModel> GetPais()
         {
-            return null;
+            ///creamos la lista de paises, se encuentra vacia
+            List<PaisDomainModel> paises = new List<PaisDomainModel>();
+            //consultamos todos los paises y los almacenamos en la lista de paises
+            paises = paisRepository.GetAll().Select(p => new PaisDomainModel { IdPais = p.id, StrValor = p.strValor }).ToList();
+            return paises;
         }
     }
 }
