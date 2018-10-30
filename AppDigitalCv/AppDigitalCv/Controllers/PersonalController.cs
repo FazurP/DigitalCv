@@ -40,9 +40,7 @@ namespace AppDigitalCv.Controllers
                 {
                     string nombreCompleto = personalVM.Nombre + " " + personalVM.ApellidoPaterno + " " + personalVM.ApellidoMaterno;
                     this.CrearDirectorioUsuario(personalVM);
-
-                    
-                   
+                                                           
                 }
                 return View();
             }
@@ -61,7 +59,7 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult InfoPersonal()
         {
-            int idPersonal = 1; ///este es un parametro temporal
+            int idPersonal = 4; ///este es un parametro temporal
             //creamos el objeto que representara los datos en la vista
             PersonalVM personalVM = new PersonalVM();
             //obtenemos el objeto del modelo de dominio
@@ -69,6 +67,8 @@ namespace AppDigitalCv.Controllers
             ///mapaeamos el objeto con los valores del modelo de dominio
             AutoMapper.Mapper.Map(personaDominio, personalVM);
             ViewBag.NombreCompleto = personalVM.Nombre + " " + personalVM.ApellidoPaterno + " " + personalVM.ApellidoMaterno;
+            //consultamos la fecha desde el servidor
+            ViewBag.FechaServidor = this.ConsultarHorarioServidor();
             return View(personalVM);
         }
         #endregion
@@ -187,6 +187,14 @@ namespace AppDigitalCv.Controllers
                 this.AddEditPersonal(personalVM);
 
             }
+        }
+        #endregion
+
+
+        #region Consultar Horario del Servidor
+        private string ConsultarHorarioServidor()
+        {
+            return DateTime.Now.ToString("dd MMMM, yyyy");
         }
         #endregion
 

@@ -59,8 +59,11 @@ namespace AppDigitalCv.Business
                 personal.strRfc= personalDM.Rfc;
                 personal.strUrlRfc = personalDM.strUrlRfc;
                 personal.strUrlCurp = personalDM.strUrlCurp;
-                personal.strLogros = personal.strLogros;
+                personal.strLogros = personalDM.strLogros;
+                personal.strUrlFoto = personalDM.strUrlFoto;
+                
                 /***********/ personal.archivoRfc = "archivo temporal"; /*********************/
+
                 personal.strHomoclave = personalDM.Homoclave;
                 var record = personalRepository.Insert(personal);
                 resultado = "Se insertaron correctamente los valores";
@@ -92,6 +95,7 @@ namespace AppDigitalCv.Business
             personalDM.Curp = TblPersonal.strCurp;
             personalDM.Rfc = TblPersonal.strRfc;
             personalDM.Homoclave = TblPersonal.strHomoclave;
+            personalDM.strLogros = TblPersonal.strLogros;
             return personalDM;
         }
 
