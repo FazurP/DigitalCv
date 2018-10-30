@@ -41,6 +41,8 @@ namespace AppDigitalCv.Business
                     personal.strCurp = personalDM.Curp;
                     personal.strRfc = personalDM.Rfc;
                     personal.strHomoclave = personalDM.Homoclave;
+                    personal.strLogros = personalDM.strLogros;
+                    personal.strUrlFoto = personalDM.strUrlFoto;
                     //actualizamos los datos en la base de datos.
                     personalRepository.Update(personal);
                     resultado = "Se Actualizo correctamente";
@@ -54,8 +56,11 @@ namespace AppDigitalCv.Business
                 personal.strApellidoPaterno = personalDM.ApellidoPaterno;
                 personal.strApellidoMaterno = personalDM.ApellidoMaterno;
                 personal.strCurp = personalDM.Curp;
-                personal.strRfc = personalDM.Rfc;
-               /***********/ personal.archivoRfc = "archivo temporal"; /*********************/
+                personal.strRfc= personalDM.Rfc;
+                personal.strUrlRfc = personalDM.strUrlRfc;
+                personal.strUrlCurp = personalDM.strUrlCurp;
+                personal.strLogros = personal.strLogros;
+                /***********/ personal.archivoRfc = "archivo temporal"; /*********************/
                 personal.strHomoclave = personalDM.Homoclave;
                 var record = personalRepository.Insert(personal);
                 resultado = "Se insertaron correctamente los valores";

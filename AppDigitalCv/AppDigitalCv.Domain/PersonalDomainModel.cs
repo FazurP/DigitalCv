@@ -17,7 +17,7 @@ namespace AppDigitalCv.Domain
         public string archivoRfc { get; set; }
         public string Homoclave { get; set; }
         public System.DateTime FechaNacimiento { get; set; }
-        public string Logros { get; set; }
+        public string strLogros { get; set; }
         public string strUrlFoto { get; set; }
         public string strUrlCurp { get; set; }
         public string strUrlRfc { get; set; }

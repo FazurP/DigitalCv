@@ -32,11 +32,18 @@ namespace AppDigitalCv.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Nombre,ApellidoPaterno,ApellidoMaterno,RFC,Curp,HomoClave,")] PersonalVM personalVM)
+        public ActionResult Create([Bind(Include = "Nombre,ApellidoPaterno,ApellidoMaterno,RFC,Curp,HomoClave,ArchivoRfc,ArchivoCurp,ImageFile,strLogros")] PersonalVM personalVM)
         {
             if (ModelState.IsValid)
             {
-                this.AddEditPersonal(personalVM);
+                if (personalVM.ArchivoCurp != null && personalVM.ArchivoRfc != null && personalVM.ImageFile != null)
+                {
+                    string nombreCompleto = personalVM.Nombre + " " + personalVM.ApellidoPaterno + " " + personalVM.ApellidoMaterno;
+                    this.CrearDirectorioUsuario(personalVM);
+
+                    
+                   
+                }
                 return View();
             }
             else {
@@ -148,6 +155,38 @@ namespace AppDigitalCv.Controllers
                 
             }
             return Json(file.FileName,JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+
+        #region Crear Directorio de Usuario
+        //string nombreCompleto ,HttpPostedFileWrapper curpFile, HttpPostedFileWrapper rfcFile, HttpPostedFileWrapper imageFile,
+        public void CrearDirectorioUsuario(PersonalVM personalVM)
+        {
+            string nombreCompleto = personalVM.Nombre + " " + personalVM.ApellidoPaterno + " " + personalVM.ApellidoMaterno;
+            string path = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/"+nombreCompleto));
+            string pathRfc = string.Empty;
+            string pathCurp = string.Empty;
+
+            if (!Directory.Exists(path))
+            {
+                //creamos el directorio
+                DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
+                path = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/"+nombreCompleto+"/"), Path.GetFileName(personalVM.ImageFile.FileName));
+                pathRfc = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + "/"), Path.GetFileName(personalVM.ArchivoRfc.FileName));
+                pathCurp = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + "/"), Path.GetFileName(personalVM.ArchivoCurp.FileName));
+
+                personalVM.ImageFile.SaveAs(path);
+                personalVM.ArchivoRfc.SaveAs(pathRfc);
+                personalVM.ArchivoCurp.SaveAs(pathCurp);
+
+                personalVM.strUrlFoto = path;
+                personalVM.strUrlRfc = pathRfc;
+                personalVM.strUrlCurp = pathCurp;
+                
+                this.AddEditPersonal(personalVM);
+
+            }
         }
         #endregion
 
