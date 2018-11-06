@@ -29,8 +29,13 @@ namespace AppDigitalCv.Business
         {
           ///creamos la lista de paises, se encuentra vacia
           List<PaisDomainModel> paises = null;
+
           //consultamos todos los paises y los almacenamos en la lista de paises
           paises = paisRepository.GetAll().Select(p => new PaisDomainModel { IdPais = p.id, StrValor = p.strValor }).ToList();
+          PaisDomainModel inicial = new PaisDomainModel();
+          inicial.IdPais = 0;
+          inicial.StrValor = "Seleccionar";
+          paises.Insert(0, inicial);
           return paises;
          }
 
@@ -58,6 +63,8 @@ namespace AppDigitalCv.Business
             }
             return estadosDM;
         }
+
+
 
 
     }

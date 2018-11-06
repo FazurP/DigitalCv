@@ -8,9 +8,9 @@ namespace AppDigitalCv.ViewModels
     public class EstadoVM
     {
 
-        public int id { get; set; }
-        public string strValor { get; set; }
-        public Nullable<int> idPais { get; set; }
+        public int IdEstado { get; set; }
+        public string StrValor { get; set; }
+        public Nullable<int> IdPais { get; set; }
 
     }
 }

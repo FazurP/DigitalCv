@@ -14,6 +14,7 @@ namespace AppDigitalCv.ViewModels
         public string strNumeroExterior { get; set; }
         public int idColonia { get; set; }
 
+        public int IdEstado { get; set; }
         public int IdPais { get; set; }
     }
 }

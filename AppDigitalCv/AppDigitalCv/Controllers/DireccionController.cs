@@ -32,8 +32,19 @@ namespace AppDigitalCv.Controllers
         public ActionResult Create()
         {
             ViewBag.Pais = new SelectList(IdireccionBusiness.GetPais(), "IdPais", "StrValor");
-            
+            ViewBag.Estados = new SelectList("");
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult ConsultarEstadosByPais(int idPais)
+        {
+            List<EstadoDomainModel> estadosDM = IdireccionBusiness.GetEstadoByIdPais(idPais);
+
+            List<EstadoVM> estadosVM = new List<EstadoVM>();
+            AutoMapper.Mapper.Map(estadosDM, estadosVM);
+            ViewBag.Estados = new SelectList(estadosVM, "IdEstado", "StrValor");
+            return PartialView("_Estados");
         }
     }
 }
