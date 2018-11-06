@@ -47,11 +47,11 @@
                         </li>
                     </ul>
                     <a href="#" class="btn btn-primary btn-block" onclick="EditPersonal(@Model.idPersonal)"><b>Editar</b></a>
-                   
+
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <!-- Box Comment -->
             <div class="box box-widget">
                 <div class="box-header with-border">
@@ -76,10 +76,10 @@
                 <div class="box-body" style="">
                     <!-- post text -->
                     <p class="text-justify">
-                        @Html.DisplayFor(model=>model.strLogros, new { @class = "text-muted text-justify" })
-                        
+                        @Html.DisplayFor(model => model.strLogros, new { @class = "text-muted text-justify" })
+
                     </p>
-                    
+
                     <!-- Attachment -->
                     <div class="attachment-block clearfix">
                         <img class="attachment-img" src="~/Imagenes/escudo_uttt.jpg" alt="Attachment Image">
@@ -88,7 +88,7 @@
                             <h4 class="attachment-heading"><a href="http://www.uttt.edu.mx/">La Universidad Tecnológica de Tula-Tepeji</a></h4>
 
                             <div class="attachment-text text-justify">
-                                
+
                                 La Universidad Tecnologica de Tula-Tepeji,te da la bienvenida al sistema de curriculum digital, la cual es una herramienta
                                 digital encargada de unificar y estandarizar en formato electronico tu cv,comunicandote directamente con los reclutadores de esta casa de estudios.
                                 ¡Sin intermediarios, sin esperas!<span class="fa fa-commenting-o"></span>
@@ -157,11 +157,22 @@
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            @Html.Partial("Details")
+            <table id="myDataTablePaciente" class="table table-bordered table-hover table-responsive">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido Paterno</th>
+                        <th>Fecha de Cita</th>
+                        <th>Total</th>
+                        <th>Identificador</th>
+
+                    </tr>
+                </thead>
+            </table>
         </div>
     </div>
-    <!--empezamos el model como prupuesta-->
     
+    <!--empezamos el model como prupuesta-->
     <!-- /.modal -->
 </section>
 <div class="modal modal-default fade" id="modal-default" style="display: none;">
@@ -198,8 +209,8 @@
                         </div>
                     </div>
                 </div>
-                
-                
+
+
             </div>
             <div class="modal-footer">
                 <a href="#" id="btnSubmit" class="btn btn-success">
@@ -209,26 +220,71 @@
                     {<span>Guardar</span>}
                 </a>
                 @*<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-primary">Actualizar</button>*@
+                    <button type="button" class="btn btn-primary">Actualizar</button>*@
             </div>
         </div>
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
 </div>
+@section scripts{
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script>
 
-<script>
+        $(document).ready(function () {
+            // $.noConflict();
+            $('#myDataTablePaciente').DataTable({
+                "language": {
 
-    //esta función se encarga de procesar los datos para editar al personal
-    var EditPersonal=function(personalId){
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                },
+                "ajax": {
+                    "url": '/DashboardPaciente/ConsultarPacientes',
+                    "type": "get",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "Nombre", "autoWidth": true },
+                    { "data": "ApellidoPaterno", "autoWidth": true },
+                    { "data": "Fecha", "autoWidth": true },
+                    { "data": "Total", "autoWidth": true },
+                    { "data": "Id", "autoWidth": true }
 
-        $("#modal-default").modal("show");
-        //var url = "/Personal/EditarDatosPersonales?idPersonal=" + personalId;
+                ]
 
-        //$("#modal-default").load(url,function(){
-           
 
-        //})
+            });
 
-    }
-</script>
+        });
+
+        //esta función se encarga de procesar los datos para editar al personal
+        var EditPersonal = function (personalId) {
+
+            $("#modal-default").modal("show");
+            //var url = "/Personal/EditarDatosPersonales?idPersonal=" + personalId;
+            //$("#modal-default").load(url,function(){
+            //})
+        }
+    </script>
+}

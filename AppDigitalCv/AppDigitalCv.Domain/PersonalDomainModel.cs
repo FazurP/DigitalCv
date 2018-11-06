@@ -14,7 +14,6 @@ namespace AppDigitalCv.Domain
         public string ApellidoMaterno { get; set; }
         public string Curp { get; set; }
         public string Rfc { get; set; }
-        public string archivoRfc { get; set; }
         public string Homoclave { get; set; }
         public System.DateTime FechaNacimiento { get; set; }
         public string strLogros { get; set; }
@@ -27,5 +26,6 @@ namespace AppDigitalCv.Domain
         public int idTipoSangre { get; set; }
         public int idDireccion { get; set; }
         public int idFamiliar { get; set; }
+        
     }
 }

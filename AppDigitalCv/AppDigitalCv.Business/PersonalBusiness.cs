@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 ///implementamos la libreria de expression para el delegado
 using System.Linq.Expressions;
+//caragmos la libreria io
+using System.IO;
 
 namespace AppDigitalCv.Business
 {
@@ -77,6 +79,25 @@ namespace AppDigitalCv.Business
             , ApellidoMaterno= p.strApellidoMaterno,Curp=p.strCurp,Rfc=p.strRfc,idPersonal =p.idPersonal}).ToList();
             return lista;
         }
+
+        public List<PersonalDomainModel> GetEmpleadoDocumentos(int idPersonal)
+        {
+            List<PersonalDomainModel> lista = null;
+            personalRepository.GetAll().Select(p => new PersonalDomainModel
+            {
+                Nombre = p.strNombre,
+                ApellidoPaterno = p.strApellidoPaterno,
+                ApellidoMaterno = p.strApellidoMaterno,
+                Curp = p.strCurp,
+                Rfc = p.strRfc,
+                idPersonal = p.idPersonal,
+                strUrlRfc = p.strUrlRfc,
+                strUrlCurp = p.strUrlCurp
+
+            }).Where(P=>P.idPersonal==idPersonal).OrderBy(p=>p.Nombre);
+            return lista;
+        }
+
 
         /// <summary>
         /// este metodo se encarga de buscar a una persona por su id

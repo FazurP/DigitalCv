@@ -26,5 +26,11 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="idPersonal">recibe el id del personal a buscar</param>
         /// <returns>regresa una entidad del modelo de dominio</returns>
         PersonalDomainModel GetPersonalById(int idPersonal);
+        
+        /// <summary>
+        ///Este metodo se encarga  de consultar los documentos de un empleado 
+        /// </summary>
+        /// <returns>regresa una lista de datos de la entidad personal</returns>
+        List<PersonalDomainModel> GetEmpleadoDocumentos(int idPersonal);
     }
 }

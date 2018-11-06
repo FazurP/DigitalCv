@@ -111,14 +111,6 @@ namespace AppDigitalCv.Controllers
         }
 
 
-       
-        public ActionResult Details()
-        {
-            ViewBag.PersonalList = IPersonalBussines.GetEmpleado();
-            return PartialView("Details");
-        }
-
-
         #endregion
 
         #region Agregar o Editar una entidad
@@ -139,7 +131,7 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public JsonResult ConsultarDatosPersonal()
         {
-            var personal = IPersonalBussines.GetEmpleado();
+            var personal = IPersonalBussines.GetEmpleadoDocumentos(4);
             return Json(personal, JsonRequestBehavior.AllowGet);
         }
         #endregion
