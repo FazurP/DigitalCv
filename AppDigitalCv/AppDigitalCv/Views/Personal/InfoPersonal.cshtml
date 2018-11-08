@@ -46,7 +46,7 @@
                             <b>HomoClave:</b> <a class="pull-right">@Html.DisplayFor(model => model.HomoClave, new { @class = "text-muted" })</a>
                         </li>
                     </ul>
-                    <a href="#" class="btn btn-primary btn-block" onclick="EditPersonal(@Model.idPersonal)"><b>Editar</b></a>
+                    <a href="#" class="btn btn-primary btn-block" onclick="EditPersonal(@Model.idPersonal)"> <b>Editar</b></a>
 
                 </div>
             </div>
@@ -100,64 +100,22 @@
                     </div>
                     <!-- /.attachment-block -->
                     <!-- Social sharing buttons -->
-                    <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
-                    <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
-                    <span class="pull-right text-muted">45 likes - 2 comments</span>
+                  
                 </div>
                 <!-- /.box-body -->
-                <div class="box-footer box-comments" style="">
-                    <div class="box-comment">
-                        <!-- User image -->
-                        <img class="img-circle img-sm" src="~/Imagenes/pdf_descargar.jpg" alt="User Image">
-
-                        <div class="comment-text">
-                            <span class="username">
-                                Maria Gonzales
-                                <span class="text-muted pull-right">8:03 PM Today</span>
-                            </span><!-- /.username -->
-                            It is a long established fact that a reader will be distracted
-                            by the readable content of a page when looking at its layout.
-                        </div>
-                        <!-- /.comment-text -->
-                        <button type="button" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eliminar</button>
-                        <button type="button" class="btn btn-success btn-xs"><i class="fa  fa-eye"></i>Visualizar</button>
-                    </div>
-                    <!-- /.box-comment -->
-                    <div class="box-comment">
-                        <!-- User image -->
-                        <img class="img-circle img-sm" src="~/Imagenes/pdf_descargar.jpg" alt="User Image">
-
-                        <div class="comment-text">
-                            <span class="username">
-                                Nora Havisham
-                                <span class="text-muted pull-right">8:03 PM Today</span>
-                            </span><!-- /.username -->
-                            The point of using Lorem Ipsum is that it has a more-or-less
-                            normal distribution of letters, as opposed to using
-                            'Content here, content here', making it look like readable English.
-                        </div>
-                        <!-- /.comment-text -->
-                    </div>
-                    <!-- /.box-comment -->
-                </div>
+              
                 <!-- /.box-footer -->
                 <div class="box-footer" style="">
-                    <form action="#" method="post">
-                        <img class="img-responsive img-circle img-sm" src="../dist/img/user4-128x128.jpg" alt="Alt Text">
-                        <!-- .img-push is used to add margin to elements next to floating images -->
-                        <div class="img-push">
-                            <input type="text" class="form-control input-sm" placeholder="Press enter to post comment">
-                        </div>
-                    </form>
+                  
                 </div>
                 <!-- /.box-footer -->
             </div>
             <!-- /.box -->
         </div>
     </div>
-    <div class="row">
+    @*<div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <table id="myDataTablePaciente" class="table table-bordered table-hover table-responsive">
+            <table id="myDataTablePersonal" class="table table-bordered table-hover table-responsive">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -170,7 +128,7 @@
                 </thead>
             </table>
         </div>
-    </div>
+    </div>*@
     
     <!--empezamos el model como prupuesta-->
     <!-- /.modal -->
@@ -207,6 +165,9 @@
                                 </div>
                             </form>
                         </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <img src="~/Imagenes/escudo_uttt.jpg" alt="imgEscudo" class="img-responsive" width="120" height="140" />
+                        </div>
                     </div>
                 </div>
 
@@ -227,64 +188,70 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-@section scripts{
-    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script>
-
-        $(document).ready(function () {
-            // $.noConflict();
-            $('#myDataTablePaciente').DataTable({
-                "language": {
-
-                    "sProcessing": "Procesando...",
-                    "sLengthMenu": "Mostrar _MENU_ registros",
-                    "sZeroRecords": "No se encontraron resultados",
-                    "sEmptyTable": "Ningún dato disponible en esta tabla",
-                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                    "sInfoPostFix": "",
-                    "sSearch": "Buscar:",
-                    "sUrl": "",
-                    "sInfoThousands": ",",
-                    "sLoadingRecords": "Cargando...",
-                    "oPaginate": {
-                        "sFirst": "Primero",
-                        "sLast": "Último",
-                        "sNext": "Siguiente",
-                        "sPrevious": "Anterior"
-                    },
-                    "oAria": {
-                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                    }
-                },
-                "ajax": {
-                    "url": '/DashboardPaciente/ConsultarPacientes',
-                    "type": "get",
-                    "datatype": "json"
-                },
-                "columns": [
-                    { "data": "Nombre", "autoWidth": true },
-                    { "data": "ApellidoPaterno", "autoWidth": true },
-                    { "data": "Fecha", "autoWidth": true },
-                    { "data": "Total", "autoWidth": true },
-                    { "data": "Id", "autoWidth": true }
-
-                ]
 
 
-            });
+<script src="~/Content/js/plugins/jquery/jquery-3.3.1.min.js"></script>
+@*<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>*@
+
+<script>
+
+
+    //esta función se encarga de procesar los datos para editar al personal
+    var EditPersonal = function (personalId) {
+
+        $("#modal-default").modal("show");
+        
+    }
+
+    $(document).ready(function () {
+        ////$.noConflict();
+        //$('#myDataTablePersonal').DataTable({
+        //        "language": {
+
+        //            "sProcessing": "Procesando...",
+        //            "sLengthMenu": "Mostrar _MENU_ registros",
+        //            "sZeroRecords": "No se encontraron resultados",
+        //            "sEmptyTable": "Ningún dato disponible en esta tabla",
+        //            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        //            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+        //            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+        //            "sInfoPostFix": "",
+        //            "sSearch": "Buscar:",
+        //            "sUrl": "",
+        //            "sInfoThousands": ",",
+        //            "sLoadingRecords": "Cargando...",
+        //            "oPaginate": {
+        //                "sFirst": "Primero",
+        //                "sLast": "Último",
+        //                "sNext": "Siguiente",
+        //                "sPrevious": "Anterior"
+        //            },
+        //            "oAria": {
+        //                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+        //                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        //            }
+        //        },
+        //        "ajax": {
+        //            "url": '/Personal/ConsultarDatosPersonal/',
+        //            "type": "get",
+        //            "datatype": "json"
+        //        },
+        //        "columns": [
+        //            { "data": "Nombre", "autoWidth": true },
+        //            { "data": "ApellidoPaterno", "autoWidth": true },
+        //            { "data": "ApellidoMaterno", "autoWidth": true },
+        //            { "data": "Curp", "autoWidth": true },
+        //            { "data": "Rfc", "autoWidth": true },
+        //            { "data": "idPersonal", "autoWidth": true },
+        //            { "data": "strUrlRfc", "autoWidth": true }
+
+        //        ]
+
+
+        //    });
+        
+
 
         });
-
-        //esta función se encarga de procesar los datos para editar al personal
-        var EditPersonal = function (personalId) {
-
-            $("#modal-default").modal("show");
-            //var url = "/Personal/EditarDatosPersonales?idPersonal=" + personalId;
-            //$("#modal-default").load(url,function(){
-            //})
-        }
     </script>
-}
+

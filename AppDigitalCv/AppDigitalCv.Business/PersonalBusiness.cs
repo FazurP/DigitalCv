@@ -83,7 +83,7 @@ namespace AppDigitalCv.Business
         public List<PersonalDomainModel> GetEmpleadoDocumentos(int idPersonal)
         {
             List<PersonalDomainModel> lista = null;
-            personalRepository.GetAll().Select(p => new PersonalDomainModel
+            lista =personalRepository.GetAll().Select(p => new PersonalDomainModel
             {
                 Nombre = p.strNombre,
                 ApellidoPaterno = p.strApellidoPaterno,
@@ -94,7 +94,7 @@ namespace AppDigitalCv.Business
                 strUrlRfc = p.strUrlRfc,
                 strUrlCurp = p.strUrlCurp
 
-            }).Where(P=>P.idPersonal==idPersonal).OrderBy(p=>p.Nombre);
+            }).Where(P=>P.idPersonal==idPersonal).OrderBy(p=>p.Nombre).ToList();
             return lista;
         }
 
