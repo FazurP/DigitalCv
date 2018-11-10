@@ -120,6 +120,46 @@ namespace AppDigitalCv.Business
             return personalDM;
         }
 
+        /// <summary>
+        /// Este metodo se encargará de eliminar la url del curp
+        /// </summary>
+        /// <param name="idPersonal">el identificador del personal</param>
+        /// <returns>regresa una respues en boolean para identificar el proceso</returns>
+        public bool DeleteFileCurp(int idPersonal)
+        {
+            Expression<Func<tblPersonal, bool>> predicate = p => p.idPersonal == idPersonal;
+            tblPersonal  personal=  personalRepository.SingleOrDefault(predicate);
+            personal.strUrlCurp = string.Empty;
+            personalRepository.Update(personal);
+            return true;
+        }
+
+
+        /// <summary>
+        /// Este metodo se encarga de consultar la url de los documentos del personal
+        /// </summary>
+        /// <param name="idPersonal">el identificador del personal</param>
+        /// <returns>regresa una lista con los documentos del personal</returns>
+        public List<DocumentoPersonalDomainModel> GetDocumentoPersonal(int idPersonal)
+        {
+            List<DocumentoPersonalDomainModel> documentosPersonales = new List<DocumentoPersonalDomainModel>();
+            Expression<Func<tblPersonal, bool>> predicate = p => p.idPersonal == idPersonal;
+            var documentosPersonal = personalRepository.GetAll(predicate).ToList();
+
+            foreach (var d in documentosPersonal)
+            {
+                if (d.idPersonal > 0)
+                {
+                    DocumentoPersonalDomainModel documentoMD = new DocumentoPersonalDomainModel();
+                    documentoMD.IdPersonal = d.idPersonal;
+                    documentoMD.UrlCurp = d.strUrlCurp;
+                    documentoMD.UrlRfc = d.strUrlRfc;
+                    documentosPersonales.Add(documentoMD);
+                }
+            }
+            return documentosPersonales;
+        }
+
 
     }
 }

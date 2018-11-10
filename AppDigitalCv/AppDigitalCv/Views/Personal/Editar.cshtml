@@ -1,0 +1,202 @@
+﻿
+@*@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}*@
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="bs-container content" style="min-height: 960px;">
+        <section class="content-header">
+            <h1>
+                Editar Documentos del Profesor
+                <small>Modificar RFC, Curp</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#">Tables</a></li>
+                <li class="active">Data tables</li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 ">
+                    <div class="box">
+                        <!--box-primary-->
+                        <div class="box-header ">
+                            <!--with-border-->
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label class="text-blue"><i class="text-blue fa fa-heartbeat"></i> Erik Guerrero Bravo</label>
+                                </div>
+                                @*<div class="form-group">
+                                    <label class="text-light-blue">erik.guerrero.bravo@hotmail.com</label>
+                                </div>*@
+                            </div>
+                        </div>
+                        <div role="form">
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <table id="myDataTablePersonal" class="table table-bordered table-hover table-responsive">
+                                            <thead>
+                                                <tr>
+                                                    <th><i class="fa fa-user"></i>Nombre</th>
+                                                    <th><i class="fa fa-tag"></i> Apellido Paterno</th>
+                                                    <th><i class="fa fa-tag"></i> ApellidoMaterno</th>
+                                                    <th><i class="fa fa-check-square-o"></i> Curp</th>
+                                                    <th><i class="fa fa-check-square-o"></i> Rfc</th>
+                                                    @*<th>strUrlRfc</th>*@
+                                                    <th style="display:none;"><i class="glyphicon glyphicon-pencil"></i>Identificador</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="box-footer">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <p class="box-title text-blue comment-text"><i class="text-blue fa fa-folder-open"></i> Documentos</p>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <ul class="products-list product-list-in-box">
+                                <li class="item">
+                                    <div class="product-img">
+                                        <img src="dist/img/default-50x50.gif" alt="Product Image">
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="javascript:void(0)" class="product-title">
+                                            Samsung TV
+                                            <span class="label label-warning pull-right">$1800</span>
+                                        </a>
+                                        <span class="product-description">
+                                            Samsung 32" 1080p 60Hz LED Smart HDTV.
+                                        </span>
+                                    </div>
+                                </li>
+                                <!-- /.item -->
+                                <li class="item">
+                                    <div class="product-img">
+                                        <img src="dist/img/default-50x50.gif" alt="Product Image">
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="javascript:void(0)" class="product-title">
+                                            Bicycle
+                                            <span class="label label-info pull-right">$700</span>
+                                        </a>
+                                        <span class="product-description">
+                                            26" Mongoose Dolomite Men's 7-speed, Navy Blue.
+                                        </span>
+                                    </div>
+                                </li>
+                                <!-- /.item -->
+                                <li class="item">
+                                    <div class="product-img">
+                                        <img src="dist/img/default-50x50.gif" alt="Product Image">
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="javascript:void(0)" class="product-title">Xbox One <span class="label label-danger pull-right">$350</span></a>
+                                        <span class="product-description">
+                                            Xbox One Console Bundle with Halo Master Chief Collection.
+                                        </span>
+                                    </div>
+                                </li>
+                                <!-- /.item -->
+                                <li class="item">
+                                    <div class="product-img">
+                                        <img src="dist/img/default-50x50.gif" alt="Product Image">
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="javascript:void(0)" class="product-title">
+                                            PlayStation 4
+                                            <span class="label label-success pull-right">$399</span>
+                                        </a>
+                                        <span class="product-description">
+                                            PlayStation 4 500GB Console (PS4)
+                                        </span>
+                                    </div>
+                                </li>
+                                <!-- /.item -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+}
+<link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+@section scripts{
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>*@
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('#myDataTablePersonal').DataTable({
+                "language": {
+
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                },
+                "ajax": {
+                    "url": '/Personal/ConsultarDatosPersonal/',
+                    "type": "GET",
+                    "datatype": "json", "dataSrc": ""
+                },
+                "columns": [
+                    { "data": "Nombre"},
+                    { "data": "ApellidoPaterno" },
+                    { "data": "ApellidoMaterno" },
+                    { "data": "Curp"},
+                    { "data": "Rfc" },
+                    //{ "data": "strUrlRfc" },
+                    { "data": "idPersonal" }
+
+                ]
+            });
+        });
+    </script>
+
+}

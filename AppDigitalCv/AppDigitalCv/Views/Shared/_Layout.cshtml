@@ -29,10 +29,10 @@
 
         <div class="content-wrapper">
             <section class="content-header">
-                <h1>
-                    @ViewBag.Title
-                    <small>@ViewBag.Description</small>
-                </h1>
+                @*<h1>
+                        @ViewBag.Title
+                        <small>@ViewBag.Description</small>
+                    </h1>*@
             </section>
 
             <section class="content">
@@ -47,5 +47,6 @@
     <script src="@EnumHandler.HandlerUrl"></script>
     @Scripts.Render("~/Bundles/js")
     @RenderSection("ViewSpecificJavascript", required: false)
+    @RenderSection("scripts", required: false)
 </body>
 </html>

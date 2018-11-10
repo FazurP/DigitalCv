@@ -102,15 +102,18 @@ namespace AppDigitalCv.Controllers
             //return View(personalVM);
         }
 
-        public ActionResult EditarDatosPersonales(int idPersonal)
+        [HttpGet]
+        public ActionResult EditarDatosPersonales()
         {
+            int idPersonal=4;
             PersonalDomainModel personalDM = IPersonalBussines.GetPersonalById(idPersonal);
             PersonalVM personalVM = new PersonalVM();
             AutoMapper.Mapper.Map(personalDM, personalVM);///hacemos el mapeado de la entidad
-            return PartialView("_Editar",personalVM);
+            return View("Editar"); ///"_Editar",personalVM
         }
 
-
+       
+       
         #endregion
 
         #region Agregar o Editar una entidad
@@ -128,13 +131,28 @@ namespace AppDigitalCv.Controllers
 
 
         #region Consultar Datos del Personal
-        [HttpGet]
+       
         public JsonResult ConsultarDatosPersonal()
         {
             var personal = IPersonalBussines.GetEmpleadoDocumentos(4);
             return Json(personal, JsonRequestBehavior.AllowGet);
         }
         #endregion
+
+        #region Consultar Documentos del Personal
+        /// <summary>
+        /// Este metodo se encarga de consultar los documentos del personal
+        /// </summary>
+        /// <returns>un json como resultado de la consulta</returns>
+        public JsonResult ConsultarDcocumentosPersonal()
+        {
+            List<DocumentoPersonalDomainModel> documentosDM = IPersonalBussines.GetDocumentoPersonal(4);
+            List<DocumentoPersonalVM> documentosVM = new List<DocumentoPersonalVM>();
+            AutoMapper.Mapper.Map(documentosDM, documentosVM);
+            return Json(documentosVM,JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
 
         public ActionResult borrarPersonal(int _idPersonal)
         {
