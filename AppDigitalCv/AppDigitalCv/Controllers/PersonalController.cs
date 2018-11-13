@@ -99,7 +99,7 @@ namespace AppDigitalCv.Controllers
             //mando los datos ya editados del personal.
             this.AddEditPersonal(personalVM);
             return PartialView("_Editar", personalVM);
-            //return View(personalVM);
+            
         }
 
         [HttpGet]
@@ -135,9 +135,17 @@ namespace AppDigitalCv.Controllers
         }
         #endregion
 
+        #region Eliminar Documentos del Personal
+
+        public JsonResult EliminarCurp(int idPersonal)
+        {
+            bool resultado= IPersonalBussines.DeleteFileCurp(idPersonal);
+            return Json(resultado,JsonRequestBehavior.AllowGet);
+        }
+        #endregion
 
         #region Consultar Datos del Personal
-       
+
         public JsonResult ConsultarDatosPersonal()
         {
             var personal = IPersonalBussines.GetEmpleadoDocumentos(4);

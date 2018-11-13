@@ -210,9 +210,9 @@
                 var idPersonal = @ViewBag.Identificador;
                 $.ajax({
                     async: true,
-                    url: 'http://localhost:56307/colonia/ConsultarColoniaByCp',
+                    url: '/Personal/EliminarCurp',
                     contentType: 'application/json;charset=utf-8',
-                    data: '{intPersonal:' + JSON.stringify(idPersonal) + '}',
+                    data: '{idPersonal:' + JSON.stringify(idPersonal) + '}',
                     method: 'post',
                     dataType: 'json',
                     success: function (data) {
@@ -220,7 +220,7 @@
                         $('#tagCurp').remove();
                     },
                     error: function (err) {
-                        alert(err);
+                        alert('Error al intento de borrar');
                     }
                 });
 
