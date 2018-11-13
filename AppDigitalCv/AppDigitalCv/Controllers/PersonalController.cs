@@ -109,6 +109,12 @@ namespace AppDigitalCv.Controllers
             PersonalDomainModel personalDM = IPersonalBussines.GetPersonalById(idPersonal);
             PersonalVM personalVM = new PersonalVM();
             AutoMapper.Mapper.Map(personalDM, personalVM);///hacemos el mapeado de la entidad
+
+            var personalDocumentos= ConsultarDcocumentosPersonal(); ///mandamos llamar los documentos del personal
+            ViewBag.Identificador = personalDocumentos.IdPersonal;
+            ViewBag.Curp = personalDocumentos.UrlCurp;
+            ViewBag.Rfc = personalDocumentos.UrlRfc;
+
             return View("Editar"); ///"_Editar",personalVM
         }
 
@@ -144,12 +150,12 @@ namespace AppDigitalCv.Controllers
         /// Este metodo se encarga de consultar los documentos del personal
         /// </summary>
         /// <returns>un json como resultado de la consulta</returns>
-        public JsonResult ConsultarDcocumentosPersonal()
+        public DocumentoPersonalVM ConsultarDcocumentosPersonal()
         {
-            List<DocumentoPersonalDomainModel> documentosDM = IPersonalBussines.GetDocumentoPersonal(4);
-            List<DocumentoPersonalVM> documentosVM = new List<DocumentoPersonalVM>();
+            DocumentoPersonalDomainModel documentosDM = IPersonalBussines.GetDocumentoPersonal(4);
+            DocumentoPersonalVM documentosVM = new DocumentoPersonalVM();
             AutoMapper.Mapper.Map(documentosDM, documentosVM);
-            return Json(documentosVM,JsonRequestBehavior.AllowGet);
+            return documentosVM;
         }
         #endregion
 

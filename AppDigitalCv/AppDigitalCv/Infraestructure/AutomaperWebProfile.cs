@@ -14,7 +14,8 @@ namespace AppDigitalCv.Infraestructure
         {
             CreateMap<PersonalDomainModel, PersonalVM>();
             CreateMap<PersonalVM, PersonalDomainModel>();
-           
+            CreateMap<DocumentoPersonalVM, DocumentoPersonalDomainModel>();
+            CreateMap<DocumentoPersonalDomainModel, DocumentoPersonalVM>();
 
         }
 

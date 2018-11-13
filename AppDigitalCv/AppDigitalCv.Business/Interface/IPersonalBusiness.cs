@@ -44,6 +44,8 @@ namespace AppDigitalCv.Business.Interface
         /// </summary>
         /// <param name="idPersonal">identificador del personal</param>
         /// <returns>regresa una lista de documentos del personal</returns>
-        List<DocumentoPersonalDomainModel> GetDocumentoPersonal(int idPersonal);
+        DocumentoPersonalDomainModel GetDocumentoPersonal(int idPersonal);
+
+        
     }
 }

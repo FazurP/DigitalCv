@@ -1,8 +1,8 @@
 ﻿
-@*@{
+@{
 
     Layout = "~/Views/Shared/_Layout.cshtml";
-}*@
+}
 
 
 @using (Html.BeginForm())
@@ -76,37 +76,38 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <ul class="products-list product-list-in-box">
-                                <li class="item">
+                            <ul class="products-list product-list-in-box" id="ListaDocumentos">
+                  
+                                <li class="item" id="tagCurp">
                                     <div class="product-img">
-                                        <img src="dist/img/default-50x50.gif" alt="Product Image">
+                                        <img src="~/Imagenes/pdf_descargar.jpg" alt="Curp document">
                                     </div>
                                     <div class="product-info">
                                         <a href="javascript:void(0)" class="product-title">
-                                            Samsung TV
-                                            <span class="label label-warning pull-right">$1800</span>
+                                            Documento del Curp
+                                            <span class="label label-warning pull-right" id="bEliminarCurp">Curp.PDF</span>
                                         </a>
                                         <span class="product-description">
-                                            Samsung 32" 1080p 60Hz LED Smart HDTV.
+                                            @ViewBag.Curp
                                         </span>
                                     </div>
                                 </li>
                                 <!-- /.item -->
                                 <li class="item">
                                     <div class="product-img">
-                                        <img src="dist/img/default-50x50.gif" alt="Product Image">
+                                        <img src="~/Imagenes/pdf_descargar.jpg" alt="Rfc document">
                                     </div>
                                     <div class="product-info">
                                         <a href="javascript:void(0)" class="product-title">
-                                            Bicycle
-                                            <span class="label label-info pull-right">$700</span>
+                                            Documento del Rfc
+                                            <span class="label label-info pull-right">Rfc.PDF</span>
                                         </a>
                                         <span class="product-description">
-                                            26" Mongoose Dolomite Men's 7-speed, Navy Blue.
+                                            @ViewBag.Rfc
                                         </span>
                                     </div>
                                 </li>
-                                <!-- /.item -->
+                                @*<!-- /.item -->
                                 <li class="item">
                                     <div class="product-img">
                                         <img src="dist/img/default-50x50.gif" alt="Product Image">
@@ -133,7 +134,7 @@
                                         </span>
                                     </div>
                                 </li>
-                                <!-- /.item -->
+                                <!-- /.item -->*@
                             </ul>
                         </div>
                     </div>
@@ -146,11 +147,17 @@
 }
 <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+<link href="~/Scripts/jtable/themes/basic/jtable_basic.css" rel="stylesheet" />
+
 @section scripts{
-@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>*@
+<link href="~/Content/toastr.min.css" rel="stylesheet" />
 <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
 
+<script src="~/Scripts/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/boostrap.dataTables.min.js"></script>
     <script>
         $(document).ready(function () {
 
@@ -196,6 +203,57 @@
 
                 ]
             });
+
+            $('#bEliminarCurp').click(function () {
+               
+                event.preventDefault();
+                var idPersonal = @ViewBag.Identificador;
+                $.ajax({
+                    async: true,
+                    url: 'http://localhost:56307/colonia/ConsultarColoniaByCp',
+                    contentType: 'application/json;charset=utf-8',
+                    data: '{intPersonal:' + JSON.stringify(idPersonal) + '}',
+                    method: 'post',
+                    dataType: 'json',
+                    success: function (data) {
+                        toastr.success("La información fue Eliminada Correctamente");
+                        $('#tagCurp').remove();
+                    },
+                    error: function (err) {
+                        alert(err);
+                    }
+                });
+
+                
+                
+            });
+            
+            
+            //function() {
+
+            //    var intCp = $('#txtCodigoPostal').val();
+            //    $.ajax({
+            //        async: true,
+            //        url: 'http://localhost:56307/colonia/ConsultarColoniaByCp',
+            //        contentType: 'application/json;charset=utf-8',
+            //        data: '{intCp:' + JSON.stringify(intCp) + '}',
+            //        method: 'post',
+            //        dataType: 'json',
+            //        success: function (data) {
+
+            //            $.each(data, function (i, dato) {
+            //                $("#colonias").append('<option value=' + dato.idColonia + '">' + dato.colonia + '</option>');
+            //            });
+
+            //        },
+            //        error: function (err) {
+            //            //alert(err);
+            //        }
+            //    });
+
+            //}
+
+
         });
     </script>
 

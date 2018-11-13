@@ -140,24 +140,25 @@ namespace AppDigitalCv.Business
         /// </summary>
         /// <param name="idPersonal">el identificador del personal</param>
         /// <returns>regresa una lista con los documentos del personal</returns>
-        public List<DocumentoPersonalDomainModel> GetDocumentoPersonal(int idPersonal)
+        public DocumentoPersonalDomainModel GetDocumentoPersonal(int idPersonal)
         {
-            List<DocumentoPersonalDomainModel> documentosPersonales = new List<DocumentoPersonalDomainModel>();
+            //List<DocumentoPersonalDomainModel> documentosPersonales = new List<DocumentoPersonalDomainModel>();
             Expression<Func<tblPersonal, bool>> predicate = p => p.idPersonal == idPersonal;
             var documentosPersonal = personalRepository.GetAll(predicate).ToList();
+            DocumentoPersonalDomainModel documentoMD = new DocumentoPersonalDomainModel();
 
             foreach (var d in documentosPersonal)
             {
                 if (d.idPersonal > 0)
                 {
-                    DocumentoPersonalDomainModel documentoMD = new DocumentoPersonalDomainModel();
+                    
                     documentoMD.IdPersonal = d.idPersonal;
                     documentoMD.UrlCurp = d.strUrlCurp;
                     documentoMD.UrlRfc = d.strUrlRfc;
-                    documentosPersonales.Add(documentoMD);
+              
                 }
             }
-            return documentosPersonales;
+            return documentoMD;
         }
 
 
