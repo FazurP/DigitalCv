@@ -1,0 +1,50 @@
+﻿@model AppDigitalCv.ViewModels.DocumentoPersonalVM
+
+@{
+    ViewBag.Title = "Agregar Documentos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="bs-container content" style="min-height: 960px;">
+        <section class="content-header">
+            <h1>
+                Agregar Documentos Oficiales
+                <small>RFC, Curp</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i>Inicio</a></li>
+                <li><a href="#">Agregar</a></li>
+                <li class="active">Documentos Oficiales</li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                    <div class="box  box-success">
+                        <div class="box-header">
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label class="text-blue"><i class="text-blue fa fa-heartbeat"></i> Erik Guerrero Bravo</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="form">
+                            <div class="box-body">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+}
+
+
