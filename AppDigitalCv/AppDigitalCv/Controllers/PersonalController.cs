@@ -142,6 +142,12 @@ namespace AppDigitalCv.Controllers
             bool resultado= IPersonalBussines.DeleteFileCurp(idPersonal);
             return Json(resultado,JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult EliminarRfc(int idPersonal)
+        {
+            bool resultado = IPersonalBussines.DeleteFileRfc(idPersonal);
+            return Json(resultado, JsonRequestBehavior.AllowGet);
+        }
         #endregion
 
         #region Consultar Datos del Personal

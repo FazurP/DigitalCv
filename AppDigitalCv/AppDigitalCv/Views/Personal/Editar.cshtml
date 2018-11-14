@@ -33,8 +33,8 @@
                                     <label class="text-blue"><i class="text-blue fa fa-heartbeat"></i> Erik Guerrero Bravo</label>
                                 </div>
                                 @*<div class="form-group">
-                                    <label class="text-light-blue">erik.guerrero.bravo@hotmail.com</label>
-                                </div>*@
+                                        <label class="text-light-blue">erik.guerrero.bravo@hotmail.com</label>
+                                    </div>*@
                             </div>
                         </div>
                         <div role="form">
@@ -77,7 +77,7 @@
                         </div>
                         <div class="box-body">
                             <ul class="products-list product-list-in-box" id="ListaDocumentos">
-                  
+
                                 <li class="item" id="tagCurp">
                                     <div class="product-img">
                                         <img src="~/Imagenes/pdf_descargar.jpg" alt="Curp document">
@@ -85,58 +85,47 @@
                                     <div class="product-info">
                                         <a href="javascript:void(0)" class="product-title">
                                             Documento del Curp
-                                            <span class="label label-warning pull-right" id="bEliminarCurp">Curp.PDF</span>
+                                            <span class="label  label-danger pull-right" id="bEliminarCurp">Curp.PDF</span>
                                         </a>
                                         <span class="product-description">
                                             @ViewBag.Curp
                                         </span>
                                     </div>
                                 </li>
+
                                 <!-- /.item -->
-                                <li class="item">
+
+                                <li class="item" id="tagRfc">
                                     <div class="product-img">
                                         <img src="~/Imagenes/pdf_descargar.jpg" alt="Rfc document">
                                     </div>
                                     <div class="product-info">
                                         <a href="javascript:void(0)" class="product-title">
                                             Documento del Rfc
-                                            <span class="label label-info pull-right">Rfc.PDF</span>
+                                            <span class="label  label-danger pull-right" id="btnEliminarRfc">Rfc.PDF</span>
                                         </a>
                                         <span class="product-description">
                                             @ViewBag.Rfc
                                         </span>
                                     </div>
                                 </li>
-                                @*<!-- /.item -->
-                                <li class="item">
-                                    <div class="product-img">
-                                        <img src="dist/img/default-50x50.gif" alt="Product Image">
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="javascript:void(0)" class="product-title">Xbox One <span class="label label-danger pull-right">$350</span></a>
-                                        <span class="product-description">
-                                            Xbox One Console Bundle with Halo Master Chief Collection.
-                                        </span>
-                                    </div>
-                                </li>
-                                <!-- /.item -->
-                                <li class="item">
-                                    <div class="product-img">
-                                        <img src="dist/img/default-50x50.gif" alt="Product Image">
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="javascript:void(0)" class="product-title">
-                                            PlayStation 4
-                                            <span class="label label-success pull-right">$399</span>
-                                        </a>
-                                        <span class="product-description">
-                                            PlayStation 4 500GB Console (PS4)
-                                        </span>
-                                    </div>
-                                </li>
-                                <!-- /.item -->*@
                             </ul>
                         </div>
+                    </div>
+                </div>
+                <!--Cargamos los elementos de link para subir archivos nuevamente-->
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3  offset-md-9">
+                    <div class="info-box" id="tagAddDocumentos">
+                        <span class="info-box-icon bg-green"><i class="fa fa-files-o"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">
+                              Agregar
+                            </span>
+                            <span class="info-box-number">Documentos</span>
+                            <a href=@Url.Action("accion","controller") class="btn btn-sm btn-primary btn-flat"><i class="fa  fa-paperclip"></i>&nbsp; Agregar</a>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -151,16 +140,27 @@
 <link href="~/Scripts/jtable/themes/basic/jtable_basic.css" rel="stylesheet" />
 
 @section scripts{
-<link href="~/Content/toastr.min.css" rel="stylesheet" />
-<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-<script src="~/Scripts/toastr.min.js"></script>
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
 
-<script src="~/Scripts/jquery.dataTables.min.js"></script>
-<script src="~/Scripts/boostrap.dataTables.min.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/boostrap.dataTables.min.js"></script>
     <script>
         $(document).ready(function () {
 
+            $('#tagAddDocumentos').hide();
+            if ('@ViewBag.Curp' == "")
+            {
+                $('#tagCurp').remove();
+                $('#tagAddDocumentos').show();
+            }
+            if ('@ViewBag.Rfc' == "")
+            {
+                $('#tagAddDocumentos').show();
+                $('#tagRfc').remove();
+            }
             $('#myDataTablePersonal').DataTable({
                 "language": {
 
@@ -205,7 +205,7 @@
             });
 
             $('#bEliminarCurp').click(function () {
-               
+
                 event.preventDefault();
                 var idPersonal = @ViewBag.Identificador;
                 $.ajax({
@@ -218,40 +218,34 @@
                     success: function (data) {
                         toastr.success("La información fue Eliminada Correctamente");
                         $('#tagCurp').remove();
+                        $('#tagAddDocumentos').show();
                     },
                     error: function (err) {
-                        alert('Error al intento de borrar');
+                        toastr.error('Error No se pudo eliminar el archivo correctamente');
                     }
                 });
-
-                
-                
             });
-            
-            
-            //function() {
+            $('#btnEliminarRfc').click(function () {
+                event.preventDefault();
+                var idPersonal = @ViewBag.Identificador;
+                $.ajax({
+                    async: true,
+                    url: '/Personal/EliminarRfc',
+                    contentType: 'application/json;charset=utf-8',
+                    data: '{idPersonal:' + JSON.stringify(idPersonal) + '}',
+                    method: 'post',
+                    dataType: 'json',
+                    success: function (data) {
+                        toastr.success("La información fue Eliminada Correctamente");
+                        $('#tagRfc').remove();
+                        $('#tagAddDocumentos').show();
+                    },
+                    error: function (err) {
+                        toastr.error('Error No se pudo eliminar el archivo correctamente');
+                    }
+                });
+            });
 
-            //    var intCp = $('#txtCodigoPostal').val();
-            //    $.ajax({
-            //        async: true,
-            //        url: 'http://localhost:56307/colonia/ConsultarColoniaByCp',
-            //        contentType: 'application/json;charset=utf-8',
-            //        data: '{intCp:' + JSON.stringify(intCp) + '}',
-            //        method: 'post',
-            //        dataType: 'json',
-            //        success: function (data) {
-
-            //            $.each(data, function (i, dato) {
-            //                $("#colonias").append('<option value=' + dato.idColonia + '">' + dato.colonia + '</option>');
-            //            });
-
-            //        },
-            //        error: function (err) {
-            //            //alert(err);
-            //        }
-            //    });
-
-            //}
 
 
         });

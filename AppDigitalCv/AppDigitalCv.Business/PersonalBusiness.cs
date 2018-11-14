@@ -133,6 +133,20 @@ namespace AppDigitalCv.Business
             personalRepository.Update(personal);
             return true;
         }
+        /// <summary>
+        /// Este metodo se encargará de eliminar la url del rfc
+        /// </summary>
+        /// <param name="idPersonal">el identificador del personal</param>
+        /// <returns>retorna una respuesta booleana dependiendo la acción</returns>
+        public bool DeleteFileRfc(int idPersonal)
+        {
+            Expression<Func<tblPersonal, bool>> predicate = p => p.idPersonal == idPersonal;
+            tblPersonal personal = personalRepository.SingleOrDefault(predicate);
+            personal.strUrlRfc = string.Empty;
+            personalRepository.Update(personal);
+            return true;
+        }
+
 
 
         /// <summary>

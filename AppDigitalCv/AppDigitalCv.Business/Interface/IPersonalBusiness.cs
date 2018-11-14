@@ -46,6 +46,11 @@ namespace AppDigitalCv.Business.Interface
         /// <returns>regresa una lista de documentos del personal</returns>
         DocumentoPersonalDomainModel GetDocumentoPersonal(int idPersonal);
 
-        
+        /// <summary>
+        /// Este metodo se encarga de borrar el rfc del personal
+        /// </summary>
+        /// <param name="idPersonal">identificador del personal que se va a eliminar</param>
+        /// <returns>regresa una respuesta boolean de confirmación de acción</returns>
+        bool DeleteFileRfc(int idPersonal);
     }
 }
