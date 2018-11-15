@@ -152,6 +152,7 @@
     <Content Include="Content\animate.css" />
     <Content Include="Content\animate.min.css" />
     <Content Include="Content\css\cardview.css" />
+    <Content Include="Content\css\Ionicons.css" />
     <Content Include="Content\js\plugins\jquery\jquery.min.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -221,6 +222,7 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Imagenes\escudoUt.png" />
     <Content Include="Imagenes\escudo_uttt.jpg" />
     <Content Include="Imagenes\material-loader.gif" />
     <Content Include="Imagenes\pdf_descargar.jpg" />
@@ -345,6 +347,7 @@
     <Content Include="Scripts\query.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Views\index.html" />
     <Content Include="Web.config" />
     <Content Include="Views\Personal\Create.cshtml" />
     <Content Include="Views\Personal\DatosPersonales.cshtml" />
@@ -372,6 +375,7 @@
     <Content Include="Views\Personal\InfoPersonal.cshtml" />
     <Content Include="Views\Personal\Editar.cshtml" />
     <Content Include="Views\Documentos\AgregarDocumentos.cshtml" />
+    <Content Include="Views\Seguridad\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -383,6 +387,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
+    <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Infraestructure\AutomaperWebProfile.cs" />
     <Compile Include="Models\PersonaDomainModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
