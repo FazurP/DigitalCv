@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("AgregarDocumentos", "Documentos", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -34,7 +34,24 @@
                         </div>
                         <div role="form">
                             <div class="box-body">
-
+                                <div class="form-inline">
+                                    <div class="form-group"> 
+                                        <label for="curpInputFile">Cargar Archivo del Rfc:</label>
+                                        @Html.TextBoxFor(model => model.ArchivoRfc, new { @class = "btn btn-file btn-facebook", @type = "file",id="IdRfc" , accept = "application/pdf",required= "required" })
+                                        @Html.ValidationMessageFor(model => model.ArchivoRfc, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="curpInputFile">Cargar Archivo del Curp:</label>
+                                        @Html.TextBoxFor(model => model.ArchivoCurp, new { @class = "btn btn-file btn-facebook", @type = "file", id = "IdCurp", accept = "application/pdf", required = "required" })
+                                        @Html.ValidationMessageFor(model => model.ArchivoCurp, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <input id="btnEnviar" type="submit" disabled="disabled" value="Guardar" class="btn btn-sm btn-primary" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -43,8 +60,20 @@
         </section>
     </div>
 
-
-
 }
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
 
+           
+            $("#IdCurp").change(function () {
+                $("#btnEnviar").prop("disabled", this.files.length == 0);
+            });
+            $("#IdRfc").change(function () {
+                $("#btnEnviar").prop("disabled", this.files.length == 0);
+            });
+        });
+    </script>
+}
 

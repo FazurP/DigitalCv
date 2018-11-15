@@ -15,10 +15,14 @@ namespace AppDigitalCv.ViewModels
         public string imgRfc { get; set; }
 
         [Required(ErrorMessage = "El archivo es obligatorio")]
+        [DataType(DataType.Upload)]
+        
         public HttpPostedFileWrapper ArchivoRfc { get; set; }
-
+        ///(^(([a - zA - Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))+(.pdf)$)
+        
         [Required(ErrorMessage = "El archivo es obligatorio")]
-        //[DataType(DataType.Upload)]
+        [DataType(DataType.Upload)]
+        [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.pdf)$", ErrorMessage = "Ingresa un Archivo con formato PDF, por favor")]
         public HttpPostedFileWrapper ArchivoCurp { get; set; }
 
     }
