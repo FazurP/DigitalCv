@@ -401,6 +401,7 @@
     </Compile>
     <Compile Include="ViewModels\DocumentoPersonalVM.cs" />
     <Compile Include="ViewModels\PersonalVM.cs" />
+    <Compile Include="ViewModels\SessionManagerVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
