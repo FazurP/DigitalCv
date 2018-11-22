@@ -146,9 +146,7 @@ namespace AppDigitalCv.Business
             personalRepository.Update(personal);
             return true;
         }
-
-
-
+               
         /// <summary>
         /// Este metodo se encarga de consultar la url de los documentos del personal
         /// </summary>

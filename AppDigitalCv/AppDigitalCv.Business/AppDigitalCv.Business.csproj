@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountBusiness.cs" />
+    <Compile Include="Interface\IAccountBusiness.cs" />
     <Compile Include="Interface\IPersonalBusiness.cs" />
     <Compile Include="PersonalBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

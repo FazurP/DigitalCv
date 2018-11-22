@@ -17,6 +17,9 @@ namespace AppDigitalCv.Infraestructure
             CreateMap<DocumentoPersonalVM, DocumentoPersonalDomainModel>();
             CreateMap<DocumentoPersonalDomainModel, DocumentoPersonalVM>();
 
+            CreateMap<AccountViewModel, AccountDomainModel>();
+            CreateMap<AccountDomainModel, AccountViewModel>();
+
         }
 
 
