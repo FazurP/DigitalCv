@@ -25,6 +25,7 @@ namespace AppDigitalCv
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<IPersonalBusiness, PersonalBusiness>();
             container.RegisterType<IAccountBusiness, AccountBusiness>();
+            container.RegisterType<IDireccionBusiness, DireccionBusiness>();
             container.RegisterType<IUnitOfWork, UnitOfWork>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

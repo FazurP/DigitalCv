@@ -376,6 +376,11 @@
     <Content Include="Views\Personal\Editar.cshtml" />
     <Content Include="Views\Documentos\AgregarDocumentos.cshtml" />
     <Content Include="Views\Seguridad\Login.cshtml" />
+    <Content Include="Views\DatosContacto\Create.cshtml" />
+    <Content Include="Views\Direccion\Create.cshtml" />
+    <Content Include="Views\Shared\_Colonias.cshtml" />
+    <Content Include="Views\Shared\_Estados.cshtml" />
+    <Content Include="Views\Shared\_Municipios.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -385,6 +390,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Controllers\DatosContactoController.cs" />
+    <Compile Include="Controllers\DireccionController.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
@@ -403,7 +410,13 @@
     <Compile Include="Security\CustomPrincipal.cs" />
     <Compile Include="Security\SessionPersister.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\ColoniaVM.cs" />
+    <Compile Include="ViewModels\DatosContactoVM.cs" />
+    <Compile Include="ViewModels\DireccionVM.cs" />
     <Compile Include="ViewModels\DocumentoPersonalVM.cs" />
+    <Compile Include="ViewModels\EstadoVM.cs" />
+    <Compile Include="ViewModels\MunicipioVM.cs" />
+    <Compile Include="ViewModels\PaisVM.cs" />
     <Compile Include="ViewModels\PersonalVM.cs" />
     <Compile Include="ViewModels\SessionManagerVM.cs" />
   </ItemGroup>

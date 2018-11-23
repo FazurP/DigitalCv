@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="bdGestionDocente_v2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="bdGestionDocenteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="catAlergias">
           <Key>
             <PropertyRef Name="idAlergias" />
@@ -39,15 +39,14 @@
           <Property Name="strDescripcion" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="strObservacion" Type="varchar(max)" />
         </EntityType>
-        <EntityType Name="catColonia">
+        <EntityType Name="CatColonia">
           <Key>
-            <PropertyRef Name="idColonia" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="idColonia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="strDescripcion" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="strObservacion" Type="varchar(max)" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strValor" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="intCp" Type="int" Nullable="false" />
-          <Property Name="idMunicipio" Type="int" Nullable="false" />
+          <Property Name="idMunicipio" Type="int" />
         </EntityType>
         <EntityType Name="catCompetencias">
           <Key>
@@ -126,14 +125,13 @@
           <Property Name="strDescripcion" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="strObservacion" Type="varchar(max)" />
         </EntityType>
-        <EntityType Name="catEstado">
+        <EntityType Name="CatEstado">
           <Key>
-            <PropertyRef Name="idEstado" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="idEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="strDescripcion" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="strObservacion" Type="varchar(max)" />
-          <Property Name="idPais" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strValor" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="idPais" Type="int" />
         </EntityType>
         <EntityType Name="catEstadoCivil">
           <Key>
@@ -180,14 +178,13 @@
           <Property Name="strDescripcion" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="strObservacion" Type="varchar(max)" />
         </EntityType>
-        <EntityType Name="catMunicipio">
+        <EntityType Name="CatMunicipio">
           <Key>
-            <PropertyRef Name="idMunicipio" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="idMunicipio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="strDescripcion" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="strObservacion" Type="varchar(max)" />
-          <Property Name="idEstado" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strValor" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="idEstado" Type="int" />
         </EntityType>
         <EntityType Name="catNivelSalarial">
           <Key>
@@ -197,13 +194,12 @@
           <Property Name="strDescripcion" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="strObservacion" Type="varchar(max)" />
         </EntityType>
-        <EntityType Name="catPais">
+        <EntityType Name="CatPais">
           <Key>
-            <PropertyRef Name="idPais" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="idPais" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="strDescripcion" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="strObservacion" Type="varchar(max)" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strValor" Type="varchar" MaxLength="35" Nullable="false" />
         </EntityType>
         <EntityType Name="catParentesco">
           <Key>
@@ -555,15 +551,51 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_colonia_direccion">
-          <End Role="catColonia" Type="Self.catColonia" Multiplicity="1" />
+        <Association Name="FK_CatColonia_CatMunicipio">
+          <End Role="CatMunicipio" Type="Self.CatMunicipio" Multiplicity="0..1" />
+          <End Role="CatColonia" Type="Self.CatColonia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatMunicipio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CatColonia">
+              <PropertyRef Name="idMunicipio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_catDireccion_catColonia">
+          <End Role="CatColonia" Type="Self.CatColonia" Multiplicity="1" />
           <End Role="catDireccion" Type="Self.catDireccion" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="catColonia">
-              <PropertyRef Name="idColonia" />
+            <Principal Role="CatColonia">
+              <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="catDireccion">
               <PropertyRef Name="idColonia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CatEstado_CatPais">
+          <End Role="CatPais" Type="Self.CatPais" Multiplicity="0..1" />
+          <End Role="CatEstado" Type="Self.CatEstado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatPais">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CatEstado">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CatMunicipio_CatEstado">
+          <End Role="CatEstado" Type="Self.CatEstado" Multiplicity="0..1" />
+          <End Role="CatMunicipio" Type="Self.CatMunicipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatEstado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CatMunicipio">
+              <PropertyRef Name="idEstado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -687,18 +719,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_estado_municipio">
-          <End Role="catEstado" Type="Self.catEstado" Multiplicity="1" />
-          <End Role="catMunicipio" Type="Self.catMunicipio" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catEstado">
-              <PropertyRef Name="idEstado" />
-            </Principal>
-            <Dependent Role="catMunicipio">
-              <PropertyRef Name="idEstado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_estadoCivil_personal">
           <End Role="catEstadoCivil" Type="Self.catEstadoCivil" Multiplicity="0..1" />
           <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="*" />
@@ -759,18 +779,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_municipio_colonia">
-          <End Role="catMunicipio" Type="Self.catMunicipio" Multiplicity="1" />
-          <End Role="catColonia" Type="Self.catColonia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catMunicipio">
-              <PropertyRef Name="idMunicipio" />
-            </Principal>
-            <Dependent Role="catColonia">
-              <PropertyRef Name="idMunicipio" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_nivelSalarial_salarios">
           <End Role="catNivelSalarial" Type="Self.catNivelSalarial" Multiplicity="1" />
           <End Role="catSalarios" Type="Self.catSalarios" Multiplicity="*" />
@@ -780,18 +788,6 @@
             </Principal>
             <Dependent Role="catSalarios">
               <PropertyRef Name="idNivelSalarial" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_pais_estado">
-          <End Role="catPais" Type="Self.catPais" Multiplicity="1" />
-          <End Role="catEstado" Type="Self.catEstado" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catPais">
-              <PropertyRef Name="idPais" />
-            </Principal>
-            <Dependent Role="catEstado">
-              <PropertyRef Name="idPais" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1179,12 +1175,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="bdGestionDocente_v2ModelStoreContainer">
+        <EntityContainer Name="bdGestionDocenteModelStoreContainer">
           <EntitySet Name="catAlergias" EntityType="Self.catAlergias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catArea" EntityType="Self.catArea" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catAsociaciones" EntityType="Self.catAsociaciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catCategoria" EntityType="Self.catCategoria" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="catColonia" EntityType="Self.catColonia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatColonia" EntityType="Self.CatColonia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catCompetencias" EntityType="Self.catCompetencias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catCompetenciaTI" EntityType="Self.catCompetenciaTI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catCuerpoAcademico" EntityType="Self.catCuerpoAcademico" Schema="dbo" store:Type="Tables" />
@@ -1194,15 +1190,15 @@
           <EntitySet Name="catDocumentos" EntityType="Self.catDocumentos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catEdificio" EntityType="Self.catEdificio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catEnfermedad" EntityType="Self.catEnfermedad" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="catEstado" EntityType="Self.catEstado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatEstado" EntityType="Self.CatEstado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catEstadoCivil" EntityType="Self.catEstadoCivil" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catFamiliar" EntityType="Self.catFamiliar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catFrecuencia" EntityType="Self.catFrecuencia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catIdioma" EntityType="Self.catIdioma" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catInstitucionSuperior" EntityType="Self.catInstitucionSuperior" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="catMunicipio" EntityType="Self.catMunicipio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatMunicipio" EntityType="Self.CatMunicipio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catNivelSalarial" EntityType="Self.catNivelSalarial" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="catPais" EntityType="Self.catPais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatPais" EntityType="Self.CatPais" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catParentesco" EntityType="Self.catParentesco" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catProgramaEducativo" EntityType="Self.catProgramaEducativo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catRoles" EntityType="Self.catRoles" Schema="dbo" store:Type="Tables" />
@@ -1245,9 +1241,21 @@
             <End Role="catAsociaciones" EntitySet="catAsociaciones" />
             <End Role="tblPersonalAsociaciones" EntitySet="tblPersonalAsociaciones" />
           </AssociationSet>
-          <AssociationSet Name="fk_colonia_direccion" Association="Self.fk_colonia_direccion">
-            <End Role="catColonia" EntitySet="catColonia" />
+          <AssociationSet Name="FK_CatColonia_CatMunicipio" Association="Self.FK_CatColonia_CatMunicipio">
+            <End Role="CatMunicipio" EntitySet="CatMunicipio" />
+            <End Role="CatColonia" EntitySet="CatColonia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catDireccion_catColonia" Association="Self.FK_catDireccion_catColonia">
+            <End Role="CatColonia" EntitySet="CatColonia" />
             <End Role="catDireccion" EntitySet="catDireccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CatEstado_CatPais" Association="Self.FK_CatEstado_CatPais">
+            <End Role="CatPais" EntitySet="CatPais" />
+            <End Role="CatEstado" EntitySet="CatEstado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CatMunicipio_CatEstado" Association="Self.FK_CatMunicipio_CatEstado">
+            <End Role="CatEstado" EntitySet="CatEstado" />
+            <End Role="CatMunicipio" EntitySet="CatMunicipio" />
           </AssociationSet>
           <AssociationSet Name="fk_competencia_competenciaConocimietosPersonal" Association="Self.fk_competencia_competenciaConocimietosPersonal">
             <End Role="catCompetencias" EntitySet="catCompetencias" />
@@ -1289,10 +1297,6 @@
             <End Role="catEnfermedad" EntitySet="catEnfermedad" />
             <End Role="tblEnfermedadPersonal" EntitySet="tblEnfermedadPersonal" />
           </AssociationSet>
-          <AssociationSet Name="fk_estado_municipio" Association="Self.fk_estado_municipio">
-            <End Role="catEstado" EntitySet="catEstado" />
-            <End Role="catMunicipio" EntitySet="catMunicipio" />
-          </AssociationSet>
           <AssociationSet Name="fk_estadoCivil_personal" Association="Self.fk_estadoCivil_personal">
             <End Role="catEstadoCivil" EntitySet="catEstadoCivil" />
             <End Role="tblPersonal" EntitySet="tblPersonal" />
@@ -1313,17 +1317,9 @@
             <End Role="catInstitucionSuperior" EntitySet="catInstitucionSuperior" />
             <End Role="catProgramaEducativo" EntitySet="catProgramaEducativo" />
           </AssociationSet>
-          <AssociationSet Name="fk_municipio_colonia" Association="Self.fk_municipio_colonia">
-            <End Role="catMunicipio" EntitySet="catMunicipio" />
-            <End Role="catColonia" EntitySet="catColonia" />
-          </AssociationSet>
           <AssociationSet Name="fk_nivelSalarial_salarios" Association="Self.fk_nivelSalarial_salarios">
             <End Role="catNivelSalarial" EntitySet="catNivelSalarial" />
             <End Role="catSalarios" EntitySet="catSalarios" />
-          </AssociationSet>
-          <AssociationSet Name="fk_pais_estado" Association="Self.fk_pais_estado">
-            <End Role="catPais" EntitySet="catPais" />
-            <End Role="catEstado" EntitySet="catEstado" />
           </AssociationSet>
           <AssociationSet Name="fk_parentesco_emergencia" Association="Self.fk_parentesco_emergencia">
             <End Role="catParentesco" EntitySet="catParentesco" />
@@ -1454,10 +1450,11 @@
             <End Role="tblUsuarioRol" EntitySet="tblUsuarioRol" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="bdGestionDocente_v2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="bdGestionDocenteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="catAlergias">
           <Key>
             <PropertyRef Name="idAlergias" />
@@ -1498,17 +1495,16 @@
           <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="catTipoContrato" Relationship="Self.fk_tipoestudio_tipoContrato" FromRole="catCategoria" ToRole="catTipoContrato" />
         </EntityType>
-        <EntityType Name="catColonia">
+        <EntityType Name="CatColonia">
           <Key>
-            <PropertyRef Name="idColonia" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="idColonia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="strDescripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strValor" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="intCp" Type="Int32" Nullable="false" />
-          <Property Name="idMunicipio" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="catDireccion" Relationship="Self.fk_colonia_direccion" FromRole="catColonia" ToRole="catDireccion" />
-          <NavigationProperty Name="catMunicipio" Relationship="Self.fk_municipio_colonia" FromRole="catColonia" ToRole="catMunicipio" />
+          <Property Name="idMunicipio" Type="Int32" />
+          <NavigationProperty Name="CatMunicipio" Relationship="Self.FK_CatColonia_CatMunicipio" FromRole="CatColonia" ToRole="CatMunicipio" />
+          <NavigationProperty Name="catDireccion" Relationship="Self.FK_catDireccion_catColonia" FromRole="CatColonia" ToRole="catDireccion" />
         </EntityType>
         <EntityType Name="catCompetencias">
           <Key>
@@ -1566,8 +1562,8 @@
           <Property Name="strNumeroInterior" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="strNumeroExterior" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="idColonia" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="catColonia" Relationship="Self.fk_colonia_direccion" FromRole="catDireccion" ToRole="catColonia" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_direccion_personal" FromRole="catDireccion" ToRole="tblPersonal" />
+          <NavigationProperty Name="CatColonia" Relationship="Self.FK_catDireccion_catColonia" FromRole="catDireccion" ToRole="CatColonia" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_direccion_personal" FromRole="catDireccion" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="catDocumentos">
           <Key>
@@ -1598,16 +1594,15 @@
           <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblEnfermedadPersonal" Relationship="Self.fk_enfermedad_enfermedadPersonal" FromRole="catEnfermedad" ToRole="tblEnfermedadPersonal" />
         </EntityType>
-        <EntityType Name="catEstado">
+        <EntityType Name="CatEstado">
           <Key>
-            <PropertyRef Name="idEstado" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="idEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="strDescripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="idPais" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="catMunicipio" Relationship="Self.fk_estado_municipio" FromRole="catEstado" ToRole="catMunicipio" />
-          <NavigationProperty Name="catPais" Relationship="Self.fk_pais_estado" FromRole="catEstado" ToRole="catPais" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strValor" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idPais" Type="Int32" />
+          <NavigationProperty Name="CatPais" Relationship="Self.FK_CatEstado_CatPais" FromRole="CatEstado" ToRole="CatPais" />
+          <NavigationProperty Name="CatMunicipio" Relationship="Self.FK_CatMunicipio_CatEstado" FromRole="CatEstado" ToRole="CatMunicipio" />
         </EntityType>
         <EntityType Name="catEstadoCivil">
           <Key>
@@ -1616,7 +1611,7 @@
           <Property Name="idEstadoCivil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="strDescripcion" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_estadoCivil_personal" FromRole="catEstadoCivil" ToRole="tblPersonal" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_estadoCivil_personal" FromRole="catEstadoCivil" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="catFamiliar">
           <Key>
@@ -1630,8 +1625,8 @@
           <Property Name="bitVive" Type="Boolean" Nullable="false" />
           <Property Name="dteFechaNacimiento" Type="DateTime" Precision="3" />
           <Property Name="idParentesco" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_familiar_personal" FromRole="catFamiliar" ToRole="tblPersonal" />
           <NavigationProperty Name="catParentesco" Relationship="Self.fk_parentesco_familiar" FromRole="catFamiliar" ToRole="catParentesco" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_familiar_personal" FromRole="catFamiliar" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="catFrecuencia">
           <Key>
@@ -1660,16 +1655,15 @@
           <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="catProgramaEducativo" Relationship="Self.fk_institucionSuperior_programaEducativo" FromRole="catInstitucionSuperior" ToRole="catProgramaEducativo" />
         </EntityType>
-        <EntityType Name="catMunicipio">
+        <EntityType Name="CatMunicipio">
           <Key>
-            <PropertyRef Name="idMunicipio" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="idMunicipio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="strDescripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="idEstado" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="catColonia" Relationship="Self.fk_municipio_colonia" FromRole="catMunicipio" ToRole="catColonia" />
-          <NavigationProperty Name="catEstado" Relationship="Self.fk_estado_municipio" FromRole="catMunicipio" ToRole="catEstado" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strValor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idEstado" Type="Int32" />
+          <NavigationProperty Name="CatColonia" Relationship="Self.FK_CatColonia_CatMunicipio" FromRole="CatMunicipio" ToRole="CatColonia" />
+          <NavigationProperty Name="CatEstado" Relationship="Self.FK_CatMunicipio_CatEstado" FromRole="CatMunicipio" ToRole="CatEstado" />
         </EntityType>
         <EntityType Name="catNivelSalarial">
           <Key>
@@ -1680,14 +1674,13 @@
           <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="catSalarios" Relationship="Self.fk_nivelSalarial_salarios" FromRole="catNivelSalarial" ToRole="catSalarios" />
         </EntityType>
-        <EntityType Name="catPais">
+        <EntityType Name="CatPais">
           <Key>
-            <PropertyRef Name="idPais" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="idPais" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="strDescripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="catEstado" Relationship="Self.fk_pais_estado" FromRole="catPais" ToRole="catEstado" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strValor" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CatEstado" Relationship="Self.FK_CatEstado_CatPais" FromRole="CatPais" ToRole="CatEstado" />
         </EntityType>
         <EntityType Name="catParentesco">
           <Key>
@@ -1789,7 +1782,7 @@
           <Property Name="idTipoSangre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="strDescripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_tipoSangre_personal" FromRole="catTipoSangre" ToRole="tblPersonal" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_tipoSangre_personal" FromRole="catTipoSangre" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="catUnidadesAcademicas">
           <Key>
@@ -1812,8 +1805,8 @@
           <Property Name="dteFechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="idStatus" Type="Int32" Nullable="false" />
           <NavigationProperty Name="catStatus" Relationship="Self.fk_Status_usuario" FromRole="catUsuarios" ToRole="catStatus" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_usuario_personal" FromRole="catUsuarios" ToRole="tblPersonal" />
           <NavigationProperty Name="tblUsuarioRol" Relationship="Self.fk_usuario_usuariosRol" FromRole="catUsuarios" ToRole="tblUsuarioRol" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_usuario_personal" FromRole="catUsuarios" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -1834,7 +1827,7 @@
           <Property Name="idPersonal" Type="Int32" Nullable="false" />
           <Property Name="dteFechaRegistro" Type="DateTime" Precision="3" />
           <NavigationProperty Name="catAlergias" Relationship="Self.fk_alegia_alergiaPersonal" FromRole="tblAlergiasPersonal" ToRole="catAlergias" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_alergiaPersonal" FromRole="tblAlergiasPersonal" ToRole="tblPersonal" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_personal_alergiaPersonal" FromRole="tblAlergiasPersonal" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="tblCompetenciasConocimientosPersonal">
           <Key>
@@ -1845,7 +1838,7 @@
           <Property Name="idPersonal" Type="Int32" Nullable="false" />
           <Property Name="dteFechaRegistro" Type="DateTime" Precision="3" />
           <NavigationProperty Name="catCompetencias" Relationship="Self.fk_competencia_competenciaConocimietosPersonal" FromRole="tblCompetenciasConocimientosPersonal" ToRole="catCompetencias" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_competenciaConocimietosPersonal" FromRole="tblCompetenciasConocimientosPersonal" ToRole="tblPersonal" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_personal_competenciaConocimietosPersonal" FromRole="tblCompetenciasConocimientosPersonal" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="tblCompetenciasTIPersonal">
           <Key>
@@ -1856,7 +1849,7 @@
           <Property Name="idPersonal" Type="Int32" Nullable="false" />
           <Property Name="dteFechaRegistro" Type="DateTime" Precision="3" />
           <NavigationProperty Name="catCompetenciaTI" Relationship="Self.fk_competenciaTI_competenciaTIPersonall" FromRole="tblCompetenciasTIPersonal" ToRole="catCompetenciaTI" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_competenciaTIPersonal" FromRole="tblCompetenciasTIPersonal" ToRole="tblPersonal" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_personal_competenciaTIPersonal" FromRole="tblCompetenciasTIPersonal" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="tblDatosContacto">
           <Key>
@@ -1869,7 +1862,7 @@
           <Property Name="strNombreTwitter" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="strIdTelegram" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="idPersonal" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_datosContacto" FromRole="tblDatosContacto" ToRole="tblPersonal" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_personal_datosContacto" FromRole="tblDatosContacto" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="tblDatosLaboralesAdministrativos">
           <Key>
@@ -1886,7 +1879,7 @@
           <NavigationProperty Name="catArea" Relationship="Self.fk_area_datosLaboralesAdministrativos" FromRole="tblDatosLaboralesAdministrativos" ToRole="catArea" />
           <NavigationProperty Name="catTipoContrato" Relationship="Self.fk_tipocontrato_datosLaboralesAdministrativos" FromRole="tblDatosLaboralesAdministrativos" ToRole="catTipoContrato" />
           <NavigationProperty Name="catUnidadesAcademicas" Relationship="Self.fk_unidadesAcademicas_datosLaboralesAdministrativos" FromRole="tblDatosLaboralesAdministrativos" ToRole="catUnidadesAcademicas" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_datosLaboralesAdministrativos" FromRole="tblDatosLaboralesAdministrativos" ToRole="tblPersonal" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_personal_datosLaboralesAdministrativos" FromRole="tblDatosLaboralesAdministrativos" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="tblDatosLaboralesDocente">
           <Key>
@@ -1908,7 +1901,7 @@
           <NavigationProperty Name="catProgramaEducativo" Relationship="Self.fk_programaEducativo_datosLaboralesDocente" FromRole="tblDatosLaboralesDocente" ToRole="catProgramaEducativo" />
           <NavigationProperty Name="catTipoContrato" Relationship="Self.fk_tipoContrato_datosLaboralesDocente" FromRole="tblDatosLaboralesDocente" ToRole="catTipoContrato" />
           <NavigationProperty Name="catUnidadesAcademicas" Relationship="Self.fk_unidadesAcademicas_datosLaboralesDocente" FromRole="tblDatosLaboralesDocente" ToRole="catUnidadesAcademicas" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_datosLaboralesDocente" FromRole="tblDatosLaboralesDocente" ToRole="tblPersonal" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_personal_datosLaboralesDocente" FromRole="tblDatosLaboralesDocente" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="tblDeportePersonal">
           <Key>
@@ -1921,7 +1914,7 @@
           <Property Name="idFrecuencia" Type="Int32" Nullable="false" />
           <NavigationProperty Name="catDeporte" Relationship="Self.fk_deporte_deportePersonal" FromRole="tblDeportePersonal" ToRole="catDeporte" />
           <NavigationProperty Name="catFrecuencia" Relationship="Self.fk_frecuencia_deportePersonal" FromRole="tblDeportePersonal" ToRole="catFrecuencia" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_deportePersonal" FromRole="tblDeportePersonal" ToRole="tblPersonal" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_personal_deportePersonal" FromRole="tblDeportePersonal" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="tblDocumentacionPersonal">
           <Key>
@@ -1934,7 +1927,7 @@
           <Property Name="dteVigenciaDocumento" Type="DateTime" Precision="3" />
           <Property Name="strIdentificador" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="catDocumentos" Relationship="Self.fk_documento_documentacionPersonal" FromRole="tblDocumentacionPersonal" ToRole="catDocumentos" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_documentacionPersonal" FromRole="tblDocumentacionPersonal" ToRole="tblPersonal" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_personal_documentacionPersonal" FromRole="tblDocumentacionPersonal" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="tblEmergencia">
           <Key>
@@ -1947,7 +1940,7 @@
           <Property Name="idParentesco" Type="Int32" Nullable="false" />
           <Property Name="idPersonal" Type="Int32" Nullable="false" />
           <NavigationProperty Name="catParentesco" Relationship="Self.fk_parentesco_emergencia" FromRole="tblEmergencia" ToRole="catParentesco" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_emergencia" FromRole="tblEmergencia" ToRole="tblPersonal" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_personal_emergencia" FromRole="tblEmergencia" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="tblEnfermedadPersonal">
           <Key>
@@ -1958,7 +1951,7 @@
           <Property Name="idPersonal" Type="Int32" Nullable="false" />
           <Property Name="dteFechaRegistro" Type="DateTime" Precision="3" />
           <NavigationProperty Name="catEnfermedad" Relationship="Self.fk_enfermedad_enfermedadPersonal" FromRole="tblEnfermedadPersonal" ToRole="catEnfermedad" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_enfermedadPersonal" FromRole="tblEnfermedadPersonal" ToRole="tblPersonal" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_personal_enfermedadPersonal" FromRole="tblEnfermedadPersonal" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="tblIdiomaDialectoPersonal">
           <Key>
@@ -1975,7 +1968,7 @@
           <Property Name="dteFechaRegistro" Type="DateTime" Precision="3" />
           <NavigationProperty Name="catDialecto" Relationship="Self.fk_dialecto_personalIdiomaDialecto" FromRole="tblIdiomaDialectoPersonal" ToRole="catDialecto" />
           <NavigationProperty Name="catIdioma" Relationship="Self.fk_idioma_personalIdiomaDialecto" FromRole="tblIdiomaDialectoPersonal" ToRole="catIdioma" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_PersonalIdiomaDialecto" FromRole="tblIdiomaDialectoPersonal" ToRole="tblPersonal" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_personal_PersonalIdiomaDialecto" FromRole="tblIdiomaDialectoPersonal" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="tblPasatiempo">
           <Key>
@@ -1985,7 +1978,51 @@
           <Property Name="strDescripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="idPersonal" Type="Int32" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_pasatiempo" FromRole="tblPasatiempo" ToRole="tblPersonal" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_personal_pasatiempo" FromRole="tblPasatiempo" ToRole="tblPersonal" />
+        </EntityType>
+        <EntityType Name="tblPersonal">
+          <Key>
+            <PropertyRef Name="idPersonal" />
+          </Key>
+          <Property Name="idPersonal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strNombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="strApellidoPaterno" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="strApellidoMaterno" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="strCurp" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="strRfc" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="archivoRfc" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="strHomoclave" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="dteFechaNacimiento" Type="DateTime" Precision="3" />
+          <Property Name="strLogros" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="strUrlFoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="strUrlCurp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="strUrlRfc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="strGenero" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="idEstadoCivil" Type="Int32" />
+          <Property Name="idUsuario" Type="Int32" />
+          <Property Name="idTipoSangre" Type="Int32" />
+          <Property Name="idDireccion" Type="Int32" />
+          <Property Name="idFamiliar" Type="Int32" />
+          <NavigationProperty Name="catDireccion" Relationship="Self.fk_direccion_personal" FromRole="tblPersonal" ToRole="catDireccion" />
+          <NavigationProperty Name="catEstadoCivil" Relationship="Self.fk_estadoCivil_personal" FromRole="tblPersonal" ToRole="catEstadoCivil" />
+          <NavigationProperty Name="catFamiliar" Relationship="Self.fk_familiar_personal" FromRole="tblPersonal" ToRole="catFamiliar" />
+          <NavigationProperty Name="catTipoSangre" Relationship="Self.fk_tipoSangre_personal" FromRole="tblPersonal" ToRole="catTipoSangre" />
+          <NavigationProperty Name="catUsuarios" Relationship="Self.fk_usuario_personal" FromRole="tblPersonal" ToRole="catUsuarios" />
+          <NavigationProperty Name="tblAlergiasPersonal" Relationship="Self.fk_personal_alergiaPersonal" FromRole="tblPersonal" ToRole="tblAlergiasPersonal" />
+          <NavigationProperty Name="tblCompetenciasConocimientosPersonal" Relationship="Self.fk_personal_competenciaConocimietosPersonal" FromRole="tblPersonal" ToRole="tblCompetenciasConocimientosPersonal" />
+          <NavigationProperty Name="tblCompetenciasTIPersonal" Relationship="Self.fk_personal_competenciaTIPersonal" FromRole="tblPersonal" ToRole="tblCompetenciasTIPersonal" />
+          <NavigationProperty Name="tblDatosContacto" Relationship="Self.fk_personal_datosContacto" FromRole="tblPersonal" ToRole="tblDatosContacto" />
+          <NavigationProperty Name="tblDatosLaboralesAdministrativos" Relationship="Self.fk_personal_datosLaboralesAdministrativos" FromRole="tblPersonal" ToRole="tblDatosLaboralesAdministrativos" />
+          <NavigationProperty Name="tblDatosLaboralesDocente" Relationship="Self.fk_personal_datosLaboralesDocente" FromRole="tblPersonal" ToRole="tblDatosLaboralesDocente" />
+          <NavigationProperty Name="tblDeportePersonal" Relationship="Self.fk_personal_deportePersonal" FromRole="tblPersonal" ToRole="tblDeportePersonal" />
+          <NavigationProperty Name="tblDocumentacionPersonal" Relationship="Self.fk_personal_documentacionPersonal" FromRole="tblPersonal" ToRole="tblDocumentacionPersonal" />
+          <NavigationProperty Name="tblEmergencia" Relationship="Self.fk_personal_emergencia" FromRole="tblPersonal" ToRole="tblEmergencia" />
+          <NavigationProperty Name="tblEnfermedadPersonal" Relationship="Self.fk_personal_enfermedadPersonal" FromRole="tblPersonal" ToRole="tblEnfermedadPersonal" />
+          <NavigationProperty Name="tblIdiomaDialectoPersonal" Relationship="Self.fk_personal_PersonalIdiomaDialecto" FromRole="tblPersonal" ToRole="tblIdiomaDialectoPersonal" />
+          <NavigationProperty Name="tblPasatiempo" Relationship="Self.fk_personal_pasatiempo" FromRole="tblPersonal" ToRole="tblPasatiempo" />
+          <NavigationProperty Name="tblPersonalAsociaciones" Relationship="Self.fk_personal_personalAsociaciones" FromRole="tblPersonal" ToRole="tblPersonalAsociaciones" />
+          <NavigationProperty Name="tblPremiosDocente" Relationship="Self.fk_personal_premiosDocente" FromRole="tblPersonal" ToRole="tblPremiosDocente" />
+          <NavigationProperty Name="tblTelefono" Relationship="Self.fk_personal_telefono" FromRole="tblPersonal" ToRole="tblTelefono" />
         </EntityType>
         <EntityType Name="tblPersonalAsociaciones">
           <Key>
@@ -1997,7 +2034,7 @@
           <Property Name="dteFecha" Type="DateTime" Precision="3" />
           <Property Name="strTipoParticipacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="catAsociaciones" Relationship="Self.fk_asociacion_personalAsociaciones" FromRole="tblPersonalAsociaciones" ToRole="catAsociaciones" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_personalAsociaciones" FromRole="tblPersonalAsociaciones" ToRole="tblPersonal" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_personal_personalAsociaciones" FromRole="tblPersonalAsociaciones" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="tblPremiosDocente">
           <Key>
@@ -2014,7 +2051,7 @@
           <Property Name="dteFechaFinPremio" Type="DateTime" Precision="3" />
           <Property Name="strTipoPremio" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="catDocumentos" Relationship="Self.fk_documento_premiosDocente" FromRole="tblPremiosDocente" ToRole="catDocumentos" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_premiosDocente" FromRole="tblPremiosDocente" ToRole="tblPersonal" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_personal_premiosDocente" FromRole="tblPremiosDocente" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="tblTelefono">
           <Key>
@@ -2025,7 +2062,7 @@
           <Property Name="strTelefonoCasa" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="strTelefonoRecados" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="idPersonal" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_telefono" FromRole="tblTelefono" ToRole="tblPersonal" />
+          <NavigationProperty Name="tblPersonal" Relationship="Self.fk_personal_telefono" FromRole="tblTelefono" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="tblUsuarioRol">
           <Key>
@@ -2110,27 +2147,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_colonia_direccion">
-          <End Role="catColonia" Type="Self.catColonia" Multiplicity="1" />
-          <End Role="catDireccion" Type="Self.catDireccion" Multiplicity="*" />
+        <Association Name="FK_CatColonia_CatMunicipio">
+          <End Role="CatMunicipio" Type="Self.CatMunicipio" Multiplicity="0..1" />
+          <End Role="CatColonia" Type="Self.CatColonia" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="catColonia">
-              <PropertyRef Name="idColonia" />
+            <Principal Role="CatMunicipio">
+              <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="catDireccion">
-              <PropertyRef Name="idColonia" />
+            <Dependent Role="CatColonia">
+              <PropertyRef Name="idMunicipio" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_municipio_colonia">
-          <End Role="catMunicipio" Type="Self.catMunicipio" Multiplicity="1" />
-          <End Role="catColonia" Type="Self.catColonia" Multiplicity="*" />
+        <Association Name="FK_catDireccion_catColonia">
+          <End Role="CatColonia" Type="Self.CatColonia" Multiplicity="1" />
+          <End Role="catDireccion" Type="Self.catDireccion" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="catMunicipio">
-              <PropertyRef Name="idMunicipio" />
+            <Principal Role="CatColonia">
+              <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="catColonia">
-              <PropertyRef Name="idMunicipio" />
+            <Dependent Role="catDireccion">
+              <PropertyRef Name="idColonia" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2194,6 +2231,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_direccion_personal">
+          <End Role="catDireccion" Type="Self.catDireccion" Multiplicity="0..1" />
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catDireccion">
+              <PropertyRef Name="idDireccion" />
+            </Principal>
+            <Dependent Role="tblPersonal">
+              <PropertyRef Name="idDireccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_documento_documentacionPersonal">
           <End Role="catDocumentos" Type="Self.catDocumentos" Multiplicity="1" />
           <End Role="tblDocumentacionPersonal" Type="Self.tblDocumentacionPersonal" Multiplicity="*" />
@@ -2242,27 +2291,51 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_estado_municipio">
-          <End Role="catEstado" Type="Self.catEstado" Multiplicity="1" />
-          <End Role="catMunicipio" Type="Self.catMunicipio" Multiplicity="*" />
+        <Association Name="FK_CatEstado_CatPais">
+          <End Role="CatPais" Type="Self.CatPais" Multiplicity="0..1" />
+          <End Role="CatEstado" Type="Self.CatEstado" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="catEstado">
-              <PropertyRef Name="idEstado" />
+            <Principal Role="CatPais">
+              <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="catMunicipio">
+            <Dependent Role="CatEstado">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CatMunicipio_CatEstado">
+          <End Role="CatEstado" Type="Self.CatEstado" Multiplicity="0..1" />
+          <End Role="CatMunicipio" Type="Self.CatMunicipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatEstado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CatMunicipio">
               <PropertyRef Name="idEstado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_pais_estado">
-          <End Role="catPais" Type="Self.catPais" Multiplicity="1" />
-          <End Role="catEstado" Type="Self.catEstado" Multiplicity="*" />
+        <Association Name="fk_estadoCivil_personal">
+          <End Role="catEstadoCivil" Type="Self.catEstadoCivil" Multiplicity="0..1" />
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="catPais">
-              <PropertyRef Name="idPais" />
+            <Principal Role="catEstadoCivil">
+              <PropertyRef Name="idEstadoCivil" />
             </Principal>
-            <Dependent Role="catEstado">
-              <PropertyRef Name="idPais" />
+            <Dependent Role="tblPersonal">
+              <PropertyRef Name="idEstadoCivil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_familiar_personal">
+          <End Role="catFamiliar" Type="Self.catFamiliar" Multiplicity="0..1" />
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catFamiliar">
+              <PropertyRef Name="idFamiliar" />
+            </Principal>
+            <Dependent Role="tblPersonal">
+              <PropertyRef Name="idFamiliar" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2422,6 +2495,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_tipoSangre_personal">
+          <End Role="catTipoSangre" Type="Self.catTipoSangre" Multiplicity="0..1" />
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catTipoSangre">
+              <PropertyRef Name="idTipoSangre" />
+            </Principal>
+            <Dependent Role="tblPersonal">
+              <PropertyRef Name="idTipoSangre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_unidadesAcademicas_datosLaboralesAdministrativos">
           <End Role="catUnidadesAcademicas" Type="Self.catUnidadesAcademicas" Multiplicity="1" />
           <End Role="tblDatosLaboralesAdministrativos" Type="Self.tblDatosLaboralesAdministrativos" Multiplicity="*" />
@@ -2446,6 +2531,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_usuario_personal">
+          <End Role="catUsuarios" Type="Self.catUsuarios" Multiplicity="0..1" />
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catUsuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="tblPersonal">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_usuario_usuariosRol">
           <End Role="catUsuarios" Type="Self.catUsuarios" Multiplicity="1" />
           <End Role="tblUsuarioRol" Type="Self.tblUsuarioRol" Multiplicity="*" />
@@ -2458,12 +2555,192 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_personal_alergiaPersonal">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="1" />
+          <End Role="tblAlergiasPersonal" Type="Self.tblAlergiasPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblAlergiasPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_competenciaConocimietosPersonal">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="1" />
+          <End Role="tblCompetenciasConocimientosPersonal" Type="Self.tblCompetenciasConocimientosPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblCompetenciasConocimientosPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_competenciaTIPersonal">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="1" />
+          <End Role="tblCompetenciasTIPersonal" Type="Self.tblCompetenciasTIPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblCompetenciasTIPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_datosContacto">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="1" />
+          <End Role="tblDatosContacto" Type="Self.tblDatosContacto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblDatosContacto">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_datosLaboralesAdministrativos">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="1" />
+          <End Role="tblDatosLaboralesAdministrativos" Type="Self.tblDatosLaboralesAdministrativos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblDatosLaboralesAdministrativos">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_datosLaboralesDocente">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="1" />
+          <End Role="tblDatosLaboralesDocente" Type="Self.tblDatosLaboralesDocente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblDatosLaboralesDocente">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_deportePersonal">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="1" />
+          <End Role="tblDeportePersonal" Type="Self.tblDeportePersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblDeportePersonal">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_documentacionPersonal">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="1" />
+          <End Role="tblDocumentacionPersonal" Type="Self.tblDocumentacionPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblDocumentacionPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_emergencia">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="1" />
+          <End Role="tblEmergencia" Type="Self.tblEmergencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblEmergencia">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_enfermedadPersonal">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="1" />
+          <End Role="tblEnfermedadPersonal" Type="Self.tblEnfermedadPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblEnfermedadPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_PersonalIdiomaDialecto">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="1" />
+          <End Role="tblIdiomaDialectoPersonal" Type="Self.tblIdiomaDialectoPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblIdiomaDialectoPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_pasatiempo">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="0..1" />
+          <End Role="tblPasatiempo" Type="Self.tblPasatiempo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblPasatiempo">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_personalAsociaciones">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="1" />
+          <End Role="tblPersonalAsociaciones" Type="Self.tblPersonalAsociaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblPersonalAsociaciones">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_premiosDocente">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="1" />
+          <End Role="tblPremiosDocente" Type="Self.tblPremiosDocente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblPremiosDocente">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_telefono">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="1" />
+          <End Role="tblTelefono" Type="Self.tblTelefono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblTelefono">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="bdGestionDocenteEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="catAlergias" EntityType="Self.catAlergias" />
           <EntitySet Name="catArea" EntityType="Self.catArea" />
           <EntitySet Name="catAsociaciones" EntityType="Self.catAsociaciones" />
           <EntitySet Name="catCategoria" EntityType="Self.catCategoria" />
-          <EntitySet Name="catColonia" EntityType="Self.catColonia" />
+          <EntitySet Name="CatColonia" EntityType="Self.CatColonia" />
           <EntitySet Name="catCompetencias" EntityType="Self.catCompetencias" />
           <EntitySet Name="catCompetenciaTI" EntityType="Self.catCompetenciaTI" />
           <EntitySet Name="catCuerpoAcademico" EntityType="Self.catCuerpoAcademico" />
@@ -2473,15 +2750,15 @@
           <EntitySet Name="catDocumentos" EntityType="Self.catDocumentos" />
           <EntitySet Name="catEdificio" EntityType="Self.catEdificio" />
           <EntitySet Name="catEnfermedad" EntityType="Self.catEnfermedad" />
-          <EntitySet Name="catEstado" EntityType="Self.catEstado" />
+          <EntitySet Name="CatEstado" EntityType="Self.CatEstado" />
           <EntitySet Name="catEstadoCivil" EntityType="Self.catEstadoCivil" />
           <EntitySet Name="catFamiliar" EntityType="Self.catFamiliar" />
           <EntitySet Name="catFrecuencia" EntityType="Self.catFrecuencia" />
           <EntitySet Name="catIdioma" EntityType="Self.catIdioma" />
           <EntitySet Name="catInstitucionSuperior" EntityType="Self.catInstitucionSuperior" />
-          <EntitySet Name="catMunicipio" EntityType="Self.catMunicipio" />
+          <EntitySet Name="CatMunicipio" EntityType="Self.CatMunicipio" />
           <EntitySet Name="catNivelSalarial" EntityType="Self.catNivelSalarial" />
-          <EntitySet Name="catPais" EntityType="Self.catPais" />
+          <EntitySet Name="CatPais" EntityType="Self.CatPais" />
           <EntitySet Name="catParentesco" EntityType="Self.catParentesco" />
           <EntitySet Name="catProgramaEducativo" EntityType="Self.catProgramaEducativo" />
           <EntitySet Name="catRoles" EntityType="Self.catRoles" />
@@ -2507,6 +2784,7 @@
           <EntitySet Name="tblEnfermedadPersonal" EntityType="Self.tblEnfermedadPersonal" />
           <EntitySet Name="tblIdiomaDialectoPersonal" EntityType="Self.tblIdiomaDialectoPersonal" />
           <EntitySet Name="tblPasatiempo" EntityType="Self.tblPasatiempo" />
+          <EntitySet Name="tblPersonal" EntityType="Self.tblPersonal" />
           <EntitySet Name="tblPersonalAsociaciones" EntityType="Self.tblPersonalAsociaciones" />
           <EntitySet Name="tblPremiosDocente" EntityType="Self.tblPremiosDocente" />
           <EntitySet Name="tblTelefono" EntityType="Self.tblTelefono" />
@@ -2535,13 +2813,13 @@
             <End Role="catCategoria" EntitySet="catCategoria" />
             <End Role="catTipoContrato" EntitySet="catTipoContrato" />
           </AssociationSet>
-          <AssociationSet Name="fk_colonia_direccion" Association="Self.fk_colonia_direccion">
-            <End Role="catColonia" EntitySet="catColonia" />
-            <End Role="catDireccion" EntitySet="catDireccion" />
+          <AssociationSet Name="FK_CatColonia_CatMunicipio" Association="Self.FK_CatColonia_CatMunicipio">
+            <End Role="CatMunicipio" EntitySet="CatMunicipio" />
+            <End Role="CatColonia" EntitySet="CatColonia" />
           </AssociationSet>
-          <AssociationSet Name="fk_municipio_colonia" Association="Self.fk_municipio_colonia">
-            <End Role="catMunicipio" EntitySet="catMunicipio" />
-            <End Role="catColonia" EntitySet="catColonia" />
+          <AssociationSet Name="FK_catDireccion_catColonia" Association="Self.FK_catDireccion_catColonia">
+            <End Role="CatColonia" EntitySet="CatColonia" />
+            <End Role="catDireccion" EntitySet="catDireccion" />
           </AssociationSet>
           <AssociationSet Name="fk_competencia_competenciaConocimietosPersonal" Association="Self.fk_competencia_competenciaConocimietosPersonal">
             <End Role="catCompetencias" EntitySet="catCompetencias" />
@@ -2563,6 +2841,10 @@
             <End Role="catDialecto" EntitySet="catDialecto" />
             <End Role="tblIdiomaDialectoPersonal" EntitySet="tblIdiomaDialectoPersonal" />
           </AssociationSet>
+          <AssociationSet Name="fk_direccion_personal" Association="Self.fk_direccion_personal">
+            <End Role="catDireccion" EntitySet="catDireccion" />
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+          </AssociationSet>
           <AssociationSet Name="fk_documento_documentacionPersonal" Association="Self.fk_documento_documentacionPersonal">
             <End Role="catDocumentos" EntitySet="catDocumentos" />
             <End Role="tblDocumentacionPersonal" EntitySet="tblDocumentacionPersonal" />
@@ -2579,13 +2861,21 @@
             <End Role="catEnfermedad" EntitySet="catEnfermedad" />
             <End Role="tblEnfermedadPersonal" EntitySet="tblEnfermedadPersonal" />
           </AssociationSet>
-          <AssociationSet Name="fk_estado_municipio" Association="Self.fk_estado_municipio">
-            <End Role="catEstado" EntitySet="catEstado" />
-            <End Role="catMunicipio" EntitySet="catMunicipio" />
+          <AssociationSet Name="FK_CatEstado_CatPais" Association="Self.FK_CatEstado_CatPais">
+            <End Role="CatPais" EntitySet="CatPais" />
+            <End Role="CatEstado" EntitySet="CatEstado" />
           </AssociationSet>
-          <AssociationSet Name="fk_pais_estado" Association="Self.fk_pais_estado">
-            <End Role="catPais" EntitySet="catPais" />
-            <End Role="catEstado" EntitySet="catEstado" />
+          <AssociationSet Name="FK_CatMunicipio_CatEstado" Association="Self.FK_CatMunicipio_CatEstado">
+            <End Role="CatEstado" EntitySet="CatEstado" />
+            <End Role="CatMunicipio" EntitySet="CatMunicipio" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estadoCivil_personal" Association="Self.fk_estadoCivil_personal">
+            <End Role="catEstadoCivil" EntitySet="catEstadoCivil" />
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_familiar_personal" Association="Self.fk_familiar_personal">
+            <End Role="catFamiliar" EntitySet="catFamiliar" />
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
           </AssociationSet>
           <AssociationSet Name="fk_parentesco_familiar" Association="Self.fk_parentesco_familiar">
             <End Role="catParentesco" EntitySet="catParentesco" />
@@ -2639,6 +2929,10 @@
             <End Role="catTipoContrato" EntitySet="catTipoContrato" />
             <End Role="tblDatosLaboralesDocente" EntitySet="tblDatosLaboralesDocente" />
           </AssociationSet>
+          <AssociationSet Name="fk_tipoSangre_personal" Association="Self.fk_tipoSangre_personal">
+            <End Role="catTipoSangre" EntitySet="catTipoSangre" />
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+          </AssociationSet>
           <AssociationSet Name="fk_unidadesAcademicas_datosLaboralesAdministrativos" Association="Self.fk_unidadesAcademicas_datosLaboralesAdministrativos">
             <End Role="catUnidadesAcademicas" EntitySet="catUnidadesAcademicas" />
             <End Role="tblDatosLaboralesAdministrativos" EntitySet="tblDatosLaboralesAdministrativos" />
@@ -2647,384 +2941,83 @@
             <End Role="catUnidadesAcademicas" EntitySet="catUnidadesAcademicas" />
             <End Role="tblDatosLaboralesDocente" EntitySet="tblDatosLaboralesDocente" />
           </AssociationSet>
+          <AssociationSet Name="fk_usuario_personal" Association="Self.fk_usuario_personal">
+            <End Role="catUsuarios" EntitySet="catUsuarios" />
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+          </AssociationSet>
           <AssociationSet Name="fk_usuario_usuariosRol" Association="Self.fk_usuario_usuariosRol">
             <End Role="catUsuarios" EntitySet="catUsuarios" />
             <End Role="tblUsuarioRol" EntitySet="tblUsuarioRol" />
           </AssociationSet>
-          <EntitySet Name="tblPersonal" EntityType="bdGestionDocente_v2Model.tblPersonal" />
-          <AssociationSet Name="fk_direccion_personal" Association="bdGestionDocente_v2Model.fk_direccion_personal">
-            <End Role="catDireccion" EntitySet="catDireccion" />
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-          </AssociationSet>
-          <AssociationSet Name="fk_estadoCivil_personal" Association="bdGestionDocente_v2Model.fk_estadoCivil_personal">
-            <End Role="catEstadoCivil" EntitySet="catEstadoCivil" />
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-          </AssociationSet>
-          <AssociationSet Name="fk_familiar_personal" Association="bdGestionDocente_v2Model.fk_familiar_personal">
-            <End Role="catFamiliar" EntitySet="catFamiliar" />
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-          </AssociationSet>
-          <AssociationSet Name="fk_tipoSangre_personal" Association="bdGestionDocente_v2Model.fk_tipoSangre_personal">
-            <End Role="catTipoSangre" EntitySet="catTipoSangre" />
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-          </AssociationSet>
-          <AssociationSet Name="fk_usuario_personal" Association="bdGestionDocente_v2Model.fk_usuario_personal">
-            <End Role="catUsuarios" EntitySet="catUsuarios" />
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-          </AssociationSet>
-          <AssociationSet Name="fk_personal_alergiaPersonal" Association="bdGestionDocente_v2Model.fk_personal_alergiaPersonal">
+          <AssociationSet Name="fk_personal_alergiaPersonal" Association="Self.fk_personal_alergiaPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblAlergiasPersonal" EntitySet="tblAlergiasPersonal" />
           </AssociationSet>
-          <AssociationSet Name="fk_personal_competenciaConocimietosPersonal" Association="bdGestionDocente_v2Model.fk_personal_competenciaConocimietosPersonal">
+          <AssociationSet Name="fk_personal_competenciaConocimietosPersonal" Association="Self.fk_personal_competenciaConocimietosPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblCompetenciasConocimientosPersonal" EntitySet="tblCompetenciasConocimientosPersonal" />
           </AssociationSet>
-          <AssociationSet Name="fk_personal_competenciaTIPersonal" Association="bdGestionDocente_v2Model.fk_personal_competenciaTIPersonal">
+          <AssociationSet Name="fk_personal_competenciaTIPersonal" Association="Self.fk_personal_competenciaTIPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblCompetenciasTIPersonal" EntitySet="tblCompetenciasTIPersonal" />
           </AssociationSet>
-          <AssociationSet Name="fk_personal_datosContacto" Association="bdGestionDocente_v2Model.fk_personal_datosContacto">
+          <AssociationSet Name="fk_personal_datosContacto" Association="Self.fk_personal_datosContacto">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblDatosContacto" EntitySet="tblDatosContacto" />
           </AssociationSet>
-          <AssociationSet Name="fk_personal_datosLaboralesAdministrativos" Association="bdGestionDocente_v2Model.fk_personal_datosLaboralesAdministrativos">
+          <AssociationSet Name="fk_personal_datosLaboralesAdministrativos" Association="Self.fk_personal_datosLaboralesAdministrativos">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblDatosLaboralesAdministrativos" EntitySet="tblDatosLaboralesAdministrativos" />
           </AssociationSet>
-          <AssociationSet Name="fk_personal_datosLaboralesDocente" Association="bdGestionDocente_v2Model.fk_personal_datosLaboralesDocente">
+          <AssociationSet Name="fk_personal_datosLaboralesDocente" Association="Self.fk_personal_datosLaboralesDocente">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblDatosLaboralesDocente" EntitySet="tblDatosLaboralesDocente" />
           </AssociationSet>
-          <AssociationSet Name="fk_personal_deportePersonal" Association="bdGestionDocente_v2Model.fk_personal_deportePersonal">
+          <AssociationSet Name="fk_personal_deportePersonal" Association="Self.fk_personal_deportePersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblDeportePersonal" EntitySet="tblDeportePersonal" />
           </AssociationSet>
-          <AssociationSet Name="fk_personal_documentacionPersonal" Association="bdGestionDocente_v2Model.fk_personal_documentacionPersonal">
+          <AssociationSet Name="fk_personal_documentacionPersonal" Association="Self.fk_personal_documentacionPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblDocumentacionPersonal" EntitySet="tblDocumentacionPersonal" />
           </AssociationSet>
-          <AssociationSet Name="fk_personal_emergencia" Association="bdGestionDocente_v2Model.fk_personal_emergencia">
+          <AssociationSet Name="fk_personal_emergencia" Association="Self.fk_personal_emergencia">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblEmergencia" EntitySet="tblEmergencia" />
           </AssociationSet>
-          <AssociationSet Name="fk_personal_enfermedadPersonal" Association="bdGestionDocente_v2Model.fk_personal_enfermedadPersonal">
+          <AssociationSet Name="fk_personal_enfermedadPersonal" Association="Self.fk_personal_enfermedadPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblEnfermedadPersonal" EntitySet="tblEnfermedadPersonal" />
           </AssociationSet>
-          <AssociationSet Name="fk_personal_PersonalIdiomaDialecto" Association="bdGestionDocente_v2Model.fk_personal_PersonalIdiomaDialecto">
+          <AssociationSet Name="fk_personal_PersonalIdiomaDialecto" Association="Self.fk_personal_PersonalIdiomaDialecto">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblIdiomaDialectoPersonal" EntitySet="tblIdiomaDialectoPersonal" />
           </AssociationSet>
-          <AssociationSet Name="fk_personal_pasatiempo" Association="bdGestionDocente_v2Model.fk_personal_pasatiempo">
+          <AssociationSet Name="fk_personal_pasatiempo" Association="Self.fk_personal_pasatiempo">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblPasatiempo" EntitySet="tblPasatiempo" />
           </AssociationSet>
-          <AssociationSet Name="fk_personal_personalAsociaciones" Association="bdGestionDocente_v2Model.fk_personal_personalAsociaciones">
+          <AssociationSet Name="fk_personal_personalAsociaciones" Association="Self.fk_personal_personalAsociaciones">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblPersonalAsociaciones" EntitySet="tblPersonalAsociaciones" />
           </AssociationSet>
-          <AssociationSet Name="fk_personal_premiosDocente" Association="bdGestionDocente_v2Model.fk_personal_premiosDocente">
+          <AssociationSet Name="fk_personal_premiosDocente" Association="Self.fk_personal_premiosDocente">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblPremiosDocente" EntitySet="tblPremiosDocente" />
           </AssociationSet>
-          <AssociationSet Name="fk_personal_telefono" Association="bdGestionDocente_v2Model.fk_personal_telefono">
+          <AssociationSet Name="fk_personal_telefono" Association="Self.fk_personal_telefono">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblTelefono" EntitySet="tblTelefono" />
           </AssociationSet>
-          </EntityContainer>
-        <EntityType Name="tblPersonal">
-          <Key>
-            <PropertyRef Name="idPersonal" />
-          </Key>
-          <Property Name="idPersonal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="strNombre" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strApellidoPaterno" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strApellidoMaterno" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strCurp" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strRfc" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="archivoRfc" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strHomoclave" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="dteFechaNacimiento" Type="DateTime" Precision="3" />
-          <Property Name="strLogros" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="strUrlFoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="strUrlCurp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="strUrlRfc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="strGenero" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="idEstadoCivil" Type="Int32" />
-          <Property Name="idUsuario" Type="Int32" />
-          <Property Name="idTipoSangre" Type="Int32" />
-          <Property Name="idDireccion" Type="Int32" />
-          <Property Name="idFamiliar" Type="Int32" />
-          <NavigationProperty Name="catDireccion" Relationship="bdGestionDocente_v2Model.fk_direccion_personal" FromRole="tblPersonal" ToRole="catDireccion" />
-          <NavigationProperty Name="catEstadoCivil" Relationship="bdGestionDocente_v2Model.fk_estadoCivil_personal" FromRole="tblPersonal" ToRole="catEstadoCivil" />
-          <NavigationProperty Name="catFamiliar" Relationship="bdGestionDocente_v2Model.fk_familiar_personal" FromRole="tblPersonal" ToRole="catFamiliar" />
-          <NavigationProperty Name="catTipoSangre" Relationship="bdGestionDocente_v2Model.fk_tipoSangre_personal" FromRole="tblPersonal" ToRole="catTipoSangre" />
-          <NavigationProperty Name="catUsuarios" Relationship="bdGestionDocente_v2Model.fk_usuario_personal" FromRole="tblPersonal" ToRole="catUsuarios" />
-          <NavigationProperty Name="tblAlergiasPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_alergiaPersonal" FromRole="tblPersonal" ToRole="tblAlergiasPersonal" />
-          <NavigationProperty Name="tblCompetenciasConocimientosPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_competenciaConocimietosPersonal" FromRole="tblPersonal" ToRole="tblCompetenciasConocimientosPersonal" />
-          <NavigationProperty Name="tblCompetenciasTIPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_competenciaTIPersonal" FromRole="tblPersonal" ToRole="tblCompetenciasTIPersonal" />
-          <NavigationProperty Name="tblDatosContacto" Relationship="bdGestionDocente_v2Model.fk_personal_datosContacto" FromRole="tblPersonal" ToRole="tblDatosContacto" />
-          <NavigationProperty Name="tblDatosLaboralesAdministrativos" Relationship="bdGestionDocente_v2Model.fk_personal_datosLaboralesAdministrativos" FromRole="tblPersonal" ToRole="tblDatosLaboralesAdministrativos" />
-          <NavigationProperty Name="tblDatosLaboralesDocente" Relationship="bdGestionDocente_v2Model.fk_personal_datosLaboralesDocente" FromRole="tblPersonal" ToRole="tblDatosLaboralesDocente" />
-          <NavigationProperty Name="tblDeportePersonal" Relationship="bdGestionDocente_v2Model.fk_personal_deportePersonal" FromRole="tblPersonal" ToRole="tblDeportePersonal" />
-          <NavigationProperty Name="tblDocumentacionPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_documentacionPersonal" FromRole="tblPersonal" ToRole="tblDocumentacionPersonal" />
-          <NavigationProperty Name="tblEmergencia" Relationship="bdGestionDocente_v2Model.fk_personal_emergencia" FromRole="tblPersonal" ToRole="tblEmergencia" />
-          <NavigationProperty Name="tblEnfermedadPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_enfermedadPersonal" FromRole="tblPersonal" ToRole="tblEnfermedadPersonal" />
-          <NavigationProperty Name="tblIdiomaDialectoPersonal" Relationship="bdGestionDocente_v2Model.fk_personal_PersonalIdiomaDialecto" FromRole="tblPersonal" ToRole="tblIdiomaDialectoPersonal" />
-          <NavigationProperty Name="tblPasatiempo" Relationship="bdGestionDocente_v2Model.fk_personal_pasatiempo" FromRole="tblPersonal" ToRole="tblPasatiempo" />
-          <NavigationProperty Name="tblPersonalAsociaciones" Relationship="bdGestionDocente_v2Model.fk_personal_personalAsociaciones" FromRole="tblPersonal" ToRole="tblPersonalAsociaciones" />
-          <NavigationProperty Name="tblPremiosDocente" Relationship="bdGestionDocente_v2Model.fk_personal_premiosDocente" FromRole="tblPersonal" ToRole="tblPremiosDocente" />
-          <NavigationProperty Name="tblTelefono" Relationship="bdGestionDocente_v2Model.fk_personal_telefono" FromRole="tblPersonal" ToRole="tblTelefono" />
-        </EntityType>
-        <Association Name="fk_direccion_personal">
-          <End Type="bdGestionDocente_v2Model.catDireccion" Role="catDireccion" Multiplicity="0..1" />
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catDireccion">
-              <PropertyRef Name="idDireccion" />
-            </Principal>
-            <Dependent Role="tblPersonal">
-              <PropertyRef Name="idDireccion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_estadoCivil_personal">
-          <End Type="bdGestionDocente_v2Model.catEstadoCivil" Role="catEstadoCivil" Multiplicity="0..1" />
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catEstadoCivil">
-              <PropertyRef Name="idEstadoCivil" />
-            </Principal>
-            <Dependent Role="tblPersonal">
-              <PropertyRef Name="idEstadoCivil" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_familiar_personal">
-          <End Type="bdGestionDocente_v2Model.catFamiliar" Role="catFamiliar" Multiplicity="0..1" />
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catFamiliar">
-              <PropertyRef Name="idFamiliar" />
-            </Principal>
-            <Dependent Role="tblPersonal">
-              <PropertyRef Name="idFamiliar" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_tipoSangre_personal">
-          <End Type="bdGestionDocente_v2Model.catTipoSangre" Role="catTipoSangre" Multiplicity="0..1" />
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catTipoSangre">
-              <PropertyRef Name="idTipoSangre" />
-            </Principal>
-            <Dependent Role="tblPersonal">
-              <PropertyRef Name="idTipoSangre" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_usuario_personal">
-          <End Type="bdGestionDocente_v2Model.catUsuarios" Role="catUsuarios" Multiplicity="0..1" />
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catUsuarios">
-              <PropertyRef Name="idUsuario" />
-            </Principal>
-            <Dependent Role="tblPersonal">
-              <PropertyRef Name="idUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_alergiaPersonal">
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocente_v2Model.tblAlergiasPersonal" Role="tblAlergiasPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblAlergiasPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_competenciaConocimietosPersonal">
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocente_v2Model.tblCompetenciasConocimientosPersonal" Role="tblCompetenciasConocimientosPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblCompetenciasConocimientosPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_competenciaTIPersonal">
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocente_v2Model.tblCompetenciasTIPersonal" Role="tblCompetenciasTIPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblCompetenciasTIPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_datosContacto">
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocente_v2Model.tblDatosContacto" Role="tblDatosContacto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblDatosContacto">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_datosLaboralesAdministrativos">
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocente_v2Model.tblDatosLaboralesAdministrativos" Role="tblDatosLaboralesAdministrativos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblDatosLaboralesAdministrativos">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_datosLaboralesDocente">
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocente_v2Model.tblDatosLaboralesDocente" Role="tblDatosLaboralesDocente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblDatosLaboralesDocente">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_deportePersonal">
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocente_v2Model.tblDeportePersonal" Role="tblDeportePersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblDeportePersonal">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_documentacionPersonal">
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocente_v2Model.tblDocumentacionPersonal" Role="tblDocumentacionPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblDocumentacionPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_emergencia">
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocente_v2Model.tblEmergencia" Role="tblEmergencia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblEmergencia">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_enfermedadPersonal">
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocente_v2Model.tblEnfermedadPersonal" Role="tblEnfermedadPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblEnfermedadPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_PersonalIdiomaDialecto">
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocente_v2Model.tblIdiomaDialectoPersonal" Role="tblIdiomaDialectoPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblIdiomaDialectoPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_pasatiempo">
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
-          <End Type="bdGestionDocente_v2Model.tblPasatiempo" Role="tblPasatiempo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblPasatiempo">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_personalAsociaciones">
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocente_v2Model.tblPersonalAsociaciones" Role="tblPersonalAsociaciones" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblPersonalAsociaciones">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_premiosDocente">
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocente_v2Model.tblPremiosDocente" Role="tblPremiosDocente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblPremiosDocente">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_telefono">
-          <End Type="bdGestionDocente_v2Model.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocente_v2Model.tblTelefono" Role="tblTelefono" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblTelefono">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="bdGestionDocente_v2ModelStoreContainer" CdmEntityContainer="bdGestionDocenteEntities">
+        <EntityContainerMapping StorageEntityContainer="bdGestionDocenteModelStoreContainer" CdmEntityContainer="bdGestionDocenteEntities">
           <EntitySetMapping Name="catAlergias">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catAlergias">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catAlergias">
               <MappingFragment StoreEntitySet="catAlergias">
                 <ScalarProperty Name="idAlergias" ColumnName="idAlergias" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3034,7 +3027,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catArea">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catArea">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catArea">
               <MappingFragment StoreEntitySet="catArea">
                 <ScalarProperty Name="idArea" ColumnName="idArea" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3043,7 +3036,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catAsociaciones">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catAsociaciones">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catAsociaciones">
               <MappingFragment StoreEntitySet="catAsociaciones">
                 <ScalarProperty Name="idAsociacion" ColumnName="idAsociacion" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3053,7 +3046,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catCategoria">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catCategoria">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catCategoria">
               <MappingFragment StoreEntitySet="catCategoria">
                 <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3061,19 +3054,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="catColonia">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catColonia">
-              <MappingFragment StoreEntitySet="catColonia">
-                <ScalarProperty Name="idColonia" ColumnName="idColonia" />
-                <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
-                <ScalarProperty Name="strObservacion" ColumnName="strObservacion" />
+          <EntitySetMapping Name="CatColonia">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.CatColonia">
+              <MappingFragment StoreEntitySet="CatColonia">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="strValor" ColumnName="strValor" />
                 <ScalarProperty Name="intCp" ColumnName="intCp" />
                 <ScalarProperty Name="idMunicipio" ColumnName="idMunicipio" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catCompetencias">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catCompetencias">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catCompetencias">
               <MappingFragment StoreEntitySet="catCompetencias">
                 <ScalarProperty Name="idCompetencia" ColumnName="idCompetencia" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3083,7 +3075,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catCompetenciaTI">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catCompetenciaTI">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catCompetenciaTI">
               <MappingFragment StoreEntitySet="catCompetenciaTI">
                 <ScalarProperty Name="idCompetenciaTI" ColumnName="idCompetenciaTI" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3092,7 +3084,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catCuerpoAcademico">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catCuerpoAcademico">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catCuerpoAcademico">
               <MappingFragment StoreEntitySet="catCuerpoAcademico">
                 <ScalarProperty Name="idCuerpoAcademico" ColumnName="idCuerpoAcademico" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3102,7 +3094,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catDeporte">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catDeporte">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catDeporte">
               <MappingFragment StoreEntitySet="catDeporte">
                 <ScalarProperty Name="idDeporte" ColumnName="idDeporte" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3111,7 +3103,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catDialecto">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catDialecto">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catDialecto">
               <MappingFragment StoreEntitySet="catDialecto">
                 <ScalarProperty Name="idDialecto" ColumnName="idDialecto" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3120,7 +3112,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catDireccion">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catDireccion">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catDireccion">
               <MappingFragment StoreEntitySet="catDireccion">
                 <ScalarProperty Name="idDireccion" ColumnName="idDireccion" />
                 <ScalarProperty Name="strCalle" ColumnName="strCalle" />
@@ -3131,7 +3123,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catDocumentos">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catDocumentos">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catDocumentos">
               <MappingFragment StoreEntitySet="catDocumentos">
                 <ScalarProperty Name="idDocumento" ColumnName="idDocumento" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3141,7 +3133,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catEdificio">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catEdificio">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catEdificio">
               <MappingFragment StoreEntitySet="catEdificio">
                 <ScalarProperty Name="idEdificio" ColumnName="idEdificio" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3150,7 +3142,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catEnfermedad">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catEnfermedad">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catEnfermedad">
               <MappingFragment StoreEntitySet="catEnfermedad">
                 <ScalarProperty Name="idEnfermedad" ColumnName="idEnfermedad" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3158,18 +3150,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="catEstado">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catEstado">
-              <MappingFragment StoreEntitySet="catEstado">
-                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
-                <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
-                <ScalarProperty Name="strObservacion" ColumnName="strObservacion" />
+          <EntitySetMapping Name="CatEstado">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.CatEstado">
+              <MappingFragment StoreEntitySet="CatEstado">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="strValor" ColumnName="strValor" />
                 <ScalarProperty Name="idPais" ColumnName="idPais" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catEstadoCivil">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catEstadoCivil">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catEstadoCivil">
               <MappingFragment StoreEntitySet="catEstadoCivil">
                 <ScalarProperty Name="idEstadoCivil" ColumnName="idEstadoCivil" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3178,7 +3169,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catFamiliar">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catFamiliar">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catFamiliar">
               <MappingFragment StoreEntitySet="catFamiliar">
                 <ScalarProperty Name="idFamiliar" ColumnName="idFamiliar" />
                 <ScalarProperty Name="strNombre" ColumnName="strNombre" />
@@ -3192,7 +3183,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catFrecuencia">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catFrecuencia">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catFrecuencia">
               <MappingFragment StoreEntitySet="catFrecuencia">
                 <ScalarProperty Name="idFrecuencia" ColumnName="idFrecuencia" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3201,7 +3192,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catIdioma">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catIdioma">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catIdioma">
               <MappingFragment StoreEntitySet="catIdioma">
                 <ScalarProperty Name="idIdioma" ColumnName="idIdioma" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3210,7 +3201,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catInstitucionSuperior">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catInstitucionSuperior">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catInstitucionSuperior">
               <MappingFragment StoreEntitySet="catInstitucionSuperior">
                 <ScalarProperty Name="idInstitucionSuperior" ColumnName="idInstitucionSuperior" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3218,18 +3209,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="catMunicipio">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catMunicipio">
-              <MappingFragment StoreEntitySet="catMunicipio">
-                <ScalarProperty Name="idMunicipio" ColumnName="idMunicipio" />
-                <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
-                <ScalarProperty Name="strObservacion" ColumnName="strObservacion" />
+          <EntitySetMapping Name="CatMunicipio">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.CatMunicipio">
+              <MappingFragment StoreEntitySet="CatMunicipio">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="strValor" ColumnName="strValor" />
                 <ScalarProperty Name="idEstado" ColumnName="idEstado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catNivelSalarial">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catNivelSalarial">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catNivelSalarial">
               <MappingFragment StoreEntitySet="catNivelSalarial">
                 <ScalarProperty Name="idNivelSalarial" ColumnName="idNivelSalarial" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3237,17 +3227,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="catPais">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catPais">
-              <MappingFragment StoreEntitySet="catPais">
-                <ScalarProperty Name="idPais" ColumnName="idPais" />
-                <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
-                <ScalarProperty Name="strObservacion" ColumnName="strObservacion" />
+          <EntitySetMapping Name="CatPais">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.CatPais">
+              <MappingFragment StoreEntitySet="CatPais">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="strValor" ColumnName="strValor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catParentesco">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catParentesco">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catParentesco">
               <MappingFragment StoreEntitySet="catParentesco">
                 <ScalarProperty Name="idParentesco" ColumnName="idParentesco" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3256,7 +3245,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catProgramaEducativo">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catProgramaEducativo">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catProgramaEducativo">
               <MappingFragment StoreEntitySet="catProgramaEducativo">
                 <ScalarProperty Name="idProgramaEducativo" ColumnName="idProgramaEducativo" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3267,7 +3256,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catRoles">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catRoles">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catRoles">
               <MappingFragment StoreEntitySet="catRoles">
                 <ScalarProperty Name="idRoles" ColumnName="idRoles" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3276,7 +3265,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catSalarios">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catSalarios">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catSalarios">
               <MappingFragment StoreEntitySet="catSalarios">
                 <ScalarProperty Name="idSalarios" ColumnName="idSalarios" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3286,7 +3275,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catStatus">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catStatus">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catStatus">
               <MappingFragment StoreEntitySet="catStatus">
                 <ScalarProperty Name="idStatus" ColumnName="idStatus" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3295,7 +3284,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catTipoAlergias">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catTipoAlergias">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catTipoAlergias">
               <MappingFragment StoreEntitySet="catTipoAlergias">
                 <ScalarProperty Name="idTipoalergias" ColumnName="idTipoalergias" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3304,7 +3293,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catTipoContrato">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catTipoContrato">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catTipoContrato">
               <MappingFragment StoreEntitySet="catTipoContrato">
                 <ScalarProperty Name="idTipoContrato" ColumnName="idTipoContrato" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3315,7 +3304,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catTipoEmpresa">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catTipoEmpresa">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catTipoEmpresa">
               <MappingFragment StoreEntitySet="catTipoEmpresa">
                 <ScalarProperty Name="idTipoEmpresa" ColumnName="idTipoEmpresa" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3324,7 +3313,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catTipoEstudio">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catTipoEstudio">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catTipoEstudio">
               <MappingFragment StoreEntitySet="catTipoEstudio">
                 <ScalarProperty Name="idTipoEstudio" ColumnName="idTipoEstudio" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3333,7 +3322,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catTipoSangre">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catTipoSangre">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catTipoSangre">
               <MappingFragment StoreEntitySet="catTipoSangre">
                 <ScalarProperty Name="idTipoSangre" ColumnName="idTipoSangre" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3342,7 +3331,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catUnidadesAcademicas">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catUnidadesAcademicas">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catUnidadesAcademicas">
               <MappingFragment StoreEntitySet="catUnidadesAcademicas">
                 <ScalarProperty Name="idUnidadesAcademicas" ColumnName="idUnidadesAcademicas" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3351,7 +3340,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="catUsuarios">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.catUsuarios">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catUsuarios">
               <MappingFragment StoreEntitySet="catUsuarios">
                 <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
                 <ScalarProperty Name="strEmailInstitucional" ColumnName="strEmailInstitucional" />
@@ -3363,7 +3352,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.sysdiagrams">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -3374,7 +3363,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblAlergiasPersonal">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.tblAlergiasPersonal">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblAlergiasPersonal">
               <MappingFragment StoreEntitySet="tblAlergiasPersonal">
                 <ScalarProperty Name="idAlergiasPersonal" ColumnName="idAlergiasPersonal" />
                 <ScalarProperty Name="idAlergia" ColumnName="idAlergia" />
@@ -3384,7 +3373,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblCompetenciasConocimientosPersonal">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.tblCompetenciasConocimientosPersonal">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblCompetenciasConocimientosPersonal">
               <MappingFragment StoreEntitySet="tblCompetenciasConocimientosPersonal">
                 <ScalarProperty Name="idCompetenciasConocimientosPersonal" ColumnName="idCompetenciasConocimientosPersonal" />
                 <ScalarProperty Name="idCompetencia" ColumnName="idCompetencia" />
@@ -3394,7 +3383,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblCompetenciasTIPersonal">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.tblCompetenciasTIPersonal">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblCompetenciasTIPersonal">
               <MappingFragment StoreEntitySet="tblCompetenciasTIPersonal">
                 <ScalarProperty Name="idCompetenciaTIPersonal" ColumnName="idCompetenciaTIPersonal" />
                 <ScalarProperty Name="idCompetenciaTI" ColumnName="idCompetenciaTI" />
@@ -3404,7 +3393,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblDatosContacto">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.tblDatosContacto">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblDatosContacto">
               <MappingFragment StoreEntitySet="tblDatosContacto">
                 <ScalarProperty Name="idDatosContacto" ColumnName="idDatosContacto" />
                 <ScalarProperty Name="strEmailPersonal1" ColumnName="strEmailPersonal1" />
@@ -3417,7 +3406,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblDatosLaboralesAdministrativos">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.tblDatosLaboralesAdministrativos">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblDatosLaboralesAdministrativos">
               <MappingFragment StoreEntitySet="tblDatosLaboralesAdministrativos">
                 <ScalarProperty Name="idDatosLaboralesAdministrativos" ColumnName="idDatosLaboralesAdministrativos" />
                 <ScalarProperty Name="idArea" ColumnName="idArea" />
@@ -3431,7 +3420,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblDatosLaboralesDocente">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.tblDatosLaboralesDocente">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblDatosLaboralesDocente">
               <MappingFragment StoreEntitySet="tblDatosLaboralesDocente">
                 <ScalarProperty Name="idDatosLaboralesDocente" ColumnName="idDatosLaboralesDocente" />
                 <ScalarProperty Name="dteFechaInicio" ColumnName="dteFechaInicio" />
@@ -3448,7 +3437,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblDeportePersonal">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.tblDeportePersonal">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblDeportePersonal">
               <MappingFragment StoreEntitySet="tblDeportePersonal">
                 <ScalarProperty Name="idDeperotePersonal" ColumnName="idDeperotePersonal" />
                 <ScalarProperty Name="idDeporte" ColumnName="idDeporte" />
@@ -3459,7 +3448,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblDocumentacionPersonal">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.tblDocumentacionPersonal">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblDocumentacionPersonal">
               <MappingFragment StoreEntitySet="tblDocumentacionPersonal">
                 <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
                 <ScalarProperty Name="idDocumento" ColumnName="idDocumento" />
@@ -3470,7 +3459,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblEmergencia">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.tblEmergencia">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblEmergencia">
               <MappingFragment StoreEntitySet="tblEmergencia">
                 <ScalarProperty Name="idEmergencia" ColumnName="idEmergencia" />
                 <ScalarProperty Name="strNombre" ColumnName="strNombre" />
@@ -3482,7 +3471,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblEnfermedadPersonal">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.tblEnfermedadPersonal">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblEnfermedadPersonal">
               <MappingFragment StoreEntitySet="tblEnfermedadPersonal">
                 <ScalarProperty Name="idEnfermedadPersonal" ColumnName="idEnfermedadPersonal" />
                 <ScalarProperty Name="idEnfermedad" ColumnName="idEnfermedad" />
@@ -3492,7 +3481,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblIdiomaDialectoPersonal">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.tblIdiomaDialectoPersonal">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblIdiomaDialectoPersonal">
               <MappingFragment StoreEntitySet="tblIdiomaDialectoPersonal">
                 <ScalarProperty Name="idIdiomaDialectoPersonal" ColumnName="idIdiomaDialectoPersonal" />
                 <ScalarProperty Name="idIdioma" ColumnName="idIdioma" />
@@ -3507,7 +3496,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblPasatiempo">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.tblPasatiempo">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblPasatiempo">
               <MappingFragment StoreEntitySet="tblPasatiempo">
                 <ScalarProperty Name="idPasatiempo" ColumnName="idPasatiempo" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
@@ -3516,8 +3505,33 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblPersonal">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblPersonal">
+              <MappingFragment StoreEntitySet="tblPersonal">
+                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
+                <ScalarProperty Name="strNombre" ColumnName="strNombre" />
+                <ScalarProperty Name="strApellidoPaterno" ColumnName="strApellidoPaterno" />
+                <ScalarProperty Name="strApellidoMaterno" ColumnName="strApellidoMaterno" />
+                <ScalarProperty Name="strCurp" ColumnName="strCurp" />
+                <ScalarProperty Name="strRfc" ColumnName="strRfc" />
+                <ScalarProperty Name="archivoRfc" ColumnName="archivoRfc" />
+                <ScalarProperty Name="strHomoclave" ColumnName="strHomoclave" />
+                <ScalarProperty Name="dteFechaNacimiento" ColumnName="dteFechaNacimiento" />
+                <ScalarProperty Name="strLogros" ColumnName="strLogros" />
+                <ScalarProperty Name="strUrlFoto" ColumnName="strUrlFoto" />
+                <ScalarProperty Name="strUrlCurp" ColumnName="strUrlCurp" />
+                <ScalarProperty Name="strUrlRfc" ColumnName="strUrlRfc" />
+                <ScalarProperty Name="strGenero" ColumnName="strGenero" />
+                <ScalarProperty Name="idEstadoCivil" ColumnName="idEstadoCivil" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idTipoSangre" ColumnName="idTipoSangre" />
+                <ScalarProperty Name="idDireccion" ColumnName="idDireccion" />
+                <ScalarProperty Name="idFamiliar" ColumnName="idFamiliar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblPersonalAsociaciones">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.tblPersonalAsociaciones">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblPersonalAsociaciones">
               <MappingFragment StoreEntitySet="tblPersonalAsociaciones">
                 <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
                 <ScalarProperty Name="idAsociacion" ColumnName="idAsociacion" />
@@ -3527,7 +3541,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblPremiosDocente">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.tblPremiosDocente">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblPremiosDocente">
               <MappingFragment StoreEntitySet="tblPremiosDocente">
                 <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
                 <ScalarProperty Name="idDocumento" ColumnName="idDocumento" />
@@ -3542,7 +3556,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblTelefono">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.tblTelefono">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblTelefono">
               <MappingFragment StoreEntitySet="tblTelefono">
                 <ScalarProperty Name="idTelefono" ColumnName="idTelefono" />
                 <ScalarProperty Name="strTelefonoCelular" ColumnName="strTelefonoCelular" />
@@ -3553,37 +3567,12 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblUsuarioRol">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.tblUsuarioRol">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblUsuarioRol">
               <MappingFragment StoreEntitySet="tblUsuarioRol">
                 <ScalarProperty Name="idRolUsuario" ColumnName="idRolUsuario" />
                 <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
                 <ScalarProperty Name="idRol" ColumnName="idRol" />
                 <ScalarProperty Name="dteFechaAsignacion" ColumnName="dteFechaAsignacion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblPersonal">
-            <EntityTypeMapping TypeName="bdGestionDocente_v2Model.tblPersonal">
-              <MappingFragment StoreEntitySet="tblPersonal">
-                <ScalarProperty Name="idFamiliar" ColumnName="idFamiliar" />
-                <ScalarProperty Name="idDireccion" ColumnName="idDireccion" />
-                <ScalarProperty Name="idTipoSangre" ColumnName="idTipoSangre" />
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-                <ScalarProperty Name="idEstadoCivil" ColumnName="idEstadoCivil" />
-                <ScalarProperty Name="strGenero" ColumnName="strGenero" />
-                <ScalarProperty Name="strUrlRfc" ColumnName="strUrlRfc" />
-                <ScalarProperty Name="strUrlCurp" ColumnName="strUrlCurp" />
-                <ScalarProperty Name="strUrlFoto" ColumnName="strUrlFoto" />
-                <ScalarProperty Name="strLogros" ColumnName="strLogros" />
-                <ScalarProperty Name="dteFechaNacimiento" ColumnName="dteFechaNacimiento" />
-                <ScalarProperty Name="strHomoclave" ColumnName="strHomoclave" />
-                <ScalarProperty Name="archivoRfc" ColumnName="archivoRfc" />
-                <ScalarProperty Name="strRfc" ColumnName="strRfc" />
-                <ScalarProperty Name="strCurp" ColumnName="strCurp" />
-                <ScalarProperty Name="strApellidoMaterno" ColumnName="strApellidoMaterno" />
-                <ScalarProperty Name="strApellidoPaterno" ColumnName="strApellidoPaterno" />
-                <ScalarProperty Name="strNombre" ColumnName="strNombre" />
-                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

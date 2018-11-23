@@ -29,8 +29,8 @@ namespace AppDigitalCv.Repository
         public Nullable<System.DateTime> dteFechaNacimiento { get; set; }
         public int idParentesco { get; set; }
     
-        public virtual catParentesco catParentesco { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblPersonal> tblPersonal { get; set; }
+        public virtual catParentesco catParentesco { get; set; }
     }
 }

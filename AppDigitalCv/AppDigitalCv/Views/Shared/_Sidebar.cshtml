@@ -29,6 +29,9 @@
                 <a href="@Url.Action("EditarDatosPersonales","Personal")"><i class="fa fa-user-plus"></i><span>Editar Datos Personales</span> </a>
 
             </li>
+            <li class="@Url.IsLinkActive("Create","DatosContacto")">
+                <a href="@Url.Action("Create","DatosContacto")"><i class="fa fa-newspaper-o"></i><span>Datos de Contacto</span></a>
+            </li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-link"></i> <span>Multilevel</span>

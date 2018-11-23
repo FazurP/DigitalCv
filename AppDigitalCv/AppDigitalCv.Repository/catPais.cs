@@ -12,19 +12,18 @@ namespace AppDigitalCv.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class catPais
+    public partial class CatPais
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public catPais()
+        public CatPais()
         {
-            this.catEstado = new HashSet<catEstado>();
+            this.CatEstado = new HashSet<CatEstado>();
         }
     
-        public int idPais { get; set; }
-        public string strDescripcion { get; set; }
-        public string strObservacion { get; set; }
+        public int id { get; set; }
+        public string strValor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<catEstado> catEstado { get; set; }
+        public virtual ICollection<CatEstado> CatEstado { get; set; }
     }
 }
