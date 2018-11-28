@@ -115,7 +115,12 @@
                     { "data": "TelefonoCasa" },
                     { "data": "TelefonoCelular" },
                     { "data": "TelefonoRecados" },
-                    { "data": "IdDatosContacto" }
+                    {
+                        "data": "IdDatosContacto",
+                        "render": function (IdDatosContacto,type,full,meta) {
+                            return '<a href="#" onclick="AddEditDatosContacto(' + IdDatosContacto +')"><i class="glyphicon glyphicon-pencil"></i></a>'
+                        }
+                    }
                 ]
             });
 
