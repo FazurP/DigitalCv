@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model  AppDigitalCv.ViewModels.AccountViewModel
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,15 +8,21 @@
     <title>Login de Acceso</title>
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/css/AdminLTE.min.css" rel="stylesheet" />
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
     <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/css/Ionicons.css" rel="stylesheet" />
     <script src="~/Content/js/plugins/jquery/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/jquery-ui-1.9.2.min.js"></script>
     <script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
-
+    <script src="~/Scripts/toastr.min.js"></script>
     <script>
         $(window).on('load', function () {
             $("#modal-default").modal({ backdrop: 'static', keyboard: false });
+        });
+
+        $('#BtnIngresar').click(function () {
+            alert('Ya estamos aqui');
+            
         });
 
         $(function () {
@@ -27,79 +35,82 @@
     </script>
 </head>
 <body>
+    @using (Html.BeginForm("Login", "Seguridad",FormMethod.Post))
+    {
+        <div class="modal modal-default fade" id="modal-default">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                        @*<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>*@
+                        <h4 class="modal-title">Login de Acceso</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="login-box">
+                            <div class="login-box-body">
+                                <div class="row">
+                                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                        @*<form action="#" method="post">*@
+                                        <div class="form-group has-feedback">
+                                            <input type="email" class="form-control" placeholder="Email">
+                                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <input type="password" class="form-control" placeholder="Password">
+                                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-8">
+                                                <div class="checkbox icheck">
+                                                    <label>
+                                                        <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>Recordarme
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-xs-4">
+                                                <button type="submit" class="btn btn-primary btn-block btn-flat" id="BtnIngresar">Igresar</button>
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        @*</form>*@
+                                    </div>
+                                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                        <img src="~/Imagenes/escudo_uttt.jpg" alt="Escudo" width="150" height="145" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-10">
+                                        <div class="social-auth-links text-center">
+                                            @*<p>- O -</p>*@
+                                            <a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
+                                                <i class="fa fa-facebook"></i> Inicia sesión con
+                                                Facebook
+                                            </a>
+                                            <a href="#" class="btn btn-block btn-social btn-google btn-flat">
+                                                <i class="fa fa-google-plus"></i>Inicia sesión con
+                                                Google+
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
 
-    <div class="modal modal-default fade" id="modal-default" >
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" style="background-color:#3C8DBC;color:white;">
-                    @*<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>*@
-                    <h4 class="modal-title">Login de Acceso</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="login-box">
-                       <div class="login-box-body">
-                           <div class="row">
-                               <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                                   <form action="../../index2.html" method="post">
-                                       <div class="form-group has-feedback">
-                                           <input type="email" class="form-control" placeholder="Email">
-                                           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                                       </div>
-                                       <div class="form-group has-feedback">
-                                           <input type="password" class="form-control" placeholder="Password">
-                                           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                                       </div>
-                                       <div class="row">
-                                           <div class="col-xs-8">
-                                               <div class="checkbox icheck">
-                                                   <label>
-                                                       <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>Recordarme
-                                                   </label>
-                                               </div>
-                                           </div>
-                                           <!-- /.col -->
-                                           <div class="col-xs-4">
-                                               <button type="submit" class="btn btn-primary btn-block btn-flat">Igresar</button>
-                                           </div>
-                                           <!-- /.col -->
-                                       </div>
-                                   </form>
-                               </div>
-                               <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                   <img src="~/Imagenes/escudo_uttt.jpg" alt="Escudo" width="150" height="145" />
-                               </div>
-                           </div>
-                           <div class="row">
-                               <div class="col-xs-10">
-                                   <div class="social-auth-links text-center">
-                                       @*<p>- O -</p>*@
-                                       <a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
-                                           <i class="fa fa-facebook"></i> Inicia sesión con
-                                           Facebook
-                                       </a>
-                                       <a href="#" class="btn btn-block btn-social btn-google btn-flat">
-                                           <i class="fa fa-google-plus"></i>Inicia sesión con
-                                           Google+
-                                       </a>
-                                   </div>
-                               </div>
-                           </div>
 
-                            
-                            <!-- /.social-auth-links -->
-                            <a href="#">Olvide mi password</a><br>
-                            <a href="register.html" class="text-center">Registra tus datos aqui.</a>
+                                <!-- /.social-auth-links -->
+                                <a href="#">Olvide mi password</a><br>
+                                <a href="register.html" class="text-center">Registra tus datos aqui.</a>
 
+                            </div>
                         </div>
                     </div>
+
                 </div>
-                
             </div>
         </div>
-    </div>
-        
+    }
+
+
 </body>
 </html>
 

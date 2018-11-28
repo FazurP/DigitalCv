@@ -82,7 +82,7 @@ namespace AppDigitalCv.Controllers
 
         #region Consultar Datos de Contacto
 
-        //[HttpGet]
+       
         public JsonResult ConsultarDatosContacto()
         {
             var datosContacto = IdatosContacto.GetDatosDeContacto(1);////////////////////////modificacion temporal
