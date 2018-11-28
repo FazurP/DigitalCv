@@ -152,6 +152,8 @@
     <Content Include="Content\animate.css" />
     <Content Include="Content\animate.min.css" />
     <Content Include="Content\css\cardview.css" />
+    <Content Include="Content\css\Ionicons.css" />
+    <Content Include="Content\js\plugins\jquery\jquery.min.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -220,16 +222,20 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Imagenes\escudoUt.png" />
     <Content Include="Imagenes\escudo_uttt.jpg" />
     <Content Include="Imagenes\material-loader.gif" />
     <Content Include="Imagenes\pdf_descargar.jpg" />
     <Content Include="Imagenes\pdf_subir.png" />
+    <Content Include="Scripts\boostrap.dataTables.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.9.2.js" />
     <Content Include="Scripts\jquery-ui-1.9.2.min.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\jtable\extensions\jquery.jtable.aspnetpagemethods.js" />
     <Content Include="Scripts\jtable\extensions\jquery.jtable.aspnetpagemethods.min.js" />
+    <Content Include="Scripts\jtable\extensions\jquery.jtable.min.js" />
     <Content Include="Scripts\jtable\external\json2.js" />
     <Content Include="Scripts\jtable\external\json2.min.js" />
     <Content Include="Scripts\jtable\jquery.jtable.js" />
@@ -338,8 +344,10 @@
     <Content Include="Scripts\jtable\themes\metro\red\jtable.css" />
     <Content Include="Scripts\jtable\themes\metro\red\jtable.min.css" />
     <Content Include="Scripts\jtable\themes\metro\red\loading.gif" />
+    <Content Include="Scripts\query.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Views\index.html" />
     <Content Include="Web.config" />
     <Content Include="Views\Personal\Create.cshtml" />
     <Content Include="Views\Personal\DatosPersonales.cshtml" />
@@ -364,8 +372,16 @@
     <Content Include="Scripts\jtable\themes\jtable_theme_base.less" />
     <Content Include="Scripts\jtable\themes\jqueryui\jtable_jqueryui.less" />
     <Content Include="Scripts\jtable\themes\basic\jtable_basic.less" />
-    <Content Include="Views\Personal\_Editar.cshtml" />
     <Content Include="Views\Personal\InfoPersonal.cshtml" />
+    <Content Include="Views\Personal\Editar.cshtml" />
+    <Content Include="Views\Documentos\AgregarDocumentos.cshtml" />
+    <Content Include="Views\Seguridad\Login.cshtml" />
+    <Content Include="Views\DatosContacto\Create.cshtml" />
+    <Content Include="Views\Direccion\Create.cshtml" />
+    <Content Include="Views\Shared\_Colonias.cshtml" />
+    <Content Include="Views\Shared\_Estados.cshtml" />
+    <Content Include="Views\Shared\_Municipios.cshtml" />
+    <Content Include="Views\DatosContacto\EditarDatosContacto.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -375,7 +391,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Controllers\DatosContactoController.cs" />
+    <Compile Include="Controllers\DireccionController.cs" />
+    <Compile Include="Controllers\DocumentosController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
+    <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Infraestructure\AutomaperWebProfile.cs" />
     <Compile Include="Models\PersonaDomainModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -387,7 +407,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecursosSistema.resx</DependentUpon>
     </Compile>
+    <Compile Include="Security\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Security\CustomPrincipal.cs" />
+    <Compile Include="Security\SessionPersister.cs" />
+    <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\ColoniaVM.cs" />
+    <Compile Include="ViewModels\DatosContactoVM.cs" />
+    <Compile Include="ViewModels\DireccionVM.cs" />
+    <Compile Include="ViewModels\DocumentoPersonalVM.cs" />
+    <Compile Include="ViewModels\EstadoVM.cs" />
+    <Compile Include="ViewModels\MunicipioVM.cs" />
+    <Compile Include="ViewModels\PaisVM.cs" />
     <Compile Include="ViewModels\PersonalVM.cs" />
+    <Compile Include="ViewModels\SessionManagerVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -516,6 +548,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Imagenes\Usuarios\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppDigitalCv.Business\AppDigitalCv.Business.csproj">

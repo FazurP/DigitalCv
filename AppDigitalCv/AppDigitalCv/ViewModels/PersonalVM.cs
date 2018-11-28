@@ -39,17 +39,26 @@ namespace AppDigitalCv.ViewModels
 
         ///[Required(ErrorMessage ="La evidencia en archivo es obligatoria")]
         //[RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif|.pdf)$", ErrorMessage = "Ingresa un Archivo con formato PDF, por favor")]
-        [DataType(DataType.Upload)]
-        public HttpPostedFileBase ArchivoRfc { get; set; }
+        //[DataType(DataType.Upload)]
+        [Required(ErrorMessage = "El archivo es obligatorio")]
+        public HttpPostedFileWrapper ArchivoRfc { get; set; }
 
-        ///[Required(ErrorMessage = "La evidencia en archivo es obligatoria")]
-        [DataType(DataType.Upload)]
-        public HttpPostedFileBase ArchivoCurp { get; set; }
+        [Required(ErrorMessage = "El archivo es obligatorio")]
+        //[DataType(DataType.Upload)]
+        public HttpPostedFileWrapper ArchivoCurp { get; set; }
 
-        //[Required(ErrorMessage = "Logros Personales son requeridos")]
-        public string Logros { get; set; }
+        [Required(ErrorMessage = "La Semblanza es requerida")]
+        public string strLogros { get; set; }
 
+        [Required(ErrorMessage = "El archivo es obligatorio")]
         public HttpPostedFileWrapper ImageFile { get; set; }
+
+        
+        public string strUrlFoto { get; set; }
+        public string strUrlCurp { get; set; }
+        public string strUrlRfc { get; set; }
+
+
 
     }
 

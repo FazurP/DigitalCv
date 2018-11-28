@@ -26,5 +26,31 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="idPersonal">recibe el id del personal a buscar</param>
         /// <returns>regresa una entidad del modelo de dominio</returns>
         PersonalDomainModel GetPersonalById(int idPersonal);
+        
+        /// <summary>
+        ///Este metodo se encarga  de consultar los documentos de un empleado 
+        /// </summary>
+        /// <returns>regresa una lista de datos de la entidad personal</returns>
+        List<PersonalDomainModel> GetEmpleadoDocumentos(int idPersonal);
+
+        /// <summary>
+        /// Este metodo se encarga de borrar el curp del personal 
+        /// </summary>
+        /// <param name="idPersonal">identidficador del personal que se va a eliminar</param>
+        /// <returns>una respuesta boolean de confirmación de acción</returns>
+        bool DeleteFileCurp(int idPersonal);
+        /// <summary>
+        /// Este metodo se encargar de consultar los documentos del personal
+        /// </summary>
+        /// <param name="idPersonal">identificador del personal</param>
+        /// <returns>regresa una lista de documentos del personal</returns>
+        DocumentoPersonalDomainModel GetDocumentoPersonal(int idPersonal);
+
+        /// <summary>
+        /// Este metodo se encarga de borrar el rfc del personal
+        /// </summary>
+        /// <param name="idPersonal">identificador del personal que se va a eliminar</param>
+        /// <returns>regresa una respuesta boolean de confirmación de acción</returns>
+        bool DeleteFileRfc(int idPersonal);
     }
 }

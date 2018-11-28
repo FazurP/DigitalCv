@@ -41,8 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountDomainModel.cs" />
+    <Compile Include="ColoniaDomainModel.cs" />
+    <Compile Include="DatosContactoDomainModel.cs" />
+    <Compile Include="DireccionDomainModel.cs" />
+    <Compile Include="DocumentoPersonalDomainModel.cs" />
+    <Compile Include="EstadoDomainModel.cs" />
+    <Compile Include="MunicipioDomainModel.cs" />
+    <Compile Include="PaisDomainModel.cs" />
     <Compile Include="PersonalDomainModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionManagerDomainModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountRepository.cs" />
     <Compile Include="AppDigitalCvEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,7 +79,7 @@
     <Compile Include="catCategoria.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="catColonia.cs">
+    <Compile Include="CatColonia.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="catCompetencias.cs">
@@ -108,7 +109,7 @@
     <Compile Include="catEnfermedad.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="catEstado.cs">
+    <Compile Include="CatEstado.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="catEstadoCivil.cs">
@@ -126,13 +127,13 @@
     <Compile Include="catInstitucionSuperior.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="catMunicipio.cs">
+    <Compile Include="CatMunicipio.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="catNivelSalarial.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="catPais.cs">
+    <Compile Include="CatPais.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="catParentesco.cs">
@@ -171,10 +172,16 @@
     <Compile Include="catUsuarios.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="ColoniaRepository.cs" />
+    <Compile Include="DatosContactoRepository.cs" />
+    <Compile Include="DireccionRepository.cs" />
+    <Compile Include="EstadoRepository.cs" />
     <Compile Include="Infraestructure\BaseRepository.cs" />
     <Compile Include="Infraestructure\Contract\IBaseRepository.cs" />
     <Compile Include="Infraestructure\Contract\IUnitOfWork.cs" />
     <Compile Include="Infraestructure\UnitOfWork.cs" />
+    <Compile Include="MunicipioRepository.cs" />
+    <Compile Include="PaisRepository.cs" />
     <Compile Include="PersonalRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sysdiagrams.cs">
@@ -231,14 +238,13 @@
     <Compile Include="tblUsuarioRol.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="TelefonoRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="AppDigitalCvEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AppDigitalCvEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.Config" />
     <None Include="AppDigitalCvEntities.edmx.diagram">
       <DependentUpon>AppDigitalCvEntities.edmx</DependentUpon>
@@ -246,19 +252,19 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="AppDigitalCvEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AppDigitalCvEntities.Context.cs</LastGenOutput>
       <DependentUpon>AppDigitalCvEntities.edmx</DependentUpon>
+      <LastGenOutput>AppDigitalCvEntities.Context.cs</LastGenOutput>
     </Content>
     <Content Include="AppDigitalCvEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AppDigitalCvEntities.edmx</DependentUpon>
       <LastGenOutput>AppDigitalCvEntities.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

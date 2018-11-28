@@ -24,7 +24,12 @@ namespace AppDigitalCv
             //container.RegisterType<PersonalBusiness>(new Unity.Injection.InjectionConstructor(0));
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<IPersonalBusiness, PersonalBusiness>();
+            container.RegisterType<IAccountBusiness, AccountBusiness>();
+            container.RegisterType<IDireccionBusiness, DireccionBusiness>();
+            container.RegisterType<IDatosContacto, DatosContactoBusiness>();
+            container.RegisterType<ITelefono, TelefonoBusiness>();
             container.RegisterType<IUnitOfWork, UnitOfWork>();
+            
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

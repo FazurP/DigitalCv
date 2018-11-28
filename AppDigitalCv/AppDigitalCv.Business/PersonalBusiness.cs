@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 ///implementamos la libreria de expression para el delegado
 using System.Linq.Expressions;
+//caragmos la libreria io
+using System.IO;
 
 namespace AppDigitalCv.Business
 {
@@ -41,6 +43,8 @@ namespace AppDigitalCv.Business
                     personal.strCurp = personalDM.Curp;
                     personal.strRfc = personalDM.Rfc;
                     personal.strHomoclave = personalDM.Homoclave;
+                    personal.strLogros = personalDM.strLogros;
+                    personal.strUrlFoto = personalDM.strUrlFoto;
                     //actualizamos los datos en la base de datos.
                     personalRepository.Update(personal);
                     resultado = "Se Actualizo correctamente";
@@ -54,8 +58,14 @@ namespace AppDigitalCv.Business
                 personal.strApellidoPaterno = personalDM.ApellidoPaterno;
                 personal.strApellidoMaterno = personalDM.ApellidoMaterno;
                 personal.strCurp = personalDM.Curp;
-                personal.strRfc = personalDM.Rfc;
-               /***********/ personal.archivoRfc = "archivo temporal"; /*********************/
+                personal.strRfc= personalDM.Rfc;
+                personal.strUrlRfc = personalDM.strUrlRfc;
+                personal.strUrlCurp = personalDM.strUrlCurp;
+                personal.strLogros = personalDM.strLogros;
+                personal.strUrlFoto = personalDM.strUrlFoto;
+                
+                /***********/ personal.archivoRfc = "archivo temporal"; /*********************/
+
                 personal.strHomoclave = personalDM.Homoclave;
                 var record = personalRepository.Insert(personal);
                 resultado = "Se insertaron correctamente los valores";
@@ -69,6 +79,25 @@ namespace AppDigitalCv.Business
             , ApellidoMaterno= p.strApellidoMaterno,Curp=p.strCurp,Rfc=p.strRfc,idPersonal =p.idPersonal}).ToList();
             return lista;
         }
+
+        public List<PersonalDomainModel> GetEmpleadoDocumentos(int idPersonal)
+        {
+            List<PersonalDomainModel> lista = null;
+            lista =personalRepository.GetAll().Select(p => new PersonalDomainModel
+            {
+                Nombre = p.strNombre,
+                ApellidoPaterno = p.strApellidoPaterno,
+                ApellidoMaterno = p.strApellidoMaterno,
+                Curp = p.strCurp,
+                Rfc = p.strRfc,
+                idPersonal = p.idPersonal,
+                strUrlRfc = p.strUrlRfc,
+                strUrlCurp = p.strUrlCurp
+
+            }).Where(P=>P.idPersonal==idPersonal).OrderBy(p=>p.Nombre).ToList();
+            return lista;
+        }
+
 
         /// <summary>
         /// este metodo se encarga de buscar a una persona por su id
@@ -87,7 +116,61 @@ namespace AppDigitalCv.Business
             personalDM.Curp = TblPersonal.strCurp;
             personalDM.Rfc = TblPersonal.strRfc;
             personalDM.Homoclave = TblPersonal.strHomoclave;
+            personalDM.strLogros = TblPersonal.strLogros;
             return personalDM;
+        }
+
+        /// <summary>
+        /// Este metodo se encargará de eliminar la url del curp
+        /// </summary>
+        /// <param name="idPersonal">el identificador del personal</param>
+        /// <returns>regresa una respues en boolean para identificar el proceso</returns>
+        public bool DeleteFileCurp(int idPersonal)
+        {
+            Expression<Func<tblPersonal, bool>> predicate = p => p.idPersonal == idPersonal;
+            tblPersonal  personal=  personalRepository.SingleOrDefault(predicate);
+            personal.strUrlCurp = string.Empty;
+            personalRepository.Update(personal);
+            return true;
+        }
+        /// <summary>
+        /// Este metodo se encargará de eliminar la url del rfc
+        /// </summary>
+        /// <param name="idPersonal">el identificador del personal</param>
+        /// <returns>retorna una respuesta booleana dependiendo la acción</returns>
+        public bool DeleteFileRfc(int idPersonal)
+        {
+            Expression<Func<tblPersonal, bool>> predicate = p => p.idPersonal == idPersonal;
+            tblPersonal personal = personalRepository.SingleOrDefault(predicate);
+            personal.strUrlRfc = string.Empty;
+            personalRepository.Update(personal);
+            return true;
+        }
+               
+        /// <summary>
+        /// Este metodo se encarga de consultar la url de los documentos del personal
+        /// </summary>
+        /// <param name="idPersonal">el identificador del personal</param>
+        /// <returns>regresa una lista con los documentos del personal</returns>
+        public DocumentoPersonalDomainModel GetDocumentoPersonal(int idPersonal)
+        {
+            //List<DocumentoPersonalDomainModel> documentosPersonales = new List<DocumentoPersonalDomainModel>();
+            Expression<Func<tblPersonal, bool>> predicate = p => p.idPersonal == idPersonal;
+            var documentosPersonal = personalRepository.GetAll(predicate).ToList();
+            DocumentoPersonalDomainModel documentoMD = new DocumentoPersonalDomainModel();
+
+            foreach (var d in documentosPersonal)
+            {
+                if (d.idPersonal > 0)
+                {
+                    
+                    documentoMD.IdPersonal = d.idPersonal;
+                    documentoMD.UrlCurp = d.strUrlCurp;
+                    documentoMD.UrlRfc = d.strUrlRfc;
+              
+                }
+            }
+            return documentoMD;
         }
 
 

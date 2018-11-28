@@ -35,6 +35,7 @@ namespace AppDigitalCv.Repository.Infraestructure
         {
             return dbSet.Where(where.Compile()).AsEnumerable();
         }
+
         public virtual T Insert(T entity)
         {
 

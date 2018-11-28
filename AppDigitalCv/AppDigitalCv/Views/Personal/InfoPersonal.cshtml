@@ -46,19 +46,19 @@
                             <b>HomoClave:</b> <a class="pull-right">@Html.DisplayFor(model => model.HomoClave, new { @class = "text-muted" })</a>
                         </li>
                     </ul>
-                    <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-default" onclick="EditPersonal(@Model.idPersonal)"><b>Editar</b></a>
-                   
+                    <a href="#" class="btn btn-primary btn-block" onclick="EditPersonal(@Model.idPersonal)"> <b>Editar</b></a>
+
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <!-- Box Comment -->
             <div class="box box-widget">
                 <div class="box-header with-border">
                     <div class="user-block">
                         <img class="img-circle" src="~/Imagenes/anonimo_perfil.jpg" alt="User Image">
                         <span class="username"><a href="#">@ViewBag.NombreCompleto</a></span>
-                        <span class="description">Shared publicly - 7:30 PM Today</span>
+                        <span class="description">Shared today: @ViewBag.FechaServidor</span>
                     </div>
                     <!-- /.user-block -->
                     <div class="box-tools">
@@ -75,18 +75,9 @@
                 <!-- /.box-header -->
                 <div class="box-body" style="">
                     <!-- post text -->
-                    <p>
-                        Far far away, behind the word mountains, far from the
-                        countries Vokalia and Consonantia, there live the blind
-                        texts. Separated they live in Bookmarksgrove right at
-                    </p>
+                    <p class="text-justify">
+                        @Html.DisplayFor(model => model.strLogros, new { @class = "text-muted text-justify" })
 
-                    <p>
-                        the coast of the Semantics, a large language ocean.
-                        A small river named Duden flows by their place and supplies
-                        it with the necessary regelialia. It is a paradisematic
-                        country, in which roasted parts of sentences fly into
-                        your mouth.
                     </p>
 
                     <!-- Attachment -->
@@ -94,11 +85,14 @@
                         <img class="attachment-img" src="~/Imagenes/escudo_uttt.jpg" alt="Attachment Image">
 
                         <div class="attachment-pushed">
-                            <h4 class="attachment-heading"><a href="http://www.lipsum.com/">La Universidad Tecnológica de Tula-Tepeji</a></h4>
+                            <h4 class="attachment-heading"><a href="http://www.uttt.edu.mx/">La Universidad Tecnológica de Tula-Tepeji</a></h4>
 
-                            <div class="attachment-text">
-                                Description about the attachment can be placed here.
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry... <a href="#">more</a>
+                            <div class="attachment-text text-justify">
+
+                                La Universidad Tecnologica de Tula-Tepeji,te da la bienvenida al sistema de curriculum digital, la cual es una herramienta
+                                digital encargada de unificar y estandarizar en formato electronico tu cv,comunicandote directamente con los reclutadores de esta casa de estudios.
+                                ¡Sin intermediarios, sin esperas!<span class="fa fa-commenting-o"></span>
+                                <a href="#">más</a>
                             </div>
                             <!-- /.attachment-text -->
                         </div>
@@ -106,122 +100,156 @@
                     </div>
                     <!-- /.attachment-block -->
                     <!-- Social sharing buttons -->
-                    <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
-                    <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
-                    <span class="pull-right text-muted">45 likes - 2 comments</span>
+                  
                 </div>
                 <!-- /.box-body -->
-                <div class="box-footer box-comments" style="">
-                    <div class="box-comment">
-                        <!-- User image -->
-                        <img class="img-circle img-sm" src="~/Imagenes/pdf_descargar.jpg" alt="User Image">
-
-                        <div class="comment-text">
-                            <span class="username">
-                                Maria Gonzales
-                                <span class="text-muted pull-right">8:03 PM Today</span>
-                            </span><!-- /.username -->
-                            It is a long established fact that a reader will be distracted
-                            by the readable content of a page when looking at its layout.
-                        </div>
-                        <!-- /.comment-text -->
-                        <button type="button" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eliminar</button>
-                        <button type="button" class="btn btn-success btn-xs"><i class="fa  fa-eye"></i>Visualizar</button>
-                    </div>
-                    <!-- /.box-comment -->
-                    <div class="box-comment">
-                        <!-- User image -->
-                        <img class="img-circle img-sm" src="~/Imagenes/pdf_descargar.jpg" alt="User Image">
-
-                        <div class="comment-text">
-                            <span class="username">
-                                Nora Havisham
-                                <span class="text-muted pull-right">8:03 PM Today</span>
-                            </span><!-- /.username -->
-                            The point of using Lorem Ipsum is that it has a more-or-less
-                            normal distribution of letters, as opposed to using
-                            'Content here, content here', making it look like readable English.
-                        </div>
-                        <!-- /.comment-text -->
-                    </div>
-                    <!-- /.box-comment -->
-                </div>
+              
                 <!-- /.box-footer -->
                 <div class="box-footer" style="">
-                    <form action="#" method="post">
-                        <img class="img-responsive img-circle img-sm" src="../dist/img/user4-128x128.jpg" alt="Alt Text">
-                        <!-- .img-push is used to add margin to elements next to floating images -->
-                        <div class="img-push">
-                            <input type="text" class="form-control input-sm" placeholder="Press enter to post comment">
-                        </div>
-                    </form>
+                  
                 </div>
                 <!-- /.box-footer -->
             </div>
             <!-- /.box -->
         </div>
     </div>
-    <!--empezamos el model como prupuesta-->
+    @*<div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <table id="myDataTablePersonal" class="table table-bordered table-hover table-responsive">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido Paterno</th>
+                        <th>Fecha de Cita</th>
+                        <th>Total</th>
+                        <th>Identificador</th>
+
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>*@
     
+    <!--empezamos el model como prupuesta-->
     <!-- /.modal -->
 </section>
 <div class="modal modal-default fade" id="modal-default" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="background-color:#3C8DBC;color:white;">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
                 <h4 class="modal-title">Modificar Datos Personales</h4>
             </div>
             <div class="modal-body">
-                <form id="myform">
-                    @Html.HiddenFor(m => m.idPersonal)
-                    <div class="form-horizontal">
-                        <div class="form-group">
-                            <label for="etNombre">Nombre:</label>
-                            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @placeholder = "Nombre" })
+                <div class="container">
+                    <div class="row justify-content-start">
+                        <div class="col-xs-4  col-sm-4 col-md-4 col-lg-4">
+                            <form id="myform">
+                                @Html.HiddenFor(m => m.idPersonal)
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="etNombre">Nombre:</label>
+                                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @placeholder = "Nombre" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="etNombre">Apellido Paterno:</label>
+                                        @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control", @placeholder = "Apellido Paterno" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="etNombre">Apellido Materno:</label>
+                                        @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control", @placeholder = "Apellido Materno" })
+                                    </div>
+
+                                </div>
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <label for="etNombre">Apellido Paterno:</label>
-                            @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control", @placeholder = "Apellido Paterno" })
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <img src="~/Imagenes/escudo_uttt.jpg" alt="imgEscudo" class="img-responsive" width="120" height="140" />
                         </div>
-                        <div class="form-group">
-                            <label for="etNombre">Apellido Materno:</label>
-                            @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control", @placeholder = "Apellido Materno" })
-                        </div>
-                        <div class="form-group">
-                            <a href="#" id="btnSubmit" class="btn btn-success">
-                                @if (Model.idPersonal > 0)
-                                {
-                                    <span>Actualizar</span>}
-                                else
-                                {<span>Guardar</span>}
-                        </a>
                     </div>
                 </div>
-                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Actualizar</button>
+                <a href="#" id="btnSubmit" class="btn btn-success">
+                    @if (Model.idPersonal > 0)
+                    {<span>Actualizar</span>}
+                    else
+                    {<span>Guardar</span>}
+                </a>
+                @*<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Actualizar</button>*@
             </div>
         </div>
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
 </div>
+
+
+<script src="~/Content/js/plugins/jquery/jquery-3.3.1.min.js"></script>
+
+
 <script>
 
+
     //esta función se encarga de procesar los datos para editar al personal
-    var EditPersonal=function(personalId){
+    var EditPersonal = function (personalId) {
 
-        var url = "/Personal/EditarDatosPersonales?idPersonal=" + personalId;
-
-        $("#modal-default").load(url,function(){
-            $("#modal-default").modal("show");
-
-        })
-
+        $("#modal-default").modal("show");
+        
     }
-</script>
+
+    $(document).ready(function () {
+        ////$.noConflict();
+        //$('#myDataTablePersonal').DataTable({
+        //        "language": {
+
+        //            "sProcessing": "Procesando...",
+        //            "sLengthMenu": "Mostrar _MENU_ registros",
+        //            "sZeroRecords": "No se encontraron resultados",
+        //            "sEmptyTable": "Ningún dato disponible en esta tabla",
+        //            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        //            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+        //            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+        //            "sInfoPostFix": "",
+        //            "sSearch": "Buscar:",
+        //            "sUrl": "",
+        //            "sInfoThousands": ",",
+        //            "sLoadingRecords": "Cargando...",
+        //            "oPaginate": {
+        //                "sFirst": "Primero",
+        //                "sLast": "Último",
+        //                "sNext": "Siguiente",
+        //                "sPrevious": "Anterior"
+        //            },
+        //            "oAria": {
+        //                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+        //                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        //            }
+        //        },
+        //        "ajax": {
+        //            "url": '/Personal/ConsultarDatosPersonal/',
+        //            "type": "get",
+        //            "datatype": "json"
+        //        },
+        //        "columns": [
+        //            { "data": "Nombre", "autoWidth": true },
+        //            { "data": "ApellidoPaterno", "autoWidth": true },
+        //            { "data": "ApellidoMaterno", "autoWidth": true },
+        //            { "data": "Curp", "autoWidth": true },
+        //            { "data": "Rfc", "autoWidth": true },
+        //            { "data": "idPersonal", "autoWidth": true },
+        //            { "data": "strUrlRfc", "autoWidth": true }
+
+        //        ]
+
+
+        //    });
+        
+
+
+        });
+    </script>
+

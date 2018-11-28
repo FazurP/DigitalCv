@@ -12,22 +12,21 @@ namespace AppDigitalCv.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class catColonia
+    public partial class CatColonia
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public catColonia()
+        public CatColonia()
         {
             this.catDireccion = new HashSet<catDireccion>();
         }
     
-        public int idColonia { get; set; }
-        public string strDescripcion { get; set; }
-        public string strObservacion { get; set; }
+        public int id { get; set; }
+        public string strValor { get; set; }
         public int intCp { get; set; }
-        public int idMunicipio { get; set; }
+        public Nullable<int> idMunicipio { get; set; }
     
+        public virtual CatMunicipio CatMunicipio { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<catDireccion> catDireccion { get; set; }
-        public virtual catMunicipio catMunicipio { get; set; }
     }
 }
