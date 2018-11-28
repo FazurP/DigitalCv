@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AccountDomainModel.cs" />
     <Compile Include="ColoniaDomainModel.cs" />
+    <Compile Include="DatosContactoDomainModel.cs" />
     <Compile Include="DireccionDomainModel.cs" />
     <Compile Include="DocumentoPersonalDomainModel.cs" />
     <Compile Include="EstadoDomainModel.cs" />

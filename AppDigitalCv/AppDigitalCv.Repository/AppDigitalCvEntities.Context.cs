@@ -25,6 +25,8 @@ namespace AppDigitalCv.Repository
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<tblDatosContacto> tblDatosContacto { get; set; }
+        public virtual DbSet<tblTelefono> tblTelefono { get; set; }
         public virtual DbSet<catAlergias> catAlergias { get; set; }
         public virtual DbSet<catArea> catArea { get; set; }
         public virtual DbSet<catAsociaciones> catAsociaciones { get; set; }
@@ -64,7 +66,6 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<tblAlergiasPersonal> tblAlergiasPersonal { get; set; }
         public virtual DbSet<tblCompetenciasConocimientosPersonal> tblCompetenciasConocimientosPersonal { get; set; }
         public virtual DbSet<tblCompetenciasTIPersonal> tblCompetenciasTIPersonal { get; set; }
-        public virtual DbSet<tblDatosContacto> tblDatosContacto { get; set; }
         public virtual DbSet<tblDatosLaboralesAdministrativos> tblDatosLaboralesAdministrativos { get; set; }
         public virtual DbSet<tblDatosLaboralesDocente> tblDatosLaboralesDocente { get; set; }
         public virtual DbSet<tblDeportePersonal> tblDeportePersonal { get; set; }
@@ -76,7 +77,6 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<tblPersonal> tblPersonal { get; set; }
         public virtual DbSet<tblPersonalAsociaciones> tblPersonalAsociaciones { get; set; }
         public virtual DbSet<tblPremiosDocente> tblPremiosDocente { get; set; }
-        public virtual DbSet<tblTelefono> tblTelefono { get; set; }
         public virtual DbSet<tblUsuarioRol> tblUsuarioRol { get; set; }
     }
 }

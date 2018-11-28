@@ -381,6 +381,7 @@
     <Content Include="Views\Shared\_Colonias.cshtml" />
     <Content Include="Views\Shared\_Estados.cshtml" />
     <Content Include="Views\Shared\_Municipios.cshtml" />
+    <Content Include="Views\DatosContacto\EditarDatosContacto.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

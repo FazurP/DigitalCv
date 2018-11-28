@@ -173,6 +173,7 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="ColoniaRepository.cs" />
+    <Compile Include="DatosContactoRepository.cs" />
     <Compile Include="DireccionRepository.cs" />
     <Compile Include="EstadoRepository.cs" />
     <Compile Include="Infraestructure\BaseRepository.cs" />
@@ -237,6 +238,7 @@
     <Compile Include="tblUsuarioRol.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="TelefonoRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="AppDigitalCvEntities.edmx">

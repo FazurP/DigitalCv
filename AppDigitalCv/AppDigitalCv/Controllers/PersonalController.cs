@@ -59,7 +59,7 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult InfoPersonal()
         {
-            int idPersonal = 4; ///este es un parametro temporal
+            int idPersonal = 1; ///este es un parametro temporal
             //creamos el objeto que representara los datos en la vista
             PersonalVM personalVM = new PersonalVM();
             //obtenemos el objeto del modelo de dominio
@@ -105,7 +105,7 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult EditarDatosPersonales()
         {
-            int idPersonal=4;
+            int idPersonal=1;
             PersonalDomainModel personalDM = IPersonalBussines.GetPersonalById(idPersonal);
             PersonalVM personalVM = new PersonalVM();
             AutoMapper.Mapper.Map(personalDM, personalVM);///hacemos el mapeado de la entidad
@@ -154,7 +154,7 @@ namespace AppDigitalCv.Controllers
 
         public JsonResult ConsultarDatosPersonal()
         {
-            var personal = IPersonalBussines.GetEmpleadoDocumentos(4);
+            var personal = IPersonalBussines.GetEmpleadoDocumentos(1);////////////////////////modificacion temporal
             return Json(personal, JsonRequestBehavior.AllowGet);
         }
         #endregion

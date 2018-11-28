@@ -1,26 +1,112 @@
-﻿
+﻿@model AppDigitalCv.ViewModels.DatosContactoVM
 @{
+    /**/
+
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using (Html.BeginForm("Create", "DatosContacto"))
+{
+    @Html.AntiForgeryToken()
 
-<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-    <div class="box box-success">
-        <div class="box-header with-border">
-            <h3 class="box-title">Collapsable</h3>
+    <div class="bs-container content" style="min-height:960px;">
+        <section class="content-header">
+            <h1>
+                Agregar Datos de Contactos
+                <small>(Agregar)</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
+                <li> <a href="#"> Datos</a></li>
+                <li class="active"> Datos del Contacto </li>
+            </ol>
+        </section>
+        <br />
+        <div class="row">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h5 class="box-title">
+                            <label class="text-green"><i class="text-green fa fa-heartbeat"></i> Erik Guerrero Bravo </label>
+                        </h5>
 
-            <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                    <i class="fa fa-minus"></i>
-                </button>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body" style="">
+                        <div role="form">
+                            <div class="form-group">
+                                <div class="form-group ">
+                                    <label>Telefono Celular:</label>
+                                    @Html.TextBoxFor(model => model.TelefonoCelular, new { @class = "form-control input-sm", placeholder = "Tu Número Celular"})
+                                    @Html.ValidationMessageFor(model => model.TelefonoCelular, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group ">
+                                    <label>Telefono Casa:</label>
+                                    @Html.TextBoxFor(model => model.TelefonoCasa, new { @class = "form-control input-sm", placeholder = "Tu Número Casa" })
+                                    @Html.ValidationMessageFor(model => model.TelefonoCasa, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group ">
+                                    <label>Telefono de Recados:</label>
+                                    @Html.TextBoxFor(model => model.TelefonoRecados, new { @class = "form-control input-sm", placeholder = "Tu Númer para Recados" })
+                                    @Html.ValidationMessageFor(model => model.TelefonoRecados, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group ">
+                                    <label>E-mail Institucional:</label>
+                                    @Html.TextBoxFor(model => model.MailInstitucional, new { @class = "form-control input-sm", placeholder = "Tu email institucional"})
+                                    @Html.ValidationMessageFor(model => model.MailInstitucional, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group ">
+                                    <label>E-mail Personal:</label>
+                                    @Html.TextBoxFor(model => model.MailPersonal, new { @class = "form-control input-sm", placeholder = "Tu email personal" })
+                                    @Html.ValidationMessageFor(model => model.MailPersonal, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group ">
+                                    <label>Nombre de Usuario en Facebook:</label>
+                                    @Html.TextBoxFor(model => model.NombreFacebook, new { @class = "form-control input-sm", placeholder = "Tu usuario en Facebook" })
+                                    @Html.ValidationMessageFor(model => model.NombreFacebook, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group ">
+                                    <label>Nombre de Usuario en Twitter:</label>
+                                    @Html.TextBoxFor(model => model.NombreTwitter, new { @class = "form-control input-sm", placeholder = "Tu usuario en Twitter" })
+                                    @Html.ValidationMessageFor(model => model.NombreTwitter, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Guardar" class="btn btn-primary" id="btnGuardar" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <div>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
             </div>
-            <!-- /.box-tools -->
         </div>
-        <!-- /.box-header -->
-        <div class="box-body" style="">
-            The body of the box
-        </div>
-        <!-- /.box-body -->
     </div>
-</div>
 
+
+}
+<link href="~/Content/toastr.min.css" rel="stylesheet" />
+@section scripts
+{
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#btnGuardar1').click(function () {
+                event.preventDefault();
+                toastr.success("La información fue Agregada Correctamente");
+            });
+
+        });
+    </script>
+}

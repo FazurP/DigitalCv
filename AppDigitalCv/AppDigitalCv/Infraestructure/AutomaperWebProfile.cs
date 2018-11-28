@@ -43,6 +43,10 @@ namespace AppDigitalCv.Infraestructure
             //Colonia
             CreateMap<ColoniaDomainModel, ColoniaVM>();
             CreateMap<ColoniaVM, ColoniaDomainModel>();
+
+            //Datos contacto
+            CreateMap<DatosContactoVM, DatosContactoDomainModel>();
+            CreateMap<DatosContactoDomainModel, DatosContactoVM>();
         }
 
 
