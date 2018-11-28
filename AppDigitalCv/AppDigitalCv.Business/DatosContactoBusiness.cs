@@ -78,26 +78,31 @@ namespace AppDigitalCv.Business
         /// </summary>
         /// <param name="idPersonal">recibe el identificador de una persona</param>
         /// <returns>regresa una entidad del tipo DatosContactoDomainModel</returns>
-        public DatosContactoDomainModel GetDatosDeContacto(int idPersonal)
+        public List<DatosContactoDomainModel> GetDatosDeContacto(int idPersonal)
         {
             Expression<Func<tblDatosContacto, bool>> predicado = p => p.idPersonal.Equals(idPersonal);
-            DatosContactoDomainModel datosContactoDM = new DatosContactoDomainModel();
-            tblDatosContacto TblDatosContacto = datosContactoRepository.SingleOrDefault(predicado);
-            datosContactoDM.IdDatosContacto = TblDatosContacto.idDatosContacto;
-            datosContactoDM.IdPersonal = TblDatosContacto.idPersonal;
-            datosContactoDM.MailInstitucional = TblDatosContacto.strEmailPersonal2;
-            datosContactoDM.MailPersonal = TblDatosContacto.strEmailPersonal1;
-            datosContactoDM.NombreFacebook = TblDatosContacto.strNombreFacebook;
-            datosContactoDM.NombreTwitter = TblDatosContacto.strNombreTwitter;
-            foreach (tblTelefono t in TblDatosContacto.tblPersonal.tblTelefono)
+            List<DatosContactoDomainModel> listaDatosContacto = new List<DatosContactoDomainModel>();
+            /////////tblDatosContacto TblDatosContacto = datosContactoRepository.SingleOrDefault(predicado);
+            List<tblDatosContacto> TblDatosContacto =   datosContactoRepository.GetAll(predicado).ToList();
+            foreach(tblDatosContacto  lista in TblDatosContacto)
             {
-                datosContactoDM.TelefonoCelular = t.strTelefonoCelular;
-                datosContactoDM.TelefonoCasa = t.strTelefonoCasa;
-                datosContactoDM.TelefonoRecados = t.strTelefonoRecados;
-                datosContactoDM.IdTelefono = t.idTelefono;
+                DatosContactoDomainModel datosContactoDM = new DatosContactoDomainModel();
+                datosContactoDM.IdDatosContacto = lista.idDatosContacto;
+                datosContactoDM.IdPersonal = lista.idPersonal;
+                datosContactoDM.MailInstitucional = lista.strEmailPersonal2;
+                datosContactoDM.MailPersonal = lista.strEmailPersonal1;
+                datosContactoDM.NombreFacebook = lista.strNombreFacebook;
+                datosContactoDM.NombreTwitter = lista.strNombreTwitter;
+                foreach (tblTelefono t in lista.tblPersonal.tblTelefono)
+                {
+                    datosContactoDM.TelefonoCelular = t.strTelefonoCelular;
+                    datosContactoDM.TelefonoCasa = t.strTelefonoCasa;
+                    datosContactoDM.TelefonoRecados = t.strTelefonoRecados;
+                    datosContactoDM.IdTelefono = t.idTelefono;
+                }
+                listaDatosContacto.Add(datosContactoDM);
             }
-            
-            return datosContactoDM;
+          return listaDatosContacto;
         }
 
     }

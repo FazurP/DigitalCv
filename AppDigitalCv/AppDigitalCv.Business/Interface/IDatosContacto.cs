@@ -20,6 +20,6 @@ namespace AppDigitalCv.Business.Interface
         /// </summary>
         /// <param name="idPersonal">recibe un int que es el identificador del personal</param>
         /// <returns>regresa una entidad de tipo DatosContactoDomainModel</returns>
-         DatosContactoDomainModel GetDatosDeContacto(int idPersonal);
+        List<DatosContactoDomainModel> GetDatosDeContacto(int idPersonal);
     }
 }
