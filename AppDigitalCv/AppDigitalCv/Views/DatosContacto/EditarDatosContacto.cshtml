@@ -1,4 +1,4 @@
-﻿
+﻿@using AppDigitalCv.Security
 @{
     ViewBag.Title = "EditarDatosContacto";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -25,7 +25,9 @@
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <h5 class="box-title">
-                            <label class="text-success"><i class="text-success fa fa-heartbeat"></i> Erik Guerrero Bravo </label>
+                            <label class="text-success"><i class="text-success fa fa-heartbeat"></i>
+                            @SessionPersister.AccountSession.Email
+                            </label>
                         </h5>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -55,6 +57,22 @@
                 </div>
             </div>
         </div>
+
+        <!--ponemos el modal aqui-->
+        <div class="modal fade" id="myModalEdit">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h5 class="modal-title">Editar</h5>
+                    </div>
+                    <div class="modal-body" id="myModalBodyDiv">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="hiddenIdPersonal" />
     </div>
 
 }
@@ -72,6 +90,7 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     
     <script>
+
         $(document).ready(function () {
 
             $('#myDataTableDatosContacto').DataTable({
@@ -107,7 +126,7 @@
                     "dataSrc": ""
                 },
                 "columns": [
-                    
+
                     { "data": "MailPersonal" },
                     { "data": "MailInstitucional" },
                     { "data": "NombreFacebook" },
@@ -116,14 +135,30 @@
                     { "data": "TelefonoCelular" },
                     { "data": "TelefonoRecados" },
                     {
-                        "data": "IdDatosContacto",
-                        "render": function (IdDatosContacto, type, full, meta) {
+                        "data": "IdPersonal",
+                        "render": function (idPersonal, type, full, meta) {
                             debugger
-                            return '<a href="#" onclick="AddEditDatosContacto(' + IdDatosContacto +')"><i class="glyphicon glyphicon-pencil"></i></a>'
+                            return '<a href="#" onclick="AddEditDatosContacto(' + idPersonal + ')"><i class="glyphicon glyphicon-pencil"></i></a>'
                         }
-                    }
+                    },
                 ]
             });
+
+            var AddEditDatosContacto = function(idPersonal) {
+                var url = "/DatosContacto/AddEditDatosContacto?idPersonal=" + idPersonal;
+                $("#myModalBodyDiv").load(url, function () {
+                    $("#myModalEdit").modal("show");
+                });
+            };
+
+            //var AddEditDatosContacto=function(idPersonal) {
+                
+            //    var url="/DatosContacto/AddEditDatosContacto?idPersonal="+idPersonal;
+            //    $("#myModalBodyDiv").load(url,function(){
+            //        $("#myModalEdit").modal("show");
+            //    })
+            //};
+
 
         });
     </script>

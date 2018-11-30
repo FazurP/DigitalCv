@@ -59,6 +59,39 @@ namespace AppDigitalCv.Controllers
         }
 
 
+        [HttpPost]
+        public ActionResult EditarDatosContacto([Bind(Include = "MailPersonal,MailInstitucional,NombreFacebook,NombreTwitter,TelefonoCasa,TelefonoCelular,TelefonoRecados,IdPersonal")]DatosContactoVM datosContactoVM)
+        {
+            if (ModelState.IsValid) //validamos que el modelo sea valido
+            {
+                if (datosContactoVM.IdPersonal > 0) //validamos que el idPersonal sea mayor a 0
+                {
+                    if (this.AddEditDatosContacto(datosContactoVM))
+                    {
+                        return View("EditarDatosContacto");
+                    }
+                }
+            }
+            return RedirectToAction("InternalServerError", "Error");
+        }
+
+        //voy allamar a esta vista cuando el usuario de click en la tabla
+        public ActionResult AddEditDatosContacto(int idPersonal) 
+        {
+            DatosContactoVM datosContactoVM = new DatosContactoVM();
+            //creamos el objeto del dominio
+            DatosContactoDomainModel datosContactoDM = new DatosContactoDomainModel();
+            if (idPersonal > 0)
+            {
+                datosContactoDM = IdatosContacto.GetDatosContacto(1);
+
+            }
+            AutoMapper.Mapper.Map(datosContactoDM, datosContactoVM);
+            return PartialView("_Editar", datosContactoVM);
+        }
+
+
+
         #region Agregar o Editar una entidad
 
         public bool AddEditDatosContacto(DatosContactoVM datosContactoVM)

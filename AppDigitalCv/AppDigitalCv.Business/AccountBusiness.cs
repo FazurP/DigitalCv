@@ -38,12 +38,19 @@ namespace AppDigitalCv.Business
         {
             Expression<Func<catUsuarios, bool>> predicado = p => p.strEmailInstitucional == AccountDomain.Email && p.strPassword == AccountDomain.Password;
             catUsuarios catUsuarios= accountRepository.SingleOrDefault(predicado);
-            AccountDomainModel account = new AccountDomainModel();
-            account.IdUsuario = catUsuarios.idUsuario;
-            account.Email = catUsuarios.strEmailInstitucional;
-            account.Password = catUsuarios.strPassword;
-            account.Nombre = catUsuarios.strNombrUsuario; ///representara el nombre del usuario
-            return account;
+            if (catUsuarios != null)
+            {
+                AccountDomainModel account = new AccountDomainModel();
+                account.IdUsuario = catUsuarios.idUsuario;
+                account.Email = catUsuarios.strEmailInstitucional;
+                account.Password = catUsuarios.strPassword;
+                account.Nombre = catUsuarios.strNombrUsuario; ///representara el nombre del usuario
+                return account;
+            }
+            else
+            {
+                return null;
+            }
         }
 
     }
