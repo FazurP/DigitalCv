@@ -105,5 +105,32 @@ namespace AppDigitalCv.Business
           return listaDatosContacto;
         }
 
+        /// <summary>
+        /// este metodo se encarga de consultar los datos de contacto a una tabla
+        /// </summary>
+        /// <param name="idPersonal">recibe el identificador del personal</param>
+        /// <returns>una entidad del tipo datoscontactodomainmodel</returns>
+        public DatosContactoDomainModel GetDatosContacto(int idPersonal)
+        {
+            Expression<Func<tblDatosContacto, bool>> predicado = p => p.idPersonal.Equals(idPersonal);
+            tblDatosContacto tblDatosContacto = datosContactoRepository.SingleOrDefault(predicado);
+            DatosContactoDomainModel datosContactoDM = new DatosContactoDomainModel();
+            datosContactoDM.IdDatosContacto = tblDatosContacto.idDatosContacto;
+            datosContactoDM.IdPersonal = tblDatosContacto.idPersonal;
+            datosContactoDM.MailInstitucional = tblDatosContacto.strEmailPersonal2;
+            datosContactoDM.MailPersonal = tblDatosContacto.strEmailPersonal1;
+            datosContactoDM.NombreFacebook = tblDatosContacto.strNombreFacebook;
+            datosContactoDM.NombreTwitter = tblDatosContacto.strNombreTwitter;
+            foreach (tblTelefono t in tblDatosContacto.tblPersonal.tblTelefono)
+            {
+                datosContactoDM.TelefonoCasa = t.strTelefonoCasa;
+                datosContactoDM.TelefonoCelular = t.strTelefonoCelular;
+                datosContactoDM.TelefonoRecados = t.strTelefonoRecados;
+                datosContactoDM.IdTelefono = t.idTelefono;
+            }
+            return datosContactoDM;
+        }
+
+
     }
 }

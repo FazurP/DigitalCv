@@ -120,4 +120,7 @@
   <data name="INGRESAR_NOMBRE" xml:space="preserve">
     <value>Ingresa el Nombre.</value>
   </data>
+  <data name="USUARIO_INEXISTENTE" xml:space="preserve">
+    <value>El Usuario No Existe.</value>
+  </data>
 </root>
