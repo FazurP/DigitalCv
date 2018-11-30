@@ -47,6 +47,10 @@ namespace AppDigitalCv.Infraestructure
             //Datos contacto
             CreateMap<DatosContactoVM, DatosContactoDomainModel>();
             CreateMap<DatosContactoDomainModel, DatosContactoVM>();
+
+            //Estado Civil
+            CreateMap<EstadoCivilVM, EstadoCivilDomainModel>();
+            CreateMap<EstadoCivilDomainModel, EstadoCivilVM>();
         }
 
 

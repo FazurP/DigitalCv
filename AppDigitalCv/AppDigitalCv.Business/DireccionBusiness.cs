@@ -44,7 +44,7 @@ namespace AppDigitalCv.Business
             paises = paisRepository.GetAll().Select(p => new PaisDomainModel { IdPais = p.id, StrValor = p.strValor }).ToList();
             PaisDomainModel inicial = new PaisDomainModel();
             inicial.IdPais = 0;
-            inicial.StrValor = "Seleccionar";
+            inicial.StrValor = "-- Seleccionar --";
             paises.Insert(0, inicial);
             return paises;
         }
@@ -186,5 +186,32 @@ namespace AppDigitalCv.Business
             }
             return respuesta;
         }
+
+        /// <summary>
+        /// Metodo que se encarga de obtener los datos de la direccion
+        /// </summary>
+        /// <param name="idPersona"> Pide el parametro del id de persona </param>
+        /// <returns> Regresa una lista con los datos de direccion </returns>
+        public List<DireccionDomainModel> GetDatosDireccion(int idPersona)
+        {
+            //falta de id de la persona con la tabla
+            List<catDireccion> direccion = null;
+            Expression<Func<catDireccion, bool>> predicado = p => p.tblPersonal.Equals(idPersona);
+            List<DireccionDomainModel> listaDireccion = new List<DireccionDomainModel>();
+            direccion = direccionRepository.GetAll(predicado).ToList();
+
+            foreach (catDireccion cat in direccion)
+            {
+                DireccionDomainModel direccionDM = new DireccionDomainModel();
+                direccionDM.IdDireccion = cat.idDireccion;
+                direccionDM.StrCalle = cat.strCalle;
+                direccionDM.StrNumeroExterior = cat.strNumeroExterior;
+                direccionDM.StrNumeroInterior = cat.strNumeroInterior;
+                direccionDM.IdColonia = cat.idColonia;
+                listaDireccion.Add(direccionDM);
+            }
+            return listaDireccion;   
+        } 
+
     }
 }

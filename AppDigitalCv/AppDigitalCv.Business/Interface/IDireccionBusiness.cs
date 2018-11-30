@@ -41,8 +41,15 @@ namespace AppDigitalCv.Business.Interface
         /// <summary>
         /// Metodo para actualizar e insertar una direccion
         /// </summary>
-        /// <param name="direccionDM"> Pide un obvjeto de direccion de domain model </param>
+        /// <param name="direccionDM"> Pide un objeto de direccion de domain model </param>
         /// <returns> Regresa un valor booleano </returns>
         bool AddUpdateDireccion(DireccionDomainModel direccionDM);
+        /// <summary>
+        /// Metodo encargado de obtener los datos de una direccion
+        /// </summary>
+        /// <param name="idPersona"> Pide el Id de personal </param>
+        /// <returns> Regresa uan  lista de domain model </returns>
+        List<DireccionDomainModel> GetDatosDireccion(int idPersona);
+
     }
 }
