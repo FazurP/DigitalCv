@@ -1,0 +1,37 @@
+﻿@model AppDigitalCv.ViewModels.DatosContactoVM
+
+
+<div>
+    <form id="myForm">
+        @Html.HiddenFor(model=>model.IdPersonal )
+        @Html.TextBoxFor(model => model.MailInstitucional, new { @class="form-control input-sm", @placeholder ="email institucional"})
+        @Html.TextBoxFor(model => model.MailPersonal,new { @class = "form-control input-sm", @placeholder = "email personal" })
+        @Html.TextBoxFor(model => model.NombreFacebook, new { @class = "form-control input-sm", @placeholder = "usuario en facebook" })
+        @Html.TextBoxFor(model=> model.NombreTwitter,new { @class = "form-control input-sm", @placeholder = "usuario en twitter" })
+        @Html.TextBoxFor(model=> model.TelefonoCasa,new { @class = "form-control input-sm", @placeholder = "Telefono de Casa" })
+        @Html.TextBoxFor(model=> model.TelefonoCelular,new { @class = "form-control input-sm", @placeholder = "Telefono Celular" })
+        @Html.TextBoxFor(model=>model.TelefonoRecados,new { @class = "form-control input-sm", @placeholder = "Telefono de Recados" })
+        <a href="#" id="btnSubmit" class="btn btn-success"><span class="fa fa-edit">Actualizar</span></a>
+    </form>
+
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#btnSubmit").click(function () {
+
+            //serialización del formaulario
+            var myformdata = $("#myForm").serialize();
+            $.ajax({
+                type: "POST",
+                url: "/DatosContacto/EditarDatosContacto",
+                data: myformdata,
+                success: function () {
+                    $("#myModalEdit").modal("hide");
+                    window.location.href = "/DatosContacto/EditarDatosContacto";
+                }
+            })
+        });
+    });
+</script>

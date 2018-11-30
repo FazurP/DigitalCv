@@ -51,12 +51,16 @@ namespace AppDigitalCv.Controllers
             if(!string.IsNullOrEmpty(accountViewModel.Email) && !string.IsNullOrEmpty(accountViewModel.Password))
             {
                 accountDomainModel = IAccountBusiness.ValidarLogin(accountDomainModel);
-                if (accountDomainModel  != null)
+                if (accountDomainModel != null)
                 {
                     AccountViewModel viewAccount = new AccountViewModel();
-                    AutoMapper.Mapper.Map(accountDomainModel,viewAccount);
+                    AutoMapper.Mapper.Map(accountDomainModel, viewAccount);
                     SessionPersister.AccountSession = viewAccount;
-                    return View();
+                    return RedirectToAction("Create", "Personal");
+                }
+                else
+                {
+                    ViewBag.Validar = Recursos.RecursosSistema.USUARIO_INEXISTENTE;
                 }
             }
             return View();

@@ -68,5 +68,14 @@ namespace AppDigitalCv.Recursos {
                 return ResourceManager.GetString("INGRESAR_NOMBRE", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El Usuario No Existe..
+        /// </summary>
+        internal static string USUARIO_INEXISTENTE {
+            get {
+                return ResourceManager.GetString("USUARIO_INEXISTENTE", resourceCulture);
+            }
+        }
     }
 }
