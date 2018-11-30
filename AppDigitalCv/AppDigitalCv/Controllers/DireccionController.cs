@@ -25,6 +25,12 @@ namespace AppDigitalCv.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult EditarDatosDireccion()
+        {
+            return View();
+        }
+
         /// <summary>
         /// Metodo para inicializar y llenbar los view bag 
         /// </summary>
@@ -126,5 +132,16 @@ namespace AppDigitalCv.Controllers
         }
 
         #endregion
+
+        #region Consultar Datos de Direccion
+
+        public JsonResult ConsultarDatosDireccion()
+        {
+            var datosDireccion = IdireccionBusiness.GetDatosDireccion(3); //////////////modificacion temporal
+            return Json(datosDireccion, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
+
     }
 }

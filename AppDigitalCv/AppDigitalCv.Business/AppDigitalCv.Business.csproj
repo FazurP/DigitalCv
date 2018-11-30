@@ -49,10 +49,12 @@
     <Compile Include="DatosContactoBusiness.cs" />
     <Compile Include="DireccionBusiness.cs" />
     <Compile Include="EstadoBusiness.cs" />
+    <Compile Include="EstadoCivilBusiness.cs" />
     <Compile Include="Interface\IAccountBusiness.cs" />
     <Compile Include="Interface\IDatosContacto.cs" />
     <Compile Include="Interface\IDireccionBusiness.cs" />
     <Compile Include="Interface\IEstadoBusiness.cs" />
+    <Compile Include="Interface\IEstadoCivilBusiness.cs" />
     <Compile Include="Interface\IPaisBusiness.cs" />
     <Compile Include="Interface\IPersonalBusiness.cs" />
     <Compile Include="Interface\ITelefono.cs" />

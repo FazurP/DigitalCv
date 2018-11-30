@@ -16,7 +16,7 @@ namespace AppDigitalCv.Business.Interface
         /// <returns>regresa un valor booleano</returns>
          bool AddUpdateDatosContacto(DatosContactoDomainModel datosContactoDM);
         /// <summary>
-        /// Este metodo se encarga de obtener los datos de conatcto de una persona
+        /// Este metodo se encarga de obtener los datos de contacto de una persona
         /// </summary>
         /// <param name="idPersonal">recibe un int que es el identificador del personal</param>
         /// <returns>regresa una entidad de tipo DatosContactoDomainModel</returns>
