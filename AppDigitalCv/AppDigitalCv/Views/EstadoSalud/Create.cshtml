@@ -8,7 +8,7 @@
 }
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "myForm", id = "myForm" }))
 {
     @Html.AntiForgeryToken()
     <div class="bs-container content" style="min-height:960px;">
@@ -44,8 +44,10 @@
                         <div class="form-inline">
                             <div class="form-group">
                                 Padece Alguna (s) Enfermedad Crónica?
-                                <input type="radio" id="rdbSi" name="si" value="SI" class="custom-control-input"><label for="si">SI</label>
-                                <input type="radio" id="rdbNo" name="si" value="NO" class="custom-control-input"><label for="no">NO</label>
+
+                                <input type="radio" id="rdbSi" name="seleccion" value="SI " class="custom-control-input"><label for="si">SI</label>
+                                <input type="radio" id="rdbNo" name="seleccion" value="NO" class="custom-control-input" checked><label for="no">NO</label>
+                                <input type="submit" id="enviar" value="Enviar" />
                             </div>
                         </div>
                     </div>
@@ -57,19 +59,51 @@
 
 <link href="~/Content/toastr.min.css" rel="stylesheet" />
 @section scripts{
-    @*<script src="~/Content/js/plugins/jquery/jquery.min.js"></script>*@
+
+    <script src="~/Content/js/plugins/jquery/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
     <script>
         $(document).ready(function () {
-            debugger
-            $('input[type=radio][name=rdbSi]').change(function ()
-            {
-                if ($('#rdbSi').is(":checked"))
-                {
-                    toastr.success("Cambio el Radio");
-                }
-            });
+
+            $('#myForm input').on('change', function () {
+                //alert($('input[name=si]:checked', '#myForm').val());
             
+                var valor = $('input[name=seleccion]:checked', '#myForm').val();
+               
+                if (valor.trim() === "SI") {
+                    toastr.success("Listo Ya entramos");
+                }
+                if (valor.trim() === "NO") {
+                    toastr.error("Listo ya entro en el NO");
+                }
+                    
+                
+            });
+
+
+            
+
+            //
+            //$('input[type=radio][name=rdbSi]').change(function ()
+            //{
+            //    $.ajax({
+            //        async: true,
+            //        url: '/EstadoSalud/Index',
+            //        contentType: 'application/json;charset=utf-8',
+            //        data:'', //'{idPersonal:' + JSON.stringify(idPersonal) + '}',
+            //        method: 'post',
+            //        dataType: 'json',
+            //        success: function (data) {
+            //            toastr.success("La información fue Eliminada Correctamente");
+            //           // $('#tagCurp').remove();
+            //           // $('#tagAddDocumentos').show();
+            //        },
+            //        error: function (err) {
+            //            toastr.error('Error No se pudo eliminar el archivo correctamente');
+            //        }
+            //    });
+            //});
+
         });
     </script>
 }
