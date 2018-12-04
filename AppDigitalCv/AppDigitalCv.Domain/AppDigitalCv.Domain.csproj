@@ -46,6 +46,7 @@
     <Compile Include="DatosContactoDomainModel.cs" />
     <Compile Include="DireccionDomainModel.cs" />
     <Compile Include="DocumentoPersonalDomainModel.cs" />
+    <Compile Include="EnfermedadDomainModel.cs" />
     <Compile Include="EstadoCivilDomainModel.cs" />
     <Compile Include="EstadoDomainModel.cs" />
     <Compile Include="IdiomaDialectoRepository.cs" />

@@ -48,11 +48,13 @@
     <Compile Include="AccountBusiness.cs" />
     <Compile Include="DatosContactoBusiness.cs" />
     <Compile Include="DireccionBusiness.cs" />
+    <Compile Include="EnfermedadBusiness.cs" />
     <Compile Include="EstadoBusiness.cs" />
     <Compile Include="EstadoCivilBusiness.cs" />
     <Compile Include="Interface\IAccountBusiness.cs" />
     <Compile Include="Interface\IDatosContacto.cs" />
     <Compile Include="Interface\IDireccionBusiness.cs" />
+    <Compile Include="Interface\IEnfermedadBusiness.cs" />
     <Compile Include="Interface\IEstadoBusiness.cs" />
     <Compile Include="Interface\IEstadoCivilBusiness.cs" />
     <Compile Include="Interface\IPaisBusiness.cs" />

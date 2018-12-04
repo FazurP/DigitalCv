@@ -386,15 +386,12 @@
     <Content Include="Views\Shared\_Estados.cshtml" />
     <Content Include="Views\Shared\_Municipios.cshtml" />
     <Content Include="Views\DatosContacto\EditarDatosContacto.cshtml" />
-
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Views\Direccion\EditarDatosDireccion.cshtml" />
     <Content Include="Views\EstadoCivil\Create.cshtml" />
-
     <Content Include="Views\DatosContacto\_Editar.cshtml" />
     <Content Include="Views\EstadoSalud\Create.cshtml" />
-
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -407,11 +404,8 @@
     <Compile Include="Controllers\DatosContactoController.cs" />
     <Compile Include="Controllers\DireccionController.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />
-
     <Compile Include="Controllers\EstadoCivilController.cs" />
-
     <Compile Include="Controllers\EstadoSaludController.cs" />
-
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Infraestructure\AutomaperWebProfile.cs" />
@@ -433,11 +427,8 @@
     <Compile Include="ViewModels\DatosContactoVM.cs" />
     <Compile Include="ViewModels\DireccionVM.cs" />
     <Compile Include="ViewModels\DocumentoPersonalVM.cs" />
-
     <Compile Include="ViewModels\EstadoCivilVM.cs" />
-
     <Compile Include="ViewModels\EstadoSaludVM.cs" />
-
     <Compile Include="ViewModels\EstadoVM.cs" />
     <Compile Include="ViewModels\MunicipioVM.cs" />
     <Compile Include="ViewModels\PaisVM.cs" />
