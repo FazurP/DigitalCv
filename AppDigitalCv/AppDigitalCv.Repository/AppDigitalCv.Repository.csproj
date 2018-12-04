@@ -174,8 +174,11 @@
     </Compile>
     <Compile Include="ColoniaRepository.cs" />
     <Compile Include="DatosContactoRepository.cs" />
+    <Compile Include="DialectosRepository.cs" />
     <Compile Include="DireccionRepository.cs" />
+    <Compile Include="EstadoCivilRepository.cs" />
     <Compile Include="EstadoRepository.cs" />
+    <Compile Include="IdiomasRepository.cs" />
     <Compile Include="Infraestructure\BaseRepository.cs" />
     <Compile Include="Infraestructure\Contract\IBaseRepository.cs" />
     <Compile Include="Infraestructure\Contract\IUnitOfWork.cs" />

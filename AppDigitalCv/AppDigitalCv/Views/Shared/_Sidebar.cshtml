@@ -27,10 +27,18 @@
             </li>
             <li class="@Url.IsLinkActive("EditarDatosPersonales","Personal")">
                 <a href="@Url.Action("EditarDatosPersonales","Personal")"><i class="fa fa-user-plus"></i><span>Editar Datos Personales</span> </a>
-
+            </li>
+            <li class="@Url.IsLinkActive("Create","Direccion")">
+                <a href="@Url.Action("Create","Direccion")"><i class="fa fa-newspaper-o"></i><span>Datos de Direccion</span></a>
+            </li>
+            <li class="@Url.IsLinkActive("EditarDatosDireccion", "Direccion")">
+                <a href="@Url.Action("EditarDatosDireccion", "Direccion")"><i class="fa fa-newspaper-o"></i><span>Editar Datos de Direccion</span></a>
             </li>
             <li class="@Url.IsLinkActive("Create","DatosContacto")">
                 <a href="@Url.Action("Create","DatosContacto")"><i class="fa fa-newspaper-o"></i><span>Datos de Contacto</span></a>
+            </li>
+            <li class="@Url.IsLinkActive("EditarDatosContacto","DatosContacto")">
+                <a href="@Url.Action("EditarDatosContacto","DatosContacto")"><i class="fa fa-user-plus"></i><span>Editar Datos de Contacto</span> </a>
             </li>
             <li class="treeview">
                 <a href="#">
