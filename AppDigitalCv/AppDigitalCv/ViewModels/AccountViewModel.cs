@@ -22,6 +22,6 @@ namespace AppDigitalCv.ViewModels
         [Required(ErrorMessage ="El Password es obligatorio")]
         public string Password { get; set; }
 
-        
+        public int IdPersonal { get; set; }
     }
 }

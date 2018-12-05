@@ -30,7 +30,8 @@ namespace AppDigitalCv
             container.RegisterType<ITelefono, TelefonoBusiness>();
             container.RegisterType<IEstadoCivilBusiness, EstadoCivilBusiness>();
             container.RegisterType<IUnitOfWork, UnitOfWork>();
-            
+            container.RegisterType<IEnfermedadBusiness, EnfermedadBusiness>();
+            container.RegisterType<ITipoSangreBusiness,TipoSangreBusiness>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }
