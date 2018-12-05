@@ -41,6 +41,10 @@ namespace AppDigitalCv.Business
             if (catUsuarios != null)
             {
                 AccountDomainModel account = new AccountDomainModel();
+                foreach (tblPersonal t in catUsuarios.tblPersonal)
+                {
+                    account.IdPersonal = t.idPersonal;
+                }
                 account.IdUsuario = catUsuarios.idUsuario;
                 account.Email = catUsuarios.strEmailInstitucional;
                 account.Password = catUsuarios.strPassword;

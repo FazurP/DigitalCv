@@ -243,6 +243,7 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="TelefonoRepository.cs" />
+    <Compile Include="TipoSangreRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="AppDigitalCvEntities.edmx">

@@ -10,10 +10,11 @@ namespace AppDigitalCv.Controllers
     public class EstadoSaludController : Controller
     {
         IEnfermedadBusiness IenfermedadesBusiness;
-
-        public EstadoSaludController(IEnfermedadBusiness _IenfermedadesBusiness)
+        ITipoSangreBusiness ItipoSangreBusiness;
+        public EstadoSaludController(IEnfermedadBusiness _IenfermedadesBusiness, ITipoSangreBusiness _itipoSangreBusiness)
         {
             IenfermedadesBusiness = _IenfermedadesBusiness;
+            ItipoSangreBusiness = _itipoSangreBusiness;
         }
 
         // GET: EstadoSalud
@@ -26,6 +27,7 @@ namespace AppDigitalCv.Controllers
         public ActionResult Create()
         {
             ViewBag.Enfermedades = new SelectList(IenfermedadesBusiness.GetEnfermedades(), "IdEnfermedad", "StrDescripcion");
+            ViewBag.TipoSangre = new SelectList(ItipoSangreBusiness.GetTipoSangre(), "IdTipoSangre", "StrDescripcion");
             return View();
         }
     }

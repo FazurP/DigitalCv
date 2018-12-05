@@ -19,7 +19,9 @@ namespace AppDigitalCv.Domain
         public string ImgUserUrl { get; set; }
 
         public string Password { get; set; }
-        
+
+        public int IdPersonal { get; set; }
+
         //falta cargar los roles del usuario
     }
 }
