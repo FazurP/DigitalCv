@@ -392,6 +392,8 @@
     <Content Include="Views\EstadoCivil\Create.cshtml" />
     <Content Include="Views\DatosContacto\_Editar.cshtml" />
     <Content Include="Views\EstadoSalud\Create.cshtml" />
+    <Content Include="Views\IdiomaDialecto\Create.cshtml" />
+    <Content Include="Views\DialectoIdioma\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -402,10 +404,12 @@
   <ItemGroup>
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\DatosContactoController.cs" />
+    <Compile Include="Controllers\DialectoIdiomaController.cs" />
     <Compile Include="Controllers\DireccionController.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />
     <Compile Include="Controllers\EstadoCivilController.cs" />
     <Compile Include="Controllers\EstadoSaludController.cs" />
+    <Compile Include="Controllers\IdiomaDialectoController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Infraestructure\AutomaperWebProfile.cs" />
@@ -425,14 +429,18 @@
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\ColoniaVM.cs" />
     <Compile Include="ViewModels\DatosContactoVM.cs" />
+    <Compile Include="ViewModels\DialectoVM.cs" />
     <Compile Include="ViewModels\DireccionVM.cs" />
     <Compile Include="ViewModels\DocumentoPersonalVM.cs" />
     <Compile Include="ViewModels\EstadoCivilVM.cs" />
     <Compile Include="ViewModels\EstadoSaludVM.cs" />
     <Compile Include="ViewModels\EstadoVM.cs" />
+    <Compile Include="ViewModels\IdiomaDialectoVM.cs" />
+    <Compile Include="ViewModels\IdiomaVM.cs" />
     <Compile Include="ViewModels\MunicipioVM.cs" />
     <Compile Include="ViewModels\PaisVM.cs" />
     <Compile Include="ViewModels\PersonalVM.cs" />
+    <Compile Include="ViewModels\Porcentajes.cs" />
     <Compile Include="ViewModels\SessionManagerVM.cs" />
   </ItemGroup>
   <ItemGroup>

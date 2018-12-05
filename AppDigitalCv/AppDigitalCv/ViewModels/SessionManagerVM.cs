@@ -7,8 +7,9 @@ namespace AppDigitalCv.ViewModels
 {
     public class SessionManagerVM
     {
-        public int IdPersonal { get; set; }
 
+        public int IdPersonal { get; set; }
+        
         public string Nombre { get; set; }
 
         public string NombreCompleto { get; set; }
