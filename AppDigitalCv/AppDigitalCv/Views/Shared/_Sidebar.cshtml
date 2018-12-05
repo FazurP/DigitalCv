@@ -28,6 +28,12 @@
             <li class="@Url.IsLinkActive("EditarDatosPersonales","Personal")">
                 <a href="@Url.Action("EditarDatosPersonales","Personal")"><i class="fa fa-user-plus"></i><span>Editar Datos Personales</span> </a>
             </li>
+            <li class="@Url.IsLinkActive("InfoPersonal","Personal")">
+                <a href="@Url.Action("InfoPersonal","Personal")"><i class="fa fa-user-plus"></i><span>Informacion Personal</span> </a>
+            </li>
+            <li class="@Url.IsLinkActive("AgregarDocumentos","Personal")">
+                <a href="@Url.Action("AgregarDocumentos","Personal")"><i class="fa fa-user-plus"></i><span>Editar Datos Personales</span> </a>
+            </li>
             <li class="@Url.IsLinkActive("Create","Direccion")">
                 <a href="@Url.Action("Create","Direccion")"><i class="fa fa-newspaper-o"></i><span>Datos de Direccion</span></a>
             </li>
@@ -39,6 +45,15 @@
             </li>
             <li class="@Url.IsLinkActive("EditarDatosContacto","DatosContacto")">
                 <a href="@Url.Action("EditarDatosContacto","DatosContacto")"><i class="fa fa-user-plus"></i><span>Editar Datos de Contacto</span> </a>
+            </li>
+            <li class="@Url.IsLinkActive("Create","EstadoCivil")">
+                <a href="@Url.Action("Create","EstadoCivil")"><i class="fa fa-user-plus"></i><span>Agregar Estado Civil</span> </a>
+            </li>
+            <li class="@Url.IsLinkActive("Create","EstadoSalud")">
+                <a href="@Url.Action("Create","EstadoSalud")"><i class="fa fa-user-plus"></i><span>Agregar Estado de Salud</span> </a>
+            </li>
+            <li class="@Url.IsLinkActive("Create","IdiomaDialecto")">
+                <a href="@Url.Action("Create","IdiomaDialecto")"><i class="fa fa-user-plus"></i><span>Agregar Idiomas o Dialectos</span> </a>
             </li>
             <li class="treeview">
                 <a href="#">

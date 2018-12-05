@@ -1,0 +1,95 @@
+﻿@using AppDigitalCv.Security
+@model AppDigitalCv.ViewModels.IdiomaDialectoVM
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="bs-container content" style="min-height:960px;">
+        <section class="content-header">
+            <h1>
+                Agregar Idiomas
+                <small> Agregar los Idiomas </small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"> <i class="fa fa-dashboard"></i> Home </a></li>
+                <li> <a href="#"> Tables </a></li>
+                <li class="active"> Data tables </li>
+            </ol>
+        </section>
+
+        <div class="row">
+
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+                <div class="box box-default">
+                    <br />
+                    <label class="text-gray"><i class="text-gray fa fa-child"></i> Erik Guerrero Bravo </label>
+
+                    <div role="form">
+
+                        <div class="box-body">
+                            <!-- Aqui se llena el dropdownlist de idioma y sus procentajes -->
+                            <div class="form-group">
+                                <div class="form-group ">
+                                    <label>Idioma</label>
+                                    @Html.DropDownList("IdIdioma", null, htmlAttributes: new { @class = "form-control input-sm" })
+                                    @Html.ValidationMessageFor(model => model.IdIdioma, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <!-- Aqui se llena el dropdownloist de porcentaje de escritura -->
+                            <div class="form-group">
+                                <div class="form-group ">
+                                    <label>Escritura</label>
+                                    @Html.DropDownList("StrEscrituraProcentaje", null, htmlAttributes: new { @class = "form-control input-sm", id = "StrEscrituraProcentaje" })
+                                    @Html.ValidationMessageFor(model => model.StrEscrituraProcentaje, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <!-- Aqui se llena el dropdownList de porcentaje de lectura -->
+                            <div class="form-group">
+                                <div class="form-group ">
+                                    <label>Lectura</label>
+                                    @Html.DropDownList("StrLecturaPorcentaje", null, htmlAttributes: new { @class = "form-control input-sm", id = "StrLecturaPorcentaje" })
+                                    @Html.ValidationMessageFor(model => model.StrLecturaPorcentaje, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <!-- Aqui se llena el dropdownloist de porcentaje de entendimiento -->
+                            <div class="form-group">
+                                <div class="form-group ">
+                                    <label>Entendimiento</label>
+                                    @Html.DropDownList("StrEntendimientoPorcentaje", null, htmlAttributes: new { @class = "form-control input-sm", id = "StrEntendimientoPorcentaje" })
+                                    @Html.ValidationMessageFor(model => model.StrEntendimientoPorcentaje, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <!-- Aqui se llena el dropdownList de porcentaje de comunicacion -->
+                            <div class="form-group">
+                                <div class="form-group ">
+                                    <label>Comunicación</label>
+                                    @Html.DropDownList("StrComunicacionPorcentaje", null, htmlAttributes: new { @class = "form-control input-sm", id = "StrComunicacionPorcentaje" })
+                                    @Html.ValidationMessageFor(model => model.StrComunicacionPorcentaje, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                <div>
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                </div>
+                                <input type="submit" value="Guardar" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+ </div>
+
+}

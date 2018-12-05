@@ -29,6 +29,8 @@ namespace AppDigitalCv
             container.RegisterType<IDatosContacto, DatosContactoBusiness>();
             container.RegisterType<ITelefono, TelefonoBusiness>();
             container.RegisterType<IEstadoCivilBusiness, EstadoCivilBusiness>();
+            container.RegisterType<IIdiomaDialectoBusiness, IdiomaDialectoBusiness>();
+            container.RegisterType<IDialectoIdiomaBusiness, DialectoIdiomaBusiness>();
             container.RegisterType<IUnitOfWork, UnitOfWork>();
             container.RegisterType<IEnfermedadBusiness, EnfermedadBusiness>();
             container.RegisterType<ITipoSangreBusiness,TipoSangreBusiness>();

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AppDigitalCv.Repository.Infraestructure.Contract;
+using AppDigitalCv.Domain;
 
 namespace AppDigitalCv.Repository
 {
