@@ -49,6 +49,7 @@
     <Compile Include="DatosContactoBusiness.cs" />
     <Compile Include="DialectoIdiomaBusiness.cs" />
     <Compile Include="DireccionBusiness.cs" />
+    <Compile Include="EnfermedadBusiness.cs" />
     <Compile Include="EstadoBusiness.cs" />
     <Compile Include="EstadoCivilBusiness.cs" />
     <Compile Include="IdiomaDialectoBusiness.cs" />
@@ -57,15 +58,18 @@
     <Compile Include="Interface\IDialectoIdiomaBusiness.cs" />
     <Compile Include="Interface\IIdiomaDialectoBusiness.cs" />
     <Compile Include="Interface\IDireccionBusiness.cs" />
+    <Compile Include="Interface\IEnfermedadBusiness.cs" />
     <Compile Include="Interface\IEstadoBusiness.cs" />
     <Compile Include="Interface\IEstadoCivilBusiness.cs" />
     <Compile Include="Interface\IPaisBusiness.cs" />
     <Compile Include="Interface\IPersonalBusiness.cs" />
     <Compile Include="Interface\ITelefono.cs" />
+    <Compile Include="Interface\ITipoSangreBusiness.cs" />
     <Compile Include="PaisBusiness.cs" />
     <Compile Include="PersonalBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TelefonoBusiness.cs" />
+    <Compile Include="TipoSangreBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppDigitalCv.Domain\AppDigitalCv.Domain.csproj">

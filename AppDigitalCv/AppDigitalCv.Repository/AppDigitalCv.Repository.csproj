@@ -176,6 +176,7 @@
     <Compile Include="DatosContactoRepository.cs" />
     <Compile Include="DialectosRepository.cs" />
     <Compile Include="DireccionRepository.cs" />
+    <Compile Include="EnfermedadesRepository.cs" />
     <Compile Include="EstadoCivilRepository.cs" />
     <Compile Include="EstadoRepository.cs" />
     <Compile Include="IdiomaDialectoRepository.cs" />
@@ -243,6 +244,7 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="TelefonoRepository.cs" />
+    <Compile Include="TipoSangreRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="AppDigitalCvEntities.edmx">

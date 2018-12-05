@@ -32,7 +32,8 @@ namespace AppDigitalCv
             container.RegisterType<IIdiomaDialectoBusiness, IdiomaDialectoBusiness>();
             container.RegisterType<IDialectoIdiomaBusiness, DialectoIdiomaBusiness>();
             container.RegisterType<IUnitOfWork, UnitOfWork>();
-            
+            container.RegisterType<IEnfermedadBusiness, EnfermedadBusiness>();
+            container.RegisterType<ITipoSangreBusiness,TipoSangreBusiness>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }
