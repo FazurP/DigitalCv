@@ -47,11 +47,15 @@
   <ItemGroup>
     <Compile Include="AccountBusiness.cs" />
     <Compile Include="DatosContactoBusiness.cs" />
+    <Compile Include="DialectoIdiomaBusiness.cs" />
     <Compile Include="DireccionBusiness.cs" />
     <Compile Include="EstadoBusiness.cs" />
     <Compile Include="EstadoCivilBusiness.cs" />
+    <Compile Include="IdiomaDialectoBusiness.cs" />
     <Compile Include="Interface\IAccountBusiness.cs" />
     <Compile Include="Interface\IDatosContacto.cs" />
+    <Compile Include="Interface\IDialectoIdiomaBusiness.cs" />
+    <Compile Include="Interface\IIdiomaDialectoBusiness.cs" />
     <Compile Include="Interface\IDireccionBusiness.cs" />
     <Compile Include="Interface\IEstadoBusiness.cs" />
     <Compile Include="Interface\IEstadoCivilBusiness.cs" />

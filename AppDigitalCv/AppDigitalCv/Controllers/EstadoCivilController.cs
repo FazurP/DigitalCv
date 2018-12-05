@@ -31,6 +31,17 @@ namespace AppDigitalCv.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Create([Bind(Include = "IdEstadoCivil, StrGenero")]PersonalVM personalVM)
+        {
+            if (ModelState.IsValid)
+            {
+                AddEditPersonal(personalVM);
+                return RedirectToAction("Create","Personal");
+            }
+            return View("Create"); 
+        }
+
         #region Agregar o editar una entidad
 
         public string AddEditPersonal(PersonalVM personallVM)

@@ -51,6 +51,18 @@ namespace AppDigitalCv.Infraestructure
             //Estado Civil
             CreateMap<EstadoCivilVM, EstadoCivilDomainModel>();
             CreateMap<EstadoCivilDomainModel, EstadoCivilVM>();
+
+            //Idioma
+            CreateMap<IdiomaVM, IdiomaDomainModel>();
+            CreateMap<IdiomaDomainModel, IdiomaVM>();
+
+            //Dialecto
+            CreateMap<DialectoVM, DialectoDomainModel>();
+            CreateMap<DialectoDomainModel, DialectoVM>();
+
+            //IdiomaDialecto
+            CreateMap<IdiomaDialectoVM, IdiomaDialectoDomainModel>();
+            CreateMap<IdiomaDialectoDomainModel, IdiomaDialectoVM>();
         }
 
 
