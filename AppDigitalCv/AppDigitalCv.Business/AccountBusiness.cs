@@ -44,11 +44,14 @@ namespace AppDigitalCv.Business
                 foreach (tblPersonal t in catUsuarios.tblPersonal)
                 {
                     account.IdPersonal = t.idPersonal;
+                    account.NombreCompleto = t.strNombre + " " + t.strApellidoPaterno + " "+t.strApellidoMaterno;
                 }
                 account.IdUsuario = catUsuarios.idUsuario;
                 account.Email = catUsuarios.strEmailInstitucional;
                 account.Password = catUsuarios.strPassword;
                 account.Nombre = catUsuarios.strNombrUsuario; ///representara el nombre del usuario
+               
+                
                 return account;
             }
             else

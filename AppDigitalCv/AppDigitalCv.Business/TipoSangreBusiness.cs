@@ -5,6 +5,7 @@ using AppDigitalCv.Repository.Infraestructure.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,7 +34,6 @@ namespace AppDigitalCv.Business
             }).ToList();
             return lista;
         }
-
 
     }
 }

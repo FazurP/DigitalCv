@@ -8,6 +8,8 @@ using AppDigitalCv.Business.Interface;
 using AppDigitalCv.Domain;
 using AppDigitalCv.ViewModels;
 using System.IO;
+//cargamos la seguridad y su persistencia
+using AppDigitalCv.Security;
 
 namespace AppDigitalCv.Controllers
 {
@@ -49,6 +51,40 @@ namespace AppDigitalCv.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult AgregarTipoSangre([Bind(Include = "idPersonal,idTipoSangre")]PersonalVM personalVM)
+        {
+            //construimos una lista de personalvm para poder mostrar como un json
+            List<TipoSangreVM> tipoSangreVMs = new List<TipoSangreVM>();
+            
+                this.AddEditTipoSangre(personalVM);
+                if (Request.IsAjaxRequest())
+                {
+                    TipoSangreVM tipoSangreVM = new TipoSangreVM();
+                    PersonalDomainModel personalDM= IPersonalBussines.GetPersonalById(personalVM.idPersonal);
+                    AutoMapper.Mapper.Map(personalDM.TipoSangreDomainModel, tipoSangreVM);
+                    tipoSangreVMs.Add(tipoSangreVM);
+                    return Json(tipoSangreVMs, JsonRequestBehavior.AllowGet);
+                }
+            
+            return View();
+        }
+
+        [HttpGet]
+        public JsonResult ConsultaTipoSangre()
+        {
+            List<TipoSangreVM> tipoSangreVMs = new List<TipoSangreVM>();
+            //PersonalVM personaVM = new PersonalVM();
+            PersonalDomainModel personalDM = IPersonalBussines.GetPersonalById(1);
+            TipoSangreVM tipoSangreVM = new TipoSangreVM();
+
+            //AutoMapper.Mapper.Map(personalDM, personaVM);
+            AutoMapper.Mapper.Map(personalDM.TipoSangreDomainModel, tipoSangreVM);
+            tipoSangreVMs.Add(tipoSangreVM);
+            return Json(tipoSangreVMs, JsonRequestBehavior.AllowGet);
+
+        }
+
         #endregion
 
         #region Detalles de la Informacion en Vista
@@ -59,7 +95,8 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult InfoPersonal()
         {
-            int idPersonal = 1; ///este es un parametro temporal
+            ///este es el id del personal
+            int idPersonal = SessionPersister.AccountSession.IdPersonal; 
             //creamos el objeto que representara los datos en la vista
             PersonalVM personalVM = new PersonalVM();
             //obtenemos el objeto del modelo de dominio
@@ -105,7 +142,7 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult EditarDatosPersonales()
         {
-            int idPersonal=1;
+            int idPersonal=SessionPersister.AccountSession.IdPersonal;
             PersonalDomainModel personalDM = IPersonalBussines.GetPersonalById(idPersonal);
             PersonalVM personalVM = new PersonalVM();
             AutoMapper.Mapper.Map(personalDM, personalVM);///hacemos el mapeado de la entidad
@@ -133,6 +170,19 @@ namespace AppDigitalCv.Controllers
             resultado = IPersonalBussines.AddUpdatePersonal(personalDM);
             return resultado;
         }
+
+
+        public string AddEditTipoSangre(PersonalVM personalVM)
+        {
+            string resultado = string.Empty;
+            PersonalDomainModel personalDM = new PersonalDomainModel();
+            AutoMapper.Mapper.Map(personalVM, personalDM);///hacemos el mapeado de la entidad
+
+            resultado = IPersonalBussines.AddUpdateTipoSangre(personalDM);
+            return resultado;
+        }
+
+
         #endregion
 
         #region Eliminar Documentos del Personal
@@ -154,7 +204,7 @@ namespace AppDigitalCv.Controllers
 
         public JsonResult ConsultarDatosPersonal()
         {
-            var personal = IPersonalBussines.GetEmpleadoDocumentos(1);////////////////////////modificacion temporal
+            var personal = IPersonalBussines.GetEmpleadoDocumentos(SessionPersister.AccountSession.IdPersonal);////////////////////////modificacion temporal
             return Json(personal, JsonRequestBehavior.AllowGet);
         }
         #endregion
@@ -166,7 +216,7 @@ namespace AppDigitalCv.Controllers
         /// <returns>un json como resultado de la consulta</returns>
         public DocumentoPersonalVM ConsultarDcocumentosPersonal()
         {
-            DocumentoPersonalDomainModel documentosDM = IPersonalBussines.GetDocumentoPersonal(4);
+            DocumentoPersonalDomainModel documentosDM = IPersonalBussines.GetDocumentoPersonal(SessionPersister.AccountSession.IdPersonal);
             DocumentoPersonalVM documentosVM = new DocumentoPersonalVM();
             AutoMapper.Mapper.Map(documentosDM, documentosVM);
             return documentosVM;

@@ -52,10 +52,12 @@
     <Compile Include="EnfermedadBusiness.cs" />
     <Compile Include="EstadoBusiness.cs" />
     <Compile Include="EstadoCivilBusiness.cs" />
+    <Compile Include="EstadoSaludBusiness.cs" />
     <Compile Include="IdiomaDialectoBusiness.cs" />
     <Compile Include="Interface\IAccountBusiness.cs" />
     <Compile Include="Interface\IDatosContacto.cs" />
     <Compile Include="Interface\IDialectoIdiomaBusiness.cs" />
+    <Compile Include="Interface\IEstadoSaludBusiness.cs" />
     <Compile Include="Interface\IIdiomaDialectoBusiness.cs" />
     <Compile Include="Interface\IDireccionBusiness.cs" />
     <Compile Include="Interface\IEnfermedadBusiness.cs" />

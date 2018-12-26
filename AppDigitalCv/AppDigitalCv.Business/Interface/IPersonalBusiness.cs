@@ -52,5 +52,12 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="idPersonal">identificador del personal que se va a eliminar</param>
         /// <returns>regresa una respuesta boolean de confirmación de acción</returns>
         bool DeleteFileRfc(int idPersonal);
+
+        /// <summary>
+        /// Este metodo se encarga de Agregar o Actualizar el tipo de sangre del personal
+        /// </summary>
+        /// <param name="personalDM">una entidad del tipo personalDomain con el tipo de sangre</param>
+        /// <returns>regresa una cadena de confirmación</returns>
+        string AddUpdateTipoSangre(PersonalDomainModel personalDM);
     }
 }

@@ -73,6 +73,31 @@ namespace AppDigitalCv.Business
             return resultado;
         }
 
+        /// <summary>
+        /// Este metodo se encarga de Agregar o Actualizar el tipo de sangre del personal
+        /// </summary>
+        /// <param name="personalDM">una entidad del tipo personalDomain con el tipo de sangre</param>
+        /// <returns>regresa una cadena de confirmación</returns>
+        public string AddUpdateTipoSangre(PersonalDomainModel personalDM)
+        {
+            string resultado = string.Empty;
+            if (personalDM.idTipoSangre > 0)
+            {
+                //buscamos por id y lo almacenamos en nuestra entidad de entityframework
+                tblPersonal personal = personalRepository.SingleOrDefault(p => p.idPersonal == personalDM.idPersonal);
+                if (personal != null)
+                {
+                    personal.idTipoSangre = personalDM.idTipoSangre;
+                    //actualizamos los datos en la base de datos.
+                    personalRepository.Update(personal);
+                    resultado = "Se Actualizo correctamente";
+
+                }
+            }
+           
+            return resultado;
+        }
+
         public List<PersonalDomainModel> GetEmpleado() {
             List<PersonalDomainModel> lista = null; 
             lista =personalRepository.GetAll().Select(p=> new PersonalDomainModel {Nombre = p.strNombre, ApellidoPaterno = p.strApellidoPaterno
@@ -108,6 +133,7 @@ namespace AppDigitalCv.Business
         {
             Expression<Func<tblPersonal, bool>> predicado = p=> p.idPersonal.Equals(idPersonal);
             PersonalDomainModel personalDM = new PersonalDomainModel();
+
             tblPersonal TblPersonal= personalRepository.SingleOrDefault(predicado);
             personalDM.idPersonal = TblPersonal.idPersonal;
             personalDM.Nombre = TblPersonal.strNombre;
@@ -117,6 +143,15 @@ namespace AppDigitalCv.Business
             personalDM.Rfc = TblPersonal.strRfc;
             personalDM.Homoclave = TblPersonal.strHomoclave;
             personalDM.strLogros = TblPersonal.strLogros;
+            //validamos que contenga el tipo de sangre
+            if (TblPersonal.idTipoSangre > 0)
+            {
+                ///construimos el objeto del tipo de sangre
+                TipoSangreDomainModel tipoSangreDomainModel = new TipoSangreDomainModel();
+                tipoSangreDomainModel.IdTipoSangre = TblPersonal.catTipoSangre.idTipoSangre;
+                tipoSangreDomainModel.StrDescripcion = TblPersonal.catTipoSangre.strDescripcion;
+                personalDM.TipoSangreDomainModel = tipoSangreDomainModel; ///asocio el objeto.
+            }
             return personalDM;
         }
 
@@ -173,6 +208,8 @@ namespace AppDigitalCv.Business
             return documentoMD;
         }
 
+
+       
 
     }
 }
