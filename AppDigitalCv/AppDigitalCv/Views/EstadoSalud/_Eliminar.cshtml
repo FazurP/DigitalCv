@@ -1,0 +1,87 @@
+﻿@model AppDigitalCv.ViewModels.EstadoSaludVM
+@using AppDigitalCv.Security
+<div>
+    <form id="myForm">
+
+        <div class="form-inline">
+            <div class="form-group">
+                Deseas <strong>Eliminar</strong> este registro realmente? 
+            </div>
+            <div class="form-group">
+                @Html.HiddenFor(m => m.IdEnfermedad,new {@class="form-control input-sm",id="IdEnfermedad" })
+                @Html.HiddenFor(m => m.idEnfermedadPersonal)
+                @Html.HiddenFor(m => m.IdPersonal)
+                @Html.HiddenFor(m => m.NombreEnfermedad)
+                @Html.TextBoxFor(m => m.NombreEnfermedad, new { @class = "form-control input-sm", @placeholder = "Nombre de la Enfermedad" })
+
+                <a href="#" id="btnSubmit">
+                    <i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i>
+                </a>
+            </div>
+            <div class="form-group">
+                <div style="text-align:center;display:none" id="loaderDiv">
+                    <img src="~/Imagenes/loading-blue.gif" width="150" />
+                </div>
+            </div>
+        </div>
+       
+
+    </form>
+    
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+
+        $("#btnSubmit").click(function () {
+            var estadoSaludVM = {};
+            var idPersonal =  @SessionPersister.AccountSession.IdPersonal;
+            estadoSaludVM.idEnfermedad = $('#IdEnfermedad').val();
+            estadoSaludVM.idPersonal = idPersonal;
+            var myformdata = $("#myForm").serialize();
+            $.ajax({
+                url: '/EstadoSalud/Create',
+                contentType: 'application/json;charset=utf-8',
+                data: '{estadoSaludVM:' + JSON.stringify(estadoSaludVM) + '}',
+                method: 'post',
+                dataType: 'json',
+                success: function () {
+                    $("#loaderDiv").hide();
+                    $("#myModal").modal("hide");
+                    window.location.href = "/EstadoSalud/Create";
+                },
+                error: function (err) {
+                    alert("Error en la invocacion del formulario" + err);
+
+                }
+            })
+        })
+            //$("#btnSubmit").click(function () {
+
+            //    $("#loaderDiv").show();
+
+            //    var myformdata = $("#myForm").serialize();
+
+            //    $.ajax({
+
+            //        type: "post",
+            //        url: "/EstadoSalud/Create",
+            //        data: myformdata,
+            //        //method: 'post',
+            //        dataType: 'json',
+            //        success: function () {
+            //            $("#loaderDiv").hide();
+            //            $("#myModal").modal("hide");
+            //            window.location.href ="/EstadoSalud/Create";
+
+            //        }
+
+            //    })
+            //})
+
+        })
+
+
+</script>

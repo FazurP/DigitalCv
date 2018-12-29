@@ -13,7 +13,7 @@ namespace AppDigitalCv.ViewModels
         public string Descripcion { get; set; }
         public string FechaRegistro { get; set; }
         public PersonalVM PersonalVM { get; set; }
-        public EnfermedadVM EnfermedadVM { get; set; }  
-                
+        public EnfermedadVM EnfermedadVM { get; set; }
+        public string NombreEnfermedad { get; set; }
     }
 }

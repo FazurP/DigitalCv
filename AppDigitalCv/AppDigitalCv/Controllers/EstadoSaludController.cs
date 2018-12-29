@@ -54,6 +54,17 @@ namespace AppDigitalCv.Controllers
             return View();
         }
 
+        #region Este metodo del controlador se encarga de eliminar un registro en la base de datos
+        [HttpPost]
+        public ActionResult Create(EstadoSaludVM estadoSaludVM)
+        {
+            ViewBag.Enfermedades = new SelectList(IenfermedadesBusiness.GetEnfermedades(), "IdEnfermedad", "StrDescripcion");
+            ViewBag.TipoSangre = new SelectList(ItipoSangreBusiness.GetTipoSangre(), "IdTipoSangre", "StrDescripcion");
+            IestadoSaludBusiness.DeleteEstadoSaludPersonal(estadoSaludVM.IdEnfermedad);
+            return View();
+        }
+        #endregion
+
 
         #region  Consultar los datos del estado de salud del personal
 
@@ -111,6 +122,24 @@ namespace AppDigitalCv.Controllers
         }
         #endregion
 
+        #region Eliminar EstadoSalud
+        /// <summary>
+        /// Este metodo se encarga de presentar los datos a la vista que se van a eliminar
+        /// </summary>
+        /// <param name="idEnfermedad">recibe un identificador del estado de salud</param>
+        /// <returns>regresa un estado de salud en una vista</returns>
+        public ActionResult EliminarEstadoSalud(int IdEnfermedad)
+        {
+             EstadoSaludDomainModel estadoSaludDomainModel= IestadoSaludBusiness.GetEnfermedadesByIdEnfermedad(IdEnfermedad);
+            if (estadoSaludDomainModel != null)
+            {
+                EstadoSaludVM estadoSaludVM = new EstadoSaludVM();
+                AutoMapper.Mapper.Map(estadoSaludDomainModel, estadoSaludVM);
+                return PartialView("_Eliminar", estadoSaludVM);
+            }
+            return View();
+        }
+        #endregion
 
 
     }

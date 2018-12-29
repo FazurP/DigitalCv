@@ -79,6 +79,43 @@ namespace AppDigitalCv.Business
             return estadosSalud;
         }
 
+        /// <summary>
+        /// Este metodo se encarga de consultar un estado de salud por el identificador de la enfermedad
+        /// </summary>
+        /// <param name="IdEnfermedad">identificador de la enfermedad</param>
+        /// <returns>estado de salud domain model de la consulta</returns>
+        public EstadoSaludDomainModel GetEnfermedadesByIdEnfermedad(int IdEnfermedad)
+        {
+            EstadoSaludDomainModel estadoSaludDomainModel = new EstadoSaludDomainModel();
+            Expression<Func<tblEnfermedadPersonal, bool>> predicado = p => p.idEnfermedad.Equals(IdEnfermedad);
+            tblEnfermedadPersonal tblEnfermedadPersonal= estadoSaludRepository.SingleOrDefault(predicado);
+            if(tblEnfermedadPersonal != null)
+            { 
+                estadoSaludDomainModel.idEnfermedad = tblEnfermedadPersonal.idEnfermedad;
+                estadoSaludDomainModel.idEnfermedadPersonal = tblEnfermedadPersonal.idEnfermedadPersonal;
+                estadoSaludDomainModel.idPersonal = tblEnfermedadPersonal.idPersonal;
+
+                estadoSaludDomainModel.NombreEnfermedad = tblEnfermedadPersonal.catEnfermedad.strDescripcion;
+            }
+            return estadoSaludDomainModel;
+        }
+
+        /// <summary>
+        /// Este metodo se encarga de eliminar una entidad dentro de la base de datos
+        /// </summary>
+        /// <param name="IdEnfermedad">el identificador de la entidad a eliminar</param>
+        /// <returns>regresa un valor booleano true o false dependiendo la condición</returns>
+        public bool DeleteEstadoSaludPersonal(int IdEnfermedad)
+        {
+            bool respuesta = false;
+            Expression<Func<tblEnfermedadPersonal, bool>> predicado = p => p.idEnfermedad.Equals(IdEnfermedad);
+            estadoSaludRepository.Delete(predicado);
+            respuesta = true;
+            return respuesta;
+            
+        }
+
+
 
     }
 }

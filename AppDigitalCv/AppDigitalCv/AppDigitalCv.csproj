@@ -411,6 +411,7 @@
     <Content Include="Views\EstadoSalud\Create.cshtml" />
     <Content Include="Views\IdiomaDialecto\Create.cshtml" />
     <Content Include="Views\DialectoIdioma\Create.cshtml" />
+    <Content Include="Views\EstadoSalud\_Eliminar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
