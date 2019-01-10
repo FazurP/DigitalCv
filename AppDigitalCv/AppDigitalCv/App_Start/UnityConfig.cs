@@ -35,6 +35,9 @@ namespace AppDigitalCv
             container.RegisterType<IEnfermedadBusiness, EnfermedadBusiness>();
             container.RegisterType<ITipoSangreBusiness,TipoSangreBusiness>();
             container.RegisterType<IEstadoSaludBusiness, EstadoSaludBusiness>();
+            container.RegisterType<IFamiliarBusiness, FamiliarBusiness>();
+
+            
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

@@ -70,6 +70,15 @@ namespace AppDigitalCv.Recursos {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Imagenes/Usuarios/.
+        /// </summary>
+        internal static string URL_PERFIL {
+            get {
+                return ResourceManager.GetString("URL_PERFIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a El Usuario No Existe..
         /// </summary>
         internal static string USUARIO_INEXISTENTE {

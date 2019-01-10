@@ -180,6 +180,7 @@
     <Compile Include="EstadoCivilRepository.cs" />
     <Compile Include="EstadoRepository.cs" />
     <Compile Include="EstadoSaludRepository.cs" />
+    <Compile Include="FamiliarRepository.cs" />
     <Compile Include="IdiomaDialectoRepository.cs" />
     <Compile Include="IdiomasRepository.cs" />
     <Compile Include="Infraestructure\BaseRepository.cs" />

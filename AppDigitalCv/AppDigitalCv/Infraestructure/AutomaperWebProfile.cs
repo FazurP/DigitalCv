@@ -66,6 +66,9 @@ namespace AppDigitalCv.Infraestructure
             //Estado de Salud
             CreateMap<EstadoSaludDomainModel, EstadoSaludVM>();
             CreateMap<EstadoSaludVM, EstadoSaludDomainModel>();
+            //Familiar
+            CreateMap<ParentescoVM, FamiliarDomainModel>();
+            CreateMap<FamiliarDomainModel, ParentescoVM>();
         }
 
 

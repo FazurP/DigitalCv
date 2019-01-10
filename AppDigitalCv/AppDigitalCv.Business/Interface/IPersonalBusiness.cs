@@ -20,6 +20,14 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="personalDM">recibe un objeto del modelo de dominio</param>
         /// <returns>regresa un mensaje con el resultado de la accion realizada</returns>
         string AddUpdatePersonal(PersonalDomainModel personalDM);
+
+        /// <summary>
+        /// Este metodo se encarga de actualizar laentidad de personal incluyendo los datos del familiar
+        /// </summary>
+        /// <param name="personalDM">ingresa una entidad del tipo personaldomainmodel</param>
+        /// <returns>regresa una cadena de confirmacion</returns>
+        string AddUpdatePersonalFamliar(PersonalDomainModel personalDM);
+
         /// <summary>
         /// este metodo se encarga de consultar a una persona por id
         /// </summary>

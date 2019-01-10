@@ -1,0 +1,252 @@
+﻿@model AppDigitalCv.ViewModels.ParentescoVM
+@using AppDigitalCv.Security
+
+@{
+    ViewBag.Title = "Registrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="bs-container content" style="min-height:960px;">
+        <section class="content-header">
+            <h1>
+                Datos Familiares
+                <small>(Agregar)</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
+                <li> <a href="#">Agregar</a></li>
+                <li class="#">Datos Familiares</li>
+                <li class="active">Agregar Hijos</li>
+            </ol>
+        </section>
+        <br />
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h5 class="box-title">
+                            <label class="text-success">
+                                <i class="text-success fa fa-heartbeat"></i>
+                                @SessionPersister.AccountSession.Nombre
+                            </label>
+                        </h5>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label class="text-muted">Nombre Completo:</label>
+                                @Html.EditorFor(model => model.StrNombre, new { htmlAttributes = new { @class = "form-control input-sm", placeholder = "Nombre del Hijo",
+                               pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}",
+                               required= "required"
+                           } })
+                                @Html.ValidationMessageFor(model => model.StrNombre, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label class="text-muted">Fecha de Nacimiento:</label>
+                                @Html.EditorFor(model => model.DteFechaNacimiento, new { htmlAttributes = new { @class = "form-control input-sm", type = "date", placeholder = "Fecha de Nacimiento" } })
+                                @Html.ValidationMessageFor(model => model.DteFechaNacimiento, "", new { @class = "text-danger", required = "required" })
+                            </div>
+                            <div class="form-group">
+                                <label class="text-muted">Edad:</label>
+                                @Html.EditorFor(model => model.IntEdad, new { htmlAttributes = new { @class = "form-control input-sm", placeholder = "Edad", type = "number", required = "required" } })
+                                @Html.ValidationMessageFor(model => model.IntEdad, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Guardar" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
+                                <div class="form-group" id="addTable">
+                                    <br />
+                                    <table id="tblFamiliarHijos" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
+                                        <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
+                                            <tr>
+                                                <th>Nombre Completo</th>
+                                                <th>Edad</th>
+                                                <th>Fecha de Nacimiento</th>
+                                                <th>Eliminar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tblBody"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    @*<div class="form-horizontal">
+            <h4>ParentescoVM</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.StrNombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.StrNombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StrNombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.StrOcupacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.StrOcupacion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StrOcupacion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.StrDomicilio, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.StrDomicilio, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StrDomicilio, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IntEdad, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IntEdad, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IntEdad, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BitVive, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.BitVive)
+                        @Html.ValidationMessageFor(model => model.BitVive, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DteFechaNacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DteFechaNacimiento, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DteFechaNacimiento, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdParentesco, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdParentesco, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdParentesco, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>*@
+}
+
+<div>
+    @Html.ActionLink("Regresar", "Index")
+</div>
+
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"
+            integrity="sha256-8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw="
+            crossorigin="anonymous"></script>
+    <script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            var oTable;
+
+            BindDataTable();
+
+            function BindDataTable() {
+
+                if ($.fn.DataTable.isDataTable('#tblFamiliarHijos')) {
+                    oTable.Draw();
+                }
+                else {
+                    oTable = $('#tblFamiliarHijos').DataTable({
+                        "bServerSide": true,
+                        "sAjaxSource": '/Hijos/GetDatosFamiliaresTable',
+                        "fnServerData": function (sSource, aoData, fnCallback) {
+                            $.ajax({
+                                type: "Get",
+                                data: aoData,
+                                url: sSource,
+                                success: fnCallback
+                            })
+                        },
+                        "pageLength": 5,
+                        "language": {
+
+                            "sProcessing": "Procesando...",
+                            "sLengthMenu": "Mostrar _MENU_ registros",
+                            "sZeroRecords": "No se encontraron resultados",
+                            "sEmptyTable": "Ningún dato disponible en esta tabla",
+                            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                            "sInfoPostFix": "",
+                            "sSearch": "Buscar:",
+                            "sUrl": "",
+                            "sInfoThousands": ",",
+                            "sLoadingRecords": "Cargando...",
+                            "oPaginate": {
+                                "sFirst": "Primero",
+                                "sLast": "Último",
+                                "sNext": "Siguiente",
+                                "sPrevious": "Anterior"
+                            },
+                            "oAria": {
+                                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                            }
+                        },
+                        "dataSrc": "",
+                        "columns": [
+
+                            { "data": "StrNombre" },//IdFamiliar
+                            { "data": "IntEdad" },
+                            { "data": "DteFechaNacimiento" },
+
+                            {
+                                "data": "IdFamiliar",
+                                "render": function (IdFamiliar, type, full, meta) {
+
+                                    return '<a href="#" onclick="AddDelete(' + IdFamiliar + ')"><i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i></a>'
+                                }
+                            },
+                        ]
+                    });
+                }
+            };
+        });
+    </script>
+}
