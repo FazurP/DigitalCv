@@ -253,7 +253,7 @@ namespace AppDigitalCv.Controllers
         //string nombreCompleto ,HttpPostedFileWrapper curpFile, HttpPostedFileWrapper rfcFile, HttpPostedFileWrapper imageFile,
         public void CrearDirectorioUsuario(PersonalVM personalVM)
         {
-            string nombreCompleto = personalVM.Nombre + " " + personalVM.ApellidoPaterno + " " + personalVM.ApellidoMaterno;///falta agregar el id del personal para asegurar que no se repitan las carpetas
+            string nombreCompleto = personalVM.Nombre + " " + personalVM.ApellidoPaterno + " " + personalVM.ApellidoMaterno;
             string path = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/"+nombreCompleto));
             string pathRfc = string.Empty;
             string pathCurp = string.Empty;

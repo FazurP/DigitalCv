@@ -69,12 +69,6 @@ namespace AppDigitalCv.Infraestructure
             //Familiar
             CreateMap<ParentescoVM, FamiliarDomainModel>();
             CreateMap<FamiliarDomainModel, ParentescoVM>();
-            //Premios Docente
-            CreateMap<PremiosDocenteDomainModel, PremiosDocenteVM>();
-            CreateMap<PremiosDocenteVM, PremiosDocenteDomainModel>();
-            //Dcoumentos
-            CreateMap<DocumentosDomainModel, DocumentosVM>();
-            CreateMap<DocumentosVM, DocumentosDomainModel>();
         }
 
 

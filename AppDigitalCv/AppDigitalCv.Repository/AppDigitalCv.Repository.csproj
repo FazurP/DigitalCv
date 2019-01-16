@@ -103,7 +103,6 @@
     <Compile Include="catDocumentos.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DocumentosRepository.cs" />
     <Compile Include="catEdificio.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
@@ -191,7 +190,6 @@
     <Compile Include="MunicipioRepository.cs" />
     <Compile Include="PaisRepository.cs" />
     <Compile Include="PersonalRepository.cs" />
-    <Compile Include="PremiosDocenteRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>

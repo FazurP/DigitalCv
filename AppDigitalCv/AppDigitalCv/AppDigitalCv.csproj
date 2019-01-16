@@ -413,8 +413,6 @@
     <Content Include="Views\DialectoIdioma\Create.cshtml" />
     <Content Include="Views\EstadoSalud\_Eliminar.cshtml" />
     <Content Include="Views\Hijos\Create.cshtml" />
-    <Content Include="Views\Hijos\_Eliminar.cshtml" />
-    <Content Include="Views\PremiosDocente\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -434,7 +432,6 @@
     <Compile Include="Controllers\HijosController.cs" />
     <Compile Include="Controllers\IdiomaDialectoController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
-    <Compile Include="Controllers\PremiosDocenteController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Infraestructure\AutomaperWebProfile.cs" />
     <Compile Include="Models\DataTablesParam.cs" />
@@ -457,7 +454,6 @@
     <Compile Include="ViewModels\DialectoVM.cs" />
     <Compile Include="ViewModels\DireccionVM.cs" />
     <Compile Include="ViewModels\DocumentoPersonalVM.cs" />
-    <Compile Include="ViewModels\DocumentosVM.cs" />
     <Compile Include="ViewModels\EnfermedadVM.cs" />
     <Compile Include="ViewModels\EstadoCivilVM.cs" />
     <Compile Include="ViewModels\EstadoSaludVM.cs" />
@@ -469,7 +465,6 @@
     <Compile Include="ViewModels\ParentescoVM.cs" />
     <Compile Include="ViewModels\PersonalVM.cs" />
     <Compile Include="ViewModels\Porcentajes.cs" />
-    <Compile Include="ViewModels\PremiosDocenteVM.cs" />
     <Compile Include="ViewModels\SessionManagerVM.cs" />
     <Compile Include="ViewModels\TipoSangreVM.cs" />
   </ItemGroup>
