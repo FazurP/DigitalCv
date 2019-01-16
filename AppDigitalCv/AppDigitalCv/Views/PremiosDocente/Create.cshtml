@@ -1,0 +1,75 @@
+﻿@using AppDigitalCv.Security
+@model AppDigitalCv.ViewModels.PremiosDocenteVM
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "PremiosDocente", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="bs-container content" style="min-height:960px;">
+        <section class="content-header">
+            <h1>
+                Premios y Distinciones
+                <small>(Agregar)</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
+                <li> <a href="#">Agregar</a></li>
+                <li class="#">Premios y Distinciones</li>
+                <li class="active">Agregar Premios</li>
+            </ol>
+        </section>
+        <br />
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h5 class="box-title">
+                            <label class="text-success">
+                                <i class="text-success fa fa-heartbeat"></i>
+                                @*@SessionPersister.AccountSession.Nombre*@
+                            </label>
+                        </h5>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label class="text-muted">Actividad Desempeñada:</label>
+                                @Html.TextBoxFor(model => model.StrActividadDesempeniada, new { @class = "form-control input-sm", placeholder = "Nombre de la Actividad Desempeñada",
+                               pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}", required = "required", title = "Ingresa la Actividad Desempeñada" })
+                                <label class="text-muted">Periodo Inicial de Entrega:</label>
+                                @Html.TextBoxFor(model => model.DteFechaInicioPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Selecciona la Fecha de Inicio" })
+                                <label class="text-muted">Periodo Final de Entrega</label>
+                                @Html.TextBoxFor(model => model.DteFechaFinPremio, new {@class="form-control input-sm", type = "date", required = "required", title = "Selecciona la Fecha Final de Entrega" })
+                            </div>
+                            <br />
+                            <br />
+                            <div class="form-group">
+                                <label class="text-muted">Nombre del Premio:</label>
+                                @Html.TextBoxFor(model => model.StrNombrePremio, new { @class = "form-control input-sm", required = "required", placeholder = "Nombre del Premio", title = "Escribe el Nombre del Premio", pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" })
+                                <label class="text-muted">Nombre de la Institución:</label>
+                                @Html.TextBoxFor(model => model.StrInstitucion, new { @class = "form-control input-sm", placeholder = "Institución", title = "Escribe el Nombre de la Institución" })
+                                <label class="text-muted">Año de Entrega del Premio:</label>
+                                @Html.TextBoxFor(model=>model.DteFechaObtencionPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Fecha de Entrega del Premio" })
+                            </div>
+                            <div class="form-group">
+                                <label class="text-muted">Evidencia Documental</label>
+                                @Html.TextBoxFor(model => model.DocumentosVM.DocumentoFile, new { @class = "btn btn-sm btn-social btn-linkedin", @type = "file", id = "documentoInputFile" })
+                                @Html.ValidationMessageFor(model => model.DocumentosVM.DocumentoFile, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <br />
+                                <label class="text-muted" style="display:none;">Acción</label>
+                                <input type="submit" class="btn btn-block  btn-sm btn-success" value="Guardar" title="Guarda los datos"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ }
+

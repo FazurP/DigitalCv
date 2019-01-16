@@ -107,8 +107,43 @@ namespace AppDigitalCv.Controllers
         #endregion
 
 
+        #region Eliminar EstadoSalud
+        /// <summary>
+        /// Este metodo se encarga de presentar los datos a la vista que se van a eliminar
+        /// </summary>
+        /// <param name="idEnfermedad">recibe un identificador del estado de salud</param>
+        /// <returns>regresa un estado de salud en una vista</returns>
+        public ActionResult EliminarFamiliar(ParentescoVM parentescoVM)
+        {
+            FamiliarDomainModel familiarDomainModel = iFamiliarBusiness.GetFamiliarByIdFamiliar(parentescoVM.IdFamiliar);
+            if (familiarDomainModel != null)
+            {
+                iFamiliarBusiness.DeleteFamiliar(familiarDomainModel);
+                               
+            }
+            return View("Create");
+        }
+        #endregion
 
+        #region Consultar para Eliminar de Forma permanente el registro
+        /// <summary>
+        /// Este metodo se encarga de presentar los datos a la vista que se van a eliminar
+        /// </summary>
+        /// <param name="idEnfermedad">recibe un identificador del estado de salud</param>
+        /// <returns>regresa un estado de salud en una vista</returns>
+        public ActionResult GetFamiliarByIdFamiliar(int IdFamiliar)
+        {
+            FamiliarDomainModel familiarDomainModel = iFamiliarBusiness.GetFamiliarByIdFamiliar(IdFamiliar);
+            if (familiarDomainModel != null)
+            {
 
+                ParentescoVM parentescoVM = new ParentescoVM();
+                AutoMapper.Mapper.Map(familiarDomainModel, parentescoVM);
+                return PartialView("_Eliminar", parentescoVM);
+            }
+            return View();
+        }
+        #endregion
 
     }
 }
