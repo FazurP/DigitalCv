@@ -107,7 +107,7 @@
           <Property Name="idDocumento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="strDescripcion" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="strObservacion" Type="varchar(max)" />
-          <Property Name="strUrl" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="strUrl" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="catEdificio">
           <Key>
@@ -1874,7 +1874,7 @@
           <Property Name="idDocumento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="strDescripcion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="strUrl" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="strUrl" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblDocumentacionPersonal" Relationship="bdGestionDocenteModel.fk_documento_documentacionPersonal" FromRole="catDocumentos" ToRole="tblDocumentacionPersonal" />
           <NavigationProperty Name="tblPremiosDocente" Relationship="bdGestionDocenteModel.fk_documento_premiosDocente" FromRole="catDocumentos" ToRole="tblPremiosDocente" />
         </EntityType>

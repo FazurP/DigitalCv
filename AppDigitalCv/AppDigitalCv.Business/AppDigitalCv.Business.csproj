@@ -49,6 +49,7 @@
     <Compile Include="DatosContactoBusiness.cs" />
     <Compile Include="DialectoIdiomaBusiness.cs" />
     <Compile Include="DireccionBusiness.cs" />
+    <Compile Include="DocumentosBusiness.cs" />
     <Compile Include="EnfermedadBusiness.cs" />
     <Compile Include="Enum\EnumFamiliares.cs" />
     <Compile Include="EstadoBusiness.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Interface\IAccountBusiness.cs" />
     <Compile Include="Interface\IDatosContacto.cs" />
     <Compile Include="Interface\IDialectoIdiomaBusiness.cs" />
+    <Compile Include="Interface\IDocumentosBusiness.cs" />
     <Compile Include="Interface\IEstadoSaludBusiness.cs" />
     <Compile Include="Interface\IFamiliarBusiness.cs" />
     <Compile Include="Interface\IIdiomaDialectoBusiness.cs" />
@@ -68,10 +70,12 @@
     <Compile Include="Interface\IEstadoCivilBusiness.cs" />
     <Compile Include="Interface\IPaisBusiness.cs" />
     <Compile Include="Interface\IPersonalBusiness.cs" />
+    <Compile Include="Interface\IPremiosDocenteBusiness.cs" />
     <Compile Include="Interface\ITelefono.cs" />
     <Compile Include="Interface\ITipoSangreBusiness.cs" />
     <Compile Include="PaisBusiness.cs" />
     <Compile Include="PersonalBusiness.cs" />
+    <Compile Include="PremiosDocenteBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TelefonoBusiness.cs" />
     <Compile Include="TipoSangreBusiness.cs" />

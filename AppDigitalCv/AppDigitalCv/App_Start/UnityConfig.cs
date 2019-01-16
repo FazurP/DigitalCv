@@ -36,7 +36,8 @@ namespace AppDigitalCv
             container.RegisterType<ITipoSangreBusiness,TipoSangreBusiness>();
             container.RegisterType<IEstadoSaludBusiness, EstadoSaludBusiness>();
             container.RegisterType<IFamiliarBusiness, FamiliarBusiness>();
-
+            container.RegisterType<IPremiosDocenteBusiness, PremiosDocenteBusiness>();
+            container.RegisterType<IDocumentosBusiness, DocumentosBusiness>();
             
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

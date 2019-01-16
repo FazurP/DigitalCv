@@ -125,5 +125,41 @@ namespace AppDigitalCv.Business
         }
 
 
+        /// <summary>
+        /// Este metodo se encarga de buscar un familiar por el identificador del familiar
+        /// </summary>
+        /// <param name="idFamiliar">identificador del familiar</param>
+        /// <returns>regresa la entidad  del tipo FamiliarDomainModel</returns>
+        public FamiliarDomainModel GetFamiliarByIdFamiliar(int idFamiliar)
+        {
+            Expression<Func<catFamiliar, bool>> predicado = p => p.idFamiliar.Equals(idFamiliar);
+            catFamiliar familiar = familiarRepository.SingleOrDefault(predicado);
+            FamiliarDomainModel familiarDM = new FamiliarDomainModel();
+            familiarDM.IdFamiliar = familiar.idFamiliar;
+            familiarDM.IdParentesco = familiar.idParentesco;
+            familiarDM.IdPersonal = familiar.idPersonal.Value;
+            familiarDM.IntEdad = familiar.intEdad;
+            familiarDM.StrDomicilio = familiar.strDomicilio;
+            familiarDM.StrNombre = familiar.strNombre;
+            familiarDM.StrOcupacion = familiar.strOcupacion;
+            familiarDM.DteFechaNacimiento = familiar.dteFechaNacimiento.ToString();
+            familiarDM.BitVive = familiar.bitVive;
+            return familiarDM;
+        }
+
+        /// <summary>
+        /// Este metodo se encarga de eliminar fisicamente un familiar d ela base de datos
+        /// </summary>
+        /// <param name="familiarDomainModel">recive una entidad del tipo familiarDomainModel</param>
+        /// <returns>regresa una respuesta del tipo true o false</returns>
+        public bool DeleteFamiliar(FamiliarDomainModel familiarDomainModel)
+        {
+            bool respuesta = false;
+            Expression<Func<catFamiliar, bool>> predicado = p => p.idFamiliar.Equals(familiarDomainModel.IdFamiliar);
+            familiarRepository.Delete(predicado);
+            respuesta = true;
+            return respuesta;
+        }
+
     }
 }

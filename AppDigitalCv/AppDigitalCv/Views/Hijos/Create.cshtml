@@ -79,6 +79,22 @@
                                         </thead>
                                         <tbody id="tblBody"></tbody>
                                     </table>
+                                    <!-- Establecemos el Modal que se va a presentar cuando demos click en la edicion de los datos-->
+                                    <div class="modal fade" id="myModal1">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                                                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                                                    <h5 class="modal-title"><label style="font-size:medium;">Eliminar Familiar (Hijos)</label></h5>
+                                                </div>
+                                                <div class="modal-body" id="myModalBodyDiv1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="hiddenFamiliarId" />
+                                    <!--Terminamos el modal de eliminacion-->
+                                    <!--Terminacion de la tabla -->
                                 </div>
                             </div>
                         </div>
@@ -86,89 +102,13 @@
                 </div>
 
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                
-            </div>
+            
         </div>
     </div>
 
+ }
 
 
-
-
-    @*<div class="form-horizontal">
-            <h4>ParentescoVM</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.StrNombre, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.StrNombre, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.StrNombre, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.StrOcupacion, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.StrOcupacion, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.StrOcupacion, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.StrDomicilio, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.StrDomicilio, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.StrDomicilio, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.IntEdad, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.IntEdad, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.IntEdad, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.BitVive, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.BitVive)
-                        @Html.ValidationMessageFor(model => model.BitVive, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.DteFechaNacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.DteFechaNacimiento, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DteFechaNacimiento, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.IdParentesco, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.IdParentesco, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.IdParentesco, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
-        </div>*@
-}
-
-<div>
-    @Html.ActionLink("Regresar", "Index")
-</div>
 
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
 
@@ -180,6 +120,18 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script>
+
+        var AddDelete = function (IdFamiliar) {
+
+            var url = "/Hijos/GetFamiliarByIdFamiliar?IdFamiliar=" + IdFamiliar;
+
+            $("#myModalBodyDiv1").load(url, function () {
+                $("#myModal1").modal("show");
+
+            })
+
+        };
+
         $(document).ready(function () {
 
             var oTable;
@@ -232,7 +184,7 @@
                         "dataSrc": "",
                         "columns": [
 
-                            { "data": "StrNombre" },//IdFamiliar
+                            { "data": "StrNombre" },
                             { "data": "IntEdad" },
                             { "data": "DteFechaNacimiento" },
 
