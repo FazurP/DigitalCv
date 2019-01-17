@@ -15,10 +15,13 @@ namespace AppDigitalCv.Controllers
     {
         IPremiosDocenteBusiness IpremiosDocenteBusiness;
         IPersonalBusiness IpersonalBusiness;
-        public PremiosDocenteController(IPremiosDocenteBusiness _IpremiosDocenteBusiness, IPersonalBusiness _IpersonalBusiness)
+        IDocumentosBusiness IdocumentosBusiness;
+
+        public PremiosDocenteController(IPremiosDocenteBusiness _IpremiosDocenteBusiness, IPersonalBusiness _IpersonalBusiness, IDocumentosBusiness _IdocumentosBusiness)
         {
             IpremiosDocenteBusiness = _IpremiosDocenteBusiness;
             IpersonalBusiness = _IpersonalBusiness;
+            IdocumentosBusiness = _IdocumentosBusiness;
         }
 
         // GET: PremiosDocente
@@ -64,7 +67,6 @@ namespace AppDigitalCv.Controllers
                 DocumentosVM documentoVM = new DocumentosVM();
                 documentoVM.StrUrl = path;
                 premiosDocenteVM.DocumentosVM = documentoVM;
-                //premiosDocenteVM.DocumentosVM.StrUrl = path;
                 this.AddEditPremiosDocente(premiosDocenteVM);
 
             }
@@ -75,8 +77,6 @@ namespace AppDigitalCv.Controllers
                 DocumentosVM documentoVM = new DocumentosVM();
                 documentoVM.StrUrl = path;
                 premiosDocenteVM.DocumentosVM = documentoVM;
-
-                
                 this.AddEditPremiosDocente(premiosDocenteVM);
             }
         }
@@ -92,7 +92,10 @@ namespace AppDigitalCv.Controllers
             AutoMapper.Mapper.Map(premiosDocenteVM, premiosDocenteDM);///hacemos el mapeado de la entidad
             AutoMapper.Mapper.Map(premiosDocenteVM.DocumentosVM, documentosDomainModel);
             premiosDocenteDM.DocumentosDomainModel = documentosDomainModel;
-            resultado = IpremiosDocenteBusiness.AddUpdatePremiosDocente(premiosDocenteDM);
+
+            DocumentosDomainModel documento =IdocumentosBusiness.AddDocumento(documentosDomainModel);
+            premiosDocenteDM.IdDocumento = documento.IdDocumento;
+             resultado = IpremiosDocenteBusiness.AddPremiosDocente(premiosDocenteDM);
             return resultado;
         }
         #endregion

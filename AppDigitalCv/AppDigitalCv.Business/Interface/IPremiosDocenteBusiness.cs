@@ -15,5 +15,6 @@ namespace AppDigitalCv.Business.Interface
     public interface IPremiosDocenteBusiness
     {
         bool AddUpdatePremiosDocente(PremiosDocenteDomainModel premiosDocenteDM);
+        bool AddPremiosDocente(PremiosDocenteDomainModel premiosDocenteDM);
     }
 }

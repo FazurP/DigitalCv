@@ -11,6 +11,13 @@ namespace AppDigitalCv.Business.Interface
     public interface IDocumentosBusiness
     {
         string AddUpdateDocumento(DocumentosDomainModel documentosDM);
+        
+        /// <summary>
+        /// Este metodo se encarga de guardar un documento y al finalizr la taera devuelve dicho documento
+        /// </summary>
+        /// <param name="documentosDM">la entidad del documento</param>
+        /// <returns>regresa la entidad  documento</returns>
+        DocumentosDomainModel AddDocumento(DocumentosDomainModel documentosDM);
     }
 
     

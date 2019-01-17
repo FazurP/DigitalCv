@@ -5,6 +5,7 @@ using AppDigitalCv.Repository.Infraestructure.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,7 +24,11 @@ namespace AppDigitalCv.Business
             documentosRepository = new DocumentosRepository(unitOfWork);
         }
 
-
+        /// <summary>
+        /// Este metodo se encarga de insertar o actualizar un documento
+        /// </summary>
+        /// <param name="documentosDM">recibe una entidad como documento</param>
+        /// <returns>una cadena de confirmación</returns>
         public string AddUpdateDocumento(DocumentosDomainModel documentosDM)
         {
             string resultado = string.Empty;
@@ -53,6 +58,31 @@ namespace AppDigitalCv.Business
             }
             return resultado;
         }
+
+
+        /// <summary>
+        /// Este metodo se encarga de guardar un documento y al finalizr la taera devuelve dicho documento
+        /// </summary>
+        /// <param name="documentosDM">la entidad del documento</param>
+        /// <returns>regresa la entidad  documento</returns>
+        public DocumentosDomainModel AddDocumento(DocumentosDomainModel documentosDM)
+        {
+            
+            string resultado = string.Empty;
+            catDocumentos catDocumentos = new catDocumentos();
+            catDocumentos.idDocumento = documentosDM.IdDocumento;
+            catDocumentos.strDescripcion = documentosDM.StrDescripcion;
+            catDocumentos.strObservacion = documentosDM.StrObservacion;
+            catDocumentos.strUrl = documentosDM.StrUrl;
+            var record = documentosRepository.Insert(catDocumentos);
+            Expression<Func<catDocumentos, bool>> predicado = p => p.strUrl.Equals(catDocumentos.strUrl);
+            catDocumentos documento= documentosRepository.SingleOrDefault(predicado);
+            DocumentosDomainModel documentoDM = new DocumentosDomainModel();
+            documentoDM.IdDocumento = documento.idDocumento;
+            documentoDM.StrUrl = documento.strUrl;
+            return documentoDM;
+        }
+
 
 
     }
