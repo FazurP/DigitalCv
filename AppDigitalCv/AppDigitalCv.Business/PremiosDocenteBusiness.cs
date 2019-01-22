@@ -5,6 +5,7 @@ using AppDigitalCv.Repository.Infraestructure.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -54,9 +55,6 @@ namespace AppDigitalCv.Business
             else
             {
                 tblPremiosDocente tblPremios = new tblPremiosDocente();
-                //catDocumentos catDocumento = new catDocumentos();
-                //catDocumento.strUrl = premiosDocenteDM.DocumentosDomainModel.StrUrl;
-                //tblPremios.catDocumentos = catDocumento;
                 tblPremios.idDocumento = premiosDocenteDM.IdDocumento;
                 tblPremios.idPersonal = premiosDocenteDM.IdPersonal;
                 tblPremios.dteFechaObtencionPremio = DateTime.Parse(premiosDocenteDM.DteFechaObtencionPremio);
@@ -97,8 +95,75 @@ namespace AppDigitalCv.Business
             return respuesta;
         }
 
+        /// <summary>
+        /// Este metodo se encarga de obtener todos los premios del docente por idPersonal
+        /// </summary>
+        /// <param name="idPersonal">el identificador de personal</param>
+        /// <returns>regresa una lista de premios del tipo domain model</returns>
+        public List<PremiosDocenteDomainModel> GetPremiosDocenteById(int idPersonal)
+        {
+            List<PremiosDocenteDomainModel> premiosDM = new List<PremiosDocenteDomainModel>();
+            Expression<Func<tblPremiosDocente, bool>> predicado = p => p.idPersonal.Equals(idPersonal);
+            List<tblPremiosDocente> premios= premiosDocenteRepository.GetAll(predicado).ToList();
+
+            foreach (tblPremiosDocente p in premios)
+            {
+                PremiosDocenteDomainModel premioDocenteDM = new PremiosDocenteDomainModel();
+                premioDocenteDM.IdPersonal = p.idPersonal;
+                premioDocenteDM.IdDocumento = p.idDocumento;
+                premioDocenteDM.DteFechaObtencionPremio = p.dteFechaObtencionPremio.ToString();
+                premioDocenteDM.StrInstitucion = p.strInstitucion;
+                premioDocenteDM.StrNombrePremio = p.strNombrePremio;
+                premioDocenteDM.StrTipoPremio = p.strTipoPremio;
+                premioDocenteDM.DteFechaInicioPremio = p.dteFechaInicioPremio.ToString();
+                premioDocenteDM.DteFechaFinPremio = p.dteFechaFinPremio.ToString();
+                premioDocenteDM.StrActividadDesempeniada = p.strActividadDesempeniada;
+
+                premiosDM.Add(premioDocenteDM);
+            }
+
+            return premiosDM;
+
+        }
 
 
+        /// <summary>
+        /// este metodo se encarga de consultar un premio del docente por idPersonal y por idDocumento
+        /// </summary>
+        /// <param name="idPersonal">identificador del personal</param>
+        /// <param name="idDocumento">identificador del documento</param>
+        /// <returns>entidad del premio del docente</returns>
+        public PremiosDocenteDomainModel GetPremioDocenteById(int idPersonal,int idDocumento)
+        {
+            Expression<Func<tblPremiosDocente, bool>> predicado = p => p.idPersonal.Equals(idPersonal) && p.idDocumento.Equals(idDocumento);
+            tblPremiosDocente  premio= premiosDocenteRepository.SingleOrDefault(predicado);
+            PremiosDocenteDomainModel premiosDDM = new PremiosDocenteDomainModel();
+            premiosDDM.IdPersonal = premio.idPersonal;
+            premiosDDM.IdDocumento = premio.idDocumento;
+            premiosDDM.DteFechaObtencionPremio = premio.dteFechaObtencionPremio.ToString();
+            premiosDDM.StrInstitucion = premio.strInstitucion;
+            premiosDDM.StrNombrePremio = premio.strNombrePremio;
+            premiosDDM.StrActividadDesempeniada = premio.strActividadDesempeniada;
+            premiosDDM.DteFechaInicioPremio = premio.dteFechaInicioPremio.ToString();
+            premiosDDM.DteFechaFinPremio = premio.dteFechaFinPremio.ToString();
+            premiosDDM.StrTipoPremio = premio.strTipoPremio;
+            return premiosDDM;
+        }
+
+        /// <summary>
+        /// Este metodo se encarga de eliminar fisicamente un premio del docente de la base de datos
+        /// </summary>
+        /// <param name="familiarDomainModel">recive una entidad del tipo familiarDomainModel</param>
+        /// <returns>regresa una respuesta del tipo true o false</returns>
+        public bool DeletePremiosDocente(PremiosDocenteDomainModel premiosDocenteDomainModel)
+        {
+            bool respuesta = false;
+            Expression<Func<tblPremiosDocente, bool>> predicado = p => p.idPersonal.Equals(premiosDocenteDomainModel.IdPersonal) 
+            && p.idDocumento.Equals(premiosDocenteDomainModel.IdDocumento);
+            premiosDocenteRepository.Delete(predicado);
+            respuesta = true;
+            return respuesta;
+        }
 
     }
 }

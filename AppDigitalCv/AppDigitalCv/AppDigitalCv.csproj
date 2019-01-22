@@ -415,6 +415,7 @@
     <Content Include="Views\Hijos\Create.cshtml" />
     <Content Include="Views\Hijos\_Eliminar.cshtml" />
     <Content Include="Views\PremiosDocente\Create.cshtml" />
+    <Content Include="Views\PremiosDocente\_Eliminar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

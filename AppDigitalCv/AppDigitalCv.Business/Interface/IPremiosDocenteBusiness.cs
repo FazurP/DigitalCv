@@ -16,5 +16,8 @@ namespace AppDigitalCv.Business.Interface
     {
         bool AddUpdatePremiosDocente(PremiosDocenteDomainModel premiosDocenteDM);
         bool AddPremiosDocente(PremiosDocenteDomainModel premiosDocenteDM);
+        List<PremiosDocenteDomainModel> GetPremiosDocenteById(int idPersonal);
+        PremiosDocenteDomainModel GetPremioDocenteById(int idPersonal, int idDocumento);
+        bool DeletePremiosDocente(PremiosDocenteDomainModel premiosDocenteDomainModel);
     }
 }
