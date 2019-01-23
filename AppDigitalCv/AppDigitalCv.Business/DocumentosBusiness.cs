@@ -83,6 +83,37 @@ namespace AppDigitalCv.Business
             return documentoDM;
         }
 
+        /// <summary>
+        /// Este metodo se encarga de eliminar fisicamente un familiar d ela base de datos
+        /// </summary>
+        /// <param name="IdDocumento">recive un identificador del tipo IdDocumento</param>
+        /// <returns>regresa una respuesta del tipo true o false</returns>
+        public bool DeleteDocumento(int IdDocumento)
+        {
+            bool respuesta = false;
+            Expression<Func<catDocumentos, bool>> predicado = p => p.idDocumento.Equals(IdDocumento);
+            documentosRepository.Delete(predicado);
+            respuesta = true;
+            return respuesta;
+        }
+
+        /// <summary>
+        /// Este metodo se encarga de consultar un documento por ID
+        /// </summary>
+        /// <param name="IdDocumento">el identificador del documento</param>
+        /// <returns>retorna una entidad del documento</returns>
+        public DocumentosDomainModel GetDocumentoByIdDocumento(int IdDocumento)
+        {
+            Expression<Func<catDocumentos, bool>> predicado = p => p.idDocumento.Equals(IdDocumento);
+            catDocumentos documento =documentosRepository.SingleOrDefault(predicado);
+            DocumentosDomainModel documentosDM = new DocumentosDomainModel();
+            documentosDM.IdDocumento = documento.idDocumento;
+            documentosDM.StrUrl = documento.strUrl;
+            return documentosDM;
+        }
+
+
+
 
 
     }

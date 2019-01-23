@@ -9,6 +9,8 @@ using AppDigitalCv.Domain;
 using AppDigitalCv.Models;
 using AppDigitalCv.Security;
 using AppDigitalCv.ViewModels;
+//cargamos la libreria para eliminar el documento de un usuario
+using System.IO;
 
 namespace AppDigitalCv.Controllers
 {
@@ -63,9 +65,13 @@ namespace AppDigitalCv.Controllers
                 //creamos el directorio
                 DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
                 path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombreCompleto + "/"), Path.GetFileName(premiosDocenteVM.DocumentosVM.DocumentoFile.FileName));
+                
+                //solo se guarda el nombre del archivo
+                string sfpath = premiosDocenteVM.DocumentosVM.DocumentoFile.FileName;
+
                 premiosDocenteVM.DocumentosVM.DocumentoFile.SaveAs(path);
                 DocumentosVM documentoVM = new DocumentosVM();
-                documentoVM.StrUrl = path;
+                documentoVM.StrUrl = sfpath;
                 premiosDocenteVM.DocumentosVM = documentoVM;
                 this.AddEditPremiosDocente(premiosDocenteVM);
 
@@ -73,9 +79,10 @@ namespace AppDigitalCv.Controllers
             else
             {
                 path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombreCompleto + "/"), Path.GetFileName(premiosDocenteVM.DocumentosVM.DocumentoFile.FileName));
+                string sfpath = premiosDocenteVM.DocumentosVM.DocumentoFile.FileName;
                 premiosDocenteVM.DocumentosVM.DocumentoFile.SaveAs(path);
                 DocumentosVM documentoVM = new DocumentosVM();
-                documentoVM.StrUrl = path;
+                documentoVM.StrUrl = sfpath;
                 premiosDocenteVM.DocumentosVM = documentoVM;
                 this.AddEditPremiosDocente(premiosDocenteVM);
             }
@@ -201,14 +208,42 @@ namespace AppDigitalCv.Controllers
         public ActionResult EliminarPremiosDocente(int idDocumento)
         {
             int idPersonal = SessionPersister.AccountSession.IdPersonal;
+            string nombreUsuario = SessionPersister.AccountSession.NombreCompleto;
             PremiosDocenteDomainModel premioDDM = IpremiosDocenteBusiness.GetPremioDocenteById(idPersonal, idDocumento);
             
             if (premioDDM != null)
             {
-                IpremiosDocenteBusiness.DeletePremiosDocente(premioDDM);
+                if (this.DeleteFileSystemDocument(nombreUsuario, idDocumento))
+                {
+                    IpremiosDocenteBusiness.DeletePremiosDocente(premioDDM);
+                    IdocumentosBusiness.DeleteDocumento(idDocumento);
+                }
+                                
             }
             return View("Create");
         }
         #endregion
+
+        /// <summary>
+        /// Este metodo se encarga de eliminar un archivo o documento de la carpeta del usuario
+        /// </summary>
+        /// <param name="nombreUsuario">nombre del usuario a eliminar</param>
+        /// <returns>valor true/false</returns>
+        public bool DeleteFileSystemDocument(string nombreUsuario,int IdDocumento)
+        {
+            bool respuesta = false;
+            string path = string.Empty;
+            DocumentosDomainModel documento = IdocumentosBusiness.GetDocumentoByIdDocumento(IdDocumento);
+            path = Recursos.RecursosSistema.DOCUMENTO_USUARIO+nombreUsuario+"/"+documento.StrUrl;
+            string pathf = Server.MapPath(path);
+
+            DirectoryInfo directorio = new DirectoryInfo(pathf);
+            FileInfo fileInfo = new FileInfo(pathf);
+            fileInfo.Delete();
+            respuesta = true;
+            return respuesta;
+        }
+
+
     }
 }
