@@ -29,6 +29,12 @@ namespace AppDigitalCv.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Manager()
+        {
+            return View();
+        }
+
         [HttpGet]
         public ActionResult Create()
         {
@@ -38,7 +44,6 @@ namespace AppDigitalCv.Controllers
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
         public ActionResult Registrar([Bind(Include="IdPersonal,IdEnfermedad,Descripcion")] EstadoSaludVM estadoSaludVM)
         {
             if (ModelState.IsValid)
@@ -128,7 +133,7 @@ namespace AppDigitalCv.Controllers
         /// </summary>
         /// <param name="idEnfermedad">recibe un identificador del estado de salud</param>
         /// <returns>regresa un estado de salud en una vista</returns>
-        public ActionResult EliminarEstadoSalud(int IdEnfermedad)
+        public ActionResult GetEstadoSalud(int IdEnfermedad)
         {
              EstadoSaludDomainModel estadoSaludDomainModel= IestadoSaludBusiness.GetEnfermedadesByIdEnfermedad(IdEnfermedad);
             if (estadoSaludDomainModel != null)
@@ -140,6 +145,27 @@ namespace AppDigitalCv.Controllers
             return View();
         }
         #endregion
+
+        #region Eliminar Premios Docente
+        /// <summary>
+        /// Este metodo se encarga de presentar los datos a la vista que se van a eliminar
+        /// </summary>
+        /// <param name="idEnfermedad">recibe un identificador del documento</param>
+        /// <returns>regresa una vista con los datos eliminados</returns>
+        [HttpPost]
+        public void EliminarEstadoSalud(EstadoSaludVM estadoSaludVM)
+        {
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
+            IestadoSaludBusiness.DeleteEstadoSaludPersonal(estadoSaludVM.IdEnfermedad);
+            ViewBag.Enfermedades = new SelectList(IenfermedadesBusiness.GetEnfermedades(), "IdEnfermedad", "StrDescripcion");
+            ViewBag.TipoSangre = new SelectList(ItipoSangreBusiness.GetTipoSangre(), "IdTipoSangre", "StrDescripcion");
+            //return RedirectToAction("Create");
+        }
+        #endregion
+
+
+
+
 
 
     }
