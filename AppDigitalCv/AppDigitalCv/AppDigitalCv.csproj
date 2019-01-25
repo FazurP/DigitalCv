@@ -454,6 +454,7 @@
     <Compile Include="Security\CustomPrincipal.cs" />
     <Compile Include="Security\SessionPersister.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\AsociacionesVM.cs" />
     <Compile Include="ViewModels\ColoniaVM.cs" />
     <Compile Include="ViewModels\DatosContactoVM.cs" />
     <Compile Include="ViewModels\DialectoVM.cs" />
@@ -469,10 +470,12 @@
     <Compile Include="ViewModels\MunicipioVM.cs" />
     <Compile Include="ViewModels\PaisVM.cs" />
     <Compile Include="ViewModels\ParentescoVM.cs" />
+    <Compile Include="ViewModels\PersonalAsociacionesVM.cs" />
     <Compile Include="ViewModels\PersonalVM.cs" />
     <Compile Include="ViewModels\Porcentajes.cs" />
     <Compile Include="ViewModels\PremiosDocenteVM.cs" />
     <Compile Include="ViewModels\SessionManagerVM.cs" />
+    <Compile Include="ViewModels\TipoEmpresaVM.cs" />
     <Compile Include="ViewModels\TipoSangreVM.cs" />
   </ItemGroup>
   <ItemGroup>

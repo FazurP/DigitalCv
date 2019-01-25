@@ -42,17 +42,11 @@
             var idPersonal =  @SessionPersister.AccountSession.IdPersonal;
             estadoSaludVM.IdEnfermedad = $('#IdEnfermedad').val();
             estadoSaludVM.IdPersonal = idPersonal;
-            
             var myformdata = $("#myForm").serialize();
-
             $.ajax({
                 type: "POST",
                 url: '/EstadoSalud/EliminarEstadoSalud/',
-                //contentType: 'application/json;charset=utf-8',
                 data: { estadoSaludVM: estadoSaludVM },
-                    //myformdata, //'{estadoSaludVM:' + JSON.stringify(estadoSaludVM) + '}' , '{estadoSaludVM:' + JSON.stringify(estadoSaludVM) + '}',
-                //method: 'POST',
-                //dataType: 'json',
                 success: function () {
                     $("#loaderDiv").hide();
                     $("#myModal").modal("hide");
@@ -65,29 +59,7 @@
                 }
             })
         })
-        //$("#btnSubmit").click(function () {
-
-        //    $("#loaderDiv").show();
-
-        //    var myformdata = $("#myForm").serialize();
-
-        //    $.ajax({
-
-        //        type: "post",
-        //        url: "/EstadoSalud/Create",
-        //        data: myformdata,
-        //        //method: 'post',
-        //        dataType: 'json',
-        //        success: function () {
-        //            $("#loaderDiv").hide();
-        //            $("#myModal").modal("hide");
-        //            window.location.href ="/EstadoSalud/Create";
-
-        //        }
-
-        //    })
-        //})
-
+       
     });
 
 
