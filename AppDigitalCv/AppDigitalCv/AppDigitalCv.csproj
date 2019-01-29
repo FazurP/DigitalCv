@@ -417,6 +417,9 @@
     <Content Include="Views\PremiosDocente\Create.cshtml" />
     <Content Include="Views\PremiosDocente\_Eliminar.cshtml" />
     <Content Include="Views\EstadoSalud\Manager.cshtml" />
+    <Content Include="Views\PersonalAsociaciones\Create.cshtml" />
+    <Content Include="Views\PersonalAsociaciones\_TipoEmpresa.cshtml" />
+    <Content Include="Views\Shared\_TipoEmpresa.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -435,6 +438,7 @@
     <Compile Include="Controllers\EstadoSaludController.cs" />
     <Compile Include="Controllers\HijosController.cs" />
     <Compile Include="Controllers\IdiomaDialectoController.cs" />
+    <Compile Include="Controllers\PersonalAsociacionesController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Controllers\PremiosDocenteController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />

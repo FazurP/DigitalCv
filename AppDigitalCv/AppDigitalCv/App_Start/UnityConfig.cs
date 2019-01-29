@@ -38,7 +38,9 @@ namespace AppDigitalCv
             container.RegisterType<IFamiliarBusiness, FamiliarBusiness>();
             container.RegisterType<IPremiosDocenteBusiness, PremiosDocenteBusiness>();
             container.RegisterType<IDocumentosBusiness, DocumentosBusiness>();
-            
+            container.RegisterType<IAsociacionesBusiness, AsosiacionesBusiness>();
+            container.RegisterType<ITipoEmpresaBusiness, TipoEmpresaBusiness>();
+
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

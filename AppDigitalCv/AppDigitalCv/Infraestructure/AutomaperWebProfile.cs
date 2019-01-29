@@ -75,6 +75,13 @@ namespace AppDigitalCv.Infraestructure
             //Dcoumentos
             CreateMap<DocumentosDomainModel, DocumentosVM>();
             CreateMap<DocumentosVM, DocumentosDomainModel>();
+            //Asocianoes
+            CreateMap<AsociacionesDomainModel, AsociacionesVM>();
+            CreateMap<AsociacionesVM, AsociacionesDomainModel>();
+            //Tipo de Empresa
+            CreateMap<TipoEmpresaDomainModel, TipoEmpresaVM>();
+            CreateMap<TipoEmpresaVM, TipoEmpresaDomainModel>();
+
         }
 
 

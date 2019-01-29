@@ -58,8 +58,21 @@ namespace AppDigitalCv.Business
             }
             return resultado;
         }
-
-
+       
+        /// <summary>
+        /// Este metodo se encarga de obtener todas las entidades del tipo asociaciones
+        /// </summary>
+        /// <returns>retorna una lista de asociaciones</returns>
+        public List<AsociacionesDomainModel> GetAsociaciones()
+        {
+            List<AsociacionesDomainModel> asociaciones = null;
+            asociaciones = asociacionesRepository.GetAll().Select(p => new AsociacionesDomainModel { IdAsociacion = p.idAsociacion, IdTipoEmpresa = p.idTipoEmpresa, StrDescripcion = p.strDescripcion, StrObservacion = p.strObservacion }).ToList();
+            AsociacionesDomainModel asociacionesDomainModel = new AsociacionesDomainModel();
+            asociacionesDomainModel.IdAsociacion = 0;
+            asociacionesDomainModel.StrDescripcion = "--Seleccionar--";
+            asociaciones.Insert(0, asociacionesDomainModel);
+            return asociaciones;
+        }
 
 
     }

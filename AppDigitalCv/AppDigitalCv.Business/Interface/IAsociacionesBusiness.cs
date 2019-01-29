@@ -15,5 +15,11 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="asociacionesDM">recive la entidad asociasionesDM</param>
         /// <returns>regresa una cadena de inserción</returns>
         string AddUpdateAsociaciones(AsociacionesDomainModel asociacionesDM);
+        
+        /// <summary>
+        /// Este metodo se encarga de obtener todas las entidades del tipo asociaciones
+        /// </summary>
+        /// <returns>retorna una lista de asociaciones</returns>
+        List<AsociacionesDomainModel> GetAsociaciones();
     }
 }

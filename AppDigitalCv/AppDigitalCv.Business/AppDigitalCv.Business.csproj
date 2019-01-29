@@ -75,6 +75,7 @@
     <Compile Include="Interface\IPersonalBusiness.cs" />
     <Compile Include="Interface\IPremiosDocenteBusiness.cs" />
     <Compile Include="Interface\ITelefono.cs" />
+    <Compile Include="Interface\ITipoEmpresaBusiness.cs" />
     <Compile Include="Interface\ITipoSangreBusiness.cs" />
     <Compile Include="PaisBusiness.cs" />
     <Compile Include="PersonalAsociacionesBusiness.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="PremiosDocenteBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TelefonoBusiness.cs" />
+    <Compile Include="TipoEmpresaBusiness.cs" />
     <Compile Include="TipoSangreBusiness.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -12,6 +12,7 @@ namespace AppDigitalCv.Domain
         public string StrDescripcion { get; set; }
         public string StrObservacion { get; set; }
         public int IdTipoEmpresa { get; set; }
+        //esto cambiara a una lista
         public virtual TipoEmpresaDomainModel TipoEmpresaDomainModel { get; set; }
     }
 }
