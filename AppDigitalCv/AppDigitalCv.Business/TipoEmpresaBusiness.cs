@@ -51,15 +51,20 @@ namespace AppDigitalCv.Business
         public List<TipoEmpresaDomainModel> GetTipoEmpresaByIdAsociacion(int idAsociacion)
         {
             List<TipoEmpresaDomainModel> tipoEmpresas = new List<TipoEmpresaDomainModel>();
-            Expression<Func<catAsociaciones, bool>> predicate = p => p.idAsociacion.Equals(idAsociacion);
-            catAsociaciones  asociaciones= asociacionesRepository.SingleOrDefault(predicate);
 
-            catTipoEmpresa tipoEmpresa = asociaciones.catTipoEmpresa;
-            TipoEmpresaDomainModel tipoEmpresaDomainModel = new TipoEmpresaDomainModel();
-            tipoEmpresaDomainModel.IdTipoEmpresa = tipoEmpresa.idTipoEmpresa;
-            tipoEmpresaDomainModel.StrDescripcion = tipoEmpresa.strDescripcion;
-            tipoEmpresaDomainModel.StrObservacion = tipoEmpresa.strObservacion;
-            tipoEmpresas.Add(tipoEmpresaDomainModel);
+            if (idAsociacion > 0)
+            { 
+            
+                Expression<Func<catAsociaciones, bool>> predicate = p => p.idAsociacion.Equals(idAsociacion);
+                catAsociaciones  asociaciones= asociacionesRepository.SingleOrDefault(predicate);
+
+                catTipoEmpresa tipoEmpresa = asociaciones.catTipoEmpresa;
+                TipoEmpresaDomainModel tipoEmpresaDomainModel = new TipoEmpresaDomainModel();
+                tipoEmpresaDomainModel.IdTipoEmpresa = tipoEmpresa.idTipoEmpresa;
+                tipoEmpresaDomainModel.StrDescripcion = tipoEmpresa.strDescripcion;
+                tipoEmpresaDomainModel.StrObservacion = tipoEmpresa.strObservacion;
+                tipoEmpresas.Add(tipoEmpresaDomainModel);
+            }
             return tipoEmpresas;
 
         }
