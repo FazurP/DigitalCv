@@ -1,0 +1,90 @@
+﻿@using AppDigitalCv.Security
+@model  AppDigitalCv.ViewModels.PersonalAsociacionesVM
+
+@{
+    ViewBag.Title = "Registrar una Asociación";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="bs-container content" style="min-height:960px;">
+        <section class="content-header">
+            <h1>
+                Asociación
+                <small>(Agregar)</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
+                <li> <a href="#">Agregar</a></li>
+                <li class="active">Asociación</li>
+            </ol>
+        </section>
+        <br />
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h5 class="box-title">
+                            <label class="text-success">
+                                <i class="text-success fa fa-heartbeat"></i>
+                                @SessionPersister.AccountSession.Nombre
+                            </label>
+                        </h5>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                Pertenece a Alguna Asociación?
+                                <input type="radio" id="rdbSi" name="seleccion" value="SI " class="custom-control-input"><label for="si">SI</label>
+                                <input type="radio" id="rdbNo" name="seleccion" value="NO" class="custom-control-input" checked><label for="no">NO</label>
+
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                Seleccione su Asociación:@Html.DropDownList("Asociacion", null, htmlAttributes: new { @class = "form-control input-sm", id = "Asociacion", title = "Selecciona una Asociación" })
+                                Empresa a la que pertenece la asociación:@Html.DropDownList("TipoEmpresa", null, htmlAttributes: new { @class = "form-control input-sm", id = "TipoEmpresa", title = "Selecciona un Tipo de Empresa" })
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                Fecha de Ingreso:
+                            </div>
+                            <div class="form-group">
+                                Describa el Cargo que Desempeñó:
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#Asociacion").change(function () {
+                var idAsociacion = $(this).val();
+                $.ajax({
+                    type: "Post",
+                    url: "/PersonalAsociaciones/ConsultarTipoEmpresaByIdAsociacion?idAsociacion=" + idAsociacion,
+                    contentType: "html",
+                    success: function (response) {
+                        $("#TipoEmpresa").empty();
+                        $("#TipoEmpresa").append(response);
+                    },
+                    error: function (error) {
+
+                    }
+                });
+            });
+        });
+    </script>
+

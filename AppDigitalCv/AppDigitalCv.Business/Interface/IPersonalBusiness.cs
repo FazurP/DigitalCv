@@ -20,6 +20,14 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="personalDM">recibe un objeto del modelo de dominio</param>
         /// <returns>regresa un mensaje con el resultado de la accion realizada</returns>
         string AddUpdatePersonal(PersonalDomainModel personalDM);
+
+        /// <summary>
+        /// Este metodo se encarga de actualizar laentidad de personal incluyendo los datos del familiar
+        /// </summary>
+        /// <param name="personalDM">ingresa una entidad del tipo personaldomainmodel</param>
+        /// <returns>regresa una cadena de confirmacion</returns>
+        string AddUpdatePersonalFamliar(PersonalDomainModel personalDM);
+
         /// <summary>
         /// este metodo se encarga de consultar a una persona por id
         /// </summary>
@@ -52,5 +60,12 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="idPersonal">identificador del personal que se va a eliminar</param>
         /// <returns>regresa una respuesta boolean de confirmación de acción</returns>
         bool DeleteFileRfc(int idPersonal);
+
+        /// <summary>
+        /// Este metodo se encarga de Agregar o Actualizar el tipo de sangre del personal
+        /// </summary>
+        /// <param name="personalDM">una entidad del tipo personalDomain con el tipo de sangre</param>
+        /// <returns>regresa una cadena de confirmación</returns>
+        string AddUpdateTipoSangre(PersonalDomainModel personalDM);
     }
 }

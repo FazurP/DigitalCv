@@ -224,11 +224,28 @@
     <Content Include="Imagenes\anonimo_perfil.jpg" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="Imagenes\conferencias.png" />
+    <Content Include="Imagenes\educacion_continua1.jpg" />
+    <Content Include="Imagenes\educacion_continua2.png" />
     <Content Include="Imagenes\escudoUt.png" />
     <Content Include="Imagenes\escudo_uttt.jpg" />
+    <Content Include="Imagenes\formacion_docente.jpg" />
+    <Content Include="Imagenes\formacion_docente_experiencia_docente.png" />
+    <Content Include="Imagenes\formacion_docente_experiencia_profesional.png" />
+    <Content Include="Imagenes\formacion_docente_produccion_academica.png" />
+    <Content Include="Imagenes\formacion_docente_profesional.jpg" />
+    <Content Include="Imagenes\hidalgo.png" />
+    <Content Include="Imagenes\loader.gif" />
+    <Content Include="Imagenes\loading-blue.gif" />
+    <Content Include="Imagenes\loading.gif" />
+    <Content Include="Imagenes\Loading_icon.gif" />
     <Content Include="Imagenes\material-loader.gif" />
+    <Content Include="Imagenes\p1_instituciones.png" />
     <Content Include="Imagenes\pdf_descargar.jpg" />
     <Content Include="Imagenes\pdf_subir.png" />
+    <Content Include="Imagenes\preloader.gif" />
+    <Content Include="Imagenes\reportes.png" />
+    <Content Include="Imagenes\usertest-160x160.jpg" />
     <Content Include="Scripts\boostrap.dataTables.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -394,6 +411,15 @@
     <Content Include="Views\EstadoSalud\Create.cshtml" />
     <Content Include="Views\IdiomaDialecto\Create.cshtml" />
     <Content Include="Views\DialectoIdioma\Create.cshtml" />
+    <Content Include="Views\EstadoSalud\_Eliminar.cshtml" />
+    <Content Include="Views\Hijos\Create.cshtml" />
+    <Content Include="Views\Hijos\_Eliminar.cshtml" />
+    <Content Include="Views\PremiosDocente\Create.cshtml" />
+    <Content Include="Views\PremiosDocente\_Eliminar.cshtml" />
+    <Content Include="Views\EstadoSalud\Manager.cshtml" />
+    <Content Include="Views\PersonalAsociaciones\Create.cshtml" />
+    <Content Include="Views\PersonalAsociaciones\_TipoEmpresa.cshtml" />
+    <Content Include="Views\Shared\_TipoEmpresa.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -403,16 +429,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Controllers\AlergiasController.cs" />
     <Compile Include="Controllers\DatosContactoController.cs" />
     <Compile Include="Controllers\DialectoIdiomaController.cs" />
     <Compile Include="Controllers\DireccionController.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />
     <Compile Include="Controllers\EstadoCivilController.cs" />
     <Compile Include="Controllers\EstadoSaludController.cs" />
+    <Compile Include="Controllers\HijosController.cs" />
     <Compile Include="Controllers\IdiomaDialectoController.cs" />
+    <Compile Include="Controllers\PersonalAsociacionesController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
+    <Compile Include="Controllers\PremiosDocenteController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Infraestructure\AutomaperWebProfile.cs" />
+    <Compile Include="Models\DataTablesParam.cs" />
     <Compile Include="Models\PersonaDomainModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Global.asax.cs">
@@ -427,11 +458,14 @@
     <Compile Include="Security\CustomPrincipal.cs" />
     <Compile Include="Security\SessionPersister.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\AsociacionesVM.cs" />
     <Compile Include="ViewModels\ColoniaVM.cs" />
     <Compile Include="ViewModels\DatosContactoVM.cs" />
     <Compile Include="ViewModels\DialectoVM.cs" />
     <Compile Include="ViewModels\DireccionVM.cs" />
     <Compile Include="ViewModels\DocumentoPersonalVM.cs" />
+    <Compile Include="ViewModels\DocumentosVM.cs" />
+    <Compile Include="ViewModels\EnfermedadVM.cs" />
     <Compile Include="ViewModels\EstadoCivilVM.cs" />
     <Compile Include="ViewModels\EstadoSaludVM.cs" />
     <Compile Include="ViewModels\EstadoVM.cs" />
@@ -439,9 +473,14 @@
     <Compile Include="ViewModels\IdiomaVM.cs" />
     <Compile Include="ViewModels\MunicipioVM.cs" />
     <Compile Include="ViewModels\PaisVM.cs" />
+    <Compile Include="ViewModels\ParentescoVM.cs" />
+    <Compile Include="ViewModels\PersonalAsociacionesVM.cs" />
     <Compile Include="ViewModels\PersonalVM.cs" />
     <Compile Include="ViewModels\Porcentajes.cs" />
+    <Compile Include="ViewModels\PremiosDocenteVM.cs" />
     <Compile Include="ViewModels\SessionManagerVM.cs" />
+    <Compile Include="ViewModels\TipoEmpresaVM.cs" />
+    <Compile Include="ViewModels\TipoSangreVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -511,25 +550,25 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\img\user.jpg" />
     <Content Include="Content\img\icheck\aero.png" />
-    <Content Include="Content\img\icheck\aero@2x.png" />
+    <Content Include="Content\img\icheck\aero%402x.png" />
     <Content Include="Content\img\icheck\blue.png" />
-    <Content Include="Content\img\icheck\blue@2x.png" />
+    <Content Include="Content\img\icheck\blue%402x.png" />
     <Content Include="Content\img\icheck\green.png" />
-    <Content Include="Content\img\icheck\green@2x.png" />
+    <Content Include="Content\img\icheck\green%402x.png" />
     <Content Include="Content\img\icheck\grey.png" />
-    <Content Include="Content\img\icheck\grey@2x.png" />
+    <Content Include="Content\img\icheck\grey%402x.png" />
     <Content Include="Content\img\icheck\minimal.png" />
-    <Content Include="Content\img\icheck\minimal@2x.png" />
+    <Content Include="Content\img\icheck\minimal%402x.png" />
     <Content Include="Content\img\icheck\orange.png" />
-    <Content Include="Content\img\icheck\orange@2x.png" />
+    <Content Include="Content\img\icheck\orange%402x.png" />
     <Content Include="Content\img\icheck\pink.png" />
-    <Content Include="Content\img\icheck\pink@2x.png" />
+    <Content Include="Content\img\icheck\pink%402x.png" />
     <Content Include="Content\img\icheck\purple.png" />
-    <Content Include="Content\img\icheck\purple@2x.png" />
+    <Content Include="Content\img\icheck\purple%402x.png" />
     <Content Include="Content\img\icheck\red.png" />
-    <Content Include="Content\img\icheck\red@2x.png" />
+    <Content Include="Content\img\icheck\red%402x.png" />
     <Content Include="Content\img\icheck\yellow.png" />
-    <Content Include="Content\img\icheck\yellow@2x.png" />
+    <Content Include="Content\img\icheck\yellow%402x.png" />
     <Content Include="Content\js\adminlte.js" />
     <Content Include="Content\js\init.js" />
     <Content Include="Content\js\plugins\bootstrap\bootstrap.js" />
@@ -571,6 +610,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Usuarios\" />
+    <Folder Include="Views\Alergias\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppDigitalCv.Business\AppDigitalCv.Business.csproj">

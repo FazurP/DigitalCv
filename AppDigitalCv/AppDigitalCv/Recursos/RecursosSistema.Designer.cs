@@ -61,11 +61,29 @@ namespace AppDigitalCv.Recursos {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ~/Imagenes/Usuarios/.
+        /// </summary>
+        internal static string DOCUMENTO_USUARIO {
+            get {
+                return ResourceManager.GetString("DOCUMENTO_USUARIO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Ingresa el Nombre..
         /// </summary>
         internal static string INGRESAR_NOMBRE {
             get {
                 return ResourceManager.GetString("INGRESAR_NOMBRE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Imagenes/Usuarios/.
+        /// </summary>
+        internal static string URL_PERFIL {
+            get {
+                return ResourceManager.GetString("URL_PERFIL", resourceCulture);
             }
         }
         

@@ -59,7 +59,8 @@ namespace AppDigitalCv.ViewModels
         public string strUrlCurp { get; set; }
         public string strUrlRfc { get; set; }
 
-
+        public int idTipoSangre { get; set; }
+        public TipoSangreVM TipoSangreVM { get; set; }
 
     }
 

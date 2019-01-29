@@ -1,0 +1,72 @@
+﻿@model AppDigitalCv.ViewModels.PremiosDocenteVM
+@using AppDigitalCv.Security
+
+<div>
+    <form id="myForm">
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                ¿Deseas <strong>Eliminar</strong> este registro realmente?
+            </div>
+            
+            <div class="form-group">
+                @Html.HiddenFor(m => m.IdPersonal, new { @class = "form-control input-sm", id = "IdPersonal" })
+                @Html.HiddenFor(m => m.IdDocumento, new { @class = "form-control input-sm", id = "IdDocumento" })
+                @Html.HiddenFor(m => m.DteFechaInicioPremio)
+                @Html.HiddenFor(m => m.DteFechaFinPremio)
+                
+            </div>
+            <div class="form-group">
+                Nombre del Premio:
+                @Html.TextBoxFor(m => m.StrNombrePremio)
+                Actividad Desempeñada:
+                @Html.TextBoxFor(m => m.StrActividadDesempeniada)
+            </div>
+            <div class="form-group">
+                Fecha del Premio:
+                @Html.TextBoxFor(m => m.DteFechaObtencionPremio, new { @class = "form-control input-sm", @placeholder = "Nombre del Familiar" })
+
+                <a href="#" id="btnSubmit">
+                    <i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i>
+                </a>
+            </div>
+            <div class="form-group">
+                <div style="text-align:center;display:none" id="loaderDiv">
+                    <img src="~/Imagenes/loading-blue.gif" width="150" />
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+
+</div>
+<script>
+
+    $(document).ready(function () {
+
+        $("#btnSubmit").click(function () {
+
+            $("#loaderDiv").show();
+
+            var myformdata = $("#myForm").serialize();
+
+            $.ajax({
+
+                type: "POST",
+                url: "/PremiosDocente/EliminarPremiosDocente",
+                data: myformdata,
+                success: function () {
+                    $("#loaderDiv").hide();
+                    $("#myModal").modal("hide");
+                    window.location.href = "/PremiosDocente/Create";
+
+                }
+
+            })
+        })
+
+    })
+
+
+</script>

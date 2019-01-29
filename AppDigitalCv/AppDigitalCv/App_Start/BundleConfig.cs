@@ -23,7 +23,7 @@ namespace AppDigitalCv.App_Start
                 .Include("~/Content/js/plugins/slimscroll/jquery.slimscroll.js")
                 .Include("~/Content/js/plugins/bootstrap-select/bootstrap-select.js")
                 .Include("~/Content/js/plugins/moment/moment.js")
-                .Include("~/Content/js/plugins/datepicker/bootstrap-datepicker.js")
+                //.Include("~/Content/js/plugins/datepicker/bootstrap-datepicker.js")
                 .Include("~/Content/js/plugins/icheck/icheck.js")
                 .Include("~/Content/js/plugins/validator.js")
                 .Include("~/Content/js/plugins/inputmask/jquery.inputmask.bundle.js")

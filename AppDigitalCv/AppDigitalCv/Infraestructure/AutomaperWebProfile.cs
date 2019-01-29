@@ -63,6 +63,25 @@ namespace AppDigitalCv.Infraestructure
             //IdiomaDialecto
             CreateMap<IdiomaDialectoVM, IdiomaDialectoDomainModel>();
             CreateMap<IdiomaDialectoDomainModel, IdiomaDialectoVM>();
+            //Estado de Salud
+            CreateMap<EstadoSaludDomainModel, EstadoSaludVM>();
+            CreateMap<EstadoSaludVM, EstadoSaludDomainModel>();
+            //Familiar
+            CreateMap<ParentescoVM, FamiliarDomainModel>();
+            CreateMap<FamiliarDomainModel, ParentescoVM>();
+            //Premios Docente
+            CreateMap<PremiosDocenteDomainModel, PremiosDocenteVM>();
+            CreateMap<PremiosDocenteVM, PremiosDocenteDomainModel>();
+            //Dcoumentos
+            CreateMap<DocumentosDomainModel, DocumentosVM>();
+            CreateMap<DocumentosVM, DocumentosDomainModel>();
+            //Asocianoes
+            CreateMap<AsociacionesDomainModel, AsociacionesVM>();
+            CreateMap<AsociacionesVM, AsociacionesDomainModel>();
+            //Tipo de Empresa
+            CreateMap<TipoEmpresaDomainModel, TipoEmpresaVM>();
+            CreateMap<TipoEmpresaVM, TipoEmpresaDomainModel>();
+
         }
 
 

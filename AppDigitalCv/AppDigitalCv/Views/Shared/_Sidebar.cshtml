@@ -1,5 +1,20 @@
 ﻿@using WebHelpers.Mvc5
+@using AppDigitalCv.Security
 <aside class="main-sidebar">
+    <div class="user-panel">
+        <div class="pull-left image">
+            <img src="~/Imagenes/usertest-160x160.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+            <p>
+                @if (SessionPersister.AccountSession != null)
+                {
+                    @SessionPersister.AccountSession.NombreCompleto
+                }
+            </p>
+            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+    </div>
     <section class="sidebar">
         @* BEGIN Search *@
         <form action="#" method="get" class="sidebar-form">
@@ -15,45 +30,98 @@
         @* END Search *@
         @* BEGIN Menu *@
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">HEADER</li>
-            <li class="@Url.IsLinkActive("Index", "Home")">
-                <a href="@Url.Action("Index", "Home")"><i class="fa fa-link"></i> <span>Home</span></a>
+            <li class="header">Menú de Opciones</li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa  fa-graduation-cap"></i> <span>Docente</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+
+                </a>
+                <ul class="treeview-menu">
+
+                    <li class="@Url.IsLinkActive("Create","Personal")">
+                        <a href="@Url.Action("Create","Personal")"><i class="fa fa-user-plus"></i><span>Datos Personales</span> </a>
+                    </li>
+                    <li class="@Url.IsLinkActive("EditarDatosPersonales","Personal")">
+                        <a href="@Url.Action("EditarDatosPersonales","Personal")"><i class="fa fa-user-plus"></i><span>Editar Datos Personales</span> </a>
+                    </li>
+                    <li class="@Url.IsLinkActive("InfoPersonal","Personal")">
+                        <a href="@Url.Action("InfoPersonal","Personal")"><i class="fa fa-user-plus"></i><span>Informacion Personal</span> </a>
+                    </li>
+                    <li class="@Url.IsLinkActive("AgregarDocumentos","Personal")">
+                        <a href="@Url.Action("AgregarDocumentos","Personal")"><i class="fa fa-file-pdf-o"></i><span>Documentos</span> </a>
+                    </li>
+                    <li class="@Url.IsLinkActive("Create","Direccion")">
+                        <a href="@Url.Action("Create","Direccion")"><i class="fa fa-pencil-square-o"></i><span>Direccion</span></a>
+                    </li>
+
+                    <li class="@Url.IsLinkActive("Create","DatosContacto")">
+                        <a href="@Url.Action("Create","DatosContacto")"><i class="fa fa-share-alt"></i><span>Datos de Contacto</span> </a>
+                    </li>
+                    <li class="@Url.IsLinkActive("Create","Hijos")">
+                        <a href="@Url.Action("Create","Hijos")"><i class="fa fa-group"></i><span>Hijos</span> </a>
+                    </li>
+
+
+
+                    <li class="@Url.IsLinkActive("Create", "PremiosDocente")">
+                        <a href="@Url.Action("Create", "PremiosDocente")"><i class="fa fa-star-o"></i><span>Premios</span></a>
+                    </li>
+
+                    <li class="@Url.IsLinkActive("Create","PersonalAsociaciones")">
+                        <a href="@Url.Action("Create","PersonalAsociaciones")"><i class="fa  fa-coffee"></i><span>Asociaciones</span></a>
+                    </li>
+
+                    <li class="@Url.IsLinkActive("EditarDatosDireccion", "Direccion")">
+                        <a href="@Url.Action("EditarDatosDireccion", "Direccion")"><i class="fa fa-newspaper-o"></i><span>Editar Datos de Direccion</span></a>
+                    </li>
+
+
+                    <li class="@Url.IsLinkActive("Create","DatosContacto")">
+                        <a href="@Url.Action("Create","DatosContacto")"><i class="fa fa-newspaper-o"></i><span>Datos de Contacto</span></a>
+                    </li>
+                    <li class="@Url.IsLinkActive("EditarDatosContacto","DatosContacto")">
+                        <a href="@Url.Action("EditarDatosContacto","DatosContacto")"><i class="fa fa-user-plus"></i><span>Editar Datos de Contacto</span> </a>
+                    </li>
+                    <li class="@Url.IsLinkActive("Create","EstadoCivil")">
+                        <a href="@Url.Action("Create","EstadoCivil")"><i class="fa fa-user-plus"></i><span>Agregar Estado Civil</span> </a>
+                    </li>
+
+
+
+                </ul>
             </li>
-            <li class="@Url.IsLinkActive("AnotherLink", "Home")">
-                <a href="@Url.Action("AnotherLink", "Home")"><i class="fa fa-link"></i> <span>Another Link</span></a>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa  fa-commenting-o"></i> <span>Idiomas y Dialectos</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+
+                </a>
+                <ul class="treeview-menu">
+                    <li class="@Url.IsLinkActive("Create","IdiomaDialecto")">
+                        <a href="@Url.Action("Create","IdiomaDialecto")"><i class="fa fa-comments"></i><span>Idiomas</span> </a>
+                    </li>
+                </ul>
             </li>
-            <li class="@Url.IsLinkActive("Create","Personal")">
-                <a href="@Url.Action("Create","Personal")"><i class="fa fa-user-plus"></i><span>Datos Personales</span> </a>
-            </li>
-            <li class="@Url.IsLinkActive("EditarDatosPersonales","Personal")">
-                <a href="@Url.Action("EditarDatosPersonales","Personal")"><i class="fa fa-user-plus"></i><span>Editar Datos Personales</span> </a>
-            </li>
-            <li class="@Url.IsLinkActive("InfoPersonal","Personal")">
-                <a href="@Url.Action("InfoPersonal","Personal")"><i class="fa fa-user-plus"></i><span>Informacion Personal</span> </a>
-            </li>
-            <li class="@Url.IsLinkActive("AgregarDocumentos","Personal")">
-                <a href="@Url.Action("AgregarDocumentos","Personal")"><i class="fa fa-user-plus"></i><span>Editar Datos Personales</span> </a>
-            </li>
-            <li class="@Url.IsLinkActive("Create","Direccion")">
-                <a href="@Url.Action("Create","Direccion")"><i class="fa fa-newspaper-o"></i><span>Datos de Direccion</span></a>
-            </li>
-            <li class="@Url.IsLinkActive("EditarDatosDireccion", "Direccion")">
-                <a href="@Url.Action("EditarDatosDireccion", "Direccion")"><i class="fa fa-newspaper-o"></i><span>Editar Datos de Direccion</span></a>
-            </li>
-            <li class="@Url.IsLinkActive("Create","DatosContacto")">
-                <a href="@Url.Action("Create","DatosContacto")"><i class="fa fa-newspaper-o"></i><span>Datos de Contacto</span></a>
-            </li>
-            <li class="@Url.IsLinkActive("EditarDatosContacto","DatosContacto")">
-                <a href="@Url.Action("EditarDatosContacto","DatosContacto")"><i class="fa fa-user-plus"></i><span>Editar Datos de Contacto</span> </a>
-            </li>
-            <li class="@Url.IsLinkActive("Create","EstadoCivil")">
-                <a href="@Url.Action("Create","EstadoCivil")"><i class="fa fa-user-plus"></i><span>Agregar Estado Civil</span> </a>
-            </li>
-            <li class="@Url.IsLinkActive("Create","EstadoSalud")">
-                <a href="@Url.Action("Create","EstadoSalud")"><i class="fa fa-user-plus"></i><span>Agregar Estado de Salud</span> </a>
-            </li>
-            <li class="@Url.IsLinkActive("Create","IdiomaDialecto")">
-                <a href="@Url.Action("Create","IdiomaDialecto")"><i class="fa fa-user-plus"></i><span>Agregar Idiomas o Dialectos</span> </a>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-ambulance"></i><span>Salud</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a href="@Url.Action("Create","EstadoSalud")"><i class="fa fa-medkit"></i><span>Estado de Salud</span></a>
+                        </li>
+                        <li><a href="#">Link in level 2</a></li>
+                    </ul>
+                </a>
             </li>
             <li class="treeview">
                 <a href="#">
@@ -61,6 +129,7 @@
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
+
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="#">Link in level 2</a></li>
