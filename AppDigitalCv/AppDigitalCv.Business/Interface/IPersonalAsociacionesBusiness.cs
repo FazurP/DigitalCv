@@ -15,5 +15,12 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="asociacionesDM">recive la entidad asociasionesDM</param>
         /// <returns>regresa una cadena de inserción</returns>
         string AddUpdatePersonalAsociaciones(PersonalAsociacionesDomainModel personalAsociacionesDM);
+
+        /// <summary>
+        /// Este metodo se encarga de obtener todas las asociaciones del personal
+        /// </summary>
+        /// <param name="idPersonal">el identificador de personal</param>
+        /// <returns>regresa una lista de premios del tipo domain model</returns>
+        List<PersonalAsociacionesDomainModel> GetPersonalAsociacinesById(int idPersonal);
     }
 }

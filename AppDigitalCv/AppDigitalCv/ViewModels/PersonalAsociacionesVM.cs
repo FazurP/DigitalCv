@@ -9,7 +9,7 @@ namespace AppDigitalCv.ViewModels
     {
         public int IdPersonal { get; set; }
         public int IdAsociacion { get; set; }
-        public Nullable<System.DateTime> DteFecha { get; set; }
+        public string DteFecha { get; set; }
         public string StrTipoParticipacion { get; set; }
 
         public virtual PersonalVM PersonalVM { get; set; }

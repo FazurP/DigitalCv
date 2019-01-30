@@ -5,6 +5,7 @@ using AppDigitalCv.Repository.Infraestructure.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,7 +39,7 @@ namespace AppDigitalCv.Business
                 {
                     tblPersonalAsociaciones.idAsociacion = personalAsociacionesDM.IdAsociacion;
                     tblPersonalAsociaciones.idPersonal = personalAsociacionesDM.IdPersonal;
-                    tblPersonalAsociaciones.dteFecha = personalAsociacionesDM.DteFecha;
+                    tblPersonalAsociaciones.dteFecha = DateTime.Parse( personalAsociacionesDM.DteFecha);
                     tblPersonalAsociaciones.strTipoParticipacion = personalAsociacionesDM.StrTipoParticipacion;
                     personalAsociacionesRepository.Update(tblPersonalAsociaciones);
                     resultado = "Se Actualizo correctamente";
@@ -50,7 +51,7 @@ namespace AppDigitalCv.Business
                 tblPersonalAsociaciones tblPersonalAsociaciones = new tblPersonalAsociaciones();
                 tblPersonalAsociaciones.idAsociacion = personalAsociacionesDM.IdAsociacion;
                 tblPersonalAsociaciones.idPersonal = personalAsociacionesDM.IdPersonal;
-                tblPersonalAsociaciones.dteFecha = personalAsociacionesDM.DteFecha;
+                tblPersonalAsociaciones.dteFecha = DateTime.Parse( personalAsociacionesDM.DteFecha);
                 tblPersonalAsociaciones.strTipoParticipacion = personalAsociacionesDM.StrTipoParticipacion;
                 var record = personalAsociacionesRepository.Insert(tblPersonalAsociaciones);
                 resultado = "Se insertaron correctamente los valores";
@@ -59,6 +60,30 @@ namespace AppDigitalCv.Business
         }
 
 
+        /// <summary>
+        /// Este metodo se encarga de obtener todas las asociaciones del personal
+        /// </summary>
+        /// <param name="idPersonal">el identificador de personal</param>
+        /// <returns>regresa una lista de premios del tipo domain model</returns>
+        public List<PersonalAsociacionesDomainModel> GetPersonalAsociacinesById(int idPersonal)
+        {
+            List<PersonalAsociacionesDomainModel> personalAsociacionDM = new List<PersonalAsociacionesDomainModel>();
+            Expression<Func<tblPersonalAsociaciones, bool>> predicado = p => p.idPersonal.Equals(idPersonal);
+            List<tblPersonalAsociaciones> pAsociacion = personalAsociacionesRepository.GetAll(predicado).ToList();
+
+            foreach (tblPersonalAsociaciones p in pAsociacion)
+            {
+                PersonalAsociacionesDomainModel personalAsociacionesDomainModel = new PersonalAsociacionesDomainModel();
+                personalAsociacionesDomainModel.IdAsociacion = p.idAsociacion;
+                personalAsociacionesDomainModel.IdPersonal = p.idPersonal;
+                personalAsociacionesDomainModel.DteFecha = p.dteFecha.ToString();
+                personalAsociacionesDomainModel.StrTipoParticipacion = p.strTipoParticipacion;
+                personalAsociacionDM.Add(personalAsociacionesDomainModel);
+            }
+
+            return personalAsociacionDM;
+
+        }
 
 
     }

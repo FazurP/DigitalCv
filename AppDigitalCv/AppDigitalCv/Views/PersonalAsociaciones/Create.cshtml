@@ -44,7 +44,8 @@
                                 Pertenece a Alguna Asociación?
                                 <input type="radio" id="rdbSi" name="seleccion" value="SI " class="custom-control-input"><label for="si">SI</label>
                                 <input type="radio" id="rdbNo" name="seleccion" value="NO" class="custom-control-input" checked><label for="no">NO</label>
-
+                                &nbsp;
+                                <a href="#" class="social-auth-links"><i class="fa fa-cog"></i>Agregar Nueva Asociación</a>&nbsp;                                <a href="#" class="ui-icon-link"><i class="fa fa-industry"></i> Agregar Nueva Empresa</a>
                             </div>
                             <br />
                             <div class="form-group">
@@ -53,11 +54,56 @@
                             </div>
                             <br />
                             <div class="form-group">
-                                Fecha de Ingreso:
+                                <br />
+                                Fecha de Ingreso:@Html.TextBoxFor(model => model.DteFecha, null, htmlAttributes: new { @class = "form-control input-sm", type = "date", title = "Selecciona una Fecha" })
                             </div>
                             <div class="form-group">
-                                Describa el Cargo que Desempeñó:
+                                <br />
+                                Describa el Cargo que Desempeñó:@Html.TextBoxFor(model => model.StrTipoParticipacion, null, htmlAttributes: new { @class = "form-control input-sm", title = "Escribe el tipo de Participación", placeholder = "Escribe tu Participación" })
                             </div>
+                            <br />
+                            <div class="form-group">
+                                <input type="submit" value="Guardar" class="btn btn-success" />
+
+                            </div>
+                            <br />
+                            <!--inicio y configuración de la tabla-->
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
+                                    <div class="form-group" id="addTable">
+                                        <br />
+                                        <table id="tblTipoAsociacion" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
+                                            <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
+                                                <tr>
+
+                                                    <th>Fecha de Participación</th>
+                                                    <th>Tipo de Participación</th>
+                                                    <th>Eliminar Asociación</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tblBody"></tbody>
+                                        </table>
+                                        <!-- Establecemos el Modal que se va a presentar cuando demos click en la edicion de los datos-->
+                                        <div class="modal fade" id="myModal1">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                                                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                                                        <h5 class="modal-title"><label style="font-size:medium;">Eliminar la participación</label></h5>
+                                                    </div>
+                                                    <div class="modal-body" id="myModalBodyDiv1">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="hiddenAsociacionId" />
+                                        <!--Terminamos el modal de eliminacion-->
+                                        <!--Terminacion de la tabla -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!--fin de la tabla-->
                         </div>
                     </div>
                 </div>
@@ -66,10 +112,34 @@
     </div>
 }
 
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+@section Scripts
+{
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js" integrity="sha256-8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw=" crossorigin="anonymous"></script>
+
+    @*<script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>*@
+
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script>
+
+        var AddDelete = function (IdDocumento) {
+
+            var url = "/PremiosDocente/GetPremiosByIdPersonal?IdDocumento=" + IdDocumento;
+
+            $("#myModalBodyDiv1").load(url, function () {
+                $("#myModal1").modal("show");
+
+            })
+
+        };
         $(document).ready(function () {
 
+            var oTable;
+
+
+            $("#TipoEmpresa").prop("disabled", true);
             $("#Asociacion").change(function () {
                 var idAsociacion = $(this).val();
                 $.ajax({
@@ -77,6 +147,7 @@
                     url: "/PersonalAsociaciones/ConsultarTipoEmpresaByIdAsociacion?idAsociacion=" + idAsociacion,
                     contentType: "html",
                     success: function (response) {
+                        $("#TipoEmpresa").prop("disabled", false);
                         $("#TipoEmpresa").empty();
                         $("#TipoEmpresa").append(response);
                     },
@@ -85,6 +156,84 @@
                     }
                 });
             });
+
+
+
+            BindDataTable();
+
+            function BindDataTable() {
+
+                if ($.fn.DataTable.isDataTable('#tblTipoAsociacion')) {
+                    oTable.Draw();
+                }
+                else {
+                    oTable = $('#tblTipoAsociacion').DataTable({
+                        "bServerSide": true,
+                        "sAjaxSource": '/PersonalAsociaciones/GetDatosPersonalAsociacionTable',
+                        "fnServerData": function (sSource, aoData, fnCallback) {
+                            $.ajax({
+                                type: "Get",
+                                data: aoData,
+                                url: sSource,
+                                success: fnCallback
+                            })
+                        },
+                        "pageLength": 5,
+                        "language": {
+
+                            "sProcessing": "Procesando...",
+                            "sLengthMenu": "Mostrar _MENU_ registros",
+                            "sZeroRecords": "No se encontraron resultados",
+                            "sEmptyTable": "Ningún dato disponible en esta tabla",
+                            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                            "sInfoPostFix": "",
+                            "sSearch": "Buscar:",
+                            "sUrl": "",
+                            "sInfoThousands": ",",
+                            "sLoadingRecords": "Cargando...",
+                            "oPaginate": {
+                                "sFirst": "Primero",
+                                "sLast": "Último",
+                                "sNext": "Siguiente",
+                                "sPrevious": "Anterior"
+                            },
+                            "oAria": {
+                                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                            }
+                        },
+                        "dataSrc": "",
+                        "columns": [
+
+
+                            { "data": "DteFecha" },
+                            { "data": "StrTipoParticipacion" },
+                            //{ "data": "StrNombrePremio" },
+                            //{ "data": "DteFechaObtencionPremio" },
+
+
+                            //{ "data": "DteFechaInicioPremio" },
+                            //{ "data": "DteFechaFinPremio" },
+
+                            {
+                                "data": "IdAsociacion",
+                                "render": function (IdAsociacion, type, full, meta) {
+
+                                    return '<a href="#" onclick="AddDelete(' + IdAsociacion + ')"><i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i></a>'
+                                }
+                            },
+                        ]
+                    });
+                }
+            };
+
+
+
         });
     </script>
+
+    }
+
 
