@@ -10,7 +10,7 @@ namespace AppDigitalCv.Domain
     {
         public int IdPersonal { get; set; }
         public int IdAsociacion { get; set; }
-        public Nullable<System.DateTime> DteFecha { get; set; }
+        public string DteFecha { get; set; }
         public string StrTipoParticipacion { get; set; }
 
         public virtual PersonalDomainModel PersonalDomainModel{get;set;}
