@@ -15,7 +15,14 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="idTipoEmpresa">el identificador del tipo empresa</param>
         /// <returns>retorna una lista del tipo de empresas consultadas</returns>
         List<TipoEmpresaDomainModel> GetTipoEmpresaByIdEmpresa(int idTipoEmpresa);
-        
+
+
+        /// <summary>
+        /// este metodo se encarga de consultar todas las empresas
+        /// </summary>
+        /// <returns>regresa una lista de empresas</returns>
+        List<TipoEmpresaDomainModel> GetEmpresas();
+
         /// <summary>
         /// Este metodo se encarga de consultar unaempresa por el id de la Asociacion
         /// </summary>
