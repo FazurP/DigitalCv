@@ -22,7 +22,7 @@
         <br />
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="box box-red">
+                <div class="box box-success">
                     <div class="box-header with-border">
                         <h5 class="box-title">
                             <label class="text-success"><i class="text-success fa fa-heartbeat"></i>
@@ -37,8 +37,9 @@
                     </div>
                     <div class="box-body">
                         <div role="form">
-                            <table id="myDataTableDatosContacto" class="table table-bordered table-hover table-responsive">
-                                <thead>
+                            <table id="myDataTableDatosContacto" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
+                                <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
+
                                     <tr>
                                         <th><i class="fa fa-user"></i>Email</th>
                                         <th><i class="fa fa-tag"></i>Institucional</th>
@@ -52,6 +53,21 @@
                                     </tr>
                                 </thead>
                             </table>
+                            <!-- Establecemos el Modal que se va a presentar cuando demos click en la edicion de los datos-->
+                            <div class="modal fade" id="myModal1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                                            <a href="#" class="close" data-dismiss="modal">&times;</a>
+                                            <h5 class="modal-title"><label style="font-size:medium;">Eliminar Datos de Contacto</label></h5>
+                                        </div>
+                                        <div class="modal-body" id="myModalBodyDiv1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" id="hiddenEdicionDatosContactoId" />
+                            <!--Terminamos el modal de eliminacion-->
                         </div>
                     </div>
                 </div>
@@ -90,6 +106,13 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     
     <script>
+
+        var AddEditDatosContacto = function (idPersonal) {
+            var url = "/DatosContacto/AddEditDatosContacto?idPersonal=" + idPersonal;
+            $("#myModalBodyDiv").load(url, function () {
+                $("#myModalEdit").modal("show");
+            });
+        };
 
         $(document).ready(function () {
 
@@ -137,19 +160,14 @@
                     {
                         "data": "IdPersonal",
                         "render": function (idPersonal, type, full, meta) {
-                            debugger
-                            return '<a href="#" onclick="AddEditDatosContacto(' + idPersonal + ')"><i class="glyphicon glyphicon-pencil"></i></a>'
+                            
+                            return '<a href="#" onclick="AddEditDatosContacto(' + idPersonal + ')"><i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i></a>'
                         }
                     },
                 ]
             });
 
-            var AddEditDatosContacto = function(idPersonal) {
-                var url = "/DatosContacto/AddEditDatosContacto?idPersonal=" + idPersonal;
-                $("#myModalBodyDiv").load(url, function () {
-                    $("#myModalEdit").modal("show");
-                });
-            };
+            
 
             //var AddEditDatosContacto=function(idPersonal) {
                 
