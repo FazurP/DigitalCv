@@ -39,7 +39,7 @@ namespace AppDigitalCv.Business
                     catAsociaciones.idAsociacion = asociacionesDM.IdAsociacion;
                     catAsociaciones.strDescripcion = asociacionesDM.StrDescripcion;
                     catAsociaciones.strObservacion = asociacionesDM.StrObservacion;
-                    ///falta agregar el tipo de empresa
+                    catAsociaciones.idTipoEmpresa = asociacionesDM.IdTipoEmpresa;
                     //actualizamos los datos en la base de datos.
                     asociacionesRepository.Update(catAsociaciones);
                     resultado = "Se Actualizo correctamente";
@@ -52,7 +52,7 @@ namespace AppDigitalCv.Business
                 catAsociaciones.idAsociacion = asociacionesDM.IdAsociacion;
                 catAsociaciones.strDescripcion = asociacionesDM.StrDescripcion;
                 catAsociaciones.strObservacion = asociacionesDM.StrObservacion;
-                ///falta agregar el tipo de empresa
+                catAsociaciones.idTipoEmpresa = asociacionesDM.IdTipoEmpresa;
                 var record = asociacionesRepository.Insert(catAsociaciones);
                 resultado = "Se insertaron correctamente los valores";
             }

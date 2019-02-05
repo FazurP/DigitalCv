@@ -420,6 +420,8 @@
     <Content Include="Views\PersonalAsociaciones\Create.cshtml" />
     <Content Include="Views\PersonalAsociaciones\_TipoEmpresa.cshtml" />
     <Content Include="Views\Shared\_TipoEmpresa.cshtml" />
+    <Content Include="Views\PersonalAsociaciones\_Eliminar.cshtml" />
+    <Content Include="Views\Asociacion\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -430,6 +432,7 @@
   <ItemGroup>
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\AlergiasController.cs" />
+    <Compile Include="Controllers\AsociacionController.cs" />
     <Compile Include="Controllers\DatosContactoController.cs" />
     <Compile Include="Controllers\DialectoIdiomaController.cs" />
     <Compile Include="Controllers\DireccionController.cs" />

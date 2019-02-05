@@ -1,0 +1,72 @@
+﻿@model AppDigitalCv.ViewModels.PersonalAsociacionesVM
+@using AppDigitalCv.Security
+
+<div>
+    <form id="myForm">
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                ¿Deseas <strong>Eliminar</strong> este registro realmente?&nbsp;
+            </div>
+            <br />
+            <div class="form-group">
+                @Html.HiddenFor(m => m.IdPersonal, new { @class = "form-control input-sm", id = "IdPersonal" })
+                @Html.HiddenFor(m => m.IdAsociacion, new { @class = "form-control input-sm", id = "IdAsociacion" })
+            </div>
+            <div class="form-group">
+                &nbsp; &nbsp; &nbsp; &nbsp;Fecha de la Incorporación:
+                @Html.TextBoxFor(m => m.DteFecha, new { @class = "form-control input-sm", title="Fecha de Incorporación ala Asociación"})
+            </div>
+            <br />
+            <div class="form-group">
+                &nbsp;Participación Desempeñada:
+                @Html.TextBoxFor(m => m.StrTipoParticipacion, new { @class = "form-control input-sm", title="Participación desempeñada"})
+                &nbsp;
+            </div>
+            <div class="form-group">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="#" id="btnSubmit">
+                    <i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i>
+                </a>
+            </div>
+            <div class="form-group">
+                <div style="text-align:center;display:none" id="loaderDiv">
+                    <img src="~/Imagenes/loading-blue.gif" width="150" />
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+
+</div>
+<script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        $("#btnSubmit").click(function () {
+
+            $("#loaderDiv").show();
+
+            var myformdata = $("#myForm").serialize();
+
+            $.ajax({
+
+                type: "POST",
+                url: "/PersonalAsociaciones/EliminarAsociacionPersonal",
+                data: myformdata,
+                success: function () {
+                    $("#loaderDiv").hide();
+                    $("#myModal").modal("hide");
+                    window.location.href = "/PersonalAsociaciones/Create";
+
+                }
+
+            })
+        })
+
+    })
+
+
+</script>

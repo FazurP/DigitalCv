@@ -58,6 +58,26 @@ namespace AppDigitalCv.Business
             }
             return resultado;
         }
+        
+        /// <summary>
+        /// este metodo sirve para agregar un registro de el contexto seleccionado
+        /// </summary>
+        /// <param name="asociacionesDM">recive la entidad asociasionesDM</param>
+        /// <returns>regresa una cadena de inserción</returns>
+        public string AddPersonalAsociaciones(PersonalAsociacionesDomainModel personalAsociacionesDM)
+        {
+               string resultado = string.Empty;
+               tblPersonalAsociaciones tblPersonalAsociaciones = new tblPersonalAsociaciones();
+               tblPersonalAsociaciones.idAsociacion = personalAsociacionesDM.IdAsociacion;
+               tblPersonalAsociaciones.idPersonal = personalAsociacionesDM.IdPersonal;
+               tblPersonalAsociaciones.dteFecha = DateTime.Parse(personalAsociacionesDM.DteFecha);
+               tblPersonalAsociaciones.strTipoParticipacion = personalAsociacionesDM.StrTipoParticipacion;
+               var record = personalAsociacionesRepository.Insert(tblPersonalAsociaciones);
+               resultado = "Se insertaron correctamente los valores";
+               return resultado;
+        }
+
+
 
 
         /// <summary>
@@ -84,6 +104,43 @@ namespace AppDigitalCv.Business
             return personalAsociacionDM;
 
         }
+
+        /// <summary>
+        /// Este metodo se encarga de consultar una asociacion del personal en particular
+        /// </summary>
+        /// <param name="idAsociacion">recive el identificador de una asociacion</param>
+        /// <returns>regresa una entidad personalAsociacionDomainModel</returns>
+        public PersonalAsociacionesDomainModel GetPersonalAsociacionByIdAsociacion(int idAsociacion)
+        {
+                Expression<Func<tblPersonalAsociaciones, bool>> predicado = p => p.idAsociacion.Equals(idAsociacion);
+                tblPersonalAsociaciones personalAsociaciones =personalAsociacionesRepository.SingleOrDefault(predicado);
+                PersonalAsociacionesDomainModel personalAsociacionesDomainModel = new PersonalAsociacionesDomainModel();
+                personalAsociacionesDomainModel.IdPersonal = personalAsociaciones.idPersonal;
+                personalAsociacionesDomainModel.IdAsociacion = personalAsociaciones.idAsociacion;
+                personalAsociacionesDomainModel.StrTipoParticipacion = personalAsociaciones.strTipoParticipacion;
+                personalAsociacionesDomainModel.DteFecha = personalAsociaciones.dteFecha.ToString();
+                return personalAsociacionesDomainModel;
+
+        }
+
+
+                                 
+        /// <summary>
+        /// Este metodo se encarga de eliminar fisicamente una asociacion del docente de la base de datos
+        /// </summary>
+        /// <param name="personalAsociacionesDomainModel">recive una entidad del tipo personalAsociacionesDomainModel</param>
+        /// <returns>regresa una respuesta del tipo true o false</returns>
+        public bool DeleteAsociacionDocente(PersonalAsociacionesDomainModel personalAsociacionesDomainModel)
+        {
+                bool respuesta = false;
+                Expression<Func<tblPersonalAsociaciones, bool>> predicado = p => p.idAsociacion.Equals(personalAsociacionesDomainModel.IdAsociacion)
+                && p.idPersonal.Equals(personalAsociacionesDomainModel.IdPersonal);
+                personalAsociacionesRepository.Delete(predicado);
+                respuesta = true;
+                return respuesta;
+        }
+
+
 
 
     }

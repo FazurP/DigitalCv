@@ -26,6 +26,26 @@ namespace AppDigitalCv.Business
         }
 
         /// <summary>
+        /// este metodo se encarga de consultar todas las empresas
+        /// </summary>
+        /// <returns>regresa una lista de empresas</returns>
+        public List<TipoEmpresaDomainModel> GetEmpresas()
+        {
+            List<TipoEmpresaDomainModel> tipoEmpresas = new List<TipoEmpresaDomainModel>();
+            List<catTipoEmpresa>  empresas = tipoEmpresaRepository.GetAll().ToList();
+            foreach (catTipoEmpresa e in empresas)
+            {
+                TipoEmpresaDomainModel tipoEmpresa = new TipoEmpresaDomainModel();
+                tipoEmpresa.IdTipoEmpresa = e.idTipoEmpresa;
+                tipoEmpresa.StrDescripcion = e.strDescripcion;
+                tipoEmpresa.StrObservacion = e.strObservacion;
+                tipoEmpresas.Add(tipoEmpresa);
+
+            }
+            return tipoEmpresas;
+        }
+
+        /// <summary>
         /// Este metodo se encarga de consultar el tipo de empresa por el idAsociacion
         /// </summary>
         /// <param name="idTipoEmpresa">el identificador del tipo empresa</param>

@@ -24,9 +24,6 @@ namespace AppDigitalCv.Controllers
             IpersonalAsociacionesBusiness = _IpersonalAsociacionesBusiness;
         }
 
-
-
-
         // GET: PersonalAsociaciones
         public ActionResult Index()
         {
@@ -36,9 +33,29 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.Asociacion = new SelectList(IasociacionesBusiness.GetAsociaciones(), "IdAsociacion", "StrDescripcion");
+            ViewBag.IdAsociacion = new SelectList(IasociacionesBusiness.GetAsociaciones(), "IdAsociacion", "StrDescripcion");
             ViewBag.TipoEmpresa = new SelectList("");
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create([Bind(Include = "IdPersonal,IdAsociacion,DteFecha,StrTipoParticipacion")]PersonalAsociacionesVM personalAsociacionesVM)
+        {
+            if (ModelState.IsValid)
+            {
+                PersonalAsociacionesDomainModel personalAsociacionesDM = new PersonalAsociacionesDomainModel();
+                personalAsociacionesVM.IdPersonal = SessionPersister.AccountSession.IdPersonal;
+                AutoMapper.Mapper.Map(personalAsociacionesVM, personalAsociacionesDM);
+                IpersonalAsociacionesBusiness.AddPersonalAsociaciones(personalAsociacionesDM);
+                ViewBag.IdAsociacion = new SelectList(IasociacionesBusiness.GetAsociaciones(), "IdAsociacion", "StrDescripcion");
+                ViewBag.TipoEmpresa = new SelectList("");
+                return View();
+            }
+
+            ViewBag.IdAsociacion = new SelectList(IasociacionesBusiness.GetAsociaciones(), "IdAsociacion", "StrDescripcion");
+            ViewBag.TipoEmpresa = new SelectList("");
+            return View("Create");
+
         }
 
 
@@ -59,7 +76,6 @@ namespace AppDigitalCv.Controllers
             ViewBag.TipoEmpresa = new SelectList(tiposEmpresaVM, "IdTipoEmpresa", "StrDescripcion");
             return PartialView("_TipoEmpresa");
         }
-
 
         #region  Consultar los datos del estado de salud del personal junto con el datatable se pueden ordenar de forma adecuada
 
@@ -102,9 +118,53 @@ namespace AppDigitalCv.Controllers
 
         #endregion
 
-       
-        
+        #region Eliminar Asociacion del  Docente
+        /// <summary>
+        /// Este metodo se encarga de presentar los datos a la vista que se van a eliminar
+        /// </summary>
+        /// <param name="idAsociacion">recibe un identificador de la asociacion</param>
+        /// <returns>regresa una vista con los datos eliminados</returns>
+        public ActionResult EliminarAsociacionPersonal(PersonalAsociacionesVM personalAsociacionesVM)
+        {
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
+            string nombreUsuario = SessionPersister.AccountSession.NombreCompleto;
+            PersonalAsociacionesDomainModel personalAsociacionDM = IpersonalAsociacionesBusiness.GetPersonalAsociacionByIdAsociacion(personalAsociacionesVM.IdAsociacion);
+            
+            if (personalAsociacionDM != null)
+            {
+                IpersonalAsociacionesBusiness.DeleteAsociacionDocente(personalAsociacionDM);
+                                                
+            }
+            ViewBag.IdAsociacion = new SelectList(IasociacionesBusiness.GetAsociaciones(), "IdAsociacion", "StrDescripcion");
+            ViewBag.TipoEmpresa = new SelectList("");
+            return View("Create");
+        }
+        #endregion
 
+
+
+        #region Consultar para Eliminar de Forma permanente el registro
+        /// <summary>
+        /// Este metodo se encarga de presentar los datos a la vista que se van a eliminar
+        /// </summary>
+        /// <param name="IdAsociacion">recibe un identificador de la asociacion del docente</param>
+        /// <returns>regresa una asociacion a la cual pertenece el docente en una vista</returns>
+        public ActionResult GetAsociacionByIdAsociacion(int IdAsociacion)
+        {
+            int IdPersonal = SessionPersister.AccountSession.IdPersonal;
+            PersonalAsociacionesDomainModel personalAsociacionDM = IpersonalAsociacionesBusiness.GetPersonalAsociacionByIdAsociacion(IdAsociacion); 
+                
+            if (personalAsociacionDM != null)
+            {
+                PersonalAsociacionesVM personalAsociacionesVM = new PersonalAsociacionesVM();
+                AutoMapper.Mapper.Map(personalAsociacionDM, personalAsociacionesVM);
+                return PartialView("_Eliminar", personalAsociacionesVM);
+                
+            }
+            return View();
+        }
+
+        #endregion
 
 
 

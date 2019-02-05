@@ -45,11 +45,11 @@
                                 <input type="radio" id="rdbSi" name="seleccion" value="SI " class="custom-control-input"><label for="si">SI</label>
                                 <input type="radio" id="rdbNo" name="seleccion" value="NO" class="custom-control-input" checked><label for="no">NO</label>
                                 &nbsp;
-                                <a href="#" class="social-auth-links"><i class="fa fa-cog"></i>Agregar Nueva Asociación</a>&nbsp;                                <a href="#" class="ui-icon-link"><i class="fa fa-industry"></i> Agregar Nueva Empresa</a>
+                                <a href="@Url.Action("Create","Asociacion")" class="social-auth-links"><i class="fa fa-plus"></i>"Agregar Nueva Asociación"</a>&nbsp;                               
                             </div>
                             <br />
                             <div class="form-group">
-                                Seleccione su Asociación:@Html.DropDownList("Asociacion", null, htmlAttributes: new { @class = "form-control input-sm", id = "Asociacion", title = "Selecciona una Asociación" })
+                                Seleccione su Asociación:@Html.DropDownList("IdAsociacion", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdAsociacion", title = "Selecciona una Asociación" })
                                 Empresa a la que pertenece la asociación:@Html.DropDownList("TipoEmpresa", null, htmlAttributes: new { @class = "form-control input-sm", id = "TipoEmpresa", title = "Selecciona un Tipo de Empresa" })
                             </div>
                             <br />
@@ -63,7 +63,7 @@
                             </div>
                             <br />
                             <div class="form-group">
-                                <input type="submit" value="Guardar" class="btn btn-success" />
+                                <input type="submit" value="Guardar" class="btn btn-sm btn-success" />
 
                             </div>
                             <br />
@@ -124,9 +124,9 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script>
 
-        var AddDelete = function (IdDocumento) {
+        var AddDelete = function (IdAsociacion) {
 
-            var url = "/PremiosDocente/GetPremiosByIdPersonal?IdDocumento=" + IdDocumento;
+            var url = "/PersonalAsociaciones/GetAsociacionByIdAsociacion?IdAsociacion=" + IdAsociacion;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -140,7 +140,7 @@
 
 
             $("#TipoEmpresa").prop("disabled", true);
-            $("#Asociacion").change(function () {
+            $("#IdAsociacion").change(function () {
                 var idAsociacion = $(this).val();
                 $.ajax({
                     type: "Post",

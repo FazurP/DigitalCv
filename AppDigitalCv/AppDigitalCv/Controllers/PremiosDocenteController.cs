@@ -9,8 +9,7 @@ using AppDigitalCv.Domain;
 using AppDigitalCv.Models;
 using AppDigitalCv.Security;
 using AppDigitalCv.ViewModels;
-//cargamos la libreria para eliminar el documento de un usuario
-using System.IO;
+
 
 namespace AppDigitalCv.Controllers
 {
