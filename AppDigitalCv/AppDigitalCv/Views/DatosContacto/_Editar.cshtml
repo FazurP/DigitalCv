@@ -1,5 +1,5 @@
 ﻿@model AppDigitalCv.ViewModels.DatosContactoVM
-
+@using AppDigitalCv.Security
 
 <div>
     <form id="myForm">
@@ -25,10 +25,10 @@
             var myformdata = $("#myForm").serialize();
             $.ajax({
                 type: "POST",
-                url: "/DatosContacto/EditarDatosContacto",
+                url: "/DatosContacto/EliminarDatosDeContactoDocente",
                 data: myformdata,
                 success: function () {
-                    $("#myModalEdit").modal("hide");
+                    $("#myModal1").modal("hide");
                     window.location.href = "/DatosContacto/EditarDatosContacto";
                 }
             })

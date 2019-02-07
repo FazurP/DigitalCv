@@ -1,5 +1,6 @@
 ﻿using AppDigitalCv.Business.Interface;
 using AppDigitalCv.Domain;
+using AppDigitalCv.Security;
 using AppDigitalCv.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -68,7 +69,7 @@ namespace AppDigitalCv.Controllers
                 {
                     if (this.AddEditDatosContacto(datosContactoVM))
                     {
-                        return View("EditarDatosContacto");
+                        return View("Create");
                     }
                 }
             }
@@ -76,7 +77,7 @@ namespace AppDigitalCv.Controllers
         }
 
         //voy allamar a esta vista cuando el usuario de click en la tabla
-        public ActionResult AddEditDatosContacto(int idPersonal) 
+        public ActionResult AddEditDatosContactoId(int idPersonal) 
         {
             DatosContactoVM datosContactoVM = new DatosContactoVM();
             //creamos el objeto del dominio
@@ -122,6 +123,31 @@ namespace AppDigitalCv.Controllers
             return Json(datosContacto, JsonRequestBehavior.AllowGet);
         }
         #endregion
+
+
+        #region Eliminar Premios Docente
+        /// <summary>
+        /// Este metodo se encarga de presentar los datos a la vista que se van a eliminar
+        /// </summary>
+        /// <param name="idPersonal">recibe un identificador del trabajador</param>
+        /// <returns>regresa una vista con los datos eliminados</returns>
+        public ActionResult EliminarDatosDeContactoDocente(int idPersonal)
+        {
+            int _idPersonal = SessionPersister.AccountSession.IdPersonal;
+            string nombreUsuario = SessionPersister.AccountSession.NombreCompleto;
+            DatosContactoDomainModel DatosContactoDM = IdatosContacto.GetDatosContacto(idPersonal);
+                
+
+            if (DatosContactoDM != null)
+            {
+                IdatosContacto.DeleteDatosContactoDocente(DatosContactoDM);
+            }
+            return View("Create");
+        }
+        #endregion
+
+
+
 
     }
 }
