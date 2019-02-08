@@ -175,6 +175,7 @@
     <Content Include="Content\animate.min.css" />
     <Content Include="Content\css\cardview.css" />
     <Content Include="Content\css\Ionicons.css" />
+    <Content Include="Content\estilo.css" />
     <Content Include="Content\js\plugins\jquery\jquery.min.js" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -422,6 +423,7 @@
     <Content Include="Views\Shared\_TipoEmpresa.cshtml" />
     <Content Include="Views\PersonalAsociaciones\_Eliminar.cshtml" />
     <Content Include="Views\Asociacion\Create.cshtml" />
+    <Content Include="Views\DatosContacto\_Eliminar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

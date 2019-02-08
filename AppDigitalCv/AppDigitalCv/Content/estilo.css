@@ -1,0 +1,31 @@
+﻿.titleletter {
+    color: #00a65a;
+    font-display:auto;
+    font-family:sans-serif,Verdana, Geneva, Tahoma, sans-serif;
+    font-size:14px;
+    font-stretch:normal;
+    font-weight:bold;
+}
+.institucionletter {
+    color: #00a65a;
+}
+.redletter {
+    color: #f56954;
+    font-size: 11px;
+}
+.facebookletter {
+    color: #3F5D9A;
+}
+.twitterletter {
+    color: #1DA1F2;
+}
+.emailletter {
+    color: #39CCCC;
+}
+.panelbackcolor {
+    background-color: #FDFDFE;
+}
+.paneltitlecolor {
+    background-color: #3C8DBC;
+}
+

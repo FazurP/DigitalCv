@@ -1,0 +1,77 @@
+﻿@model AppDigitalCv.ViewModels.DatosContactoVM
+@using AppDigitalCv.Security
+
+<div>
+    <form id="myForm">
+        <div class="bs-container">
+            <div class="row">
+                <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                    @*<img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">*@
+
+                    <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+                </div>
+                <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                    <div class="bs-container">
+                        <p class="titleletter">@SessionPersister.AccountSession.NombreCompleto </p>
+                        <span><i class="redletter fa fa-trash-o"></i></span><span class="text-red active">¿Realmente quieres eliminar estos datos?</span>
+                    </div>
+                    @Html.HiddenFor(model => model.IdPersonal)
+                    <ul class="bs-container list-unstyled">
+                        <li>
+                            <span class="institucionletter glyphicon glyphicon-envelope one"></span>
+                            @Html.DisplayFor(model => model.MailInstitucional)
+                        </li>
+                        <li>
+                            <span class="emailletter fa fa-send"></span>
+                            @Html.DisplayFor(model => model.MailPersonal)
+                        </li>
+                        <li>
+                            <span class="facebookletter fa fa-facebook-official"></span>
+                            @Html.DisplayFor(model => model.NombreFacebook)
+                        </li>
+                        <li>
+                            <span class="twitterletter fa fa-twitter"></span>
+                            @Html.DisplayFor(model => model.NombreTwitter)
+                        </li>
+                        <li>
+                            <span class="fa fa-fax"></span>
+                            @Html.DisplayFor(model => model.TelefonoCasa)
+                        </li>
+                        <li>
+                            <span class="fa fa-fax"></span>
+                            @Html.DisplayFor(model => model.TelefonoCelular)
+                        </li>
+                    </ul>
+                </div>
+                
+                
+            </div>
+            <div class="row">
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"></div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <a href="#" id="btnSubmit" class="btn btn-google"><span><i class="fa fa-trash"></i> Eliminar</span></a>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+<script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#btnSubmit").click(function () {
+            //serialización del formaulario
+            var myformdata = $("#myForm").serialize();
+            $.ajax({
+                type: "POST",
+                url: "/DatosContacto/EliminarDatosDeContactoDocente",
+                data: myformdata,
+                success: function () {
+                    $("#myModal1").modal("hide");
+                    window.location.href = "/DatosContacto/EditarDatosContacto";
+                }
+            })
+        });
+    });
+</script>
