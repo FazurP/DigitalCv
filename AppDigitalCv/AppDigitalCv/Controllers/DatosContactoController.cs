@@ -91,6 +91,23 @@ namespace AppDigitalCv.Controllers
             return PartialView("_Editar", datosContactoVM);
         }
 
+        /// <summary>
+        /// Este Metodo se encarga de consultar los datos y mostrarlos en una vista parcial
+        /// </summary>
+        /// <param name="idPersonal">el identificador  del personal</param>
+        /// <returns>una vista con los datos solicitados</returns>
+        public ActionResult GetDeleteDatosContactoId(int idPersonal)
+        {
+            DatosContactoVM datosContactoVM = new DatosContactoVM();
+            DatosContactoDomainModel datosContactoDM = new DatosContactoDomainModel();
+            if (idPersonal > 0)
+            {
+                datosContactoDM = IdatosContacto.GetDatosContacto(idPersonal);
+            }
+            AutoMapper.Mapper.Map(datosContactoDM, datosContactoVM);
+            return PartialView("_Eliminar", datosContactoVM);
+        }
+
 
 
         #region Agregar o Editar una entidad
