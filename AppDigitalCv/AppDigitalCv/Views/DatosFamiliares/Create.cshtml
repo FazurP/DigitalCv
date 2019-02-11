@@ -95,19 +95,19 @@
                             </div>
                             <div class="form-group">
                                 <label></label>
-                                @Html.RadioButtonFor(model => model.PadreVM.BitVive, "Vivo")<text>Vivo</text>
-                                @Html.RadioButtonFor(model => model.PadreVM.BitVive, "Finado")<text>Finado</text>
+                                @Html.RadioButtonFor(model => model.ParejaVM.BitVive, "Vivo", htmlAttributes: new { id = "rdbParejaVive", name = "rdbParejaVive" })<text>Vivo</text>
+                                @Html.RadioButtonFor(model => model.ParejaVM.BitVive, "Finado", htmlAttributes: new { id = "rdbParejaFinado", name = "rdbParejaFinado" })<text>Finado</text>
                             </div>
                             <div class="form-group">
-                                @Html.TextBoxFor(model => model.ParejaVM.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio Completo", required = "required", title = "Domicilio de tu familiar", size = "35" })
+                                @Html.TextBoxFor(model => model.ParejaVM.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio Completo", required = "required", title = "Domicilio de tu familiar", size = "35", id = "domiciliopareja" })
                             </div>
                             <div class="form-group">
                                 <label>Ocupación:</label>
-                                @Html.TextBoxFor(model => model.ParejaVM.StrOcupacion, new { @class = "form-control input-sm", placeholder = "Ocupación", required = "required", title = "Datos de la Ocupación", size = "10" })
+                                @Html.TextBoxFor(model => model.ParejaVM.StrOcupacion, new { @class = "form-control input-sm", placeholder = "Ocupación", required = "required", title = "Datos de la Ocupación", size = "10", id = "ocupacionpareja" })
                             </div>
                             <div class="form-group">
                                 <label>Edad:</label>
-                                @Html.TextBoxFor(model => model.ParejaVM.IntEdad, new { @class = "form-control input-sm", placeholder = "Edad", required = "required", title = "Edad del Familiar", size = "1", type = "Number" })
+                                @Html.TextBoxFor(model => model.ParejaVM.IntEdad, new { @class = "form-control input-sm", placeholder = "Edad", required = "required", title = "Edad del Familiar", size = "1", type = "Number",id="edadpareja" })
                             </div>
                             <br />
                             <div class="form-group">
@@ -158,27 +158,38 @@
                 $('#edadmadre').prop('disabled', true).css("border-bottom-color", "#f39c12");
             });
 
-            $('#myForm input').on('change', function () {
-
-
-                //var valor = $('input[name=rdbPadreVive]:checked', '#myForm').val();
-                
-                if (valor.trim() === "Vivo") {
-                    $('#ocupacionp').prop('disabled', false).css("border-bottom-color", "#00a65a");
-                    $('#domicilioP').prop('disabled', false).css("border-bottom-color", "#00a65a");
-                    $('#edadp').prop('disabled', false).css("border-bottom-color", "#00a65a");
-                }
-                if (valor.trim() === "Finado") {
-
-                    $('#ocupacionp').prop('disabled', true).css("border-bottom-color", "#f39c12");
-                    $('#domicilioP').prop('disabled', true).css("border-bottom-color", "#f39c12");
-                    $('#edadp').prop('disabled', true).css("border-bottom-color", "#f39c12");
-                    //$('#containerEnfermedades').hide();
-                    //$('#containerOtra').hide();
-                }
-
-
+            var parejaVivo = $('#rdbParejaVive').change(function () {
+                $('#ocupacionpareja').prop('disabled', false).css("border-bottom-color", "#00a65a");
+                $('#domiciliopareja').prop('disabled', false).css("border-bottom-color", "#00a65a");
+                $('#edadpareja').prop('disabled', false).css("border-bottom-color", "#00a65a");
             });
+            var parejaFinado = $('#rdbParejaFinado').change(function () {
+                $('#ocupacionpareja').prop('disabled', true).css("border-bottom-color", "#f39c12");
+                $('#domiciliopareja').prop('disabled', true).css("border-bottom-color", "#f39c12");
+                $('#edadpareja').prop('disabled', true).css("border-bottom-color", "#f39c12");
+            });
+
+            //$('#myForm input').on('change', function () {
+
+
+            //    //var valor = $('input[name=rdbPadreVive]:checked', '#myForm').val();
+                
+            //    if (valor.trim() === "Vivo") {
+            //        $('#ocupacionp').prop('disabled', false).css("border-bottom-color", "#00a65a");
+            //        $('#domicilioP').prop('disabled', false).css("border-bottom-color", "#00a65a");
+            //        $('#edadp').prop('disabled', false).css("border-bottom-color", "#00a65a");
+            //    }
+            //    if (valor.trim() === "Finado") {
+
+            //        $('#ocupacionp').prop('disabled', true).css("border-bottom-color", "#f39c12");
+            //        $('#domicilioP').prop('disabled', true).css("border-bottom-color", "#f39c12");
+            //        $('#edadp').prop('disabled', true).css("border-bottom-color", "#f39c12");
+            //        //$('#containerEnfermedades').hide();
+            //        //$('#containerOtra').hide();
+            //    }
+
+
+            //});
         });
     </script>
 }
