@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppDigitalCv.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,5 +14,13 @@ namespace AppDigitalCv.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Create([Bind(Include = "StrNombre,StrOcupacion,StrDomicilio,IntEdad,BitVive")]FamiliaresVM familiaresVM)
+        {
+            return View();
+        }
+
+
     }
 }
