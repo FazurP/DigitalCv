@@ -424,6 +424,7 @@
     <Content Include="Views\PersonalAsociaciones\_Eliminar.cshtml" />
     <Content Include="Views\Asociacion\Create.cshtml" />
     <Content Include="Views\DatosContacto\_Eliminar.cshtml" />
+    <Content Include="Views\DatosFamiliares\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -436,6 +437,7 @@
     <Compile Include="Controllers\AlergiasController.cs" />
     <Compile Include="Controllers\AsociacionController.cs" />
     <Compile Include="Controllers\DatosContactoController.cs" />
+    <Compile Include="Controllers\DatosFamiliaresController.cs" />
     <Compile Include="Controllers\DialectoIdiomaController.cs" />
     <Compile Include="Controllers\DireccionController.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />

@@ -6,6 +6,9 @@
     font-stretch:normal;
     font-weight:bold;
 }
+.emailtitleletter {
+    font-size:12px;
+}
 .institucionletter {
     color: #00a65a;
 }
@@ -28,4 +31,7 @@
 .paneltitlecolor {
     background-color: #3C8DBC;
 }
-
+.enabledtextinput {
+    border-bottom-color: solid 1px #f39c12;
+    border-color:#f39c12;
+}

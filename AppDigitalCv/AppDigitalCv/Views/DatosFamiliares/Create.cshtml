@@ -1,0 +1,162 @@
+﻿@using AppDigitalCv.Security
+@model AppDigitalCv.ViewModels.ParentescoVM
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "myForm", id = "myForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="bs-container content" style="min-height:960px;">
+        <section class="content-header">
+            <h1>
+                Agregar Datos de Familiares
+                <small>(Agregar)</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
+                <li> <a href="#"> Datos</a></li>
+                <li class="active"> Datos de tus Familiares </li>
+            </ol>
+        </section>
+        <br />
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h5 class="box-title">
+                            <label class="text-success emailtitleletter">
+                                <i class="text-success fa fa-graduation-cap"></i>
+                                @SessionPersister.AccountSession.NombreCompleto
+                            </label>
+                        </h5>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!-- /.box-tools -->
+                    </div>
+                    <div class="box-body">
+                        <div role="form" class="form-inline">
+                            <div class="form-group">
+                                <label>Padre:&nbsp;&nbsp;</label>
+                                @Html.TextBoxFor(model => model.StrNombre, new { @class = "form-control input-sm", placeholder = "Nombre Completo", required = "required", title = "Nombre completo de tu familiar" })
+                            </div>
+                            <div class="form-group">
+                                <label></label>
+                                <input type="radio" id="rdbVive" name="seleccion" value="Vivo " class="custom-control-input"><label for="si">Vivo</label>
+                                <input type="radio" id="rdbMuerto" name="seleccion" value="Muerto" class="custom-control-input" checked><label for="no">Finado</label>
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio Completo", required = "required", title = "Domicilio de tu familiar", size = "35" })
+                            </div>
+                            <div class="form-group">
+                                <label>Ocupación:</label>
+                                @Html.TextBoxFor(model => model.StrOcupacion, new { @class = "form-control input-sm", placeholder = "Ocupación", required = "required", title = "Datos de la Ocupación", size = "10" })
+                            </div>
+                            <div class="form-group">
+                                <label>Edad:</label>
+                                @Html.TextBoxFor(model => model.IntEdad, new { @class = "form-control input-sm", placeholder = "Edad", required = "required", title = "Edad del Familiar", size = "1", type = "Number" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label>Madre:&nbsp;</label>
+                                <input type="text" class="form-control input-sm" required placeholder="Nombre Completo" title="Nombre completo de tu familiar" />
+
+                            </div>
+                            <div class="form-group">
+                                <label></label>
+                                <input type="radio" id="rdbVive" name="seleccion" value="Vivo " class="custom-control-input"><label for="si">Vivo</label>
+                                <input type="radio" id="rdbMuerto" name="seleccion" value="Muerto" class="custom-control-input" checked><label for="no">Finada</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control input-sm" required placeholder="Domicilio Completo" title="Domicilio de tu familiar" size="35" />
+                            </div>
+                            <div class="form-group">
+                                <label>Ocupación:</label>
+                                <input type="text" class="form-control input-sm" required placeholder="Ocupación" title="Datos de la Ocupación" size="10" />
+                            </div>
+                            <div class="form-group">
+                                <label>Edad:</label>
+                                <input type="number" class="form-control input-sm" required placeholder="Edad" title="Edad del Familiar" size="2" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label>Pareja:&nbsp;</label>
+                                <input type="text" class="form-control input-sm" required placeholder="Nombre de tu esposo(a)" title="Nombre completo de tu familiar" />
+
+                            </div>
+                            <div class="form-group">
+                                <label></label>
+                                <input type="radio" id="rdbViveP" name="esposo" value="Vivo" class="custom-control-input"><label for="si">Vivo</label>
+                                <input type="radio" id="rdbMuertoP" name="esposo" value="Finado" class="custom-control-input" ><label for="no">Finado</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="domicilioP" class="form-control input-sm" required="required" placeholder="Domicilio Completo" title="Domicilio de tu familiar" size="35" />
+                            </div>
+                            <div class="form-group">
+                                <label>Ocupación:</label>
+                                <input type="text" id="ocupacionp" class="form-control input-sm" required="required" placeholder="Ocupación" title="Datos de la Ocupación" size="10" />
+                            </div>
+                            <div class="form-group">
+                                <label>Edad:</label>
+                                <input type="number" id="edadp" class="form-control input-sm" required="required" placeholder="Edad" title="Edad del Familiar" size="2" />
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <br />
+                                <input type="submit" class="btn btn-sm btn-success" value="Guardar" />
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="box-footer">
+
+
+                        <div>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $('#myForm input').on('change', function () {
+
+
+                var valor = $('input[name=esposo]:checked', '#myForm').val();
+
+                if (valor.trim() === "Vivo") {
+                    $('#ocupacionp').prop('disabled', false).css("border-bottom-color", "#00a65a");
+                    $('#domicilioP').prop('disabled', false).css("border-bottom-color", "#00a65a");
+                    $('#edadp').prop('disabled', false).css("border-bottom-color", "#00a65a");
+                }
+                if (valor.trim() === "Finado") {
+
+                    $('#ocupacionp').prop('disabled', true).css("border-bottom-color", "#f39c12");
+                    $('#domicilioP').prop('disabled', true).css("border-bottom-color", "#f39c12");
+                    $('#edadp').prop('disabled', true).css("border-bottom-color", "#f39c12");
+                    //$('#containerEnfermedades').hide();
+                    //$('#containerOtra').hide();
+                }
+
+
+            });
+        });
+    </script>
+}
