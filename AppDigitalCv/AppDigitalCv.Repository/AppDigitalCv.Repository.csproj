@@ -104,6 +104,7 @@
     <Compile Include="catDocumentos.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="CompetenciasTiPersonalRepository.cs" />
     <Compile Include="DocumentosRepository.cs" />
     <Compile Include="catEdificio.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
