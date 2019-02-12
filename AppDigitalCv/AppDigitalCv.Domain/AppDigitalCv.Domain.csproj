@@ -44,6 +44,8 @@
     <Compile Include="AccountDomainModel.cs" />
     <Compile Include="AsociacionesDomainModel.cs" />
     <Compile Include="ColoniaDomainModel.cs" />
+    <Compile Include="CompetenciasTiDomainModel.cs" />
+    <Compile Include="CompetenciaTiDomainModel.cs" />
     <Compile Include="DatosContactoDomainModel.cs" />
     <Compile Include="DialectoDomainModel.cs" />
     <Compile Include="DireccionDomainModel.cs" />
