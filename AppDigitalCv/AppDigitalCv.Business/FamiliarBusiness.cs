@@ -86,6 +86,8 @@ namespace AppDigitalCv.Business
             List<catFamiliar> familiares = new List<catFamiliar>();
             //inserción de familair padre
             catFamiliar catFamiliarPadre = new catFamiliar();
+            catFamiliarPadre.idParentesco = familiaresDM.PadreDomainModel.IdParentesco;
+            catFamiliarPadre.idPersonal = familiaresDM.PadreDomainModel.IdPersonal;
             catFamiliarPadre.strNombre = familiaresDM.PadreDomainModel.StrNombre;
             catFamiliarPadre.strOcupacion = familiaresDM.PadreDomainModel.StrOcupacion;
             catFamiliarPadre.strDomicilio = familiaresDM.PadreDomainModel.StrDomicilio;
@@ -94,6 +96,8 @@ namespace AppDigitalCv.Business
             familiares.Add(catFamiliarPadre);
 
             catFamiliar catFamiliarMadre = new catFamiliar();
+            catFamiliarMadre.idPersonal = familiaresDM.MadreDomainModel.IdPersonal;
+            catFamiliarMadre.idParentesco = familiaresDM.MadreDomainModel.IdParentesco;
             catFamiliarMadre.strNombre = familiaresDM.MadreDomainModel.StrNombre;
             catFamiliarMadre.strOcupacion = familiaresDM.MadreDomainModel.StrOcupacion;
             catFamiliarMadre.strDomicilio = familiaresDM.MadreDomainModel.StrDomicilio;
@@ -102,6 +106,8 @@ namespace AppDigitalCv.Business
             familiares.Add(catFamiliarMadre);
 
             catFamiliar catFamiliarPareja = new catFamiliar();
+            catFamiliarPareja.idPersonal = familiaresDM.ParejaDomainModel.IdPersonal;
+            catFamiliarPareja.idParentesco = familiaresDM.ParejaDomainModel.IdParentesco;
             catFamiliarPareja.strNombre = familiaresDM.ParejaDomainModel.StrNombre;
             catFamiliarPareja.strOcupacion = familiaresDM.ParejaDomainModel.StrOcupacion;
             catFamiliarPareja.strDomicilio = familiaresDM.ParejaDomainModel.StrDomicilio;
@@ -167,7 +173,7 @@ namespace AppDigitalCv.Business
             return familiares;
             
         }
-
+                                     
 
         /// <summary>
         /// Este metodo se encarga de buscar un familiar por el identificador del familiar

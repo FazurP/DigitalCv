@@ -48,8 +48,8 @@
                             </div>
                             <div class="form-group">
                                 <label></label>
-                                @Html.RadioButtonFor(model=>model.PadreVM.BitVive,"Vivo",htmlAttributes:new {id = "rdbPadreVive",name= "rdbPadreVive" })<text>Vivo</text>
-                                @Html.RadioButtonFor(model=>model.PadreVM.BitVive,"Finado", htmlAttributes: new { id = "rdbPadreFinado", name = "rdbPadreFinado" })<text>Finado</text>
+                                @Html.RadioButtonFor(model=>model.PadreVM.BitVive,true,htmlAttributes:new {id = "rdbPadreVive",name= "rdbPadreVive" })<text>Vivo</text>
+                                @Html.RadioButtonFor(model=>model.PadreVM.BitVive,false, htmlAttributes: new { id = "rdbPadreFinado", name = "rdbPadreFinado" })<text>Finado</text>
                             </div>
                             <div class="form-group">
                                 @Html.TextBoxFor(model => model.PadreVM.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio Completo", required = "required", title = "Domicilio de tu familiar", size = "35" ,id= "domiciliopadre" })
@@ -72,8 +72,8 @@
                             </div>
                             <div class="form-group">
                                 <label></label>
-                                @Html.RadioButtonFor(model => model.MadreVM.BitVive, "Vivo", htmlAttributes: new { id = "rdbMadreVive", name = "rdbMadreVive" })<text>Vivo</text>
-                                @Html.RadioButtonFor(model => model.MadreVM.BitVive, "Finado", htmlAttributes: new { id = "rdbMadreFinado", name = "rdbMadreFinado" })<text>Finado</text>
+                                @Html.RadioButtonFor(model => model.MadreVM.BitVive, true, htmlAttributes: new { id = "rdbMadreVive", name = "rdbMadreVive" })<text>Vivo</text>
+                                @Html.RadioButtonFor(model => model.MadreVM.BitVive, false, htmlAttributes: new { id = "rdbMadreFinado", name = "rdbMadreFinado" })<text>Finado</text>
                             </div>
                             <div class="form-group">
                                 @Html.TextBoxFor(model => model.MadreVM.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio Completo", required = "required", title = "Domicilio de tu familiar", size = "35",id="domiciliomadre" })
@@ -95,8 +95,8 @@
                             </div>
                             <div class="form-group">
                                 <label></label>
-                                @Html.RadioButtonFor(model => model.ParejaVM.BitVive, "Vivo", htmlAttributes: new { id = "rdbParejaVive", name = "rdbParejaVive" })<text>Vivo</text>
-                                @Html.RadioButtonFor(model => model.ParejaVM.BitVive, "Finado", htmlAttributes: new { id = "rdbParejaFinado", name = "rdbParejaFinado" })<text>Finado</text>
+                                @Html.RadioButtonFor(model => model.ParejaVM.BitVive, true, htmlAttributes: new { id = "rdbParejaVive", name = "rdbParejaVive" })<text>Vivo</text>
+                                @Html.RadioButtonFor(model => model.ParejaVM.BitVive, false, htmlAttributes: new { id = "rdbParejaFinado", name = "rdbParejaFinado" })<text>Finado</text>
                             </div>
                             <div class="form-group">
                                 @Html.TextBoxFor(model => model.ParejaVM.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio Completo", required = "required", title = "Domicilio de tu familiar", size = "35", id = "domiciliopareja" })
