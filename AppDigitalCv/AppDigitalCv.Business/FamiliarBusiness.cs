@@ -75,6 +75,50 @@ namespace AppDigitalCv.Business
         }
 
         /// <summary>
+        /// Este metodo se encarga de insertar todos los familiares del personal
+        /// </summary>
+        /// <param name="familiaresDM">recibe como parametro la entidad familiaresDM</param>
+        /// <returns>regresa una respuesta del tipo boolean </returns>
+        public bool AddFamiliares(FamiliaresDomainModel familiaresDM)
+        {
+            bool respuesta = false;
+            string resultado = string.Empty;
+            List<catFamiliar> familiares = new List<catFamiliar>();
+            //inserción de familair padre
+            catFamiliar catFamiliarPadre = new catFamiliar();
+            catFamiliarPadre.strNombre = familiaresDM.PadreDomainModel.StrNombre;
+            catFamiliarPadre.strOcupacion = familiaresDM.PadreDomainModel.StrOcupacion;
+            catFamiliarPadre.strDomicilio = familiaresDM.PadreDomainModel.StrDomicilio;
+            catFamiliarPadre.intEdad = familiaresDM.PadreDomainModel.IntEdad;
+            catFamiliarPadre.bitVive = familiaresDM.PadreDomainModel.BitVive;
+            familiares.Add(catFamiliarPadre);
+
+            catFamiliar catFamiliarMadre = new catFamiliar();
+            catFamiliarMadre.strNombre = familiaresDM.MadreDomainModel.StrNombre;
+            catFamiliarMadre.strOcupacion = familiaresDM.MadreDomainModel.StrOcupacion;
+            catFamiliarMadre.strDomicilio = familiaresDM.MadreDomainModel.StrDomicilio;
+            catFamiliarMadre.intEdad = familiaresDM.MadreDomainModel.IntEdad;
+            catFamiliarMadre.bitVive = familiaresDM.MadreDomainModel.BitVive;
+            familiares.Add(catFamiliarMadre);
+
+            catFamiliar catFamiliarPareja = new catFamiliar();
+            catFamiliarPareja.strNombre = familiaresDM.ParejaDomainModel.StrNombre;
+            catFamiliarPareja.strOcupacion = familiaresDM.ParejaDomainModel.StrOcupacion;
+            catFamiliarPareja.strDomicilio = familiaresDM.ParejaDomainModel.StrDomicilio;
+            catFamiliarPareja.intEdad = familiaresDM.ParejaDomainModel.IntEdad;
+            catFamiliarPareja.bitVive = familiaresDM.ParejaDomainModel.BitVive;
+            familiares.Add(catFamiliarPareja);
+            foreach (catFamiliar familiar in familiares)
+            {
+                familiarRepository.Insert(familiar);
+            }
+            resultado = "Se insertaron correctamente los valores";
+            respuesta = true;
+            return respuesta;
+        }
+
+
+        /// <summary>
         /// Este metodo se encarga de obtener el famlair y su identificador a traves del nombre
         /// </summary>
         /// <param name="familiarDM">recibe una entidad del tipo FamiliarDomainModel</param>

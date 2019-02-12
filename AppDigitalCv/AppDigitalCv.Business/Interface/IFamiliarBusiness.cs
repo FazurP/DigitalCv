@@ -42,5 +42,11 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="familiarDomainModel">recive una entidad del tipo familiarDomainModel</param>
         /// <returns>regresa una respuesta del tipo true o false</returns>
         bool DeleteFamiliar(FamiliarDomainModel familiarDomainModel);
+        /// <summary>
+        /// Este metodo se encarga de insertar todos los familiares del personal
+        /// </summary>
+        /// <param name="familiaresDM">recibe como parametro la entidad familiaresDM</param>
+        /// <returns>regresa una respuesta del tipo boolean </returns>
+        bool AddFamiliares(FamiliaresDomainModel familiaresDM);
     }
 }

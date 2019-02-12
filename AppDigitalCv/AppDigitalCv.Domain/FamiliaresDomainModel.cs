@@ -8,8 +8,8 @@ namespace AppDigitalCv.Domain
 {
     public class FamiliaresDomainModel
     {
-        public FamiliarDomainModel PadreDomainModel { get; set; }
-        public FamiliarDomainModel MadreDomainModel { get; set; }
-        public FamiliarDomainModel ParejaDomainModel { get; set; }
+        public virtual FamiliarDomainModel PadreDomainModel { get; set; }
+        public virtual FamiliarDomainModel MadreDomainModel { get; set; }
+        public virtual FamiliarDomainModel ParejaDomainModel { get; set; }
     }
 }
