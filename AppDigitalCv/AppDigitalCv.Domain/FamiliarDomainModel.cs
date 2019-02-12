@@ -17,7 +17,7 @@ namespace AppDigitalCv.Domain
         //cambie esta propiedad
         public string DteFechaNacimiento { get; set; }
         public int IdParentesco { get; set; }
-        public virtual ICollection<PersonalDomainModel> PersonalDomainModel { get; set; }
+        //public virtual ICollection<PersonalDomainModel> PersonalDomainModel { get; set; }
         public int IdPersonal { get; set; }
         //falta agregar el parentesco catParentesco
     }

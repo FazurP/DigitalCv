@@ -84,7 +84,7 @@ namespace AppDigitalCv.Controllers
         /// Este metodo se encarga de consultar todos los familiares del personal por su identificador
         /// </summary>
         /// <returns>regresa un objeto json con el resultado de la consulta</returns>
-        [HttpGet]
+        //[HttpGet]
         public JsonResult GetFamiliaresPersonal()
         {
             int idPersonal = SessionPersister.AccountSession.IdPersonal;
