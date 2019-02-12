@@ -48,19 +48,19 @@
                             </div>
                             <div class="form-group">
                                 <label></label>
-                                @Html.RadioButtonFor(model=>model.PadreVM.BitVive,true,htmlAttributes:new {id = "rdbPadreVive",name= "rdbPadreVive" })<text>Vivo</text>
-                                @Html.RadioButtonFor(model=>model.PadreVM.BitVive,false, htmlAttributes: new { id = "rdbPadreFinado", name = "rdbPadreFinado" })<text>Finado</text>
+                                @Html.RadioButtonFor(model => model.PadreVM.BitVive, true, htmlAttributes: new { id = "rdbPadreVive", name = "rdbPadreVive" })<text>Vivo</text>
+                                @Html.RadioButtonFor(model => model.PadreVM.BitVive, false, htmlAttributes: new { id = "rdbPadreFinado", name = "rdbPadreFinado" })<text>Finado</text>
                             </div>
                             <div class="form-group">
-                                @Html.TextBoxFor(model => model.PadreVM.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio Completo", required = "required", title = "Domicilio de tu familiar", size = "35" ,id= "domiciliopadre" })
+                                @Html.TextBoxFor(model => model.PadreVM.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio Completo", required = "required", title = "Domicilio de tu familiar", size = "35", id = "domiciliopadre" })
                             </div>
                             <div class="form-group">
                                 <label>Ocupación:</label>
-                                @Html.TextBoxFor(model => model.PadreVM.StrOcupacion, new { @class = "form-control input-sm", placeholder = "Ocupación", required = "required", title = "Datos de la Ocupación", size = "10",id= "ocupacionpadre" })
+                                @Html.TextBoxFor(model => model.PadreVM.StrOcupacion, new { @class = "form-control input-sm", placeholder = "Ocupación", required = "required", title = "Datos de la Ocupación", size = "10", id = "ocupacionpadre" })
                             </div>
                             <div class="form-group">
                                 <label>Edad:</label>
-                                @Html.TextBoxFor(model => model.PadreVM.IntEdad, new { @class = "form-control input-sm", placeholder = "Edad", required = "required", title = "Edad del Familiar", size = "1", type = "Number",id= "edadpadre" })
+                                @Html.TextBoxFor(model => model.PadreVM.IntEdad, new { @class = "form-control input-sm", placeholder = "Edad", required = "required", title = "Edad del Familiar", size = "1", type = "Number", id = "edadpadre" })
                             </div>
                         </div>
                         <br />
@@ -76,15 +76,15 @@
                                 @Html.RadioButtonFor(model => model.MadreVM.BitVive, false, htmlAttributes: new { id = "rdbMadreFinado", name = "rdbMadreFinado" })<text>Finado</text>
                             </div>
                             <div class="form-group">
-                                @Html.TextBoxFor(model => model.MadreVM.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio Completo", required = "required", title = "Domicilio de tu familiar", size = "35",id="domiciliomadre" })
+                                @Html.TextBoxFor(model => model.MadreVM.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio Completo", required = "required", title = "Domicilio de tu familiar", size = "35", id = "domiciliomadre" })
                             </div>
                             <div class="form-group">
                                 <label>Ocupación:</label>
-                                @Html.TextBoxFor(model => model.MadreVM.StrOcupacion, new { @class = "form-control input-sm", placeholder = "Ocupación", required = "required", title = "Datos de la Ocupación", size = "10",id="ocupacionmadre" })
+                                @Html.TextBoxFor(model => model.MadreVM.StrOcupacion, new { @class = "form-control input-sm", placeholder = "Ocupación", required = "required", title = "Datos de la Ocupación", size = "10", id = "ocupacionmadre" })
                             </div>
                             <div class="form-group">
                                 <label>Edad:</label>
-                                @Html.TextBoxFor(model => model.MadreVM.IntEdad, new { @class = "form-control input-sm", placeholder = "Edad", required = "required", title = "Edad del Familiar", size = "1", type = "Number",id="edadmadre" })
+                                @Html.TextBoxFor(model => model.MadreVM.IntEdad, new { @class = "form-control input-sm", placeholder = "Edad", required = "required", title = "Edad del Familiar", size = "1", type = "Number", id = "edadmadre" })
                             </div>
                         </div>
                         <br />
@@ -107,15 +107,32 @@
                             </div>
                             <div class="form-group">
                                 <label>Edad:</label>
-                                @Html.TextBoxFor(model => model.ParejaVM.IntEdad, new { @class = "form-control input-sm", placeholder = "Edad", required = "required", title = "Edad del Familiar", size = "1", type = "Number",id="edadpareja" })
+                                @Html.TextBoxFor(model => model.ParejaVM.IntEdad, new { @class = "form-control input-sm", placeholder = "Edad", required = "required", title = "Edad del Familiar", size = "1", type = "Number", id = "edadpareja" })
                             </div>
                             <br />
                             <div class="form-group">
                                 <br />
                                 <input type="submit" class="btn btn-sm btn-success" value="Guardar" />
                             </div>
+                            <br />
+                            <div class="form-group">
+                                <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
+                                <div class="form-group" id="addTable">
+                                    <br />
+                                    <table id="tblFamiliares" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
+                                        <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
+                                            <tr>
 
-                        </div>
+                                                <th>Nombre</th>
+                                                <th>Ocupación</th>
+                                                <th>Domicilio</th>
+                                                <th>Edad</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tblBody"></tbody>
+                                    </table>
+                                </div>
+                            </div>
 
                     </div>
                     <div class="box-footer">
@@ -130,10 +147,25 @@
         </div>
     </div>
 }
+
+<link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<link href="~/Scripts/jtable/themes/basic/jtable_basic.css" rel="stylesheet" />
+
 @section scripts
 {
+    <script src="~/Content/js/plugins/jquery/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/js/plugins/datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/Content/js/plugins/icheck/icheck.min.js"></script>
+    <script src="~/Content/js/plugins/inputmask/jquery.inputmask.bundle.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
     <script>
+
         $(document).ready(function () {
+
+            var oTable;
 
             var valor = $('#rdbPadreVive').change(function () {
                 $('#ocupacionpadre').prop('disabled', false).css("border-bottom-color", "#00a65a");
@@ -169,27 +201,75 @@
                 $('#edadpareja').prop('disabled', true).css("border-bottom-color", "#f39c12");
             });
 
-            //$('#myForm input').on('change', function () {
+            BindDataTable();
+
+            function BindDataTable() {
+
+                if ($.fn.DataTable.isDataTable('#tblFamiliares')) {
+                    oTable.Draw();
+                }
+                else {
+                    oTable = $('#tblFamiliares').DataTable({
+                        "bServerSide": true,
+                        "sAjaxSource": '/DatosFamiliares/GetFamiliaresPersonal',
+                        "fnServerData": function (sSource, aoData, fnCallback) {
+                            $.ajax({
+                                type: "Get",
+                                data: aoData,
+                                url: sSource,
+                                success: fnCallback
+                            })
+                        },
+                        "pageLength": 5,
+                        "language": {
+
+                            "sProcessing": "Procesando...",
+                            "sLengthMenu": "Mostrar _MENU_ registros",
+                            "sZeroRecords": "No se encontraron resultados",
+                            "sEmptyTable": "Ningún dato disponible en esta tabla",
+                            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                            "sInfoPostFix": "",
+                            "sSearch": "Buscar:",
+                            "sUrl": "",
+                            "sInfoThousands": ",",
+                            "sLoadingRecords": "Cargando...",
+                            "oPaginate": {
+                                "sFirst": "Primero",
+                                "sLast": "Último",
+                                "sNext": "Siguiente",
+                                "sPrevious": "Anterior"
+                            },
+                            "oAria": {
+                                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                            }
+                        },
+                        "dataSrc": "",
+                        "columns": [
 
 
-            //    //var valor = $('input[name=rdbPadreVive]:checked', '#myForm').val();
-                
-            //    if (valor.trim() === "Vivo") {
-            //        $('#ocupacionp').prop('disabled', false).css("border-bottom-color", "#00a65a");
-            //        $('#domicilioP').prop('disabled', false).css("border-bottom-color", "#00a65a");
-            //        $('#edadp').prop('disabled', false).css("border-bottom-color", "#00a65a");
-            //    }
-            //    if (valor.trim() === "Finado") {
+                            { "data": "StrNombre" },
+                            { "data": "StrOcupacion" },
+                            { "data": "StrDomicilio" },
+                            { "data": "IntEdad"},
+                            
+                            {
+                                "data": "IdFamiliar",
+                                "render": function (IdFamiliar, type, full, meta) {
 
-            //        $('#ocupacionp').prop('disabled', true).css("border-bottom-color", "#f39c12");
-            //        $('#domicilioP').prop('disabled', true).css("border-bottom-color", "#f39c12");
-            //        $('#edadp').prop('disabled', true).css("border-bottom-color", "#f39c12");
-            //        //$('#containerEnfermedades').hide();
-            //        //$('#containerOtra').hide();
-            //    }
+                                    return '<a href="#" onclick="AddDelete(' + IdFamiliar + ')"><i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i></a>'
+                                }
+                            },
+                        ]
+                    });
+                }
+            };
 
 
-            //});
+
+
         });
     </script>
 }
