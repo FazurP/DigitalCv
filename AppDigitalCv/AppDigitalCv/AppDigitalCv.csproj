@@ -467,6 +467,8 @@
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\AsociacionesVM.cs" />
     <Compile Include="ViewModels\ColoniaVM.cs" />
+    <Compile Include="ViewModels\CompetenciasTiVM.cs" />
+    <Compile Include="ViewModels\CompetenciaVM.cs" />
     <Compile Include="ViewModels\DatosContactoVM.cs" />
     <Compile Include="ViewModels\DialectoVM.cs" />
     <Compile Include="ViewModels\DireccionVM.cs" />

@@ -87,6 +87,12 @@ namespace AppDigitalCv.Infraestructure
             ///Familiares 
             CreateMap<FamiliaresVM, FamiliaresDomainModel>();
             CreateMap<FamiliaresDomainModel, FamiliaresVM>();
+            //Competencias TI
+            CreateMap<CompetenciasTiVM, CompetenciasTiDomainModel>();
+            CreateMap<CompetenciasTiDomainModel, CompetenciasTiVM>();
+            //Competencia TI
+            CreateMap<CompetenciaVM, CompetenciaTiDomainModel>();
+            CreateMap<CompetenciaTiDomainModel, CompetenciaVM>();
         }
 
 
