@@ -5,7 +5,7 @@ using System.Web;
 
 namespace AppDigitalCv.ViewModels
 {
-    public class CompetenciaVM
+    public class CompetenciaTiVM
     {
 
         public int IdCompetenciaTI { get; set; }

@@ -91,8 +91,8 @@ namespace AppDigitalCv.Infraestructure
             CreateMap<CompetenciasTiVM, CompetenciasTiDomainModel>();
             CreateMap<CompetenciasTiDomainModel, CompetenciasTiVM>();
             //Competencia TI
-            CreateMap<CompetenciaVM, CompetenciaTiDomainModel>();
-            CreateMap<CompetenciaTiDomainModel, CompetenciaVM>();
+            CreateMap<CompetenciaTiVM, CompetenciaTiDomainModel>();
+            CreateMap<CompetenciaTiDomainModel, CompetenciaTiVM>();
         }
 
 
