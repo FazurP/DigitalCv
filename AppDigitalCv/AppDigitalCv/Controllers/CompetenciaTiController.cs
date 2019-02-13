@@ -18,7 +18,7 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.Competenicas = "";
+            ViewBag.Competencias = icompetenciaTiBusiness.GetCompetenciasTi();
             return View("Create");
         }
 

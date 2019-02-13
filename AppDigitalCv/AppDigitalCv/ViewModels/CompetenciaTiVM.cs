@@ -11,5 +11,6 @@ namespace AppDigitalCv.ViewModels
         public int IdCompetenciaTI { get; set; }
         public string StrDescripcion { get; set; }
         public string StrObservacion { get; set; }
+        public bool isChecked { get; set; }
     }
 }

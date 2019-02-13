@@ -16,6 +16,13 @@ namespace AppDigitalCv.Business
         private readonly IUnitOfWork unitOfWork;
         private readonly CompetenciaTiRepository competenciaRepository;
 
+        public CompetenciaBusiness(IUnitOfWork _unitOfWork)
+        {
+            unitOfWork = _unitOfWork;
+            competenciaRepository = new CompetenciaTiRepository(unitOfWork);
+        }
+
+
         /// <summary>
         /// Este metodo se encarga de consultar todas las entidades de una competencia en ti
         /// </summary>

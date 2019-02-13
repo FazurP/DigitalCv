@@ -10,13 +10,13 @@
     <div class="bs-container content" style="min-height:960px;">
         <section class="content-header">
             <h1>
-                Agregar Datos de Familiares
+                Competencias en TI
                 <small>(Agregar)</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
-                <li> <a href="#"> Datos</a></li>
-                <li class="active"> Datos de tus Familiares </li>
+                <li> <a href="#"> Competencias</a></li>
+                <li class="active"> Competencias en TI </li>
             </ol>
         </section>
         <br />
@@ -37,6 +37,28 @@
                             </button>
                         </div>
                         <!-- /.box-tools -->
+                    </div>
+                    <div class="box-body">
+                        <div role="form" class="form-inline">
+                           
+
+                            <div class="form-group">
+                                <ul class="list-group">
+                                    @foreach (var item in ViewBag.Competencias)
+                                    {
+                                        <li class="list-group-item">
+                                            <div class="checkbox">
+                                                <input type="checkbox" id="Check_@item.IdCompetenciaTI" />
+                                                <label for="Check_@item.IdCompetenciaTI">@item.StrDescripcion
+                                                    <span class="text-green"><i class="fa fa-tag"></i></span>
+                                                </label>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
