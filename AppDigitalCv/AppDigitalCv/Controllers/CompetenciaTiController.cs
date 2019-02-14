@@ -22,5 +22,17 @@ namespace AppDigitalCv.Controllers
             return View("Create");
         }
 
+        [HttpPost]
+        public JsonResult CreateList(string ItemList)
+        {
+            string[] checkArreglo = ItemList.Split(',');
+            foreach (var id in checkArreglo)
+            {
+                var IdCompetencia = id;
+            }
+
+            return Json("",JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
