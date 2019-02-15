@@ -42,5 +42,13 @@ namespace AppDigitalCv.Controllers
             return View("Create");//Json("",JsonRequestBehavior.AllowGet);
         }
 
+
+        public JsonResult GetDatosCompetenciasTI()
+        {
+            int IdPersonal = SessionPersister.AccountSession.IdPersonal;
+            var competencias = icompetenciasTiBusiness.GetCompetenciasTi(IdPersonal);
+            return Json(competencias,JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

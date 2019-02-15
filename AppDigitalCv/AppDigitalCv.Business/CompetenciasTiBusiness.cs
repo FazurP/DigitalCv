@@ -1,9 +1,11 @@
 ﻿using AppDigitalCv.Business.Interface;
+using AppDigitalCv.Domain;
 using AppDigitalCv.Repository;
 using AppDigitalCv.Repository.Infraestructure.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,6 +41,41 @@ namespace AppDigitalCv.Business
             respuesta = true;
             return respuesta;
         }
+        /// <summary>
+        /// Este metodo se encarga de consultar todas las competencias de TI del personal por identificador
+        /// </summary>
+        /// <param name="idPersonal">identificador del personal</param>
+        /// <returns>regresa una lista de  competencias</returns>
+        public List<CompetenciasTiDomainModel> GetCompetenciasTi(int idPersonal)
+        {
+            Expression<Func<tblCompetenciasTIPersonal, bool>> predicado = p => p.idPersonal.Equals(idPersonal);
+            List<CompetenciasTiDomainModel> competenciasTI = new List<CompetenciasTiDomainModel>();
+            List<tblCompetenciasTIPersonal> competencias = competenciasRepository.GetAll(predicado).ToList();
+            foreach (tblCompetenciasTIPersonal t in competencias)
+            {
+                CompetenciasTiDomainModel competencia = new CompetenciasTiDomainModel();
+                competencia.DteFechaRegistro = t.dteFechaRegistro;
+                competencia.IdCompetenciaTI = t.idCompetenciaTI;
+                competencia.IdCompetenciaTIPersonal = t.idCompetenciaTIPersonal;
+                competencia.IdPersonal = t.idPersonal;
+
+                CompetenciaTiDomainModel competenciaTi = new CompetenciaTiDomainModel();
+                competenciaTi.StrDescripcion = t.catCompetenciaTI.strDescripcion;
+                competencia.CompetenciaTiDomainModel = competenciaTi;
+                competenciasTI.Add(competencia);
+            }
+            return competenciasTI;
+            /*
+            competenciasRepository.GetAll().
+                Select(p => new CompetenciasTiDomainModel
+                {
+                    IdCompetenciaTI = p.idCompetenciaTI,
+                    IdCompetenciaTIPersonal = p.idCompetenciaTIPersonal,
+                    DteFechaRegistro = p.dteFechaRegistro,
+                    IdPersonal = p.idPersonal
+                });*/
+        }
+
 
     }
 }

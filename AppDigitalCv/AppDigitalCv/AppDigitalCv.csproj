@@ -426,6 +426,7 @@
     <Content Include="Views\DatosContacto\_Eliminar.cshtml" />
     <Content Include="Views\DatosFamiliares\Create.cshtml" />
     <Content Include="Views\CompetenciaTi\Create.cshtml" />
+    <Content Include="Views\CompetenciaTi\CompetenciasTI.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
