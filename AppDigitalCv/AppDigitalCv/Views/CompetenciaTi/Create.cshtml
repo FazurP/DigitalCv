@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@using (Html.BeginForm("CreateList", "CompetenciaTi"))
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     <div class="bs-container content" style="min-height:960px;">
@@ -100,7 +100,7 @@
                 data: { ItemList: comaSeparatedIds },
                 success: function (response)
                 {
-                    window.location.href = "/CompetenciaTi/Create";
+                    window.location.href = "/CompetenciaTi/GetDatosCompetenciasTI";
                 }
             })
         }

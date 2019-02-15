@@ -26,29 +26,41 @@ namespace AppDigitalCv.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateList(string ItemList)
+        public void CreateList(string ItemList)
         {
             int IdPersonal = SessionPersister.AccountSession.IdPersonal;
-            string[] checkArreglo = ItemList.Split(',');
-            if (checkArreglo != null)
+            if (ItemList != null)
             {
-                foreach (var id in checkArreglo)
+                string[] checkArreglo = ItemList.Split(',');
+                if (checkArreglo != null)
                 {
-                    var IdCompetencia = id;
+                    foreach (var id in checkArreglo)
+                    {
+                        var IdCompetencia = id;
 
-                    icompetenciasTiBusiness.AddUpdateCompetenciaTi(IdPersonal, int.Parse(IdCompetencia));
+                        icompetenciasTiBusiness.AddUpdateCompetenciaTi(IdPersonal, int.Parse(IdCompetencia));
+                    }
                 }
+                //return RedirectToAction("GetDatosCompetenciasTI");//Json("",JsonRequestBehavior.AllowGet);
             }
-            return RedirectToAction("GetDatosCompetenciasTI");//Json("",JsonRequestBehavior.AllowGet);
+           //return View("Create");
         }
 
-        
+       
         public ActionResult GetDatosCompetenciasTI()
+        {
+            
+            return View("CompetenciasTI");
+            
+        }
+
+
+        [HttpGet]
+        public JsonResult GetDatosDeCompetenciasTI()
         {
             int IdPersonal = SessionPersister.AccountSession.IdPersonal;
             var competencias = icompetenciasTiBusiness.GetCompetenciasTi(IdPersonal);
-            return View("CompetenciasTI",competencias);
-            //return Json(competencias,JsonRequestBehavior.AllowGet);
+            return Json(competencias,JsonRequestBehavior.AllowGet);
         }
 
     }
