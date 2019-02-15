@@ -88,7 +88,7 @@
         };
 
         $(document).ready(function () {
-           
+
             var oTable;
 
 
@@ -100,7 +100,7 @@
                     oTable.Draw();
                 }
                 else {
-                   
+
                     oTable = $('#tblCompetenciasTI').DataTable({
                         "bServerSide": true,
                         "sAjaxSource": '/CompetenciaTi/GetDatosDeCompetenciasTI',
@@ -108,8 +108,8 @@
                             $.ajax({
                                 type: "Get",
                                 data: aoData,
-                                dataSrc:'',
                                 url: sSource,
+                                dataSrc: '',
                                 success: fnCallback
                             })
                         },
@@ -156,6 +156,6 @@
                     });
                 }
             };
-        })
+        });
     </script>
 }
