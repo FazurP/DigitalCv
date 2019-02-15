@@ -37,6 +37,7 @@ namespace AppDigitalCv.Business
             tblCompetenciasTIPersonal tblCompetenciasTI = new tblCompetenciasTIPersonal();
             tblCompetenciasTI.idPersonal = idPersonal;
             tblCompetenciasTI.idCompetenciaTI = idCompetencia;
+            tblCompetenciasTI.dteFechaRegistro = DateTime.Now;
             competenciasRepository.Insert(tblCompetenciasTI);
             respuesta = true;
             return respuesta;
@@ -65,15 +66,7 @@ namespace AppDigitalCv.Business
                 competenciasTI.Add(competencia);
             }
             return competenciasTI;
-            /*
-            competenciasRepository.GetAll().
-                Select(p => new CompetenciasTiDomainModel
-                {
-                    IdCompetenciaTI = p.idCompetenciaTI,
-                    IdCompetenciaTIPersonal = p.idCompetenciaTIPersonal,
-                    DteFechaRegistro = p.dteFechaRegistro,
-                    IdPersonal = p.idPersonal
-                });*/
+            
         }
 
 

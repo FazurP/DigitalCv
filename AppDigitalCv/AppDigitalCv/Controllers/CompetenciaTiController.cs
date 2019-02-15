@@ -39,15 +39,16 @@ namespace AppDigitalCv.Controllers
                     icompetenciasTiBusiness.AddUpdateCompetenciaTi(IdPersonal, int.Parse(IdCompetencia));
                 }
             }
-            return View("Create");//Json("",JsonRequestBehavior.AllowGet);
+            return RedirectToAction("GetDatosCompetenciasTI");//Json("",JsonRequestBehavior.AllowGet);
         }
 
-
-        public JsonResult GetDatosCompetenciasTI()
+        
+        public ActionResult GetDatosCompetenciasTI()
         {
             int IdPersonal = SessionPersister.AccountSession.IdPersonal;
             var competencias = icompetenciasTiBusiness.GetCompetenciasTi(IdPersonal);
-            return Json(competencias,JsonRequestBehavior.AllowGet);
+            return View("CompetenciasTI",competencias);
+            //return Json(competencias,JsonRequestBehavior.AllowGet);
         }
 
     }
