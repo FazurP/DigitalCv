@@ -26,18 +26,20 @@ namespace AppDigitalCv.Controllers
         }
 
         [HttpPost]
-        public JsonResult CreateList(string ItemList)
+        public ActionResult CreateList(string ItemList)
         {
             int IdPersonal = SessionPersister.AccountSession.IdPersonal;
             string[] checkArreglo = ItemList.Split(',');
-            foreach (var id in checkArreglo)
+            if (checkArreglo != null)
             {
-                var IdCompetencia = id;
-                
-                icompetenciasTiBusiness.AddUpdateCompetenciaTi(IdPersonal, int.Parse( IdCompetencia));
-            }
+                foreach (var id in checkArreglo)
+                {
+                    var IdCompetencia = id;
 
-            return Json("",JsonRequestBehavior.AllowGet);
+                    icompetenciasTiBusiness.AddUpdateCompetenciaTi(IdPersonal, int.Parse(IdCompetencia));
+                }
+            }
+            return View("Create");//Json("",JsonRequestBehavior.AllowGet);
         }
 
     }

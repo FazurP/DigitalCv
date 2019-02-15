@@ -77,7 +77,7 @@
         var comaSeparatedIds = "";
         $("#ItemList li input[type=checkbox]").each(function (index, val) {
 
-            debugger
+            
             var checkId = $(val).attr("Id");
 
             var arr = checkId.split('_');
@@ -100,7 +100,7 @@
                 data: { ItemList: comaSeparatedIds },
                 success: function (response)
                 {
-                    //code here
+                    toastr.success("La información fue guardada correctamente");
                 }
             })
         }
