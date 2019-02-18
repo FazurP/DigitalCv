@@ -117,8 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DOCUMENTO_USUARIO" xml:space="preserve">
+    <value>~/Imagenes/Usuarios/</value>
+  </data>
+  <data name="FAMILIAR_HIJO" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="FAMILIAR_MADRE" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="FAMILIAR_PADRE" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="FAMILIAR_PAREJA" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="INGRESAR_NOMBRE" xml:space="preserve">
     <value>Ingresa el Nombre.</value>
+  </data>
+  <data name="URL_PERFIL" xml:space="preserve">
+    <value>Imagenes/Usuarios/</value>
   </data>
   <data name="USUARIO_INEXISTENTE" xml:space="preserve">
     <value>El Usuario No Existe.</value>

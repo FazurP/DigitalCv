@@ -1,0 +1,69 @@
+﻿@model AppDigitalCv.ViewModels.AsociacionesVM
+@using AppDigitalCv.Security
+
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="bs-container content" style="min-height:960px;">
+        <section class="content-header">
+            <h1>
+                Asociación
+                <small>(Agregar)</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
+                <li> <a href="#">Agregar</a></li>
+                <li class="active">Asociación</li>
+            </ol>
+        </section>
+        <br />
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h5 class="box-title">
+                            <label class="text-success">
+                                <i class="text-success fa fa-heartbeat"></i>
+                                @SessionPersister.AccountSession.Nombre
+                            </label>
+                        </h5>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div  class="box-body">
+                        <div class="form-horizontal">
+                            <div class="form-group-sm">
+                                Selecciona el tipo de Empresa:@Html.DropDownList("IdTipoEmpresa", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdTipoEmpresa", title = "Selecciona el tipo de Empresa" })
+                            </div>
+                            <div class="form-group-sm">
+                                Nombre de la Asociación:@Html.TextBoxFor(model=>model.StrDescripcion,null, htmlAttributes: new { @class = "form-control input-sm", title = "Ingresa el nombre de la asociación",placeholder="Ingresa Nombre de la Asociación" })
+                            </div>
+                            <div class="form-group-sm">
+                                Descripción:@Html.TextAreaFor(model=>model.StrObservacion,htmlAttributes:new {@class="form-control input-sm", rows = 3,title="Ingresa una breve descripción",placeholder="Ingresa una breve descripción" })
+                            </div>
+                            <div class="form-group-sm">
+                                <br />
+                                <input type="submit" value="Guardar" class="btn btn-sm btn-success" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <a href="@Url.Action("Create","PersonalAsociaciones")" class="social-auth-links"><i class="fa fa-long-arrow-left"></i>Regresar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}

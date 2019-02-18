@@ -132,5 +132,20 @@ namespace AppDigitalCv.Business
         }
 
 
+        /// <summary>
+        /// Este metodo se encarga de eliminar fisicamente un datos de contacto de la base de datos
+        /// </summary>
+        /// <param name="datosContactoDomainModel">recive una entidad del tipo DatosContactoDomainModel</param>
+        /// <returns>regresa una respuesta del tipo true o false</returns>
+        public bool DeleteDatosContactoDocente(DatosContactoDomainModel datosContactoDomainModel)
+        {
+            bool respuesta = false;
+            Expression<Func<tblDatosContacto, bool>> predicado = p => p.idPersonal.Equals(datosContactoDomainModel.IdPersonal);
+            datosContactoRepository.Delete(predicado);
+            respuesta = true;
+            return respuesta;
+        }
+
+
     }
 }

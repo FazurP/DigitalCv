@@ -1,0 +1,204 @@
+﻿@model AppDigitalCv.ViewModels.ParentescoVM
+@using AppDigitalCv.Security
+
+@{
+    ViewBag.Title = "Registrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="bs-container content" style="min-height:960px;">
+        <section class="content-header">
+            <h1>
+                Datos Familiares
+                <small>(Agregar)</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
+                <li> <a href="#">Agregar</a></li>
+                <li class="#">Datos Familiares</li>
+                <li class="active">Agregar Hijos</li>
+            </ol>
+        </section>
+        <br />
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h5 class="box-title">
+                            <label class="text-success">
+                                <i class="text-success fa fa-heartbeat"></i>
+                                @SessionPersister.AccountSession.Nombre
+                            </label>
+                        </h5>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label class="text-muted">Nombre Completo:</label>
+                                @Html.EditorFor(model => model.StrNombre, new { htmlAttributes = new { @class = "form-control input-sm", placeholder = "Nombre del Hijo",
+                               pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}",
+                               required= "required"
+                           } })
+                                @Html.ValidationMessageFor(model => model.StrNombre, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label class="text-muted">Fecha de Nacimiento:</label>
+                                @Html.EditorFor(model => model.DteFechaNacimiento, new { htmlAttributes = new { @class = "form-control input-sm", type = "date", placeholder = "Fecha de Nacimiento" } })
+                                @Html.ValidationMessageFor(model => model.DteFechaNacimiento, "", new { @class = "text-danger", required = "required" })
+                            </div>
+                            <div class="form-group">
+                                <label class="text-muted">Edad:</label>
+                                @Html.EditorFor(model => model.IntEdad, new { htmlAttributes = new { @class = "form-control input-sm", placeholder = "Edad", type = "number", required = "required" } })
+                                @Html.ValidationMessageFor(model => model.IntEdad, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Guardar" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
+                                <div class="form-group" id="addTable">
+                                    <br />
+                                    <table id="tblFamiliarHijos" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
+                                        <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
+                                            <tr>
+                                                <th>Nombre Completo</th>
+                                                <th>Edad</th>
+                                                <th>Fecha de Nacimiento</th>
+                                                <th>Eliminar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tblBody"></tbody>
+                                    </table>
+                                    <!-- Establecemos el Modal que se va a presentar cuando demos click en la edicion de los datos-->
+                                    <div class="modal fade" id="myModal1">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                                                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                                                    <h5 class="modal-title"><label style="font-size:medium;">Eliminar Familiar (Hijos)</label></h5>
+                                                </div>
+                                                <div class="modal-body" id="myModalBodyDiv1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="hiddenFamiliarId" />
+                                    <!--Terminamos el modal de eliminacion-->
+                                    <!--Terminacion de la tabla -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+
+ }
+
+
+
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"
+            integrity="sha256-8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw="
+            crossorigin="anonymous"></script>
+    <script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+
+        var AddDelete = function (IdFamiliar) {
+
+            var url = "/Hijos/GetFamiliarByIdFamiliar?IdFamiliar=" + IdFamiliar;
+
+            $("#myModalBodyDiv1").load(url, function () {
+                $("#myModal1").modal("show");
+
+            })
+
+        };
+
+        $(document).ready(function () {
+
+            var oTable;
+
+            BindDataTable();
+
+            function BindDataTable() {
+
+                if ($.fn.DataTable.isDataTable('#tblFamiliarHijos')) {
+                    oTable.Draw();
+                }
+                else {
+                    oTable = $('#tblFamiliarHijos').DataTable({
+                        "bServerSide": true,
+                        "sAjaxSource": '/Hijos/GetDatosFamiliaresTable',
+                        "fnServerData": function (sSource, aoData, fnCallback) {
+                            $.ajax({
+                                type: "Get",
+                                data: aoData,
+                                url: sSource,
+                                success: fnCallback
+                            })
+                        },
+                        "pageLength": 5,
+                        "language": {
+
+                            "sProcessing": "Procesando...",
+                            "sLengthMenu": "Mostrar _MENU_ registros",
+                            "sZeroRecords": "No se encontraron resultados",
+                            "sEmptyTable": "Ningún dato disponible en esta tabla",
+                            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                            "sInfoPostFix": "",
+                            "sSearch": "Buscar:",
+                            "sUrl": "",
+                            "sInfoThousands": ",",
+                            "sLoadingRecords": "Cargando...",
+                            "oPaginate": {
+                                "sFirst": "Primero",
+                                "sLast": "Último",
+                                "sNext": "Siguiente",
+                                "sPrevious": "Anterior"
+                            },
+                            "oAria": {
+                                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                            }
+                        },
+                        "dataSrc": "",
+                        "columns": [
+
+                            { "data": "StrNombre" },
+                            { "data": "IntEdad" },
+                            { "data": "DteFechaNacimiento" },
+
+                            {
+                                "data": "IdFamiliar",
+                                "render": function (IdFamiliar, type, full, meta) {
+
+                                    return '<a href="#" onclick="AddDelete(' + IdFamiliar + ')"><i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i></a>'
+                                }
+                            },
+                        ]
+                    });
+                }
+            };
+        });
+    </script>
+}

@@ -1,4 +1,5 @@
 ﻿@model AppDigitalCv.ViewModels.PersonalVM
+
 <link href="~/Content/css/cardview.css" rel="stylesheet" />
 
 @using (Html.BeginForm("Create", "Personal", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -15,7 +16,7 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="etNombre">Nombre:</label>
-                                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control input-sm", placeholder = "Tu Nombre" })
+                                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control input-sm", placeholder = "Tu Nombre"})
                                 @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
 
                             </div>

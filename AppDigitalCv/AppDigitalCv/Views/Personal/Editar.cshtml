@@ -1,4 +1,4 @@
-﻿
+﻿@using AppDigitalCv.Security
 @{
 
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,25 +12,28 @@
     <div class="bs-container content" style="min-height: 960px;">
         <section class="content-header">
             <h1>
-                Editar Documentos del Profesor
+                Edición de Datos Personales
                 <small>Modificar RFC, Curp</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i>Inicio</a></li>
                 <li><a href="#">Edición</a></li>
-                <li class="active">Documentos Oficiales</li>
+                <li class="active">Datos Personales</li>
             </ol>
         </section>
         <section class="content">
             <div class="row">
                 <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 ">
-                    <div class="box">
+                    <div class="box box-success">
                         <!--box-primary-->
                         <div class="box-header ">
                             <!--with-border-->
                             <div class="form-inline">
                                 <div class="form-group">
-                                    <label class="text-blue"><i class="text-blue fa fa-heartbeat"></i> Erik Guerrero Bravo</label>
+                                    <label class="text-green">
+                                        <i class="text-green fa fa-heartbeat"></i>
+                                        @SessionPersister.AccountSession.NombreCompleto
+                                    </label>
                                 </div>
                                 @*<div class="form-group">
                                         <label class="text-light-blue">erik.guerrero.bravo@hotmail.com</label>
@@ -41,16 +44,15 @@
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        <table id="myDataTablePersonal" class="table table-bordered table-hover table-responsive">
-                                            <thead>
+                                        <table id="myDataTablePersonal" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover table-responsive">
+                                            <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
                                                 <tr>
-                                                    <th><i class="fa fa-user"></i>Nombre</th>
-                                                    <th><i class="fa fa-tag"></i> Apellido Paterno</th>
-                                                    <th><i class="fa fa-tag"></i> ApellidoMaterno</th>
-                                                    <th><i class="fa fa-check-square-o"></i> Curp</th>
-                                                    <th><i class="fa fa-check-square-o"></i> Rfc</th>
-                                                    @*<th>strUrlRfc</th>*@
-                                                    <th style="display:none;"><i class="glyphicon glyphicon-pencil"></i>Identificador</th>
+                                                    <th><i class="fa fa-user"></i>&nbsp;Nombre</th>
+                                                    <th><i class="fa fa-tag"></i>&nbsp; Apellido Paterno</th>
+                                                    <th><i class="fa fa-tag"></i>&nbsp; Apellido Materno</th>
+                                                    <th><i class="fa fa-check-square-o"></i>&nbsp; Curp</th>
+                                                    <th><i class="fa fa-check-square-o"></i>&nbsp; Rfc</th>
+                                                    <th><i class="glyphicon glyphicon-pencil"></i>&nbsp;Editar</th>
                                                 </tr>
                                             </thead>
                                         </table>
@@ -65,7 +67,7 @@
                     </div>
                 </div>
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                    <div class="box box-primary">
+                    <div class="box box-success">
                         <div class="box-header with-border">
                             <p class="box-title text-blue comment-text"><i class="text-blue fa fa-folder-open"></i> Documentos</p>
                             <div class="box-tools pull-right">
@@ -120,12 +122,12 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">
-                              Agregar
+                                Agregar
                             </span>
                             <span class="info-box-number">Documentos</span>
                             <a href=@Url.Action("AgregarDocumentos","Documentos") class="btn btn-sm btn-primary btn-flat"><i class="fa  fa-paperclip"></i>&nbsp; Agregar</a>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -199,8 +201,14 @@
                     { "data": "ApellidoMaterno" },
                     { "data": "Curp"},
                     { "data": "Rfc" },
-                    //{ "data": "strUrlRfc" },
-                    { "data": "idPersonal" }
+                    {
+                        "data": "idPersonal",
+                        "render": function (idPersonal, type, full, meta) {
+
+                            return '<a href="#" onclick="AddDelete(' + idPersonal + ')"><i class="btn btn-sm btn-success fa fa-pencil-square-o"></i></a>'
+                        }
+                    }
+
 
                 ]
             });

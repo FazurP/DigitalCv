@@ -61,7 +61,56 @@ namespace AppDigitalCv.Recursos {
         }
         
         /// <summary>
+
         ///   Looks up a localized string similar to Ingresa el Nombre..
+
+        ///   Busca una cadena traducida similar a ~/Imagenes/Usuarios/.
+        /// </summary>
+        internal static string DOCUMENTO_USUARIO {
+            get {
+                return ResourceManager.GetString("DOCUMENTO_USUARIO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a 1.
+        /// </summary>
+        internal static string FAMILIAR_HIJO {
+            get {
+                return ResourceManager.GetString("FAMILIAR_HIJO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a 3.
+        /// </summary>
+        internal static string FAMILIAR_MADRE {
+            get {
+                return ResourceManager.GetString("FAMILIAR_MADRE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a 2.
+        /// </summary>
+        internal static string FAMILIAR_PADRE {
+            get {
+                return ResourceManager.GetString("FAMILIAR_PADRE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a 4.
+        /// </summary>
+        internal static string FAMILIAR_PAREJA {
+            get {
+                return ResourceManager.GetString("FAMILIAR_PAREJA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ingresa el Nombre..
+
         /// </summary>
         internal static string INGRESAR_NOMBRE {
             get {
@@ -70,7 +119,20 @@ namespace AppDigitalCv.Recursos {
         }
         
         /// <summary>
+
         ///   Looks up a localized string similar to El Usuario No Existe..
+
+        ///   Busca una cadena traducida similar a Imagenes/Usuarios/.
+        /// </summary>
+        internal static string URL_PERFIL {
+            get {
+                return ResourceManager.GetString("URL_PERFIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El Usuario No Existe..
+
         /// </summary>
         internal static string USUARIO_INEXISTENTE {
             get {
