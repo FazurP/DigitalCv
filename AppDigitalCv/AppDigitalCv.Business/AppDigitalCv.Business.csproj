@@ -47,6 +47,8 @@
   <ItemGroup>
     <Compile Include="AccountBusiness.cs" />
     <Compile Include="AsosiacionesBusiness.cs" />
+    <Compile Include="CompetenciaBusiness.cs" />
+    <Compile Include="CompetenciasTiBusiness.cs" />
     <Compile Include="DatosContactoBusiness.cs" />
     <Compile Include="DialectoIdiomaBusiness.cs" />
     <Compile Include="DireccionBusiness.cs" />
@@ -60,6 +62,8 @@
     <Compile Include="IdiomaDialectoBusiness.cs" />
     <Compile Include="Interface\IAccountBusiness.cs" />
     <Compile Include="Interface\IAsociacionesBusiness.cs" />
+    <Compile Include="Interface\ICompetenciaBusiness.cs" />
+    <Compile Include="Interface\ICompetenciasTiBusiness.cs" />
     <Compile Include="Interface\IDatosContacto.cs" />
     <Compile Include="Interface\IDialectoIdiomaBusiness.cs" />
     <Compile Include="Interface\IDocumentosBusiness.cs" />

@@ -424,6 +424,10 @@
     <Content Include="Views\PersonalAsociaciones\_Eliminar.cshtml" />
     <Content Include="Views\Asociacion\Create.cshtml" />
     <Content Include="Views\DatosContacto\_Eliminar.cshtml" />
+    <Content Include="Views\DatosFamiliares\Create.cshtml" />
+    <Content Include="Views\CompetenciaTi\Create.cshtml" />
+    <Content Include="Views\CompetenciaTi\CompetenciasTI.cshtml" />
+    <Content Include="Views\DatosFamiliares\_Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -435,7 +439,9 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\AlergiasController.cs" />
     <Compile Include="Controllers\AsociacionController.cs" />
+    <Compile Include="Controllers\CompetenciaTiController.cs" />
     <Compile Include="Controllers\DatosContactoController.cs" />
+    <Compile Include="Controllers\DatosFamiliaresController.cs" />
     <Compile Include="Controllers\DialectoIdiomaController.cs" />
     <Compile Include="Controllers\DireccionController.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />
@@ -465,6 +471,8 @@
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\AsociacionesVM.cs" />
     <Compile Include="ViewModels\ColoniaVM.cs" />
+    <Compile Include="ViewModels\CompetenciasTiVM.cs" />
+    <Compile Include="ViewModels\CompetenciaTiVM.cs" />
     <Compile Include="ViewModels\DatosContactoVM.cs" />
     <Compile Include="ViewModels\DialectoVM.cs" />
     <Compile Include="ViewModels\DireccionVM.cs" />
@@ -474,6 +482,7 @@
     <Compile Include="ViewModels\EstadoCivilVM.cs" />
     <Compile Include="ViewModels\EstadoSaludVM.cs" />
     <Compile Include="ViewModels\EstadoVM.cs" />
+    <Compile Include="ViewModels\FamiliaresVM.cs" />
     <Compile Include="ViewModels\IdiomaDialectoVM.cs" />
     <Compile Include="ViewModels\IdiomaVM.cs" />
     <Compile Include="ViewModels\MunicipioVM.cs" />
