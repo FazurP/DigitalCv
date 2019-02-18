@@ -137,7 +137,8 @@ namespace AppDigitalCv.Controllers
         //Edicion de Datos Familiares
         public ActionResult AddEditDatosContactoId(int idFamiliar)
         {
-            FamiliaresVM familiarVM = new FamiliaresVM();
+            
+            ParentescoVM parentescoVM = new ParentescoVM();
             //creamos el objeto del dominio
             FamiliarDomainModel familiarDM = new FamiliarDomainModel();
             if (idFamiliar > 0)
@@ -145,8 +146,8 @@ namespace AppDigitalCv.Controllers
                 familiarDM = ifamiliarBusiness.GetFamiliarByIdFamiliar(idFamiliar);
 
             }
-            AutoMapper.Mapper.Map(familiarDM, familiarVM);
-            return PartialView("_Editar", familiarVM);
+            AutoMapper.Mapper.Map(familiarDM, parentescoVM);
+            return PartialView("_Editar", parentescoVM);
         }
 
 
