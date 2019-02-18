@@ -427,6 +427,7 @@
     <Content Include="Views\DatosFamiliares\Create.cshtml" />
     <Content Include="Views\CompetenciaTi\Create.cshtml" />
     <Content Include="Views\CompetenciaTi\CompetenciasTI.cshtml" />
+    <Content Include="Views\DatosFamiliares\_Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

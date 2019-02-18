@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AppDigitalCv.Security;
+using AppDigitalCv.Models;
 
 namespace AppDigitalCv.Controllers
 {
@@ -91,6 +92,65 @@ namespace AppDigitalCv.Controllers
             var familiares = ifamiliarBusiness.GetFamiliaresHijosById(idPersonal);
             return Json(familiares, JsonRequestBehavior.AllowGet);
         }
+
+        #region  Consultar los datos de las competencias en ti junto con el datatable se pueden ordenar de forma adecuada
+
+        [HttpGet]
+        public JsonResult GetDatosFamiliaresTable(DataTablesParam param)
+        {
+            int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
+            List<FamiliarDomainModel> familiares = new List<FamiliarDomainModel>();
+
+            int pageNo = 1;
+            if (param.iDisplayStart >= param.iDisplayLength)
+            {
+                pageNo = (param.iDisplayStart / param.iDisplayLength) + 1;
+            }
+
+            int totalCount = 0;
+            if (param.sSearch != null)
+            {
+                familiares = ifamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).Where(p => p.StrNombre.Contains(param.sSearch)).ToList();
+
+            }
+            else
+            {
+                totalCount = ifamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).Count();
+                familiares = ifamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).OrderBy(p => p.IdPersonal)
+                             .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
+
+            }
+            return Json(new
+            {
+                aaData = familiares,
+                sEcho = param.sEcho,
+                iTotalDisplayRecords = familiares.Count(),
+                iTotalRecords = familiares.Count()
+
+            }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        #endregion
+
+
+        //Edicion de Datos Familiares
+        public ActionResult AddEditDatosContactoId(int idFamiliar)
+        {
+            FamiliaresVM familiarVM = new FamiliaresVM();
+            //creamos el objeto del dominio
+            FamiliarDomainModel familiarDM = new FamiliarDomainModel();
+            if (idFamiliar > 0)
+            {
+                familiarDM = ifamiliarBusiness.GetFamiliarByIdFamiliar(idFamiliar);
+
+            }
+            AutoMapper.Mapper.Map(familiarDM, familiarVM);
+            return PartialView("_Editar", familiarVM);
+        }
+
+
+
 
     }
 }

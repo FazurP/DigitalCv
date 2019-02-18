@@ -10,7 +10,7 @@ namespace AppDigitalCv.ViewModels
         public int IdCompetenciaTIPersonal { get; set; }
         public int IdCompetenciaTI { get; set; }
         public int IdPersonal { get; set; }
-        public Nullable<System.DateTime> DteFechaRegistro { get; set; }
+        public string DteFechaRegistro { get; set; }
 
         public virtual CompetenciasTiVM CompetenciaVM { get; set; }
         public virtual PersonalVM PersonalVM { set; get; }

@@ -55,7 +55,7 @@ namespace AppDigitalCv.Business
             foreach (tblCompetenciasTIPersonal t in competencias)
             {
                 CompetenciasTiDomainModel competencia = new CompetenciasTiDomainModel();
-                competencia.DteFechaRegistro = t.dteFechaRegistro;
+                competencia.DteFechaRegistro = t.dteFechaRegistro.ToString();
                 competencia.IdCompetenciaTI = t.idCompetenciaTI;
                 competencia.IdCompetenciaTIPersonal = t.idCompetenciaTIPersonal;
                 competencia.IdPersonal = t.idPersonal;

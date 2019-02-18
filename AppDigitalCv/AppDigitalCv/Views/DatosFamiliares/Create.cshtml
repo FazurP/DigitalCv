@@ -127,11 +127,27 @@
                                                 <th>Ocupación</th>
                                                 <th>Domicilio</th>
                                                 <th>Edad</th>
+                                                <th>Editar</th>
                                                 <th>Eliminar</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tblBody"></tbody>
                                     </table>
+                                    <!-- Establecemos el Modal que se va a presentar cuando demos click en la edicion de los datos-->
+                                    <div class="modal fade" id="myModal1">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                                                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                                                    <h5 class="modal-title"><label style="font-size:medium;">Editar Datos de los familiares</label></h5>
+                                                </div>
+                                                <div class="modal-body" id="myModalBodyDiv1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="hiddenFamiliarId" />
+                                    <!--Terminamos el modal de eliminacion-->
                                 </div>
                             </div>
 
@@ -157,15 +173,15 @@
         integrity="sha256-8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw="
         crossorigin="anonymous"></script>
     
-    <script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
+    @*<script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>*@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
     <script>
 
-        var AddDelete = function (IdEnfermedad) {
+        var AddEditar = function (idFamiliar) {
 
-            var url = "/EstadoSalud/GetEstadoSalud?IdEnfermedad=" + IdEnfermedad;
+            var url = "/DatosFamiliares/AddEditDatosContactoId?idFamiliar=" + idFamiliar;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -173,6 +189,7 @@
             })
 
         };
+
         $(document).ready(function () {
 
             var oTable;
@@ -187,7 +204,7 @@
 
                     oTable = $('#tblFamiliares').DataTable({
                         "bServerSide": true,
-                        "sAjaxSource": '/DatosFamiliares/GetFamiliaresPersonal',
+                        "sAjaxSource": '/DatosFamiliares/GetDatosFamiliaresTable',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -224,16 +241,19 @@
                         },
                         "dataSrc": " ",
                         "columns": [
-                            { "data": "IdFamiliar" },
+                            
                             { "data": "StrNombre" },
                             { "data": "StrOcupacion" },
                             { "data": "StrDomicilio" },
                             { "data": "IntEdad" },
-                            { "data": "BitVive" },
                             { "data": "DteFechaNacimiento" },
-                            { "data": "IdParentesco" },
-                            { "data": "IdPersonal" },
+                            {
+                                "data": "IdFamiliar",
+                                "render": function (IdFamiliar, type, full, meta) {
 
+                                    return '<a href="#" onclick="AddEditar(' + IdFamiliar + ')"><i class="btn btn-sm btn-success fa fa-pencil-square-o"></i></a>'
+                                }
+                            },
                             {
                                 "data": "IdFamiliar",
                                 "render": function (IdFamiliar, type, full, meta) {

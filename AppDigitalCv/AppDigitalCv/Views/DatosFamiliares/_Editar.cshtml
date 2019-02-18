@@ -1,0 +1,67 @@
+﻿@using AppDigitalCv.Security
+@model AppDigitalCv.ViewModels.FamiliaresVM
+<div>
+    <form id="myForm">
+        <div class="bs-container">
+            <div class="row">
+                <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                    <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+                </div>
+                @*<div class="col-md-7 col-xs-11 col-sm-5 col-lg-7">
+                        @Html.HiddenFor(model => model.IdPersonal)
+                        @Html.HiddenFor(model => model.IdDatosContacto)
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.MailInstitucional, new { @class = "form-control input-sm", @placeholder = "email institucional" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.MailPersonal, new { @class = "form-control input-sm", @placeholder = "email personal", required = "required" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.NombreFacebook, new { @class = "form-control input-sm", @placeholder = "usuario en facebook" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.NombreTwitter, new { @class = "form-control input-sm", @placeholder = "usuario en twitter" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.TelefonoCasa, new { @class = "form-control input-sm", @placeholder = "Telefono de Casa" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.TelefonoCelular, new { @class = "form-control input-sm", @placeholder = "Telefono Celular" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.TelefonoRecados, new { @class = "form-control input-sm", @placeholder = "Telefono de Recados" })
+                            </div>
+                        </div>
+                    </div>*@
+            </div>
+            <div class="row">
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"></div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <a href="#" id="btnSubmit" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
+                </div>
+            </div>
+
+
+        </div>
+    </form>
+</div>
+<script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#btnSubmit").click(function () {
+
+            //serialización del formaulario
+            var myformdata = $("#myForm").serialize();
+            $.ajax({
+                type: "POST",
+                url: "/DatosFamiliares/x",
+                data: myformdata,
+                success: function () {
+                    $("#myModal1").modal("hide");
+                    window.location.href = "/DatosFamiliares/y";
+                }
+            })
+        });
+    });
+</script>
