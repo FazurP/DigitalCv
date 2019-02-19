@@ -7,33 +7,71 @@
                 <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
                     <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
                 </div>
-                @*<div class="col-md-7 col-xs-11 col-sm-5 col-lg-7">
-                        @Html.HiddenFor(model => model.IdPersonal)
-                        @Html.HiddenFor(model => model.IdDatosContacto)
-                        <div class="form-horizontal">
+                <div class="col-md-7 col-xs-11 col-sm-5 col-lg-7">
+
+                    @Html.HiddenFor(model => model.IdPersonal)
+                    @Html.HiddenFor(model => model.IdFamiliar)
+                    
+                    <ul class="list-unstyled">
+                        <li class="list-group-unbordered">
+                            <label><span><i class="fa fa-user"></i></span>Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            @Html.TextBoxFor(model => model.StrNombre, new { @class = "form-control input-sm", @placeholder = "Nombre", size = "30", title = "Nombre del Familiar" })
+
+                        </li>
+                        <br />
+                        <li class="list-group-unbordered">
+                            <label><span><i class="fa fa-thumb-tack"></i></span>Ocupación:</label>
+                            @Html.TextBoxFor(model => model.StrOcupacion, new { @class = "form-control input-sm", @placeholder = "Ocupación",size="30", title = "Ocupación" })
+
+                        </li>
+                        <br />
+                        <li class="list-group-unbordered">
+                            <label><span><i class="fa fa-street-view"></i></span>Domicilio:&nbsp;&nbsp;</label>
+                            @Html.TextBoxFor(model => model.StrDomicilio, new { @class = "form-control input-sm", @placeholder = "Domicilio", size = "30", title = "Domicilio" })
+                        </li>
+                        <br />
+                        <li class="list-group-unbordered">
                             <div class="form-group">
-                                @Html.TextBoxFor(model => model.MailInstitucional, new { @class = "form-control input-sm", @placeholder = "email institucional" })
+                                <label><span><i class="fa fa-birthday-cake"></i></span>Edad:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                @Html.TextBoxFor(model => model.IntEdad, new { @class = "form-control input-sm", @placeholder = "Edad", size = "30", title = "Edad" })
                             </div>
-                            <div class="form-group">
-                                @Html.TextBoxFor(model => model.MailPersonal, new { @class = "form-control input-sm", @placeholder = "email personal", required = "required" })
-                            </div>
-                            <div class="form-group">
-                                @Html.TextBoxFor(model => model.NombreFacebook, new { @class = "form-control input-sm", @placeholder = "usuario en facebook" })
-                            </div>
-                            <div class="form-group">
-                                @Html.TextBoxFor(model => model.NombreTwitter, new { @class = "form-control input-sm", @placeholder = "usuario en twitter" })
-                            </div>
-                            <div class="form-group">
-                                @Html.TextBoxFor(model => model.TelefonoCasa, new { @class = "form-control input-sm", @placeholder = "Telefono de Casa" })
-                            </div>
-                            <div class="form-group">
-                                @Html.TextBoxFor(model => model.TelefonoCelular, new { @class = "form-control input-sm", @placeholder = "Telefono Celular" })
-                            </div>
-                            <div class="form-group">
-                                @Html.TextBoxFor(model => model.TelefonoRecados, new { @class = "form-control input-sm", @placeholder = "Telefono de Recados" })
-                            </div>
+                        </li>
+                        <br />
+                        <li class="list-group-unbordered">
+                            <label><span><i class="fa fa-birthday-cake"></i></span>Fecha de Nacimiento:</label>
+                            @Html.TextBoxFor(model => model.DteFechaNacimiento, new { @class = "form-control input-sm", type = "date", size = "30", title = "Fecha de Nacimiento" })
+                        </li>
+                    </ul>
+                    <br />
+                    @*<div class="form-horizontal">
+                        <div class="form-group">
+                            <label><span><i class="fa fa-user"></i></span>Nombre:</label>
+                            @Html.TextBoxFor(model => model.StrNombre, new { @class = "form-control input-sm", @placeholder = "Nombre", title = "Nombre del Familiar" })
+
+                        </div>
+                        <div class="form-group">
+                            <label><span><i class="fa fa-thumb-tack"></i></span>Ocupación:</label>
+                            @Html.TextBoxFor(model => model.StrOcupacion, new { @class = "form-control input-sm", @placeholder = "Ocupación", title = "Ocupación" })
+                        </div>
+                        <div class="form-group">
+                            <label><span><i class="fa a-street-view"></i></span>Domicilio:</label>
+                            @Html.TextBoxFor(model => model.StrDomicilio, new { @class = "form-control input-sm", @placeholder = "Domicilio", title = "Domicilio" })
+                        </div>
+                        <div class="form-group">
+                            <label><span><i class="fa fa-birthday-cake"></i></span>Edad:</label>
+                            @Html.TextBoxFor(model => model.IntEdad, new { @class = "form-control input-sm", @placeholder = "Edad", title = "Edad" })
+                        </div>
+                        <div class="form-group">
+                            <label><span><i class="fa fa-birthday-cake"></i></span>Fecha de Nacimiento:</label>
+                            @Html.TextBoxFor(model => model.DteFechaNacimiento, new { @class = "form-control input-sm", type = "date", title = "Fecha de Nacimiento" })
                         </div>
                     </div>*@
+
+
+                </div>
+
+
+
             </div>
             <div class="row">
                 <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"></div>
@@ -41,8 +79,6 @@
                     <a href="#" id="btnSubmit" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
                 </div>
             </div>
-
-
         </div>
     </form>
 </div>
