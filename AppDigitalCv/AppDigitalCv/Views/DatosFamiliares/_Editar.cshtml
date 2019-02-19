@@ -11,67 +11,42 @@
 
                     @Html.HiddenFor(model => model.IdPersonal)
                     @Html.HiddenFor(model => model.IdFamiliar)
-                    
-                    <ul class="list-unstyled">
-                        <li class="list-group-unbordered">
-                            <label><span><i class="fa fa-user"></i></span>Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            @Html.TextBoxFor(model => model.StrNombre, new { @class = "form-control input-sm", @placeholder = "Nombre", size = "30", title = "Nombre del Familiar" })
-
-                        </li>
-                        <br />
-                        <li class="list-group-unbordered">
-                            <label><span><i class="fa fa-thumb-tack"></i></span>Ocupación:</label>
-                            @Html.TextBoxFor(model => model.StrOcupacion, new { @class = "form-control input-sm", @placeholder = "Ocupación",size="30", title = "Ocupación" })
-
-                        </li>
-                        <br />
-                        <li class="list-group-unbordered">
-                            <label><span><i class="fa fa-street-view"></i></span>Domicilio:&nbsp;&nbsp;</label>
-                            @Html.TextBoxFor(model => model.StrDomicilio, new { @class = "form-control input-sm", @placeholder = "Domicilio", size = "30", title = "Domicilio" })
-                        </li>
-                        <br />
-                        <li class="list-group-unbordered">
-                            <div class="form-group">
-                                <label><span><i class="fa fa-birthday-cake"></i></span>Edad:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                @Html.TextBoxFor(model => model.IntEdad, new { @class = "form-control input-sm", @placeholder = "Edad", size = "30", title = "Edad" })
-                            </div>
-                        </li>
-                        <br />
-                        <li class="list-group-unbordered">
-                            <label><span><i class="fa fa-birthday-cake"></i></span>Fecha de Nacimiento:</label>
-                            @Html.TextBoxFor(model => model.DteFechaNacimiento, new { @class = "form-control input-sm", type = "date", size = "30", title = "Fecha de Nacimiento" })
-                        </li>
-                    </ul>
-                    <br />
-                    @*<div class="form-horizontal">
-                        <div class="form-group">
-                            <label><span><i class="fa fa-user"></i></span>Nombre:</label>
-                            @Html.TextBoxFor(model => model.StrNombre, new { @class = "form-control input-sm", @placeholder = "Nombre", title = "Nombre del Familiar" })
-
-                        </div>
-                        <div class="form-group">
-                            <label><span><i class="fa fa-thumb-tack"></i></span>Ocupación:</label>
-                            @Html.TextBoxFor(model => model.StrOcupacion, new { @class = "form-control input-sm", @placeholder = "Ocupación", title = "Ocupación" })
-                        </div>
-                        <div class="form-group">
-                            <label><span><i class="fa a-street-view"></i></span>Domicilio:</label>
-                            @Html.TextBoxFor(model => model.StrDomicilio, new { @class = "form-control input-sm", @placeholder = "Domicilio", title = "Domicilio" })
-                        </div>
-                        <div class="form-group">
-                            <label><span><i class="fa fa-birthday-cake"></i></span>Edad:</label>
-                            @Html.TextBoxFor(model => model.IntEdad, new { @class = "form-control input-sm", @placeholder = "Edad", title = "Edad" })
-                        </div>
-                        <div class="form-group">
-                            <label><span><i class="fa fa-birthday-cake"></i></span>Fecha de Nacimiento:</label>
-                            @Html.TextBoxFor(model => model.DteFechaNacimiento, new { @class = "form-control input-sm", type = "date", title = "Fecha de Nacimiento" })
-                        </div>
-                    </div>*@
-
-
+                    <table class="table jtable">
+                        <tbody>
+                            <tr>
+                                <td>Nombre:</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.StrNombre, new { @class = "form-control input-sm", @placeholder = "Nombre", size = "30", title = "Nombre del Familiar" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ocupación:</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.StrOcupacion, new { @class = "form-control input-sm", @placeholder = "Ocupación", size = "30", title = "Ocupación" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Domicilio:</td>
+                                <td>
+                                   @Html.TextBoxFor(model => model.StrDomicilio, new { @class = "form-control input-sm", @placeholder = "Domicilio", size = "30", title = "Domicilio" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Edad:</td>
+                                <td>
+                                  @Html.TextBoxFor(model => model.IntEdad, new { @class = "form-control input-sm", @placeholder = "Edad", size = "30", title = "Edad" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Fecha Nacimiento:</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.DteFechaNacimiento, new { @class = "form-control input-sm", type = "date", title = "Fecha de Nacimiento" })
+                                </td>
+                            </tr>
+                           
+                        </tbody>
+                    </table>
                 </div>
-
-
-
             </div>
             <div class="row">
                 <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"></div>
