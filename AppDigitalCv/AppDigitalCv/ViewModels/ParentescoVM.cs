@@ -11,14 +11,14 @@ namespace AppDigitalCv.ViewModels
         [Key]
         public int IdFamiliar { get; set; }
 
-        [Required(ErrorMessage = "El Nombre del Familiar es Requerido")]
+        //[Required(ErrorMessage = "El Nombre del Familiar es Requerido")]
         [RegularExpression("^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$", ErrorMessage = "Ingresa solo caracteres validos")]
         public string StrNombre { get; set; }
 
         public string StrOcupacion { get; set; }
         public string StrDomicilio { get; set; }
 
-        [Required(ErrorMessage = "La Edad es Requerida")]
+        //[Required(ErrorMessage = "La Edad es Requerida")]
         //[RegularExpression("^/d+$", ErrorMessage = "Ingresa solo caracteres validos")]
         public int IntEdad { get; set; }
 

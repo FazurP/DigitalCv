@@ -150,7 +150,7 @@ namespace AppDigitalCv.Controllers
             return PartialView("_Editar", parentescoVM);
         }
 
-        
+        [HttpPost]
         public void EditarDatosFamiliar(ParentescoVM parentescoVM )
         {
             FamiliarDomainModel familiarDM = new FamiliarDomainModel();
@@ -160,7 +160,7 @@ namespace AppDigitalCv.Controllers
             {
                 ifamiliarBusiness.AddUpdateFamiliar(familiarDM);
             }
-            
+            //return View("Create");
         }
 
 

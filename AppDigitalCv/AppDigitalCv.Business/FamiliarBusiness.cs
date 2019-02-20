@@ -42,7 +42,7 @@ namespace AppDigitalCv.Business
                 {
                     catFamiliar.idFamiliar = familiarDM.IdFamiliar;
                     catFamiliar.idPersonal = familiarDM.IdPersonal;
-                    catFamiliar.idParentesco = familiarDM.IdParentesco;
+                    //catFamiliar.idParentesco = familiarDM.IdParentesco;
                     catFamiliar.intEdad = familiarDM.IntEdad;
                     catFamiliar.strDomicilio = familiarDM.StrDomicilio;
                     catFamiliar.strNombre = familiarDM.StrNombre;

@@ -2,10 +2,8 @@
 @using AppDigitalCv.Security
 
 <div>
-    @*<form id="myForm">*@
-        @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "myForm", id = "myForm" }))
-        { 
-            <div class="bs-container">
+    <form id="myForm">
+      <div class="bs-container">
                 <div class="row">
                     <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
                         <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
@@ -19,31 +17,31 @@
                                 <tr>
                                     <td>Nombre:</td>
                                     <td>
-                                        @Html.TextBoxFor(model => model.StrNombre, new { @class = "form-control input-sm", @placeholder = "Nombre", size = "30", title = "Nombre del Familiar" })
+                                        @Html.TextBoxFor(model => model.StrNombre, new { @class = "form-control input-sm", @placeholder = "Nombre", size = "30", title = "Nombre del Familiar",id="Nombre" })
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Ocupación:</td>
                                     <td>
-                                        @Html.TextBoxFor(model => model.StrOcupacion, new { @class = "form-control input-sm", @placeholder = "Ocupación", size = "30", title = "Ocupación" })
+                                        @Html.TextBoxFor(model => model.StrOcupacion, new { @class = "form-control input-sm", @placeholder = "Ocupación", size = "30", title = "Ocupación",id= "Ocupacion"})
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Domicilio:</td>
                                     <td>
-                                        @Html.TextBoxFor(model => model.StrDomicilio, new { @class = "form-control input-sm", @placeholder = "Domicilio", size = "30", title = "Domicilio" })
+                                        @Html.TextBoxFor(model => model.StrDomicilio, new { @class = "form-control input-sm", @placeholder = "Domicilio", size = "30", title = "Domicilio",id="Domicilio" })
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Edad:</td>
                                     <td>
-                                        @Html.TextBoxFor(model => model.IntEdad, new { @class = "form-control input-sm", @placeholder = "Edad", size = "30", title = "Edad" })
+                                        @Html.TextBoxFor(model => model.IntEdad, new { @class = "form-control input-sm", @placeholder = "Edad", size = "30", title = "Edad",id="Edad" })
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Fecha Nacimiento:</td>
                                     <td>
-                                        @Html.TextBoxFor(model => model.DteFechaNacimiento, new { @class = "form-control input-sm", type = "date", title = "Fecha de Nacimiento" })
+                                        @Html.TextBoxFor(model => model.DteFechaNacimiento, new { @class = "form-control input-sm", type = "date", title = "Fecha de Nacimiento",id= "DteFechaNacimiento" })
                                     </td>
                                 </tr>
                                 <tr>
@@ -58,25 +56,39 @@
                 </div>
 
             </div>
-        }
-    @*</form>*@
+    </form>
 </div>
+<script src="~/Content/js/plugins/jquery/jquery-3.3.1.min.js"></script>
 <script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
 <script>
     $(document).ready(function () {
         $("#btnSubmit").click(function () {
 
+            var ParentescoVM = {}; //construimos el objeto
+            var idPersonal =  @SessionPersister.AccountSession.IdPersonal;
+            ParentescoVM.idPersonal = idPersonal;
+            ParentescoVM.idFamiliar = $('#IdFamiliar').val();
+            ParentescoVM.StrNombre = $('#Nombre').val();
+            ParentescoVM.StrOcupacion = $('#Ocupacion').val();
+            ParentescoVM.StrDomicilio = $('#Domicilio').val();
+            ParentescoVM.IntEdad = $('#Edad').val();
+            ParentescoVM.DteFechaNacimiento = $('#DteFechaNacimiento').val();
             //serialización del formaulario para la edicion de los datos
-            //var myformdata = $("#myForm").serialize();
+            var myformdata = $("#myForm").serialize();
             $.ajax({
                 type: "POST",
                 url: "/DatosFamiliares/EditarDatosFamiliar",
-                data: $('#myForm').serialize(),
+                data: { parentescoVM: ParentescoVM},
                 success: function () {
                     $("#myModal1").modal("hide");
                     window.location.href = "/DatosFamiliares/Create";
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(textStatus);
+                    console.log(textStatus);
+
                 }
-            })
+            });
         });
     });
 </script>
