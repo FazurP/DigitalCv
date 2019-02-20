@@ -48,6 +48,7 @@ namespace AppDigitalCv.Business
                     catFamiliar.strNombre = familiarDM.StrNombre;
                     catFamiliar.strOcupacion = familiarDM.StrOcupacion;
                     catFamiliar.dteFechaNacimiento = DateTime.Parse(familiarDM.DteFechaNacimiento);
+                    
                     catFamiliar.bitVive = familiarDM.BitVive;
                     //actualizamos la tabla catfamiliar
                     familiarRepository.Update(catFamiliar);

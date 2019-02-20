@@ -135,7 +135,7 @@ namespace AppDigitalCv.Controllers
 
 
         //Edicion de Datos Familiares
-        public ActionResult AddEditDatosContactoId(int idFamiliar)
+        public ActionResult AddEditDatosFamiliares(int idFamiliar)
         {
             
             ParentescoVM parentescoVM = new ParentescoVM();
@@ -160,7 +160,7 @@ namespace AppDigitalCv.Controllers
             {
                 ifamiliarBusiness.AddUpdateFamiliar(familiarDM);
             }
-            //return View("Create");
+            
         }
 
 

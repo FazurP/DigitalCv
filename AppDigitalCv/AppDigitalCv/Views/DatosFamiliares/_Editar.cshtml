@@ -21,6 +21,13 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td></td>
+                                    <td>
+                                        @Html.RadioButtonFor(model => model.BitVive, true, htmlAttributes: new { id = "rdbFamiliarVive", name = "rdbPadreVive" })<text>Vivo</text>
+                                        @Html.RadioButtonFor(model => model.BitVive, false, htmlAttributes: new { id = "rdbFamiliarFinado", name = "rdbPadreFinado" })<text>Finado</text>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>Ocupación:</td>
                                     <td>
                                         @Html.TextBoxFor(model => model.StrOcupacion, new { @class = "form-control input-sm", @placeholder = "Ocupación", size = "30", title = "Ocupación",id= "Ocupacion"})
@@ -61,11 +68,21 @@
 <script src="~/Content/js/plugins/jquery/jquery-3.3.1.min.js"></script>
 <script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
 <script>
+
     $(document).ready(function () {
+        var valor = true;
         $("#btnSubmit").click(function () {
+
+            if ($('#rdbFamiliarVive').is(':checked')) {
+                valor = true;
+            }
+            else {
+                valor = false;
+            }
 
             var ParentescoVM = {}; //construimos el objeto
             var idPersonal =  @SessionPersister.AccountSession.IdPersonal;
+            ParentescoVM.BitVive = valor;
             ParentescoVM.idPersonal = idPersonal;
             ParentescoVM.idFamiliar = $('#IdFamiliar').val();
             ParentescoVM.StrNombre = $('#Nombre').val();
