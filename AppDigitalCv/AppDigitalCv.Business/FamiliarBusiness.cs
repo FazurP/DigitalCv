@@ -41,12 +41,14 @@ namespace AppDigitalCv.Business
                 if (catFamiliar != null)
                 {
                     catFamiliar.idFamiliar = familiarDM.IdFamiliar;
-                    catFamiliar.idParentesco = familiarDM.IdParentesco;
+                    catFamiliar.idPersonal = familiarDM.IdPersonal;
+                    //catFamiliar.idParentesco = familiarDM.IdParentesco;
                     catFamiliar.intEdad = familiarDM.IntEdad;
                     catFamiliar.strDomicilio = familiarDM.StrDomicilio;
                     catFamiliar.strNombre = familiarDM.StrNombre;
                     catFamiliar.strOcupacion = familiarDM.StrOcupacion;
                     catFamiliar.dteFechaNacimiento = DateTime.Parse(familiarDM.DteFechaNacimiento);
+                    
                     catFamiliar.bitVive = familiarDM.BitVive;
                     //actualizamos la tabla catfamiliar
                     familiarRepository.Update(catFamiliar);
