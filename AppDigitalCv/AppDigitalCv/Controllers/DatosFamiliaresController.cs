@@ -150,10 +150,11 @@ namespace AppDigitalCv.Controllers
             return PartialView("_Editar", parentescoVM);
         }
 
-        [HttpPost]
+        
         public void EditarDatosFamiliar(ParentescoVM parentescoVM )
         {
             FamiliarDomainModel familiarDM = new FamiliarDomainModel();
+            
             AutoMapper.Mapper.Map(parentescoVM, familiarDM);
             if (parentescoVM.IdFamiliar > 0)
             {

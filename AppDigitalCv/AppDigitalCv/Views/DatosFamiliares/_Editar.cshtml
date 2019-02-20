@@ -71,7 +71,7 @@
             $.ajax({
                 type: "POST",
                 url: "/DatosFamiliares/EditarDatosFamiliar",
-                data: $('#myformdata').serialize(),
+                data: $('#myForm').serialize(),
                 success: function () {
                     $("#myModal1").modal("hide");
                     window.location.href = "/DatosFamiliares/Create";
