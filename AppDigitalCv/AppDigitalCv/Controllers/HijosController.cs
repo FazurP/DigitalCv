@@ -83,7 +83,7 @@ namespace AppDigitalCv.Controllers
             int totalCount = 0;
             if (param.sSearch != null)
             {
-                familiares = iFamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).Where(p=> p.StrNombre.Contains(param.sSearch)).ToList();
+                familiares = iFamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).Where(p=> p.StrNombre.Contains(param.sSearch)&& p.IdParentesco <2 ).ToList();
                 
             }
             else

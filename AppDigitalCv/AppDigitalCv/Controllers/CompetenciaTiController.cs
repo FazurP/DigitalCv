@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using AppDigitalCv.Security;
 using AppDigitalCv.Models;
 using AppDigitalCv.Domain;
+using AppDigitalCv.ViewModels;
 
 namespace AppDigitalCv.Controllers
 {
@@ -106,8 +107,50 @@ namespace AppDigitalCv.Controllers
 
         #endregion
 
+        /// <summary>
+        /// Este Metodo se encarga de consultar los datos y mostrarlos en una vista parcial
+        /// </summary>
+        /// <param name="idCompetenciaTI">el identificador  de la competencia en ti</param>
+        /// <returns>una vista con los datos solicitados</returns>
+        public ActionResult MostrarDatosFamiliaresDeleteById(int IdCompetenciaTIPersonal)
+        {
+             
+            CompetenciasTiDomainModel competenciaTi = new CompetenciasTiDomainModel();
+            CompetenciasTiVM competenciaTiVM = new CompetenciasTiVM();
+            if (IdCompetenciaTIPersonal > 0)
+            {
+                competenciaTi = icompetenciasTiBusiness.GetCompetenciaTIByIdCompetencia(IdCompetenciaTIPersonal);
+            }
+            AutoMapper.Mapper.Map(competenciaTi, competenciaTiVM);
+            CompetenciaTiVM competencia = new CompetenciaTiVM();
+            competenciaTiVM.CompetenciaVM = competencia;
+            AutoMapper.Mapper.Map(competenciaTi.CompetenciaTiDomainModel, competenciaTiVM.CompetenciaVM);
+            
+            return PartialView("_Eliminar", competenciaTiVM);
+        }
 
 
+
+
+        #region Eliminar Competencias de TI
+        /// <summary>
+        /// Este metodo se encarga de presentar los datos a la vista que se van a eliminar
+        /// </summary>
+        /// <param name="idPersonal">recibe un identificador del trabajador</param>
+        /// <returns>regresa una vista con los datos eliminados</returns>
+        public void EliminarDatosDeContactoDocente(CompetenciasTiVM competenciasTiVM)
+        {
+            int _idPersonal = SessionPersister.AccountSession.IdPersonal;
+
+            CompetenciasTiDomainModel competenciasDM = icompetenciasTiBusiness.GetCompetenciaTIByIdCompetencia(competenciasTiVM.IdCompetenciaTIPersonal);
+                
+            if (competenciasDM != null)
+            {
+                icompetenciasTiBusiness.DeleteCompetenciaTiPersonal(competenciasDM.IdCompetenciaTIPersonal);
+            }
+            
+        }
+        #endregion
 
 
     }

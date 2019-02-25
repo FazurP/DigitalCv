@@ -30,7 +30,8 @@
                             <label class="text-success emailtitleletter">
                                 <i class="text-success fa fa-graduation-cap"></i>
                                 @SessionPersister.AccountSession.NombreCompleto
-                            </label>
+                            </label>&nbsp;
+                            <a href="@Url.Action("Create","CompetenciaTi")" class="linkfacebookletter">&nbsp;<i class="fa fa-tag"></i><span>Agregar Competencias en TI</span> </a>
                         </h5>
 
                         <div class="box-tools pull-right">
@@ -58,7 +59,23 @@
                                         </thead>
                                         <tbody id="tblBody"></tbody>
                                     </table>
+
+                                    <!-- Establecemos el Modal que se va a presentar cuando demos click en la edicion de los datos-->
+                                    <div class="modal fade" id="myModal1">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                                                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                                                    <h5 class="modal-title"><label style="font-size:medium;">Competencias en TI</label></h5>
+                                                </div>
+                                                <div class="modal-body" id="myModalBodyDiv1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <input type="hidden" id="hiddenCompetenciasId" />
+                                    @*<input type="hidden" id="hiddenFamiliarId" />*@
+                                    <!--Terminamos el modal de eliminacion-->
                                 </div>
                             </div>
                         </div>
@@ -77,9 +94,9 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script>
 
-        var AddDelete = function (IdDocumento) {
+        var AddDelete = function (IdCompetenciaTIPersonal) {
 
-            var url = "/PremiosDocente/GetPremiosByIdPersonal?IdDocumento=" + IdDocumento;
+            var url = "/CompetenciaTi/MostrarDatosFamiliaresDeleteById?IdCompetenciaTIPersonal=" + IdCompetenciaTIPersonal;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");

@@ -12,7 +12,7 @@ namespace AppDigitalCv.ViewModels
         public int IdPersonal { get; set; }
         public string DteFechaRegistro { get; set; }
 
-        public virtual CompetenciasTiVM CompetenciaVM { get; set; }
+        public virtual CompetenciaTiVM CompetenciaVM { get; set; }
         public virtual PersonalVM PersonalVM { set; get; }
     }
 }

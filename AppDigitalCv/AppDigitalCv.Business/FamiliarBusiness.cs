@@ -59,7 +59,6 @@ namespace AppDigitalCv.Business
             else
             {
                 catFamiliar catFamiliar = new catFamiliar();
-                ///falta identificar el parentesco
                 catFamiliar.idParentesco = (int)EnumFamiliares.Hijo;
                 catFamiliar.intEdad = familiarDM.IntEdad;
                 catFamiliar.strDomicilio = familiarDM.StrDomicilio;
@@ -116,9 +115,20 @@ namespace AppDigitalCv.Business
             catFamiliarPareja.intEdad = familiaresDM.ParejaDomainModel.IntEdad;
             catFamiliarPareja.bitVive = familiaresDM.ParejaDomainModel.BitVive;
             familiares.Add(catFamiliarPareja);
+          
+                                             
             foreach (catFamiliar familiar in familiares)
             {
-                familiarRepository.Insert(familiar);
+                Expression<Func<catFamiliar, bool>> predicado = p => p.idParentesco == familiar.idParentesco || p.idParentesco== familiar.idParentesco || p.idParentesco == familiar.idParentesco;
+                if (familiarRepository.SingleOrDefault(predicado) == null)
+                {
+                    if (familiar.idParentesco > 1)
+                    {
+                        familiarRepository.Insert(familiar);
+                    }
+                    
+                }
+                
             }
             resultado = "Se insertaron correctamente los valores";
             respuesta = true;
@@ -167,15 +177,58 @@ namespace AppDigitalCv.Business
                 familiarDM.DteFechaNacimiento = catFamiliars.dteFechaNacimiento.ToString();
                 familiarDM.IdParentesco = catFamiliars.idParentesco;
                 familiarDM.IdPersonal = catFamiliars.idPersonal.Value;
-
-                familiares.Add(familiarDM);
+                ///no mandamos los padres, madre ni pareja
+                if(familiarDM.IdParentesco <2)
+                {
+                    familiares.Add(familiarDM);
+                }
+                
                 
             }
 
             return familiares;
             
         }
-                                     
+
+
+
+
+        /// <summary>
+        /// Este metodo se encarga de consultar los hijos o familaires de una persona
+        /// </summary>
+        /// <param name="idPersonal">recive el identificador de la persona</param>
+        /// <returns>regresa una lista de los familiares en la entidad domain model</returns>
+        public List<FamiliarDomainModel> GetFamiliaresById(int idPersonal)
+        {
+            List<FamiliarDomainModel> familiares = new List<FamiliarDomainModel>();
+            Expression<Func<tblPersonal, bool>> predicado = p => p.idPersonal.Equals(idPersonal);
+
+            tblPersonal tblPersona = personalRepository.SingleOrDefault(predicado);
+            foreach (catFamiliar catFamiliars in tblPersona.catFamiliar)
+            {
+                FamiliarDomainModel familiarDM = new FamiliarDomainModel();
+                familiarDM.IdFamiliar = catFamiliars.idFamiliar;
+                familiarDM.StrNombre = catFamiliars.strNombre;
+                familiarDM.StrOcupacion = catFamiliars.strOcupacion;
+                familiarDM.StrDomicilio = catFamiliars.strDomicilio;
+                familiarDM.IntEdad = catFamiliars.intEdad;
+                familiarDM.BitVive = catFamiliars.bitVive;
+                familiarDM.DteFechaNacimiento = catFamiliars.dteFechaNacimiento.ToString();
+                familiarDM.IdParentesco = catFamiliars.idParentesco;
+                familiarDM.IdPersonal = catFamiliars.idPersonal.Value;
+                if(familiarDM.IdParentesco > 1) { 
+                    familiares.Add(familiarDM);
+                }
+            }
+
+            return familiares;
+
+        }
+
+
+
+
+
 
         /// <summary>
         /// Este metodo se encarga de buscar un familiar por el identificador del familiar
@@ -212,6 +265,21 @@ namespace AppDigitalCv.Business
             respuesta = true;
             return respuesta;
         }
+
+        /// <summary>
+        /// Este metodo se encarga de eliminar fisicamente un familiar d ela base de datos
+        /// </summary>
+        /// <param name="idFamiliar">recive un identificador del tipo familiarDomainModel</param>
+        /// <returns>regresa una respuesta del tipo true o false</returns>
+        public bool DeleteFamiliar(int idFamiliar)
+        {
+            bool respuesta = false;
+            Expression<Func<catFamiliar, bool>> predicado = p => p.idFamiliar.Equals(idFamiliar);
+            familiarRepository.Delete(predicado);
+            respuesta = true;
+            return respuesta;
+        }
+
 
     }
 }

@@ -70,5 +70,46 @@ namespace AppDigitalCv.Business
         }
 
 
+        /// <summary>
+        /// Este metodo se encarga de buscar una competencia por el identificador de la competencia TI
+        /// </summary>
+        /// <param name="idCompetenciaTI">identificador de la competencia en TI</param>
+        /// <returns>regresa la entidad  del tipo CompetenciasTIDomainModel</returns>
+        public CompetenciasTiDomainModel GetCompetenciaTIByIdCompetencia(int IdCompetenciaTIPersonal)
+        {
+            Expression<Func<tblCompetenciasTIPersonal, bool>> predicado = p => p.idCompetenciaTIPersonal.Equals(IdCompetenciaTIPersonal);
+            tblCompetenciasTIPersonal competenciaTI = competenciasRepository.SingleOrDefault(predicado);
+
+            CompetenciasTiDomainModel competenciaTIDM = new CompetenciasTiDomainModel();
+            competenciaTIDM.IdCompetenciaTI = competenciaTI.idCompetenciaTI;
+            competenciaTIDM.IdPersonal = competenciaTI.idPersonal;
+            competenciaTIDM.DteFechaRegistro = competenciaTI.dteFechaRegistro.ToString();
+            competenciaTIDM.IdCompetenciaTIPersonal = competenciaTI.idCompetenciaTIPersonal;
+            competenciaTIDM.CompetenciaTiDomainModel = new CompetenciaTiDomainModel();
+            competenciaTIDM.CompetenciaTiDomainModel.IdCompetenciaTI = competenciaTI.catCompetenciaTI.idCompetenciaTI;
+            competenciaTIDM.CompetenciaTiDomainModel.StrDescripcion = competenciaTI.catCompetenciaTI.strDescripcion;
+            
+            return competenciaTIDM;
+            
+        }
+
+        /// <summary>
+        /// Este metodo se encarga de eliminar una entidad dentro de la base de datos
+        /// </summary>
+        /// <param name="IdCompetenciaTIPersonal">el identificador de la entidad a eliminar</param>
+        /// <returns>regresa un valor booleano true o false dependiendo la condición</returns>
+        public bool DeleteCompetenciaTiPersonal(int IdCompetenciaTIPersonal)
+        {
+            bool respuesta = false;
+            Expression<Func<tblCompetenciasTIPersonal, bool>> predicado = p => p.idCompetenciaTIPersonal.Equals(IdCompetenciaTIPersonal);
+            competenciasRepository.Delete(predicado);
+            respuesta = true;
+            return respuesta;
+
+        }
+
+
+
+
     }
 }

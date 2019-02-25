@@ -89,7 +89,8 @@ namespace AppDigitalCv.Controllers
         public JsonResult GetFamiliaresPersonal()
         {
             int idPersonal = SessionPersister.AccountSession.IdPersonal;
-            var familiares = ifamiliarBusiness.GetFamiliaresHijosById(idPersonal);
+            var familiares = ifamiliarBusiness.GetFamiliaresHijosById(idPersonal);//ifamiliarBusiness.GetFamiliaresById(idPersonal);
+                                                                 //.GetFamiliaresHijosById(idPersonal);
             return Json(familiares, JsonRequestBehavior.AllowGet);
         }
 
@@ -110,14 +111,17 @@ namespace AppDigitalCv.Controllers
             int totalCount = 0;
             if (param.sSearch != null)
             {
-                familiares = ifamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).Where(p => p.StrNombre.Contains(param.sSearch)).ToList();
+                familiares = ifamiliarBusiness.GetFamiliaresById(IdentityPersonal).Where(p => p.StrNombre.Contains(param.sSearch)).ToList();
+                ///ifamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).Where(p => p.StrNombre.Contains(param.sSearch)).ToList();
 
             }
             else
             {
                 totalCount = ifamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).Count();
-                familiares = ifamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).OrderBy(p => p.IdPersonal)
+                familiares = ifamiliarBusiness.GetFamiliaresById(IdentityPersonal).OrderBy(p => p.IdPersonal)
                              .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
+                //ifamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).OrderBy(p => p.IdPersonal)
+                //.Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
 
             }
             return Json(new
@@ -163,6 +167,43 @@ namespace AppDigitalCv.Controllers
             
         }
 
+        /// <summary>
+        /// Este Metodo se encarga de consultar los datos y mostrarlos en una vista parcial
+        /// </summary>
+        /// <param name="idFamiliar">el identificador  del familiar</param>
+        /// <returns>una vista con los datos solicitados</returns>
+        public ActionResult DeleteDatosFamiliaresId(int idFamiliar)
+        {
+            FamiliarDomainModel familiarDM = new FamiliarDomainModel();
+            ParentescoVM parentescoVM = new ParentescoVM();
+
+            if (idFamiliar > 0)
+            {
+                familiarDM = ifamiliarBusiness.GetFamiliarByIdFamiliar(idFamiliar);
+                
+            }
+            AutoMapper.Mapper.Map(familiarDM, parentescoVM);
+            return PartialView("_Eliminar", parentescoVM);
+        }
+
+        #region Eliminar Premios Docente
+        /// <summary>
+        /// Este metodo se encarga de presentar los datos a la vista que se van a eliminar
+        /// </summary>
+        /// <param name="parentescoVM">recibe un identificador del trabajador</param>
+        /// <returns>regresa una vista con los datos eliminados</returns>
+        public ActionResult EliminarDatosDeContactoDocente(ParentescoVM parentescoVM)
+        {
+            int _idPersonal = SessionPersister.AccountSession.IdPersonal;
+            
+
+            if (parentescoVM != null)
+            {
+                ifamiliarBusiness.DeleteFamiliar(parentescoVM.IdFamiliar);
+            }
+            return View("Create");
+        }
+        #endregion
 
     }
 }
