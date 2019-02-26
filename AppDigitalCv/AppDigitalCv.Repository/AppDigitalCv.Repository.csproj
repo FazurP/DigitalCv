@@ -193,6 +193,7 @@
     <Compile Include="Infraestructure\UnitOfWork.cs" />
     <Compile Include="MunicipioRepository.cs" />
     <Compile Include="PaisRepository.cs" />
+    <Compile Include="ParentescoRepository.cs" />
     <Compile Include="PersonalAsociacionesRepository.cs" />
     <Compile Include="PersonalRepository.cs" />
     <Compile Include="PremiosDocenteRepository.cs" />

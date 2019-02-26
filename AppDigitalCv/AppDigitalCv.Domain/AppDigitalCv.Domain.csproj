@@ -51,6 +51,7 @@
     <Compile Include="DireccionDomainModel.cs" />
     <Compile Include="DocumentoPersonalDomainModel.cs" />
     <Compile Include="DocumentosDomainModel.cs" />
+    <Compile Include="EmergenciaDomianModel.cs" />
     <Compile Include="EnfermedadDomainModel.cs" />
     <Compile Include="EstadoCivilDomainModel.cs" />
     <Compile Include="EstadoDomainModel.cs" />
