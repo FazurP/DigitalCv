@@ -430,6 +430,7 @@
     <Content Include="Views\DatosFamiliares\_Editar.cshtml" />
     <Content Include="Views\DatosFamiliares\_Eliminar.cshtml" />
     <Content Include="Views\CompetenciaTi\_Eliminar.cshtml" />
+    <Content Include="Views\ContactoEmergencia\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -442,6 +443,7 @@
     <Compile Include="Controllers\AlergiasController.cs" />
     <Compile Include="Controllers\AsociacionController.cs" />
     <Compile Include="Controllers\CompetenciaTiController.cs" />
+    <Compile Include="Controllers\ContactoEmergenciaController.cs" />
     <Compile Include="Controllers\DatosContactoController.cs" />
     <Compile Include="Controllers\DatosFamiliaresController.cs" />
     <Compile Include="Controllers\DialectoIdiomaController.cs" />
