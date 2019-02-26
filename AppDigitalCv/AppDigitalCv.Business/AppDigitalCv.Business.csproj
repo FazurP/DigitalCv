@@ -53,6 +53,7 @@
     <Compile Include="DialectoIdiomaBusiness.cs" />
     <Compile Include="DireccionBusiness.cs" />
     <Compile Include="DocumentosBusiness.cs" />
+    <Compile Include="EmergenciaBusiness.cs" />
     <Compile Include="EnfermedadBusiness.cs" />
     <Compile Include="Enum\EnumFamiliares.cs" />
     <Compile Include="EstadoBusiness.cs" />
