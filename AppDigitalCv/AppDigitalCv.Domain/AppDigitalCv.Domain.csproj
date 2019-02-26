@@ -61,6 +61,7 @@
     <Compile Include="IdiomaDomainModel.cs" />
     <Compile Include="MunicipioDomainModel.cs" />
     <Compile Include="PaisDomainModel.cs" />
+    <Compile Include="ParentescoDomainModel.cs" />
     <Compile Include="PersonalAsociacionesDomainModel.cs" />
     <Compile Include="PersonalDomainModel.cs" />
     <Compile Include="PremiosDocenteDomainModel.cs" />
