@@ -482,6 +482,7 @@
     <Compile Include="ViewModels\DireccionVM.cs" />
     <Compile Include="ViewModels\DocumentoPersonalVM.cs" />
     <Compile Include="ViewModels\DocumentosVM.cs" />
+    <Compile Include="ViewModels\EmergenciaViewModel.cs" />
     <Compile Include="ViewModels\EnfermedadVM.cs" />
     <Compile Include="ViewModels\EstadoCivilVM.cs" />
     <Compile Include="ViewModels\EstadoSaludVM.cs" />

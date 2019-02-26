@@ -180,6 +180,7 @@
     <Compile Include="DatosContactoRepository.cs" />
     <Compile Include="DialectosRepository.cs" />
     <Compile Include="DireccionRepository.cs" />
+    <Compile Include="EmergenciaRepository.cs" />
     <Compile Include="EnfermedadesRepository.cs" />
     <Compile Include="EstadoCivilRepository.cs" />
     <Compile Include="EstadoRepository.cs" />
