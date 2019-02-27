@@ -29,7 +29,11 @@ namespace AppDigitalCv.Business
         /// <returns>retorna una lista de parentescos</returns>
         public List<ParentescoDomainModel> GetParentescos()
         {
-            return null;
+            ///creamos la lista de parentesco, se encuentra vacia
+            List<ParentescoDomainModel> parentesco = new List<ParentescoDomainModel>();
+            //consultamos todos los parentescos y los almacenamos en la lista de parentescos
+            parentesco = parentescoRepository.GetAll().Select(p => new ParentescoDomainModel { IdParentesco=p.idParentesco, StrDescripcion=p.strDescripcion  }).ToList();
+            return parentesco;
         }
     }
 }

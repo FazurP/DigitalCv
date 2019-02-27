@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppDigitalCv.Business.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,11 +9,16 @@ namespace AppDigitalCv.Controllers
 {
     public class ContactoEmergenciaController : Controller
     {
+        IParentescoBusiness IparentescoBusiness;
+        public ContactoEmergenciaController(IParentescoBusiness _IparentescoBusiness)
+        {
+            IparentescoBusiness = _IparentescoBusiness;
+        }
 
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.IdParentesco = new SelectList(null, "IdParentesco", "StrDescripcion");
+            ViewBag.IdParentesco = new SelectList(IparentescoBusiness.GetParentescos(), "IdParentesco", "StrDescripcion");
             return View();
         }
     }
