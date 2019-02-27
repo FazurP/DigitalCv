@@ -5,6 +5,7 @@ using AppDigitalCv.Repository.Infraestructure.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -62,6 +63,24 @@ namespace AppDigitalCv.Business
             }
             return resultado;
         }
+
+
+
+        /// <summary>
+        /// Este metodo se encarga de eliminar una entidad dentro de la base de datos
+        /// </summary>
+        /// <param name="IdEmergencia">el identificador de la entidad a eliminar</param>
+        /// <returns>regresa un valor booleano true o false dependiendo la condición</returns>
+        public bool DeleteContactoEmergencia(int IdEmergencia)
+        {
+            bool respuesta = false;
+            Expression<Func<tblEmergencia, bool>> predicado = p => p.idEmergencia.Equals(IdEmergencia);
+            emergenciaRepository.Delete(predicado);
+            respuesta = true;
+            return respuesta;
+
+        }
+
 
     }
 }
