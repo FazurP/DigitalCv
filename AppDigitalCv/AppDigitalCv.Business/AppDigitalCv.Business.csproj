@@ -77,6 +77,7 @@
     <Compile Include="Interface\IEstadoBusiness.cs" />
     <Compile Include="Interface\IEstadoCivilBusiness.cs" />
     <Compile Include="Interface\IPaisBusiness.cs" />
+    <Compile Include="Interface\IParentescoBusiness.cs" />
     <Compile Include="Interface\IPersonalAsociacionesBusiness.cs" />
     <Compile Include="Interface\IPersonalBusiness.cs" />
     <Compile Include="Interface\IPremiosDocenteBusiness.cs" />

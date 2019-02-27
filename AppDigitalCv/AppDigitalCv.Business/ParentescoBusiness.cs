@@ -1,4 +1,5 @@
-﻿using AppDigitalCv.Domain;
+﻿using AppDigitalCv.Business.Interface;
+using AppDigitalCv.Domain;
 using AppDigitalCv.Repository;
 using AppDigitalCv.Repository.Infraestructure.Contract;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AppDigitalCv.Business
 {
-    public class ParentescoBusiness
+    public class ParentescoBusiness:IParentescoBusiness
     {
 
         private readonly IUnitOfWork unitOfWork;
@@ -22,7 +23,10 @@ namespace AppDigitalCv.Business
             
         }
 
-
+        /// <summary>
+        /// Este metodo se encarga de consultar todos los parentescos posibles dentro del catalogo de base de datos
+        /// </summary>
+        /// <returns>retorna una lista de parentescos</returns>
         public List<ParentescoDomainModel> GetParentescos()
         {
             return null;
