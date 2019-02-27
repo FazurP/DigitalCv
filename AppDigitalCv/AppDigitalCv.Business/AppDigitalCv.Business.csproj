@@ -84,6 +84,7 @@
     <Compile Include="Interface\ITipoEmpresaBusiness.cs" />
     <Compile Include="Interface\ITipoSangreBusiness.cs" />
     <Compile Include="PaisBusiness.cs" />
+    <Compile Include="ParentescoBusiness.cs" />
     <Compile Include="PersonalAsociacionesBusiness.cs" />
     <Compile Include="PersonalBusiness.cs" />
     <Compile Include="PremiosDocenteBusiness.cs" />
