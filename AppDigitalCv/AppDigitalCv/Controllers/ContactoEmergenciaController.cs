@@ -12,6 +12,7 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            ViewBag.IdParentesco = new SelectList(null, "IdParentesco", "StrDescripcion");
             return View();
         }
     }
