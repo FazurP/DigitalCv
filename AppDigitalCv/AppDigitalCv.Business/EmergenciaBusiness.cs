@@ -80,9 +80,6 @@ namespace AppDigitalCv.Business
             return respuesta;
 
         }
-
-
-
         /// <summary>
         /// Este metodo se encarga de consultar los los datos de conatcto de emergencia 
         /// </summary>

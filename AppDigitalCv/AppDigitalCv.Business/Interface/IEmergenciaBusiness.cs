@@ -21,6 +21,11 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="IdEmergencia">el identificador de la entidad a eliminar</param>
         /// <returns>regresa un valor booleano true o false dependiendo la condición</returns>
         bool DeleteContactoEmergencia(int IdEmergencia);
-
+        /// <summary>
+        /// Este metodo se encarga de consultar los los datos de conatcto de emergencia 
+        /// </summary>
+        /// <param name="idPersonal">recive el identificador de la emergencia del personal</param>
+        /// <returns>regresa una lista de los Emergencia en la entidad domain model</returns>
+        List<EmergenciaDomianModel> GetEmergenciasById(int idPersonal);
     }
 }
