@@ -44,25 +44,24 @@ namespace AppDigitalCv.Controllers
             int totalCount = 0;
             if (param.sSearch != null)
             {
-                emergencias = ifamiliarBusiness.GetFamiliaresById(IdentityPersonal).Where(p => p.StrNombre.Contains(param.sSearch)).ToList();
-                ///ifamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).Where(p => p.StrNombre.Contains(param.sSearch)).ToList();
+                emergencias = IemergenciasBusiness.GetEmergenciasById(IdentityPersonal).Where(p => p.StrNombre.Contains(param.sSearch)).ToList();
+                  
 
             }
             else
             {
-                totalCount = ifamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).Count();
-                familiares = ifamiliarBusiness.GetFamiliaresById(IdentityPersonal).OrderBy(p => p.IdPersonal)
+                totalCount = IemergenciasBusiness.GetEmergenciasById(IdentityPersonal).Count();
+                emergencias = IemergenciasBusiness.GetEmergenciasById(IdentityPersonal).OrderBy(p => p.IdPersonal)
                              .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
-                //ifamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).OrderBy(p => p.IdPersonal)
-                //.Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
+                
 
             }
             return Json(new
             {
-                aaData = familiares,
+                aaData = emergencias,
                 sEcho = param.sEcho,
-                iTotalDisplayRecords = familiares.Count(),
-                iTotalRecords = familiares.Count()
+                iTotalDisplayRecords = emergencias.Count(),
+                iTotalRecords = emergencias.Count()
 
             }, JsonRequestBehavior.AllowGet);
 
