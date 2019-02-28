@@ -107,6 +107,19 @@ namespace AppDigitalCv.Controllers
             return PartialView("_Editar", emergenciaViewModel);
         }
 
+        [HttpPost]
+        public void Editar(EmergenciaViewModel emergenciaViewModel)
+        {
+            
+            EmergenciaDomianModel emergenciaDM = new EmergenciaDomianModel();
+            AutoMapper.Mapper.Map(emergenciaViewModel, emergenciaDM);
+            if (emergenciaViewModel.IdEmergencia  > 0)
+            {
+                IemergenciasBusiness.AddUpdateEmergencia(emergenciaDM);
+            }
+
+        }
+
 
     }
 }
