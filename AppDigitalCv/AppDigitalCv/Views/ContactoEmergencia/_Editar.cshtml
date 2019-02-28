@@ -1,0 +1,48 @@
+﻿@model AppDigitalCv.ViewModels.EmergenciaViewModel
+@using AppDigitalCv.Security
+
+<div>
+    <form id="myForm">
+        <div class="bs-container">
+            <div class="row">
+                <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                    <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+                </div>
+                <div class="col-md-7 col-xs-11 col-sm-5 col-lg-7">
+
+                    @Html.HiddenFor(model => model.IdEmergencia)
+                    @Html.HiddenFor(model => model.IdParentesco)
+                    <table class="table jtable">
+                        <tbody>
+                            <tr>
+                                <td>Nombre:</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.StrNombre, new { @class = "form-control input-sm", @placeholder = "Nombre", size = "30", title = "Nombre del Familiar", id = "StrNombre" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Dirección:</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.StrDireccion, new { @class = "form-control input-sm", @placeholder = "Dirección", size = "30", title = "Dirección", id = "StrDireccion" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Teléfono:</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.StrTelefono, new { @class = "form-control input-sm", @placeholder = "Teléfono", size = "30", title = "Teléfono", id = "StrTelefono" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <a href="#" id="btnSubmit" class="btn btn-sm btn-success left"><span><i class="fa fa-edit"></i> Actualizar</span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
