@@ -46,3 +46,41 @@
         </div>
     </form>
 </div>
+<script src="~/Content/js/plugins/jquery/jquery-3.3.1.min.js"></script>
+<script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        
+        $("#btnSubmit").click(function () {
+
+           
+
+            var emergenciaViewModel = {}; //construimos el objeto
+            var idPersonal =  @SessionPersister.AccountSession.IdPersonal;
+
+            emergenciaViewModel.idPersonal = idPersonal;
+            emergenciaViewModel.StrNombre = $('#StrNombre').val();
+            emergenciaViewModel.StrDireccion = $('#StrDireccion').val();
+            emergenciaViewModel.StrTelefono = $('#StrTelefono').val();
+            emergenciaViewModel.IdEmergencia = $('#IdEmergencia').val();
+            emergenciaViewModel.IdParentesco = $('#IdParentesco').val();
+            //serialización del formaulario para la edicion de los datos
+            var myformdata = $("#myForm").serialize();
+            $.ajax({
+                type: "POST",
+                url: "/ContactoEmergencia/Editar",
+                data: { parentescoVM: ParentescoVM},
+                success: function () {
+                    $("#myModal1").modal("hide");
+                    window.location.href = "/DatosFamiliares/Create";
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(textStatus);
+                    console.log(textStatus);
+
+                }
+            });
+        });
+    });
+</script>
