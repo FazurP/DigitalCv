@@ -85,14 +85,27 @@ namespace AppDigitalCv.Controllers
 
         #endregion
 
-        public JsonResult GetDatos()
-        {
-            int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
-            List<EmergenciaDomianModel> emergencias = new List<EmergenciaDomianModel>();
-            emergencias = IemergenciasBusiness.GetEmergenciasById(IdentityPersonal).ToList();
-            return Json(emergencias,JsonRequestBehavior.AllowGet);
-        }
 
+        /// <summary>
+        /// Edicion de datos de contacto de emergencia
+        /// </summary>
+        /// <param name="idEmergencia">el identificador del contacto de emergencia</param>
+        /// <returns>retorna una vista con los datos consultados</returns>
+        public ActionResult AddEditDatosContactoEmergencia(int idEmergencia)
+        {
+            EmergenciaViewModel emergenciaViewModel = new EmergenciaViewModel();
+            //creamos el objeto del dominio
+            EmergenciaDomianModel emergenciaDM = new EmergenciaDomianModel();
+                        
+            if (idEmergencia > 0)
+            {
+                emergenciaDM = IemergenciasBusiness.GetEmergenciaById(idEmergencia);
+                
+
+            }
+            AutoMapper.Mapper.Map(emergenciaDM, emergenciaViewModel);
+            return PartialView("_Editar", emergenciaViewModel);
+        }
 
 
     }

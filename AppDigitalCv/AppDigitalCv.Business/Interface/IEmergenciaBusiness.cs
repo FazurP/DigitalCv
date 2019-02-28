@@ -27,5 +27,12 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="idPersonal">recive el identificador de la emergencia del personal</param>
         /// <returns>regresa una lista de los Emergencia en la entidad domain model</returns>
         List<EmergenciaDomianModel> GetEmergenciasById(int idPersonal);
+
+        /// <summary>
+        /// Este metodo se encarga de consultar los los datos de conatcto de emergencia 
+        /// </summary>
+        /// <param name="idPersonal">recibe el identificador de la emergencia del personal</param>
+        /// <returns>regresa una entidad de  Emergencia Domain Model</returns>
+        EmergenciaDomianModel GetEmergenciaById(int idEmergencia);
     }
 }
