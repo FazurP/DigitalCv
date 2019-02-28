@@ -82,5 +82,40 @@ namespace AppDigitalCv.Business
         }
 
 
+
+        /// <summary>
+        /// Este metodo se encarga de consultar los los datos de conatcto de emergencia 
+        /// </summary>
+        /// <param name="idPersonal">recive el identificador de la emergencia del personal</param>
+        /// <returns>regresa una lista de los Emergencia en la entidad domain model</returns>
+        public List<EmergenciaDomianModel> GetEmergenciasById(int idPersonal)
+        {
+            List<EmergenciaDomianModel> emergencias = new List<EmergenciaDomianModel>();
+            Expression<Func<tblEmergencia, bool>> predicado = p => p.idPersonal.Equals(idPersonal);
+
+            List<tblEmergencia> Emergencias = emergenciaRepository.GetAll(predicado).ToList<tblEmergencia>();
+
+            foreach (tblEmergencia tblemergencias in Emergencias)
+            {
+                EmergenciaDomianModel emergenciaDM = new EmergenciaDomianModel();
+                emergenciaDM.IdEmergencia = tblemergencias.idEmergencia;
+                emergenciaDM.IdPersonal = tblemergencias.idPersonal;
+                emergenciaDM.StrNombre = tblemergencias.strNombre;
+                emergenciaDM.StrDireccion = tblemergencias.strDireccion;
+                emergenciaDM.StrTelefono = tblemergencias.strTelefono;
+                emergencias.Add(emergenciaDM);
+            }
+
+            return emergencias;
+
+        }
+
+
+
+
+
+
+
+
     }
 }
