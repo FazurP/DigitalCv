@@ -15,8 +15,8 @@ namespace AppDigitalCv.Domain
         public int IdParentesco { get; set; }
         public int IdPersonal { get; set; }
 
-        public virtual ParentescoDomainModel ParentescoDomainModel { get; set; }
-        public virtual PersonalDomainModel PersonalDomainModel { get; set; }
+        //public virtual ParentescoDomainModel ParentescoDomainModel { get; set; }
+        //public virtual PersonalDomainModel PersonalDomainModel { get; set; }
 
     }
 }

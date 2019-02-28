@@ -38,13 +38,14 @@ namespace AppDigitalCv.Controllers
                 AutoMapper.Mapper.Map(emergenciaViewModel, emergenciaDomianModel);
                 IemergenciasBusiness.AddUpdateEmergencia(emergenciaDomianModel);
             }
+            ViewBag.IdParentesco = new SelectList(IparentescoBusiness.GetParentescos(), "IdParentesco", "StrDescripcion");
             return View("Create");
         }
 
 
         #region  Consultar los datos de los datos del contacto de emergencia junto con el datatable se pueden ordenar de forma adecuada
 
-        [HttpGet]
+        //[HttpGet]
         public JsonResult GetDatosEmergenciaTable(DataTablesParam param)
         {
             int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
@@ -84,7 +85,13 @@ namespace AppDigitalCv.Controllers
 
         #endregion
 
-
+        public JsonResult GetDatos()
+        {
+            int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
+            List<EmergenciaDomianModel> emergencias = new List<EmergenciaDomianModel>();
+            emergencias = IemergenciasBusiness.GetEmergenciasById(IdentityPersonal).ToList();
+            return Json(emergencias,JsonRequestBehavior.AllowGet);
+        }
 
 
 

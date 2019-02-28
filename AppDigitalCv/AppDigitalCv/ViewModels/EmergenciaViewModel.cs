@@ -13,7 +13,7 @@ namespace AppDigitalCv.ViewModels
         public string StrDireccion { get; set; }
         public int IdParentesco { get; set; }
         public int IdPersonal { get; set; }
-        public PersonalVM PersonalVM { get; set; }
+        //public PersonalVM PersonalVM { get; set; }
 
 
     }
