@@ -2,6 +2,7 @@
 using AppDigitalCv.Domain;
 using AppDigitalCv.Models;
 using AppDigitalCv.Security;
+using AppDigitalCv.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,20 @@ namespace AppDigitalCv.Controllers
             ViewBag.IdParentesco = new SelectList(IparentescoBusiness.GetParentescos(), "IdParentesco", "StrDescripcion");
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Create([Bind(Include = "StrNombre,StrTelefono,StrDireccion,IdParentesco")]  EmergenciaViewModel emergenciaViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                emergenciaViewModel.IdPersonal = SessionPersister.AccountSession.IdPersonal;
+                EmergenciaDomianModel emergenciaDomianModel = new EmergenciaDomianModel();
+                AutoMapper.Mapper.Map(emergenciaViewModel, emergenciaDomianModel);
+                IemergenciasBusiness.AddUpdateEmergencia(emergenciaDomianModel);
+            }
+            return View("Create");
+        }
+
 
         #region  Consultar los datos de los datos del contacto de emergencia junto con el datatable se pueden ordenar de forma adecuada
 

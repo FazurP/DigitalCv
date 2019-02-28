@@ -30,7 +30,7 @@ namespace AppDigitalCv.Business
         public string AddUpdateEmergencia(EmergenciaDomianModel emergenciaDM)
         {
             string resultado = string.Empty;
-            if (emergenciaDM.IdPersonal > 0)
+            if (emergenciaDM.IdEmergencia > 0)
             {
                 //buscamos por id y lo almacenamos en nuestra entidad de entityframework
                 tblEmergencia Emergencia = emergenciaRepository.SingleOrDefault(p=> p.idEmergencia == emergenciaDM.IdEmergencia);
@@ -52,7 +52,7 @@ namespace AppDigitalCv.Business
             else
             {
                 tblEmergencia tblEmergencia = new tblEmergencia();
-                tblEmergencia.idEmergencia = emergenciaDM.IdEmergencia;
+                //tblEmergencia.idEmergencia = emergenciaDM.IdEmergencia;
                 tblEmergencia.idParentesco = emergenciaDM.IdParentesco;
                 tblEmergencia.idPersonal = emergenciaDM.IdPersonal;
                 tblEmergencia.strNombre = emergenciaDM.StrNombre;

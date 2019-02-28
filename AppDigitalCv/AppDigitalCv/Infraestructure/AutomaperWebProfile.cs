@@ -93,6 +93,9 @@ namespace AppDigitalCv.Infraestructure
             //Competencia TI
             CreateMap<CompetenciaTiVM, CompetenciaTiDomainModel>();
             CreateMap<CompetenciaTiDomainModel, CompetenciaTiVM>();
+            //Emergencias
+            CreateMap<EmergenciaViewModel, EmergenciaDomianModel>();
+            CreateMap<EmergenciaDomianModel, EmergenciaViewModel>();
         }
 
 
