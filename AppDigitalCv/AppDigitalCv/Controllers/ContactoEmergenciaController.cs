@@ -136,7 +136,7 @@ namespace AppDigitalCv.Controllers
             {
                 emergenciaDM = IemergenciasBusiness.GetEmergenciaById(idEmergencia);
             }
-            ViewBag.IdParentesco = new SelectList(IparentescoBusiness.GetParentescos(), "IdParentesco", "StrDescripcion");
+            ViewBag.IdParentesco = new SelectList(IparentescoBusiness.GetParentescoById(emergenciaViewModel.IdParentesco), "IdParentesco", "StrDescripcion");
             AutoMapper.Mapper.Map(emergenciaDM, emergenciaViewModel);
             return PartialView("_Eliminar", emergenciaViewModel);
         }
@@ -153,7 +153,7 @@ namespace AppDigitalCv.Controllers
             if (emergenciaViewModel != null)
             {
                 IemergenciasBusiness.DeleteContactoEmergencia(emergenciaViewModel.IdEmergencia);
-                ViewBag.IdParentesco = new SelectList(IparentescoBusiness.GetParentescoById(emergenciaViewModel.IdParentesco), "IdParentesco", "StrDescripcion");
+                ViewBag.IdParentesco = new SelectList(IparentescoBusiness.GetParentescos(), "IdParentesco", "StrDescripcion");
             }
             return View("Create");
         }
