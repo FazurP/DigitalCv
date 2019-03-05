@@ -5,6 +5,7 @@ using AppDigitalCv.Repository.Infraestructure.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,6 +34,25 @@ namespace AppDigitalCv.Business
             List<ParentescoDomainModel> parentesco = new List<ParentescoDomainModel>();
             //consultamos todos los parentescos y los almacenamos en la lista de parentescos
             parentesco = parentescoRepository.GetAll().Select(p => new ParentescoDomainModel { IdParentesco=p.idParentesco, StrDescripcion=p.strDescripcion  }).ToList();
+            return parentesco;
+        }
+        /// <summary>
+        /// Este metodo se encarga de consultar un aprentesco en particular
+        /// </summary>
+        /// <param name="idParentesco">recibe como parametro el identificador del parentesco</param>
+        /// <returns>
+        /// retorna  el parentesco del dato de contacto de emergencia de la persona
+        /// </returns>
+        public ParentescoDomainModel getParentescoById(int idParentesco)
+        {
+            ///creamos la lista de parentesco, se encuentra vacia
+            ParentescoDomainModel parentesco = null;
+            //consultamos  el parentesco de l persona
+            Expression<Func<catParentesco, bool>> predicado = p => p.idParentesco.Equals(idParentesco);
+            catParentesco  catparentesco = parentescoRepository.SingleOrDefault(predicado);
+            parentesco.IdParentesco = catparentesco.idParentesco;
+            parentesco.StrDescripcion = catparentesco.strDescripcion;
+            parentesco.StrObservacion = catparentesco.strObservacion;
             return parentesco;
         }
     }
