@@ -1,0 +1,62 @@
+﻿
+@model AppDigitalCv.ViewModels.ParentescoVM
+@using AppDigitalCv.Security
+<div>
+    <form id="myForm">
+        <div class="bs-container">
+            <div class="row">
+                <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                    <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+                </div>
+                <div class="col-md-7 col-xs-11 col-sm-5 col-lg-7">
+
+                    @Html.HiddenFor(model => model.IdPersonal, new { @class = "form-control input-sm", id = "IdPersonal" })
+                    @Html.HiddenFor(model => model.IdFamiliar)
+                    <table class="table jtable">
+                        <tbody>
+                            <tr>
+                                <td>Nombre:</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.StrNombre, new { @class = "form-control input-sm", @placeholder = "Nombre", size = "30", title = "Nombre del Familiar", id = "Nombre", disabled = true })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ocupación:</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.StrOcupacion, new { @class = "form-control input-sm", @placeholder = "Ocupación", size = "30", title = "Ocupación", id = "Ocupacion", disabled = true })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Domicilio:</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.StrDomicilio, new { @class = "form-control input-sm", @placeholder = "Domicilio", size = "30", title = "Domicilio", id = "Domicilio", disabled = true })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Edad:</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.IntEdad, new { @class = "form-control input-sm", @placeholder = "Edad", size = "30", title = "Edad", id = "Edad", type = "Number", disabled = true })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Fecha Nacimiento:</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.DteFechaNacimiento, new { @class = "form-control input-sm", title = "Fecha de Nacimiento", id = "DteFechaNacimiento", disabled = true })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <a href="#" id="btnSubmit" class="btn btn-sm btn-danger left"><span><i class="fa fa-edit"></i>Eliminar</span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+<script src="~/Content/js/plugins/jquery/jquery-3.3.1.min.js"></script>
+<script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>

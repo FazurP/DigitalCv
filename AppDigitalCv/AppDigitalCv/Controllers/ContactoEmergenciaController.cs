@@ -122,5 +122,45 @@ namespace AppDigitalCv.Controllers
         }
 
 
+        /// <summary>
+        /// Este Metodo se encarga de consultar los datos y mostrarlos en una vista parcial
+        /// </summary>
+        /// <param name="idEmergencia">el identificador  del id de la emergencia</param>
+        /// <returns>una vista con los datos solicitados</returns>
+        public ActionResult DeleteDatosContactoEmergenciaId(int idEmergencia)
+        {
+            EmergenciaViewModel emergenciaViewModel = new EmergenciaViewModel();
+            //creamos el objeto del dominio
+            EmergenciaDomianModel emergenciaDM = new EmergenciaDomianModel();
+            if (idEmergencia > 0)
+            {
+                emergenciaDM = IemergenciasBusiness.GetEmergenciaById(idEmergencia);
+            }
+            AutoMapper.Mapper.Map(emergenciaDM, emergenciaViewModel);
+            return PartialView("_Eliminar", emergenciaViewModel);
+        }
+
+        #region Eliminar Datos de Contacto 
+        /// <summary>
+        /// Este metodo se encarga de presentar los datos a la vista que se van a eliminar
+        /// </summary>
+        /// <param name="parentescoVM">recibe un identificador del trabajador</param>
+        /// <returns>regresa una vista con los datos eliminados</returns>
+        public ActionResult Eliminar(ParentescoVM parentescoVM)
+        {
+            int _idPersonal = SessionPersister.AccountSession.IdPersonal;
+            if (parentescoVM != null)
+            {
+                IemergenciasBusiness.DeleteContactoEmergencia(parentescoVM.IdFamiliar);
+                
+            }
+            return View("Create");
+        }
+        #endregion
+
+
+
+
+
     }
 }
