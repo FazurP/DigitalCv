@@ -47,7 +47,7 @@ namespace AppDigitalCv.Business
         {
             List<ParentescoDomainModel> parentescos = new List<ParentescoDomainModel>();
             ///creamos la lista de parentesco, se encuentra vacia
-            ParentescoDomainModel parentesco = null;
+            ParentescoDomainModel parentesco = new ParentescoDomainModel();
             //consultamos  el parentesco de l persona
             Expression<Func<catParentesco, bool>> predicado = p => p.idParentesco.Equals(idParentesco);
             catParentesco  catparentesco = parentescoRepository.SingleOrDefault(predicado);
