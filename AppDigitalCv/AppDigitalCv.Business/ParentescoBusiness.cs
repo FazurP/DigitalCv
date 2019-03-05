@@ -43,8 +43,9 @@ namespace AppDigitalCv.Business
         /// <returns>
         /// retorna  el parentesco del dato de contacto de emergencia de la persona
         /// </returns>
-        public ParentescoDomainModel GetParentescoById(int idParentesco)
+        public List<ParentescoDomainModel> GetParentescoById(int idParentesco)
         {
+            List<ParentescoDomainModel> parentescos = new List<ParentescoDomainModel>();
             ///creamos la lista de parentesco, se encuentra vacia
             ParentescoDomainModel parentesco = null;
             //consultamos  el parentesco de l persona
@@ -53,7 +54,8 @@ namespace AppDigitalCv.Business
             parentesco.IdParentesco = catparentesco.idParentesco;
             parentesco.StrDescripcion = catparentesco.strDescripcion;
             parentesco.StrObservacion = catparentesco.strObservacion;
-            return parentesco;
+            parentescos.Add(parentesco);
+            return parentescos;
         }
     }
 }

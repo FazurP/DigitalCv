@@ -153,7 +153,7 @@ namespace AppDigitalCv.Controllers
             if (emergenciaViewModel != null)
             {
                 IemergenciasBusiness.DeleteContactoEmergencia(emergenciaViewModel.IdEmergencia);
-                ViewBag.IdParentesco = new SelectList(IparentescoBusiness., "IdParentesco", "StrDescripcion");
+                ViewBag.IdParentesco = new SelectList(IparentescoBusiness.GetParentescoById(emergenciaViewModel.IdParentesco), "IdParentesco", "StrDescripcion");
             }
             return View("Create");
         }
