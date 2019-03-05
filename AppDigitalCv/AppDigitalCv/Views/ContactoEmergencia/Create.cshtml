@@ -124,9 +124,9 @@
             })
 
         };
-        var AddDelete = function (idFamiliar) {
+        var AddDelete = function (IdEmergencia) {
 
-            var url = "/DatosFamiliares/DeleteDatosFamiliaresId?idFamiliar=" + idFamiliar;
+            var url = "/ContactoEmergencia/DeleteDatosContactoEmergenciaId?idEmergencia=" + IdEmergencia;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
