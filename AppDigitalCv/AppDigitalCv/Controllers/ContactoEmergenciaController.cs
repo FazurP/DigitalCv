@@ -136,6 +136,7 @@ namespace AppDigitalCv.Controllers
             {
                 emergenciaDM = IemergenciasBusiness.GetEmergenciaById(idEmergencia);
             }
+            ViewBag.IdParentesco = new SelectList(IparentescoBusiness.GetParentescos(), "IdParentesco", "StrDescripcion");
             AutoMapper.Mapper.Map(emergenciaDM, emergenciaViewModel);
             return PartialView("_Eliminar", emergenciaViewModel);
         }
@@ -144,14 +145,14 @@ namespace AppDigitalCv.Controllers
         /// <summary>
         /// Este metodo se encarga de presentar los datos a la vista que se van a eliminar
         /// </summary>
-        /// <param name="parentescoVM">recibe un identificador del trabajador</param>
+        /// <param name="emergenciaViewModel">recibe un identificador del trabajador</param>
         /// <returns>regresa una vista con los datos eliminados</returns>
-        public ActionResult Eliminar(ParentescoVM parentescoVM)
+        public ActionResult Eliminar(EmergenciaViewModel emergenciaViewModel)
         {
             int _idPersonal = SessionPersister.AccountSession.IdPersonal;
-            if (parentescoVM != null)
+            if (emergenciaViewModel != null)
             {
-                IemergenciasBusiness.DeleteContactoEmergencia(parentescoVM.IdFamiliar);
+                IemergenciasBusiness.DeleteContactoEmergencia(emergenciaViewModel.IdEmergencia);
                 
             }
             return View("Create");
