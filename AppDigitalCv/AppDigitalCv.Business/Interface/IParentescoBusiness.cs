@@ -22,6 +22,6 @@ namespace AppDigitalCv.Business.Interface
         /// <returns>
         /// retorna  el parentesco del dato de contacto de emergencia de la persona
         /// </returns>
-        ParentescoDomainModel getParentescoById(int idParentesco);
+        ParentescoDomainModel GetParentescoById(int idParentesco);
     }
 }

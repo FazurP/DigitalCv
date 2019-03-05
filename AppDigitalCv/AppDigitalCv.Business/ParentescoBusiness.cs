@@ -43,7 +43,7 @@ namespace AppDigitalCv.Business
         /// <returns>
         /// retorna  el parentesco del dato de contacto de emergencia de la persona
         /// </returns>
-        public ParentescoDomainModel getParentescoById(int idParentesco)
+        public ParentescoDomainModel GetParentescoById(int idParentesco)
         {
             ///creamos la lista de parentesco, se encuentra vacia
             ParentescoDomainModel parentesco = null;
