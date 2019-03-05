@@ -104,6 +104,7 @@ namespace AppDigitalCv.Controllers
 
             }
             AutoMapper.Mapper.Map(emergenciaDM, emergenciaViewModel);
+            ViewBag.IdParentesco = new SelectList(IparentescoBusiness.GetParentescos(), "IdParentesco", "StrDescripcion");
             return PartialView("_Editar", emergenciaViewModel);
         }
 

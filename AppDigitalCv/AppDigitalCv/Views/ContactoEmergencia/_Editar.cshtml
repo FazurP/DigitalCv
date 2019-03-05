@@ -17,7 +17,13 @@
                             <tr>
                                 <td>Nombre:</td>
                                 <td>
-                                    @Html.TextBoxFor(model => model.StrNombre, new { @class = "form-control input-sm", @placeholder = "Nombre", size = "30", title = "Nombre del Familiar", id = "StrNombre" })
+                                    @Html.TextBoxFor(model => model.StrNombre, new { @class = "form-control input-sm", @placeholder = "Nombre", size = "30", title = "Nombre del Familiar",id = "StrNombre" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Parentesco:</td>
+                                <td>
+                                    Parentesco:@Html.DropDownList("IdParentesco", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdParentesco", title = "Selecciona el Parentesco" })
                                 </td>
                             </tr>
                             <tr>
@@ -53,24 +59,23 @@
     $(document).ready(function () {
         
         $("#btnSubmit").click(function () {
-
-           
-
-            var emergenciaViewModel = {}; //construimos el objeto
+         
+            var EmergenciaViewModel = {}; //construimos el objeto
             var idPersonal =  @SessionPersister.AccountSession.IdPersonal;
 
-            emergenciaViewModel.idPersonal = idPersonal;
-            emergenciaViewModel.StrNombre = $('#StrNombre').val();
-            emergenciaViewModel.StrDireccion = $('#StrDireccion').val();
-            emergenciaViewModel.StrTelefono = $('#StrTelefono').val();
-            emergenciaViewModel.IdEmergencia = $('#IdEmergencia').val();
-            emergenciaViewModel.IdParentesco = $('#IdParentesco').val();
-            //serialización del formaulario para la edicion de los datos
+            EmergenciaViewModel.idPersonal = idPersonal;
+            EmergenciaViewModel.StrNombre = $("#StrNombre").val();
+            EmergenciaViewModel.StrDireccion = $("#StrDireccion").val();
+            EmergenciaViewModel.StrTelefono = $("#StrTelefono").val();
+            EmergenciaViewModel.IdEmergencia = $("#IdEmergencia").val();
+            EmergenciaViewModel.IdParentesco = $("#IdParentesco").val();
+
+            //serialización del formulario para la edicion de los datos
             var myformdata = $("#myForm").serialize();
             $.ajax({
                 type: "POST",
                 url: "/ContactoEmergencia/Editar",
-                data: { parentescoVM: ParentescoVM},
+                data: { emergenciaViewModel: EmergenciaViewModel},
                 success: function () {
                     $("#myModal1").modal("hide");
                     window.location.href = "/DatosFamiliares/Create";
