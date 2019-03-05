@@ -14,5 +14,14 @@ namespace AppDigitalCv.Business.Interface
         /// </summary>
         /// <returns>retorna una lista de parentescos</returns>
         List<ParentescoDomainModel> GetParentescos();
+        
+        /// <summary>
+        /// Este metodo se encarga de consultar un aprentesco en particular
+        /// </summary>
+        /// <param name="idParentesco">recibe como parametro el identificador del parentesco</param>
+        /// <returns>
+        /// retorna  el parentesco del dato de contacto de emergencia de la persona
+        /// </returns>
+        ParentescoDomainModel getParentescoById(int idParentesco);
     }
 }
