@@ -434,6 +434,7 @@
     <Content Include="Views\ContactoEmergencia\Create.cshtml" />
     <Content Include="Views\ContactoEmergencia\_Editar.cshtml" />
     <Content Include="Views\ContactoEmergencia\_Eliminar.cshtml" />
+    <Content Include="Views\HabitosPersonales\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -454,6 +455,7 @@
     <Compile Include="Controllers\DocumentosController.cs" />
     <Compile Include="Controllers\EstadoCivilController.cs" />
     <Compile Include="Controllers\EstadoSaludController.cs" />
+    <Compile Include="Controllers\HabitosPersonalesController.cs" />
     <Compile Include="Controllers\HijosController.cs" />
     <Compile Include="Controllers\IdiomaDialectoController.cs" />
     <Compile Include="Controllers\PersonalAsociacionesController.cs" />

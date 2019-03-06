@@ -101,7 +101,19 @@
 
                 </ul>
             </li>
-
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-futbol-o"></i><span>Habitos Personales</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="@Url.IsLinkActive("Create","HabitosPersonales")">
+                        <a href="@Url.Action("Create","HabitosPersonales")"><i class="fa fa-soccer-ball-o"></i><span>Deportes</span> </a>
+                    </li>
+                </ul>
+            </li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa  fa-commenting-o"></i> <span>Idiomas y Dialectos</span>
