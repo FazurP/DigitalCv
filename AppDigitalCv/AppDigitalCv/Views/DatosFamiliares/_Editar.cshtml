@@ -17,7 +17,7 @@
                                 <tr>
                                     <td>Nombre:</td>
                                     <td>
-                                        @Html.TextBoxFor(model => model.StrNombre, new { @class = "form-control input-sm", @placeholder = "Nombre", size = "30", title = "Nombre del Familiar",id="Nombre" })
+                                        @Html.TextBoxFor(model => model.StrNombre, new { @class = "form-control input-sm", @placeholder = "Nombre", size = "30", title = "Nombre del Familiar",id="Nombre"})
                                     </td>
                                 </tr>
                                 <tr>
@@ -30,7 +30,7 @@
                                 <tr>
                                     <td>Ocupación:</td>
                                     <td>
-                                        @Html.TextBoxFor(model => model.StrOcupacion, new { @class = "form-control input-sm", @placeholder = "Ocupación", size = "30", title = "Ocupación",id= "Ocupacion"})
+                                        @Html.TextBoxFor(model => model.StrOcupacion, new { @class = "form-control input-sm", @placeholder = "Ocupación", size = "30", title = "Ocupación",id= "Ocupacion" })
                                     </td>
                                 </tr>
                                 <tr>
@@ -42,7 +42,7 @@
                                 <tr>
                                     <td>Edad:</td>
                                     <td>
-                                        @Html.TextBoxFor(model => model.IntEdad, new { @class = "form-control input-sm", @placeholder = "Edad", size = "30", title = "Edad",id="Edad" })
+                                        @Html.TextBoxFor(model => model.IntEdad, new { @class = "form-control input-sm", @placeholder = "Edad", size = "30", title = "Edad",id="Edad" ,type="Number" , min="1", max="100"})
                                     </td>
                                 </tr>
                                 <tr>

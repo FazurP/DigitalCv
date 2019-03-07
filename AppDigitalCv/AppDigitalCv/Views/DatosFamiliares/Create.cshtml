@@ -140,7 +140,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header" style="background-color:#3C8DBC;color:white;">
                                                     <a href="#" class="close" data-dismiss="modal">&times;</a>
-                                                    <h5 class="modal-title"><label style="font-size:medium;">Editar Datos de los familiares</label></h5>
+                                                    <h5 class="modal-title"><label style="font-size:medium;">Datos familiares</label></h5>
                                                 </div>
                                                 <div class="modal-body" id="myModalBodyDiv1">
                                                 </div>
@@ -174,7 +174,7 @@
         integrity="sha256-8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw="
         crossorigin="anonymous"></script>
     
-    @*<script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>*@
+    <script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
@@ -190,6 +190,18 @@
             })
 
         };
+        var AddDelete = function (idFamiliar) {
+
+            var url = "/DatosFamiliares/DeleteDatosFamiliaresId?idFamiliar=" + idFamiliar;
+
+            $("#myModalBodyDiv1").load(url, function () {
+                $("#myModal1").modal("show");
+
+            })
+
+        };
+
+
 
         $(document).ready(function () {
 

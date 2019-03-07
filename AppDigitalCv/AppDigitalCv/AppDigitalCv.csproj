@@ -246,6 +246,7 @@
     <Content Include="Imagenes\usertest-160x160.jpg" />
     <Content Include="Scripts\boostrap.dataTables.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -425,6 +426,12 @@
     <Content Include="Views\CompetenciaTi\Create.cshtml" />
     <Content Include="Views\CompetenciaTi\CompetenciasTI.cshtml" />
     <Content Include="Views\DatosFamiliares\_Editar.cshtml" />
+    <Content Include="Views\DatosFamiliares\_Eliminar.cshtml" />
+    <Content Include="Views\CompetenciaTi\_Eliminar.cshtml" />
+    <Content Include="Views\ContactoEmergencia\Create.cshtml" />
+    <Content Include="Views\ContactoEmergencia\_Editar.cshtml" />
+    <Content Include="Views\ContactoEmergencia\_Eliminar.cshtml" />
+    <Content Include="Views\HabitosPersonales\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -437,6 +444,7 @@
     <Compile Include="Controllers\AlergiasController.cs" />
     <Compile Include="Controllers\AsociacionController.cs" />
     <Compile Include="Controllers\CompetenciaTiController.cs" />
+    <Compile Include="Controllers\ContactoEmergenciaController.cs" />
     <Compile Include="Controllers\DatosContactoController.cs" />
     <Compile Include="Controllers\DatosFamiliaresController.cs" />
     <Compile Include="Controllers\DialectoIdiomaController.cs" />
@@ -444,6 +452,7 @@
     <Compile Include="Controllers\DocumentosController.cs" />
     <Compile Include="Controllers\EstadoCivilController.cs" />
     <Compile Include="Controllers\EstadoSaludController.cs" />
+    <Compile Include="Controllers\HabitosPersonalesController.cs" />
     <Compile Include="Controllers\HijosController.cs" />
     <Compile Include="Controllers\IdiomaDialectoController.cs" />
     <Compile Include="Controllers\PersonalAsociacionesController.cs" />
@@ -475,6 +484,7 @@
     <Compile Include="ViewModels\DireccionVM.cs" />
     <Compile Include="ViewModels\DocumentoPersonalVM.cs" />
     <Compile Include="ViewModels\DocumentosVM.cs" />
+    <Compile Include="ViewModels\EmergenciaViewModel.cs" />
     <Compile Include="ViewModels\EnfermedadVM.cs" />
     <Compile Include="ViewModels\EstadoCivilVM.cs" />
     <Compile Include="ViewModels\EstadoSaludVM.cs" />

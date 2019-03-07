@@ -1,0 +1,73 @@
+﻿@model AppDigitalCv.ViewModels.CompetenciasTiVM
+@using AppDigitalCv.Security
+<div>
+    <form id="myForm">
+        <div class="bs-container">
+            <div class="row">
+                <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                    <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+                </div>
+                <div class="col-md-7 col-xs-11 col-sm-5 col-lg-7">
+                    @Html.HiddenFor(model=> model.IdCompetenciaTIPersonal, new { @class = "form-control input-sm", id = "IdCompetenciaTIPersonal" })
+                    @Html.HiddenFor(model => model.IdCompetenciaTI, new { @class = "form-control input-sm", id = "IdCompetenciaTI" })
+                    <table class="table jtable">
+                        <tbody>
+                            <tr>
+                                <td>Nombre:</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.CompetenciaVM.StrDescripcion, new { @class = "form-control input-sm", @placeholder = "Descripción", size = "40", title = "Descripción", id = "StrDescripcion", disabled = true })
+                                </td>
+                            </tr>
+                            @*<tr>
+                                <td>Ocupación:</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.StrObservacion, new { @class = "form-control input-sm", @placeholder = "Ocupación", size = "30", title = "Ocupación", id = "Ocupacion", disabled = true })
+                                </td>
+                            </tr>*@
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <a href="#" id="btnSubmit" class="btn btn-sm btn-danger left"><span><i class="fa fa-edit"></i>Eliminar</span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+<script src="~/Content/js/plugins/jquery/jquery-3.3.1.min.js"></script>
+<script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        var valor = true;
+        $("#btnSubmit").click(function () {
+
+            var CompetenciasTiVM = {}; //construimos el objeto
+            var idPersonal =  @SessionPersister.AccountSession.IdPersonal;
+
+            CompetenciasTiVM.idPersonal = idPersonal;
+            CompetenciasTiVM.IdCompetenciaTIPersonal = $('#IdCompetenciaTIPersonal').val();
+            CompetenciasTiVM.IdCompetenciaTI = $('#IdCompetenciaTI').val();
+            //serialización del formaulario para la edicion de los datos
+            var myformdata = $("#myForm").serialize();
+            $.ajax({
+                type: "POST",
+                url: "/CompetenciaTi/EliminarDatosDeContactoDocente",
+                data: { competenciasTiVM: CompetenciasTiVM},
+                success: function () {
+                    $("#myModal1").modal("hide");
+                    window.location.href = "/CompetenciaTi/Create";
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(textStatus);
+                    console.log(textStatus);
+
+                }
+            });
+        });
+    });
+</script>
