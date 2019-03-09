@@ -47,6 +47,7 @@
     <Compile Include="CompetenciasTiDomainModel.cs" />
     <Compile Include="CompetenciaTiDomainModel.cs" />
     <Compile Include="DatosContactoDomainModel.cs" />
+    <Compile Include="DeporteDomainModel.cs" />
     <Compile Include="DialectoDomainModel.cs" />
     <Compile Include="DireccionDomainModel.cs" />
     <Compile Include="DocumentoPersonalDomainModel.cs" />

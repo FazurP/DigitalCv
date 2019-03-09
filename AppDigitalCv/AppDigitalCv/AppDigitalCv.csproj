@@ -435,6 +435,7 @@
     <Content Include="Views\ContactoEmergencia\_Editar.cshtml" />
     <Content Include="Views\ContactoEmergencia\_Eliminar.cshtml" />
     <Content Include="Views\HabitosPersonales\Create.cshtml" />
+    <Content Include="Views\HabitosPersonales\_Deportes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -483,6 +484,7 @@
     <Compile Include="ViewModels\CompetenciasTiVM.cs" />
     <Compile Include="ViewModels\CompetenciaTiVM.cs" />
     <Compile Include="ViewModels\DatosContactoVM.cs" />
+    <Compile Include="ViewModels\DeporteVM.cs" />
     <Compile Include="ViewModels\DialectoVM.cs" />
     <Compile Include="ViewModels\DireccionVM.cs" />
     <Compile Include="ViewModels\DocumentoPersonalVM.cs" />

@@ -45,6 +45,8 @@ namespace AppDigitalCv
             container.RegisterType<ICompetenciasTiBusiness, CompetenciasTiBusiness>();
             container.RegisterType<IParentescoBusiness, ParentescoBusiness>();
             container.RegisterType<IEmergenciaBusiness, EmergenciaBusiness>();
+            container.RegisterType<IDeporteBusiness, DeporteBusiness>();
+
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

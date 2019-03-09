@@ -50,6 +50,7 @@
     <Compile Include="CompetenciaBusiness.cs" />
     <Compile Include="CompetenciasTiBusiness.cs" />
     <Compile Include="DatosContactoBusiness.cs" />
+    <Compile Include="DeporteBusiness.cs" />
     <Compile Include="DialectoIdiomaBusiness.cs" />
     <Compile Include="DireccionBusiness.cs" />
     <Compile Include="DocumentosBusiness.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Interface\ICompetenciaBusiness.cs" />
     <Compile Include="Interface\ICompetenciasTiBusiness.cs" />
     <Compile Include="Interface\IDatosContacto.cs" />
+    <Compile Include="Interface\IDeporteBusiness.cs" />
     <Compile Include="Interface\IDialectoIdiomaBusiness.cs" />
     <Compile Include="Interface\IDocumentosBusiness.cs" />
     <Compile Include="Interface\IEmergenciaBusiness.cs" />
