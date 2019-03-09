@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fb9c4ffa6a47489cb7419d35168a9183" Name="Diagram1" ZoomLevel="33">
+      <Diagram DiagramId="fb9c4ffa6a47489cb7419d35168a9183" Name="Diagram1" ZoomLevel="100">
         <EntityTypeShape EntityType="bdGestionDocenteModel.catAlergias" Width="1.5" PointX="5.25" PointY="7.625" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catArea" Width="1.5" PointX="8.25" PointY="32.125" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catAsociaciones" Width="1.5" PointX="11.25" PointY="41.625" />
@@ -46,7 +46,7 @@
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblCompetenciasTIPersonal" Width="1.5" PointX="7.5" PointY="16.625" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblDatosLaboralesAdministrativos" Width="1.5" PointX="10.5" PointY="23" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblDatosLaboralesDocente" Width="1.5" PointX="7.5" PointY="22.5" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.tblDeportePersonal" Width="1.5" PointX="10.5" PointY="19.375" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblDeportePersonal" Width="2.25" PointX="10.5" PointY="19.375" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblDocumentacionPersonal" Width="1.5" PointX="13.5" PointY="16.5" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblEmergencia" Width="1.5" PointX="10.5" PointY="27.375" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblEnfermedadPersonal" Width="1.5" PointX="13.5" PointY="19.625" />

@@ -484,6 +484,7 @@
     <Compile Include="ViewModels\CompetenciasTiVM.cs" />
     <Compile Include="ViewModels\CompetenciaTiVM.cs" />
     <Compile Include="ViewModels\DatosContactoVM.cs" />
+    <Compile Include="ViewModels\DeportePersonalVM.cs" />
     <Compile Include="ViewModels\DeporteVM.cs" />
     <Compile Include="ViewModels\DialectoVM.cs" />
     <Compile Include="ViewModels\DireccionVM.cs" />
@@ -495,11 +496,13 @@
     <Compile Include="ViewModels\EstadoSaludVM.cs" />
     <Compile Include="ViewModels\EstadoVM.cs" />
     <Compile Include="ViewModels\FamiliaresVM.cs" />
+    <Compile Include="ViewModels\FrecuenciaVM.cs" />
     <Compile Include="ViewModels\IdiomaDialectoVM.cs" />
     <Compile Include="ViewModels\IdiomaVM.cs" />
     <Compile Include="ViewModels\MunicipioVM.cs" />
     <Compile Include="ViewModels\PaisVM.cs" />
     <Compile Include="ViewModels\ParentescoVM.cs" />
+    <Compile Include="ViewModels\PasatiempoVM.cs" />
     <Compile Include="ViewModels\PersonalAsociacionesVM.cs" />
     <Compile Include="ViewModels\PersonalVM.cs" />
     <Compile Include="ViewModels\Porcentajes.cs" />

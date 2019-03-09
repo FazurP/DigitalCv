@@ -48,6 +48,7 @@
     <Compile Include="CompetenciaTiDomainModel.cs" />
     <Compile Include="DatosContactoDomainModel.cs" />
     <Compile Include="DeporteDomainModel.cs" />
+    <Compile Include="DeportePersonalDomainModel.cs" />
     <Compile Include="DialectoDomainModel.cs" />
     <Compile Include="DireccionDomainModel.cs" />
     <Compile Include="DocumentoPersonalDomainModel.cs" />
@@ -59,11 +60,13 @@
     <Compile Include="EstadoSaludDomainModel.cs" />
     <Compile Include="FamiliarDomainModel.cs" />
     <Compile Include="FamiliaresDomainModel.cs" />
+    <Compile Include="FrecuenciaDomainModel.cs" />
     <Compile Include="IdiomaDialectoDomainModel.cs" />
     <Compile Include="IdiomaDomainModel.cs" />
     <Compile Include="MunicipioDomainModel.cs" />
     <Compile Include="PaisDomainModel.cs" />
     <Compile Include="ParentescoDomainModel.cs" />
+    <Compile Include="PasatiempoDomainModel.cs" />
     <Compile Include="PersonalAsociacionesDomainModel.cs" />
     <Compile Include="PersonalDomainModel.cs" />
     <Compile Include="PremiosDocenteDomainModel.cs" />
