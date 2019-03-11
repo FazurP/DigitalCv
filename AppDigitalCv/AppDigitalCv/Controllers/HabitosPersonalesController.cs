@@ -26,17 +26,21 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.IdDeportes = new SelectList(deporteBusiness.GetDeportes(), "IdDeporte", "StrDescripcion");
+            ViewBag.IdDeporte = new SelectList(deporteBusiness.GetDeportes(), "IdDeporte", "StrDescripcion");
             ViewBag.IdFrecuencia = new SelectList(frecuenciaBusiness.GetFrecuencia(),"IdFrecuencia", "StrDescripcion");
             return View();
         }
         [HttpPost]
-        public ActionResult Create([Bind(Include = "IdDeportes,IdFrecuencia,StrDescripcion")] DeportePersonalVM deportePersonalVM)
+        public ActionResult Create(DeportePersonalVM deportePersonalVM)
         {
+            int  identityPersonal = SessionPersister.AccountSession.IdPersonal;
             if (ModelState.IsValid)
             {
                 PasatiempoVM pasatiempoVM = new PasatiempoVM();
                 pasatiempoVM.StrDescripcion = deportePersonalVM.PasatiempoVM.StrDescripcion;
+                pasatiempoVM.IdPersonal = identityPersonal;
+                deportePersonalVM.IdPersonal = identityPersonal;
+                deportePersonalVM.FechaRegistro = DateTime.Now.ToShortDateString();
                 deportePersonalVM.PasatiempoVM = pasatiempoVM;
                 //IdeportePersonalBusiness.AddUpdateHabitosPersonales(deportePersonalVM);
                 return View("Create");
