@@ -2,6 +2,7 @@
 using AppDigitalCv.Domain;
 using AppDigitalCv.Models;
 using AppDigitalCv.Security;
+using AppDigitalCv.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,20 @@ namespace AppDigitalCv.Controllers
             ViewBag.IdFrecuencia = new SelectList(frecuenciaBusiness.GetFrecuencia(),"IdFrecuencia", "StrDescripcion");
             return View();
         }
+        [HttpPost]
+        public ActionResult Create([Bind(Include = "IdDeportes,IdFrecuencia,StrDescripcion")] DeportePersonalVM deportePersonalVM)
+        {
+            if (ModelState.IsValid)
+            {
+                PasatiempoVM pasatiempoVM = new PasatiempoVM();
+                pasatiempoVM.StrDescripcion = deportePersonalVM.PasatiempoVM.StrDescripcion;
+                deportePersonalVM.PasatiempoVM = pasatiempoVM;
+                //IdeportePersonalBusiness.AddUpdateHabitosPersonales(deportePersonalVM);
+                return View("Create");
+            }
+            return View();
+        }
+
 
 
         #region  Consultar los datos del estado de los habitos personales
