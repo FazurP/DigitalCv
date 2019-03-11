@@ -248,6 +248,7 @@
     <Content Include="Imagenes\reportes.png" />
     <Content Include="Imagenes\usertest-160x160.jpg" />
     <Content Include="Scripts\boostrap.dataTables.min.js" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

@@ -15,11 +15,13 @@ namespace AppDigitalCv.Business
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly DeportePersonalRepository deportePersonalRepository;
+        private readonly PasatiempoRepository pasatiempoRepository;
 
         public DeportePersonalBusiness(IUnitOfWork _unitOfWork)
         {
             unitOfWork = _unitOfWork;
             deportePersonalRepository = new DeportePersonalRepository(unitOfWork);
+            pasatiempoRepository = new PasatiempoRepository(unitOfWork);
         }
 
         /// <summary>
@@ -64,6 +66,68 @@ namespace AppDigitalCv.Business
             
             return deportesPersonales;
         }
+
+        /// <summary>
+        /// Este Metodo se encarga de agregar o actualizar un registro a la base de datos
+        /// </summary>
+        /// <param name="deportePersonalDM">recibe un objeto del tipo deportePersonalDM</param>
+        /// <returns>regresa un valor booleano</returns>
+        public bool AddUpdateHabitosPersonales(DeportePersonalDomainModel deportePersonalDM)
+        {
+            bool respuesta = false;
+            tblDeportePersonal tblDeportePersonal = null;
+
+            if (deportePersonalDM.IdDeportePersonal > 0)
+            {
+                //buscamos por id y lo almacenamos en nuestra entidad de entityframework
+                tblDeportePersonal = deportePersonalRepository.SingleOrDefault(p=> p.idDeportePersonal== deportePersonalDM.IdDeportePersonal);
+
+                if (tblDeportePersonal != null)
+                {
+                    tblDeportePersonal.idDeportePersonal = deportePersonalDM.IdDeportePersonal;
+                    tblDeportePersonal.idDeporte = deportePersonalDM.IdDeporte;
+                    tblDeportePersonal.idPersonal = deportePersonalDM.IdPersonal;
+                    tblDeportePersonal.dteFechaRegistro = DateTime.Parse(deportePersonalDM.FechaRegistro);
+                    tblDeportePersonal.idFrecuencia = deportePersonalDM.IdFrecuencia;
+
+                    tblPasatiempo tblPasatiempo = pasatiempoRepository.SingleOrDefault(p => p.idPersonal == deportePersonalDM.IdPersonal);
+                    if (tblPasatiempo != null)
+                    {
+                        tblPasatiempo.idPasatiempo = deportePersonalDM.PasatiempoDM.IdPasatiempo;
+                        tblPasatiempo.strDescripcion = deportePersonalDM.PasatiempoDM.StrDescripcion;
+                        //actualizamos el pasatiempo
+                        pasatiempoRepository.Update(tblPasatiempo);
+                    }
+                    
+                    //actualizamos los datos en la base de datos.
+                     deportePersonalRepository.Update(tblDeportePersonal);
+                     respuesta = true;
+
+                }
+            }
+            else
+            {
+
+                tblDeportePersonal = new tblDeportePersonal();
+                tblDeportePersonal.idDeporte = deportePersonalDM.IdDeporte;
+                tblDeportePersonal.idPersonal = deportePersonalDM.IdPersonal;
+                tblDeportePersonal.dteFechaRegistro = DateTime.Parse(deportePersonalDM.FechaRegistro);
+                tblDeportePersonal.idFrecuencia = deportePersonalDM.IdFrecuencia;
+
+                tblPasatiempo tblPasatiempo = new tblPasatiempo();
+                tblPasatiempo.strDescripcion = deportePersonalDM.PasatiempoDM.StrDescripcion;
+                
+                //Insertamos el pasatiempo
+                pasatiempoRepository.Insert(tblPasatiempo);
+
+                ///insertamos en la entidad
+                deportePersonalRepository.Insert(tblDeportePersonal);
+                respuesta = true;
+            }
+            return respuesta;
+        }
+
+
 
 
     }
