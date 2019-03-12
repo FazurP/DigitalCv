@@ -161,16 +161,17 @@ namespace AppDigitalCv.Controllers
         /// <returns>una vista con los datos solicitados</returns>
         public ActionResult DeleteHabitosPersonales(int idDeportePersonal)
         {
-            FamiliarDomainModel familiarDM = new FamiliarDomainModel();
-            ParentescoVM parentescoVM = new ParentescoVM();
+            
+            
+            DeportePersonalDomainModel deportePersonalDM = new DeportePersonalDomainModel();
+            DeportePersonalVM deportePersonalVM = new DeportePersonalVM();
 
             if (idDeportePersonal > 0)
             {
-                //familiarDM = ifamiliarBusiness.GetFamiliarByIdFamiliar(idFamiliar);
-
+                deportePersonalDM = IdeportePersonalBusiness.GetDeportesPersonalesByIdDeportePersonal(idDeportePersonal);
             }
-            AutoMapper.Mapper.Map(familiarDM, parentescoVM);
-            return PartialView("_Eliminar", parentescoVM);
+            AutoMapper.Mapper.Map(deportePersonalDM, deportePersonalVM);
+            return PartialView("_Eliminar", deportePersonalVM);
         }
 
         #region Eliminar Habitos deportivos  Docente
@@ -186,7 +187,7 @@ namespace AppDigitalCv.Controllers
 
             if (deportePersonalVM != null)
             {
-                //ifamiliarBusiness.DeleteFamiliar(parentescoVM.IdFamiliar);
+                IdeportePersonalBusiness.DeleteHabitoPersonal(deportePersonalVM.IdDeportePersonal);
             }
             return View("Create");
         }

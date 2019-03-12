@@ -173,7 +173,7 @@ namespace AppDigitalCv.Business
         /// </summary>
         /// <param name="idDeportePersonal">recive un identificador del tipo deportepersonalDomainModel</param>
         /// <returns>regresa una respuesta del tipo true o false</returns>
-        public bool DeleteFamiliar(int idDeportePersonal)
+        public bool DeleteHabitoPersonal(int idDeportePersonal)
         {
             bool respuesta = false;
             Expression<Func<tblDeportePersonal, bool>> predicado = p => p.idDeportePersonal.Equals(idDeportePersonal);
@@ -182,6 +182,22 @@ namespace AppDigitalCv.Business
             return respuesta;
         }
 
+
+        /// <summary>
+        /// Este metodo se encarga de consultar todas los deportes personales 
+        /// </summary>
+        /// <returns>regresa una lista de deportes personales del personal</returns>
+        public DeportePersonalDomainModel GetDeportesPersonalByIdDeportePersonal(int idDeportePersonal)
+        {
+            DeportePersonalDomainModel deportePersonal = new DeportePersonalDomainModel();
+            Expression<Func<tblDeportePersonal, bool>> predicado = p => p.idDeportePersonal.Equals(idDeportePersonal);
+            tblDeportePersonal tblDeporte= deportePersonalRepository.SingleOrDefault(predicado);
+            deportePersonal.IdDeporte = tblDeporte.idDeporte;
+            deportePersonal.IdFrecuencia = tblDeporte.idFrecuencia;
+            deportePersonal.IdDeportePersonal = tblDeporte.idDeportePersonal;
+            deportePersonal.FechaRegistro = tblDeporte.dteFechaRegistro.Value.ToShortDateString();
+            return deportePersonal;
+        }
 
 
     }

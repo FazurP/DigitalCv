@@ -27,5 +27,11 @@ namespace AppDigitalCv.Business.Interface
         /// <returns>regresa una lista de deportes personales del personal</returns>
         List<DeportePersonalDomainModel> GetDeportesPersonalesByIdDeportePersonal(int idDeportePersonal);
 
+        /// <summary>
+        /// Este metodo se encarga de eliminar fisicamente un  habito deportivo de la base de datos
+        /// </summary>
+        /// <param name="idDeportePersonal">recive un identificador del tipo deportepersonalDomainModel</param>
+        /// <returns>regresa una respuesta del tipo true o false</returns>
+        bool DeleteHabitoPersonal(int idDeportePersonal);
     }
 }
