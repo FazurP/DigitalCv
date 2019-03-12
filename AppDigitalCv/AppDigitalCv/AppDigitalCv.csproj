@@ -438,6 +438,7 @@
     <Content Include="Views\HabitosPersonales\Create.cshtml" />
     <Content Include="Views\HabitosPersonales\_Deportes.cshtml" />
     <Content Include="Views\HabitosPersonales\_Editar.cshtml" />
+    <Content Include="Views\HabitosPersonales\_Eliminar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
