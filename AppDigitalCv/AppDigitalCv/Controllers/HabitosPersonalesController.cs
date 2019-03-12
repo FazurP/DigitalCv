@@ -134,12 +134,14 @@ namespace AppDigitalCv.Controllers
         }
 
         [HttpPost]
-        public void EditarDatosFamiliar(ParentescoVM parentescoVM)
+        public void EditarHabitosPersonales(DeportePersonalVM deportePersonalVM)
         {
-            FamiliarDomainModel familiarDM = new FamiliarDomainModel();
+            
+            DeportePersonalDomainModel deportePersonalDM = new DeportePersonalDomainModel();
 
-            AutoMapper.Mapper.Map(parentescoVM, familiarDM);
-            if (parentescoVM.IdFamiliar > 0)
+            AutoMapper.Mapper.Map(deportePersonalVM, deportePersonalDM);
+
+            if (deportePersonalVM.IdDeportePersonal > 0)
             {
                 //ifamiliarBusiness.AddUpdateFamiliar(familiarDM);
             }
