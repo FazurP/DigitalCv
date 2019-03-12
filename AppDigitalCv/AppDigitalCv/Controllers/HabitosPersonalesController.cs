@@ -171,7 +171,24 @@ namespace AppDigitalCv.Controllers
             return PartialView("_Eliminar", parentescoVM);
         }
 
+        #region Eliminar Habitos deportivos  Docente
+        /// <summary>
+        /// Este metodo se encarga de presentar los datos a la vista que se van a eliminar
+        /// </summary>
+        /// <param name="deportePersonalVM">recibe un identificador del trabajador</param>
+        /// <returns>regresa una vista con los datos eliminados</returns>
+        public ActionResult EliminarDatosHabitosPersonales(DeportePersonalVM deportePersonalVM)
+        {
+            int _idPersonal = SessionPersister.AccountSession.IdPersonal;
 
+
+            if (deportePersonalVM != null)
+            {
+                //ifamiliarBusiness.DeleteFamiliar(parentescoVM.IdFamiliar);
+            }
+            return View("Create");
+        }
+        #endregion
 
 
     }
