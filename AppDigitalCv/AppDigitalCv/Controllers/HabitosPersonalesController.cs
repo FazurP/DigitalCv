@@ -122,16 +122,19 @@ namespace AppDigitalCv.Controllers
         public ActionResult AddEditHabitosPersonales(int idDeportePersonal)
         {
 
-            ParentescoVM parentescoVM = new ParentescoVM();
+            
+            DeportePersonalVM deportePersonalVM = new DeportePersonalVM();
             //creamos el objeto del dominio
-            FamiliarDomainModel familiarDM = new FamiliarDomainModel();
+            DeportePersonalDomainModel deportePersonalDM = new DeportePersonalDomainModel();
+
+            
             if (idDeportePersonal > 0)
             {
                 //familiarDM = ifamiliarBusiness.GetFamiliarByIdFamiliar(idFamiliar);
 
             }
-            AutoMapper.Mapper.Map(familiarDM, parentescoVM);
-            return PartialView("_Editar", parentescoVM);
+            AutoMapper.Mapper.Map(deportePersonalDM, deportePersonalVM);
+            return PartialView("_Editar", deportePersonalVM);
         }
 
         [HttpPost]
