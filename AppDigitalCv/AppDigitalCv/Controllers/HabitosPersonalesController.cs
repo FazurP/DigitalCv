@@ -121,7 +121,6 @@ namespace AppDigitalCv.Controllers
         //Edicion de Datos Familiares
         public ActionResult AddEditHabitosPersonales(int idDeportePersonal)
         {
-
             
             DeportePersonalVM deportePersonalVM = new DeportePersonalVM();
             //creamos el objeto del dominio
@@ -150,25 +149,20 @@ namespace AppDigitalCv.Controllers
             }
 
         }
-
-
-
-
+        
         /// <summary>
         /// Este Metodo se encarga de consultar los datos y mostrarlos en una vista parcial
         /// </summary>
         /// <param name="idFamiliar">el identificador  del familiar</param>
         /// <returns>una vista con los datos solicitados</returns>
         public ActionResult DeleteHabitosPersonales(int idDeportePersonal)
-        {
-            
-            
+        {            
             DeportePersonalDomainModel deportePersonalDM = new DeportePersonalDomainModel();
             DeportePersonalVM deportePersonalVM = new DeportePersonalVM();
 
             if (idDeportePersonal > 0)
             {
-                deportePersonalDM = IdeportePersonalBusiness.GetDeportesPersonalesByIdDeportePersonal(idDeportePersonal);
+                deportePersonalDM = IdeportePersonalBusiness.GetDeportesPersonalByIdDeportePersonal(idDeportePersonal);
             }
             AutoMapper.Mapper.Map(deportePersonalDM, deportePersonalVM);
             return PartialView("_Eliminar", deportePersonalVM);
