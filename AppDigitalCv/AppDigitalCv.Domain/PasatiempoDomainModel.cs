@@ -11,6 +11,6 @@ namespace AppDigitalCv.Domain
         public int IdPasatiempo { get; set; }
         public string StrDescripcion { get; set; }
         public string StrObservacion { get; set; }
-        public Nullable<int> IdPersonal { get; set; }
+        public int IdPersonal { get; set; }
     }
 }

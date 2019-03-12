@@ -116,7 +116,7 @@ namespace AppDigitalCv.Business
 
                 tblPasatiempo tblPasatiempo = new tblPasatiempo();
                 tblPasatiempo.strDescripcion = deportePersonalDM.PasatiempoDM.StrDescripcion;
-                
+                tblPasatiempo.idPersonal = deportePersonalDM.IdPersonal;
                 //Insertamos el pasatiempo
                 pasatiempoRepository.Insert(tblPasatiempo);
 

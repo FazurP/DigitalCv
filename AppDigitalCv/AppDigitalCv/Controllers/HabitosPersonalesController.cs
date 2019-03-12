@@ -43,6 +43,7 @@ namespace AppDigitalCv.Controllers
                 PasatiempoVM pasatiempoVM = new PasatiempoVM();
                 pasatiempoVM.StrDescripcion = deportePersonalVM.PasatiempoVM.StrDescripcion;
                 pasatiempoVM.IdPersonal = identityPersonal;
+
                 deportePersonalVM.IdPersonal = identityPersonal;
                 deportePersonalVM.FechaRegistro = DateTime.Now.ToShortDateString();
                 deportePersonalVM.PasatiempoVM = pasatiempoVM;
