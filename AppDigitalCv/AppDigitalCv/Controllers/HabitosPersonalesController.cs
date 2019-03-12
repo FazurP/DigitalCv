@@ -126,10 +126,9 @@ namespace AppDigitalCv.Controllers
             DeportePersonalVM deportePersonalVM = new DeportePersonalVM();
             //creamos el objeto del dominio
             DeportePersonalDomainModel deportePersonalDM = new DeportePersonalDomainModel();
-
-            
             if (idDeportePersonal > 0)
             {
+                //IdeportePersonalBusiness.GetDeportesPersonalesById();
                 //familiarDM = ifamiliarBusiness.GetFamiliarByIdFamiliar(idFamiliar);
 
             }
@@ -147,7 +146,7 @@ namespace AppDigitalCv.Controllers
 
             if (deportePersonalVM.IdDeportePersonal > 0)
             {
-                //ifamiliarBusiness.AddUpdateFamiliar(familiarDM);
+                IdeportePersonalBusiness.AddUpdateHabitosPersonales(deportePersonalDM);
             }
 
         }

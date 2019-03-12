@@ -128,6 +128,49 @@ namespace AppDigitalCv.Business
         }
 
 
+        /// <summary>
+        /// Este metodo se encarga de consultar todas los deportes personales 
+        /// </summary>
+        /// <returns>regresa una lista de deportes personales del personal</returns>
+        public List<DeportePersonalDomainModel> GetDeportesPersonalesByIdDeportePersonal(int idDeportePersonal)
+        {
+            List<DeportePersonalDomainModel> deportesPersonales = new List<DeportePersonalDomainModel>();
+            Expression<Func<tblDeportePersonal, bool>> predicado = p => p.idDeportePersonal.Equals(idDeportePersonal);
+
+            List<tblDeportePersonal> lista = deportePersonalRepository.GetAll(predicado).ToList<tblDeportePersonal>();
+            if (lista != null)
+            {
+                foreach (var c in lista)
+                {
+                    FrecuenciaDomainModel FrecuenciaDM = new FrecuenciaDomainModel();
+                    FrecuenciaDM.IdFrecuencia = c.catFrecuencia.idFrecuencia;
+                    FrecuenciaDM.StrDescripcion = c.catFrecuencia.strDescripcion;
+
+                    DeporteDomainModel DeporteDM = new DeporteDomainModel();
+                    DeporteDM.IdDeporte = c.catDeporte.idDeporte;
+                    DeporteDM.StrDescripcion = c.catDeporte.strDescripcion;
+
+                    DeportePersonalDomainModel deportePersonalDM = new DeportePersonalDomainModel();
+                    deportePersonalDM.IdDeportePersonal = c.idDeportePersonal;
+                    deportePersonalDM.IdPersonal = c.idPersonal;
+                    deportePersonalDM.IdDeporte = c.idDeporte;
+                    deportePersonalDM.FechaRegistro = c.dteFechaRegistro.Value.ToShortDateString();
+                    deportePersonalDM.IdFrecuencia = c.idFrecuencia;
+
+                    deportePersonalDM.FrecuenciaDM = FrecuenciaDM;
+                    deportePersonalDM.DeporteDM = DeporteDM;
+
+                    deportesPersonales.Add(deportePersonalDM);
+
+
+
+
+                }
+            }
+
+            return deportesPersonales;
+        }
+
 
 
     }
