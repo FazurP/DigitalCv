@@ -123,15 +123,21 @@ namespace AppDigitalCv.Controllers
         {
             
             DeportePersonalVM deportePersonalVM = new DeportePersonalVM();
+            DeporteVM deporteVM = new DeporteVM();
+
             //creamos el objeto del dominio
             DeportePersonalDomainModel deportePersonalDM = new DeportePersonalDomainModel();
             if (idDeportePersonal > 0)
             {
-                IdeportePersonalBusiness.GetDeportesPersonalesByIdDeportePersonal(idDeportePersonal);
+                deportePersonalDM  = IdeportePersonalBusiness.GetDeportesPersonalByIdDeportePersonal(idDeportePersonal);
                 
 
             }
+            AutoMapper.Mapper.Map(deportePersonalDM.DeporteDM, deporteVM);
             AutoMapper.Mapper.Map(deportePersonalDM, deportePersonalVM);
+            deportePersonalVM.DeporteVM = deporteVM;
+
+            ViewBag.IdFrecuencia = new SelectList(frecuenciaBusiness.GetFrecuencia(), "IdFrecuencia", "StrDescripcion");
             return PartialView("_Editar", deportePersonalVM);
         }
 

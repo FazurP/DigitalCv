@@ -192,10 +192,23 @@ namespace AppDigitalCv.Business
             DeportePersonalDomainModel deportePersonal = new DeportePersonalDomainModel();
             Expression<Func<tblDeportePersonal, bool>> predicado = p => p.idDeportePersonal.Equals(idDeportePersonal);
             tblDeportePersonal tblDeporte= deportePersonalRepository.SingleOrDefault(predicado);
+
             deportePersonal.IdDeporte = tblDeporte.idDeporte;
             deportePersonal.IdFrecuencia = tblDeporte.idFrecuencia;
             deportePersonal.IdDeportePersonal = tblDeporte.idDeportePersonal;
             deportePersonal.FechaRegistro = tblDeporte.dteFechaRegistro.Value.ToShortDateString();
+
+            catDeporte catDeporte = new catDeporte();
+            catDeporte.idDeporte = tblDeporte.idDeporte;
+            catDeporte.strDescripcion = tblDeporte.catDeporte.strDescripcion;
+
+            DeporteDomainModel deporteDM = new DeporteDomainModel();
+            deporteDM.IdDeporte = catDeporte.idDeporte;
+            deporteDM.StrDescripcion = catDeporte.strDescripcion;
+
+
+            deportePersonal.DeporteDM = deporteDM;
+
             return deportePersonal;
         }
 
