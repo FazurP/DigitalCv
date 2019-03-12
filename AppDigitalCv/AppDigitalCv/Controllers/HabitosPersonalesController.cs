@@ -16,6 +16,7 @@ namespace AppDigitalCv.Controllers
         IDeporteBusiness deporteBusiness;
         IFrecuenciaBusiness frecuenciaBusiness;
         IDeportePersonalBusiness IdeportePersonalBusiness;
+
         public HabitosPersonalesController(IDeporteBusiness _deporteBusiness, IFrecuenciaBusiness _frecuenciaBusiness, IDeportePersonalBusiness _deportePersonalBusiness)
         {
             deporteBusiness = _deporteBusiness;

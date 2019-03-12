@@ -437,6 +437,7 @@
     <Content Include="Views\ContactoEmergencia\_Eliminar.cshtml" />
     <Content Include="Views\HabitosPersonales\Create.cshtml" />
     <Content Include="Views\HabitosPersonales\_Deportes.cshtml" />
+    <Content Include="Views\HabitosPersonales\_Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
