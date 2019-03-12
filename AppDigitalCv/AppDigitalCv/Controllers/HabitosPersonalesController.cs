@@ -128,8 +128,8 @@ namespace AppDigitalCv.Controllers
             DeportePersonalDomainModel deportePersonalDM = new DeportePersonalDomainModel();
             if (idDeportePersonal > 0)
             {
-                //IdeportePersonalBusiness.GetDeportesPersonalesById();
-                //familiarDM = ifamiliarBusiness.GetFamiliarByIdFamiliar(idFamiliar);
+                IdeportePersonalBusiness.GetDeportesPersonalesByIdDeportePersonal(idDeportePersonal);
+                
 
             }
             AutoMapper.Mapper.Map(deportePersonalDM, deportePersonalVM);

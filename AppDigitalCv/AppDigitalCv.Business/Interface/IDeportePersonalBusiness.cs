@@ -20,5 +20,12 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="deportePersonalDM">recibe un objeto del tipo deportePersonalDM</param>
         /// <returns>regresa un valor booleano</returns>
         bool AddUpdateHabitosPersonales(DeportePersonalDomainModel deportePersonalDM);
+        
+        /// <summary>
+        /// Este metodo se encarga de consultar todas los deportes personales 
+        /// </summary>
+        /// <returns>regresa una lista de deportes personales del personal</returns>
+        List<DeportePersonalDomainModel> GetDeportesPersonalesByIdDeportePersonal(int idDeportePersonal);
+
     }
 }

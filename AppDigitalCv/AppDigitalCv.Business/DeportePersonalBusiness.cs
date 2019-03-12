@@ -161,10 +161,6 @@ namespace AppDigitalCv.Business
                     deportePersonalDM.DeporteDM = DeporteDM;
 
                     deportesPersonales.Add(deportePersonalDM);
-
-
-
-
                 }
             }
 
