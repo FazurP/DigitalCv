@@ -104,7 +104,13 @@ namespace AppDigitalCv.Controllers
         }
 
         #endregion
-
+        public JsonResult GetDatos()
+        {
+            int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
+            List<DeportePersonalDomainModel> deportes = new List<DeportePersonalDomainModel>();
+            deportes = IdeportePersonalBusiness.GetDeportesPersonalesById(IdentityPersonal).ToList();
+            return Json(deportes,JsonRequestBehavior.AllowGet);
+        }
 
     }
 }
