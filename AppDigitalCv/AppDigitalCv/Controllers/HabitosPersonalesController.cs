@@ -104,12 +104,33 @@ namespace AppDigitalCv.Controllers
         }
 
         #endregion
+
+        #region  Consulta que muestra de forma general en json los datos arrojados de una consulta basica
         public JsonResult GetDatos()
         {
             int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
             List<DeportePersonalDomainModel> deportes = new List<DeportePersonalDomainModel>();
             deportes = IdeportePersonalBusiness.GetDeportesPersonalesById(IdentityPersonal).ToList();
             return Json(deportes,JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+
+
+        //Edicion de Datos Familiares
+        public ActionResult AddEditHabitosPersonales(int idDeportePersonal)
+        {
+
+            ParentescoVM parentescoVM = new ParentescoVM();
+            //creamos el objeto del dominio
+            FamiliarDomainModel familiarDM = new FamiliarDomainModel();
+            if (idDeportePersonal > 0)
+            {
+                //familiarDM = ifamiliarBusiness.GetFamiliarByIdFamiliar(idFamiliar);
+
+            }
+            AutoMapper.Mapper.Map(familiarDM, parentescoVM);
+            return PartialView("_Editar", parentescoVM);
         }
 
     }
