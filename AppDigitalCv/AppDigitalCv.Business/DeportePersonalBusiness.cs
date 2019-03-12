@@ -168,6 +168,21 @@ namespace AppDigitalCv.Business
         }
 
 
+        /// <summary>
+        /// Este metodo se encarga de eliminar fisicamente un  habito deportivo de la base de datos
+        /// </summary>
+        /// <param name="idDeportePersonal">recive un identificador del tipo deportepersonalDomainModel</param>
+        /// <returns>regresa una respuesta del tipo true o false</returns>
+        public bool DeleteFamiliar(int idDeportePersonal)
+        {
+            bool respuesta = false;
+            Expression<Func<tblDeportePersonal, bool>> predicado = p => p.idDeportePersonal.Equals(idDeportePersonal);
+            deportePersonalRepository.Delete(predicado);
+            respuesta = true;
+            return respuesta;
+        }
+
+
 
     }
 }
