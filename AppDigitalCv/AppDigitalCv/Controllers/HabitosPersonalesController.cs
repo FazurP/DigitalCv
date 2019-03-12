@@ -152,6 +152,28 @@ namespace AppDigitalCv.Controllers
 
 
 
+        /// <summary>
+        /// Este Metodo se encarga de consultar los datos y mostrarlos en una vista parcial
+        /// </summary>
+        /// <param name="idFamiliar">el identificador  del familiar</param>
+        /// <returns>una vista con los datos solicitados</returns>
+        public ActionResult DeleteHabitosPersonales(int idDeportePersonal)
+        {
+            FamiliarDomainModel familiarDM = new FamiliarDomainModel();
+            ParentescoVM parentescoVM = new ParentescoVM();
+
+            if (idDeportePersonal > 0)
+            {
+                //familiarDM = ifamiliarBusiness.GetFamiliarByIdFamiliar(idFamiliar);
+
+            }
+            AutoMapper.Mapper.Map(familiarDM, parentescoVM);
+            return PartialView("_Eliminar", parentescoVM);
+        }
+
+
+
+
     }
 }
 
