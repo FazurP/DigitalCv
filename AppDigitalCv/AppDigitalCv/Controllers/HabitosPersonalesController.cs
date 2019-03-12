@@ -36,16 +36,30 @@ namespace AppDigitalCv.Controllers
             int  identityPersonal = SessionPersister.AccountSession.IdPersonal;
             if (ModelState.IsValid)
             {
+                DeportePersonalDomainModel deporteDM = new DeportePersonalDomainModel();
+                PasatiempoDomainModel pasatiempoDM = new PasatiempoDomainModel();
+
                 PasatiempoVM pasatiempoVM = new PasatiempoVM();
                 pasatiempoVM.StrDescripcion = deportePersonalVM.PasatiempoVM.StrDescripcion;
                 pasatiempoVM.IdPersonal = identityPersonal;
                 deportePersonalVM.IdPersonal = identityPersonal;
                 deportePersonalVM.FechaRegistro = DateTime.Now.ToShortDateString();
                 deportePersonalVM.PasatiempoVM = pasatiempoVM;
-                //IdeportePersonalBusiness.AddUpdateHabitosPersonales(deportePersonalVM);
+
+                AutoMapper.Mapper.Map(pasatiempoVM, pasatiempoDM);
+                AutoMapper.Mapper.Map(deportePersonalVM, deporteDM);
+                deporteDM.PasatiempoDM = pasatiempoDM;
+
+                IdeportePersonalBusiness.AddUpdateHabitosPersonales(deporteDM);
+                ViewBag.IdDeporte = new SelectList(deporteBusiness.GetDeportes(), "IdDeporte", "StrDescripcion");
+                ViewBag.IdFrecuencia = new SelectList(frecuenciaBusiness.GetFrecuencia(), "IdFrecuencia", "StrDescripcion");
+
                 return View("Create");
             }
-            return View();
+
+            ViewBag.IdDeporte = new SelectList(deporteBusiness.GetDeportes(), "IdDeporte", "StrDescripcion");
+            ViewBag.IdFrecuencia = new SelectList(frecuenciaBusiness.GetFrecuencia(), "IdFrecuencia", "StrDescripcion");
+            return View("Create");
         }
 
 
