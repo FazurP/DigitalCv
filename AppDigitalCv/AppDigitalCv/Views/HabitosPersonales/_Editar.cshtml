@@ -11,14 +11,9 @@
                 <div class="col-md-7 col-xs-11 col-sm-5 col-lg-7">
                     @Html.HiddenFor(model => model.IdPersonal)
                     @Html.HiddenFor(model => model.IdDeportePersonal)
-                    <div class="form-horizontal">
-                        <div class="form-group">
-                            @Html.TextBoxFor(model => model.FechaRegistro, new { @class = "form-control input-sm", @placeholder = "Fecha de Registro" })
-                        </div>
-                        <br />
-                        <br />
-                        <div class="form-group">
-                            @Html.TextBoxFor(model => model.PasatiempoVM.StrDescripcion, new { @class = "form-control input-sm", @placeholder = "Pasatiempo", required = "required" })
+                    <div class="form-inline">
+                        <div class="form-group-sm">
+                            Edición de Habitos personales
                         </div>
                         <br />
                         <div class="form-group">
@@ -29,14 +24,14 @@
                         <div class="form-group">
                             Deporte Prácticado: @Html.TextBoxFor(model => model.DeporteVM.StrDescripcion, new { @class = "form-control input-sm", @placeholder = "Deporte Favorito", disabled = "disabled" })
                         </div>
-                                                
+                        <a href="#" id="btnSubmit" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>                 
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"></div>
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                    <a href="#" id="btnSubmit" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
+                    
                 </div>
             </div>
 
@@ -48,7 +43,7 @@
 
 
 </div>
-
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
 <script>
     $(document).ready(function () {
@@ -58,7 +53,7 @@
             var myformdata = $("#myForm").serialize();
             $.ajax({
                 type: "POST",
-                url: "/HabitosPersonales/AddEditDatosContacto",
+                url: "/HabitosPersonales/EditarHabitosPersonales",
                 data: myformdata,
                 success: function () {
                     $("#myModal1").modal("hide");

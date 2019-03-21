@@ -191,7 +191,12 @@ namespace AppDigitalCv.Business
         {
             DeportePersonalDomainModel deportePersonal = new DeportePersonalDomainModel();
             Expression<Func<tblDeportePersonal, bool>> predicado = p => p.idDeportePersonal.Equals(idDeportePersonal);
+            
             tblDeportePersonal tblDeporte= deportePersonalRepository.SingleOrDefault(predicado);
+
+            //Expression<Func<tblPasatiempo, bool>> condicion = p => p.idPersonal.Equals(tblDeporte.idPersonal)&& p.idPasatiempo.Equals(tblDeporte.);
+
+            //tblPasatiempo tblPasatiempo = pasatiempoRepository.SingleOrDefault(condicion);
 
             deportePersonal.IdDeporte = tblDeporte.idDeporte;
             deportePersonal.IdFrecuencia = tblDeporte.idFrecuencia;
@@ -207,7 +212,13 @@ namespace AppDigitalCv.Business
             deporteDM.StrDescripcion = catDeporte.strDescripcion;
 
 
+            //PasatiempoDomainModel pasatiempoDM = new PasatiempoDomainModel();
+            //pasatiempoDM.IdPasatiempo = tblPasatiempo.idPasatiempo;
+            //pasatiempoDM.IdPersonal = tblPasatiempo.idPersonal.Value;
+            //pasatiempoDM.StrDescripcion = tblPasatiempo.strDescripcion;
+
             deportePersonal.DeporteDM = deporteDM;
+            //deportePersonal.PasatiempoDM = pasatiempoDM;
 
             return deportePersonal;
         }
