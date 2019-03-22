@@ -196,6 +196,7 @@ namespace AppDigitalCv.Controllers
             {
                 IdeportePersonalBusiness.DeleteHabitoPersonal(deportePersonalVM.IdDeportePersonal);
             }
+            ViewBag.IdFrecuencia = new SelectList(frecuenciaBusiness.GetFrecuencia(), "IdFrecuencia", "StrDescripcion");
             return View("Create");
         }
         #endregion
