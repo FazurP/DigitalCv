@@ -32,3 +32,32 @@
 </div>
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        var valor = true;
+        $("#btnSubmit").click(function () {
+
+            var DeportePersonalVM = {};
+            var idPersonal =  @SessionPersister.AccountSession.IdPersonal;
+            DeportePersonalVM.idPersonal = idPersonal;
+            DeportePersonalVM.IdDeportePersonal = $("#IdDeportePersonal").val();
+            //serialización del formaulario para la edicion de los datos
+            var myformdata = $("#myForm").serialize();
+            $.ajax({
+                type: "POST",
+                url: "/HabitosPersonales/EliminarDatosHabitosPersonales",
+                data: { deportePersonalVM: DeportePersonalVM},
+                success: function () {
+                    $("#myModal1").modal("hide");
+                    window.location.href = "/HabitosPersonales/Create";
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(textStatus);
+                    console.log(textStatus);
+
+                }
+            });
+        });
+    });
+</script>
