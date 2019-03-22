@@ -37,5 +37,21 @@ namespace AppDigitalCv.Business
             return parentesco;
         }
 
+        /// <summary>
+        /// Este metodo se encarga de agregar una entidad del tipo catdeporte
+        /// </summary>
+        /// <param name="deporteDM">entidad que se va agregar al modelo de base de datos</param>
+        /// <returns>un valor booleano</returns>
+        public bool AddUpdateCompetenciaTi(DeporteDomainModel deporteDM)
+        {
+            bool respuesta = false;
+            catDeporte catDeporte = new catDeporte();
+            catDeporte.strDescripcion = deporteDM.StrDescripcion;
+            catDeporte.strObservacion = deporteDM.StrObservacion;
+            deporteRepository.Insert(catDeporte);
+            respuesta = true;
+            return respuesta;
+        }
+
     }
 }

@@ -201,6 +201,14 @@ namespace AppDigitalCv.Controllers
         #endregion
 
 
+        #region Este metodo se encarga de agregar una actividad deportiva adicional 
+        [HttpGet]
+        public ActionResult Registrar()
+        {
+            return View();
+        }
+
+        #endregion
     }
 }
 

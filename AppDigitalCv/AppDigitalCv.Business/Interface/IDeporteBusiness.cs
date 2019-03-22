@@ -14,5 +14,12 @@ namespace AppDigitalCv.Business.Interface
         /// </summary>
         /// <returns>retorna una lista de deportes</returns>
         List<DeporteDomainModel> GetDeportes();
+        
+        /// <summary>
+        /// Este metodo se encarga de agregar una entidad del tipo catdeporte
+        /// </summary>
+        /// <param name="deporteDM">entidad que se va agregar al modelo de base de datos</param>
+        /// <returns>un valor booleano</returns>
+        bool AddUpdateCompetenciaTi(DeporteDomainModel deporteDM);
     }
 }
