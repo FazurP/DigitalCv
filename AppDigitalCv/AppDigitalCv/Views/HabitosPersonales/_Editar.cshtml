@@ -47,14 +47,27 @@
 <script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
 <script>
     $(document).ready(function () {
+        var frecuencia;
+
+        $("#IdFrecuencia").on("change", function () {
+
+            frecuencia = $('#IdFrecuencia').val();
+        });
+
+
         $("#btnSubmit").click(function () {
 
+            var DeportePersonalVM = {};
+            var idPersonal =  @SessionPersister.AccountSession.IdPersonal;
+            DeportePersonalVM.idPersonal = idPersonal;
+            DeportePersonalVM.IdDeportePersonal = $("#IdDeportePersonal").val();
+            DeportePersonalVM.IdFrecuencia = frecuencia;//$("#IdFrecuencia").val();
             //serialización del formaulario
             var myformdata = $("#myForm").serialize();
             $.ajax({
                 type: "POST",
                 url: "/HabitosPersonales/EditarHabitosPersonales",
-                data: myformdata,
+                data: { deportePersonalVM: DeportePersonalVM},
                 success: function () {
                     $("#myModal1").modal("hide");
                     window.location.href = "/HabitosPersonales/Create";
