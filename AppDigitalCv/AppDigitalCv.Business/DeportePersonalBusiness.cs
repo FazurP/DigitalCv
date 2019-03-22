@@ -85,20 +85,9 @@ namespace AppDigitalCv.Business
                 if (tblDeportePersonal != null)
                 {
                     tblDeportePersonal.idDeportePersonal = deportePersonalDM.IdDeportePersonal;
-                    //tblDeportePersonal.idDeporte = deportePersonalDM.IdDeporte;
                     tblDeportePersonal.idPersonal = deportePersonalDM.IdPersonal;
-                    tblDeportePersonal.dteFechaRegistro = DateTime.Parse(deportePersonalDM.FechaRegistro);
+                    tblDeportePersonal.dteFechaRegistro = DateTime.Now;
                     tblDeportePersonal.idFrecuencia = deportePersonalDM.IdFrecuencia;
-
-                    tblPasatiempo tblPasatiempo = pasatiempoRepository.SingleOrDefault(p => p.idPersonal == deportePersonalDM.IdPersonal);
-                    if (tblPasatiempo != null)
-                    {
-                        tblPasatiempo.idPasatiempo = deportePersonalDM.PasatiempoDM.IdPasatiempo;
-                        tblPasatiempo.strDescripcion = deportePersonalDM.PasatiempoDM.StrDescripcion;
-                        //actualizamos el pasatiempo
-                        pasatiempoRepository.Update(tblPasatiempo);
-                    }
-                    
                     //actualizamos los datos en la base de datos.
                      deportePersonalRepository.Update(tblDeportePersonal);
                      respuesta = true;
