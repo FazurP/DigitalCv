@@ -17,7 +17,7 @@
                         </div>
                         <br />
                         <div class="form-group">
-                            Frecuencia de Práctica: @Html.DropDownList("IdFrecuencia", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdFrecuencia", title = "Selecciona un Deporte" })
+                            Frecuencia de Práctica: @Html.DropDownList("IdFrecuencia", null, htmlAttributes: new { @class = "form-control input-sm", id = "Frecuencia", title = "Selecciona un Deporte" })
                         </div>
                         <br />
                         <br />
@@ -46,14 +46,18 @@
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
 <script>
+
+    //var frecuencia;
+
+   
+
     $(document).ready(function () {
-        var frecuencia;
+       
+        //$('#IdFrecuencia').on('change', function () {
 
-        $("#IdFrecuencia").on("change", function () {
-
-            frecuencia = $('#IdFrecuencia').val();
-        });
-
+        //    frecuencia = $('#IdFrecuencia').val();
+          
+        //});
 
         $("#btnSubmit").click(function () {
 
@@ -61,7 +65,7 @@
             var idPersonal =  @SessionPersister.AccountSession.IdPersonal;
             DeportePersonalVM.idPersonal = idPersonal;
             DeportePersonalVM.IdDeportePersonal = $("#IdDeportePersonal").val();
-            DeportePersonalVM.IdFrecuencia = frecuencia;//$("#IdFrecuencia").val();
+            DeportePersonalVM.IdFrecuencia =$("#Frecuencia").val();
             //serialización del formaulario
             var myformdata = $("#myForm").serialize();
             $.ajax({

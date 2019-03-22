@@ -85,7 +85,7 @@ namespace AppDigitalCv.Business
                 if (tblDeportePersonal != null)
                 {
                     tblDeportePersonal.idDeportePersonal = deportePersonalDM.IdDeportePersonal;
-                    tblDeportePersonal.idDeporte = deportePersonalDM.IdDeporte;
+                    //tblDeportePersonal.idDeporte = deportePersonalDM.IdDeporte;
                     tblDeportePersonal.idPersonal = deportePersonalDM.IdPersonal;
                     tblDeportePersonal.dteFechaRegistro = DateTime.Parse(deportePersonalDM.FechaRegistro);
                     tblDeportePersonal.idFrecuencia = deportePersonalDM.IdFrecuencia;
