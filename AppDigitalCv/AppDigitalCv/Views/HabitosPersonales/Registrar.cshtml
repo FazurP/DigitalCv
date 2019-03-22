@@ -4,6 +4,21 @@
     ViewBag.Title = "Registrar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "myForm", id = "myForm" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="bs-container content" style="min-height:960px;">
+        <section class="content-header">
+            <h1>
+                Actividades Deportivas
+                <small>(Agregar)</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
+                <li> <a href="#">Actividades</a></li>
+                <li class="active"> Deportes </li>
+            </ol>
+        </section>
+        <br />
+    </div>
+}
