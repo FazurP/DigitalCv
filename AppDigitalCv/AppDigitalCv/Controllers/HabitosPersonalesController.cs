@@ -172,6 +172,7 @@ namespace AppDigitalCv.Controllers
                 deportePersonalDM = IdeportePersonalBusiness.GetDeportesPersonalByIdDeportePersonal(idDeportePersonal);
             }
             AutoMapper.Mapper.Map(deportePersonalDM, deportePersonalVM);
+            ViewBag.IdFrecuencia = new SelectList(frecuenciaBusiness.GetFrecuencia(), "IdFrecuencia", "StrDescripcion");
             return PartialView("_Eliminar", deportePersonalVM);
         }
 
