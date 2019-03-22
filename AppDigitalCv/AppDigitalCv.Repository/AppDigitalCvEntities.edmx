@@ -386,9 +386,9 @@
         </EntityType>
         <EntityType Name="tblDeportePersonal">
           <Key>
-            <PropertyRef Name="idDeperotePersonal" />
+            <PropertyRef Name="idDeportePersonal" />
           </Key>
-          <Property Name="idDeperotePersonal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idDeportePersonal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idDeporte" Type="int" Nullable="false" />
           <Property Name="idPersonal" Type="int" Nullable="false" />
           <Property Name="dteFechaRegistro" Type="datetime" />
@@ -2195,9 +2195,8 @@
         </EntityType>
         <EntityType Name="tblDeportePersonal">
           <Key>
-            <PropertyRef Name="idDeperotePersonal" />
+            <PropertyRef Name="idDeportePersonal" />
           </Key>
-          <Property Name="idDeperotePersonal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idDeporte" Type="Int32" Nullable="false" />
           <Property Name="idPersonal" Type="Int32" Nullable="false" />
           <Property Name="dteFechaRegistro" Type="DateTime" Precision="3" />
@@ -2205,6 +2204,7 @@
           <NavigationProperty Name="catDeporte" Relationship="bdGestionDocenteModel.fk_deporte_deportePersonal" FromRole="tblDeportePersonal" ToRole="catDeporte" />
           <NavigationProperty Name="catFrecuencia" Relationship="bdGestionDocenteModel.fk_frecuencia_deportePersonal" FromRole="tblDeportePersonal" ToRole="catFrecuencia" />
           <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.fk_personal_deportePersonal" FromRole="tblDeportePersonal" ToRole="tblPersonal" />
+          <Property Name="idDeportePersonal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="tblDocumentacionPersonal">
           <Key>
@@ -3458,11 +3458,11 @@
           <EntitySetMapping Name="tblDeportePersonal">
             <EntityTypeMapping TypeName="bdGestionDocenteModel.tblDeportePersonal">
               <MappingFragment StoreEntitySet="tblDeportePersonal">
+                <ScalarProperty Name="idDeportePersonal" ColumnName="idDeportePersonal" />
                 <ScalarProperty Name="idFrecuencia" ColumnName="idFrecuencia" />
                 <ScalarProperty Name="dteFechaRegistro" ColumnName="dteFechaRegistro" />
                 <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
                 <ScalarProperty Name="idDeporte" ColumnName="idDeporte" />
-                <ScalarProperty Name="idDeperotePersonal" ColumnName="idDeperotePersonal" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

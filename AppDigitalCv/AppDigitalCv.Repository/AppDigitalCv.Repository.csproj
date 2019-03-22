@@ -107,6 +107,8 @@
     </Compile>
     <Compile Include="CompetenciasTiPersonalRepository.cs" />
     <Compile Include="CompetenciaTiRepository.cs" />
+    <Compile Include="DeportePersonalRepository.cs" />
+    <Compile Include="DeporteRepository.cs" />
     <Compile Include="DocumentosRepository.cs" />
     <Compile Include="catEdificio.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
@@ -187,6 +189,7 @@
     <Compile Include="EstadoRepository.cs" />
     <Compile Include="EstadoSaludRepository.cs" />
     <Compile Include="FamiliarRepository.cs" />
+    <Compile Include="FrecuenciaRepository.cs" />
     <Compile Include="IdiomaDialectoRepository.cs" />
     <Compile Include="IdiomasRepository.cs" />
     <Compile Include="Infraestructure\BaseRepository.cs" />
@@ -196,6 +199,7 @@
     <Compile Include="MunicipioRepository.cs" />
     <Compile Include="PaisRepository.cs" />
     <Compile Include="ParentescoRepository.cs" />
+    <Compile Include="PasatiempoRepository.cs" />
     <Compile Include="PersonalAsociacionesRepository.cs" />
     <Compile Include="PersonalRepository.cs" />
     <Compile Include="PremiosDocenteRepository.cs" />

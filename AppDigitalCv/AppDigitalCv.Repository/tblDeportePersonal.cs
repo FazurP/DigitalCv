@@ -14,11 +14,11 @@ namespace AppDigitalCv.Repository
     
     public partial class tblDeportePersonal
     {
-        public int idDeperotePersonal { get; set; }
         public int idDeporte { get; set; }
         public int idPersonal { get; set; }
         public Nullable<System.DateTime> dteFechaRegistro { get; set; }
         public int idFrecuencia { get; set; }
+        public int idDeportePersonal { get; set; }
     
         public virtual catDeporte catDeporte { get; set; }
         public virtual catFrecuencia catFrecuencia { get; set; }

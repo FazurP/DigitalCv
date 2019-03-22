@@ -96,6 +96,18 @@ namespace AppDigitalCv.Infraestructure
             //Emergencias
             CreateMap<EmergenciaViewModel, EmergenciaDomianModel>();
             CreateMap<EmergenciaDomianModel, EmergenciaViewModel>();
+            //Deporte
+            CreateMap<DeporteVM,DeporteDomainModel>();
+            CreateMap<DeporteDomainModel,DeporteVM>();
+            //frecuencia
+            CreateMap<FrecuenciaDomainModel, FrecuenciaVM>();
+            CreateMap<FrecuenciaVM, FrecuenciaDomainModel>();
+            //pasatiempo
+            CreateMap<PasatiempoVM,PasatiempoDomainModel>();
+            CreateMap<PasatiempoDomainModel, PasatiempoVM>();
+            //Deporte Personal
+            CreateMap<DeportePersonalDomainModel, DeportePersonalVM>();
+            CreateMap<DeportePersonalVM, DeportePersonalDomainModel>();
         }
 
 

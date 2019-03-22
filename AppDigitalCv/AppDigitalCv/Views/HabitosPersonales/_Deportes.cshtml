@@ -1,0 +1,9 @@
+﻿<option value=""> -- Seleccionar -- </option>
+@if (ViewBag.IdDeportes != null)
+{
+    foreach (var item in ViewBag.IdDeportes)
+    {
+        <option value="@item.Value"> @item.Text </option>
+    }
+}
+
