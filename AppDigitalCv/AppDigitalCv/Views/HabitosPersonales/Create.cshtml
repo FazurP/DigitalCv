@@ -129,6 +129,15 @@
 
         };
 
+        var AddEliminar = function (idDeportePersonal) {
+            var url = "/HabitosPersonales/DeleteHabitosPersonales?idDeportePersonal=" + idDeportePersonal;
+
+            $("#myModalBodyDiv1").load(url, function () {
+                $("#myModal1").modal("show");
+
+            });
+        };
+
         $(document).ready(function () {
             var oTable;
 
