@@ -190,8 +190,6 @@ namespace AppDigitalCv.Controllers
         public ActionResult EliminarDatosHabitosPersonales(DeportePersonalVM deportePersonalVM)
         {
             int _idPersonal = SessionPersister.AccountSession.IdPersonal;
-
-
             if (deportePersonalVM != null)
             {
                 IdeportePersonalBusiness.DeleteHabitoPersonal(deportePersonalVM.IdDeportePersonal);
