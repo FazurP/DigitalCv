@@ -16,30 +16,30 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="etNombre">Nombre:</label>
-                                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control input-sm", placeholder = "Tu Nombre"})
+                                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control input-sm", placeholder = "Tu Nombre",id="Nombre",required="",patern="^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$"})
                                 @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
 
                             </div>
                             <div class="form-group">
                                 <label for="etApellidoPaterno">Apellido Paterno:</label>
-                                @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control input-sm", placeholder = "Tu Apellido Paterno" })
+                               @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control input-sm", placeholder = "Tu Apellido Paterno",id="Paterno", required = "", patern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
                                 @Html.ValidationMessageFor(model => model.ApellidoPaterno, "", new { @class = "text-danger" })
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Apellido Materno:</label>
-                                @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control input-sm", placeholder = "Tu Apellido Materno" })
+                                @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control input-sm", placeholder = "Tu Apellido Materno",id="Materno", required = "", patern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
                                 @Html.ValidationMessageFor(model => model.ApellidoMaterno, "", new { @class = "text-danger" })
                             </div>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                         <label for="etcurp">Curp:</label>
-                                        @Html.TextBoxFor(model => model.Curp, new { @class = "form-control input-sm", placeholder = "Tu Curp" })
+                                        @Html.TextBoxFor(model => model.Curp, new { @class = "form-control input-sm", placeholder = "Tu Curp", id="Curp",required="" })
                                         @Html.ValidationMessageFor(model => model.Curp, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                         <label for="curpInputFile">Cargar Archivo del Curp:</label>
-                                        @Html.TextBoxFor(model => model.ArchivoCurp, new { @class = "btn btn-file btn-github", @type = "file" })
+                                        @Html.TextBoxFor(model => model.ArchivoCurp, new { @class = "form-control", @type = "file",required="", id="UCurp" })
                                         @Html.ValidationMessageFor(model => model.ArchivoCurp, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -51,12 +51,12 @@
                                 <div class="row">
                                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                         <label for="etrfc">Rfc:</label>
-                                        @Html.TextBoxFor(model => model.RFC, new { @class = "form-control input-sm", placeholder = "Tu Rfc" })
+                                        @Html.TextBoxFor(model => model.RFC, new { @class = "form-control input-sm", placeholder = "Tu Rfc",id="Rfc",required="" })
                                         @Html.ValidationMessageFor(model => model.RFC, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                         <label for="curpInputFile">Cargar Archivo del Rfc:</label>
-                                        @Html.TextBoxFor(model => model.ArchivoRfc, new { @class = "btn btn-file btn-github", @type = "file" })
+                                        @Html.TextBoxFor(model => model.ArchivoRfc, new { @class = "form-control", @type = "file",required="", id="URfc"})
                                         @Html.ValidationMessageFor(model => model.ArchivoRfc, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                                 <div class="row">
                                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                         <label for="ethomoclave">Homoclave:</label>
-                                        @Html.TextBoxFor(model => model.HomoClave, new { @class = "form-control input-sm", placeholder = "Homoclave" })
+                                        @Html.TextBoxFor(model => model.HomoClave, new { @class = "form-control input-sm", placeholder = "Homoclave",id="Homoclave",required="" })
                                         @Html.ValidationMessageFor(model => model.HomoClave, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -74,7 +74,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="etSemblanza">Semblanza:</label>
-                                @Html.TextAreaFor(model => model.strLogros, new { @class = "form-control", rows = 3 })
+                                @Html.TextAreaFor(model => model.strLogros, new { @class = "form-control", rows = 3 ,id="Semblanza",required="", pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ. ]+$"})
                                 @Html.ValidationMessageFor(model => model.strLogros, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                             <div>
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             </div>
-                            <input type="submit" value="Guardar" class="btn btn-success" />
+                            <input type="submit" value="Guardar" class="btn btn-success" id="Enviar"/>
                         </div>
                     </div>
                 </div>
@@ -148,10 +148,11 @@
 
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-
-
-
+<script src="~/Scripts/Validate/Personal/validar-personal-create.js"></script>
+<script src="~/Scripts/Validate/Personal/validate-personal-create-regExp.js"></script>
+<link href="~/Content/toastr.min.css" rel="stylesheet" />
 <script src="~/Scripts/toastr.min.js"></script>
+<script src="~/Scripts/Validate/Personal/validate-personal-upload.js"></script>
 <script>
     $(document).ready(function () {
         $("#fotoInputFile").change(function () {

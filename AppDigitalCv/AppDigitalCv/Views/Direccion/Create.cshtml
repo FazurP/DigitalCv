@@ -79,7 +79,7 @@
                             <div class="form-group">
                                 <label for="etCalle">Calle:</label>
                                 <br />
-                                @Html.TextBoxFor(model => model.StrCalle, new { @class = "form-control input-sm", placeholder = "Calle" })
+                                @Html.TextBoxFor(model => model.StrCalle, new { @class = "form-control input-sm", placeholder = "Calle", required = "", id = "Calle", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.# ]+$" })
                                 @Html.ValidationMessageFor(model => model.StrCalle, "", new { @class = "text-danger" })
                             </div>
 
@@ -87,7 +87,7 @@
                                 <div class="form-group">
                                     <label for="etNoInterior">No° Interior:</label>
                                     <br />
-                                    @Html.TextBoxFor(model => model.StrNumeroInterior, new { @class = "form-control input-sm", placeholder = "Numero Interior" })
+                                    @Html.TextBoxFor(model => model.StrNumeroInterior, new { @class = "form-control input-sm", placeholder = "Numero Interior", required = "", id = "NInterior", pattern = "^[0-9]+$" })
                                     @Html.ValidationMessageFor(model => model.StrNumeroInterior, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                                 <div class="form-group">
                                     <label for="etNoExterior">No° Exterior:</label>
                                     <br />
-                                    @Html.TextBoxFor(model => model.StrNumeroExterior, new { @class = "form-control input-sm", placeholder = "Numero Exterior" })
+                                    @Html.TextBoxFor(model => model.StrNumeroExterior, new { @class = "form-control input-sm", placeholder = "Numero Exterior",required="",id="NExterior",pattern="^[0-9]+$" })
                                     @Html.ValidationMessageFor(model => model.StrNumeroExterior, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -111,7 +111,7 @@
             <div>
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             </div>
-            <input type="submit" value="Guardar" class="btn btn-success" />
+            <input type="submit" value="Guardar" class="btn btn-success" id="Enviar" />
         </div>
 
     </div>
@@ -119,85 +119,88 @@
 }
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-
+<script src="~/Scripts/Validate/Direccion/validate-direccion-form.js"></script>
+<script src="~/Scripts/Validate/Direccion/validate-direccion-regExp.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+<link href="~/Content/toastr.min.css" rel="stylesheet" />
 <!-- JS para llenar el dropdowList de estados por medio de la seleccion de un pais -->
 <script>
-        $(document).ready(function () {
+    $(document).ready(function () {
 
-            $("#Pais").change(function () {
-                var paisId = $(this).val();
-                debugger;
-                $.ajax({
-                    type: "Post",
-                    url: "/Direccion/ConsultarEstadosByPais?idPais=" + paisId,
-                    contentType: "html",
-                    success: function (response) {
-                        $("#Estados").empty();
-                        $("#Estados").append(response);
-                    },
-                    error: function (error) {
+        $("#Pais").change(function () {
+            var paisId = $(this).val();
+            debugger;
+            $.ajax({
+                type: "Post",
+                url: "/Direccion/ConsultarEstadosByPais?idPais=" + paisId,
+                contentType: "html",
+                success: function (response) {
+                    $("#Estados").empty();
+                    $("#Estados").append(response);
+                },
+                error: function (error) {
 
-                    }
-                });
+                }
             });
-
-            // -- JS para la consulta de municipios por estado, se llena dropdownlist de municipios
-            $("#Estados").change(function () {
-                var estadoId = $(this).val();
-                debugger;
-                $.ajax({
-                    type: "Post",
-                    url: "/Direccion/ConsultarMunicipiosByEstado?idEstado=" + estadoId,
-                    contentType: "html",
-                    success: function (response) {
-                        $("#Municipios").empty();
-                        $("#Municipios").append(response);
-                    },
-                    error: function (error) {
-
-                    }
-                });
-            });
-
-            //-- JS para la consulta de colonias por municipio, se llena dropdownlist de colonias
-            $("#Municipios").change(function () {
-                var municipioId = $(this).val();
-                debugger;
-                $.ajax({
-                    type: "Post",
-                    url: "/Direccion/ConsultarColoniasByMunicipio?idMunicipio=" + municipioId,
-                    contentType: "html",
-                    success: function (response) {
-                        $("#IdColonia").empty();
-                        $("#IdColonia").append(response);
-                    },
-                    error: function (error) {
-
-                    }
-                });
-            });
-
-            // -- JS para la consulta de codigo postal por medio de una colonia
-            $("#IdColonia").change(function () {
-                var coloniaId = $(this).val();
-                debugger;
-                $.ajax({
-                    type: "Post",
-                    url: "/Direccion/ConsultarCodigoPostalByColonia?idColonia=" + coloniaId,
-                    contentType: "json",
-                    success: function (response) {
-
-                        $("#codigoPostal").prop('disabled', true);
-                        $("#codigoPostal").css("border-bottom-color", "#00A65A");
-                        $("#codigoPostal").val(response);
-
-                    },
-                    error: function (error) {
-
-                    }
-                });
-            });
-
         });
+
+        // -- JS para la consulta de municipios por estado, se llena dropdownlist de municipios
+        $("#Estados").change(function () {
+            var estadoId = $(this).val();
+            debugger;
+            $.ajax({
+                type: "Post",
+                url: "/Direccion/ConsultarMunicipiosByEstado?idEstado=" + estadoId,
+                contentType: "html",
+                success: function (response) {
+                    $("#Municipios").empty();
+                    $("#Municipios").append(response);
+                },
+                error: function (error) {
+
+                }
+            });
+        });
+
+        //-- JS para la consulta de colonias por municipio, se llena dropdownlist de colonias
+        $("#Municipios").change(function () {
+            var municipioId = $(this).val();
+            debugger;
+            $.ajax({
+                type: "Post",
+                url: "/Direccion/ConsultarColoniasByMunicipio?idMunicipio=" + municipioId,
+                contentType: "html",
+                success: function (response) {
+                    $("#IdColonia").empty();
+                    $("#IdColonia").append(response);
+                },
+                error: function (error) {
+
+                }
+            });
+        });
+
+        // -- JS para la consulta de codigo postal por medio de una colonia
+        $("#IdColonia").change(function () {
+            var coloniaId = $(this).val();
+            debugger;
+            $.ajax({
+                type: "Post",
+                url: "/Direccion/ConsultarCodigoPostalByColonia?idColonia=" + coloniaId,
+                contentType: "json",
+                success: function (response) {
+
+                    $("#codigoPostal").prop('disabled', true);
+                    $("#codigoPostal").css("border-bottom-color", "#00A65A");
+                    $("#codigoPostal").val(response);
+
+                },
+                error: function (error) {
+
+                }
+            });
+        });
+
+    });
 
 </script>

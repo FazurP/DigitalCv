@@ -36,8 +36,38 @@
                             </button>
                         </div>
                     </div>
+                    <div class="box-body">
+                        <div class="form-inline">
+                            <div class="form-group-lg">
+                                Nombre de la Actividad:@Html.EditorFor(model => model.StrDescripcion, new { @class = "form-control input-sm",title="Agrega una actividad deportiva" })
+                            </div>
+                            <br />
+                            <br />
+                            <div class="form-group-lg">
+                                Descripción:@Html.TextAreaFor(model => model.StrObservacion, new { @class = "form-control input-sm", rows = 3, title = "Descripción de la actividad deportiva" })
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            @*<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <div  class="box box-success">
+                    <div class="box-header with-border">
+                        <h5 class="box-title">
+                            <label class="text-success">
+                                <i class="text-success fa fa-dashboard"></i>
+                                Actividades Deportivas Registradas
+                            </label>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </h5>
+                    </div>
+                    <div class="box-body"></div>
+                </div>
+            </div>*@
         </div>
     </div>
 }

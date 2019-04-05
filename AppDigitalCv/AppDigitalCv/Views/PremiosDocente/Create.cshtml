@@ -30,7 +30,7 @@
                         <h5 class="box-title">
                             <label class="text-success">
                                 <i class="text-success fa fa-heartbeat"></i>
-                                   @SessionPersister.AccountSession.Nombre
+                                @SessionPersister.AccountSession.Nombre
                             </label>
                         </h5>
                     </div>
@@ -39,7 +39,7 @@
                             <div class="form-group">
                                 <label class="text-muted">Actividad Desempeñada:</label>
                                 @Html.TextBoxFor(model => model.StrActividadDesempeniada, new { @class = "form-control input-sm", placeholder = "Nombre de la Actividad Desempeñada",
-                               pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}", required = "required", title = "Ingresa la Actividad Desempeñada" })
+                               pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}", required = "required", title = "Ingresa la Actividad Desempeñada",id="Actividad" })
                                 <label class="text-muted">Periodo Inicial de Entrega:</label>
                                 @Html.TextBoxFor(model => model.DteFechaInicioPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Selecciona la Fecha de Inicio" })
                                 <label class="text-muted">Periodo Final de Entrega</label>
@@ -49,9 +49,9 @@
                             <br />
                             <div class="form-group">
                                 <label class="text-muted">Nombre del Premio:</label>
-                                @Html.TextBoxFor(model => model.StrNombrePremio, new { @class = "form-control input-sm", required = "required", placeholder = "Nombre del Premio", title = "Escribe el Nombre del Premio", pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" })
+                                @Html.TextBoxFor(model => model.StrNombrePremio, new { @class = "form-control input-sm", required = "required", placeholder = "Nombre del Premio", title = "Escribe el Nombre del Premio", pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}", id = "Premio" })
                                 <label class="text-muted">Nombre de la Institución:</label>
-                                @Html.TextBoxFor(model => model.StrInstitucion, new { @class = "form-control input-sm", placeholder = "Institución", title = "Escribe el Nombre de la Institución" })
+                                @Html.TextBoxFor(model => model.StrInstitucion, new { @class = "form-control input-sm", placeholder = "Institución", title = "Escribe el Nombre de la Institución", required = "", pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}", id = "Institucion" })
                                 <label class="text-muted">Año de Entrega del Premio:</label>
                                 @Html.TextBoxFor(model => model.DteFechaObtencionPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Fecha de Entrega del Premio" })
                             </div>
@@ -63,7 +63,7 @@
                             <div class="form-group">
                                 <br />
                                 <label class="text-muted" style="display:none;">Acción</label>
-                                <input type="submit" class="btn btn-block  btn-sm btn-success" value="Guardar" title="Guarda los datos" />
+                                <input type="submit" class="btn btn-block  btn-sm btn-success" value="Guardar" title="Guarda los datos" id="btnGuardar" />
                             </div>
                         </div>
                         <!--inicio y configuración de la tabla-->
@@ -75,7 +75,7 @@
                                     <table id="tblPremiosDocente" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
                                         <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
                                             <tr>
-                                                
+
                                                 <th>Actividad Desempeñada</th>
                                                 <th>Nombre de la Institución</th>
                                                 <th>Nombre del Premio</th>
@@ -115,6 +115,12 @@
 }
 
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+<link href="~/Content/toastr.min.css" rel="stylesheet" />
+<script src="~/Scripts/Validate/Premios/validate-premios-form.js"></script>
+<script src="~/Scripts/Validate/Premios/validate-premios-regExp.js"></script>
+<script src="~/Scripts/Validate/PremiosDocente/validate-premios-docente-upload.js"></script>
 @section Scripts
 {
     <script src="https://code.jquery.com/jquery-2.1.4.min.js" integrity="sha256-8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw=" crossorigin="anonymous"></script>
@@ -125,8 +131,8 @@
     <script>
 
         var AddDelete = function (IdDocumento) {
-            
-            var url = "/PremiosDocente/GetPremiosByIdPersonal?IdDocumento="+ IdDocumento;
+
+            var url = "/PremiosDocente/GetPremiosByIdPersonal?IdDocumento=" + IdDocumento;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -187,7 +193,7 @@
                         "dataSrc": "",
                         "columns": [
 
-                            
+
                             { "data": "StrActividadDesempeniada" },
 
                             { "data": "StrInstitucion" },

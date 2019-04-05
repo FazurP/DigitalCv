@@ -1,4 +1,4 @@
-﻿@model AppDigitalCv.ViewModels.EstadoCivilVM 
+﻿@model AppDigitalCv.ViewModels.EstadoCivilVM
 
 @{
     ViewBag.Title = "Create";
@@ -49,15 +49,15 @@
                                     @Html.ValidationMessageFor(model => model.IdEstadoCivil, "", new { @class = "text-danger" })
                                 </div>
 
-                                <div class="form-group ">
+                                <div class="form-group " id="radios">
                                     <label>Genero: </label>
                                     <br />
-                                    Femenino: @Html.RadioButtonFor(model => model.Genero, "Femenino")
-                                    Masculino: @Html.RadioButtonFor(model => model.Genero, "Masculino")
+                                    Femenino: @Html.RadioButtonFor(model => model.Genero, "Femenino", new { id = "sexo", required = "" })
+                                    Masculino: @Html.RadioButtonFor(model => model.Genero, "Masculino", new { id = "sexo", required = "" })
                                 </div>
                                 <div class="form-group">
-                                <input type="submit" value="Guardar" class="btn btn-warning" id="btnGuardar" />
-                            </div>
+                                    <input type="submit" value="Guardar" class="btn btn-warning" id="btnGuardar" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -73,3 +73,8 @@
         </div>
     </div>
 }
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/Validate/EstadoCivil/validate-estado-civil-radio.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+<link href="~/Content/toastr.min.css" rel="stylesheet" />

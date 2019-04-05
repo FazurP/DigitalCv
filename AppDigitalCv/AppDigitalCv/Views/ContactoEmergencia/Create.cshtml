@@ -45,20 +45,20 @@
                     <div class="box-body">
                         <div class="form-horizontal">
                             <div class="form-group-sm">
-                                Nombre del Familiar:@Html.TextBoxFor(model => model.StrNombre, htmlAttributes: new { @class = "form-control input-sm", title = "Ingresa el nombre del familiar", placeholder = "Ingresa el nombre del familiar completo",required="required" })
+                                Nombre del Familiar:@Html.TextBoxFor(model => model.StrNombre, htmlAttributes: new { @class = "form-control input-sm", title = "Ingresa el nombre del familiar", placeholder = "Ingresa el nombre del familiar completo", required = "required", id = "Nombre",pattern= "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
                             </div>
                             <div class="form-group-sm">
-                                Parentesco:@Html.DropDownList("IdParentesco",null,htmlAttributes: new { @class = "form-control input-sm", id = "IdParentesco", title = "Selecciona el Parentesco" })
+                                Parentesco:@Html.DropDownList("IdParentesco", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdParentesco", title = "Selecciona el Parentesco", required = "" })
                             </div>
                             <div class="form-group-sm">
-                                Telefono:@Html.TextBoxFor(model => model.StrTelefono, null, htmlAttributes: new { @class = "form-control input-sm", title = "Ingresa el telefono del familiar", placeholder = "Ingresa el telefono del familiar completo",type="Number" })
+                                Telefono:@Html.TextBoxFor(model => model.StrTelefono, null, htmlAttributes: new { @class = "form-control input-sm", title = "Ingresa el telefono del familiar", placeholder = "Ingresa el telefono del familiar completo", type = "Number", required = "", id = "Telefono" })
                             </div>
                             <div class="form-group-sm">
-                                Direccion Completa:@Html.TextBoxFor(model => model.StrDireccion, htmlAttributes: new { @class = "form-control input-sm", title = "Ingresa la dirección completa del familiar", placeholder = "Ingresa la dirección completa del familiar",required="required" })
+                                Direccion Completa:@Html.TextBoxFor(model => model.StrDireccion, htmlAttributes: new { @class = "form-control input-sm", title = "Ingresa la dirección completa del familiar", placeholder = "Ingresa la dirección completa del familiar", required = "required", id = "Direccion",pattern= "^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.# ]+$" })
                             </div>
                             <br />
                             <div class="form-group-sm">
-                                <input type="submit" value="Guardar" class="btn btn-sm btn-success" />
+                                <input type="submit" value="Guardar" class="btn btn-sm btn-success" id="btnGuardar" />
                             </div>
                             <br />
                             <div class="form-group-sm">
@@ -106,6 +106,12 @@
     </div>
 }
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<link href="~/Content/toastr.min.css" rel="stylesheet" />
+<script src="~/Scripts/toastr.min.js"></script>
+<script src="~/Scripts/Validate/ContactoEmergencia/valida-contacto-emergencia-regExp.js"></script>
+<script src="~/Scripts/Validate/ContactoEmergencia/validate-contacto-emergencia-form.js"></script>
+<script src="~/Scripts/Validate/Block/validate-block-click.js"></script>
 @section scripts
 {
     <script src="~/Scripts/jquery-2.1.4.min.js"></script>

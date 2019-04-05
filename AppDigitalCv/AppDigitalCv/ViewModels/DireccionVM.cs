@@ -11,12 +11,15 @@ namespace AppDigitalCv.ViewModels
     {
         public int IdDireccion { get; set; }
 
+        [RegularExpression("^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.# ]+$")]
         [Required(ErrorMessage = "La calle es requerida")]
         public string StrCalle { get; set; }
 
+        [RegularExpression("^[0-9]+$")]
         [Required(ErrorMessage = "El numero interior es requerido")]
         public string StrNumeroInterior { get; set; }
 
+        [RegularExpression("^[0-9]+$")]
         [Required(ErrorMessage = "El numero exterior es requerido")]
         public string StrNumeroExterior { get; set; }
 

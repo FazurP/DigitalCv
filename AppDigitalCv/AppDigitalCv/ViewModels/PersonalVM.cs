@@ -28,7 +28,7 @@ namespace AppDigitalCv.ViewModels
         [Required(ErrorMessage = "El RFC es requerido")]
         public string RFC { get; set; }
 
-        [RegularExpression("^[a-zA-Z]{4,4}[0-9]{6}[a-zA-Z]{6,6}[0-9]{2}$")]
+        //[RegularExpression("^[a-zA-Z]{4,4}[0-9]{6}[a-zA-Z]{6,6}[0-9]{2}$")]
         [Required(ErrorMessage = "El CURP es requerido")]
         public string Curp { get; set; }
 

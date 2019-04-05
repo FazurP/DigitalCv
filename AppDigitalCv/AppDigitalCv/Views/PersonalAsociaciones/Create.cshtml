@@ -49,21 +49,21 @@
                             </div>
                             <br />
                             <div class="form-group">
-                                Seleccione su Asociación:@Html.DropDownList("IdAsociacion", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdAsociacion", title = "Selecciona una Asociación" })
-                                Empresa a la que pertenece la asociación:@Html.DropDownList("TipoEmpresa", null, htmlAttributes: new { @class = "form-control input-sm", id = "TipoEmpresa", title = "Selecciona un Tipo de Empresa" })
+                                Seleccione su Asociación:@Html.DropDownList("IdAsociacion", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdAsociacion", title = "Selecciona una Asociación",required="" })
+                                Empresa a la que pertenece la asociación:@Html.DropDownList("TipoEmpresa", null, htmlAttributes: new { @class = "form-control input-sm", id = "TipoEmpresa", title = "Selecciona un Tipo de Empresa",required="" })
                             </div>
                             <br />
                             <div class="form-group">
                                 <br />
-                                Fecha de Ingreso:@Html.TextBoxFor(model => model.DteFecha, null, htmlAttributes: new { @class = "form-control input-sm", type = "date", title = "Selecciona una Fecha" })
+                                Fecha de Ingreso:@Html.TextBoxFor(model => model.DteFecha, null, htmlAttributes: new { @class = "form-control input-sm", type = "date", title = "Selecciona una Fecha",required="" })
                             </div>
                             <div class="form-group">
                                 <br />
-                                Describa el Cargo que Desempeñó:@Html.TextBoxFor(model => model.StrTipoParticipacion, null, htmlAttributes: new { @class = "form-control input-sm", title = "Escribe el tipo de Participación", placeholder = "Escribe tu Participación" })
+                                Describa el Cargo que Desempeñó:@Html.TextBoxFor(model => model.StrTipoParticipacion, null, htmlAttributes: new { @class = "form-control input-sm", title = "Escribe el tipo de Participación", placeholder = "Escribe tu Participación", id = "Participacion",required="",pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
                             </div>
                             <br />
                             <div class="form-group">
-                                <input type="submit" value="Guardar" class="btn btn-sm btn-success" />
+                                <input type="submit" value="Guardar" class="btn btn-sm btn-success" id="btnGuardar" />
 
                             </div>
                             <br />
@@ -110,10 +110,18 @@
             </div>
         </div>
     </div>
+
 }
 
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/toastr.min.js"></script>
+<link href="~/Content/toastr.min.css" rel="stylesheet" />
+<script src="~/Scripts/Validate/Asociaciones/validate-asociaciones-form.js"></script>
+<script src="~/Scripts/Validate/Asociaciones/validate-asociaciones-regExp.js"></script>
 
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+
 @section Scripts
 {
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"

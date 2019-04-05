@@ -44,7 +44,7 @@
                         <div role="form" class="form-inline">
                             <div class="form-group">
                                 <label>Padre:&nbsp;&nbsp;</label>
-                                @Html.TextBoxFor(model => model.PadreVM.StrNombre, new { @class = "form-control input-sm", placeholder = "Nombre Completo", required = "required", title = "Nombre completo de tu familiar" })
+                                @Html.TextBoxFor(model => model.PadreVM.StrNombre, new { @class = "form-control input-sm", placeholder = "Nombre Completo", required = "required", title = "Nombre completo de tu familiar", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$", id = "nombrepadre" })
                             </div>
                             <div class="form-group">
                                 <label></label>
@@ -52,11 +52,11 @@
                                 @Html.RadioButtonFor(model => model.PadreVM.BitVive, false, htmlAttributes: new { id = "rdbPadreFinado", name = "rdbPadreFinado" })<text>Finado</text>
                             </div>
                             <div class="form-group">
-                                @Html.TextBoxFor(model => model.PadreVM.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio Completo", required = "required", title = "Domicilio de tu familiar", size = "35", id = "domiciliopadre" })
+                                @Html.TextBoxFor(model => model.PadreVM.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio Completo", required = "required", title = "Domicilio de tu familiar", size = "35", id = "domiciliopadre", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.#/ ]+$" })
                             </div>
                             <div class="form-group">
                                 <label>Ocupación:</label>
-                                @Html.TextBoxFor(model => model.PadreVM.StrOcupacion, new { @class = "form-control input-sm", placeholder = "Ocupación", required = "required", title = "Datos de la Ocupación", size = "10", id = "ocupacionpadre" })
+                                @Html.TextBoxFor(model => model.PadreVM.StrOcupacion, new { @class = "form-control input-sm", placeholder = "Ocupación", required = "required", title = "Datos de la Ocupación", size = "10", id = "ocupacionpadre", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
                             </div>
                             <div class="form-group">
                                 <label>Edad:</label>
@@ -67,7 +67,7 @@
                         <div class="form-inline">
                             <div class="form-group">
                                 <label>Madre:&nbsp;</label>
-                                @Html.TextBoxFor(model => model.MadreVM.StrNombre, new { @class = "form-control input-sm", placeholder = "Nombre Completo", required = "required", title = "Nombre completo de tu familiar" })
+                                @Html.TextBoxFor(model => model.MadreVM.StrNombre, new { @class = "form-control input-sm", placeholder = "Nombre Completo", required = "required", title = "Nombre completo de tu familiar", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$", id = "nombremadre" })
 
                             </div>
                             <div class="form-group">
@@ -76,11 +76,11 @@
                                 @Html.RadioButtonFor(model => model.MadreVM.BitVive, false, htmlAttributes: new { id = "rdbMadreFinado", name = "rdbMadreFinado" })<text>Finado</text>
                             </div>
                             <div class="form-group">
-                                @Html.TextBoxFor(model => model.MadreVM.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio Completo", required = "required", title = "Domicilio de tu familiar", size = "35", id = "domiciliomadre" })
+                                @Html.TextBoxFor(model => model.MadreVM.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio Completo", required = "required", title = "Domicilio de tu familiar", size = "35", id = "domiciliomadre", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.#/ ]+$" })
                             </div>
                             <div class="form-group">
                                 <label>Ocupación:</label>
-                                @Html.TextBoxFor(model => model.MadreVM.StrOcupacion, new { @class = "form-control input-sm", placeholder = "Ocupación", required = "required", title = "Datos de la Ocupación", size = "10", id = "ocupacionmadre" })
+                                @Html.TextBoxFor(model => model.MadreVM.StrOcupacion, new { @class = "form-control input-sm", placeholder = "Ocupación", required = "required", title = "Datos de la Ocupación", size = "10", id = "ocupacionmadre", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
                             </div>
                             <div class="form-group">
                                 <label>Edad:</label>
@@ -91,7 +91,7 @@
                         <div class="form-inline">
                             <div class="form-group">
                                 <label>Pareja:&nbsp;</label>
-                                @Html.TextBoxFor(model => model.ParejaVM.StrNombre, new { @class = "form-control input-sm", placeholder = "Nombre de tu esposo(a)", required = "required", title = "Nombre completo de tu familiar" })
+                                @Html.TextBoxFor(model => model.ParejaVM.StrNombre, new { @class = "form-control input-sm", placeholder = "Nombre de tu esposo(a)", required = "required", title = "Nombre completo de tu familiar", id = "nombrepareja", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
                             </div>
                             <div class="form-group">
                                 <label></label>
@@ -99,11 +99,11 @@
                                 @Html.RadioButtonFor(model => model.ParejaVM.BitVive, false, htmlAttributes: new { id = "rdbParejaFinado", name = "rdbParejaFinado" })<text>Finado</text>
                             </div>
                             <div class="form-group">
-                                @Html.TextBoxFor(model => model.ParejaVM.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio Completo", required = "required", title = "Domicilio de tu familiar", size = "35", id = "domiciliopareja" })
+                                @Html.TextBoxFor(model => model.ParejaVM.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio Completo", required = "required", title = "Domicilio de tu familiar", size = "35", id = "domiciliopareja", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.#/ ]+$" })
                             </div>
                             <div class="form-group">
                                 <label>Ocupación:</label>
-                                @Html.TextBoxFor(model => model.ParejaVM.StrOcupacion, new { @class = "form-control input-sm", placeholder = "Ocupación", required = "required", title = "Datos de la Ocupación", size = "10", id = "ocupacionpareja" })
+                                @Html.TextBoxFor(model => model.ParejaVM.StrOcupacion, new { @class = "form-control input-sm", placeholder = "Ocupación", required = "required", title = "Datos de la Ocupación", size = "10", id = "ocupacionpareja", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
                             </div>
                             <div class="form-group">
                                 <label>Edad:</label>
@@ -112,7 +112,7 @@
                             <br />
                             <div class="form-group">
                                 <br />
-                                <input type="submit" class="btn btn-sm btn-success" value="Guardar" />
+                                <input type="submit" class="btn btn-sm btn-success" value="Guardar" id="btnGuardar" />
                             </div>
                             <br />
                             <div class="form-group">
@@ -168,12 +168,18 @@
 }
 
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<link href="~/Content/toastr.min.css" rel="stylesheet" />
+<script src="~/Scripts/toastr.min.js"></script>
+<script src="~/Scripts/Validate/DatosFamiliares/validate-datos-familiares-form.js"></script>
+<script src="~/Scripts/Validate/DatosFamiliares/validate-datos-familiares-regExp.js"></script>
+<script src="~/Scripts/Validate/Block/validate-block-click.js"></script>
 
 @section scripts{
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"
-        integrity="sha256-8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw="
-        crossorigin="anonymous"></script>
-    
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"
+            integrity="sha256-8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw="
+            crossorigin="anonymous"></script>
+
     <script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
@@ -208,7 +214,7 @@
             var oTable;
             BindDataTable();
 
-           function BindDataTable() {
+            function BindDataTable() {
 
                 if ($.fn.DataTable.isDataTable('#tblFamiliares')) {
                     oTable.Draw();
@@ -255,7 +261,7 @@
                         },
                         "dataSrc": " ",
                         "columns": [
-                            
+
                             { "data": "StrNombre" },
                             { "data": "StrOcupacion" },
                             { "data": "StrDomicilio" },

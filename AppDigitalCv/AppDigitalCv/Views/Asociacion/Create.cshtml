@@ -41,16 +41,16 @@
                             </button>
                         </div>
                     </div>
-                    <div  class="box-body">
+                    <div class="box-body">
                         <div class="form-horizontal">
                             <div class="form-group-sm">
                                 Selecciona el tipo de Empresa:@Html.DropDownList("IdTipoEmpresa", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdTipoEmpresa", title = "Selecciona el tipo de Empresa" })
                             </div>
                             <div class="form-group-sm">
-                                Nombre de la Asociación:@Html.TextBoxFor(model=>model.StrDescripcion,null, htmlAttributes: new { @class = "form-control input-sm", title = "Ingresa el nombre de la asociación",placeholder="Ingresa Nombre de la Asociación" })
+                                Nombre de la Asociación:@Html.TextBoxFor(model => model.StrDescripcion, null, htmlAttributes: new { @class = "form-control input-sm", title = "Ingresa el nombre de la asociación", placeholder = "Ingresa Nombre de la Asociación", id = "Asociacion" })
                             </div>
                             <div class="form-group-sm">
-                                Descripción:@Html.TextAreaFor(model=>model.StrObservacion,htmlAttributes:new {@class="form-control input-sm", rows = 3,title="Ingresa una breve descripción",placeholder="Ingresa una breve descripción" })
+                                Descripción:@Html.TextAreaFor(model => model.StrObservacion, htmlAttributes: new { @class = "form-control input-sm", rows = 3, title = "Ingresa una breve descripción", placeholder = "Ingresa una breve descripción", id = "Descripcion" })
                             </div>
                             <div class="form-group-sm">
                                 <br />
@@ -66,4 +66,8 @@
         </div>
 
     </div>
+
+
 }
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/Validate/Block/validate-block-click.js"></script>
