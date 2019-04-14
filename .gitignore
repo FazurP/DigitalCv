@@ -8,6 +8,8 @@
 *.user
 *.userosscache
 *.sln.docstates
+/AppDigitalCv/AppDigitalCv/Web.config
+/AppDigitalCv/AppDigitalCv.Repository/App.Config
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

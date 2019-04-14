@@ -69,6 +69,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Runtime.Serialization" />
@@ -395,6 +396,7 @@
     <Content Include="Scripts\Validate\PremiosDocente\validate-premios-docente-upload.js" />
     <Content Include="Scripts\Validate\Premios\validate-premios-form.js" />
     <Content Include="Scripts\Validate\Premios\validate-premios-regExp.js" />
+    <Content Include="Scripts\Validate\ScriptTest.js" />
     <Content Include="Scripts\Validate\validate-datos-contacto-email.js" />
     <Content Include="Views\index.html" />
     <Content Include="Web.config" />
