@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountBusiness.cs" />
+    <Compile Include="AlergiasBusiness.cs" />
     <Compile Include="AsosiacionesBusiness.cs" />
     <Compile Include="CompetenciaBusiness.cs" />
     <Compile Include="CompetenciasTiBusiness.cs" />

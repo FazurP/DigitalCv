@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppDigitalCv.Security;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,20 @@ namespace AppDigitalCv.Controllers
         {
             
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            if (SessionPersister.AccountSession != null)
+            {
+                return View();
+            }
+            else
+            {
+                return View("~/Views/Seguridad/Login.cshtml");
+            }
+            
         }
     }
 }

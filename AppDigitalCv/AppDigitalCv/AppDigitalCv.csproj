@@ -467,6 +467,7 @@
     <Content Include="Views\HabitosPersonales\_Editar.cshtml" />
     <Content Include="Views\HabitosPersonales\_Eliminar.cshtml" />
     <Content Include="Views\HabitosPersonales\Registrar.cshtml" />
+    <Content Include="Views\Alergias\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -510,6 +511,7 @@
     <Compile Include="Security\CustomPrincipal.cs" />
     <Compile Include="Security\SessionPersister.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\AlergiasVM.cs" />
     <Compile Include="ViewModels\AsociacionesVM.cs" />
     <Compile Include="ViewModels\ColoniaVM.cs" />
     <Compile Include="ViewModels\CompetenciasTiVM.cs" />
@@ -670,7 +672,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Usuarios\" />
-    <Folder Include="Views\Alergias\" />
     <Folder Include="Views\CerrarSesion\" />
   </ItemGroup>
   <ItemGroup>

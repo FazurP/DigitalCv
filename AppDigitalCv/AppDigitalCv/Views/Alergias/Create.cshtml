@@ -1,0 +1,59 @@
+﻿@using AppDigitalCv.Security
+@model  AppDigitalCv.ViewModels.AlergiasVM
+@{
+    ViewBag.Title = "Registrar una Alergia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "myForm", id = "myForm" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="bs-container content" style="min-height:960px;">
+        <section class="content-header">
+            <h1>
+                Alergias
+                <small>(Agregar)</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
+                <li> <a href="#">Agregar</a></li>
+                <li class="active">Alergias</li>
+            </ol>
+        </section>
+        <br />
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h5 class="box-title">
+                            <label class="text-success">
+                                <i class="text-success fa fa-heartbeat"></i>
+                                @SessionPersister.AccountSession.Nombre
+                            </label>
+                        </h5>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                Padece Alguna(s) Alergia(s)?
+                                <input type="radio" id="rdbSi" name="seleccion" value="SI " class="custom-control-input"><label for="si">SI</label>
+                                <input type="radio" id="rdbNo" name="seleccion" value="NO" class="custom-control-input" checked><label for="no">NO</label>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+
+
