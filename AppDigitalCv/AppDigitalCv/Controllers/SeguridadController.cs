@@ -65,5 +65,22 @@ namespace AppDigitalCv.Controllers
             }
             return View();
         }
+
+        [HttpPost]
+        public void Cerrar()
+        {
+            try
+            {
+                SessionPersister.AccountSession = null;
+               
+            }
+            catch (Exception ex)
+            {
+                string me = ex.Message;
+ 
+            }
+           
+        }
+
     }
 }

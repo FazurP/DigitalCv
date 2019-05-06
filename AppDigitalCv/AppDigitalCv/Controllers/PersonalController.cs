@@ -21,17 +21,24 @@ namespace AppDigitalCv.Controllers
 
         public PersonalController(IPersonalBusiness _PersonalBussiness)
         {
-            IPersonalBussines = _PersonalBussiness;
-        }
 
+                IPersonalBussines = _PersonalBussiness;    
+        }
         
         #region Crear 
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            if (SessionPersister.AccountSession != null)
+            {
+                return View();
+            }
+            else {
+                return View("~/Views/Seguridad/Login.cshtml");
+            }
+           
         }
-
+    
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Nombre,ApellidoPaterno,ApellidoMaterno,RFC,Curp,HomoClave,ArchivoRfc,ArchivoCurp,ImageFile,strLogros")] PersonalVM personalVM)
@@ -95,18 +102,26 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult InfoPersonal()
         {
-            ///este es el id del personal
-            int idPersonal = SessionPersister.AccountSession.IdPersonal; 
-            //creamos el objeto que representara los datos en la vista
-            PersonalVM personalVM = new PersonalVM();
-            //obtenemos el objeto del modelo de dominio
-            PersonalDomainModel personaDominio = IPersonalBussines.GetPersonalById(idPersonal);
-            ///mapaeamos el objeto con los valores del modelo de dominio
-            AutoMapper.Mapper.Map(personaDominio, personalVM);
-            ViewBag.NombreCompleto = personalVM.Nombre + " " + personalVM.ApellidoPaterno + " " + personalVM.ApellidoMaterno;
-            //consultamos la fecha desde el servidor
-            ViewBag.FechaServidor = this.ConsultarHorarioServidor();
-            return View(personalVM);
+            if (SessionPersister.AccountSession != null)
+            {
+                ///este es el id del personal
+                int idPersonal = SessionPersister.AccountSession.IdPersonal;
+                //creamos el objeto que representara los datos en la vista
+                PersonalVM personalVM = new PersonalVM();
+                //obtenemos el objeto del modelo de dominio
+                PersonalDomainModel personaDominio = IPersonalBussines.GetPersonalById(idPersonal);
+                ///mapaeamos el objeto con los valores del modelo de dominio
+                AutoMapper.Mapper.Map(personaDominio, personalVM);
+                ViewBag.NombreCompleto = personalVM.Nombre + " " + personalVM.ApellidoPaterno + " " + personalVM.ApellidoMaterno;
+                //consultamos la fecha desde el servidor
+                ViewBag.FechaServidor = this.ConsultarHorarioServidor();
+                return View(personalVM);
+            }
+            else
+            {
+                return View("~/Views/Seguridad/Login.cshtml");
+            }
+            
         }
         #endregion
 
@@ -140,19 +155,29 @@ namespace AppDigitalCv.Controllers
         }
 
         [HttpGet]
-        public ActionResult EditarDatosPersonales()
+        public ActionResult Editar()
         {
-            int idPersonal=SessionPersister.AccountSession.IdPersonal;
-            PersonalDomainModel personalDM = IPersonalBussines.GetPersonalById(idPersonal);
-            PersonalVM personalVM = new PersonalVM();
-            AutoMapper.Mapper.Map(personalDM, personalVM);///hacemos el mapeado de la entidad
 
-            var personalDocumentos= ConsultarDcocumentosPersonal(); ///mandamos llamar los documentos del personal
-            ViewBag.Identificador = personalDocumentos.IdPersonal;
-            ViewBag.Curp = personalDocumentos.UrlCurp;
-            ViewBag.Rfc = personalDocumentos.UrlRfc;
+            if (SessionPersister.AccountSession != null)
+            {
 
-            return View("Editar"); ///"_Editar",personalVM
+                int idPersonal = SessionPersister.AccountSession.IdPersonal;
+                PersonalDomainModel personalDM = IPersonalBussines.GetPersonalById(idPersonal);
+                PersonalVM personalVM = new PersonalVM();
+                AutoMapper.Mapper.Map(personalDM, personalVM);///hacemos el mapeado de la entidad
+
+                var personalDocumentos = ConsultarDcocumentosPersonal(); ///mandamos llamar los documentos del personal
+                ViewBag.Identificador = personalDocumentos.IdPersonal;
+                ViewBag.Curp = personalDocumentos.UrlCurp;
+                ViewBag.Rfc = personalDocumentos.UrlRfc;
+
+                return View("Editar"); ///"_Editar",personalVM
+            }
+            else
+            {
+                return View("~/Views/Seguridad/Login.cshtml");
+            }
+
         }
 
        
@@ -184,7 +209,7 @@ namespace AppDigitalCv.Controllers
 
 
         #endregion
-
+          
         #region Eliminar Documentos del Personal
 
         public JsonResult EliminarCurp(int idPersonal)

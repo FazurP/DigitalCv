@@ -24,8 +24,16 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.IdParentesco = new SelectList(IparentescoBusiness.GetParentescos(), "IdParentesco", "StrDescripcion");
-            return View();
+            if (SessionPersister.AccountSession != null)
+            {
+                ViewBag.IdParentesco = new SelectList(IparentescoBusiness.GetParentescos(), "IdParentesco", "StrDescripcion");
+                return View();
+            }
+            else
+            {
+                return View("~/Views/Seguridad/Login.cshtml");
+            }
+            
         }
 
         [HttpPost]

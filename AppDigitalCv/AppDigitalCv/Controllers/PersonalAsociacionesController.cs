@@ -33,9 +33,17 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.IdAsociacion = new SelectList(IasociacionesBusiness.GetAsociaciones(), "IdAsociacion", "StrDescripcion");
-            ViewBag.TipoEmpresa = new SelectList("");
-            return View();
+            if (SessionPersister.AccountSession != null)
+            {
+                ViewBag.IdAsociacion = new SelectList(IasociacionesBusiness.GetAsociaciones(), "IdAsociacion", "StrDescripcion");
+                ViewBag.TipoEmpresa = new SelectList("");
+                return View();
+            }
+            else
+            {
+                return View("~/Views/Seguridad/Login.cshtml");
+            }
+           
         }
 
         [HttpPost]

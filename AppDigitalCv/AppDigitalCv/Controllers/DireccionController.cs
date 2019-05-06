@@ -1,5 +1,6 @@
 ﻿using AppDigitalCv.Business.Interface;
 using AppDigitalCv.Domain;
+using AppDigitalCv.Security;
 using AppDigitalCv.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,13 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult EditarDatosDireccion()
         {
-            return View();
+            if (SessionPersister.AccountSession != null)
+            {
+                return View();
+            }else
+            {
+                return View("~/Views/Seguridad/Login.cshtml");
+            }
         }
 
         /// <summary>
@@ -38,11 +45,19 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.Pais = new SelectList(IdireccionBusiness.GetPais(), "IdPais", "StrValor");
-            ViewBag.Estados = new SelectList("");
-            ViewBag.Municipios = new SelectList("");
-            ViewBag.IdColonia = new SelectList("");
-            return View();
+            if (SessionPersister.AccountSession != null)
+            {
+                ViewBag.Pais = new SelectList(IdireccionBusiness.GetPais(), "IdPais", "StrValor");
+                ViewBag.Estados = new SelectList("");
+                ViewBag.Municipios = new SelectList("");
+                ViewBag.IdColonia = new SelectList("");
+                return View();
+            }
+            else
+            {
+                return View("~/Views/Seguridad/Login.cshtml");
+            }
+            
         }
 
         /// <summary>

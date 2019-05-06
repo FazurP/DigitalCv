@@ -17,7 +17,8 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link href="~/Scripts/jtable/themes/metro/jtable_metro_base.min.css" rel="stylesheet" />
-    
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
     @Styles.Render("~/Bundles/css")
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -47,6 +48,7 @@
 
     <script src="@RouteJs.RouteJsHandler.HandlerUrl"></script>
     <script src="@EnumHandler.HandlerUrl"></script>
+    <script src="~/Scripts/Validate/Block/validate-block-click.js"></script>
     @Scripts.Render("~/Bundles/js")
     @RenderSection("ViewSpecificJavascript", required: false)
     @RenderSection("scripts", required: false)

@@ -1,5 +1,6 @@
 ﻿using AppDigitalCv.Business.Interface;
 using AppDigitalCv.Domain;
+using AppDigitalCv.Security;
 using AppDigitalCv.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -27,8 +28,16 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.EstadoCivil = new SelectList(IestadoCivilBusines.GetEstadoCivil(), "IdEstadoCivil", "StrDescripcion");
-            return View();
+            if (SessionPersister.AccountSession != null)
+            {
+                ViewBag.EstadoCivil = new SelectList(IestadoCivilBusines.GetEstadoCivil(), "IdEstadoCivil", "StrDescripcion");
+                return View();
+            }
+            else
+            {
+                return View("~/Views/Seguridad/Login.cshtml");
+            }
+            
         }
 
         [HttpPost]

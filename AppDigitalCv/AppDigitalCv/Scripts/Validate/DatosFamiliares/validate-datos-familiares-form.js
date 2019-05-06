@@ -12,11 +12,16 @@
     $('#domiciliopareja').attr('disabled', true);
     $('#ocupacionpareja').attr('disabled', true);
     $('#edadpareja').attr('disabled', true);
+    $('#rdbPadreVive').attr('disabled', true);
+    $('#rdbPadreFinado').attr('disabled', true);
+    $('#rdbMadreVive').attr('disabled', true);
+    $('#rdbMadreFinado').attr('disabled', true);
+    $('#rdbParejaVive').attr('disabled', true);
+    $('#rdbParejaFinado').attr('disabled', true);
     $('#btnGuardar').attr('disabled', true);
 
     //Eventos para la validacion de los campos de texto del padre
     $('#nombrepadre').keyup(function () {
-
 
         var text = $('#nombrepadre').val();
 
@@ -34,6 +39,8 @@
             $('#domiciliopareja').attr('disabled', true);
             $('#ocupacionpareja').attr('disabled', true);
             $('#edadpareja').attr('disabled', true);
+            $('#rdbPadreVive').attr('disabled', true);
+            $('#rdbPadreFinado').attr('disabled', true);
             $('#btnGuardar').attr('disabled', true);
 
             $('#domiciliopadre').val("");
@@ -47,10 +54,14 @@
             $('#domiciliopareja').val("");
             $('#ocupacionpareja').val("");
             $('#edadpareja').val("");
+            $('#rdbPadreVive').prop('checked', false);
+            $('#rdbPadreFinado').prop('checked', false);
 
         } else
         {
-            $('#domiciliopadre').attr('disabled', false);
+            $('#rdbPadreVive').attr('disabled', false);
+            $('#rdbPadreFinado').attr('disabled', false);
+            
         }
 
 
@@ -176,6 +187,16 @@
 
     })
 
+    $('#rdbPadreFinado').change(function () {
+
+    $('#nombremadre').attr('disabled', false);
+
+    })
+
+    $('#rdbPadreVive').change(function () {
+        $('#nombremadre').attr('disabled', true);
+    })
+
     //Eventos para la validacion de los campos de texto de la madre
 
     $('#nombremadre').keyup(function () {
@@ -195,7 +216,8 @@
             $('#ocupacionpareja').attr('disabled', true);
             $('#edadpareja').attr('disabled', true);
             $('#btnGuardar').attr('disabled', true);
-
+            $('#rdbMadreVive').attr('disabled', true);
+            $('#rdbMadreFinado').attr('disabled', true);
 
            
             $('#domiciliomadre').val("");
@@ -205,9 +227,12 @@
             $('#domiciliopareja').val("");
             $('#ocupacionpareja').val("");
             $('#edadpareja').val("");
+            $('#rdbPadreVive').prop('checked', false);
+            $('#rdbPadreFinado').prop('checked', false);
 
         } else {
-            $('#domiciliomadre').attr('disabled', false);
+            $('#rdbMadreVive').attr('disabled', false);
+            $('#rdbMadreFinado').attr('disabled', false);
         }
 
 
@@ -301,6 +326,16 @@
 
     })
 
+    $('#rdbMadreFinado').change(function () {
+
+        $('#nombrepareja').attr('disabled', false);
+        $('#btnGuardar').attr('disabled', false);
+    })
+
+    $('#rdbMadreVive').change(function () {
+        $('#nombrepareja').attr('disabled', true);
+    })
+
     //Eventos para la validacion de los campos de texto de la pareja
 
     $('#nombrepareja').keyup(function () {
@@ -314,13 +349,20 @@
             $('#domiciliopareja').attr('disabled', true);
             $('#ocupacionpareja').attr('disabled', true);
             $('#edadpareja').attr('disabled', true);
+            $('#rdbParejaVive').attr('disabled', true);
+            $('#rdbParejaFinado').attr('disabled', true);
+            
 
             $('#domiciliopareja').val("");
             $('#ocupacionpareja').val("");
             $('#edadpareja').val("");
+            $('#rdbParejaVive').prop('checked', false);
+            $('#rdbParejaFinado').prop('checked', false);
 
         } else {
-            $('#domiciliopareja').attr('disabled', false);
+
+            $('#rdbParejaVive').attr('disabled', false);
+            $('#rdbParejaFinado').attr('disabled', false);
             $('#btnGuardar').attr('disabled', false);
         }
 

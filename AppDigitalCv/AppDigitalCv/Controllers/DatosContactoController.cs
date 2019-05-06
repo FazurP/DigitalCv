@@ -37,7 +37,14 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            if (SessionPersister.AccountSession != null)
+            {
+                return View();
+            }
+            else
+            {
+                return View("~/Views/Seguridad/Login.cshtml");
+            }
         }
 
         [HttpPost]

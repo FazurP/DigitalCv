@@ -371,6 +371,7 @@
     <Content Include="Scripts\jtable\themes\metro\red\jtable.min.css" />
     <Content Include="Scripts\jtable\themes\metro\red\loading.gif" />
     <Content Include="Scripts\query.js" />
+    <Content Include="Scripts\SignOut\signout-session.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\Validate\Asociaciones\validate-asociaciones-form.js" />
@@ -670,6 +671,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Usuarios\" />
     <Folder Include="Views\Alergias\" />
+    <Folder Include="Views\CerrarSesion\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppDigitalCv.Business\AppDigitalCv.Business.csproj">
