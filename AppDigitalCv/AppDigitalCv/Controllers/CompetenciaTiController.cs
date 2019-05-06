@@ -19,13 +19,21 @@ namespace AppDigitalCv.Controllers
         {
             icompetenciaTiBusiness = _competenciaBusiness;
             icompetenciasTiBusiness = _icompetenciasTiBusiness;
-    }
+        }
 
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.Competencias = icompetenciaTiBusiness.GetCompetenciasTi();
-            return View("Create");
+            if (SessionPersister.AccountSession != null)
+            {
+                ViewBag.Competencias = icompetenciaTiBusiness.GetCompetenciasTi();
+                return View("Create");
+            }
+            else
+            {
+                return View("~/Views/Seguridad/Login.cshtml");
+            }
+            
         }
 
         [HttpPost]
@@ -128,8 +136,6 @@ namespace AppDigitalCv.Controllers
             
             return PartialView("_Eliminar", competenciaTiVM);
         }
-
-
 
 
         #region Eliminar Competencias de TI

@@ -20,8 +20,6 @@
             $("#modal-default").modal({ backdrop: 'static', keyboard: false });
         });
 
-       
-
         $(function () {
             $('input').iCheck({
                 checkboxClass: 'icheckbox_square-blue',
@@ -32,8 +30,8 @@
     </script>
 </head>
 <body>
-    @using (Html.BeginForm("Login", "Seguridad",FormMethod.Post))
-    {
+    @using (Html.BeginForm("Login", "Seguridad", FormMethod.Post))
+        {
         <div class="modal modal-default fade" id="modal-default">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -50,7 +48,7 @@
                                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                                         
                                         <div class="form-group has-feedback">
-                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control input-sm", @type = "email" })
+                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control input-sm", @type = "email", @placeholder="Email"})
                                             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                                             @Html.ValidationMessageFor(Model => Model.Email, "", new { @class = "text-danger" })
                                         </div>

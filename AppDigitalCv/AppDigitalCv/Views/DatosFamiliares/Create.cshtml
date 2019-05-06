@@ -287,9 +287,7 @@
             }
 
             var valor = $('#rdbPadreVive').change(function () {
-                $('#ocupacionpadre').prop('disabled', false).css("border-bottom-color", "#00a65a");
-                $('#domiciliopadre').prop('disabled', false).css("border-bottom-color", "#00a65a");
-                $('#edadpadre').prop('disabled', false).css("border-bottom-color", "#00a65a");
+                $('#domiciliopadre').prop('disabled', false).css("border-bottom-color", "#00a65a");            
             });
 
             var padreFinado = $('#rdbPadreFinado').change(function () {
@@ -299,9 +297,9 @@
             });
 
             var madreVivo = $('#rdbMadreVive').change(function () {
-                $('#ocupacionmadre').prop('disabled', false).css("border-bottom-color", "#00a65a");
+
                 $('#domiciliomadre').prop('disabled', false).css("border-bottom-color", "#00a65a");
-                $('#edadmadre').prop('disabled', false).css("border-bottom-color", "#00a65a");
+               
             });
             var madreFinado = $('#rdbMadreFinado').change(function () {
                 $('#ocupacionmadre').prop('disabled', true).css("border-bottom-color", "#f39c12");
@@ -310,9 +308,9 @@
             });
 
             var parejaVivo = $('#rdbParejaVive').change(function () {
-                $('#ocupacionpareja').prop('disabled', false).css("border-bottom-color", "#00a65a");
+                
                 $('#domiciliopareja').prop('disabled', false).css("border-bottom-color", "#00a65a");
-                $('#edadpareja').prop('disabled', false).css("border-bottom-color", "#00a65a");
+      
             });
             var parejaFinado = $('#rdbParejaFinado').change(function () {
                 $('#ocupacionpareja').prop('disabled', true).css("border-bottom-color", "#f39c12");

@@ -69,6 +69,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Runtime.Serialization" />
@@ -370,6 +371,7 @@
     <Content Include="Scripts\jtable\themes\metro\red\jtable.min.css" />
     <Content Include="Scripts\jtable\themes\metro\red\loading.gif" />
     <Content Include="Scripts\query.js" />
+    <Content Include="Scripts\SignOut\signout-session.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\Validate\Asociaciones\validate-asociaciones-form.js" />
@@ -395,6 +397,7 @@
     <Content Include="Scripts\Validate\PremiosDocente\validate-premios-docente-upload.js" />
     <Content Include="Scripts\Validate\Premios\validate-premios-form.js" />
     <Content Include="Scripts\Validate\Premios\validate-premios-regExp.js" />
+    <Content Include="Scripts\Validate\ScriptTest.js" />
     <Content Include="Scripts\Validate\validate-datos-contacto-email.js" />
     <Content Include="Views\index.html" />
     <Content Include="Web.config" />
@@ -668,6 +671,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Usuarios\" />
     <Folder Include="Views\Alergias\" />
+    <Folder Include="Views\CerrarSesion\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppDigitalCv.Business\AppDigitalCv.Business.csproj">
