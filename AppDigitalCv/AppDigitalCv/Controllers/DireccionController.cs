@@ -100,7 +100,7 @@ namespace AppDigitalCv.Controllers
         [HttpPost]
         public ActionResult ConsultarMunicipiosByEstado(int idEstado)
         {
-            List<MunicipioDomainModel> municipiosDM = IdireccionBusiness.GetMunicipioByIdEstado(idEstado);
+            List<MunicipioDomainModel> municipiosDM = IdireccionBusiness.GetMunicipioByIdEstado(idEstado).OrderBy(s=>s.StrValor).ToList<MunicipioDomainModel>();
             List<MunicipioVM> municipiosVM = new List<MunicipioVM>();
 
             AutoMapper.Mapper.Map(municipiosDM, municipiosVM);
@@ -116,7 +116,7 @@ namespace AppDigitalCv.Controllers
         [HttpPost]
         public ActionResult ConsultarColoniasByMunicipio(int idMunicipio)
         {
-            List<ColoniaDomainModel> coloniaDM = IdireccionBusiness.GetColoniaByMunicipio(idMunicipio);
+            List<ColoniaDomainModel> coloniaDM = IdireccionBusiness.GetColoniaByMunicipio(idMunicipio).OrderBy(c=>c.StrValor).ToList<ColoniaDomainModel>();
             List<ColoniaVM> coloniasVM = new List<ColoniaVM>();
 
             AutoMapper.Mapper.Map(coloniaDM, coloniasVM);

@@ -1,10 +1,10 @@
-﻿@model AppDigitalCv.ViewModels.DireccionVM
+﻿@using AppDigitalCv.Security
+@model AppDigitalCv.ViewModels.DireccionVM
 
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 @using (Html.BeginForm())
 {
@@ -13,107 +13,86 @@
     <div class="bs-container content" style="min-height:960px;">
         <section class="content-header">
             <h1>
-                Agregar Direccion
+                Agregar Dirección
                 <small> Agregar la direccion completa </small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"> <i class="fa fa-dashboard"></i> Home </a></li>
-                <li> <a href="#"> Tables </a></li>
-                <li class="active"> Data tables </li>
+                <li><a href="#"> <i class="fa fa-dashboard"></i>Inicio </a></li>
+                <li> <a href="#">Dirección</a></li>
+                <li class="active">(Agregar)</li>
             </ol>
         </section>
-
+        <br />
         <div class="row">
 
-            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="box box-success">
-                    <br />
-                    <label class="text-green"><i class="text-green fa fa-child"></i> Erik Guerrero Bravo </label>
+                    <br /><label class="text-green">
+                        <i class="text-success fa fa-graduation-cap"></i>
+                        @SessionPersister.AccountSession.NombreCompleto
+                    </label>
 
                     <div role="form">
-
                         <div class="box-body">
-                            <!-- Aqui se llena el dropdownlist de paises y se ponen algunas validaciones -->
-                            <div class="form-group">
-                                <div class="form-group ">
-                                    <label>País</label>
+                            <div class="form-inline">
+                                <div class="form-group-sm ">
+                                    <label>País:</label>
                                     @Html.DropDownList("Pais", null, htmlAttributes: new { @class = "form-control input-sm", id = "Pais" })
-                                    @Html.ValidationMessageFor(model => model.IdPais, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <!-- Aqui se llena el dropdownloist de estados y se ponen algunas validaciones -->
-                            <div class="form-group">
-                                <div class="form-group ">
-                                    <label>Estado</label>
+                                    <label>Estado:</label>
                                     @Html.DropDownList("Estados", null, htmlAttributes: new { @class = "form-control input-sm", id = "Estados" })
-                                    @Html.ValidationMessageFor(model => model.IdEstado, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
 
-                            <!-- Aqui se llena el dropdownList de municipios y se ponen algunas validaciones -->
-                            <div class="form-group">
-                                <div class="form-group ">
-                                    <label>Municipio</label>
+                                </div>
+                                <br />
+                                <div class="form-group-sm">
+                                    <label>Municipio:</label>
                                     @Html.DropDownList("Municipios", null, htmlAttributes: new { @class = "form-control input-sm", id = "Municipios" })
-                                    @Html.ValidationMessageFor(model => model.IdMunicipio, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 form-group">
-                                <div class="form-group ">
                                     <label>Colonia</label>
                                     @Html.DropDownList("IdColonia", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdColonia" })
-                                    @Html.ValidationMessageFor(model => model.IdColonia, "", new { @class = "text-danger" })
                                 </div>
-                            </div>
+                                <div class="form-group-sm ">
+                                    <label for="etCodigoPostal"> Codigo Postal: </label>
+                                    @Html.TextBoxFor(model => model.ColoniaVM.intCp, new { @class = "form-control input-sm", placeholder = "Codigo Postal", id = "codigoPostal" })
+                                    <label for="etCalle">Calle:</label>
+                                    @Html.TextBoxFor(model => model.StrCalle, new { @class = "form-control input-sm", placeholder = "Calle", required = "", id = "Calle", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.# ]+$" })
 
-                            <div class="col-md-6 form-group">
-                                <label for="etCodigoPostal"> Codigo Postal: </label>
-                                <br />
-                                @Html.TextBoxFor(model => model.ColoniaVM.intCp, new { @class = "form-control input-sm", placeholder = "Codigo Postal", id = "codigoPostal" })
-                                @Html.ValidationMessageFor(model => model.ColoniaVM.intCp, "", new { @class = "text-danger" })
-                            </div>
-
-                            <div class="form-group">
-                                <label for="etCalle">Calle:</label>
-                                <br />
-                                @Html.TextBoxFor(model => model.StrCalle, new { @class = "form-control input-sm", placeholder = "Calle", required = "", id = "Calle", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.# ]+$" })
-                                @Html.ValidationMessageFor(model => model.StrCalle, "", new { @class = "text-danger" })
-                            </div>
-
-                            <div class="col-md-6 form-group">
-                                <div class="form-group">
-                                    <label for="etNoInterior">No° Interior:</label>
-                                    <br />
+                                </div>
+                                <div class="form-group-sm">
+                                    <label for="etNoInterior">No.Interior:</label>
                                     @Html.TextBoxFor(model => model.StrNumeroInterior, new { @class = "form-control input-sm", placeholder = "Numero Interior", required = "", id = "NInterior", pattern = "^[0-9]+$" })
-                                    @Html.ValidationMessageFor(model => model.StrNumeroInterior, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 form-group">
-                                <div class="form-group">
                                     <label for="etNoExterior">No° Exterior:</label>
-                                    <br />
-                                    @Html.TextBoxFor(model => model.StrNumeroExterior, new { @class = "form-control input-sm", placeholder = "Numero Exterior",required="",id="NExterior",pattern="^[0-9]+$" })
-                                    @Html.ValidationMessageFor(model => model.StrNumeroExterior, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.StrNumeroExterior, new { @class = "form-control input-sm", placeholder = "Numero Exterior", required = "", id = "NExterior", pattern = "^[0-9]+$" })
+                                </div>
+                                <div class="form-group-sm">
+                                    <input type="submit" value="Guardar" class="btn btn-success" id="Enviar" />
                                 </div>
                             </div>
-
+                            <!--aqui va todo-->
+                            <div class="form-group-sm">
+                                <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
+                                <div class="form-group" id="addTable">
+                                    <br />
+                                    <table id="tblFamiliares" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
+                                        <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
+                                            <tr>
+                                                @*<th>Familiar</th>*@
+                                                <th>Nombre</th>
+                                                <th>Ocupación</th>
+                                                <th>Domicilio</th>
+                                                <th>Edad</th>
+                                                <td>Fecha Nacimiento</td>
+                                                <th>Editar</th>
+                                                <th>Eliminar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tblBody"></tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="box-footer">
-            <div>
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            </div>
-            <input type="submit" value="Guardar" class="btn btn-success" id="Enviar" />
-        </div>
-
     </div>
 
 }
@@ -129,7 +108,7 @@
 
         $("#Pais").change(function () {
             var paisId = $(this).val();
-            debugger;
+
             $.ajax({
                 type: "Post",
                 url: "/Direccion/ConsultarEstadosByPais?idPais=" + paisId,
@@ -147,7 +126,7 @@
         // -- JS para la consulta de municipios por estado, se llena dropdownlist de municipios
         $("#Estados").change(function () {
             var estadoId = $(this).val();
-            debugger;
+
             $.ajax({
                 type: "Post",
                 url: "/Direccion/ConsultarMunicipiosByEstado?idEstado=" + estadoId,
@@ -165,7 +144,7 @@
         //-- JS para la consulta de colonias por municipio, se llena dropdownlist de colonias
         $("#Municipios").change(function () {
             var municipioId = $(this).val();
-            debugger;
+
             $.ajax({
                 type: "Post",
                 url: "/Direccion/ConsultarColoniasByMunicipio?idMunicipio=" + municipioId,
@@ -183,7 +162,7 @@
         // -- JS para la consulta de codigo postal por medio de una colonia
         $("#IdColonia").change(function () {
             var coloniaId = $(this).val();
-            debugger;
+
             $.ajax({
                 type: "Post",
                 url: "/Direccion/ConsultarCodigoPostalByColonia?idColonia=" + coloniaId,
