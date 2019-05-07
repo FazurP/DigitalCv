@@ -149,10 +149,11 @@ namespace AppDigitalCv.Controllers
         #endregion
 
         #region Consultar Datos de Direccion
-
+        [HttpGet]
         public JsonResult ConsultarDatosDireccion()
         {
-            var datosDireccion = IdireccionBusiness.GetDatosDireccion(3); //////////////modificacion temporal
+            int IdPersonal = SessionPersister.AccountSession.IdPersonal;
+            var datosDireccion = IdireccionBusiness.GetDireccion(IdPersonal); 
             return Json(datosDireccion, JsonRequestBehavior.AllowGet);
         }
 

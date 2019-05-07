@@ -21,6 +21,8 @@ namespace AppDigitalCv.Business
         private readonly ColoniaRepository coloniaRepository;
         private readonly DireccionRepository direccionRepository;
 
+        private readonly PersonalRepository personalRepository;
+
         public DireccionBusiness(IUnitOfWork _unitOfWork)
         {
             unitOfWork = _unitOfWork;
@@ -29,6 +31,7 @@ namespace AppDigitalCv.Business
             municipioRepository = new MunicipioRepository(unitOfWork);
             coloniaRepository = new ColoniaRepository(unitOfWork);
             direccionRepository = new DireccionRepository(unitOfWork);
+            personalRepository = new PersonalRepository(unitOfWork);
         }
 
         /// <summary>
@@ -211,7 +214,26 @@ namespace AppDigitalCv.Business
                 listaDireccion.Add(direccionDM);
             }
             return listaDireccion;   
-        } 
+        }
+
+        /// <summary>
+        /// Metodo que se encarga de obtener los datos de la direccion
+        /// </summary>
+        /// <param name="idPersona"> Pide el parametro del id de persona </param>
+        /// <returns> Regresa un objeto del tipo direccion </returns>
+        public DireccionDomainModel GetDireccion(int idPersonal)
+        {
+            catDireccion direccion = null;
+            Expression<Func<tblPersonal, bool>> predicado = p => p.idPersonal.Equals(idPersonal);
+            tblPersonal  tblpersonal = personalRepository.GetAll(predicado).FirstOrDefault<tblPersonal>();
+            DireccionDomainModel direccionDM = new DireccionDomainModel();
+            direccionDM.IdDireccion = tblpersonal.catDireccion.idDireccion;
+            direccionDM.StrCalle = tblpersonal.catDireccion.strCalle;
+            direccionDM.StrNumeroExterior = tblpersonal.catDireccion.strNumeroExterior;
+            direccionDM.StrNumeroInterior = tblpersonal.catDireccion.strNumeroInterior;
+            direccionDM.IdColonia = tblpersonal.catDireccion.idColonia;
+            return direccionDM;
+        }
 
     }
 }

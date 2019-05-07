@@ -50,6 +50,12 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="idPersona"> Pide el Id de personal </param>
         /// <returns> Regresa uan  lista de domain model </returns>
         List<DireccionDomainModel> GetDatosDireccion(int idPersona);
+        /// <summary>
+        /// Metodo que se encarga de obtener los datos de la direccion
+        /// </summary>
+        /// <param name="idPersona"> Pide el parametro del id de persona </param>
+        /// <returns> Regresa un objeto del tipo direccion </returns>
+        DireccionDomainModel GetDireccion(int idPersonal);
 
     }
 }
