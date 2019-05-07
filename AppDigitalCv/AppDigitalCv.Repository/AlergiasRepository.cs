@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AppDigitalCv.Repository
 {
-    public class AlergiasRepository : BaseRepository<tblAlergiasPersonal>
+    public class AlergiasRepository : BaseRepository<catAlergias>
     {
         public AlergiasRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {

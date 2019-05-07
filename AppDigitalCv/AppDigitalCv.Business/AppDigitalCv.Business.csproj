@@ -67,6 +67,7 @@
     <Compile Include="FrecuenciaBusiness.cs" />
     <Compile Include="IdiomaDialectoBusiness.cs" />
     <Compile Include="Interface\IAccountBusiness.cs" />
+    <Compile Include="Interface\IAlergiasBusiness.cs" />
     <Compile Include="Interface\IAsociacionesBusiness.cs" />
     <Compile Include="Interface\ICompetenciaBusiness.cs" />
     <Compile Include="Interface\ICompetenciasTiBusiness.cs" />

@@ -8,12 +8,15 @@ namespace AppDigitalCv.Domain
 {
     public class AlergiasDomainModel
     {
-        public int IdAlergiasPersonal { get; set; }
+        
 
         public int IdAlergia { get; set; }
-
+        public string StrDescripcion { get; set; }
+        public string StrObservacion { get; set; }
         public int IdPersonal { get; set; }
+        public int IdtipoAlergia { get; set; }
+        
 
-        public DateTime dteFechaRegistro {get;set;}
+        
     }
 }

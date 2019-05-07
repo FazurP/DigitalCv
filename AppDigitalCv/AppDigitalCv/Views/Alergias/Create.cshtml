@@ -45,6 +45,17 @@
                                 <input type="radio" id="rdbNo" name="seleccion" value="NO" class="custom-control-input" checked><label for="no">NO</label>
 
                             </div>
+                            <br />
+                            <div class="form-group">
+                                <label id="TituloAlergias" class="text-muted">Alimentos (Mariscos, Carnes Frías, Lacteos, etc.):</label>
+                                @Html.DropDownList("Alimentos", null, htmlAttributes: new { @class = "form-control", id = "Alimentos", title = "Selecciona una Alergia" })
+                                
+                                <label id="TituloAlergenos" class="text-muted">Alergenos (Polvo, Polen, Animales, etc.):</label>
+                                @Html.DropDownList("Alergenos", null, htmlAttributes: new { @class = "form-control input-sm", id = "Alergenos", title = "Seleccione un Alergeno" })
+                                
+                                <label id="TituloMedicamentos" class="text-muted">Medicamentos:</label>
+                                @Html.DropDownList("Medicamentos", null, htmlAttributes: new { @class = "form-control input-sm", id = "Medicamentos", title = "Seleccione un Medicamento" })
+                            </div>
                         </div>
                     </div>
 
