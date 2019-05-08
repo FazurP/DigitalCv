@@ -94,15 +94,21 @@ namespace AppDigitalCv.Business
             }
             else
             {
+                if (alergiasPersonalRepository.Exists(p => p.idAlergia == alergiasPersonalDomainModel.IdAlergia))
+                {
+                    return false;
+                }
+                else
+                {
+                    tblAlergiasPersonal tblAlergiasPersonal = new tblAlergiasPersonal();
+                    tblAlergiasPersonal.idAlergia = alergiasPersonalDomainModel.IdAlergia;
+                    tblAlergiasPersonal.idPersonal = alergiasPersonalDomainModel.IdPersonal;
+                    tblAlergiasPersonal.dteFechaRegistro = DateTime.Now;
 
-                tblAlergiasPersonal tblAlergiasPersonal = new tblAlergiasPersonal();
-                tblAlergiasPersonal.idAlergia = alergiasPersonalDomainModel.IdAlergia;
-                tblAlergiasPersonal.idPersonal = alergiasPersonalDomainModel.IdPersonal;
-                tblAlergiasPersonal.dteFechaRegistro = DateTime.Now;
+                    alergiasPersonalRepository.Insert(tblAlergiasPersonal);
 
-                alergiasPersonalRepository.Insert(tblAlergiasPersonal);
-
-                respuesta = true;
+                    respuesta = true;
+                }
             }
 
             return respuesta;

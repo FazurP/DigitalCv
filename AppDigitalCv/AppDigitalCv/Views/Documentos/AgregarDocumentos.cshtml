@@ -1,5 +1,5 @@
 ﻿@model AppDigitalCv.ViewModels.DocumentoPersonalVM
-
+@using AppDigitalCv.Security
 @{
     ViewBag.Title = "Agregar Documentos";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -28,7 +28,7 @@
                         <div class="box-header">
                             <div class="form-inline">
                                 <div class="form-group">
-                                    <label class="text-blue"><i class="text-blue fa fa-heartbeat"></i> Erik Guerrero Bravo</label>
+                                    <label class="text-blue"><i class="text-blue fa fa-heartbeat"></i> @SessionPersister.AccountSession.NombreCompleto</label>
                                 </div>
                             </div>
                         </div>

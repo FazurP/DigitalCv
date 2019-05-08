@@ -51,7 +51,8 @@ namespace AppDigitalCv.Controllers
         {
             List<AlergiasPersonalVM> alergiaspersonales = new List<AlergiasPersonalVM>();
 
-            if (Alimentos != null)
+            if (Alimentos != null || Alimentos != "0" && Alergenos != null || Alergenos != "0" 
+                && Medicamentos != null || Medicamentos != "0")
             {
                 AlergiasPersonalVM alergiasPersonalAlimentosVM = new AlergiasPersonalVM();
                 alergiasPersonalAlimentosVM.IdAlergia = int.Parse(Alimentos);
