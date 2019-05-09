@@ -224,7 +224,6 @@ namespace AppDigitalCv.Business
         public List<DireccionDomainModel> GetDireccion(int idPersonal)
         {
             List<DireccionDomainModel> direcciones = new List<DireccionDomainModel>();
-            catDireccion direccion = null;
             Expression<Func<tblPersonal, bool>> predicado = p => p.idPersonal.Equals(idPersonal);
             tblPersonal  tblpersonal = personalRepository.GetAll(predicado).FirstOrDefault<tblPersonal>();
             DireccionDomainModel direccionDM = new DireccionDomainModel();
@@ -233,6 +232,7 @@ namespace AppDigitalCv.Business
             direccionDM.StrNumeroExterior = tblpersonal.catDireccion.strNumeroExterior;
             direccionDM.StrNumeroInterior = tblpersonal.catDireccion.strNumeroInterior;
             direccionDM.IdColonia = tblpersonal.catDireccion.idColonia;
+            direccionDM.NombreColonia = tblpersonal.catDireccion.CatColonia.strValor;
             direcciones.Add(direccionDM);
             return direcciones;
         }

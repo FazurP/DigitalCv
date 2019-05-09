@@ -71,15 +71,30 @@
                                         <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
                                             <tr>
                                                 <th>Calle</th>
+                                                <th>Colonia</th>
                                                 <th>Número Interior</th>
                                                 <th>Número Exterior</th>
-                                                @*<th>Colonia</th>*@
                                                 <th>Editar</th>
 
                                             </tr>
                                         </thead>
                                         <tbody id="tblBody"></tbody>
                                     </table>
+                                    <!-- Establecemos el Modal que se va a presentar cuando demos click en la edicion de los datos-->
+                                    <div class="modal fade" id="myModal1">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                                                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                                                    <h5 class="modal-title"><label style="font-size:medium;">Dirección</label></h5>
+                                                </div>
+                                                <div class="modal-body" id="myModalBodyDiv1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="hiddenDirecciondId" />
+                                    <!--Terminamos el modal de eliminacion-->
                                 </div>
                             </div>
                         </div>
@@ -109,7 +124,7 @@
 
         var AddEditar = function (IdDireccion) {
 
-            var url = "/EstadoSalud/GetEstadoSalud?IdEnfermedad=" + IdDireccion;
+            var url = "/Direccion/GetEstadoSalud?IdEnfermedad=" + IdDireccion;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -173,9 +188,10 @@
                         "columns": [
 
                             { "data": "StrCalle" },
+                            { "data": "NombreColonia" },
                             { "data": "StrNumeroInterior" },
                             { "data": "StrNumeroExterior" },
-                            //{ "data": "IdColonia" },
+                            
                             {
                                 "data": "IdDireccion",
                                 "render": function (IdDireccion, type, full, meta) {

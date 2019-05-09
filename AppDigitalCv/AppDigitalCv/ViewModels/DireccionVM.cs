@@ -34,8 +34,11 @@ namespace AppDigitalCv.ViewModels
 
         [Required(ErrorMessage = "Es necesario seleccionar un municipio")]
         public int IdMunicipio { get; set; }
-
-        public ColoniaVM ColoniaVM { get; set; }
         ///este es un cambio temporal
+        public ColoniaVM ColoniaVM { get; set; }
+        
+        
+        ///agrego el atributo del  nombre de la colonia
+        public string NombreColonia { get; set; }
     }
 }

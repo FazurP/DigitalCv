@@ -13,5 +13,8 @@ namespace AppDigitalCv.Domain
         public string StrNumeroInterior { get; set; }
         public string StrNumeroExterior { get; set; }
         public int IdColonia { get; set; }
+        //este atributo se establece para indentificar el nombre de 
+        //la colonia en una consulta
+        public string NombreColonia { get; set; }
     }
 }
