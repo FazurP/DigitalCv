@@ -236,6 +236,24 @@ namespace AppDigitalCv.Business
             direcciones.Add(direccionDM);
             return direcciones;
         }
+        /// <summary>
+        /// Este metodo se encarga de obtener los datos de una direccion de forma personalizada
+        /// </summary>
+        /// <param name="idPersonal">el identificador del personal</param>
+        /// <returns>la direccion de una persona</returns>
+        public DireccionDomainModel GetDireccionPersonal(int idDireccion,int idPersonal)
+        {
+            DireccionDomainModel direccion = new DireccionDomainModel();
+            Expression<Func<tblPersonal, bool>> predicado = p => p.idPersonal.Equals(idPersonal) && p.idDireccion.Equals(idDireccion);
+            tblPersonal tblpersonal = personalRepository.GetAll(predicado).FirstOrDefault<tblPersonal>();
+            DireccionDomainModel direccionDM = new DireccionDomainModel();
+            direccionDM.IdDireccion = tblpersonal.catDireccion.idDireccion;
+            direccionDM.StrCalle = tblpersonal.catDireccion.strCalle;
+            direccionDM.StrNumeroExterior = tblpersonal.catDireccion.strNumeroExterior;
+            direccionDM.StrNumeroInterior = tblpersonal.catDireccion.strNumeroInterior;
+            direccionDM.IdColonia = tblpersonal.catDireccion.idColonia;
+            return direccionDM;
+        }
 
     }
 }

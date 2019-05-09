@@ -124,7 +124,7 @@
 
         var AddEditar = function (IdDireccion) {
 
-            var url = "/Direccion/GetEstadoSalud?IdEnfermedad=" + IdDireccion;
+            var url = "/Direccion/GeDireccion?IdDireccion=" + IdDireccion;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");

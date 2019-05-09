@@ -1,1 +1,54 @@
-﻿
+﻿@model AppDigitalCv.ViewModels.DireccionVM
+@using AppDigitalCv.Security
+<div>
+    <form id="myForm">
+        <div class="bs-container">
+            <div class="row">
+                <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                    <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+                </div>
+                <div class="col-md-7 col-xs-11 col-sm-5 col-lg-7">
+
+                    @Html.HiddenFor(model => model.IdColonia, new { @class = "form-control input-sm", id = "IdPersonal" })
+                    @Html.HiddenFor(model => model.IdDireccion)
+                    <table class="table jtable">
+                        <tbody>
+                            <tr>
+                                <td>Calle:</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.StrCalle, new { @class = "form-control input-sm", @placeholder = "Nombre", size = "30", title = "Nombre de la calle", id = "StrCalle", disabled = true })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Colonia:</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.NombreColonia, new { @class = "form-control input-sm", @placeholder = "Colonia", size = "30", title = "Nombre de la colonia", id = "NombreColonia", disabled = true })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Número Interior:</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.StrNumeroInterior, new { @class = "form-control input-sm", @placeholder = "Num.Interior", size = "30", title = "Número Interior", id = "StrNumeroInterior", disabled = true })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Número Exterior:</td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.StrNumeroExterior, new { @class = "form-control input-sm", @placeholder = "Num.Exterior", size = "30", title = "Número Exterior", id = "StrNumeroExterior", type = "Number", disabled = true })
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <a href="#" id="btnSubmit" class="btn btn-sm btn-danger left"><span><i class="fa fa-edit"></i>Eliminar</span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
