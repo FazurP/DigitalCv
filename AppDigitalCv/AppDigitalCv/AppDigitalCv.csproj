@@ -374,7 +374,6 @@
     <Content Include="Scripts\SignOut\signout-session.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
-    <Content Include="Scripts\Validate\Alergias\validate-alergias-form.js" />
     <Content Include="Scripts\Validate\Asociaciones\validate-asociaciones-form.js" />
     <Content Include="Scripts\Validate\Asociaciones\validate-asociaciones-regExp.js" />
     <Content Include="Scripts\Validate\Block\validate-block-click.js" />
@@ -513,7 +512,6 @@
     <Compile Include="Security\CustomPrincipal.cs" />
     <Compile Include="Security\SessionPersister.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
-    <Compile Include="ViewModels\AlergiasPersonalVM.cs" />
     <Compile Include="ViewModels\AlergiasVM.cs" />
     <Compile Include="ViewModels\AsociacionesVM.cs" />
     <Compile Include="ViewModels\ColoniaVM.cs" />
@@ -675,6 +673,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Usuarios\" />
+    <Folder Include="Views\CerrarSesion\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppDigitalCv.Business\AppDigitalCv.Business.csproj">

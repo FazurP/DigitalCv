@@ -10,7 +10,7 @@ namespace AppDigitalCv.Domain
     {
         
 
-        public int IdAlergias { get; set; }
+        public int IdAlergia { get; set; }
         public string StrDescripcion { get; set; }
         public string StrObservacion { get; set; }
         public int IdPersonal { get; set; }
