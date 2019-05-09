@@ -12,5 +12,8 @@ namespace AppDigitalCv.Business.Interface
         List<AlergiasDomainModel> GetAlergias();
         List<AlergiasDomainModel> GetAlergenos();
         List<AlergiasDomainModel> GetMedicamentos();
+        bool AddUpdateAlergias(AlergiasPersonalDomainModel alergiasPersonalDomainModel);
+
+       
     }
 }

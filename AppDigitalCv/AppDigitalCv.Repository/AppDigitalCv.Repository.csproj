@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountRepository.cs" />
+    <Compile Include="AlergiasPersonalRepository.cs" />
     <Compile Include="AlergiasRepository.cs" />
     <Compile Include="AppDigitalCvEntities.Context.cs">
       <AutoGen>True</AutoGen>

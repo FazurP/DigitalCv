@@ -111,6 +111,9 @@ namespace AppDigitalCv.Infraestructure
             //Alergias
             CreateMap<AlergiasVM, AlergiasDomainModel>();
             CreateMap<AlergiasDomainModel, AlergiasVM>();
+            //Alergias Personal
+            CreateMap<AlergiasPersonalVM, AlergiasPersonalDomainModel>();
+            CreateMap<AlergiasPersonalDomainModel, AlergiasPersonalVM>();
         }
 
 
