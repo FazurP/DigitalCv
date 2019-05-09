@@ -204,5 +204,28 @@ namespace AppDigitalCv.Controllers
         #endregion
 
 
+        #region Vista Parcial Eliminar
+        /// <summary>
+        /// Este metodo se encarga de presentar los datos a la vista que se van a eliminar
+        /// </summary>
+        /// <param name="idEliminar">recibe un identificador de la direccion</param>
+        /// <returns>regresa una direccion  en una vista</returns>
+        public ActionResult GeDireccion(int IdDireccion)
+        {
+            //DireccionDomainModel direccionDM = IdireccionBusiness
+            EstadoSaludDomainModel estadoSaludDomainModel = IestadoSaludBusiness.GetEnfermedadesByIdEnfermedad(IdEnfermedad);
+            if (estadoSaludDomainModel != null)
+            {
+                EstadoSaludVM estadoSaludVM = new EstadoSaludVM();
+                AutoMapper.Mapper.Map(estadoSaludDomainModel, estadoSaludVM);
+                return PartialView("_Eliminar", estadoSaludVM);
+            }
+            return View();
+        }
+        #endregion
+
+
+
+
     }
 }
