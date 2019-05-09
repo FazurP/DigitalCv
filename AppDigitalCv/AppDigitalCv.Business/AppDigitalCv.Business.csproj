@@ -59,7 +59,6 @@
     <Compile Include="DocumentosBusiness.cs" />
     <Compile Include="EmergenciaBusiness.cs" />
     <Compile Include="EnfermedadBusiness.cs" />
-    <Compile Include="Enum\EnumAlergias.cs" />
     <Compile Include="Enum\EnumFamiliares.cs" />
     <Compile Include="EstadoBusiness.cs" />
     <Compile Include="EstadoCivilBusiness.cs" />
