@@ -5,7 +5,7 @@
         <div class="pull-left image">
             <img src="~/Imagenes/usertest-160x160.jpg" class="img-circle" alt="User Image">
         </div>
-        <div class="pull-left info">
+        <div class="pull-left info ">
             <p>
                 @if (SessionPersister.AccountSession != null)
                 {
@@ -139,7 +139,7 @@
                         <li>
                             <a href="@Url.Action("Create","EstadoSalud")"><i class="fa fa-medkit"></i><span>Estado de Salud</span></a>
                         </li>
-                        <li><a href="#">Link in level 2</a></li>
+                        <li><a href="@Url.Action("Create","Alergias")"><i class="fa fa-medkit"></i><span>Alergias</span></a></li>
                     </ul>
                 </a>
             </li>

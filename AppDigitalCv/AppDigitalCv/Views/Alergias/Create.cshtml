@@ -25,12 +25,12 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h5 class="box-title">
+                       
                             <label class="text-success">
                                 <i class="text-success fa fa-heartbeat"></i>
-                                @SessionPersister.AccountSession.Nombre
+                                @SessionPersister.AccountSession.NombreCompleto
                             </label>
-                        </h5>
+                       
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
@@ -42,19 +42,21 @@
                             <div class="form-group">
                                 Padece Alguna(s) Alergia(s)?
                                 <input type="radio" id="rdbSi" name="seleccion" value="SI " class="custom-control-input"><label for="si">SI</label>
-                                <input type="radio" id="rdbNo" name="seleccion" value="NO" class="custom-control-input" checked><label for="no">NO</label>
+                                <input type="radio" id="rdbNo" name="seleccion" value="NO" class="custom-control-input" checked="checked"><label for="no">NO</label>
 
                             </div>
                             <br />
                             <div class="form-group">
                                 <label id="TituloAlergias" class="text-muted">Alimentos (Mariscos, Carnes Frías, Lacteos, etc.):</label>
-                                @Html.DropDownList("Alimentos", null, htmlAttributes: new { @class = "form-control", id = "Alimentos", title = "Selecciona una Alergia" })
-                                
+                                @Html.DropDownList( "Alimentos", null, htmlAttributes: new { @class = "form-control", id = "Alimentos", title = "Selecciona una Alergia" })
+
                                 <label id="TituloAlergenos" class="text-muted">Alergenos (Polvo, Polen, Animales, etc.):</label>
                                 @Html.DropDownList("Alergenos", null, htmlAttributes: new { @class = "form-control input-sm", id = "Alergenos", title = "Seleccione un Alergeno" })
-                                
+                            <br />
                                 <label id="TituloMedicamentos" class="text-muted">Medicamentos:</label>
                                 @Html.DropDownList("Medicamentos", null, htmlAttributes: new { @class = "form-control input-sm", id = "Medicamentos", title = "Seleccione un Medicamento" })
+                            <br />
+                                <input type="submit" value="Guardar" class="btn btn-success" id="btnGuardar"/>
                             </div>
                         </div>
                     </div>
@@ -66,5 +68,5 @@
 
 
 }
-
-
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/Validate/Alergias/validate-alergias-form.js"></script>

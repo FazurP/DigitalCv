@@ -7,7 +7,7 @@ namespace AppDigitalCv.ViewModels
 {
     public class AlergiasVM
     {
-        public int IdAlergia { get; set; }
+        public int IdAlergias { get; set; }
         public string StrDescripcion { get; set; }
         public string StrObservacion { get; set; }
         public int IdPersonal { get; set; }
