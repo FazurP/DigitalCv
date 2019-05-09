@@ -1,5 +1,6 @@
 ﻿using AppDigitalCv.Business.Interface;
 using AppDigitalCv.Domain;
+using AppDigitalCv.Models;
 using AppDigitalCv.Security;
 using AppDigitalCv.ViewModels;
 using System;
@@ -149,7 +150,7 @@ namespace AppDigitalCv.Controllers
         #endregion
 
         #region Consultar Datos de Direccion
-        [HttpGet]
+      
         public JsonResult ConsultarDatosDireccion()
         {
             int IdPersonal = SessionPersister.AccountSession.IdPersonal;
@@ -158,6 +159,50 @@ namespace AppDigitalCv.Controllers
         }
 
         #endregion
+
+        #region  Consultar los datos del estado de los habitos personales
+
+        [HttpGet]
+        public JsonResult GetDireccion(DataTablesParam param)
+        {
+            int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
+            List<DireccionDomainModel> direcciones = new List<DireccionDomainModel>();
+
+            int pageNo = 1;
+            if (param.iDisplayStart >= param.iDisplayLength)
+            {
+                pageNo = (param.iDisplayStart / param.iDisplayLength) + 1;
+            }
+
+            int totalCount = 0;
+            if (param.sSearch != null)
+            {
+                direcciones = IdireccionBusiness.GetDireccion(IdentityPersonal).Where(p => p.StrCalle.Contains(param.sSearch)).ToList();
+               
+
+            }
+            else
+            {
+                totalCount = IdireccionBusiness.GetDireccion(IdentityPersonal).Count();
+
+
+                direcciones = IdireccionBusiness.GetDireccion(IdentityPersonal).OrderBy(p => p.StrCalle)
+                    .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
+
+            }
+            return Json(new
+            {
+                aaData = direcciones,
+                sEcho = param.sEcho,
+                iTotalDisplayRecords = direcciones.Count(),
+                iTotalRecords = direcciones.Count()
+
+            }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        #endregion
+
 
     }
 }
