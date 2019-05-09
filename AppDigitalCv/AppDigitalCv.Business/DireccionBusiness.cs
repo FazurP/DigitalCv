@@ -241,10 +241,10 @@ namespace AppDigitalCv.Business
         /// </summary>
         /// <param name="idPersonal">el identificador del personal</param>
         /// <returns>la direccion de una persona</returns>
-        public DireccionDomainModel GetDireccionPersonal(int idPersonal)
+        public DireccionDomainModel GetDireccionPersonal(int idDireccion,int idPersonal)
         {
             DireccionDomainModel direccion = new DireccionDomainModel();
-            Expression<Func<tblPersonal, bool>> predicado = p => p.idPersonal.Equals(idPersonal);
+            Expression<Func<tblPersonal, bool>> predicado = p => p.idPersonal.Equals(idPersonal) && p.idDireccion.Equals(idDireccion);
             tblPersonal tblpersonal = personalRepository.GetAll(predicado).FirstOrDefault<tblPersonal>();
             DireccionDomainModel direccionDM = new DireccionDomainModel();
             direccionDM.IdDireccion = tblpersonal.catDireccion.idDireccion;

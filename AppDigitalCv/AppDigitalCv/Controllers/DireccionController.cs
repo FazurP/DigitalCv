@@ -212,13 +212,14 @@ namespace AppDigitalCv.Controllers
         /// <returns>regresa una direccion  en una vista</returns>
         public ActionResult GeDireccion(int IdDireccion)
         {
-            //DireccionDomainModel direccionDM = IdireccionBusiness
-            EstadoSaludDomainModel estadoSaludDomainModel = IestadoSaludBusiness.GetEnfermedadesByIdEnfermedad(IdEnfermedad);
-            if (estadoSaludDomainModel != null)
+            int IdPersonal = SessionPersister.AccountSession.IdPersonal;
+            DireccionDomainModel direccionDM = IdireccionBusiness.GetDireccionPersonal(IdDireccion, IdPersonal);
+            
+            if (direccionDM != null)
             {
-                EstadoSaludVM estadoSaludVM = new EstadoSaludVM();
-                AutoMapper.Mapper.Map(estadoSaludDomainModel, estadoSaludVM);
-                return PartialView("_Eliminar", estadoSaludVM);
+                DireccionVM direccionVM = new DireccionVM();
+                AutoMapper.Mapper.Map(direccionDM, direccionVM);
+                return PartialView("_Eliminar", direccionVM);
             }
             return View();
         }
