@@ -5,6 +5,7 @@ using AppDigitalCv.Repository.Infraestructure.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,12 +16,13 @@ namespace AppDigitalCv.Business
         //Creacion de los objetos del repositorio
         private readonly IUnitOfWork unitOfWork;
         private readonly AlergiasRepository alergiaRepository;
-
+        private readonly AlergiasPersonalRepository alergiasPersonalRepository;
         public AlergiasBusiness(IUnitOfWork _unitOfWork)
         {
 
             unitOfWork = _unitOfWork;
             alergiaRepository = new AlergiasRepository(unitOfWork);
+            alergiasPersonalRepository = new AlergiasPersonalRepository(unitOfWork);
 
         }
 
@@ -57,5 +59,56 @@ namespace AppDigitalCv.Business
             return alergias;
         }
 
+
+        /// <summary>
+        /// Este metodo se encarga de registrar o actualizar las alergias
+        /// </summary>
+        /// <param name="alergiasPersonalDomainModel"></param>
+        /// <returns>regresar un true o false si el proceso se llevo acabo.</returns>
+        public bool AddUpdateAlergias(AlergiasPersonalDomainModel alergiasPersonalDomainModel)
+        {
+
+            bool respuesta = false;
+
+            if (alergiasPersonalDomainModel.idAlergiasPersonal > 0)
+            {
+                tblAlergiasPersonal alergias = alergiasPersonalRepository.SingleOrDefault(p => p.idAlergiasPersonal == alergiasPersonalDomainModel.idAlergiasPersonal);
+
+                if (alergias != null)
+                {
+                    alergias.idAlergia = alergiasPersonalDomainModel.idAlergia;
+                    alergias.idPersonal = alergiasPersonalDomainModel.idPersonal;
+                    alergias.dteFechaRegistro = DateTime.Now;
+
+                    alergiasPersonalRepository.Update(alergias);
+
+                    respuesta = true;
+                }
+
+            }
+            else
+            {
+                if (alergiasPersonalRepository.Exists(p => p.idAlergia == alergiasPersonalDomainModel.idAlergia))
+                {
+                    return false;
+                }
+                else
+                {
+                    tblAlergiasPersonal tblAlergiasPersonal = new tblAlergiasPersonal();
+                    tblAlergiasPersonal.idAlergia = alergiasPersonalDomainModel.idAlergia;
+                    tblAlergiasPersonal.idPersonal = alergiasPersonalDomainModel.idPersonal;
+                    tblAlergiasPersonal.dteFechaRegistro = DateTime.Now;
+
+                    alergiasPersonalRepository.Insert(tblAlergiasPersonal);
+
+                    respuesta = true;
+                }
+            }
+
+            return respuesta;
+
+        }
+
+        
     }
 }
