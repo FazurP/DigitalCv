@@ -228,7 +228,23 @@ namespace AppDigitalCv.Business
             return documentoMD;
         }
 
-
+        /// <summary>
+        /// Este metodo se encarga de establecer un idDireccion de la tabla personal en null
+        /// </summary>
+        /// <param name="idPersonal">el identificador del personal</param>
+        /// <returns>un valor true o false</returns>
+        public bool UpdateCampoDireccionId(int idPersonal)
+        {
+            bool respuesta = false;
+            tblPersonal personal = personalRepository.SingleOrDefault(p => p.idPersonal == idPersonal);
+            if (personal != null)
+            {
+                personal.idDireccion = null;
+                personalRepository.Update(personal);
+                respuesta = true;
+            }
+            return respuesta;
+        }
        
 
     }

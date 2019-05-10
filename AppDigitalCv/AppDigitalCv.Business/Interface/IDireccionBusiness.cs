@@ -63,6 +63,11 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="idPersonal">el identificador del personal</param>
         /// <returns>la direccion de una persona</returns>
         DireccionDomainModel GetDireccionPersonal(int idDireccion, int idPersonal);
-
+        /// <summary>
+        /// Este metodo se encarga de eliminar fisicamente una direccion  de la base de datos
+        /// </summary>
+        /// <param name="direccionDomainModel">recive una entidad del tipo direccionDomainModel</param>
+        /// <returns>regresa una respuesta del tipo true o false</returns>
+        bool DeleteDireccion(DireccionDomainModel direccionDomainModel);
     }
 }

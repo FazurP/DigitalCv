@@ -255,5 +255,20 @@ namespace AppDigitalCv.Business
             return direccionDM;
         }
 
+
+        /// <summary>
+        /// Este metodo se encarga de eliminar fisicamente una direccion  de la base de datos
+        /// </summary>
+        /// <param name="direccionDomainModel">recive una entidad del tipo direccionDomainModel</param>
+        /// <returns>regresa una respuesta del tipo true o false</returns>
+        public bool DeleteDireccion(DireccionDomainModel direccionDomainModel)
+        {
+            bool respuesta = false;
+            Expression<Func<catDireccion, bool>> predicado = p => p.idDireccion.Equals(direccionDomainModel.IdDireccion);
+            direccionRepository.Delete(predicado);
+            respuesta = true;
+            return respuesta;
+        }
+
     }
 }

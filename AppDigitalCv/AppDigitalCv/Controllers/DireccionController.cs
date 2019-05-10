@@ -224,7 +224,23 @@ namespace AppDigitalCv.Controllers
             return View();
         }
         #endregion
-
+        #region Eliminar Direccion de  la Base de datos
+        /// <summary>
+        /// Este metodo se encarga de presentar los datos a la vista que se van a eliminar
+        /// </summary>
+        /// <param name="DireccionVM">recibe un identificador de la direccion</param>
+        /// <returns>regresa una direccion en una vista</returns>
+        public ActionResult EliminarDireccion(DireccionVM direccionVM)
+        {
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
+            DireccionDomainModel direccionDM = IdireccionBusiness.GetDireccionPersonal(direccionVM.IdDireccion, idPersonal);
+            if (direccionDM != null)
+            {
+                IdireccionBusiness.DeleteDireccion(direccionDM);
+            }
+            return View("Create");
+        }
+        #endregion
 
 
 
