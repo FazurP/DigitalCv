@@ -25,7 +25,11 @@ namespace AppDigitalCv.Business
             alergiasPersonalRepository = new AlergiasPersonalRepository(unitOfWork);
 
         }
-
+        /// <summary>
+        /// Este metodo obtiene las alergias de la persona
+        /// </summary>
+        /// <param name="_idPersonal"></param>
+        /// <returns>una lista con las alergias</returns>
         public List<AlergiasDomainModel> GetAlergiasByIdPersonal(int _idPersonal)
         {
 
@@ -46,13 +50,42 @@ namespace AppDigitalCv.Business
             }
 
             return alergiasDM;
+        }
+        /// <summary>
+        /// Este metodo Obtiene una alergias personal
+        /// </summary>
+        /// <param name="_idAlergia"></param>
+        /// <param name="_idPersonal"></param>
+        /// <returns>el objeto de la alergia</returns>
+        public AlergiasPersonalDomainModel GetAlergiasPersonales(int _idAlergia, int _idPersonal) {
 
-            //AlergiasDomainModel alergiasDomainModel = new AlergiasDomainModel();
-            //alergiasDomainModel.StrDescripcion = tblAlergias.catAlergias.strDescripcion;
+            AlergiasPersonalDomainModel alergiasPersonalDM = new AlergiasPersonalDomainModel();
+            Expression<Func<tblAlergiasPersonal, bool>> predicado = p => p.idAlergia.Equals(_idAlergia) && p.idPersonal.Equals(_idPersonal);
+            tblAlergiasPersonal tblAlergias = alergiasPersonalRepository.GetAll(predicado).FirstOrDefault<tblAlergiasPersonal>();
 
-            //alergias.Add(alergiasDomainModel);
 
-            //return alergias;
+            alergiasPersonalDM.idAlergia = tblAlergias.idAlergia;
+            alergiasPersonalDM.idAlergiasPersonal = tblAlergias.idAlergiasPersonal;
+            alergiasPersonalDM.idPersonal = tblAlergias.idPersonal;
+            alergiasPersonalDM.dteFechaRegistro = tblAlergias.dteFechaRegistro.Value;
+
+            return alergiasPersonalDM;
+
+        }
+        /// <summary>
+        /// Este metodo elimina la alergia personal
+        /// </summary>
+        /// <param name="alergiasPersonalDM"></param>
+        /// <returns>true o false</returns>
+        public bool DeleteAlergias(AlergiasPersonalDomainModel alergiasPersonalDM) {
+
+            bool respuesta = false;
+            Expression<Func<tblAlergiasPersonal, bool>> predicado = p => p.idAlergia.Equals(alergiasPersonalDM.idAlergia)
+             && p.idPersonal.Equals(alergiasPersonalDM.idPersonal);
+            alergiasPersonalRepository.Delete(predicado);
+            respuesta = true;
+            return respuesta;
+
         }
     }
 }

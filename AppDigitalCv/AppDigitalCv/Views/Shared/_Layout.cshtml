@@ -16,7 +16,11 @@
     </title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link href="~/Content/css/media-queries/media-queries.css" rel="stylesheet" />
     <link href="~/Scripts/jtable/themes/metro/jtable_metro_base.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 
     @Styles.Render("~/Bundles/css")
@@ -48,7 +52,7 @@
 
     <script src="@RouteJs.RouteJsHandler.HandlerUrl"></script>
     <script src="@EnumHandler.HandlerUrl"></script>
-    <script src="~/Scripts/Validate/Block/validate-block-click.js"></script>
+    
     @Scripts.Render("~/Bundles/js")
     @RenderSection("ViewSpecificJavascript", required: false)
     @RenderSection("scripts", required: false)

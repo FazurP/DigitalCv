@@ -16,7 +16,7 @@ namespace AppDigitalCv.Controllers
         IAlergiasBusiness alergiasBusiness;
         IAlergiasPersonalBusinnes alergiasPersonalBussines;
 
-        public AlergiasController(IAlergiasBusiness _alergiasBusiness, IAlergiasPersonalBusinnes _alergiasPersonalBusinnes )
+        public AlergiasController(IAlergiasBusiness _alergiasBusiness, IAlergiasPersonalBusinnes _alergiasPersonalBusinnes)
         {
             alergiasBusiness = _alergiasBusiness;
             alergiasPersonalBussines = _alergiasPersonalBusinnes;
@@ -25,7 +25,7 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            alergiasPersonalBussines.GetAlergiasByIdPersonal(SessionPersister.AccountSession.IdPersonal);
+
             if (SessionPersister.AccountSession != null)
             {
                 ViewBag.Alimentos = new SelectList(alergiasBusiness.GetAlergias(), "IdAlergia", "StrDescripcion");
@@ -35,9 +35,9 @@ namespace AppDigitalCv.Controllers
             }
             else
             {
-               return View("~/Views/Seguridad/Login.cshtml");
+                return View("~/Views/Seguridad/Login.cshtml");
             }
-            
+
         }
 
         /// <summary>
@@ -103,11 +103,26 @@ namespace AppDigitalCv.Controllers
             return alergiasBusiness.AddUpdateAlergias(alergiasPersonalDomainModel);
         }
 
-        public ActionResult DeleteAlergiasById(int IdAlergias)
+        public ActionResult GetAlegiaById(int idAlergia)
         {
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
+            //AlergiasPersonalDomainModel alergiasPersonalDM = alergiasPersonalBussines.GetAlergiasPersonales(idAlergia, idPersonal);
+            AlergiasDomainModel alergiasDM = alergiasBusiness.GetAlergia(idAlergia, idPersonal);
+
+            if (alergiasDM != null)
+            {
+                AlergiasVM alergiasVM = new AlergiasVM();
+                AutoMapper.Mapper.Map(alergiasDM, alergiasVM);
+                return PartialView("_Eliminar", alergiasVM);
+            }
+
             return View();
         }
-
+        /// <summary>
+        /// Este metodo muestra los datos en la tabla despues de agregarlos.
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
         [HttpGet]
         public JsonResult GetAlergias(DataTablesParam param)
         {
@@ -145,6 +160,24 @@ namespace AppDigitalCv.Controllers
 
             }, JsonRequestBehavior.AllowGet);
 
+        }
+
+        /// <summary>
+        /// Este metodo de encarga de eliminar las alergias
+        /// </summary>
+        /// <param name="alergiasVM"></param>
+        /// <returns>una vista</returns>
+        public ActionResult DeleteAlergiaById(AlergiasVM alergiasVM)
+        {
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
+            AlergiasPersonalDomainModel alergiasPersonalDM = alergiasPersonalBussines.GetAlergiasPersonales(alergiasVM.IdAlergia, idPersonal);
+
+            if (alergiasPersonalDM != null)
+            {
+                alergiasPersonalBussines.DeleteAlergias(alergiasPersonalDM);
+            }
+
+            return View(Create());
         }
     }
 }

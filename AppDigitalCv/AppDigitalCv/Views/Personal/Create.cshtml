@@ -14,7 +14,7 @@
                     </div>
                     <div role="form">
                         <div class="box-body">
-                            <div class="form-group">
+                            <div class="form-group  ">
                                 <label for="etNombre">Nombre:</label>
                                 @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control input-sm", placeholder = "Tu Nombre",id="Nombre",required="",patern="^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$"})
                                 @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
@@ -32,12 +32,12 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
                                         <label for="etcurp">Curp:</label>
                                         @Html.TextBoxFor(model => model.Curp, new { @class = "form-control input-sm", placeholder = "Tu Curp", id="Curp",required="" })
                                         @Html.ValidationMessageFor(model => model.Curp, "", new { @class = "text-danger" })
                                     </div>
-                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
                                         <label for="curpInputFile">Cargar Archivo del Curp:</label>
                                         @Html.TextBoxFor(model => model.ArchivoCurp, new { @class = "form-control", @type = "file",required="", id="UCurp" })
                                         @Html.ValidationMessageFor(model => model.ArchivoCurp, "", new { @class = "text-danger" })
@@ -49,12 +49,12 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
                                         <label for="etrfc">Rfc:</label>
                                         @Html.TextBoxFor(model => model.RFC, new { @class = "form-control input-sm", placeholder = "Tu Rfc",id="Rfc",required="" })
                                         @Html.ValidationMessageFor(model => model.RFC, "", new { @class = "text-danger" })
                                     </div>
-                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
                                         <label for="curpInputFile">Cargar Archivo del Rfc:</label>
                                         @Html.TextBoxFor(model => model.ArchivoRfc, new { @class = "form-control", @type = "file",required="", id="URfc"})
                                         @Html.ValidationMessageFor(model => model.ArchivoRfc, "", new { @class = "text-danger" })
@@ -63,7 +63,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
                                         <label for="ethomoclave">Homoclave:</label>
                                         @Html.TextBoxFor(model => model.HomoClave, new { @class = "form-control input-sm", placeholder = "Homoclave",id="Homoclave",required="" })
                                         @Html.ValidationMessageFor(model => model.HomoClave, "", new { @class = "text-danger" })
@@ -88,8 +88,8 @@
                 </div>
 
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <div class="row">
+            <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                     <div class="box box-success">
                         <div class="box-body box-profile">
                             <div id="imgPreview">
@@ -109,7 +109,7 @@
                                 <li class="list-group-item">
                                     <label for="exampleInputFile">Cargar Foto:</label>
                                     @*<input type="file" id="fotoInputFile" class="btn btn-file btn-github" required>*@
-                                    @Html.TextBoxFor(model => model.ImageFile, new { @class = "btn btn-file btn-linkedin", @type = "file",id= "fotoInputFile" })
+                                    @Html.TextBoxFor(model => model.ImageFile, new { @class = "btn btn-file btn-linkedin col-xs-12 col-sm-12 col-md-12 col-lg-12", @type = "file",id= "fotoInputFile" })
                                     @Html.ValidationMessageFor(model => model.ImageFile, "", new { @class = "text-danger" })
                                 </li>
                                

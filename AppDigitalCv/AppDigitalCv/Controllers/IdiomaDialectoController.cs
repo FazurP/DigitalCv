@@ -7,19 +7,22 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AppDigitalCv.Security;
-
+using AppDigitalCv.Models;
 
 namespace AppDigitalCv.Controllers
 {
     public class IdiomaDialectoController : Controller
     {
         IIdiomaDialectoBusiness IidiomaDialectoBusiness;
+        IIdiomaBusiness IidiomaBusinnes;
         Porcentajes p = new Porcentajes();
 
-        public IdiomaDialectoController(IIdiomaDialectoBusiness _IidiomaBusiness)
+        public IdiomaDialectoController(IIdiomaDialectoBusiness _IidiomaBusiness, IIdiomaBusiness _Iidioma)
         {
             IidiomaDialectoBusiness = _IidiomaBusiness;
+            IidiomaBusinnes = _Iidioma;
         }
+        
 
         // GET: Idioma
         public ActionResult Index()
@@ -46,9 +49,10 @@ namespace AppDigitalCv.Controllers
         [HttpPost]
         public ActionResult Create([Bind(Include = "StrComunicacionPorcentaje, StrEscrituraProcentaje, StrEntendimientoPorcentaje, StrLecturaPorcentaje, IdIdioma, IdDialecto, IdPersonal")] IdiomaDialectoVM idiomaDialectoVM)
         {
-            int idPersonal = 1;
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
             //idiomaDialectoVM.IdIdioma = ViewBag.IdIdioma;
             idiomaDialectoVM.IdPersonal = idPersonal;
+            idiomaDialectoVM.DteFechaRegistro = DateTime.Now;
             if (ModelState.IsValid)
             {
                 //Informacion para insertar
@@ -68,5 +72,73 @@ namespace AppDigitalCv.Controllers
             return IidiomaDialectoBusiness.AddUpdateIdioma(idiomaDialectoDM);
         }
         #endregion
+
+        [HttpGet]
+        public JsonResult GetIdiomas(DataTablesParam param)
+        {
+            int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
+            List<IdiomaDomainModel> alergiasDM = new List<IdiomaDomainModel>();
+
+            int pageNo = 1;
+            if (param.iDisplayStart >= param.iDisplayLength)
+            {
+                pageNo = (param.iDisplayStart / param.iDisplayLength) + 1;
+            }
+
+            int totalCount = 0;
+            if (param.sSearch != null)
+            {
+                alergiasDM = IidiomaBusinnes.GetIdiomasByIdPersonal(IdentityPersonal).Where(p => p.strDescripcion.Contains(param.sSearch)).ToList();
+
+
+            }
+            else
+            {
+                totalCount = IidiomaBusinnes.GetIdiomasByIdPersonal(IdentityPersonal).Count();
+
+
+                alergiasDM = IidiomaBusinnes.GetIdiomasByIdPersonal(IdentityPersonal).OrderBy(p => p.strDescripcion)
+                    .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
+
+            }
+            return Json(new
+            {
+                aaData = alergiasDM,
+                sEcho = param.sEcho,
+                iTotalDisplayRecords = alergiasDM.Count(),
+                iTotalRecords = alergiasDM.Count()
+
+            }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public ActionResult GetIdiomaById(int idIdioma)
+        {
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
+         
+            IdiomaDomainModel idiomaDM = IidiomaBusinnes.GetIdioma(idIdioma, idPersonal);
+
+            if (idiomaDM != null)
+            {
+                IdiomaVM idiomaVM = new IdiomaVM();
+                AutoMapper.Mapper.Map(idiomaDM, idiomaVM);
+                return PartialView("_Eliminar", idiomaVM);
+            }
+
+            return View();
+        }
+
+        //public ActionResult DeleteIdiomaById(IdiomaVM idiomaVM)
+        //{
+        //    int idPersonal = SessionPersister.AccountSession.IdPersonal;
+        //    IdiomaDialectoDomainModel alergiasPersonalDM = IidiomaDialectoBusiness.GetAlergiasPersonales(alergiasVM.IdAlergia, idPersonal);
+
+        //    if (alergiasPersonalDM != null)
+        //    {
+        //        alergiasPersonalBussines.DeleteAlergias(alergiasPersonalDM);
+        //    }
+
+        //    return View(Create());
+        //}
     }
 }

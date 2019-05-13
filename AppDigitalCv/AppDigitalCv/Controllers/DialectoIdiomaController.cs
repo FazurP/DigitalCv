@@ -1,5 +1,6 @@
 ﻿using AppDigitalCv.Business.Interface;
 using AppDigitalCv.Domain;
+using AppDigitalCv.Security;
 using AppDigitalCv.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ namespace AppDigitalCv.Controllers
         [HttpPost]
         public ActionResult Create([Bind(Include = "StrComunicacionPorcentaje, StrEscrituraProcentaje, StrEntendimientoPorcentaje, StrLecturaPorcentaje, IdIdioma, IdDialecto, IdPersonal")] IdiomaDialectoVM dialectoIdiomaVM)
         {
-            int idPersonal = 1;
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
             dialectoIdiomaVM.IdPersonal = idPersonal;
             if (ModelState.IsValid)
             {

@@ -176,6 +176,7 @@
     <Content Include="Content\animate.min.css" />
     <Content Include="Content\css\cardview.css" />
     <Content Include="Content\css\Ionicons.css" />
+    <Content Include="Content\css\media-queries\media-queries.css" />
     <Content Include="Content\estilo.css" />
     <Content Include="Content\js\plugins\jquery\jquery.min.js" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -374,6 +375,7 @@
     <Content Include="Scripts\SignOut\signout-session.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\Validate\Alergias\validate-alergias-form.js" />
     <Content Include="Scripts\Validate\Asociaciones\validate-asociaciones-form.js" />
     <Content Include="Scripts\Validate\Asociaciones\validate-asociaciones-regExp.js" />
     <Content Include="Scripts\Validate\Block\validate-block-click.js" />
@@ -469,6 +471,8 @@
     <Content Include="Views\HabitosPersonales\Registrar.cshtml" />
     <Content Include="Views\Alergias\Create.cshtml" />
     <Content Include="Views\Direccion\_Eliminar.cshtml" />
+    <Content Include="Views\Alergias\_Eliminar.cshtml" />
+    <Content Include="Views\IdiomaDialecto\_Eliminar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

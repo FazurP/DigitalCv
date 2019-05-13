@@ -10,91 +10,93 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="bs-container content" style="min-height:960px;">
-        <section class="content-header">
-            <h1>
-                Agregar Dirección
-                <small> Agregar la direccion completa </small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"> <i class="fa fa-dashboard"></i>Inicio </a></li>
-                <li> <a href="#">Dirección</a></li>
-                <li class="active">(Agregar)</li>
-            </ol>
-        </section>
-        <br />
-        <div class="row">
+        <div class="bs-container content" style="min-height:960px;">
+            <section class="content-header">
+                <h1>
+                    Agregar Dirección
+                    <small> Agregar la direccion completa </small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"> <i class="fa fa-dashboard"></i>Inicio </a></li>
+                    <li> <a href="#">Dirección</a></li>
+                    <li class="active">(Agregar)</li>
+                </ol>
+            </section>
+            <br />
+       
+            <div class="row">
 
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="box box-success">
-                    <br /><label class="text-green">
-                        <i class="text-success fa fa-graduation-cap"></i>
-                        @SessionPersister.AccountSession.NombreCompleto
-                    </label>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="box box-success">
+                        <br /><label class="text-green">
+                            <i class="text-success fa fa-graduation-cap"></i>
+                            @SessionPersister.AccountSession.NombreCompleto
+                        </label>
 
-                    <div role="form">
-                        <div class="box-body">
-                            <div class="form-inline">
-                                <div class="form-group-sm ">
-                                    <label>País:</label>
-                                    @Html.DropDownList("Pais", null, htmlAttributes: new { @class = "form-control input-sm", id = "Pais" })
-                                    <label>Estado:</label>
-                                    @Html.DropDownList("Estados", null, htmlAttributes: new { @class = "form-control input-sm", id = "Estados" })
-                                    <label>Municipio:</label>
-                                    @Html.DropDownList("Municipios", null, htmlAttributes: new { @class = "form-control input-sm", id = "Municipios" })
-                                </div>
-                                <br />
-                                <div class="form-group-sm">
-                                    <label>Colonia</label>
-                                    @Html.DropDownList("IdColonia", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdColonia" })
-                                    <label for="etCodigoPostal"> Codigo Postal: </label>
-                                    @Html.TextBoxFor(model => model.ColoniaVM.intCp, new { @class = "form-control input-sm", placeholder = "Codigo Postal", id = "codigoPostal" })
-                                    <label for="etCalle">Calle:</label>
-                                    @Html.TextBoxFor(model => model.StrCalle, new { @class = "form-control input-sm", placeholder = "Calle", required = "", id = "Calle", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.# ]+$" })
-                                </div><br />
-                                <div class="form-group-sm">
-                                    <label for="etNoInterior">No.Interior:</label>
-                                    @Html.TextBoxFor(model => model.StrNumeroInterior, new { @class = "form-control input-sm", placeholder = "Numero Interior", required = "", id = "NInterior", pattern = "^[0-9]+$" })
-                                    <label for="etNoExterior">No° Exterior:</label>
-                                    @Html.TextBoxFor(model => model.StrNumeroExterior, new { @class = "form-control input-sm", placeholder = "Numero Exterior", required = "", id = "NExterior", pattern = "^[0-9]+$" })
-                                </div>
-                                <div class="form-group-sm">
-                                    <input type="submit" value="Guardar" class="btn btn-success" id="Enviar" />
-                                </div>
-                            </div>
-                            <!--aqui va todo-->
-                            <div class="form-group-sm">
-                                <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
-                                <div class="form-group" id="addTable">
+                        <div role="form">
+                            <div class="box-body">
+                                <div class="form-inline">
+                                    <div class="form-group-sm ">
+                                        <label>País:</label>
+                                        @Html.DropDownList("Pais", null, htmlAttributes: new { @class = "form-control input-sm", id = "Pais" })
+                                        <label>Estado:</label>
+                                        @Html.DropDownList("Estados", null, htmlAttributes: new { @class = "form-control input-sm", id = "Estados" })
+                                        <label>Municipio:</label>
+                                        @Html.DropDownList("Municipios", null, htmlAttributes: new { @class = "form-control input-sm", id = "Municipios" })
+                                    </div>
                                     <br />
-                                    <table id="tblDireccion" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
-                                        <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
-                                            <tr>
-                                                <th>Calle</th>
-                                                <th>Colonia</th>
-                                                <th>Número Interior</th>
-                                                <th>Número Exterior</th>
-                                                <th>Editar</th>
+                                    <div class="form-group-sm">
+                                        <label>Colonia</label>
+                                        @Html.DropDownList("IdColonia", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdColonia" })
+                                        <label for="etCodigoPostal"> Codigo Postal: </label>
+                                        @Html.TextBoxFor(model => model.ColoniaVM.intCp, new { @class = "form-control input-sm", placeholder = "Codigo Postal", id = "codigoPostal" })
+                                        <label for="etCalle">Calle:</label>
+                                        @Html.TextBoxFor(model => model.StrCalle, new { @class = "form-control input-sm", placeholder = "Calle", required = "", id = "Calle", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.# ]+$" })
+                                    </div><br />
+                                    <div class="form-group-sm">
+                                        <label for="etNoInterior">No.Interior:</label>
+                                        @Html.TextBoxFor(model => model.StrNumeroInterior, new { @class = "form-control input-sm", placeholder = "Numero Interior", required = "", id = "NInterior", pattern = "^[0-9]+$" })
+                                        <label for="etNoExterior">No° Exterior:</label>
+                                        @Html.TextBoxFor(model => model.StrNumeroExterior, new { @class = "form-control input-sm", placeholder = "Numero Exterior", required = "", id = "NExterior", pattern = "^[0-9]+$" })
+                                    </div>
+                                    <div class="form-group-sm">
+                                        <input type="submit" value="Guardar" class="btn btn-success" id="Enviar" />
+                                    </div>
+                                </div>
+                                <!--aqui va todo-->
+                                <div class="form-group-sm">
+                                    <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
+                                    <div class="form-group" id="addTable">
+                                        <br />
+                                        <table id="tblDireccion" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
+                                            <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
+                                                <tr>
+                                                    <th>Calle</th>
+                                                    <th>Colonia</th>
+                                                    <th>Número Interior</th>
+                                                    <th>Número Exterior</th>
+                                                    <th>Editar</th>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody id="tblBody"></tbody>
-                                    </table>
-                                    <!-- Establecemos el Modal que se va a presentar cuando demos click en la edicion de los datos-->
-                                    <div class="modal fade" id="myModal1">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header" style="background-color:#3C8DBC;color:white;">
-                                                    <a href="#" class="close" data-dismiss="modal">&times;</a>
-                                                    <h5 class="modal-title"><label style="font-size:medium;">Dirección</label></h5>
-                                                </div>
-                                                <div class="modal-body" id="myModalBodyDiv1">
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tblBody"></tbody>
+                                        </table>
+                                        <!-- Establecemos el Modal que se va a presentar cuando demos click en la edicion de los datos-->
+                                        <div class="modal fade" id="myModal1">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                                                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                                                        <h5 class="modal-title"><label style="font-size:medium;">Dirección</label></h5>
+                                                    </div>
+                                                    <div class="modal-body" id="myModalBodyDiv1">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <input type="hidden" id="hiddenDirecciondId" />
+                                        <!--Terminamos el modal de eliminacion-->
                                     </div>
-                                    <input type="hidden" id="hiddenDirecciondId" />
-                                    <!--Terminamos el modal de eliminacion-->
                                 </div>
                             </div>
                         </div>
@@ -102,7 +104,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
 }
 
@@ -123,7 +124,7 @@
     <script>
 
         var AddEditar = function (IdDireccion) {
-
+           
             var url = "/Direccion/GeDireccion?IdDireccion=" + IdDireccion;
 
             $("#myModalBodyDiv1").load(url, function () {
@@ -134,7 +135,7 @@
         };
 
         $(document).ready(function () {
-           
+
             var oTable;
 
             BindDataTable();
