@@ -67,6 +67,7 @@
     <Compile Include="FamiliarBusiness.cs" />
     <Compile Include="FrecuenciaBusiness.cs" />
     <Compile Include="IdiomaDialectoBusiness.cs" />
+    <Compile Include="IdiomasBusiness.cs" />
     <Compile Include="Interface\IAccountBusiness.cs" />
     <Compile Include="Interface\IAlergiasBusiness.cs" />
     <Compile Include="Interface\IAlergiasPersonalBusinnes.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Interface\IEstadoSaludBusiness.cs" />
     <Compile Include="Interface\IFamiliarBusiness.cs" />
     <Compile Include="Interface\IFrecuenciaBusiness.cs" />
+    <Compile Include="Interface\IIdiomaBusiness.cs" />
     <Compile Include="Interface\IIdiomaDialectoBusiness.cs" />
     <Compile Include="Interface\IDireccionBusiness.cs" />
     <Compile Include="Interface\IEnfermedadBusiness.cs" />
