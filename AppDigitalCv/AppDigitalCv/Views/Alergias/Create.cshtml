@@ -88,7 +88,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="hidden" id="hiddenDirecciondId" />
+                                <input type="hidden" id="hiddenAlergiaId" />
                                 <!--Terminamos el modal de eliminacion-->
                             </div>
                         </div>
@@ -114,15 +114,15 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-    <script src="~/Scripts/Validate/Direccion/validate-direccion-form.js"></script>
-    <script src="~/Scripts/Validate/Direccion/validate-direccion-regExp.js"></script>
 
-    <!-- JS para llenar el dropdowList de estados por medio de la seleccion de un pais -->
+    <script src="~/Scripts/Validate/Alergias/validate-alergias-form.js"></script>
+
+
     <script>
 
-        var AddEditar = function (idAlergias) {
+        var AddEliminar = function (IdAlergia) {
 
-            var url = "/Direccion/GetEstadoSalud?IdEnfermedad=" + idAlergias;
+            var url = "/Alergias/GetAlegiaById?IdAlergia=" + IdAlergia;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -188,10 +188,10 @@
                             { "data": "StrDescripcion" },
 
                             {
-                                "data": "idAlergias",
-                                "render": function (idAlergias, type, full, meta) {
+                                "data": "IdAlergia",
+                                "render": function (IdAlergia, type, full, meta) {
 
-                                    return '<a href="#" onclick="AddEditar(' + idAlergias + ')"><i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i></a>'
+                                    return '<a href="#" onclick="AddEliminar(' + IdAlergia + ')"><i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i></a>'
                                 }
                             },
                         ]

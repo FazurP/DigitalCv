@@ -11,6 +11,10 @@ namespace AppDigitalCv.Business.Interface
     {
         List<AlergiasDomainModel> GetAlergiasByIdPersonal(int _idPersonal);
 
+        AlergiasPersonalDomainModel GetAlergiasPersonales(int _idAlergia, int _idPersonal);
+
+        bool DeleteAlergias(AlergiasPersonalDomainModel alergiasPersonalDM);
+
         }
         
 }

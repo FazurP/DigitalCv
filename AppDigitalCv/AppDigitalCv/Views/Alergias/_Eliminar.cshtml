@@ -1,19 +1,21 @@
-﻿@model AppDigitalCv.ViewModels.ParentescoVM
+﻿@model AppDigitalCv.ViewModels.AlergiasVM
 @using AppDigitalCv.Security
 
     <div>
-        <form id="myForm">
+        
+        <form id="myFormulario">
 
             <div class="form-inline">
                 <div class="form-group">
                     ¿Deseas <strong>Eliminar</strong> este registro realmente?
                 </div>
                 <div class="form-group">
-                    @Html.HiddenFor(m => m.IdFamiliar, new { @class = "form-control input-sm", id = "IdFamiliar" })
-                    @Html.HiddenFor(m => m.IdParentesco)
-                    @Html.HiddenFor(m => m.IdPersonal)
-                    @Html.HiddenFor(m => m.StrNombre)
-                    @Html.TextBoxFor(m => m.StrNombre, new { @class = "form-control input-sm", @placeholder = "Nombre del Familiar" })
+                    @Html.HiddenFor(m => m.IdAlergia, new { @class = "form-control input-sm", id = "IdAlergia" })
+                    @Html.HiddenFor(m => m.IdtipoAlergia)
+                    @Html.HiddenFor(m => m.StrDescripcion)
+                    @Html.HiddenFor(m => m.StrObservacion)
+
+                    @Html.TextBoxFor(m => m.StrDescripcion, new { @class = "form-control input-sm", @placeholder = "Nombre de la Alergia" })
 
                     <a href="#" id="btnSubmit">
                         <i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i>
@@ -28,35 +30,33 @@
 
 
         </form>
-
     </div>
-<script>
 
-    $(document).ready(function () {
+    <script>
+        $(document).ready(function () {
 
-        $("#btnSubmit").click(function () {
-          
+             $("#btnSubmit").click(function () {
+
             $("#loaderDiv").show();
 
-            var myformdata = $("#myForm").serialize();
-           
-            $.ajax({
+            var myformdat = $("#myFormulario").serialize();
                 
+            $.ajax({
+
                 type: "POST",
-                url: "/Hijos/EliminarFamiliar",
-                data: myformdata,
+                url: "/Alergias/DeleteAlergiaById",
+                data: myformdat,
                 success: function () {
                     $("#loaderDiv").hide();
                     $("#myModal").modal("hide");
-                     debugger;
-                    window.location.href = "/Hijos/Create";
-                    
+                    window.location.href = "/Alergias/Create";
+
                 }
 
             })
         })
 
-    })
+        })
+    </script>
 
 
-</script>

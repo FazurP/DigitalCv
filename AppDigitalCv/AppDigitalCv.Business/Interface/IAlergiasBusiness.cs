@@ -13,7 +13,8 @@ namespace AppDigitalCv.Business.Interface
         List<AlergiasDomainModel> GetAlergenos();
         List<AlergiasDomainModel> GetMedicamentos();
         bool AddUpdateAlergias(AlergiasPersonalDomainModel alergiasPersonalDomainModel);
+        AlergiasDomainModel GetAlergia(int idAlergia, int idPersona);
 
-       
+
     }
 }

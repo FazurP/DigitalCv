@@ -9,6 +9,8 @@
 {
     @Html.AntiForgeryToken()
 
+    
+
     <div class="bs-container content" style="min-height: 960px;">
         <section class="content-header">
             <h1>
@@ -21,117 +23,117 @@
                 <li class="active">Datos Personales</li>
             </ol>
         </section>
-        <section class="content">
-            <div class="row">
-                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 ">
-                    <div class="box box-success">
-                        <!--box-primary-->
-                        <div class="box-header ">
-                            <!--with-border-->
-                            <div class="form-inline">
-                                <div class="form-group">
-                                    <label class="text-green">
-                                        <i class="text-green fa fa-heartbeat"></i>
-                                        @SessionPersister.AccountSession.NombreCompleto
-                                    </label>
-                                </div>
-                                @*<div class="form-group">
-                                        <label class="text-light-blue">erik.guerrero.bravo@hotmail.com</label>
-                                    </div>*@
-                            </div>
-                        </div>
-                        <div role="form">
-                            <div class="box-body">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        <table id="myDataTablePersonal" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover table-responsive">
-                                            <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
-                                                <tr>
-                                                    <th><i class="fa fa-user"></i>&nbsp;Nombre</th>
-                                                    <th><i class="fa fa-tag"></i>&nbsp; Apellido Paterno</th>
-                                                    <th><i class="fa fa-tag"></i>&nbsp; Apellido Materno</th>
-                                                    <th><i class="fa fa-check-square-o"></i>&nbsp; Curp</th>
-                                                    <th><i class="fa fa-check-square-o"></i>&nbsp; Rfc</th>
-                                                    <th><i class="glyphicon glyphicon-pencil"></i>&nbsp;Editar</th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                </div>
 
+        <div class="row">
+            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                <div class="box box-success">
+                    <!--box-primary-->
+                    <div class="box-header ">
+                        <!--with-border-->
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label class="text-green">
+                                    <i class="text-green fa fa-heartbeat"></i>
+                                    @SessionPersister.AccountSession.NombreCompleto
+                                </label>
                             </div>
-                            <div class="box-footer">
-
-                            </div>
+                            @*<div class="form-group">
+                                <label class="text-light-blue">erik.guerrero.bravo@hotmail.com</label>
+                            </div>*@
                         </div>
                     </div>
-                </div>
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                    <div class="box box-success">
-                        <div class="box-header with-border">
-                            <p class="box-title text-blue comment-text"><i class="text-blue fa fa-folder-open"></i>Documentos</p>
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                    <i class="fa fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
+                    <div class="form-group-sm">
                         <div class="box-body">
-                            <ul class="products-list product-list-in-box" id="ListaDocumentos">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <table id="myDataTablePersonal" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover table-responsive">
+                                        <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
+                                            <tr>
+                                                <th><i class="fa fa-user"></i>&nbsp;Nombre</th>
+                                                <th><i class="fa fa-tag"></i>&nbsp; Apellido Paterno</th>
+                                                <th><i class="fa fa-tag"></i>&nbsp; Apellido Materno</th>
+                                                <th><i class="fa fa-check-square-o"></i>&nbsp; Curp</th>
+                                                <th><i class="fa fa-check-square-o"></i>&nbsp; Rfc</th>
+                                                <th><i class="glyphicon glyphicon-pencil"></i>&nbsp;Editar</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
 
-                                <li class="item" id="tagCurp">
-                                    <div class="product-img">
-                                        <img src="~/Imagenes/pdf_descargar.jpg" alt="Curp document">
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="javascript:void(0)" class="product-title">
-                                            Documento del Curp
-                                            <span class="label  label-danger pull-right" id="bEliminarCurp">Curp.PDF</span>
-                                        </a>
-                                        <span class="product-description">
-                                            @ViewBag.Curp
-                                        </span>
-                                    </div>
-                                </li>
-
-                                <!-- /.item -->
-
-                                <li class="item" id="tagRfc">
-                                    <div class="product-img">
-                                        <img src="~/Imagenes/pdf_descargar.jpg" alt="Rfc document">
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="javascript:void(0)" class="product-title">
-                                            Documento del Rfc
-                                            <span class="label  label-danger pull-right" id="btnEliminarRfc">Rfc.PDF</span>
-                                        </a>
-                                        <span class="product-description">
-                                            @ViewBag.Rfc
-                                        </span>
-                                    </div>
-                                </li>
-                            </ul>
                         </div>
-                    </div>
-                </div>
-                <!--Cargamos los elementos de link para subir archivos nuevamente-->
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3  offset-md-9">
-                    <div class="info-box" id="tagAddDocumentos">
-                        <span class="info-box-icon bg-green"><i class="fa fa-files-o"></i></span>
+                        <div class="box-footer">
 
-                        <div class="info-box-content">
-                            <span class="info-box-text">
-                                Agregar
-                            </span>
-                            <span class="info-box-number">Documentos</span>
-                            <a href=@Url.Action("AgregarDocumentos","Documentos") class="btn btn-sm btn-primary btn-flat"><i class="fa  fa-paperclip"></i>&nbsp; Agregar</a>
                         </div>
-
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <p class="box-title text-blue comment-text"><i class="text-blue fa fa-folder-open"></i>Documentos</p>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <ul class="products-list product-list-in-box" id="ListaDocumentos">
+
+                            <li class="item" id="tagCurp">
+                                <div class="product-img">
+                                    <img src="~/Imagenes/pdf_descargar.jpg" alt="Curp document">
+                                </div>
+                                <div class="product-info">
+                                    <a href="javascript:void(0)" class="product-title">
+                                        Documento del Curp
+                                        <span class="label  label-danger pull-right" id="bEliminarCurp">Curp.PDF</span>
+                                    </a>
+                                    <span class="product-description">
+                                        @ViewBag.Curp
+                                    </span>
+                                </div>
+                            </li>
+
+                            <!-- /.item -->
+
+                            <li class="item" id="tagRfc">
+                                <div class="product-img">
+                                    <img src="~/Imagenes/pdf_descargar.jpg" alt="Rfc document">
+                                </div>
+                                <div class="product-info">
+                                    <a href="javascript:void(0)" class="product-title">
+                                        Documento del Rfc
+                                        <span class="label  label-danger pull-right" id="btnEliminarRfc">Rfc.PDF</span>
+                                    </a>
+                                    <span class="product-description">
+                                        @ViewBag.Rfc
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--Cargamos los elementos de link para subir archivos nuevamente-->
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3  offset-md-9">
+                <div class="info-box" id="tagAddDocumentos">
+                    <span class="info-box-icon bg-green"><i class="fa fa-files-o"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">
+                            Agregar
+                        </span>
+                        <span class="info-box-number">Documentos</span>
+                        <a href=@Url.Action("AgregarDocumentos","Documentos") class="btn btn-sm btn-primary btn-flat"><i class="fa  fa-paperclip"></i>&nbsp; Agregar</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
     </div>
 
 

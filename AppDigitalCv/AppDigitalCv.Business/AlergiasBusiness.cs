@@ -109,6 +109,22 @@ namespace AppDigitalCv.Business
 
         }
 
+        public AlergiasDomainModel GetAlergia(int idAlergia,int idPersona) {
+
+            AlergiasDomainModel alergiasDM = new AlergiasDomainModel();
+
+            Expression<Func<tblAlergiasPersonal, bool>> predicado = p => p.idPersonal.Equals(idPersona) && p.idAlergia.Equals(idAlergia);
+            tblAlergiasPersonal tblAlergias = alergiasPersonalRepository.GetAll(predicado).FirstOrDefault<tblAlergiasPersonal>();
+
+            alergiasDM.IdAlergia = tblAlergias.catAlergias.idAlergias;
+            alergiasDM.IdtipoAlergia = tblAlergias.catAlergias.idTipoAlergia;
+            alergiasDM.StrDescripcion = tblAlergias.catAlergias.strDescripcion;
+            alergiasDM.StrObservacion = tblAlergias.catAlergias.strObservacion;
+
+            return alergiasDM;
+
+
+        }
         
     }
 }
