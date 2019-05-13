@@ -73,5 +73,12 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="idPersonal">el identificador del personal</param>
         /// <returns>un valor true o false</returns>
         bool UpdateCampoDireccionId(int idPersonal);
+        /// <summary>
+        /// Este metodo se encarga de consulta una persona y actualiza el iddirecicon
+        /// </summary>
+        /// <param name="direccionDomainM">entidad el tipo direciconDM</param>
+        /// <param name="idPersonal">el identificador de la persona</param>
+        /// <returns>respuesta booleana</returns>
+        bool AddUpdatePersonalDireccion(DireccionDomainModel direccionDomainM, int idPersonal);
     }
 }

@@ -69,5 +69,11 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="direccionDomainModel">recive una entidad del tipo direccionDomainModel</param>
         /// <returns>regresa una respuesta del tipo true o false</returns>
         bool DeleteDireccion(DireccionDomainModel direccionDomainModel);
+        /// <summary>
+        /// Este es un metodo utilitario que busca la direccion basada en sus criterios de igualdad
+        /// </summary>
+        /// <param name="catDireccion">una entidad direccion</param>
+        /// <returns>la entidad direccion buscada</returns>
+        DireccionDomainModel GetDireccionInsertada(DireccionDomainModel direccionDModel);
     }
 }
