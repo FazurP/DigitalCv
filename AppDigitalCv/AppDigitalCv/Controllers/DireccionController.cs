@@ -14,12 +14,13 @@ namespace AppDigitalCv.Controllers
     public class DireccionController : Controller
     {
         IDireccionBusiness IdireccionBusiness;
-
-        public DireccionController(IDireccionBusiness _IdDireccionBusiness)
+        IPersonalBusiness IpersonalBusiness;
+        public DireccionController(IDireccionBusiness _IdDireccionBusiness, IPersonalBusiness _IpersonalBusiness)
         {
             IdireccionBusiness = _IdDireccionBusiness;
+            IpersonalBusiness = _IpersonalBusiness;
 
-        }
+    }
 
         // GET: Direccion
         public ActionResult Index()
@@ -72,8 +73,16 @@ namespace AppDigitalCv.Controllers
             if (ModelState.IsValid)
             {
                 AddEditDireccion(direccionVM);
-                return RedirectToAction("Create", "Personal");
+                ViewBag.Pais = new SelectList(IdireccionBusiness.GetPais(), "IdPais", "StrValor");
+                ViewBag.Estados = new SelectList("");
+                ViewBag.Municipios = new SelectList("");
+                ViewBag.IdColonia = new SelectList("");
+                return View("Create");
             }
+            ViewBag.Pais = new SelectList(IdireccionBusiness.GetPais(), "IdPais", "StrValor");
+            ViewBag.Estados = new SelectList("");
+            ViewBag.Municipios = new SelectList("");
+            ViewBag.IdColonia = new SelectList("");
             return View("Create");
         }
 
@@ -142,9 +151,14 @@ namespace AppDigitalCv.Controllers
         /// <returns> Regresa un valor boleano </returns>
         public bool AddEditDireccion(DireccionVM direccionVM)
         {
+            bool respuesta = false;
+            int IdPersonal = SessionPersister.AccountSession.IdPersonal;
             DireccionDomainModel direccionDomainModel = new DireccionDomainModel();
             AutoMapper.Mapper.Map(direccionVM, direccionDomainModel);///hacemos el mapeado de la entidad
-            return IdireccionBusiness.AddUpdateDireccion(direccionDomainModel);
+            respuesta= IdireccionBusiness.AddUpdateDireccion(direccionDomainModel);
+            DireccionDomainModel direccionMD = IdireccionBusiness.GetDireccionInsertada(direccionDomainModel);
+            IpersonalBusiness.AddUpdatePersonalDireccion(direccionMD,IdPersonal);
+            return respuesta;
         }
 
         #endregion
@@ -224,7 +238,31 @@ namespace AppDigitalCv.Controllers
             return View();
         }
         #endregion
-
+        #region Eliminar Direccion de  la Base de datos
+        /// <summary>
+        /// Este metodo se encarga de presentar los datos a la vista que se van a eliminar
+        /// </summary>
+        /// <param name="DireccionVM">recibe un identificador de la direccion</param>
+        /// <returns>regresa una direccion en una vista</returns>
+        public ActionResult EliminarDireccion(DireccionVM direccionVM)
+        {
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
+            DireccionDomainModel direccionDM = IdireccionBusiness.GetDireccionPersonal(direccionVM.IdDireccion, idPersonal);
+            if (direccionDM != null)
+            {
+                if (IpersonalBusiness.UpdateCampoDireccionId(idPersonal))
+                {
+                    IdireccionBusiness.DeleteDireccion(direccionDM);
+                }
+                
+            }
+            ViewBag.Pais = new SelectList(IdireccionBusiness.GetPais(), "IdPais", "StrValor");
+            ViewBag.Estados = new SelectList("");
+            ViewBag.Municipios = new SelectList("");
+            ViewBag.IdColonia = new SelectList("");
+            return View("Create");
+        }
+        #endregion
 
 
 
