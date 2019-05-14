@@ -473,6 +473,7 @@
     <Content Include="Views\Direccion\_Eliminar.cshtml" />
     <Content Include="Views\Alergias\_Eliminar.cshtml" />
     <Content Include="Views\IdiomaDialecto\_Eliminar.cshtml" />
+    <Content Include="Views\IdiomaDialecto\_Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

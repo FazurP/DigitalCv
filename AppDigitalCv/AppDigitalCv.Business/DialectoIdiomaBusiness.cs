@@ -38,18 +38,18 @@ namespace AppDigitalCv.Business
         {
             bool respuesta = false;
 
-            if (idiomaDialectoDM.idIdiomaDialectoPersonal > 0)
+            if (idiomaDialectoDM.IdIdiomaDialectoPersonal > 0)
             {
-                tblIdiomaDialectoPersonal idiomaDialecto = idiomaDialectoRepository.SingleOrDefault(p => p.idIdiomaDialectoPersonal == idiomaDialectoDM.idIdiomaDialectoPersonal);
+                tblIdiomaDialectoPersonal idiomaDialecto = idiomaDialectoRepository.SingleOrDefault(p => p.idIdiomaDialectoPersonal == idiomaDialectoDM.IdIdiomaDialectoPersonal);
 
                 if (idiomaDialecto != null)
                 {
-                    idiomaDialecto.idDialecto = idiomaDialectoDM.idDialecto;
-                    idiomaDialecto.strComunicacionPorcentaje = idiomaDialectoDM.strComunicacionPorcentaje;
-                    idiomaDialecto.strEntendimientoPorcentaje = idiomaDialectoDM.strEntendimientoPorcentaje;
-                    idiomaDialecto.strEscrituraProcentaje = idiomaDialectoDM.strEscrituraProcentaje;
-                    idiomaDialecto.strLecturaPorcentaje = idiomaDialecto.strLecturaPorcentaje;
-                    idiomaDialecto.idPersonal = idiomaDialectoDM.idPersonal;
+                    idiomaDialecto.idDialecto = idiomaDialectoDM.IdDialecto;
+                    idiomaDialecto.strComunicacionPorcentaje = idiomaDialectoDM.StrComunicacionPorcentaje;
+                    idiomaDialecto.strEntendimientoPorcentaje = idiomaDialectoDM.StrEntendimientoPorcentaje;
+                    idiomaDialecto.strEscrituraProcentaje = idiomaDialectoDM.StrEscrituraProcentaje;
+                    idiomaDialecto.strLecturaPorcentaje = idiomaDialectoDM.StrLecturaPorcentaje;
+                    idiomaDialecto.idPersonal = idiomaDialectoDM.IdPersonal;
 
                     idiomaDialectoRepository.Update(idiomaDialecto);
                     respuesta = true;
@@ -58,12 +58,12 @@ namespace AppDigitalCv.Business
             else
             {
                 tblIdiomaDialectoPersonal idiomaDialecto = new tblIdiomaDialectoPersonal();
-                idiomaDialecto.idDialecto = idiomaDialectoDM.idDialecto;
-                idiomaDialecto.strComunicacionPorcentaje = idiomaDialectoDM.strComunicacionPorcentaje;
-                idiomaDialecto.strEntendimientoPorcentaje = idiomaDialectoDM.strEntendimientoPorcentaje;
-                idiomaDialecto.strEscrituraProcentaje = idiomaDialectoDM.strEscrituraProcentaje;
-                idiomaDialecto.strLecturaPorcentaje = idiomaDialectoDM.strLecturaPorcentaje;
-                idiomaDialecto.idPersonal = idiomaDialectoDM.idPersonal;
+                idiomaDialecto.idDialecto = idiomaDialectoDM.IdDialecto;
+                idiomaDialecto.strComunicacionPorcentaje = idiomaDialectoDM.StrComunicacionPorcentaje;
+                idiomaDialecto.strEntendimientoPorcentaje = idiomaDialectoDM.StrEntendimientoPorcentaje;
+                idiomaDialecto.strEscrituraProcentaje = idiomaDialectoDM.StrEscrituraProcentaje;
+                idiomaDialecto.strLecturaPorcentaje = idiomaDialectoDM.StrLecturaPorcentaje;
+                idiomaDialecto.idPersonal = idiomaDialectoDM.IdPersonal;
 
                 var record = idiomaDialectoRepository.Insert(idiomaDialecto);
                 respuesta = true;

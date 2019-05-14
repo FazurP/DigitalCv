@@ -48,19 +48,19 @@ namespace AppDigitalCv.Business
         {
             bool respuesta = false;
 
-            if (idiomaDialectoDM.idIdiomaDialectoPersonal > 0)
+            if (idiomaDialectoDM.IdIdiomaDialectoPersonal > 0)
             {
 
-                tblIdiomaDialectoPersonal idiomaDialecto = idiomaDialectoRepository.SingleOrDefault(p => p.idIdiomaDialectoPersonal == idiomaDialectoDM.idIdiomaDialectoPersonal);
+                tblIdiomaDialectoPersonal idiomaDialecto = idiomaDialectoRepository.SingleOrDefault(p => p.idIdiomaDialectoPersonal == idiomaDialectoDM.IdIdiomaDialectoPersonal);
 
                 if (idiomaDialecto != null)
                 {
-                    idiomaDialecto.idIdioma = idiomaDialectoDM.idIdioma;
-                    idiomaDialecto.strComunicacionPorcentaje = idiomaDialectoDM.strComunicacionPorcentaje;
-                    idiomaDialecto.strEntendimientoPorcentaje = idiomaDialectoDM.strEntendimientoPorcentaje;
-                    idiomaDialecto.strEscrituraProcentaje = idiomaDialectoDM.strEscrituraProcentaje;
-                    idiomaDialecto.strLecturaPorcentaje = idiomaDialecto.strLecturaPorcentaje;
-                    idiomaDialecto.idPersonal = idiomaDialectoDM.idPersonal;
+                    idiomaDialecto.idIdioma = idiomaDialectoDM.IdIdioma;
+                    idiomaDialecto.strComunicacionPorcentaje = idiomaDialectoDM.StrComunicacionPorcentaje;
+                    idiomaDialecto.strEntendimientoPorcentaje = idiomaDialectoDM.StrEntendimientoPorcentaje;
+                    idiomaDialecto.strEscrituraProcentaje = idiomaDialectoDM.StrEscrituraProcentaje;
+                    idiomaDialecto.strLecturaPorcentaje = idiomaDialectoDM.StrLecturaPorcentaje;
+                    idiomaDialecto.idPersonal = idiomaDialectoDM.IdPersonal;
 
                     idiomaDialectoRepository.Update(idiomaDialecto);
 
@@ -68,17 +68,23 @@ namespace AppDigitalCv.Business
                 }
             }
             else{
+                if (idiomaDialectoRepository.Exists(p => p.idIdioma == idiomaDialectoDM.IdIdioma))
+                {
+                    return false;
+                }
+                else
+                {
+                    tblIdiomaDialectoPersonal idiomaDialecto = new tblIdiomaDialectoPersonal();
+                    idiomaDialecto.idIdioma = idiomaDialectoDM.IdIdioma;
+                    idiomaDialecto.strComunicacionPorcentaje = idiomaDialectoDM.StrComunicacionPorcentaje;
+                    idiomaDialecto.strEntendimientoPorcentaje = idiomaDialectoDM.StrEntendimientoPorcentaje;
+                    idiomaDialecto.strEscrituraProcentaje = idiomaDialectoDM.StrEscrituraProcentaje;
+                    idiomaDialecto.strLecturaPorcentaje = idiomaDialectoDM.StrLecturaPorcentaje;
+                    idiomaDialecto.idPersonal = idiomaDialectoDM.IdPersonal;
 
-                tblIdiomaDialectoPersonal idiomaDialecto = new tblIdiomaDialectoPersonal();
-                idiomaDialecto.idIdioma = idiomaDialectoDM.idIdioma;
-                idiomaDialecto.strComunicacionPorcentaje = idiomaDialectoDM.strComunicacionPorcentaje;
-                idiomaDialecto.strEntendimientoPorcentaje = idiomaDialectoDM.strEntendimientoPorcentaje;
-                idiomaDialecto.strEscrituraProcentaje = idiomaDialectoDM.strEscrituraProcentaje;
-                idiomaDialecto.strLecturaPorcentaje = idiomaDialectoDM.strLecturaPorcentaje;
-                idiomaDialecto.idPersonal = idiomaDialectoDM.idPersonal;
-
-                var record = idiomaDialectoRepository.Insert(idiomaDialecto);
-                respuesta = true;
+                    var record = idiomaDialectoRepository.Insert(idiomaDialecto);
+                    respuesta = true;
+                }
             }
             return respuesta;
         }
@@ -95,13 +101,13 @@ namespace AppDigitalCv.Business
             Expression<Func<tblIdiomaDialectoPersonal, bool>> predicado = p => p.idIdioma.Equals(_idIdioma) && p.idPersonal.Equals(_idPersonal);
             tblIdiomaDialectoPersonal tblIdioma = idiomaDialectoRepository.GetAll(predicado).FirstOrDefault<tblIdiomaDialectoPersonal>();
 
-
-            idiomaDialectoDM.idIdioma = tblIdioma.idIdioma;
-            idiomaDialectoDM.idPersonal = tblIdioma.idPersonal;
-            idiomaDialectoDM.strComunicacionPorcentaje = tblIdioma.strComunicacionPorcentaje;
-            idiomaDialectoDM.strEntendimientoPorcentaje = tblIdioma.strEntendimientoPorcentaje;
-            idiomaDialectoDM.strEscrituraProcentaje = tblIdioma.strEscrituraProcentaje;
-            idiomaDialectoDM.strLecturaPorcentaje = tblIdioma.strLecturaPorcentaje;
+            idiomaDialectoDM.IdIdiomaDialectoPersonal = tblIdioma.idIdiomaDialectoPersonal;
+            idiomaDialectoDM.IdIdioma = tblIdioma.idIdioma;
+            idiomaDialectoDM.IdPersonal = tblIdioma.idPersonal;
+            idiomaDialectoDM.StrComunicacionPorcentaje = tblIdioma.strComunicacionPorcentaje;
+            idiomaDialectoDM.StrEntendimientoPorcentaje = tblIdioma.strEntendimientoPorcentaje;
+            idiomaDialectoDM.StrEscrituraProcentaje = tblIdioma.strEscrituraProcentaje;
+            idiomaDialectoDM.StrLecturaPorcentaje = tblIdioma.strLecturaPorcentaje;
 
             return idiomaDialectoDM;
 
@@ -115,8 +121,8 @@ namespace AppDigitalCv.Business
         {
 
             bool respuesta = false;
-            Expression<Func<tblIdiomaDialectoPersonal, bool>> predicado = p => p.idIdioma.Equals(idiomaDialectoDM.idIdioma)
-             && p.idPersonal.Equals(idiomaDialectoDM.idPersonal);
+            Expression<Func<tblIdiomaDialectoPersonal, bool>> predicado = p => p.idIdioma.Equals(idiomaDialectoDM.IdIdioma)
+             && p.idPersonal.Equals(idiomaDialectoDM.IdPersonal);
             idiomaDialectoRepository.Delete(predicado);
             respuesta = true;
             return respuesta;

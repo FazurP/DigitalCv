@@ -8,14 +8,14 @@ namespace AppDigitalCv.Domain
 {
     public class IdiomaDialectoDomainModel
     {
-        public int idIdiomaDialectoPersonal { get; set; }
-        public Nullable<int> idIdioma { get; set; }
-        public Nullable<int> idDialecto { get; set; }
-        public int idPersonal { get; set; }
-        public string strComunicacionPorcentaje { get; set; }
-        public string strEscrituraProcentaje { get; set; }
-        public string strEntendimientoPorcentaje { get; set; }
-        public string strLecturaPorcentaje { get; set; }
+        public int IdIdiomaDialectoPersonal { get; set; }
+        public Nullable<int> IdIdioma { get; set; }
+        public Nullable<int> IdDialecto { get; set; }
+        public int IdPersonal { get; set; }
+        public string StrComunicacionPorcentaje { get; set; }
+        public string StrEscrituraProcentaje { get; set; }
+        public string StrEntendimientoPorcentaje { get; set; }
+        public string StrLecturaPorcentaje { get; set; }
         public Nullable<System.DateTime> dteFechaRegistro { get; set; }
     }
 }

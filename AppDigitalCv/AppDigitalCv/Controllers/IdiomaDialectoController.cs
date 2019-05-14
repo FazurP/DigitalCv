@@ -40,7 +40,7 @@ namespace AppDigitalCv.Controllers
             ViewBag.StrComunicacionPorcentaje = new SelectList(p.GetPorcentajes());
             return View();
         }
-
+                                                                                                                        
         /// <summary>
         /// Metodo para insertar el idioma que habla un usuario
         /// </summary>
@@ -153,6 +153,48 @@ namespace AppDigitalCv.Controllers
             }
 
             return View(Create());
+        }
+
+        [HttpGet]
+        public ActionResult GetIdiomaByIdEdit(int idIdioma)
+        {
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
+            IdiomaDialectoVM idiomaDialectoVM = new IdiomaDialectoVM();
+            //IdiomaDomainModel idiomaDM = IidiomaBusinnes.GetIdioma(idIdioma, idPersonal);
+            IdiomaDialectoDomainModel idiomaDialectoDM = new IdiomaDialectoDomainModel();
+
+            //IdiomaDialectoDomainModel idiomaDialectoDM = IidiomaDialectoBusiness.GetIdiomasPersonales(idIdioma,idPersonal);
+
+
+            if (idIdioma > 0)
+            {
+         
+                ViewBag.StrEscrituraProcentaje = new SelectList(p.GetPorcentajes());
+                ViewBag.StrLecturaPorcentaje = new SelectList(p.GetPorcentajes());
+                ViewBag.StrEntendimientoPorcentaje = new SelectList(p.GetPorcentajes());
+                ViewBag.StrComunicacionPorcentaje = new SelectList(p.GetPorcentajes());
+                idiomaDialectoDM = IidiomaDialectoBusiness.GetIdiomasPersonales(idIdioma,idPersonal);
+               
+              
+            }
+
+            AutoMapper.Mapper.Map(idiomaDialectoDM, idiomaDialectoVM);
+            return PartialView("_Editar", idiomaDialectoVM);
+        }
+
+        [HttpPost]
+        public void EditarIdiomasPersonales(IdiomaDialectoVM idiomaDialectoVM)
+        {
+
+            IdiomaDialectoDomainModel idiomaDialectoDM = new IdiomaDialectoDomainModel();
+
+            AutoMapper.Mapper.Map(idiomaDialectoVM, idiomaDialectoDM);
+
+            if (idiomaDialectoVM.IdIdiomaDialectoPersonal > 0)
+            {
+                IidiomaDialectoBusiness.AddUpdateIdioma(idiomaDialectoDM);
+            }
+
         }
     }
 }

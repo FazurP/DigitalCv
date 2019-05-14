@@ -90,8 +90,9 @@
             ParentescoVM.StrDomicilio = $('#Domicilio').val();
             ParentescoVM.IntEdad = $('#Edad').val();
             ParentescoVM.DteFechaNacimiento = $('#DteFechaNacimiento').val();
+            debugger;
             //serialización del formaulario para la edicion de los datos
-            var myformdata = $("#myForm").serialize();
+            //var myformdata = $("#myForm").serialize();
             $.ajax({
                 type: "POST",
                 url: "/DatosFamiliares/EditarDatosFamiliar",
