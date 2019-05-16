@@ -53,14 +53,14 @@ namespace AppDigitalCv.Controllers
             //idiomaDialectoVM.IdIdioma = ViewBag.IdIdioma;
             idiomaDialectoVM.IdPersonal = idPersonal;
             idiomaDialectoVM.DteFechaRegistro = DateTime.Now;
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && idiomaDialectoVM.IdIdioma > 0)
             {
                 //Informacion para insertar
                 AddEditIdioma(idiomaDialectoVM);
                // AddEditDialecto(idiomaDialectoVM);
                 return RedirectToAction("Create","IdiomaDialecto");
             }
-            return View("Create");
+            return RedirectToAction("Create", "IdiomaDialecto");
         }
 
         #region Agregar o editar una entidad

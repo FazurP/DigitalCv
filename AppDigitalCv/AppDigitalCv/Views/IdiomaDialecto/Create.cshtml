@@ -22,14 +22,11 @@
                 <li class="active"> Datos de Idiomas</li>
             </ol>
         </section>
-
         <div class="row">
-
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
                 <div class="box box-success">
                     <div class="box-header">
-                        <label class="text-gray"><i class="text-gray fa fa-child"></i> @SessionPersister.AccountSession.NombreCompleto </label>
+                        <label class="text-green"><i class="text-gray fa fa-child"></i> @SessionPersister.AccountSession.NombreCompleto </label>
                     </div>
                     <div role="form">
                         <div class="box-body">
@@ -37,7 +34,7 @@
                             <div class="form-group col-lg-6">
                                 <div class="form-group ">
                                     <label>Idioma</label>
-                                    @Html.DropDownList("IdIdioma", null, htmlAttributes: new { @class = "form-control input-sm", id="IdIdioma" })
+                                    @Html.DropDownList("IdIdioma", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdIdioma" })
                                     @Html.ValidationMessageFor(model => model.IdIdioma, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -81,10 +78,9 @@
                             <div class="form-group col-lg-6 btn-block">
                                 <div class="form-group">
                                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                    <input type="submit" value="Guardar" class="btn btn-default" />
+                                    <input type="submit" value="Guardar" class="btn btn-success" id="btnSubmit" />
                                 </div>
                             </div>
-                            
                             <div class="form-group-sm">
                                 <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
                                 <div class="form-group" id="addTable">
@@ -93,10 +89,8 @@
                                         <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
                                             <tr>
                                                 <th>Idioma</th>
-
                                                 <th>Editar</th>
                                                 <th>Eliminar</th>
-
                                             </tr>
                                         </thead>
                                         <tbody id="tblBody"></tbody>
@@ -118,15 +112,10 @@
                                     <!--Terminamos el modal de eliminacion-->
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
-                 
-
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -143,16 +132,15 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-
-    <script src="~/Scripts/Validate/Alergias/validate-alergias-form.js"></script>
+    <script src="~/Scripts/Validate/IdiomasDialectos/validate-idiomas-dialectos-form.js"></script>
 
 
     <script>
-
+        
         var AddEliminar = function (IdIdioma) {
-          
+            
             var url = "/IdiomaDialecto/GetIdiomaById?IdIdioma=" + IdIdioma;
-
+            
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
 
@@ -161,7 +149,7 @@
         };
 
         var AddEditar = function (idIdioma) {
-         
+
             var url = "/IdiomaDialecto/GetIdiomaByIdEdit?idIdioma=" + idIdioma;
 
             $("#myModalBodyDiv1").load(url, function () {

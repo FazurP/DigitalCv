@@ -393,6 +393,7 @@
     <Content Include="Scripts\Validate\EstadoCivil\validate-estado-civil-radio.js" />
     <Content Include="Scripts\Validate\Hijos\validate-hijos-form.js" />
     <Content Include="Scripts\Validate\Hijos\validate-hijos-regExp.js" />
+    <Content Include="Scripts\Validate\IdiomasDialectos\validate-idiomas-dialectos-form.js" />
     <Content Include="Scripts\Validate\Personal\validar-personal-create.js" />
     <Content Include="Scripts\Validate\Personal\validate-personal-create-regExp.js" />
     <Content Include="Scripts\Validate\Personal\validate-personal-upload.js" />

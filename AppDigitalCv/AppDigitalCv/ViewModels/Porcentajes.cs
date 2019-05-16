@@ -11,27 +11,29 @@ namespace AppDigitalCv.ViewModels
         public List<string> GetPorcentajes()
         {
             List<string> porcentaje = new List<string>();
-            porcentaje.Add("0%");
-            porcentaje.Add("5%");
-            porcentaje.Add("10%");
-            porcentaje.Add("15%");
-            porcentaje.Add("20%");
-            porcentaje.Add("25%");
-            porcentaje.Add("30%");
-            porcentaje.Add("35%");
-            porcentaje.Add("40%");
-            porcentaje.Add("45%");
-            porcentaje.Add("50%");
-            porcentaje.Add("55%");
-            porcentaje.Add("60%");
-            porcentaje.Add("65%");
-            porcentaje.Add("70%"); 
-            porcentaje.Add("75%");
-            porcentaje.Add("80%");
-            porcentaje.Add("85%");
-            porcentaje.Add("90%");
-            porcentaje.Add("95%");
-            porcentaje.Add("100%");
+          
+            porcentaje.Insert(0,"0%");
+            porcentaje.Insert(1,"5%");
+            porcentaje.Insert(2,"10%");
+            porcentaje.Insert(3,"15%");
+            porcentaje.Insert(4,"20%");
+            porcentaje.Insert(5,"25%");
+            porcentaje.Insert(6,"30%");
+            porcentaje.Insert(7,"35%");
+            porcentaje.Insert(8,"40%");
+            porcentaje.Insert(9,"45%");
+            porcentaje.Insert(10,"50%");
+            porcentaje.Insert(11,"55%");
+            porcentaje.Insert(12,"60%");
+            porcentaje.Insert(13,"65%");
+            porcentaje.Insert(14,"70%"); 
+            porcentaje.Insert(15,"75%");
+            porcentaje.Insert(16,"80%");
+            porcentaje.Insert(17,"85%");
+            porcentaje.Insert(18,"90%");
+            porcentaje.Insert(19,"95%");
+            porcentaje.Insert(20,"100%");
+         
             return porcentaje;
         }
 
