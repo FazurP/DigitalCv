@@ -228,11 +228,11 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <Content Include="Imagenes\conferencias.png" />
+    <Content Include="Imagenes\cursos.jpg" />
     <Content Include="Imagenes\educacion_continua1.jpg" />
     <Content Include="Imagenes\educacion_continua2.png" />
     <Content Include="Imagenes\escudoUt.png" />
     <Content Include="Imagenes\escudo_uttt.jpg" />
-    <Content Include="Imagenes\formacion_docente.jpg" />
     <Content Include="Imagenes\formacion_docente_experiencia_docente.png" />
     <Content Include="Imagenes\formacion_docente_experiencia_profesional.png" />
     <Content Include="Imagenes\formacion_docente_produccion_academica.png" />
