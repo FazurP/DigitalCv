@@ -40,7 +40,7 @@ namespace AppDigitalCv.Controllers
             ViewBag.StrComunicacionPorcentaje = new SelectList(p.GetPorcentajes());
             return View();
         }
-
+                                                                                                                        
         /// <summary>
         /// Metodo para insertar el idioma que habla un usuario
         /// </summary>
@@ -53,18 +53,18 @@ namespace AppDigitalCv.Controllers
             //idiomaDialectoVM.IdIdioma = ViewBag.IdIdioma;
             idiomaDialectoVM.IdPersonal = idPersonal;
             idiomaDialectoVM.DteFechaRegistro = DateTime.Now;
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && idiomaDialectoVM.IdIdioma > 0)
             {
                 //Informacion para insertar
                 AddEditIdioma(idiomaDialectoVM);
                // AddEditDialecto(idiomaDialectoVM);
-                return RedirectToAction("Create","Personal");
+                return RedirectToAction("Create","IdiomaDialecto");
             }
-            return View("Create");
+            return RedirectToAction("Create", "IdiomaDialecto");
         }
 
         #region Agregar o editar una entidad
-        public bool AddEditIdioma(IdiomaDialectoVM idiomaDialectoVM)
+        private bool AddEditIdioma(IdiomaDialectoVM idiomaDialectoVM)
         {
 
             IdiomaDialectoDomainModel idiomaDialectoDM = new IdiomaDialectoDomainModel();
@@ -72,7 +72,11 @@ namespace AppDigitalCv.Controllers
             return IidiomaDialectoBusiness.AddUpdateIdioma(idiomaDialectoDM);
         }
         #endregion
-
+        /// <summary>
+        /// Este metodo se encarga mostrar los idiomas en la tabla
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
         [HttpGet]
         public JsonResult GetIdiomas(DataTablesParam param)
         {
@@ -111,7 +115,12 @@ namespace AppDigitalCv.Controllers
             }, JsonRequestBehavior.AllowGet);
 
         }
-
+        /// <summary>
+        /// Este metodo se encarga de obtener el idioma que se va a mostrar en el modal
+        /// </summary>
+        /// <param name="idIdioma"></param>
+        /// <returns>una vista parcial con el idioma</returns>
+        [HttpGet]
         public ActionResult GetIdiomaById(int idIdioma)
         {
             int idPersonal = SessionPersister.AccountSession.IdPersonal;
@@ -127,18 +136,65 @@ namespace AppDigitalCv.Controllers
 
             return View();
         }
+        /// <summary>
+        /// Este metodo se encarga de eliminar un idioma
+        /// </summary>
+        /// <param name="idiomaVM"></param>
+        /// <returns>una vista</returns>
+        [HttpPost]
+        public ActionResult DeleteIdiomaById(IdiomaVM idiomaVM)
+        {
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
+            IdiomaDialectoDomainModel alergiasPersonalDM = IidiomaDialectoBusiness.GetIdiomasPersonales(idiomaVM.IdIdioma, idPersonal);
 
-        //public ActionResult DeleteIdiomaById(IdiomaVM idiomaVM)
-        //{
-        //    int idPersonal = SessionPersister.AccountSession.IdPersonal;
-        //    IdiomaDialectoDomainModel alergiasPersonalDM = IidiomaDialectoBusiness.GetAlergiasPersonales(alergiasVM.IdAlergia, idPersonal);
+            if (alergiasPersonalDM != null)
+            {
+                IidiomaDialectoBusiness.DeleteIdiomasDialectos(alergiasPersonalDM);
+            }
 
-        //    if (alergiasPersonalDM != null)
-        //    {
-        //        alergiasPersonalBussines.DeleteAlergias(alergiasPersonalDM);
-        //    }
+            return View(Create());
+        }
 
-        //    return View(Create());
-        //}
+        [HttpGet]
+        public ActionResult GetIdiomaByIdEdit(int idIdioma)
+        {
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
+            IdiomaDialectoVM idiomaDialectoVM = new IdiomaDialectoVM();
+            //IdiomaDomainModel idiomaDM = IidiomaBusinnes.GetIdioma(idIdioma, idPersonal);
+            IdiomaDialectoDomainModel idiomaDialectoDM = new IdiomaDialectoDomainModel();
+
+            //IdiomaDialectoDomainModel idiomaDialectoDM = IidiomaDialectoBusiness.GetIdiomasPersonales(idIdioma,idPersonal);
+
+
+            if (idIdioma > 0)
+            {
+         
+                ViewBag.StrEscrituraProcentaje = new SelectList(p.GetPorcentajes());
+                ViewBag.StrLecturaPorcentaje = new SelectList(p.GetPorcentajes());
+                ViewBag.StrEntendimientoPorcentaje = new SelectList(p.GetPorcentajes());
+                ViewBag.StrComunicacionPorcentaje = new SelectList(p.GetPorcentajes());
+                idiomaDialectoDM = IidiomaDialectoBusiness.GetIdiomasPersonales(idIdioma,idPersonal);
+               
+              
+            }
+
+            AutoMapper.Mapper.Map(idiomaDialectoDM, idiomaDialectoVM);
+            return PartialView("_Editar", idiomaDialectoVM);
+        }
+
+        [HttpPost]
+        public void EditarIdiomasPersonales(IdiomaDialectoVM idiomaDialectoVM)
+        {
+
+            IdiomaDialectoDomainModel idiomaDialectoDM = new IdiomaDialectoDomainModel();
+
+            AutoMapper.Mapper.Map(idiomaDialectoVM, idiomaDialectoDM);
+
+            if (idiomaDialectoVM.IdIdiomaDialectoPersonal > 0)
+            {
+                IidiomaDialectoBusiness.AddUpdateIdioma(idiomaDialectoDM);
+            }
+
+        }
     }
 }

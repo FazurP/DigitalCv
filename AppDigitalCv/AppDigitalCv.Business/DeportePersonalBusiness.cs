@@ -34,6 +34,7 @@ namespace AppDigitalCv.Business
             Expression<Func<tblDeportePersonal, bool>> predicado = p => p.idPersonal.Equals(idPersonal);
 
             List<tblDeportePersonal> lista = deportePersonalRepository.GetAll(predicado).ToList<tblDeportePersonal>();
+            
             if (lista != null)
             {
                 foreach (var c in lista)
@@ -41,7 +42,7 @@ namespace AppDigitalCv.Business
                     FrecuenciaDomainModel FrecuenciaDM = new FrecuenciaDomainModel();
                     FrecuenciaDM.IdFrecuencia = c.catFrecuencia.idFrecuencia;
                     FrecuenciaDM.StrDescripcion = c.catFrecuencia.strDescripcion;
-
+                    
                     DeporteDomainModel DeporteDM = new DeporteDomainModel();
                     DeporteDM.IdDeporte = c.catDeporte.idDeporte;
                     DeporteDM.StrDescripcion = c.catDeporte.strDescripcion;

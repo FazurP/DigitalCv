@@ -57,7 +57,8 @@
             var idPersonal =  @SessionPersister.AccountSession.IdPersonal;
             DeportePersonalVM.idPersonal = idPersonal;
             DeportePersonalVM.IdDeportePersonal = $("#IdDeportePersonal").val();
-            DeportePersonalVM.IdFrecuencia =$("#Frecuencia").val();
+            DeportePersonalVM.IdFrecuencia = $("#Frecuencia").val();
+            debugger;
             //serialización del formaulario
             var myformdata = $("#myForm").serialize();
             $.ajax({

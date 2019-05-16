@@ -16,7 +16,7 @@
 
                 @Html.TextBoxFor(m => m.StrDescripcion, new { @class = "form-control input-sm", @placeholder = "Nombre del idioma" })
 
-                <a href="#" id="btnSubmit">
+                <a href="#" id="btnEnviar">
                     <i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i>
                 </a>
             </div>
@@ -33,13 +33,13 @@
 
 <script>
         $(document).ready(function () {
-
-             $("#btnSubmit").click(function () {
-
+             
+            $("#btnEnviar").click(function () {
+                
             $("#loaderDiv").show();
 
-            var myformdat = $("#myForm").serialize();
-
+                 var myformdat = $("#myForm").serialize();
+               
             $.ajax({
 
                 type: "POST",
@@ -48,7 +48,7 @@
                 success: function () {
                     $("#loaderDiv").hide();
                     $("#myModal").modal("hide");
-                    window.location.href = "/Alergias/Create";
+                    window.location.href = "/IdiomaDialecto/Create";
 
                 }
 
