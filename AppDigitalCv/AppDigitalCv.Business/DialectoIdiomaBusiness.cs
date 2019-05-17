@@ -65,6 +65,11 @@ namespace AppDigitalCv.Business
             }
             else
             {
+                if (idiomaDialectoRepository.Exists(p => p.idDialecto == idiomaDialectoDM.IdDialecto))
+                {
+                    return false;
+                }
+                else { 
                 tblIdiomaDialectoPersonal idiomaDialecto = new tblIdiomaDialectoPersonal();
                 idiomaDialecto.idDialecto = idiomaDialectoDM.IdDialecto;
                 idiomaDialecto.strComunicacionPorcentaje = idiomaDialectoDM.StrComunicacionPorcentaje;
@@ -75,6 +80,7 @@ namespace AppDigitalCv.Business
 
                 var record = idiomaDialectoRepository.Insert(idiomaDialecto);
                 respuesta = true;
+                }
             }
             return respuesta;
         }
