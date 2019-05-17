@@ -36,7 +36,8 @@
                                 <div class="form-group ">
                                     <label>Dialecto</label>
                                     @Html.DropDownList("IdDialecto", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdDialecto" })
-                                    @Html.ValidationMessageFor(model => model.IdIdioma, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(model => model.IdDialecto, "", new { @class = "text-danger" })
+
                                 </div>
                             </div>
 
@@ -133,7 +134,7 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-    @*<script src="~/Scripts/Validate/IdiomasDialectos/validate-idiomas-dialectos-form.js"></script>*@
+    <script src="~/Scripts/Validate/DialectoIdiomas/validate-dialectos-idiomas-form.js"></script>
 
 
     <script>

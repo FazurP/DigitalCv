@@ -49,14 +49,16 @@ namespace AppDigitalCv.Controllers
         {
             int idPersonal = SessionPersister.AccountSession.IdPersonal;
             dialectoIdiomaVM.IdPersonal = idPersonal;
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && dialectoIdiomaVM.IdDialecto > 0)
             {
                 //Informacion para insertar
                 AddEditDialecto(dialectoIdiomaVM);
                 // AddEditDialecto(idiomaDialectoVM);
                 return RedirectToAction("Create", "DialectoIdioma");
             }
-            return RedirectToAction("Create","DialectoIdioma");
+          
+                return RedirectToAction("Create","DialectoIdioma");
+            
         }
 
         /// <summary>
