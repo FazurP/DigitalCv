@@ -53,6 +53,7 @@
     <Compile Include="DeporteDomainModel.cs" />
     <Compile Include="DeportePersonalDomainModel.cs" />
     <Compile Include="DialectoDomainModel.cs" />
+    <Compile Include="DialectoIdiomaDomainModel.cs" />
     <Compile Include="DireccionDomainModel.cs" />
     <Compile Include="DocumentoPersonalDomainModel.cs" />
     <Compile Include="DocumentosDomainModel.cs" />

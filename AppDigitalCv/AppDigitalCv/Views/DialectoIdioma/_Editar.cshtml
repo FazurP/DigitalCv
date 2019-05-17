@@ -1,0 +1,124 @@
+﻿
+@model AppDigitalCv.ViewModels.IdiomaDialectoVM
+@using AppDigitalCv.Security
+
+<div>
+    <form id="myForm">
+
+        @Html.HiddenFor(model => model.IdDialecto, new { id = "id" })
+        @Html.HiddenFor(model => model.IdPersonal)
+        @Html.HiddenFor(model => model.IdIdiomaDialectoPersonal, new { id = "idDialecto" })
+        <div class="bs-container">
+
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-2">
+                    <div class="form-group">
+                        <label>Escritura</label>
+                        @Html.TextBoxFor(model => model.StrEscrituraProcentaje, htmlAttributes: new { @class = "form-control input-sm", disabled = "" })
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <label>Lectura</label>
+                    @Html.TextBoxFor(model => model.StrLecturaPorcentaje, htmlAttributes: new { @class = "form-control input-sm", disabled = "" })
+                </div>
+                <div class="col-lg-2">
+                    <label>Entendimiento</label>
+                    @Html.TextBoxFor(model => model.StrEntendimientoPorcentaje, htmlAttributes: new { @class = "form-control input-sm", disabled = "" })
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-lg-offset-4">
+                    <label>Comunicacion</label>
+                    @Html.TextBoxFor(model => model.StrComunicacionPorcentaje, htmlAttributes: new { @class = "form-control input-sm", disabled = "" })
+                </div>
+            </div>
+
+            <br />
+
+            <div class="row">
+
+                <div class="form-group col-lg-3 col-lg-offset-4">
+                    <div class="form-group ">
+                        <label>Escritura</label>
+                        @Html.DropDownList("StrEscrituraProcentaje", null, htmlAttributes: new { @class = "form-control input-sm", id = "EscrituraProcentaje" })
+
+                    </div>
+                </div>
+
+                <div class="form-group col-lg-3">
+                    <div class="form-group ">
+                        <label>Lectura</label>
+                        @Html.DropDownList("StrLecturaPorcentaje", null, htmlAttributes: new { @class = "form-control input-sm", id = "LecturaPorcentaje" })
+
+                    </div>
+                </div>
+
+                <!-- Aqui se llena el dropdownloist de porcentaje de entendimiento -->
+                <div class="form-group col-lg-3 col-lg-offset-4">
+                    <div class="form-group ">
+                        <label>Entendimiento</label>
+                        @Html.DropDownList("StrEntendimientoPorcentaje", null, htmlAttributes: new { @class = "form-control input-sm", id = "EntendimientoPorcentaje" })
+
+                    </div>
+                </div>
+
+                <!-- Aqui se llena el dropdownList de porcentaje de comunicacion -->
+                <div class="form-group col-lg-3">
+                    <div class="form-group ">
+                        <label>Comunicación</label>
+                        @Html.DropDownList("StrComunicacionPorcentaje", null, htmlAttributes: new { @class = "form-control input-sm", id = "ComunicacionPorcentaje" })
+
+                    </div>
+                </div>
+
+
+                <div class="form-group col-lg-6 col-lg-offset-4">
+                    <a href="#" id="btnEnviar" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#btnEnviar").click(function () {
+
+            var IdiomaDialectoVM = {};
+            var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+
+            IdiomaDialectoVM.IdPersonal = IdPersonal;
+            IdiomaDialectoVM.IdDialecto = $('#id').val();
+            IdiomaDialectoVM.IdIdiomaDialectoPersonal = $('#idDialecto').val();
+            IdiomaDialectoVM.StrComunicacionPorcentaje = $('#ComunicacionPorcentaje').val();
+            IdiomaDialectoVM.StrEscrituraProcentaje = $('#EscrituraProcentaje').val();
+            IdiomaDialectoVM.StrEntendimientoPorcentaje = $('#EntendimientoPorcentaje').val();
+            IdiomaDialectoVM.StrLecturaPorcentaje = $('#LecturaPorcentaje').val();
+            debugger;
+            $.ajax({
+                type: "POST",
+                url: "/DialectoIdioma/EditarDialectosPersonales",
+                data: { idiomaDialectoVM: IdiomaDialectoVM},
+                success: function () {
+                    $("#myModal1").modal("hide");
+                    window.location.href = "/DialectoIdioma/Create";
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(textStatus);
+                    console.log(textStatus);
+
+                }
+            })
+        });
+    });
+</script>
