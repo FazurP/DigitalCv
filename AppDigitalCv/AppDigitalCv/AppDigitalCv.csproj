@@ -478,6 +478,7 @@
     <Content Include="Views\IdiomaDialecto\_Editar.cshtml" />
     <Content Include="Views\DialectoIdioma\_Editar.cshtml" />
     <Content Include="Views\DialectoIdioma\_Eliminar.cshtml" />
+    <Content Include="Views\Competencias\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -489,6 +490,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\AlergiasController.cs" />
     <Compile Include="Controllers\AsociacionController.cs" />
+    <Compile Include="Controllers\CompetenciasController.cs" />
     <Compile Include="Controllers\CompetenciaTiController.cs" />
     <Compile Include="Controllers\ContactoEmergenciaController.cs" />
     <Compile Include="Controllers\DatosContactoController.cs" />
@@ -525,7 +527,9 @@
     <Compile Include="ViewModels\AlergiasVM.cs" />
     <Compile Include="ViewModels\AsociacionesVM.cs" />
     <Compile Include="ViewModels\ColoniaVM.cs" />
+    <Compile Include="ViewModels\CompetenciasPersonalVM.cs" />
     <Compile Include="ViewModels\CompetenciasTiVM.cs" />
+    <Compile Include="ViewModels\CompetenciasVM.cs" />
     <Compile Include="ViewModels\CompetenciaTiVM.cs" />
     <Compile Include="ViewModels\DatosContactoVM.cs" />
     <Compile Include="ViewModels\DeportePersonalVM.cs" />
@@ -683,7 +687,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Usuarios\" />
-    <Folder Include="Views\CerrarSesion\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppDigitalCv.Business\AppDigitalCv.Business.csproj">

@@ -46,7 +46,7 @@ namespace AppDigitalCv.Controllers
             if (ModelState.IsValid)
             {
                 AddEditPersonal(personalVM);
-                return RedirectToAction("Create","Personal");
+                return RedirectToAction("Create","EstadoCivil");
             }
             return View("Create"); 
         }

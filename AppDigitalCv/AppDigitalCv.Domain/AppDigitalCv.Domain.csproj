@@ -47,6 +47,8 @@
     <Compile Include="AlergiasPersonalDomainModel.cs" />
     <Compile Include="AsociacionesDomainModel.cs" />
     <Compile Include="ColoniaDomainModel.cs" />
+    <Compile Include="CompetenciasDomainModel.cs" />
+    <Compile Include="CompetenciasPersonalDomainModel.cs" />
     <Compile Include="CompetenciasTiDomainModel.cs" />
     <Compile Include="CompetenciaTiDomainModel.cs" />
     <Compile Include="DatosContactoDomainModel.cs" />
