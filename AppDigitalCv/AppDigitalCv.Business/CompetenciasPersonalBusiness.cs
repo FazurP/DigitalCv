@@ -57,5 +57,33 @@ namespace AppDigitalCv.Business
 
             return competenciasDM;
         }
+
+        public CompetenciasPersonalDomainModel GetCompetenciaPersonal(int _idCompetencia, int _idPersonal)
+        {
+
+            CompetenciasPersonalDomainModel competenciasPersonalDM = new CompetenciasPersonalDomainModel();
+            Expression<Func<tblCompetenciasConocimientosPersonal, bool>> predicado = p => p.idCompetencia.Equals(_idCompetencia) && p.idPersonal.Equals(_idPersonal);
+            tblCompetenciasConocimientosPersonal tblCompetencias = competenciasRepository.GetAll(predicado).FirstOrDefault<tblCompetenciasConocimientosPersonal>();
+
+            competenciasPersonalDM.idCompetenciasConocimientosPersonal = tblCompetencias.idCompetenciasConocimientosPersonal;
+            competenciasPersonalDM.idCompetencia = tblCompetencias.idCompetencia;
+            competenciasPersonalDM.idPersonal = tblCompetencias.idPersonal;
+            competenciasPersonalDM.dteFechaRegistro = tblCompetencias.dteFechaRegistro.Value;
+
+            return competenciasPersonalDM;
+
+        }
+
+        public bool DeleteCompetencia(CompetenciasPersonalDomainModel competenciasPersonalDM)
+        {
+
+            bool respuesta = false;
+            Expression<Func<tblCompetenciasConocimientosPersonal, bool>> predicado = p => p.idCompetencia.Equals(competenciasPersonalDM.idCompetencia)
+             && p.idPersonal.Equals(competenciasPersonalDM.idPersonal);
+            competenciasRepository.Delete(predicado);
+            respuesta = true;
+            return respuesta;
+
+        }
     }
 }

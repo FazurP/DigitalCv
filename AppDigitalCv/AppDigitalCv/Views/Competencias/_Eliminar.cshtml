@@ -11,12 +11,12 @@
                 ¿Deseas <strong>Eliminar</strong> este registro realmente?
             </div>
             <div class="form-group">
-                @Html.HiddenFor(m => m.IdAlergia, new { @class = "form-control input-sm", id = "IdAlergia" })
-                @Html.HiddenFor(m => m.IdtipoAlergia)
-                @Html.HiddenFor(m => m.StrDescripcion)
-                @Html.HiddenFor(m => m.StrObservacion)
+                @Html.HiddenFor(m => m.idCompetencia, new { @class = "form-control input-sm", id = "idCompetencia" })
+                @Html.HiddenFor(m => m.strDescripcion)
+                @Html.HiddenFor(m => m.strObservacion)
+                @Html.HiddenFor(m => m.strTipo)
 
-                @Html.TextBoxFor(m => m.StrDescripcion, new { @class = "form-control input-sm", @placeholder = "Nombre de la Alergia" })
+                @Html.TextBoxFor(m => m.strDescripcion, new { @class = "form-control input-sm", @placeholder = "Nombre de la Competencia", disabled="disabled"})
 
                 <a href="#" id="btnSubmit">
                     <i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i>
@@ -41,16 +41,16 @@
             $("#loaderDiv").show();
 
                  var myformdat = $("#myFormulario").serialize();
-                 debugger;
+      
             $.ajax({
 
                 type: "POST",
-                url: "/Alergias/DeleteAlergiaById",
+                url: "/Competencias/DeleteCompetenciaById",
                 data: myformdat,
                 success: function () {
                     $("#loaderDiv").hide();
                     $("#myModal").modal("hide");
-                    window.location.href = "/Alergias/Create";
+                    window.location.href = "/Competencias/Create";
 
                 }
 

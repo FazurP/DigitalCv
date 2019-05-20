@@ -2,6 +2,7 @@
 using AppDigitalCv.Domain;
 using AppDigitalCv.Models;
 using AppDigitalCv.Security;
+using AppDigitalCv.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,7 +55,6 @@ namespace AppDigitalCv.Controllers
             }
 
         }
-
         [HttpGet]
         public JsonResult GetCompetencias(DataTablesParam param)
         {
@@ -93,11 +93,34 @@ namespace AppDigitalCv.Controllers
             }, JsonRequestBehavior.AllowGet);
 
         }
+        [HttpGet]
+        public ActionResult GetCompetenciaByIdPersonal(int idCompetencia) {
 
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
+            CompetenciasDomainModel competenciaDM = icompetenciasBusiness.GetCompetencia(idCompetencia, idPersonal);
+
+            if (competenciaDM != null)
+            {
+                CompetenciasVM competenciaVM = new CompetenciasVM();
+                AutoMapper.Mapper.Map(competenciaDM, competenciaVM);
+                return PartialView("_Eliminar", competenciaVM);
+            }
+
+            return View();
+        }
         [HttpPost]
-        public ActionResult GetCompetenciasByIdPersonal() {
+        public ActionResult DeleteCompetenciaById(CompetenciasVM competenciasVM)
+        {
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
+            CompetenciasPersonalDomainModel competenciaPersonalDM = icompetenciaPersonalBusiness.GetCompetenciaPersonal(competenciasVM.idCompetencia, idPersonal);
 
-            return PartialView();
+            if (competenciaPersonalDM != null)
+            {
+                icompetenciaPersonalBusiness.DeleteCompetencia(competenciaPersonalDM);
+            }
+
+            return View(Create());
         }
     }
+
 }

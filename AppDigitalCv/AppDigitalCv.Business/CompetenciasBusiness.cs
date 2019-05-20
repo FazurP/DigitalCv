@@ -5,6 +5,7 @@ using AppDigitalCv.Repository.Infraestructure.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,11 +16,13 @@ namespace AppDigitalCv.Business
 
         private readonly IUnitOfWork unitOfWork;
         private readonly CompetenciasRepository competenciasRepository;
+        private readonly CompetenciasPersonalRepository competenciasPersonalRepository;
 
         public CompetenciasBusiness(IUnitOfWork _unitOfWork)
         {
             unitOfWork = _unitOfWork;
             competenciasRepository = new CompetenciasRepository(unitOfWork);
+            competenciasPersonalRepository = new CompetenciasPersonalRepository(unitOfWork);
         }
 
         public List<CompetenciasDomainModel> GetCompetenciasHabilidad() {
@@ -71,6 +74,23 @@ namespace AppDigitalCv.Business
             }).Where(p => p.strTipo.Equals("Valor")).ToList();
 
             return competenciasDM;
+
+        }
+
+        public CompetenciasDomainModel GetCompetencia(int idCompetencia, int idPersona)
+        {
+
+            CompetenciasDomainModel competenciaDM = new CompetenciasDomainModel();
+
+            Expression<Func<tblCompetenciasConocimientosPersonal, bool>> predicado = p => p.idPersonal.Equals(idPersona) && p.idCompetencia.Equals(idCompetencia);
+            tblCompetenciasConocimientosPersonal tblCompetencias = competenciasPersonalRepository.GetAll(predicado).FirstOrDefault<tblCompetenciasConocimientosPersonal>();
+
+            competenciaDM.idCompetencia = tblCompetencias.catCompetencias.idCompetencia;
+            competenciaDM.strDescripcion = tblCompetencias.catCompetencias.strDescripcion;
+            competenciaDM.strObservacion = tblCompetencias.catCompetencias.strObservacion;
+            competenciaDM.strTipo = tblCompetencias.catCompetencias.strTipo;
+
+            return competenciaDM;
 
         }
 

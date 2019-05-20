@@ -204,10 +204,9 @@
 
     <script>
 
-        var AddEliminar = function (idCompetencia) {
+    var AddEliminar = function (idCompetencia) {
 
-            var url = "/Competencias/GetCompetenciasByIdPersonal?idCompetencia=" + idCompetencia;
-
+        var url = "/Competencias/GetCompetenciaByIdPersonal?idCompetencia=" + idCompetencia;
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
 
@@ -288,4 +287,4 @@
 
     </script>
 
-}
+    }

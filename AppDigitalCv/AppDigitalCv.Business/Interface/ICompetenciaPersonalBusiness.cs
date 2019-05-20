@@ -12,5 +12,7 @@ namespace AppDigitalCv.Business.Interface
         bool AddUpdateCompetencias(int idPersonal, int idCompetencia);
 
         List<CompetenciasDomainModel> GetCompetenciasByIdPersonal(int _idPersonal);
+        CompetenciasPersonalDomainModel GetCompetenciaPersonal(int _idCompetencia, int _idPersonal);
+        bool DeleteCompetencia(CompetenciasPersonalDomainModel competenciasPersonalDM);
     }
 }

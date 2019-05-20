@@ -12,5 +12,6 @@ namespace AppDigitalCv.Business.Interface
         List<CompetenciasDomainModel> GetCompetenciasHabilidad();
         List<CompetenciasDomainModel> GetCompetenciasDestreza();
         List<CompetenciasDomainModel> GetCompetenciasValor();
+        CompetenciasDomainModel GetCompetencia(int idCompetencia, int idPersona);
     }
 }
