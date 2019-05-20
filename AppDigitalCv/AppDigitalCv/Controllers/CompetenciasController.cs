@@ -62,6 +62,9 @@ namespace AppDigitalCv.Controllers
                 }
 
             }
+            else {
+                RedirectToAction("Create","Competencias");
+            }
 
         }
         /// <summary>
