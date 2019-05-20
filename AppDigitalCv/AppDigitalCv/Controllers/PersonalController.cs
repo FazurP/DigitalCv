@@ -17,12 +17,14 @@ namespace AppDigitalCv.Controllers
     {
         //mandamos llamar al metodo de negocio
         IPersonalBusiness IPersonalBussines;
+        IEstadoCivilBusiness estadoCivilBusiness;
 
 
-        public PersonalController(IPersonalBusiness _PersonalBussiness)
+        public PersonalController(IPersonalBusiness _PersonalBussiness, IEstadoCivilBusiness _estadoCivilBusiness)
         {
 
-                IPersonalBussines = _PersonalBussiness;    
+                IPersonalBussines = _PersonalBussiness;
+                estadoCivilBusiness = _estadoCivilBusiness;
         }
         
         #region Crear 
@@ -31,6 +33,10 @@ namespace AppDigitalCv.Controllers
         {
             if (SessionPersister.AccountSession != null)
             {
+                ViewBag.IdEstadoCivil = new SelectList(estadoCivilBusiness.GetEstadoCivil(), "IdEstadoCivil", "StrDescripcion");
+
+
+
                 return View();
             }
             else {
@@ -41,8 +47,9 @@ namespace AppDigitalCv.Controllers
     
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Nombre,ApellidoPaterno,ApellidoMaterno,RFC,Curp,HomoClave,ArchivoRfc,ArchivoCurp,ImageFile,strLogros")] PersonalVM personalVM)
+        public ActionResult Create([Bind(Include = "Nombre,ApellidoPaterno,ApellidoMaterno,IdEstadoCivil,StrGenero,RFC,Curp,HomoClave,ArchivoRfc,ArchivoCurp,ImageFile,strLogros")] PersonalVM personalVM)
         {
+          
             if (ModelState.IsValid)
             {
                 if (personalVM.ArchivoCurp != null && personalVM.ArchivoRfc != null && personalVM.ImageFile != null)
@@ -51,10 +58,10 @@ namespace AppDigitalCv.Controllers
                     this.CrearDirectorioUsuario(personalVM);
                                                            
                 }
-                return View();
+                return RedirectToAction("Create", "Personal");
             }
             else {
-                return View("Create");
+                return RedirectToAction("Create","Personal");
             }
         }
 

@@ -80,6 +80,8 @@ namespace AppDigitalCv.Business
                     personal.strNombre = personalDM.Nombre;
                     personal.strApellidoPaterno = personalDM.ApellidoPaterno;
                     personal.strApellidoMaterno = personalDM.ApellidoMaterno;
+                    personal.idEstadoCivil = personalDM.idEstadoCivil;
+                    personal.strGenero = personalDM.strGenero;
                     personal.strCurp = personalDM.Curp;
                     personal.strRfc = personalDM.Rfc;
                     personal.strHomoclave = personalDM.Homoclave;
@@ -97,6 +99,8 @@ namespace AppDigitalCv.Business
                 personal.strNombre = personalDM.Nombre;
                 personal.strApellidoPaterno = personalDM.ApellidoPaterno;
                 personal.strApellidoMaterno = personalDM.ApellidoMaterno;
+                personal.idEstadoCivil = personalDM.idEstadoCivil;
+                personal.strGenero = personalDM.strGenero;
                 personal.strCurp = personalDM.Curp;
                 personal.strRfc= personalDM.Rfc;
                 personal.strUrlRfc = personalDM.strUrlRfc;
