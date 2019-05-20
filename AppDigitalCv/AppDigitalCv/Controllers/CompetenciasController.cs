@@ -47,6 +47,7 @@ namespace AppDigitalCv.Controllers
         public void CreateList(string ItemList)
         {
             int IdPersonal = SessionPersister.AccountSession.IdPersonal;
+
             if (ItemList != null)
             {
                 string[] checkArreglo = ItemList.Split(',');

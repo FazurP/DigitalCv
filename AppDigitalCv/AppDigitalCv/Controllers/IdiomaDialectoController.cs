@@ -24,21 +24,21 @@ namespace AppDigitalCv.Controllers
         }
         
 
-        // GET: Idioma
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet]
         public ActionResult Create()
         {
+            if (SessionPersister.AccountSession == null)
+            {
+                return RedirectToAction("Login","Seguridad");
+            }
+            else { 
             ViewBag.IdIdioma = new SelectList(IidiomaDialectoBusiness.GetIdioma(), "IdIdioma", "StrDescripcion");
             ViewBag.StrEscrituraProcentaje = new SelectList(p.GetPorcentajes());
             ViewBag.StrLecturaPorcentaje = new SelectList(p.GetPorcentajes());
             ViewBag.StrEntendimientoPorcentaje = new SelectList(p.GetPorcentajes());
             ViewBag.StrComunicacionPorcentaje = new SelectList(p.GetPorcentajes());
             return View();
+            }
         }
                                                                                                                         
         /// <summary>

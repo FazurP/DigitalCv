@@ -23,21 +23,21 @@ namespace AppDigitalCv.Controllers
             dialectoBusiness = _dialectoBusiness;
         }
 
-        // GET: DialectoIdioma
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet]
         public ActionResult Create()
         {
+            if (SessionPersister.AccountSession == null)
+            {
+                return RedirectToAction("Login", "Seguridad");
+            }
+            else { 
             ViewBag.IdDialecto = new SelectList(IdialectoIdiomaBusiness.GetDialecto(), "IdDialecto", "StrDescripcion");
             ViewBag.StrEscrituraProcentaje = new SelectList(p.GetPorcentajes());
             ViewBag.StrLecturaPorcentaje = new SelectList(p.GetPorcentajes());
             ViewBag.StrEntendimientoPorcentaje = new SelectList(p.GetPorcentajes());
             ViewBag.StrComunicacionPorcentaje = new SelectList(p.GetPorcentajes());
             return View();
+            }
         }
         /// <summary>
         /// Este metodo se encarga de insertar los datos de dialecto.

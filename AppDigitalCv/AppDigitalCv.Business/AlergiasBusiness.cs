@@ -88,7 +88,7 @@ namespace AppDigitalCv.Business
             }
             else
             {
-                if (alergiasPersonalRepository.Exists(p => p.idAlergia == alergiasPersonalDomainModel.idAlergia))
+                if (alergiasPersonalRepository.Exists(p => p.idAlergia == alergiasPersonalDomainModel.idAlergia && p.idPersonal == alergiasPersonalDomainModel.idPersonal))
                 {
                     return false;
                 }

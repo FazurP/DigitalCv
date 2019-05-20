@@ -28,18 +28,23 @@ namespace AppDigitalCv.Business
         /// <param name="idPersonal"></param>
         /// <param name="idCompetencia"></param>
         /// <returns></returns>
-        public bool AddUpdateCompetencias(int idPersonal, int idCompetencia)
+        public bool AddUpdateCompetencias(int _idPersonal, int _idCompetencia)
         {
             bool respuesta = false;
             string resultado = string.Empty;
-
+            if (competenciasRepository.Exists(p => p.idCompetencia == _idCompetencia && p.idPersonal == _idPersonal))
+            {
+                return false;
+            }
+            else { 
             tblCompetenciasConocimientosPersonal tblCompetenciasPersonal = new tblCompetenciasConocimientosPersonal();
-            tblCompetenciasPersonal.idPersonal = idPersonal;
-            tblCompetenciasPersonal.idCompetencia = idCompetencia;
+            tblCompetenciasPersonal.idPersonal = _idPersonal;
+            tblCompetenciasPersonal.idCompetencia = _idCompetencia;
             tblCompetenciasPersonal.dteFechaRegistro = DateTime.Now;
             competenciasRepository.Insert(tblCompetenciasPersonal);
             respuesta = true;
             return respuesta;
+            }
         }
         /// <summary>
         /// Este metodo se encarga de obtener las competencias del personal mediante su ID
