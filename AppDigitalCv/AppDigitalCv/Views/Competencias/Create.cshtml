@@ -7,7 +7,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div class="bs-container content" style="min-height:960px;">
+    <div class="bs-container" style="min-height:960px;">
         <section class="content-header">
             <h1>
                 Competencias Profesionales
@@ -40,7 +40,7 @@
                         <!-- /.box-tools -->
                     </div>
                     <div class="box-body">
-                        <div class="row">
+                        <div class="row" id="check">
                             <div class="col-lg-4">
                                 <div role="form" class="form-inline">
                                     <div class="form-group">
@@ -50,7 +50,7 @@
                                             {
                                                 <li class="list-group-item" id="list">
                                                     <div class="checkbox">
-                                                        <input type="checkbox" id="Check_@item.idCompetencia" checked="@item.isChecked" />
+                                                        <input type="checkbox" id="Check_@item.idCompetencia" checked="@item.isChecked" name="idC"/>
                                                         <label for="Check_@item.idCompetencia">
                                                             @item.strDescripcion
                                                             <span class="text-green"><i class="fa fa-tag"></i></span>
@@ -73,7 +73,7 @@
                                             {
                                                 <li class="list-group-item" id="list">
                                                     <div class="checkbox">
-                                                        <input type="checkbox" id="Check_@item.idCompetencia" checked="@item.isChecked" />
+                                                        <input type="checkbox" id="Check_@item.idCompetencia" checked="@item.isChecked" name="idC"/>
                                                         <label for="Check_@item.idCompetencia">
                                                             @item.strDescripcion
                                                             <span class="text-green"><i class="fa fa-tag"></i></span>
@@ -96,7 +96,7 @@
                                             {
                                                 <li class="list-group-item" id="list">
                                                     <div class="checkbox">
-                                                        <input type="checkbox" id="Check_@item.idCompetencia" checked="@item.isChecked" />
+                                                        <input type="checkbox" id="Check_@item.idCompetencia" checked="@item.isChecked" name="idC"/>
                                                         <label for="Check_@item.idCompetencia">
                                                             @item.strDescripcion
                                                             <span class="text-green"><i class="fa fa-tag"></i></span>
@@ -114,7 +114,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-1">
-                                <input type="submit" class="btn btn-sm btn-success" value="Guardar" onclick="GuardarList()" />
+                                <input type="submit" class="btn btn-sm btn-success" value="Guardar" onclick="GuardarList()" id="Enviar" />
                             </div>
                         </div>
 
@@ -165,7 +165,7 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-    <script src="~/Scripts/Validate/Alergias/validate-alergias-form.js"></script>
+    <script src="~/Scripts/Validate/Competencias/validate-competencias-form.js"></script>
 
     <script>
         var GuardarList = function () {
@@ -204,9 +204,9 @@
 
     <script>
 
-    var AddEliminar = function (idCompetencia) {
+        var AddEliminar = function (idCompetencia) {
 
-        var url = "/Competencias/GetCompetenciaByIdPersonal?idCompetencia=" + idCompetencia;
+            var url = "/Competencias/GetCompetenciaByIdPersonal?idCompetencia=" + idCompetencia;
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
 
@@ -287,4 +287,4 @@
 
     </script>
 
-    }
+}

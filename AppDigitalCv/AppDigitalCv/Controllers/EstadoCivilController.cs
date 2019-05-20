@@ -48,7 +48,7 @@ namespace AppDigitalCv.Controllers
                 AddEditPersonal(personalVM);
                 return RedirectToAction("Create","EstadoCivil");
             }
-            return View("Create"); 
+            return RedirectToAction("Create","EstadoCivil"); 
         }
 
         #region Agregar o editar una entidad
