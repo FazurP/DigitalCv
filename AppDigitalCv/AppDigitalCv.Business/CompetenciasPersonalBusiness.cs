@@ -22,7 +22,12 @@ namespace AppDigitalCv.Business
             unitOfWork = _unitOfWork;
             competenciasRepository = new CompetenciasPersonalRepository(unitOfWork);
         }
-
+        /// <summary>
+        /// Este metodo se encarga de insertar una competencia personal
+        /// </summary>
+        /// <param name="idPersonal"></param>
+        /// <param name="idCompetencia"></param>
+        /// <returns></returns>
         public bool AddUpdateCompetencias(int idPersonal, int idCompetencia)
         {
             bool respuesta = false;
@@ -36,7 +41,11 @@ namespace AppDigitalCv.Business
             respuesta = true;
             return respuesta;
         }
-
+        /// <summary>
+        /// Este metodo se encarga de obtener las competencias del personal mediante su ID
+        /// </summary>
+        /// <param name="_idPersonal"></param>
+        /// <returns>una lista con las competencias</returns>
         public List<CompetenciasDomainModel> GetCompetenciasByIdPersonal(int _idPersonal) {
 
             List<CompetenciasDomainModel> competenciasDM = new List<CompetenciasDomainModel>();
@@ -57,7 +66,12 @@ namespace AppDigitalCv.Business
 
             return competenciasDM;
         }
-
+        /// <summary>
+        /// Este metodo se encarga de obtener una competencia personal mediante el ID de la competencia y el ID del personal
+        /// </summary>
+        /// <param name="_idCompetencia"></param>
+        /// <param name="_idPersonal"></param>
+        /// <returns>un objeto de competencia personal</returns>
         public CompetenciasPersonalDomainModel GetCompetenciaPersonal(int _idCompetencia, int _idPersonal)
         {
 
@@ -73,7 +87,11 @@ namespace AppDigitalCv.Business
             return competenciasPersonalDM;
 
         }
-
+        /// <summary>
+        /// Este metodo se encarga de eliminar una competencia personal mediante el objeto recibido
+        /// </summary>
+        /// <param name="competenciasPersonalDM"></param>
+        /// <returns>true o false</returns>
         public bool DeleteCompetencia(CompetenciasPersonalDomainModel competenciasPersonalDM)
         {
 

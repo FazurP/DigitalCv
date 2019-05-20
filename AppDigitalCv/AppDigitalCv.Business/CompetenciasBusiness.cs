@@ -24,7 +24,10 @@ namespace AppDigitalCv.Business
             competenciasRepository = new CompetenciasRepository(unitOfWork);
             competenciasPersonalRepository = new CompetenciasPersonalRepository(unitOfWork);
         }
-
+        /// <summary>
+        /// Este metodo se encarga de obtener las competencias de tipo Habilidad
+        /// </summary>
+        /// <returns>una lista con las competencias</returns>
         public List<CompetenciasDomainModel> GetCompetenciasHabilidad() {
 
             List<CompetenciasDomainModel> competenciasDM = new List<CompetenciasDomainModel>();
@@ -41,6 +44,10 @@ namespace AppDigitalCv.Business
             return competenciasDM;
 
         }
+        /// <summary>
+        /// Este metodo se encarga de obtener las competancias de tipo Destraza
+        /// </summary>
+        /// <returns>una lista con las competancias</returns>
         public List<CompetenciasDomainModel> GetCompetenciasDestreza()
         {
 
@@ -58,7 +65,10 @@ namespace AppDigitalCv.Business
             return competenciasDM;
 
         }
-
+        /// <summary>
+        /// Este metodo se encarga de obtener las competencias de tipo Valor
+        /// </summary>
+        /// <returns>una lista con las competancias</returns>
         public List<CompetenciasDomainModel> GetCompetenciasValor()
         {
 
@@ -76,7 +86,12 @@ namespace AppDigitalCv.Business
             return competenciasDM;
 
         }
-
+        /// <summary>
+        /// Este metodo se encarga de obtener un objeto de competencia mediante el ID de la competencia y del personal
+        /// </summary>
+        /// <param name="idCompetencia"></param>
+        /// <param name="idPersona"></param>
+        /// <returns>un objeto de la competencia</returns>
         public CompetenciasDomainModel GetCompetencia(int idCompetencia, int idPersona)
         {
 
