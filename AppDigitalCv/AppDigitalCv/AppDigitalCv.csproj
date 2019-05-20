@@ -479,6 +479,7 @@
     <Content Include="Views\DialectoIdioma\_Editar.cshtml" />
     <Content Include="Views\DialectoIdioma\_Eliminar.cshtml" />
     <Content Include="Views\Competencias\Create.cshtml" />
+    <Content Include="Views\Competencias\_Eliminar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
