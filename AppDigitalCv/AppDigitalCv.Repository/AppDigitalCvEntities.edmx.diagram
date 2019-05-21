@@ -109,6 +109,11 @@
         <AssociationConnector Association="bdGestionDocenteModel.fk_personal_pasatiempo" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_personal_personalAsociaciones" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_personal_premiosDocente" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.catCurso" Width="1.5" PointX="8.25" PointY="7.375" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblCursos" Width="1.5" PointX="10.5" PointY="8.875" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblCursos_catCurso" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblCursos_catInstitucionSuperior" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblCursos_tblPersonal" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
