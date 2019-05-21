@@ -95,6 +95,9 @@
     <Compile Include="catCuerpoAcademico.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="catCurso.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="catDeporte.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
@@ -201,6 +204,7 @@
     <Compile Include="Infraestructure\Contract\IBaseRepository.cs" />
     <Compile Include="Infraestructure\Contract\IUnitOfWork.cs" />
     <Compile Include="Infraestructure\UnitOfWork.cs" />
+    <Compile Include="InstitucionSuperiorRepository.cs" />
     <Compile Include="MunicipioRepository.cs" />
     <Compile Include="PaisRepository.cs" />
     <Compile Include="ParentescoRepository.cs" />
@@ -219,6 +223,9 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblCompetenciasTIPersonal.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblCursos.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDatosContacto.cs">

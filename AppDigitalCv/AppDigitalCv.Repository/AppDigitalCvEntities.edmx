@@ -74,6 +74,13 @@
           <Property Name="strObservaciones" Type="varchar(max)" />
           <Property Name="strGradoConsolidacion" Type="varchar" MaxLength="150" Nullable="false" />
         </EntityType>
+        <EntityType Name="catCurso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strDescripcion" Type="varchar" MaxLength="350" />
+        </EntityType>
         <EntityType Name="catDeporte">
           <Key>
             <PropertyRef Name="idDeporte" />
@@ -342,6 +349,17 @@
           <Property Name="idCompetenciaTI" Type="int" Nullable="false" />
           <Property Name="idPersonal" Type="int" Nullable="false" />
           <Property Name="dteFechaRegistro" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblCursos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCurso" Type="int" />
+          <Property Name="idInstitucion" Type="int" />
+          <Property Name="dteFechaInicio" Type="date" />
+          <Property Name="dteFechaTermino" Type="date" />
+          <Property Name="idPersonal" Type="int" />
         </EntityType>
         <EntityType Name="tblDatosContacto">
           <Key>
@@ -1033,6 +1051,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblCursos_catCurso">
+          <End Role="catCurso" Type="Self.catCurso" Multiplicity="0..1" />
+          <End Role="tblCursos" Type="Self.tblCursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catCurso">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblCursos">
+              <PropertyRef Name="idCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCursos_catInstitucionSuperior">
+          <End Role="catInstitucionSuperior" Type="Self.catInstitucionSuperior" Multiplicity="0..1" />
+          <End Role="tblCursos" Type="Self.tblCursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catInstitucionSuperior">
+              <PropertyRef Name="idInstitucionSuperior" />
+            </Principal>
+            <Dependent Role="tblCursos">
+              <PropertyRef Name="idInstitucion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCursos_tblPersonal">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="0..1" />
+          <End Role="tblCursos" Type="Self.tblCursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblCursos">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblTelefono_tblPersonal">
           <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1188,6 +1242,7 @@
           <EntitySet Name="catCompetencias" EntityType="Self.catCompetencias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catCompetenciaTI" EntityType="Self.catCompetenciaTI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catCuerpoAcademico" EntityType="Self.catCuerpoAcademico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="catCurso" EntityType="Self.catCurso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catDeporte" EntityType="Self.catDeporte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catDialecto" EntityType="Self.catDialecto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catDireccion" EntityType="Self.catDireccion" Schema="dbo" store:Type="Tables" />
@@ -1219,6 +1274,7 @@
           <EntitySet Name="tblAlergiasPersonal" EntityType="Self.tblAlergiasPersonal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCompetenciasConocimientosPersonal" EntityType="Self.tblCompetenciasConocimientosPersonal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCompetenciasTIPersonal" EntityType="Self.tblCompetenciasTIPersonal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCursos" EntityType="Self.tblCursos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDatosContacto" EntityType="Self.tblDatosContacto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDatosLaboralesAdministrativos" EntityType="Self.tblDatosLaboralesAdministrativos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDatosLaboralesDocente" EntityType="Self.tblDatosLaboralesDocente" Schema="dbo" store:Type="Tables" />
@@ -1404,6 +1460,18 @@
           <AssociationSet Name="fk_Status_usuario" Association="Self.fk_Status_usuario">
             <End Role="catStatus" EntitySet="catStatus" />
             <End Role="catUsuarios" EntitySet="catUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCursos_catCurso" Association="Self.FK_tblCursos_catCurso">
+            <End Role="catCurso" EntitySet="catCurso" />
+            <End Role="tblCursos" EntitySet="tblCursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCursos_catInstitucionSuperior" Association="Self.FK_tblCursos_catInstitucionSuperior">
+            <End Role="catInstitucionSuperior" EntitySet="catInstitucionSuperior" />
+            <End Role="tblCursos" EntitySet="tblCursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCursos_tblPersonal" Association="Self.FK_tblCursos_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblCursos" EntitySet="tblCursos" />
           </AssociationSet>
           <AssociationSet Name="FK_tblTelefono_tblPersonal" Association="Self.FK_tblTelefono_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
@@ -1756,6 +1824,20 @@
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblTelefono" EntitySet="tblTelefono" />
           </AssociationSet>
+          <EntitySet Name="catCurso" EntityType="bdGestionDocenteModel.catCurso" />
+          <EntitySet Name="tblCursos" EntityType="bdGestionDocenteModel.tblCursos" />
+          <AssociationSet Name="FK_tblCursos_catCurso" Association="bdGestionDocenteModel.FK_tblCursos_catCurso">
+            <End Role="catCurso" EntitySet="catCurso" />
+            <End Role="tblCursos" EntitySet="tblCursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCursos_catInstitucionSuperior" Association="bdGestionDocenteModel.FK_tblCursos_catInstitucionSuperior">
+            <End Role="catInstitucionSuperior" EntitySet="catInstitucionSuperior" />
+            <End Role="tblCursos" EntitySet="tblCursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCursos_tblPersonal" Association="bdGestionDocenteModel.FK_tblCursos_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblCursos" EntitySet="tblCursos" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="catAlergias">
           <Key>
@@ -1957,6 +2039,7 @@
           <Property Name="strDescripcion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="catProgramaEducativo" Relationship="bdGestionDocenteModel.fk_institucionSuperior_programaEducativo" FromRole="catInstitucionSuperior" ToRole="catProgramaEducativo" />
+          <NavigationProperty Name="tblCursos" Relationship="bdGestionDocenteModel.FK_tblCursos_catInstitucionSuperior" FromRole="catInstitucionSuperior" ToRole="tblCursos" />
         </EntityType>
         <EntityType Name="CatMunicipio">
           <Key>
@@ -2772,6 +2855,7 @@
           <NavigationProperty Name="tblPersonalAsociaciones" Relationship="bdGestionDocenteModel.fk_personal_personalAsociaciones" FromRole="tblPersonal" ToRole="tblPersonalAsociaciones" />
           <NavigationProperty Name="tblPremiosDocente" Relationship="bdGestionDocenteModel.fk_personal_premiosDocente" FromRole="tblPersonal" ToRole="tblPremiosDocente" />
           <NavigationProperty Name="tblTelefono" Relationship="bdGestionDocenteModel.FK_tblTelefono_tblPersonal" FromRole="tblPersonal" ToRole="tblTelefono" />
+          <NavigationProperty Name="tblCursos" Relationship="bdGestionDocenteModel.FK_tblCursos_tblPersonal" FromRole="tblPersonal" ToRole="tblCursos" />
         </EntityType>
         <Association Name="fk_direccion_personal">
           <End Type="bdGestionDocenteModel.catDireccion" Role="catDireccion" Multiplicity="0..1" />
@@ -3013,6 +3097,64 @@
               <PropertyRef Name="idPersonal" />
             </Principal>
             <Dependent Role="tblTelefono">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="catCurso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strDescripcion" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblCursos" Relationship="bdGestionDocenteModel.FK_tblCursos_catCurso" FromRole="catCurso" ToRole="tblCursos" />
+        </EntityType>
+        <EntityType Name="tblCursos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCurso" Type="Int32" />
+          <Property Name="idInstitucion" Type="Int32" />
+          <Property Name="dteFechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaTermino" Type="DateTime" Precision="0" />
+          <Property Name="idPersonal" Type="Int32" />
+          <NavigationProperty Name="catCurso" Relationship="bdGestionDocenteModel.FK_tblCursos_catCurso" FromRole="tblCursos" ToRole="catCurso" />
+          <NavigationProperty Name="catInstitucionSuperior" Relationship="bdGestionDocenteModel.FK_tblCursos_catInstitucionSuperior" FromRole="tblCursos" ToRole="catInstitucionSuperior" />
+          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_tblCursos_tblPersonal" FromRole="tblCursos" ToRole="tblPersonal" />
+        </EntityType>
+        <Association Name="FK_tblCursos_catCurso">
+          <End Type="bdGestionDocenteModel.catCurso" Role="catCurso" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.tblCursos" Role="tblCursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catCurso">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblCursos">
+              <PropertyRef Name="idCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCursos_catInstitucionSuperior">
+          <End Type="bdGestionDocenteModel.catInstitucionSuperior" Role="catInstitucionSuperior" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.tblCursos" Role="tblCursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catInstitucionSuperior">
+              <PropertyRef Name="idInstitucionSuperior" />
+            </Principal>
+            <Dependent Role="tblCursos">
+              <PropertyRef Name="idInstitucion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCursos_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.tblCursos" Role="tblCursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblCursos">
               <PropertyRef Name="idPersonal" />
             </Dependent>
           </ReferentialConstraint>
@@ -3580,6 +3722,26 @@
                 <ScalarProperty Name="strApellidoPaterno" ColumnName="strApellidoPaterno" />
                 <ScalarProperty Name="strNombre" ColumnName="strNombre" />
                 <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="catCurso">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.catCurso">
+              <MappingFragment StoreEntitySet="catCurso">
+                <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCursos">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblCursos">
+              <MappingFragment StoreEntitySet="tblCursos">
+                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
+                <ScalarProperty Name="dteFechaTermino" ColumnName="dteFechaTermino" />
+                <ScalarProperty Name="dteFechaInicio" ColumnName="dteFechaInicio" />
+                <ScalarProperty Name="idInstitucion" ColumnName="idInstitucion" />
+                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
