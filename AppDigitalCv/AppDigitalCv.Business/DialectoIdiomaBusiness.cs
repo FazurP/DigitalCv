@@ -5,6 +5,7 @@ using AppDigitalCv.Repository.Infraestructure.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,7 +23,10 @@ namespace AppDigitalCv.Business
             idiomaDialectoRepository = new IdiomaDialectoRepository(unitOfWork);
             dialectoRepository = new DialectosRepository(unitOfWork);
         }
-
+        /// <summary>
+        /// Este metodo se encarga de obtener todos los dialecto para cargarlos en la lista.
+        /// </summary>
+        /// <returns>una lista con los dialectos</returns>
         public List<DialectoDomainModel> GetDialecto()
         {
             List<DialectoDomainModel> dialectos = new List<DialectoDomainModel>();
@@ -33,7 +37,11 @@ namespace AppDigitalCv.Business
             dialectos.Insert(0, inicial);
             return dialectos;
         }
-
+        /// <summary>
+        /// Este metodo de encarga de actualizar o insertar un dialecto personal
+        /// </summary>
+        /// <param name="idiomaDialectoDM"></param>
+        /// <returns></returns>
         public bool AddUpdateDialecto(IdiomaDialectoDomainModel idiomaDialectoDM)
         {
             bool respuesta = false;
@@ -57,6 +65,11 @@ namespace AppDigitalCv.Business
             }
             else
             {
+                if (idiomaDialectoRepository.Exists(p => p.idDialecto == idiomaDialectoDM.IdDialecto && p.idPersonal == idiomaDialectoDM.IdPersonal))
+                {
+                    return false;
+                }
+                else { 
                 tblIdiomaDialectoPersonal idiomaDialecto = new tblIdiomaDialectoPersonal();
                 idiomaDialecto.idDialecto = idiomaDialectoDM.IdDialecto;
                 idiomaDialecto.strComunicacionPorcentaje = idiomaDialectoDM.StrComunicacionPorcentaje;
@@ -67,8 +80,51 @@ namespace AppDigitalCv.Business
 
                 var record = idiomaDialectoRepository.Insert(idiomaDialecto);
                 respuesta = true;
+                }
             }
             return respuesta;
         }
+        /// <summary>
+        /// Este metodo se encarga de obtener un dialecto personal mediante su id y el id de la persona.
+        /// </summary>
+        /// <param name="_idDialecto"></param>
+        /// <param name="_idPersonal"></param>
+        /// <returns>true o false</returns>
+        public IdiomaDialectoDomainModel GetDialectoPersonales(int _idDialecto, int _idPersonal)
+        {
+
+            IdiomaDialectoDomainModel idiomaDialectoDM = new IdiomaDialectoDomainModel();
+            Expression<Func<tblIdiomaDialectoPersonal, bool>> predicado = p => p.idDialecto.Equals(_idDialecto) && p.idPersonal.Equals(_idPersonal);
+            tblIdiomaDialectoPersonal tblIdioma = idiomaDialectoRepository.GetAll(predicado).FirstOrDefault<tblIdiomaDialectoPersonal>();
+
+            idiomaDialectoDM.IdIdiomaDialectoPersonal = tblIdioma.idIdiomaDialectoPersonal;
+            idiomaDialectoDM.IdDialecto = tblIdioma.idDialecto;
+            idiomaDialectoDM.IdPersonal = tblIdioma.idPersonal;
+            idiomaDialectoDM.StrComunicacionPorcentaje = tblIdioma.strComunicacionPorcentaje;
+            idiomaDialectoDM.StrEntendimientoPorcentaje = tblIdioma.strEntendimientoPorcentaje;
+            idiomaDialectoDM.StrEscrituraProcentaje = tblIdioma.strEscrituraProcentaje;
+            idiomaDialectoDM.StrLecturaPorcentaje = tblIdioma.strLecturaPorcentaje;
+
+            return idiomaDialectoDM;
+
+        }
+        /// <summary>
+        /// Este metodo se encarga de eliminar un dialecto mediante su id y el id de la persona
+        /// </summary>
+        /// <param name="idiomaDialectoDM"></param>
+        /// <returns>true o false</returns>
+        public bool DeleteDialectoDialectos(IdiomaDialectoDomainModel idiomaDialectoDM)
+        {
+
+            bool respuesta = false;
+            Expression<Func<tblIdiomaDialectoPersonal, bool>> predicado = p => p.idDialecto.Equals(idiomaDialectoDM.IdDialecto)
+             && p.idPersonal.Equals(idiomaDialectoDM.IdPersonal);
+            idiomaDialectoRepository.Delete(predicado);
+            respuesta = true;
+            return respuesta;
+
+        }
+
+
     }
 }

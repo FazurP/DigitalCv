@@ -9,7 +9,7 @@
 @using (Html.BeginForm("Create", "PremiosDocente", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    <div class="bs-container content" style="min-height:960px;">
+    <div class="bs-container" style="min-height:960px;">
         <section class="content-header">
             <h1>
                 Premios y Distinciones
@@ -28,18 +28,26 @@
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <h5 class="box-title">
-                            <label class="text-success">
-                                <i class="text-success fa fa-heartbeat"></i>
-                                @SessionPersister.AccountSession.Nombre
-                            </label>
+                            <label class="text-success emailtitleletter">
+                                <i class="text-success fa fa-graduation-cap"></i>
+                                @SessionPersister.AccountSession.NombreCompleto
+                            </label>&nbsp;
+                            @*<a href="@Url.Action("GetDatosCompetenciasTI","CompetenciaTi")" class="linkfacebookletter">&nbsp;<i class="fa fa-tag"></i><span>Editar Competencias en TI</span> </a>*@
                         </h5>
                     </div>
                     <div class="box-body">
                         <div class="form-inline">
                             <div class="form-group">
                                 <label class="text-muted">Actividad Desempeñada:</label>
-                                @Html.TextBoxFor(model => model.StrActividadDesempeniada, new { @class = "form-control input-sm", placeholder = "Nombre de la Actividad Desempeñada",
-                               pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}", required = "required", title = "Ingresa la Actividad Desempeñada",id="Actividad" })
+                                @Html.TextBoxFor(model => model.StrActividadDesempeniada, new
+                                {
+                                    @class = "form-control input-sm",
+                                    placeholder = "Nombre de la Actividad Desempeñada",
+                               pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}",
+                                    required = "required",
+                                    title = "Ingresa la Actividad Desempeñada",
+                                    id = "Actividad"
+                                })
                                 <label class="text-muted">Periodo Inicial de Entrega:</label>
                                 @Html.TextBoxFor(model => model.DteFechaInicioPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Selecciona la Fecha de Inicio" })
                                 <label class="text-muted">Periodo Final de Entrega</label>
@@ -67,43 +75,41 @@
                             </div>
                         </div>
                         <!--inicio y configuración de la tabla-->
-                        <div class="form-inline">
-                            <div class="form-group">
-                                <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
-                                <div class="form-group" id="addTable">
-                                    <br />
-                                    <table id="tblPremiosDocente" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
-                                        <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
-                                            <tr>
+                        <div class="form-group">
+                            <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
+                            <div class="form-group" id="addTable">
+                                <br />
+                                <table id="tblPremiosDocente" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
+                                    <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
+                                        <tr>
 
-                                                <th>Actividad Desempeñada</th>
-                                                <th>Nombre de la Institución</th>
-                                                <th>Nombre del Premio</th>
-                                                <th>Fecha de Obtención</th>
-                                                <th>Fecha Inicio</th>
-                                                <th>Fecha de Fin</th>
-                                                <th>Eliminar</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="tblBody"></tbody>
-                                    </table>
-                                    <!-- Establecemos el Modal que se va a presentar cuando demos click en la edicion de los datos-->
-                                    <div class="modal fade" id="myModal1">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header" style="background-color:#3C8DBC;color:white;">
-                                                    <a href="#" class="close" data-dismiss="modal">&times;</a>
-                                                    <h5 class="modal-title"><label style="font-size:medium;">Eliminar Premio del Docente</label></h5>
-                                                </div>
-                                                <div class="modal-body" id="myModalBodyDiv1">
-                                                </div>
+                                            <th>Actividad Desempeñada</th>
+                                            <th>Nombre de la Institución</th>
+                                            <th>Nombre del Premio</th>
+                                            <th>Fecha de Obtención</th>
+                                            <th>Fecha Inicio</th>
+                                            <th>Fecha de Fin</th>
+                                            <th>Eliminar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tblBody"></tbody>
+                                </table>
+                                <!-- Establecemos el Modal que se va a presentar cuando demos click en la edicion de los datos-->
+                                <div class="modal fade" id="myModal1">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                                                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                                                <h5 class="modal-title"><label style="font-size:medium;">Eliminar Premio del Docente</label></h5>
+                                            </div>
+                                            <div class="modal-body" id="myModalBodyDiv1">
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="hidden" id="hiddenPremioDocenteId" />
-                                    <!--Terminamos el modal de eliminacion-->
-                                    <!--Terminacion de la tabla -->
                                 </div>
+                                <input type="hidden" id="hiddenPremioDocenteId" />
+                                <!--Terminamos el modal de eliminacion-->
+                                <!--Terminacion de la tabla -->
                             </div>
                         </div>
                         <!--fin de la tabla-->

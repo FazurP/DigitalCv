@@ -1,0 +1,60 @@
+﻿
+@model AppDigitalCv.ViewModels.DialectoVM
+@using AppDigitalCv.Security
+
+<div>
+
+    <form id="myForm">
+        @Html.HiddenFor(m => m.IdDialecto, new { @class = "form-control input-sm", id = "IdDialecto" })
+        @Html.HiddenFor(m => m.StrDescripcion)
+        @Html.HiddenFor(m => m.StrObservacion)
+        <div class="form-inline">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+                    </div>
+                    <div class="col-lg-3">
+                        ¿Deseas <strong>Eliminar</strong> este registro realmente?
+                    </div>
+                    <div class="col-lg-6">
+                        @Html.TextBoxFor(m => m.StrDescripcion, new { @class = "form-control input-sm", @placeholder = "Nombre del Dialecto",@disabled="disabled" })
+
+                        <a href="#" id="btnEnviar">
+                            <i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+
+<script>
+        $(document).ready(function () {
+
+            $("#btnEnviar").click(function () {
+
+            $("#loaderDiv").show();
+
+                 var myformdat = $("#myForm").serialize();
+
+            $.ajax({
+
+                type: "POST",
+                url: "/DialectoIdioma/DeleteDialectoById",
+                data: myformdat,
+                success: function () {
+                    $("#loaderDiv").hide();
+                    $("#myModal").modal("hide");
+                    window.location.href = "/DialectoIdioma/Create";
+
+                }
+
+            })
+        })
+
+        })
+</script>

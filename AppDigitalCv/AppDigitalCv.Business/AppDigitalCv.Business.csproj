@@ -51,10 +51,13 @@
     <Compile Include="AlergiasPersonalBusiness.cs" />
     <Compile Include="AsosiacionesBusiness.cs" />
     <Compile Include="CompetenciaBusiness.cs" />
+    <Compile Include="CompetenciasBusiness.cs" />
+    <Compile Include="CompetenciasPersonalBusiness.cs" />
     <Compile Include="CompetenciasTiBusiness.cs" />
     <Compile Include="DatosContactoBusiness.cs" />
     <Compile Include="DeporteBusiness.cs" />
     <Compile Include="DeportePersonalBusiness.cs" />
+    <Compile Include="DialectoBusiness.cs" />
     <Compile Include="DialectoIdiomaBusiness.cs" />
     <Compile Include="DireccionBusiness.cs" />
     <Compile Include="DocumentosBusiness.cs" />
@@ -73,10 +76,13 @@
     <Compile Include="Interface\IAlergiasPersonalBusinnes.cs" />
     <Compile Include="Interface\IAsociacionesBusiness.cs" />
     <Compile Include="Interface\ICompetenciaBusiness.cs" />
+    <Compile Include="Interface\ICompetenciaPersonalBusiness.cs" />
+    <Compile Include="Interface\ICompetenciasBusiness.cs" />
     <Compile Include="Interface\ICompetenciasTiBusiness.cs" />
     <Compile Include="Interface\IDatosContacto.cs" />
     <Compile Include="Interface\IDeporteBusiness.cs" />
     <Compile Include="Interface\IDeportePersonalBusiness.cs" />
+    <Compile Include="Interface\IDialectoBusiness.cs" />
     <Compile Include="Interface\IDialectoIdiomaBusiness.cs" />
     <Compile Include="Interface\IDocumentosBusiness.cs" />
     <Compile Include="Interface\IEmergenciaBusiness.cs" />

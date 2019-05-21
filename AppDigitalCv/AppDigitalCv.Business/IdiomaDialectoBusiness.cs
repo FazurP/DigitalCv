@@ -68,7 +68,7 @@ namespace AppDigitalCv.Business
                 }
             }
             else{
-                if (idiomaDialectoRepository.Exists(p => p.idIdioma == idiomaDialectoDM.IdIdioma))
+                if (idiomaDialectoRepository.Exists(p => p.idIdioma == idiomaDialectoDM.IdIdioma && p.idPersonal == idiomaDialectoDM.IdPersonal))
                 {
                     return false;
                 }

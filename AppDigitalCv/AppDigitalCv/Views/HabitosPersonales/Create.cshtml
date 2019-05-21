@@ -10,7 +10,7 @@
 @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "myForm", id = "myForm" }))
 {
     @Html.AntiForgeryToken()
-    <div class="bs-container content" style="min-height:960px;">
+    <div class="bs-container" style="min-height:960px;">
         <section class="content-header">
             <h1>
                 Habitos Personales
@@ -68,38 +68,39 @@
                                 <input type="submit" value="Guardar" class="btn btn-sm btn-success" />
                             </div>
                             <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
-                            <div class="form-group" id="addTable">
-                                <br />
-                                <table id="tblDeportePersonal" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
-                                    <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
-                                        <tr>
-                                            <th>Fecha de Registro</th>
-                                            <th>Frecuencia</th>
-                                            <th>Actividad Deportiva</th>
-                                            <th>Editar</th>
-                                            <th>Eliminar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tblBody"></tbody>
-                                </table>
 
-                                <!-- Establecemos el Modal que se va a presentar cuando demos click en la edicion de los datos-->
-                                <div class="modal fade" id="myModal1">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header" style="background-color:#3C8DBC;color:white;">
-                                                <a href="#" class="close" data-dismiss="modal">&times;</a>
-                                                <h5 class="modal-title"><label style="font-size:medium;">Habitos Personales</label></h5>
-                                            </div>
-                                            <div class="modal-body" id="myModalBodyDiv1">
-                                            </div>
+                        </div>
+                        <div class="form-group" id="addTable">
+                            <br />
+                            <table id="tblDeportePersonal" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
+                                <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
+                                    <tr>
+                                        <th>Fecha de Registro</th>
+                                        <th>Frecuencia</th>
+                                        <th>Actividad Deportiva</th>
+                                        <th>Editar</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblBody"></tbody>
+                            </table>
+
+                            <!-- Establecemos el Modal que se va a presentar cuando demos click en la edicion de los datos-->
+                            <div class="modal fade" id="myModal1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                                            <a href="#" class="close" data-dismiss="modal">&times;</a>
+                                            <h5 class="modal-title"><label style="font-size:medium;">Habitos Personales</label></h5>
+                                        </div>
+                                        <div class="modal-body" id="myModalBodyDiv1">
                                         </div>
                                     </div>
                                 </div>
-                                <input type="hidden" id="hiddenEnfermedadId" />
-                                <!--Terminamos el modal de eliminacion-->
-
                             </div>
+                            <input type="hidden" id="hiddenEnfermedadId" />
+                            <!--Terminamos el modal de eliminacion-->
+
                         </div>
                     </div>
                 </div>

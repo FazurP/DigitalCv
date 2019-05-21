@@ -7,7 +7,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-<div class="bs-container content" style="min-height:960px;">
+<div class="bs-container" style="min-height:960px;">
     <section class="content-header">
         <h1>
             Editar Datos de Contactos
@@ -25,16 +25,11 @@
             <div class="box box-success">
                 <div class="box-header with-border">
                     <h5 class="box-title">
-                        <label class="text-success">
-                            <i class="text-success fa fa-heartbeat"></i>
-                            @SessionPersister.AccountSession.Email
-                        </label>
+                        <label class="text-success emailtitleletter">
+                            <i class="text-success fa fa-graduation-cap"></i>
+                            @SessionPersister.AccountSession.NombreCompleto
+                        </label>&nbsp;
                     </h5>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                            <i class="fa fa-minus"></i>
-                        </button>
-                    </div>
                 </div>
                 <div class="box-body">
                     <div role="form">

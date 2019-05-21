@@ -51,6 +51,9 @@ namespace AppDigitalCv
             container.RegisterType<IAlergiasBusiness, AlergiasBusiness>();
             container.RegisterType<IAlergiasPersonalBusinnes, AlergiasPersonalBusiness>();
             container.RegisterType<IIdiomaBusiness, IdiomasBusiness>();
+            container.RegisterType<IDialectoBusiness, DialectoBusiness>();
+            container.RegisterType<ICompetenciasBusiness, CompetenciasBusiness>();
+            container.RegisterType<ICompetenciaPersonalBusiness, CompetenciasPersonalBusiness>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

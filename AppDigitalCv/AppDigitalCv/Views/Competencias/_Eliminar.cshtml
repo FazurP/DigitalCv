@@ -1,0 +1,63 @@
+﻿
+@model AppDigitalCv.ViewModels.CompetenciasVM
+@using AppDigitalCv.Security
+
+<div>
+
+    <form id="myFormulario">
+
+        <div class="form-inline">
+            <div class="form-group">
+                ¿Deseas <strong>Eliminar</strong> este registro realmente?
+            </div>
+            <div class="form-group">
+                @Html.HiddenFor(m => m.idCompetencia, new { @class = "form-control input-sm", id = "idCompetencia" })
+                @Html.HiddenFor(m => m.strDescripcion)
+                @Html.HiddenFor(m => m.strObservacion)
+                @Html.HiddenFor(m => m.strTipo)
+
+                @Html.TextBoxFor(m => m.strDescripcion, new { @class = "form-control input-sm", @placeholder = "Nombre de la Competencia", disabled="disabled"})
+
+                <a href="#" id="btnSubmit">
+                    <i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i>
+                </a>
+            </div>
+            <div class="form-group">
+                <div style="text-align:center;display:none" id="loaderDiv">
+                    <img src="~/Imagenes/loading-blue.gif" width="150" />
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+
+<script>
+        $(document).ready(function () {
+
+            $("#btnSubmit").click(function () {
+
+            $("#loaderDiv").show();
+
+                 var myformdat = $("#myFormulario").serialize();
+      
+            $.ajax({
+
+                type: "POST",
+                url: "/Competencias/DeleteCompetenciaById",
+                data: myformdat,
+                success: function () {
+                    $("#loaderDiv").hide();
+                    $("#myModal").modal("hide");
+                    window.location.href = "/Competencias/Create";
+
+                }
+
+            })
+        })
+
+        })
+</script>
+
+

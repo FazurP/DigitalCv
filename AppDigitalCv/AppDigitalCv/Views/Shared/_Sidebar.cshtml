@@ -37,10 +37,8 @@
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
-
                 </a>
                 <ul class="treeview-menu">
-
                     <li class="@Url.IsLinkActive("Create","Personal")">
                         <a href="@Url.Action("Create","Personal")"><i class="fa fa-user-plus"></i><span>Datos Personales</span> </a>
                     </li>
@@ -56,7 +54,6 @@
                     <li class="@Url.IsLinkActive("Create","Direccion")">
                         <a href="@Url.Action("Create","Direccion")"><i class="fa fa-pencil-square-o"></i><span>Direccion</span></a>
                     </li>
-
                     <li class="@Url.IsLinkActive("Create","DatosContacto")">
                         <a href="@Url.Action("Create","DatosContacto")"><i class="fa fa-share-alt"></i><span>Datos de Contacto</span> </a>
                     </li>
@@ -66,24 +63,15 @@
                     <li class="@Url.IsLinkActive("Create","Hijos")">
                         <a href="@Url.Action("Create","Hijos")"><i class="fa fa-group"></i><span>Hijos</span> </a>
                     </li>
-
                     <li class="@Url.IsLinkActive("Create", "PremiosDocente")">
                         <a href="@Url.Action("Create", "PremiosDocente")"><i class="fa fa-star-o"></i><span>Premios</span></a>
                     </li>
-
                     <li class="@Url.IsLinkActive("Create","PersonalAsociaciones")">
                         <a href="@Url.Action("Create","PersonalAsociaciones")"><i class="fa  fa-coffee"></i><span>Asociaciones</span></a>
                     </li>
-
-                    <li class="@Url.IsLinkActive("Create", "CompetenciaTi")">
-                        <a href="@Url.Action("Create", "CompetenciaTi")"><i class="fa fa-laptop"></i><span>Competencias en TI</span></a>
-                    </li>
-
                     <li class="@Url.IsLinkActive("EditarDatosDireccion", "Direccion")">
                         <a href="@Url.Action("EditarDatosDireccion", "Direccion")"><i class="fa fa-newspaper-o"></i><span>Editar Datos de Direccion</span></a>
                     </li>
-
-
                     <li class="@Url.IsLinkActive("Create","DatosContacto")">
                         <a href="@Url.Action("Create","DatosContacto")"><i class="fa fa-newspaper-o"></i><span>Datos de Contacto</span></a>
                     </li>
@@ -93,12 +81,6 @@
                     <li class="@Url.IsLinkActive("EditarDatosContacto","DatosContacto")">
                         <a href="@Url.Action("EditarDatosContacto","DatosContacto")"><i class="fa fa-user-plus"></i><span>Editar Datos de Contacto</span> </a>
                     </li>
-                    <li class="@Url.IsLinkActive("Create","EstadoCivil")">
-                        <a href="@Url.Action("Create","EstadoCivil")"><i class="fa fa-user-plus"></i><span>Agregar Estado Civil</span> </a>
-                    </li>
-
-
-
                 </ul>
             </li>
             <li class="treeview">
@@ -116,19 +98,20 @@
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa  fa-commenting-o"></i> <span>Idiomas y Dialectos</span>
+                    <i class="fa fa-commenting-o"></i> <span>Idiomas y Dialectos</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
-
                 </a>
                 <ul class="treeview-menu">
                     <li class="@Url.IsLinkActive("Create","IdiomaDialecto")">
-                        <a href="@Url.Action("Create","IdiomaDialecto")"><i class="fa fa-comments"></i><span>Idiomas</span> </a>
+                        <a href="@Url.Action("Create","IdiomaDialecto")"><i class="fa fa-comments"></i><span>Idiomas</span></a>
+                    </li>
+                    <li class="@Url.IsLinkActive("Create","DialectoIdioma")">
+                        <a href="@Url.Action("Create","DialectoIdioma")"><i class="fa fa-comment-o"></i><span>Dialectos</span></a>
                     </li>
                 </ul>
             </li>
-
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-ambulance"></i><span>Salud</span>
@@ -147,15 +130,18 @@
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-link"></i> <span>Multilevel</span>
+                    <i class="fa fa-link"></i> <span>Competencias</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
-
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Link in level 2</a></li>
-                    <li><a href="#">Link in level 2</a></li>
+                    <li class="@Url.IsLinkActive("Create", "CompetenciaTi")">
+                        <a href="@Url.Action("Create", "CompetenciaTi")"><i class="fa fa-laptop"></i><span>Competencias en TI</span></a>
+                    </li>
+                    <li class="@Url.IsLinkActive("Create","Competencias")">
+                        <a href="@Url.Action("Create","Competencias")"><i class="fa fa-laptop"></i><span>Competencias</span></a>
+                    </li>
                 </ul>
             </li>
         </ul>

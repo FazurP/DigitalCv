@@ -7,7 +7,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div class="bs-container content" style="min-height:960px;">
+    <div class="bs-container" style="min-height:960px;">
         <section class="content-header">
             <h1>
                 Competencias en TI
@@ -60,7 +60,6 @@
                             </div>
                             <br />
                             <input type="submit" class="btn btn-sm btn-success" value="Guardar" onclick="GuardarList()" />
-
                         </div>
                     </div>
                 </div>
@@ -85,21 +84,23 @@
             var arr = checkId.split('_');
 
             var currenCheckboxId = arr[1];
-
+            debugger;
             var Ischecked = $("#" + checkId).is(":checked", true);
             if (Ischecked) {
                 arrItem.push(currenCheckboxId);
             }
-
+            
         })
+         debugger;
         if (arrItem.length != 0) {
             comaSeparatedIds = arrItem.toString();
+           
             $.ajax({
                 url: "/CompetenciaTi/CreateList",
                 type: "POST",
                 data: { ItemList: comaSeparatedIds },
                 success: function (response) {
-                    window.location.href = "/CompetenciaTi/GetDatosCompetenciasTI";
+                    window.location.href = "/CompetenciaTi/Create";
                 }
             })
         }

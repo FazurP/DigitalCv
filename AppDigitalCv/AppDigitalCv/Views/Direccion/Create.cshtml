@@ -10,29 +10,32 @@
 {
     @Html.AntiForgeryToken()
 
-        <div class="bs-container content" style="min-height:960px;">
+        <div class="bs-container" style="min-height:960px;">
             <section class="content-header">
                 <h1>
-                    Agregar Dirección
-                    <small> Agregar la direccion completa </small>
+                    Dirección
+                    <small>(Agregar)</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"> <i class="fa fa-dashboard"></i>Inicio </a></li>
                     <li> <a href="#">Dirección</a></li>
-                    <li class="active">(Agregar)</li>
+                    <li class="active">Direccion Personal</li>
                 </ol>
             </section>
-            <br />
-       
+            <br />    
             <div class="row">
-
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="box box-success">
-                        <br /><label class="text-green">
-                            <i class="text-success fa fa-graduation-cap"></i>
-                            @SessionPersister.AccountSession.NombreCompleto
-                        </label>
-
+                        <div class="box-header with-border">
+                            <h5 class="box-title">
+                                <label class="text-success emailtitleletter">
+                                    <i class="text-success fa fa-graduation-cap"></i>
+                                    @SessionPersister.AccountSession.NombreCompleto
+                                </label>&nbsp;
+                                @*<a href="@Url.Action("GetDatosCompetenciasTI","CompetenciaTi")" class="linkfacebookletter">&nbsp;<i class="fa fa-tag"></i><span>Editar Competencias en TI</span> </a>*@
+                            </h5>
+                            <!-- /.box-tools -->
+                        </div>
                         <div role="form">
                             <div class="box-body">
                                 <div class="form-inline">

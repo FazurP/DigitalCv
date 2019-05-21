@@ -12,7 +12,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="bs-container content" style="min-height:960px;">
+    <div class="bs-container" style="min-height:960px;">
         <section class="content-header">
             <h1>
                 Asociación
@@ -32,7 +32,7 @@
                         <h5 class="box-title">
                             <label class="text-success">
                                 <i class="text-success fa fa-heartbeat"></i>
-                                @SessionPersister.AccountSession.Nombre
+                                @SessionPersister.AccountSession.NombreCompleto
                             </label>
                         </h5>
                         <div class="box-tools pull-right">

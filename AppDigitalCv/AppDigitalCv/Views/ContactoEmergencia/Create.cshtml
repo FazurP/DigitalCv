@@ -13,7 +13,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="bs-container content" style="min-height:960px;">
+    <div class="bs-container" style="min-height:960px;">
         <section class="content-header">
             <h1>
                 Datos de Contacto de Emergencia
@@ -32,34 +32,36 @@
                     <div class="box-header with-border">
                         <h5 class="box-title">
                             <label class="text-success emailtitleletter">
-                                <i class="text-success fa fa-heartbeat"></i>
-                                @SessionPersister.AccountSession.Nombre
-                            </label>
+                                <i class="text-success fa fa-graduation-cap"></i>
+                                @SessionPersister.AccountSession.NombreCompleto
+                            </label>&nbsp;
                         </h5>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                        </div>
                     </div>
                     <div class="box-body">
                         <div class="form-horizontal">
-                            <div class="form-group-sm">
-                                Nombre del Familiar:@Html.TextBoxFor(model => model.StrNombre, htmlAttributes: new { @class = "form-control input-sm", title = "Ingresa el nombre del familiar", placeholder = "Ingresa el nombre del familiar completo", required = "required", id = "Nombre",pattern= "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
+                            <div class="col-lg-6">
+                                <div class="form-group-sm">
+                                    Nombre del Familiar:@Html.TextBoxFor(model => model.StrNombre, htmlAttributes: new { @class = "form-control input-sm", title = "Ingresa el nombre del familiar", placeholder = "Ingresa el nombre del familiar completo", required = "required", id = "Nombre", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
+                                </div>
+                                <div class="form-group-sm">
+                                    Parentesco:@Html.DropDownList("IdParentesco", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdParentesco", title = "Selecciona el Parentesco", required = "" })
+                                </div>
                             </div>
-                            <div class="form-group-sm">
-                                Parentesco:@Html.DropDownList("IdParentesco", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdParentesco", title = "Selecciona el Parentesco", required = "" })
+                            <div class="col-lg-6">
+                                <div class="form-group-sm">
+                                    Telefono:@Html.TextBoxFor(model => model.StrTelefono, null, htmlAttributes: new { @class = "form-control input-sm", title = "Ingresa el telefono del familiar", placeholder = "Ingresa el telefono del familiar completo", type = "Number", required = "", id = "Telefono" })
+                                </div>
+                                <div class="form-group-sm">
+                                    Direccion Completa:@Html.TextBoxFor(model => model.StrDireccion, htmlAttributes: new { @class = "form-control input-sm", title = "Ingresa la dirección completa del familiar", placeholder = "Ingresa la dirección completa del familiar", required = "required", id = "Direccion", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.# ]+$" })
+                                </div>
+                                <br />
                             </div>
-                            <div class="form-group-sm">
-                                Telefono:@Html.TextBoxFor(model => model.StrTelefono, null, htmlAttributes: new { @class = "form-control input-sm", title = "Ingresa el telefono del familiar", placeholder = "Ingresa el telefono del familiar completo", type = "Number", required = "", id = "Telefono" })
+                            <div class="col-lg-1">
+                                <div class="form-group-sm">
+                                    <input type="submit" value="Guardar" class="btn btn-sm btn-success" id="btnGuardar" />
+                                </div>
                             </div>
-                            <div class="form-group-sm">
-                                Direccion Completa:@Html.TextBoxFor(model => model.StrDireccion, htmlAttributes: new { @class = "form-control input-sm", title = "Ingresa la dirección completa del familiar", placeholder = "Ingresa la dirección completa del familiar", required = "required", id = "Direccion",pattern= "^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.# ]+$" })
-                            </div>
-                            <br />
-                            <div class="form-group-sm">
-                                <input type="submit" value="Guardar" class="btn btn-sm btn-success" id="btnGuardar" />
-                            </div>
+                       
                             <br />
                             <div class="form-group-sm">
                                 <!-- Agregamos la tabla de forma dinamica  style="display:none" -->

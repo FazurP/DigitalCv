@@ -10,7 +10,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="bs-container content" style="min-height:960px;">
+    <div class="bs-container" style="min-height:960px;">
         <section class="content-header">
             <h1>
                 Agregar Datos de Contactos
@@ -24,62 +24,66 @@
         </section>
         <br />
         <div class="row">
-            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <h5 class="box-title">
-                            <label class="text-green"><i class="text-green fa fa-child"></i> @SessionPersister.AccountSession.NombreCompleto</label>
+                            <label class="text-success emailtitleletter">
+                                <i class="text-success fa fa-graduation-cap"></i>
+                                @SessionPersister.AccountSession.NombreCompleto
+                            </label>&nbsp;
+                            @*<a href="@Url.Action("GetDatosCompetenciasTI","CompetenciaTi")" class="linkfacebookletter">&nbsp;<i class="fa fa-tag"></i><span>Editar Competencias en TI</span> </a>*@
                         </h5>
-
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                        </div>
                         <!-- /.box-tools -->
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div role="form">
                             <div class="form-group">
-                                <div class="form-group ">
-                                    <label>Telefono Celular:</label>
-                                    @Html.TextBoxFor(model => model.TelefonoCelular, new { @class = "form-control input-sm", placeholder = "Tu Número Celular", required = "", pattern = "^[0-9]+$", id = "TelefonoCelular" })
-                                    @Html.ValidationMessageFor(model => model.TelefonoCelular, "", new { @class = "text-danger" })
+                                <div class="col-lg-6">
+                                    <div class="form-group ">
+                                        <label>Telefono Celular:</label>
+                                        @Html.TextBoxFor(model => model.TelefonoCelular, new { @class = "form-control input-sm", placeholder = "Tu Número Celular", required = "", pattern = "^[0-9]+$", id = "TelefonoCelular" })
+                                        @Html.ValidationMessageFor(model => model.TelefonoCelular, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group ">
+                                        <label>Telefono Casa:</label>
+                                        @Html.TextBoxFor(model => model.TelefonoCasa, new { @class = "form-control input-sm", placeholder = "Tu Número Casa", required = "", pattern = "^[0-9]+$", id = "TelefonoCasa" })
+                                        @Html.ValidationMessageFor(model => model.TelefonoCasa, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group ">
+                                        <label>Telefono de Recados:</label>
+                                        @Html.TextBoxFor(model => model.TelefonoRecados, new { @class = "form-control input-sm", placeholder = "Tu Número para Recados", required = "", pattern = "^[0-9]+$", id = "TelefonoRecados" })
+                                        @Html.ValidationMessageFor(model => model.TelefonoRecados, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group ">
+                                        <label>E-mail Institucional:</label>
+                                        @Html.TextBoxFor(model => model.MailInstitucional, new { @class = "form-control input-sm", placeholder = "Tu email institucional", required = "", pattern = "[a-zA-Z0-9._-]{3,25}[@]{1}(uttt){1}[.]{1}(edu){1}[.]{1}(mx){1}", id = "EmailInstitucional" })
+                                        @Html.ValidationMessageFor(model => model.MailInstitucional, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
-                                <div class="form-group ">
-                                    <label>Telefono Casa:</label>
-                                    @Html.TextBoxFor(model => model.TelefonoCasa, new { @class = "form-control input-sm", placeholder = "Tu Número Casa", required = "", pattern = "^[0-9]+$", id = "TelefonoCasa" })
-                                    @Html.ValidationMessageFor(model => model.TelefonoCasa, "", new { @class = "text-danger" })
+                                <div class="col-lg-6">
+                                    <div class="form-group ">
+                                        <label>E-mail Personal:</label>
+                                        @Html.TextBoxFor(model => model.MailPersonal, new { @class = "form-control input-sm", placeholder = "Tu email personal", required = "", pattern = "[a-zA-Z0-9._-]{3,25}[@]{1}(hotmail|gmail|outlook|yahoo){1}[.]{1}(com|mx|net){1}", id = "EmailPersonal" })
+                                        @Html.ValidationMessageFor(model => model.MailPersonal, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group ">
+                                        <label>Nombre de Usuario en Facebook:</label>
+                                        @Html.TextBoxFor(model => model.NombreFacebook, new { @class = "form-control input-sm", placeholder = "Tu usuario en Facebook", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$", required = "", id = "Facebook" })
+                                        @Html.ValidationMessageFor(model => model.NombreFacebook, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group ">
+                                        <label>Nombre de Usuario en Twitter:</label>
+                                        @Html.TextBoxFor(model => model.NombreTwitter, new { @class = "form-control input-sm", placeholder = "Tu usuario en Twitter", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$", required = "", id = "Twitter" })
+                                        @Html.ValidationMessageFor(model => model.NombreTwitter, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        <br />
+                                        <input type="submit" value="Guardar" class="btn btn-primary" id="btnGuardar" />
+                                    </div>
                                 </div>
-                                <div class="form-group ">
-                                    <label>Telefono de Recados:</label>
-                                    @Html.TextBoxFor(model => model.TelefonoRecados, new { @class = "form-control input-sm", placeholder = "Tu Númer para Recados", required = "", pattern = "^[0-9]+$", id = "TelefonoRecados" })
-                                    @Html.ValidationMessageFor(model => model.TelefonoRecados, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="form-group ">
-                                    <label>E-mail Institucional:</label>
-                                    @Html.TextBoxFor(model => model.MailInstitucional, new { @class = "form-control input-sm", placeholder = "Tu email institucional", required = "", pattern = "[a-zA-Z0-9._-]{3,25}[@]{1}(uttt){1}[.]{1}(edu){1}[.]{1}(mx){1}", id = "EmailInstitucional" })
-                                    @Html.ValidationMessageFor(model => model.MailInstitucional, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="form-group ">
-                                    <label>E-mail Personal:</label>
-                                    @Html.TextBoxFor(model => model.MailPersonal, new { @class = "form-control input-sm", placeholder = "Tu email personal", required = "", pattern = "[a-zA-Z0-9._-]{3,25}[@]{1}(hotmail|gmail|outlook|yahoo){1}[.]{1}(com|mx|net){1}", id = "EmailPersonal" })
-                                    @Html.ValidationMessageFor(model => model.MailPersonal, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="form-group ">
-                                    <label>Nombre de Usuario en Facebook:</label>
-                                    @Html.TextBoxFor(model => model.NombreFacebook, new { @class = "form-control input-sm", placeholder = "Tu usuario en Facebook", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$", required = "", id = "Facebook" })
-                                    @Html.ValidationMessageFor(model => model.NombreFacebook, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="form-group ">
-                                    <label>Nombre de Usuario en Twitter:</label>
-                                    @Html.TextBoxFor(model => model.NombreTwitter, new { @class = "form-control input-sm", placeholder = "Tu usuario en Twitter", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$", required = "", id = "Twitter" })
-                                    @Html.ValidationMessageFor(model => model.NombreTwitter, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" value="Guardar" class="btn btn-primary" id="btnGuardar" />
-                                </div>
+                              
                             </div>
                         </div>
                     </div>

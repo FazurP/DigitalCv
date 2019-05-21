@@ -47,12 +47,15 @@
     <Compile Include="AlergiasPersonalDomainModel.cs" />
     <Compile Include="AsociacionesDomainModel.cs" />
     <Compile Include="ColoniaDomainModel.cs" />
+    <Compile Include="CompetenciasDomainModel.cs" />
+    <Compile Include="CompetenciasPersonalDomainModel.cs" />
     <Compile Include="CompetenciasTiDomainModel.cs" />
     <Compile Include="CompetenciaTiDomainModel.cs" />
     <Compile Include="DatosContactoDomainModel.cs" />
     <Compile Include="DeporteDomainModel.cs" />
     <Compile Include="DeportePersonalDomainModel.cs" />
     <Compile Include="DialectoDomainModel.cs" />
+    <Compile Include="DialectoIdiomaDomainModel.cs" />
     <Compile Include="DireccionDomainModel.cs" />
     <Compile Include="DocumentoPersonalDomainModel.cs" />
     <Compile Include="DocumentosDomainModel.cs" />

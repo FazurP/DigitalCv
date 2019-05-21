@@ -1,129 +1,162 @@
 ﻿@model AppDigitalCv.ViewModels.PersonalVM
+@using AppDigitalCv.Security
+@using AppDigitalCv.Business.Interface
 
 <link href="~/Content/css/cardview.css" rel="stylesheet" />
 
 @using (Html.BeginForm("Create", "Personal", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    <div class="bs-container">
+<div class="bs-container">
+    <section class="content-header">
+        <h1>
+            Datos Personales
+            <small>(Agregar)</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
+            <li> <a href="#">Personal</a></li>
+            <li class="active">Datos Personales</li>
+        </ol>
+    </section>
+    <br />
+    <div class="row">
+        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h5 class="box-title">
+                        <label class="text-success emailtitleletter">
+                            <i class="text-success fa fa-graduation-cap"></i>
+                            @SessionPersister.AccountSession.NombreCompleto
+                        </label>&nbsp;
+                    </h5>
+                </div>
+                <div role="form">
+                    <div class="box-body">
+                        <div class="form-group  ">
+                            <label for="etNombre">Nombre:</label>
+                            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control input-sm", placeholder = "Tu Nombre", id = "Nombre", required = "", patern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
+                            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group">
+                            <label for="etApellidoPaterno">Apellido Paterno:</label>
+                            @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control input-sm", placeholder = "Tu Apellido Paterno", id = "Paterno", required = "", patern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
+                            @Html.ValidationMessageFor(model => model.ApellidoPaterno, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Apellido Materno:</label>
+                            @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control input-sm", placeholder = "Tu Apellido Materno", id = "Materno", required = "", patern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
+                            @Html.ValidationMessageFor(model => model.ApellidoMaterno, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group ">
+                            <!-- Aqui se llenanel drop down list de estado civil -->
+                            <label>Estado Civil:</label>
+                            @*@Html.DropDownListFor(model => model.IdEstadoCivil, ViewBag.EstadoCivil as SelectList,htmlAttributes: new { @class = "form-control input-sm", id = "EstadoCivil" })
+                                @Html.ValidationMessageFor(model => model.IdEstadoCivil, "", new { @class = "text-danger" })*@
+                            @Html.DropDownList("IdEstadoCivil", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdEstadoCivil" })
+                            @Html.ValidationMessageFor(model => model.IdEstadoCivil, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label for="etSexo">Sexo:</label>
+                            <br />
+                            Femenino: @Html.RadioButtonFor(model => model.StrGenero, "Femenino", new { id = "sexo", required = "" })
+                            Masculino: @Html.RadioButtonFor(model => model.StrGenero, "Masculino", new { id = "sexo", required = "" })
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                                    <label for="etcurp">Curp:</label>
+                                    @Html.TextBoxFor(model => model.Curp, new { @class = "form-control input-sm", placeholder = "Tu Curp", id = "Curp", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Curp, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                                    <label for="curpInputFile">Cargar Archivo del Curp:</label>
+                                    @Html.TextBoxFor(model => model.ArchivoCurp, new { @class = "form-control", @type = "file", required = "", id = "UCurp" })
+                                    @Html.ValidationMessageFor(model => model.ArchivoCurp, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                                    <label for="etrfc">Rfc:</label>
+                                    @Html.TextBoxFor(model => model.RFC, new { @class = "form-control input-sm", placeholder = "Tu Rfc", id = "Rfc", required = "" })
+                                    @Html.ValidationMessageFor(model => model.RFC, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                                    <label for="curpInputFile">Cargar Archivo del Rfc:</label>
+                                    @Html.TextBoxFor(model => model.ArchivoRfc, new { @class = "form-control", @type = "file", required = "", id = "URfc" })
+                                    @Html.ValidationMessageFor(model => model.ArchivoRfc, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                                    <label for="ethomoclave">Homoclave:</label>
+                                    @Html.TextBoxFor(model => model.HomoClave, new { @class = "form-control input-sm", placeholder = "Homoclave", id = "Homoclave", required = "" })
+                                    @Html.ValidationMessageFor(model => model.HomoClave, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="etSemblanza">Semblanza:</label>
+                            @Html.TextAreaFor(model => model.strLogros, new { @class = "form-control", rows = 3, id = "Semblanza", required = "", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ. ]+$" })
+                            @Html.ValidationMessageFor(model => model.strLogros, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <div>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        </div>
+                        <input type="submit" value="Guardar" class="btn btn-success" id="Enviar" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
         <div class="row">
-            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                 <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Datos Generales</h3>
-                    </div>
-                    <div role="form">
-                        <div class="box-body">
-                            <div class="form-group  ">
-                                <label for="etNombre">Nombre:</label>
-                                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control input-sm", placeholder = "Tu Nombre",id="Nombre",required="",patern="^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$"})
-                                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-
-                            </div>
-                            <div class="form-group">
-                                <label for="etApellidoPaterno">Apellido Paterno:</label>
-                               @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control input-sm", placeholder = "Tu Apellido Paterno",id="Paterno", required = "", patern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
-                                @Html.ValidationMessageFor(model => model.ApellidoPaterno, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Apellido Materno:</label>
-                                @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control input-sm", placeholder = "Tu Apellido Materno",id="Materno", required = "", patern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
-                                @Html.ValidationMessageFor(model => model.ApellidoMaterno, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                                        <label for="etcurp">Curp:</label>
-                                        @Html.TextBoxFor(model => model.Curp, new { @class = "form-control input-sm", placeholder = "Tu Curp", id="Curp",required="" })
-                                        @Html.ValidationMessageFor(model => model.Curp, "", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                                        <label for="curpInputFile">Cargar Archivo del Curp:</label>
-                                        @Html.TextBoxFor(model => model.ArchivoCurp, new { @class = "form-control", @type = "file",required="", id="UCurp" })
-                                        @Html.ValidationMessageFor(model => model.ArchivoCurp, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                                        <label for="etrfc">Rfc:</label>
-                                        @Html.TextBoxFor(model => model.RFC, new { @class = "form-control input-sm", placeholder = "Tu Rfc",id="Rfc",required="" })
-                                        @Html.ValidationMessageFor(model => model.RFC, "", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                                        <label for="curpInputFile">Cargar Archivo del Rfc:</label>
-                                        @Html.TextBoxFor(model => model.ArchivoRfc, new { @class = "form-control", @type = "file",required="", id="URfc"})
-                                        @Html.ValidationMessageFor(model => model.ArchivoRfc, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                                        <label for="ethomoclave">Homoclave:</label>
-                                        @Html.TextBoxFor(model => model.HomoClave, new { @class = "form-control input-sm", placeholder = "Homoclave",id="Homoclave",required="" })
-                                        @Html.ValidationMessageFor(model => model.HomoClave, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-
-                            </div>
-                            <div class="form-group">
-                                <label for="etSemblanza">Semblanza:</label>
-                                @Html.TextAreaFor(model => model.strLogros, new { @class = "form-control", rows = 3 ,id="Semblanza",required="", pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ. ]+$"})
-                                @Html.ValidationMessageFor(model => model.strLogros, "", new { @class = "text-danger" })
-                            </div>
+                    <div class="box-body box-profile">
+                        <div id="imgPreview">
+                            <img id="targetImg" alt="User profile picture" src="~/Imagenes/anonimo_perfil.jpg" class="profile-user-img img-responsive img-circle">
                         </div>
-                        <div class="box-footer">
-                            <div>
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            </div>
-                            <input type="submit" value="Guardar" class="btn btn-success" id="Enviar"/>
-                        </div>
+                        <h3 class="profile-username text-center">User Admin.</h3>
+                        <p class="text-muted text-center">Ingeniero en Software.</p>
+                        <ul class="list-group list-group-unbordered">
+                            <li class="list-group-item">
+                                <b id="description" class="text-navy">Datos de la Foto: </b>
+                                <a class="pull-right"><span class="fa  fa-camera"></span></a>
+                            </li>
+                            <li class="list-group-item">
+                                Añade una foto de inicio de perfil para completar tu información.
+                                <a class="pull-right"><span class="fa fa-file-photo-o"></span></a>
+                            </li>
+                            <li class="list-group-item">
+                                <label for="exampleInputFile">Cargar Foto:</label>
+                                @*<input type="file" id="fotoInputFile" class="btn btn-file btn-github" required>*@
+                                @Html.TextBoxFor(model => model.ImageFile, new { @class = "btn btn-file btn-linkedin col-xs-12 col-sm-12 col-md-12 col-lg-12", @type = "file", id = "fotoInputFile" })
+                                @Html.ValidationMessageFor(model => model.ImageFile, "", new { @class = "text-danger" })
+                            </li>
+
+
+                        </ul>
                     </div>
+
                 </div>
-
             </div>
-            <div class="row">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                    <div class="box box-success">
-                        <div class="box-body box-profile">
-                            <div id="imgPreview">
-                                <img id="targetImg" alt="User profile picture" src="~/Imagenes/anonimo_perfil.jpg" class="profile-user-img img-responsive img-circle">
-                            </div>
-                            <h3 class="profile-username text-center">User Admin.</h3>
-                            <p class="text-muted text-center">Ingeniero en Software.</p>
-                            <ul class="list-group list-group-unbordered">
-                                <li class="list-group-item">
-                                    <b id="description" class="text-navy">Datos de la Foto: </b>
-                                    <a class="pull-right"><span class="fa  fa-camera"></span></a>
-                                </li>
-                                <li class="list-group-item">
-                                    Añade una foto de inicio de perfil para completar tu información.
-                                    <a class="pull-right"><span class="fa fa-file-photo-o"></span></a>
-                                </li>
-                                <li class="list-group-item">
-                                    <label for="exampleInputFile">Cargar Foto:</label>
-                                    @*<input type="file" id="fotoInputFile" class="btn btn-file btn-github" required>*@
-                                    @Html.TextBoxFor(model => model.ImageFile, new { @class = "btn btn-file btn-linkedin col-xs-12 col-sm-12 col-md-12 col-lg-12", @type = "file",id= "fotoInputFile" })
-                                    @Html.ValidationMessageFor(model => model.ImageFile, "", new { @class = "text-danger" })
-                                </li>
-                               
-
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
 
 
-            </div>
         </div>
     </div>
+</div>
     @*<div class="form-horizontal">
             <h4>PersonalVM</h4>
             <hr />
@@ -154,7 +187,18 @@
 <script src="~/Scripts/toastr.min.js"></script>
 <script src="~/Scripts/Validate/Personal/validate-personal-upload.js"></script>
 <script>
+
+
+
     $(document).ready(function () {
+
+        //$('#btn').click(function () {
+        //    var dat = $("input[id='sexo']:checked").val();
+
+        //    alert(dat);
+        //})
+
+
         $("#fotoInputFile").change(function () {
 
             var File = this.files;

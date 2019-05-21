@@ -11,5 +11,10 @@ namespace AppDigitalCv.Business.Interface
     {
         List<DialectoDomainModel> GetDialecto();
         bool AddUpdateDialecto(IdiomaDialectoDomainModel dialectoIdiomaDM);
+
+        IdiomaDialectoDomainModel GetDialectoPersonales(int _idDialecto, int _idPersonal);
+
+        bool DeleteDialectoDialectos(IdiomaDialectoDomainModel idiomaDialectoDM);
+
     }
 }

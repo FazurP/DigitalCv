@@ -9,13 +9,13 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="bs-container content" style="min-height:960px;">
+    <div class="bs-container" style="min-height:960px;">
         <section class="content-header">
             <h1>
                 Agregar Estado Civil
                 <small>(Agregar)</small>
             </h1>
-            <a href="~/Views/EstadoCivil/Create.cshtml">~/Views/EstadoCivil/Create.cshtml</a>
+            @*<a href="~/Views/EstadoCivil/Create.cshtml">~/Views/EstadoCivil/Create.cshtml</a>*@
             <ol class="breadcrumb">
                 <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
                 <li> <a href="#"> Datos</a></li>
@@ -49,12 +49,12 @@
                                     @Html.ValidationMessageFor(model => model.IdEstadoCivil, "", new { @class = "text-danger" })
                                 </div>
 
-                                <div class="form-group " id="radios">
+                                @*<div class="form-group " id="radios">
                                     <label>Genero: </label>
                                     <br />
                                     Femenino: @Html.RadioButtonFor(model => model.Genero, "Femenino", new { id = "sexo", required = "" })
                                     Masculino: @Html.RadioButtonFor(model => model.Genero, "Masculino", new { id = "sexo", required = "" })
-                                </div>
+                                </div>*@
                                 <div class="form-group">
                                     <input type="submit" value="Guardar" class="btn btn-warning" id="btnGuardar" />
                                 </div>

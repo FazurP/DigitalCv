@@ -27,17 +27,22 @@ namespace AppDigitalCv.Business
 
         public List<IdiomaDomainModel> GetIdiomasByIdPersonal(int _idPersonal) {
             List<IdiomaDomainModel> idiomasDM = new List<IdiomaDomainModel>();
-            Expression<Func<tblIdiomaDialectoPersonal, bool>> predicado = p => p.idPersonal.Equals(_idPersonal);
+            Expression<Func<tblIdiomaDialectoPersonal, bool>> predicado = p => p.idPersonal.Equals(_idPersonal) && p.idIdioma != null;
             List<tblIdiomaDialectoPersonal> tblIdiomas = idiomaDialectoRepository.GetAll(predicado).ToList<tblIdiomaDialectoPersonal>();
 
+            
             foreach (tblIdiomaDialectoPersonal idioma in tblIdiomas)
             {
                 IdiomaDomainModel idiomas = new IdiomaDomainModel();
-
-                idiomas.idIdioma = idioma.catIdioma.idIdioma;
-                idiomas.strDescripcion = idioma.catIdioma.strDescripcion;
-                idiomas.strObservacion = idioma.catIdioma.strObservacion;
-                idiomasDM.Add(idiomas);
+            
+            
+                    idiomas.idIdioma = idioma.catIdioma.idIdioma;
+                    idiomas.strDescripcion = idioma.catIdioma.strDescripcion;
+                    idiomas.strObservacion = idioma.catIdioma.strObservacion;
+                    idiomasDM.Add(idiomas);
+                
+            
+               
             }
 
             return idiomasDM;
