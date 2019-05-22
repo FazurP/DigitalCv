@@ -4,5 +4,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+@using (Html.BeginForm("Create", "Cursos"))
+{
+    @Html.AntiForgeryToken()
+<div class="bs-container" style="min-height:960px;">
+    <section class="content-header">
+        <h1>
+            Cursos Impartidos
+            <small>(Agregar)</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
+            <li> <a href="#"> Cursos</a></li>
+            <li class="active"> Cursos Impartidos </li>
+        </ol>
+    </section>
+    <br />
+</div>
+}
 
