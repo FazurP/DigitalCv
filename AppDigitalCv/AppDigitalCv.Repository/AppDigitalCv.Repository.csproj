@@ -114,6 +114,8 @@
     <Compile Include="CompetenciasRepository.cs" />
     <Compile Include="CompetenciasTiPersonalRepository.cs" />
     <Compile Include="CompetenciaTiRepository.cs" />
+    <Compile Include="CursoRepository.cs" />
+    <Compile Include="CursosRepository.cs" />
     <Compile Include="DeportePersonalRepository.cs" />
     <Compile Include="DeporteRepository.cs" />
     <Compile Include="DialectoIdiomaRepository.cs" />
