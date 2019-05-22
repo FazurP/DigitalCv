@@ -12,7 +12,7 @@ namespace AppDigitalCv
     {
         public static void RegisterComponents()
         {
-			var container = new UnityContainer();
+            var container = new UnityContainer();
 
             // register all your components with the container here
             // it is NOT necessary to register your controllers
@@ -33,7 +33,7 @@ namespace AppDigitalCv
             container.RegisterType<IDialectoIdiomaBusiness, DialectoIdiomaBusiness>();
             container.RegisterType<IUnitOfWork, UnitOfWork>();
             container.RegisterType<IEnfermedadBusiness, EnfermedadBusiness>();
-            container.RegisterType<ITipoSangreBusiness,TipoSangreBusiness>();
+            container.RegisterType<ITipoSangreBusiness, TipoSangreBusiness>();
             container.RegisterType<IEstadoSaludBusiness, EstadoSaludBusiness>();
             container.RegisterType<IFamiliarBusiness, FamiliarBusiness>();
             container.RegisterType<IPremiosDocenteBusiness, PremiosDocenteBusiness>();
@@ -54,6 +54,12 @@ namespace AppDigitalCv
             container.RegisterType<IDialectoBusiness, DialectoBusiness>();
             container.RegisterType<ICompetenciasBusiness, CompetenciasBusiness>();
             container.RegisterType<ICompetenciaPersonalBusiness, CompetenciasPersonalBusiness>();
+            container.RegisterType<ICategoriaBusiness, CategoriaBusiness>();
+            container.RegisterType<IUnidadesAcademicasBusiness, UnidadesAcademicasBusiness>();
+            container.RegisterType<IEdificioBusiness, EdificioBusiness>();
+            container.RegisterType<IProgramaEducativoBusiness,ProgramaEducativoBusiness>();
+            container.RegisterType<IAreaBusiness, AreaBusiness>();
+            container.RegisterType<ITipoContratoBusiness, TipoContratoBusiness>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

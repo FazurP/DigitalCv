@@ -19,11 +19,11 @@ namespace AppDigitalCv.Infraestructure
             //Documentos
             CreateMap<DocumentoPersonalVM, DocumentoPersonalDomainModel>();
             CreateMap<DocumentoPersonalDomainModel, DocumentoPersonalVM>();
-            
+
             //Cuentas
             CreateMap<AccountViewModel, AccountDomainModel>();
             CreateMap<AccountDomainModel, AccountViewModel>();
-            
+
             //Direccion
             CreateMap<DireccionDomainModel, DireccionVM>();
             CreateMap<DireccionVM, DireccionDomainModel>();
@@ -97,13 +97,13 @@ namespace AppDigitalCv.Infraestructure
             CreateMap<EmergenciaViewModel, EmergenciaDomianModel>();
             CreateMap<EmergenciaDomianModel, EmergenciaViewModel>();
             //Deporte
-            CreateMap<DeporteVM,DeporteDomainModel>();
-            CreateMap<DeporteDomainModel,DeporteVM>();
+            CreateMap<DeporteVM, DeporteDomainModel>();
+            CreateMap<DeporteDomainModel, DeporteVM>();
             //frecuencia
             CreateMap<FrecuenciaDomainModel, FrecuenciaVM>();
             CreateMap<FrecuenciaVM, FrecuenciaDomainModel>();
             //pasatiempo
-            CreateMap<PasatiempoVM,PasatiempoDomainModel>();
+            CreateMap<PasatiempoVM, PasatiempoDomainModel>();
             CreateMap<PasatiempoDomainModel, PasatiempoVM>();
             //Deporte Personal
             CreateMap<DeportePersonalDomainModel, DeportePersonalVM>();
@@ -120,6 +120,45 @@ namespace AppDigitalCv.Infraestructure
             //Competencias Personales
             CreateMap<CompetenciasPersonalVM, CompetenciasPersonalDomainModel>();
             CreateMap<CompetenciasPersonalDomainModel, CompetenciasPersonalVM>();
+            //Area
+            CreateMap<AreaVM, AreaDomainModel>();
+            CreateMap<AreaDomainModel, AreaVM>();
+            //Nivel Salarial
+            CreateMap<NivelSalarialVM, NivelSalarialDomainModel>();
+            CreateMap<NivelSalarialDomainModel, NivelSalarialVM>();
+            //Salarios
+            CreateMap<SalariosVM, SalariosDomainModel>();
+            CreateMap<SalariosDomainModel, SalariosVM>();
+            //Categoria
+            CreateMap<CategoriaVM, CategoriaDomainModel>();
+            CreateMap<CategoriaDomainModel, CategoriaVM>();
+            //Tipo de Contrato
+            CreateMap<TipoContratoVM, TipoContratoDomainModel>();
+            CreateMap<TipoContratoDomainModel, TipoContratoVM>();
+            //Cuerpo Academico
+            CreateMap<CuerpoAcademicoVM, CuerpoAcademicoDomainModel>();
+            CreateMap<CuerpoAcademicoDomainModel, CuerpoAcademicoVM>();
+            //Edificio
+            CreateMap<EdificioVM, EdificioDomainModel>();
+            CreateMap<EdificioDomainModel, EdificioVM>();
+            //Unidades Academicas
+            CreateMap<UnidadesAcademicasVM, UnidadesAcademicasDomainModel>();
+            CreateMap<UnidadesAcademicasDomainModel, UnidadesAcademicasVM>();
+            //Programa Educativo
+            CreateMap<ProgramaEducativoVM, ProgramaEducativoDomainModel>();
+            CreateMap<ProgramaEducativoDomainModel, ProgramaEducativoVM>();
+            //Institucion Superior
+            CreateMap<InstitucionSuperiorVM, InstitucionSuperiorDomainModel>();
+            CreateMap<InstitucionSuperiorDomainModel, InstitucionSuperiorVM>();
+            //Tipo de Estudio
+            CreateMap<TipoEstudioVM, TipoEstudioDomainModel>();
+            CreateMap<TipoEstudioDomainModel, TipoEstudioVM>();
+            //Datos Laborales Docente
+            CreateMap<DatosLaboralesDocenteVM, DatosLaboralesDocenteDomainModel>();
+            CreateMap<DatosLaboralesDocenteDomainModel, DatosLaboralesDocenteVM>();
+            //Datos Laborales Administrativos
+            CreateMap<DatosLaboralesAdministrativosVM, DatosLaboralesAdministrativosDomainModel>();
+            CreateMap<DatosLaboralesAdministrativosDomainModel, DatosLaboralesAdministrativosVM>();
          
             
         }

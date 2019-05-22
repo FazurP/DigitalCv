@@ -40,7 +40,7 @@
                     <div class="box-body">
                         <div role="form">
                             <div class="form-group">
-                                <div class="col-lg-6">
+                                <div class="col-sm-6 col-md-6 col-lg-6">
                                     <div class="form-group ">
                                         <label>Telefono Celular:</label>
                                         @Html.TextBoxFor(model => model.TelefonoCelular, new { @class = "form-control input-sm", placeholder = "Tu Número Celular", required = "", pattern = "^[0-9]+$", id = "TelefonoCelular" })
@@ -62,7 +62,7 @@
                                         @Html.ValidationMessageFor(model => model.MailInstitucional, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-sm-6 col-md-6 col-lg-6">
                                     <div class="form-group ">
                                         <label>E-mail Personal:</label>
                                         @Html.TextBoxFor(model => model.MailPersonal, new { @class = "form-control input-sm", placeholder = "Tu email personal", required = "", pattern = "[a-zA-Z0-9._-]{3,25}[@]{1}(hotmail|gmail|outlook|yahoo){1}[.]{1}(com|mx|net){1}", id = "EmailPersonal" })

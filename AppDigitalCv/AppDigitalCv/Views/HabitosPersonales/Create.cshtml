@@ -28,10 +28,11 @@
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <h5 class="box-title">
-                            <label class="text-success">
-                                <i class="text-success fa fa-heartbeat"></i>
-                                @SessionPersister.AccountSession.Nombre
-                            </label>
+                            <label class="text-success emailtitleletter">
+                                <i class="text-success fa fa-graduation-cap"></i>
+                                @SessionPersister.AccountSession.NombreCompleto
+                            </label>&nbsp;
+                            
                         </h5>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -41,35 +42,39 @@
                     </div>
 
                     <div class="box-body">
-                        <div class="form-inline">
-                            <div class="form-group">
-                                ¿Practica Algún Deporte?
-                                <input type="radio" id="rdbSi" name="seleccion" value="SI " class="custom-control-input" checked="checked"><label for="si">SI</label>
-                                <input type="radio" id="rdbNo" name="seleccion" value="NO" class="custom-control-input"><label for="no">NO</label>
-                                &nbsp;
-                                <a href="@Url.Action("Registrar","HabitosPersonales")" class="social-auth-links"><i class="fa fa-plus"></i>Agregar Nueva Activdad Deportiva</a>&nbsp;
+                        <div class="form-group">
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    ¿Practica Algún Deporte?
+                                    <br />
+                                    <input type="radio" id="rdbSi" name="seleccion" value="SI " class="custom-control-input" checked="checked"><label for="si">SI</label>
+                                    <input type="radio" id="rdbNo" name="seleccion" value="NO" class="custom-control-input"><label for="no">NO</label>
+                                    &nbsp;
+                                    <a href="@Url.Action("Registrar","HabitosPersonales")" class="social-auth-links"><i class="fa fa-plus"></i>Agregar Nueva Activdad Deportiva</a>&nbsp;
+                                </div>
+                                <div  id="bodyForm">
+                                    <div class="form-group">
+                                        Seleccione Deporte:@Html.DropDownList("IdDeporte", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdDeporte", title = "Selecciona un Deporte" })
+                                    </div>
+                                </div>
                             </div>
-                            <br />
-                            <br />
-                            <div id="bodyForm">
-                                <div class="form-group">
-                                    Seleccione Deporte:@Html.DropDownList("IdDeporte", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdDeporte", title = "Selecciona un Deporte" })
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <div  id="bodyForm2">
+                                    <div class="form-group">
+                                        Frecuencia con la que lo Practica: @Html.DropDownList("IdFrecuencia", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdFrecuencia", title = "Selecciona un Deporte" })
+                                    </div>
+                                    <div class="form-group">
+                                        Cual es su Pasatiempo Favorito?
+                                        @Html.TextBoxFor(model => model.PasatiempoVM.StrDescripcion, new { @class = "form-control input-sm", size = "62", title = "Describe tu pasatiempo Favorito" })
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    Frecuencia con la que lo Practica: @Html.DropDownList("IdFrecuencia", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdFrecuencia", title = "Selecciona un Deporte" })
-                                </div>
-                                <br />
-                                <br />
-                                <div class="form-group">
-                                    Cual es su Pasatiempo Favorito?
-                                    @Html.TextBoxFor(model => model.PasatiempoVM.StrDescripcion, new { @class = "form-control input-sm", size = "62", title = "Describe tu pasatiempo Favorito" })
-                                </div>
-                                <br />
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6">
                                 <input type="submit" value="Guardar" class="btn btn-sm btn-success" />
-                            </div>
-                            <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
 
+                            </div>
                         </div>
+
                         <div class="form-group" id="addTable">
                             <br />
                             <table id="tblDeportePersonal" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
@@ -152,9 +157,12 @@
 
                 if (valor.trim() === "SI") {
                     $('#bodyForm').show();
+                    $('#bodyForm2').show();
+
                 }
                 if (valor.trim() === "NO") {
                     $('#bodyForm').hide();
+                    $('#bodyForm2').hide();
                 }
 
 

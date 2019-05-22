@@ -49,7 +49,9 @@
     <Compile Include="AccountBusiness.cs" />
     <Compile Include="AlergiasBusiness.cs" />
     <Compile Include="AlergiasPersonalBusiness.cs" />
+    <Compile Include="AreaBusiness.cs" />
     <Compile Include="AsosiacionesBusiness.cs" />
+    <Compile Include="CategoriaBusiness.cs" />
     <Compile Include="CompetenciaBusiness.cs" />
     <Compile Include="CompetenciasBusiness.cs" />
     <Compile Include="CompetenciasPersonalBusiness.cs" />
@@ -61,6 +63,7 @@
     <Compile Include="DialectoIdiomaBusiness.cs" />
     <Compile Include="DireccionBusiness.cs" />
     <Compile Include="DocumentosBusiness.cs" />
+    <Compile Include="EdificioBusiness.cs" />
     <Compile Include="EmergenciaBusiness.cs" />
     <Compile Include="EnfermedadBusiness.cs" />
     <Compile Include="Enum\EnumFamiliares.cs" />
@@ -74,7 +77,9 @@
     <Compile Include="Interface\IAccountBusiness.cs" />
     <Compile Include="Interface\IAlergiasBusiness.cs" />
     <Compile Include="Interface\IAlergiasPersonalBusinnes.cs" />
+    <Compile Include="Interface\IAreaBusiness.cs" />
     <Compile Include="Interface\IAsociacionesBusiness.cs" />
+    <Compile Include="Interface\ICategoriaBusiness.cs" />
     <Compile Include="Interface\ICompetenciaBusiness.cs" />
     <Compile Include="Interface\ICompetenciaPersonalBusiness.cs" />
     <Compile Include="Interface\ICompetenciasBusiness.cs" />
@@ -85,6 +90,7 @@
     <Compile Include="Interface\IDialectoBusiness.cs" />
     <Compile Include="Interface\IDialectoIdiomaBusiness.cs" />
     <Compile Include="Interface\IDocumentosBusiness.cs" />
+    <Compile Include="Interface\IEdificioBusiness.cs" />
     <Compile Include="Interface\IEmergenciaBusiness.cs" />
     <Compile Include="Interface\IEstadoSaludBusiness.cs" />
     <Compile Include="Interface\IFamiliarBusiness.cs" />
@@ -100,18 +106,24 @@
     <Compile Include="Interface\IPersonalAsociacionesBusiness.cs" />
     <Compile Include="Interface\IPersonalBusiness.cs" />
     <Compile Include="Interface\IPremiosDocenteBusiness.cs" />
+    <Compile Include="Interface\IProgramaEducativoBusiness.cs" />
     <Compile Include="Interface\ITelefono.cs" />
+    <Compile Include="Interface\ITipoContratoBusiness.cs" />
     <Compile Include="Interface\ITipoEmpresaBusiness.cs" />
     <Compile Include="Interface\ITipoSangreBusiness.cs" />
+    <Compile Include="Interface\IUnidadesAcademicasBusiness.cs" />
     <Compile Include="PaisBusiness.cs" />
     <Compile Include="ParentescoBusiness.cs" />
     <Compile Include="PersonalAsociacionesBusiness.cs" />
     <Compile Include="PersonalBusiness.cs" />
     <Compile Include="PremiosDocenteBusiness.cs" />
+    <Compile Include="ProgramaEducativoBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TelefonoBusiness.cs" />
+    <Compile Include="TipoContratoBusiness.cs" />
     <Compile Include="TipoEmpresaBusiness.cs" />
     <Compile Include="TipoSangreBusiness.cs" />
+    <Compile Include="UnidadesAcademicasBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppDigitalCv.Domain\AppDigitalCv.Domain.csproj">

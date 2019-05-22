@@ -70,6 +70,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppDigitalCvEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="AreaRepository.cs" />
     <Compile Include="AsociacionesRepository.cs" />
     <Compile Include="catAlergias.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
@@ -110,10 +111,14 @@
     <Compile Include="catDocumentos.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="CategoriaRepository.cs" />
     <Compile Include="CompetenciasPersonalRepository.cs" />
     <Compile Include="CompetenciasRepository.cs" />
     <Compile Include="CompetenciasTiPersonalRepository.cs" />
     <Compile Include="CompetenciaTiRepository.cs" />
+    <Compile Include="CuerpoAcademicoRepository.cs" />
+    <Compile Include="DatosLaboralesAdministrativosRepository.cs" />
+    <Compile Include="DatosLaboralesDocenteRepository.cs" />
     <Compile Include="DeportePersonalRepository.cs" />
     <Compile Include="DeporteRepository.cs" />
     <Compile Include="DialectoIdiomaRepository.cs" />
@@ -191,6 +196,7 @@
     <Compile Include="DatosContactoRepository.cs" />
     <Compile Include="DialectosRepository.cs" />
     <Compile Include="DireccionRepository.cs" />
+    <Compile Include="EdificioRepository.cs" />
     <Compile Include="EmergenciaRepository.cs" />
     <Compile Include="EnfermedadesRepository.cs" />
     <Compile Include="EstadoCivilRepository.cs" />
@@ -206,13 +212,16 @@
     <Compile Include="Infraestructure\UnitOfWork.cs" />
     <Compile Include="InstitucionSuperiorRepository.cs" />
     <Compile Include="MunicipioRepository.cs" />
+    <Compile Include="NivelSalarialRepository.cs" />
     <Compile Include="PaisRepository.cs" />
     <Compile Include="ParentescoRepository.cs" />
     <Compile Include="PasatiempoRepository.cs" />
     <Compile Include="PersonalAsociacionesRepository.cs" />
     <Compile Include="PersonalRepository.cs" />
     <Compile Include="PremiosDocenteRepository.cs" />
+    <Compile Include="ProgramaEducativoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalariosRepository.cs" />
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
@@ -271,8 +280,11 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="TelefonoRepository.cs" />
+    <Compile Include="TipoContratoRepository.cs" />
     <Compile Include="TipoEmpresaRepository.cs" />
+    <Compile Include="TipoEstudioRepository.cs" />
     <Compile Include="TipoSangreRepository.cs" />
+    <Compile Include="UnidadesAcademicasRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="AppDigitalCvEntities.edmx">
