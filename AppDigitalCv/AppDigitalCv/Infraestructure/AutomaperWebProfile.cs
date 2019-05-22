@@ -120,6 +120,7 @@ namespace AppDigitalCv.Infraestructure
             //Competencias Personales
             CreateMap<CompetenciasPersonalVM, CompetenciasPersonalDomainModel>();
             CreateMap<CompetenciasPersonalDomainModel, CompetenciasPersonalVM>();
+
             //Area
             CreateMap<AreaVM, AreaDomainModel>();
             CreateMap<AreaDomainModel, AreaVM>();
@@ -161,6 +162,17 @@ namespace AppDigitalCv.Infraestructure
             CreateMap<DatosLaboralesAdministrativosDomainModel, DatosLaboralesAdministrativosVM>();
          
             
+
+            //Curso
+            CreateMap<CursoDomainModel, CursoVM>();
+            CreateMap<CursoVM, CursoDomainModel>();
+            //cursos
+            CreateMap<CursosDomainModel, CursosVM>();
+            CreateMap<CursosVM, CursosDomainModel>();
+            //Institucion SUperior
+            CreateMap<InstitucionSuperiorDomainModel, InstitucionSuperiorVM>();
+            CreateMap<InstitucionSuperiorVM, InstitucionSuperiorDomainModel>();
+
         }
 
 

@@ -53,7 +53,12 @@
     <Compile Include="CompetenciasPersonalDomainModel.cs" />
     <Compile Include="CompetenciasTiDomainModel.cs" />
     <Compile Include="CompetenciaTiDomainModel.cs" />
+
     <Compile Include="CuerpoAcademicoDomainModel.cs" />
+
+    <Compile Include="CursoDomainModel.cs" />
+    <Compile Include="CursosDomainModel.cs" />
+
     <Compile Include="DatosContactoDomainModel.cs" />
     <Compile Include="DatosLaboralesAdministrativosDomainModel.cs" />
     <Compile Include="DatosLaboralesDocenteDomainModel.cs" />
