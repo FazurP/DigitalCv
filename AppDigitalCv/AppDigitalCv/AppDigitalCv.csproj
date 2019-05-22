@@ -533,6 +533,8 @@
     <Compile Include="ViewModels\CompetenciasTiVM.cs" />
     <Compile Include="ViewModels\CompetenciasVM.cs" />
     <Compile Include="ViewModels\CompetenciaTiVM.cs" />
+    <Compile Include="ViewModels\CursosVM.cs" />
+    <Compile Include="ViewModels\CursoVM.cs" />
     <Compile Include="ViewModels\DatosContactoVM.cs" />
     <Compile Include="ViewModels\DeportePersonalVM.cs" />
     <Compile Include="ViewModels\DeporteVM.cs" />
