@@ -481,6 +481,7 @@
     <Content Include="Views\DialectoIdioma\_Eliminar.cshtml" />
     <Content Include="Views\Competencias\Create.cshtml" />
     <Content Include="Views\Competencias\_Eliminar.cshtml" />
+    <Content Include="Views\Cursos\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -495,6 +496,7 @@
     <Compile Include="Controllers\CompetenciasController.cs" />
     <Compile Include="Controllers\CompetenciaTiController.cs" />
     <Compile Include="Controllers\ContactoEmergenciaController.cs" />
+    <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\DatosContactoController.cs" />
     <Compile Include="Controllers\DatosFamiliaresController.cs" />
     <Compile Include="Controllers\DialectoIdiomaController.cs" />
