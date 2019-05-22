@@ -481,7 +481,12 @@
     <Content Include="Views\DialectoIdioma\_Eliminar.cshtml" />
     <Content Include="Views\Competencias\Create.cshtml" />
     <Content Include="Views\Competencias\_Eliminar.cshtml" />
+
+    <Content Include="Views\TipoContratacion\Create.cshtml" />
+    <Content Include="Views\TipoContratacion\_TipoContrato.cshtml" />
+
     <Content Include="Views\Cursos\Create.cshtml" />
+
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -511,6 +516,7 @@
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Controllers\PremiosDocenteController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
+    <Compile Include="Controllers\TipoContratacionController.cs" />
     <Compile Include="Infraestructure\AutomaperWebProfile.cs" />
     <Compile Include="Models\DataTablesParam.cs" />
     <Compile Include="Models\PersonaDomainModel.cs" />
@@ -529,21 +535,30 @@
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\AlergiasPersonalVM.cs" />
     <Compile Include="ViewModels\AlergiasVM.cs" />
+    <Compile Include="ViewModels\AreaVM.cs" />
     <Compile Include="ViewModels\AsociacionesVM.cs" />
+    <Compile Include="ViewModels\CategoriaVM.cs" />
     <Compile Include="ViewModels\ColoniaVM.cs" />
     <Compile Include="ViewModels\CompetenciasPersonalVM.cs" />
     <Compile Include="ViewModels\CompetenciasTiVM.cs" />
     <Compile Include="ViewModels\CompetenciasVM.cs" />
     <Compile Include="ViewModels\CompetenciaTiVM.cs" />
+
+    <Compile Include="ViewModels\CuerpoAcademicoVM.cs" />
+
     <Compile Include="ViewModels\CursosVM.cs" />
     <Compile Include="ViewModels\CursoVM.cs" />
+
     <Compile Include="ViewModels\DatosContactoVM.cs" />
+    <Compile Include="ViewModels\DatosLaboralesAdministrativosVM.cs" />
+    <Compile Include="ViewModels\DatosLaboralesDocenteVM.cs" />
     <Compile Include="ViewModels\DeportePersonalVM.cs" />
     <Compile Include="ViewModels\DeporteVM.cs" />
     <Compile Include="ViewModels\DialectoVM.cs" />
     <Compile Include="ViewModels\DireccionVM.cs" />
     <Compile Include="ViewModels\DocumentoPersonalVM.cs" />
     <Compile Include="ViewModels\DocumentosVM.cs" />
+    <Compile Include="ViewModels\EdificioVM.cs" />
     <Compile Include="ViewModels\EmergenciaViewModel.cs" />
     <Compile Include="ViewModels\EnfermedadVM.cs" />
     <Compile Include="ViewModels\EstadoCivilVM.cs" />
@@ -555,6 +570,7 @@
     <Compile Include="ViewModels\IdiomaVM.cs" />
     <Compile Include="ViewModels\InstitucionSuperiorVM.cs" />
     <Compile Include="ViewModels\MunicipioVM.cs" />
+    <Compile Include="ViewModels\NivelSalarialVM.cs" />
     <Compile Include="ViewModels\PaisVM.cs" />
     <Compile Include="ViewModels\ParentescoVM.cs" />
     <Compile Include="ViewModels\PasatiempoVM.cs" />
@@ -562,9 +578,14 @@
     <Compile Include="ViewModels\PersonalVM.cs" />
     <Compile Include="ViewModels\Porcentajes.cs" />
     <Compile Include="ViewModels\PremiosDocenteVM.cs" />
+    <Compile Include="ViewModels\ProgramaEducativoVM.cs" />
+    <Compile Include="ViewModels\SalariosVM.cs" />
     <Compile Include="ViewModels\SessionManagerVM.cs" />
+    <Compile Include="ViewModels\TipoContratoVM.cs" />
     <Compile Include="ViewModels\TipoEmpresaVM.cs" />
+    <Compile Include="ViewModels\TipoEstudioVM.cs" />
     <Compile Include="ViewModels\TipoSangreVM.cs" />
+    <Compile Include="ViewModels\UnidadesAcademicasVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

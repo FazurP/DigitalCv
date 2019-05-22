@@ -38,32 +38,45 @@
                         </div>
                         <div role="form">
                             <div class="box-body">
-                                <div class="form-inline">
-                                    <div class="form-group-sm ">
-                                        <label>País:</label>
-                                        @Html.DropDownList("Pais", null, htmlAttributes: new { @class = "form-control input-sm", id = "Pais" })
-                                        <label>Estado:</label>
-                                        @Html.DropDownList("Estados", null, htmlAttributes: new { @class = "form-control input-sm", id = "Estados" })
-                                        <label>Municipio:</label>
-                                        @Html.DropDownList("Municipios", null, htmlAttributes: new { @class = "form-control input-sm", id = "Municipios" })
+                                <div class="form-group">
+                                    <div class="col-sm-6 col-md-6 col-lg-6">
+                                        <div class="form-group">
+                                            <label>País:</label>
+                                            @Html.DropDownList("Pais", null, htmlAttributes: new { @class = "form-control input-sm", id = "Pais" })
+                                            <label>Estado:</label>
+                                            @Html.DropDownList("Estados", null, htmlAttributes: new { @class = "form-control input-sm", id = "Estados" })
+                                            <label>Municipio:</label>
+                                            @Html.DropDownList("Municipios", null, htmlAttributes: new { @class = "form-control input-sm", id = "Municipios" })
+                                        </div>
                                     </div>
-                                    <br />
-                                    <div class="form-group-sm">
-                                        <label>Colonia</label>
-                                        @Html.DropDownList("IdColonia", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdColonia" })
-                                        <label for="etCodigoPostal"> Codigo Postal: </label>
-                                        @Html.TextBoxFor(model => model.ColoniaVM.intCp, new { @class = "form-control input-sm", placeholder = "Codigo Postal", id = "codigoPostal" })
-                                        <label for="etCalle">Calle:</label>
-                                        @Html.TextBoxFor(model => model.StrCalle, new { @class = "form-control input-sm", placeholder = "Calle", required = "", id = "Calle", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.# ]+$" })
-                                    </div><br />
-                                    <div class="form-group-sm">
-                                        <label for="etNoInterior">No.Interior:</label>
-                                        @Html.TextBoxFor(model => model.StrNumeroInterior, new { @class = "form-control input-sm", placeholder = "Numero Interior", required = "", id = "NInterior", pattern = "^[0-9]+$" })
-                                        <label for="etNoExterior">No° Exterior:</label>
-                                        @Html.TextBoxFor(model => model.StrNumeroExterior, new { @class = "form-control input-sm", placeholder = "Numero Exterior", required = "", id = "NExterior", pattern = "^[0-9]+$" })
+
+                                    <div class="col-sm-6 col-md-6 col-lg-6">
+                                        <div class="form-group">
+                                            <label>Colonia</label>
+                                            @Html.DropDownList("IdColonia", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdColonia" })
+                                            <label for="etCodigoPostal"> Codigo Postal: </label>
+                                            @Html.TextBoxFor(model => model.ColoniaVM.intCp, new { @class = "form-control input-sm", placeholder = "Codigo Postal", id = "codigoPostal" })
+                                            <label for="etCalle">Calle:</label>
+                                            @Html.TextBoxFor(model => model.StrCalle, new { @class = "form-control input-sm", placeholder = "Calle", required = "", id = "Calle", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.# ]+$" })
+                                        </div>
                                     </div>
-                                    <div class="form-group-sm">
-                                        <input type="submit" value="Guardar" class="btn btn-success" id="Enviar" />
+                                    <div class="col-sm-6 col-md-6 col-lg-6">
+                                        <div class="form-group">
+                                            <label for="etNoInterior">No.Interior:</label>
+                                            @Html.TextBoxFor(model => model.StrNumeroInterior, new { @class = "form-control input-sm", placeholder = "Numero Interior", required = "", id = "NInterior", pattern = "^[0-9]+$" })                                
+                                        </div>
+                                   
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-6">
+                                        <div class="form-group">
+                                            <label for="etNoExterior">No° Exterior:</label>
+                                            @Html.TextBoxFor(model => model.StrNumeroExterior, new { @class = "form-control input-sm", placeholder = "Numero Exterior", required = "", id = "NExterior", pattern = "^[0-9]+$" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <input type="submit" value="Guardar" class="btn btn-success" id="Enviar" />
+                                        </div>
                                     </div>
                                 </div>
                                 <!--aqui va todo-->

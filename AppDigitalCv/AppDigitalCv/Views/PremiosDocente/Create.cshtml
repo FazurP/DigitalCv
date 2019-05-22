@@ -36,44 +36,49 @@
                         </h5>
                     </div>
                     <div class="box-body">
-                        <div class="form-inline">
-                            <div class="form-group">
-                                <label class="text-muted">Actividad Desempeñada:</label>
-                                @Html.TextBoxFor(model => model.StrActividadDesempeniada, new
-                                {
-                                    @class = "form-control input-sm",
-                                    placeholder = "Nombre de la Actividad Desempeñada",
-                               pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}",
-                                    required = "required",
-                                    title = "Ingresa la Actividad Desempeñada",
-                                    id = "Actividad"
-                                })
-                                <label class="text-muted">Periodo Inicial de Entrega:</label>
-                                @Html.TextBoxFor(model => model.DteFechaInicioPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Selecciona la Fecha de Inicio" })
-                                <label class="text-muted">Periodo Final de Entrega</label>
-                                @Html.TextBoxFor(model => model.DteFechaFinPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Selecciona la Fecha Final de Entrega" })
+                        <div class="form-group">
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label>Actividad Desempeñada:</label>
+                                    @Html.TextBoxFor(model => model.StrActividadDesempeniada, new
+                                    {
+                                        @class = "form-control input-sm",
+                                        placeholder = "Nombre de la Actividad Desempeñada",
+                                   pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}",
+                                        required = "required",
+                                        title = "Ingresa la Actividad Desempeñada",
+                                        id = "Actividad"
+                                    })
+                                    <label>Periodo Inicial de Entrega:</label>
+                                    @Html.TextBoxFor(model => model.DteFechaInicioPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Selecciona la Fecha de Inicio" })
+                                    <label>Periodo Final de Entrega</label>
+                                    @Html.TextBoxFor(model => model.DteFechaFinPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Selecciona la Fecha Final de Entrega" })
+                                </div>
                             </div>
-                            <br />
-                            <br />
-                            <div class="form-group">
-                                <label class="text-muted">Nombre del Premio:</label>
-                                @Html.TextBoxFor(model => model.StrNombrePremio, new { @class = "form-control input-sm", required = "required", placeholder = "Nombre del Premio", title = "Escribe el Nombre del Premio", pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}", id = "Premio" })
-                                <label class="text-muted">Nombre de la Institución:</label>
-                                @Html.TextBoxFor(model => model.StrInstitucion, new { @class = "form-control input-sm", placeholder = "Institución", title = "Escribe el Nombre de la Institución", required = "", pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}", id = "Institucion" })
-                                <label class="text-muted">Año de Entrega del Premio:</label>
-                                @Html.TextBoxFor(model => model.DteFechaObtencionPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Fecha de Entrega del Premio" })
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label>Nombre del Premio:</label>
+                                    @Html.TextBoxFor(model => model.StrNombrePremio, new { @class = "form-control input-sm", required = "required", placeholder = "Nombre del Premio", title = "Escribe el Nombre del Premio", pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}", id = "Premio" })
+                                    <label>Nombre de la Institución:</label>
+                                    @Html.TextBoxFor(model => model.StrInstitucion, new { @class = "form-control input-sm", placeholder = "Institución", title = "Escribe el Nombre de la Institución", required = "", pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}", id = "Institucion" })
+                                    <label>Año de Entrega del Premio:</label>
+                                    @Html.TextBoxFor(model => model.DteFechaObtencionPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Fecha de Entrega del Premio" })
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label class="text-muted">Evidencia Documental</label>
-                                @Html.TextBoxFor(model => model.DocumentosVM.DocumentoFile, new { @class = "btn btn-sm btn-social btn-linkedin", @type = "file", id = "documentoInputFile" })
-                                @Html.ValidationMessageFor(model => model.DocumentosVM.DocumentoFile, "", new { @class = "text-danger" })
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label>Evidencia Documental</label>
+                                    @Html.TextBoxFor(model => model.DocumentosVM.DocumentoFile, new { @class = "btn btn-sm btn-social btn-linkedin", @type = "file", id = "documentoInputFile" })
+                                    @Html.ValidationMessageFor(model => model.DocumentosVM.DocumentoFile, "", new { @class = "text-danger" })
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <br />
-                                <label class="text-muted" style="display:none;">Acción</label>
-                                <input type="submit" class="btn btn-block  btn-sm btn-success" value="Guardar" title="Guarda los datos" id="btnGuardar" />
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-success" value="Guardar" title="Guarda los datos" id="btnGuardar" />
+                                </div>
                             </div>
                         </div>
+
                         <!--inicio y configuración de la tabla-->
                         <div class="form-group">
                             <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
