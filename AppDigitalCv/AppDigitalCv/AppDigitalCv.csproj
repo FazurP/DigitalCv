@@ -393,6 +393,7 @@
     <Content Include="Scripts\Validate\Direccion\validate-direccion-regExp.js" />
     <Content Include="Scripts\Validate\Documentos\validate-documentos-upload.js" />
     <Content Include="Scripts\Validate\EstadoCivil\validate-estado-civil-radio.js" />
+    <Content Include="Scripts\Validate\EstadoSalud\validate-estado-salud-form.js" />
     <Content Include="Scripts\Validate\HabitosPersonales\validate-habitos-personales-form.js" />
     <Content Include="Scripts\Validate\HabitosPersonales\validate-habitos-personales-regExp.js" />
     <Content Include="Scripts\Validate\Hijos\validate-hijos-form.js" />
