@@ -10,12 +10,12 @@ $(document).ready(function () {
         var regex2 = new RegExp("^[a-zA-Z0-9._-]{3,25}[@]{1}(uttt){1}[.]{1}(edu){1}[.]{1}(mx){1}$");
 
         if (!regex.test(correoP)) {
-            toastr.error("Ingresa un correo valido");
+            toastr.warning("Ingresa un Correo Valido", "Digital-Cv dice", { timeOut: 1000, closeButton: true  });
             return false;
 
 
         } else if (!regex2.test(correoI)) {
-            toastr.error("Ingresa un correo institucional valido");
+            toastr.warning("Ingresa un Correo Institucional Valido", "Digital-Cv dice", { timeOut: 1000, closeButton: true  });
             return false;
         } else {
 

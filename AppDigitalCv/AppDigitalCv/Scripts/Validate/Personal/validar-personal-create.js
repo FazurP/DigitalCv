@@ -4,10 +4,10 @@
     $('#Materno').attr('disabled', true);
     $('#Curp').attr('disabled', true);
     $('#Rfc').attr('disabled', true);
-    $('#Homoclave').attr('disabled', true);
     $('#Semblanza').attr('disabled', true);
     $('#Enviar').attr('disabled', true);
-
+    $('#IdEstadoCivil').attr('disabled', true);
+    $('input[id=sexo]').attr('disabled', true);
 
     //Evento para el campo de texto Nombre
     $('#Nombre').keyup(function () {
@@ -22,6 +22,8 @@
             $('#Homoclave').attr('disabled', true);
             $('#Semblanza').attr('disabled', true);
             $('#Enviar').attr('disabled', true);
+            $('#IdEstadoCivil').attr('disabled', true);
+            $('input[id=sexo]').attr('disabled', true);
 
             $('#Paterno').val("");
             $('#Materno').val("");
@@ -29,6 +31,8 @@
             $('#Rfc').val("");
             $('#Homoclave').val("");
             $('#Semblanza').val("");
+            $('#IdEstadoCivil').val(0);
+            $('input[id=sexo]').prop('checked', false);
 
         } else {
 
@@ -37,8 +41,6 @@
         }
 
     })
-
-
     //Evento para el campo de texto ApellidoPaterno
     $('#Paterno').keyup(function () {
 
@@ -52,6 +54,8 @@
             $('#Homoclave').attr('disabled', true);
             $('#Semblanza').attr('disabled', true);
             $('#Enviar').attr('disabled', true);
+            $('#IdEstadoCivil').attr('disabled', true);
+            $('input[id=sexo]').attr('disabled', true);
 
 
             $('#Materno').val("");
@@ -59,7 +63,8 @@
             $('#Rfc').val("");
             $('#Homoclave').val("");
             $('#Semblanza').val("");
-
+            $('#IdEstadoCivil').val(0);
+            $('input[id=sexo]').prop('checked', false);
         } else {
 
             $('#Materno').attr('disabled', false);
@@ -67,7 +72,6 @@
         }
 
     })
-
     //Evento para el campo de texto ApellidoMaterno
     $('#Materno').keyup(function () {
 
@@ -81,7 +85,59 @@
             $('#Homoclave').attr('disabled', true);
             $('#Semblanza').attr('disabled', true);
             $('#Enviar').attr('disabled', true);
+            $('#IdEstadoCivil').attr('disabled', true);
+            $('input[id=sexo]').attr('disabled', true);
 
+
+            $('#Curp').val("");
+            $('#Rfc').val("");
+            $('#Homoclave').val("");
+            $('#Semblanza').val("");
+            $('#IdEstadoCivil').val(0);
+            $('input[id=sexo]').prop('checked', false);
+
+        } else {
+
+            $('#IdEstadoCivil').attr('disabled', false);
+
+        }
+
+    })
+    //Evento para el campo de Estado Civil
+    $('#IdEstadoCivil').change(function () {
+        var estadoCivil = $('#IdEstadoCivil').val();
+
+        if (estadoCivil == 0 || estadoCivil == '0' || estadoCivil == "0") {
+            $('#Curp').attr('disabled', true);
+            $('#Rfc').attr('disabled', true);
+            $('#Homoclave').attr('disabled', true);
+            $('#Semblanza').attr('disabled', true);
+            $('#Enviar').attr('disabled', true);
+            $('input[id=sexo]').attr('disabled', true);
+
+            $('#Curp').val("");
+            $('#Rfc').val("");
+            $('#Homoclave').val("");
+            $('#Semblanza').val("");
+            $('input[id=sexo]').prop('checked', false);
+        } else {
+            $('input[id=sexo]').attr('disabled', false);
+            toastr.info("Estado Civil Seleccionado", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+        }
+    })
+    //Evento para el campo de Sexo
+    $('input[id=sexo]').change(function () {
+
+        var sexo = false;
+
+        sexo = $('input[id=sexo]').val();      
+
+        if (sexo == 0) {
+            $('#Curp').attr('disabled', true);
+            $('#Rfc').attr('disabled', true);
+            $('#Homoclave').attr('disabled', true);
+            $('#Semblanza').attr('disabled', true);
+            $('#Enviar').attr('disabled', true);
 
 
             $('#Curp').val("");
@@ -90,13 +146,9 @@
             $('#Semblanza').val("");
 
         } else {
-
             $('#Curp').attr('disabled', false);
-
         }
-
     })
-
     //Evento para el campo de texto Curp
     $('#Curp').keyup(function () {
 
@@ -104,15 +156,10 @@
 
         if (texto == "") {
 
-
-
             $('#Rfc').attr('disabled', true);
             $('#Homoclave').attr('disabled', true);
             $('#Semblanza').attr('disabled', true);
             $('#Enviar').attr('disabled', true);
-
-
-
 
             $('#Rfc').val("");
             $('#Homoclave').val("");
@@ -125,7 +172,6 @@
         }
 
     })
-
     //Evento para el campo de texto Rfc
     $('#Rfc').keyup(function () {
 
@@ -143,43 +189,17 @@
 
         } else {
 
-            $('#Homoclave').attr('disabled', false);
+            
 
         }
 
     })
-
-    //Evento para el campo de texto Homoclave
-    $('#Homoclave').keyup(function () {
-
-        var texto = $('#Homoclave').val();
-
-        if (texto == "") {
-
-
-            $('#Semblanza').attr('disabled', true);
-            $('#Enviar').attr('disabled', true);
-
-
-
-            $('#Semblanza').val("");
-
-        } else {
-
-            $('#Semblanza').attr('disabled', false);
-
-        }
-
-    })
-
     //Evento para el campo de texto Homoclave
     $('#Semblanza').keyup(function () {
 
         var texto = $('#Semblanza').val();
 
         if (texto == "") {
-
-
 
             $('#Enviar').attr('disabled', true);
 
@@ -190,8 +210,6 @@
         }
 
     })
-
-
 });
 
 

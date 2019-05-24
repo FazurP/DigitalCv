@@ -11,6 +11,7 @@
         $('#Alimentos').prop('disabled', false);
         $('#Alergenos').prop('disabled', false);
         $('#Medicamentos').prop('disabled', false);
+        toastr.info("Registra tus alergias", "Digital-Cv dice",{ timeOut:1000 });
     
 
     })
@@ -34,16 +35,19 @@
     $('#Alimentos').change(function () {
 
         var alimentos = $('#Alimentos').val();
-
+        
         if (alimentos == "0" || alimentos == "" || alimentos == 0) {
             if ($('#Alergenos').val() == 0 && $('#Medicamentos').val()==0) {
                 $('#btnGuardar').prop('disabled', true);
+             
             } else {
                 $('#btnGuardar').prop('disabled', false)
+              
             }
            
         } else {
             $('#btnGuardar').prop('disabled', false)
+            toastr.success("Alergia Seleccionada", "Digital-Cv dice", { timeOut: 1000 });
         }
            
         
@@ -61,6 +65,7 @@
            
         } else {
             $('#btnGuardar').prop('disabled', false)
+            toastr.success("Alergia Seleccionada", "Digital-Cv dice", { timeOut: 1000 });
         }
 
     })
@@ -77,6 +82,7 @@
             }          
         } else {
             $('#btnGuardar').prop('disabled', false);
+            toastr.success("Alergia Seleccionada", "Digital-Cv dice", { timeOut: 1000 });
         }
 
     })

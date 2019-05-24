@@ -20,13 +20,8 @@
             $('#Direccion').val("");
 
         } else {
-
             $('#IdParentesco').attr('disabled', false);
-
         }
-
-        
-
 
     })
 
@@ -43,9 +38,8 @@
             $('#Telefono').val("");
             $('#Direccion').val("");
         } else {
-            toastr.success("Parentesco Seleccionado");
+            toastr.success("Parentesco Seleccionado", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
             $('#Telefono').attr('disabled', false);
-
         }
 
     })
@@ -60,7 +54,6 @@
         } else {
 
             $('#Direccion').attr('disabled', false);
-
         }
 
     })
@@ -75,10 +68,8 @@
         } else {
 
             $('#btnGuardar').attr('disabled', false);
-
         }
 
     })
-
 
 })

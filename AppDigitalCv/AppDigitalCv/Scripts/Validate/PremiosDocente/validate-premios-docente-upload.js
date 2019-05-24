@@ -1,26 +1,17 @@
 ﻿$(document).ready(function () {
 
-    
+    $('#documentoInputFile').change(function () {
+        var element = $('#documentoInputFile');
+        var extend = element.val();
+        var regExp = /(.pdf)/
 
-    $('#btnGuardar').click(function () {
-
-        var file = $('#documentoInputFile');
-        var ext = file.val();
-
-        var regExp = /(.pdf)/;
-
-        if (!regExp.exec(ext)) {
-            toastr.warning("Solo se permiten archivos PDF");
-            return false;
+        if (!regExp.exec(extend)) {
+            toastr.warning("Solo se Permite Formato PDF.", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+            $('#documentoInputFile').val('');
         } else {
-            toastr.success("Archivos cargado correctamente");
-            return true;
-            document.clear();
+            toastr.success("Archivo Cargado Correctamente.", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
         }
+
     })
-
-
-
-    
 
 })

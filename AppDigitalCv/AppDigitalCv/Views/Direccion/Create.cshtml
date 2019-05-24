@@ -63,14 +63,14 @@
                                     <div class="col-sm-6 col-md-6 col-lg-6">
                                         <div class="form-group">
                                             <label for="etNoInterior">No.Interior:</label>
-                                            @Html.TextBoxFor(model => model.StrNumeroInterior, new { @class = "form-control input-sm", placeholder = "Numero Interior", required = "", id = "NInterior", pattern = "^[0-9]+$" })                                
+                                            @Html.TextBoxFor(model => model.StrNumeroInterior, new { @class = "form-control input-sm", placeholder = "Numero Interior", required = "", id = "NInterior", pattern = "^[0-9a-zA-Z]+$" })                                
                                         </div>
                                    
                                     </div>
                                     <div class="col-sm-6 col-md-6 col-lg-6">
                                         <div class="form-group">
                                             <label for="etNoExterior">No° Exterior:</label>
-                                            @Html.TextBoxFor(model => model.StrNumeroExterior, new { @class = "form-control input-sm", placeholder = "Numero Exterior", required = "", id = "NExterior", pattern = "^[0-9]+$" })
+                                            @Html.TextBoxFor(model => model.StrNumeroExterior, new { @class = "form-control input-sm", placeholder = "Numero Exterior", required = "", id = "NExterior", pattern = "^[0-9a-zA-Z]+$" })
                                         </div>
                                     </div>
                                     <div class="col-lg-1">
