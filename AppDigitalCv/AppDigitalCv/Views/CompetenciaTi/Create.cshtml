@@ -48,7 +48,7 @@
                                     {
                                         <li class="list-group-item" id="list">
                                             <div class="checkbox">
-                                                <input type="checkbox" id="Check_@item.IdCompetenciaTI" checked="@item.isChecked" />
+                                                <input type="checkbox" id="Check_@item.IdCompetenciaTI" checked="@item.isChecked" name="idC"/>
                                                 <label for="Check_@item.IdCompetenciaTI">
                                                     @item.StrDescripcion
                                                     <span class="text-green"><i class="fa fa-tag"></i></span>
@@ -59,7 +59,7 @@
                                 </ul>
                             </div>
                             <br />
-                            <input type="submit" class="btn btn-sm btn-success" value="Guardar" onclick="GuardarList()" />
+                            <input type="submit" class="btn btn-sm btn-success" value="Guardar" onclick="GuardarList()" id="btnGuardar" />
                         </div>
                     </div>
                 </div>
@@ -70,38 +70,38 @@
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <link href="~/Content/toastr.min.css" rel="stylesheet" />
 <script src="~/Scripts/toastr.js"></script>
-<!--<script src="~/Scripts/Validate/CompetenciasTi/validate-competencias-ti-checked.js"></script>-->
+<script src="~/Scripts/Validate/CompetenciasTi/validate-competencias-ti-checked.js"></script>
 <script>
     var GuardarList = function () {
         var arrItem = [];
         var comaSeparatedIds = "";
         $("#ItemList li input[type=checkbox]").each(function (index, val) {
 
-
             var checkId = $(val).attr("Id");
 
             var arr = checkId.split('_');
 
             var currenCheckboxId = arr[1];
-            debugger;
+           
             var Ischecked = $("#" + checkId).is(":checked", true);
             if (Ischecked) {
                 arrItem.push(currenCheckboxId);
             }
             
         })
-         debugger;
+       
         if (arrItem.length != 0) {
             comaSeparatedIds = arrItem.toString();
-           
+
             $.ajax({
                 url: "/CompetenciaTi/CreateList",
                 type: "POST",
                 data: { ItemList: comaSeparatedIds },
                 success: function (response) {
-                    window.location.href = "/CompetenciaTi/Create";
+                    response = window.location.href = "/CompetenciaTi/Create";
                 }
             })
+          
         }
     }
 </script>

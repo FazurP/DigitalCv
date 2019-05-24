@@ -3,9 +3,8 @@
 
     $('#btnGuardar').click(function () {
 
-        
-        if (!$("#list input[id='list']").is(':checked')) {
-            toastr.warning('Debes seleccionar un sexo');
+        if (!$("#check input[name='idC']").is(':checked')) {
+            toastr.warning('Debes Seleccionar una Competencia', "Digital-Cv dice", { timeOut: 1000, closeButton: true });
             return false;
         } else {
             return true;

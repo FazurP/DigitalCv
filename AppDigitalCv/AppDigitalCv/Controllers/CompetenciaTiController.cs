@@ -52,6 +52,9 @@ namespace AppDigitalCv.Controllers
                         icompetenciasTiBusiness.AddUpdateCompetenciaTi(IdPersonal, int.Parse(IdCompetencia));
                     }
                 }
+                else {
+                    RedirectToAction("Create","CompetenciaTi");
+                }
                 
             }
            
