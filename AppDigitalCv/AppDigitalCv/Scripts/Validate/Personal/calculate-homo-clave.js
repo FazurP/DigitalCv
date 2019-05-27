@@ -23,6 +23,11 @@
             $('#Homoclave').val("");
             $('#Semblanza').attr('disabled', true);
 
+        } else if ($('#Rfc').val().length == 14) {
+            homo = size.substr(size.length - 3, size.length + 3);
+            word = homo.toUpperCase();
+            $('#Homoclave').val(word);
+            $('#Semblanza').attr('disabled', false);
         }
 
     })
