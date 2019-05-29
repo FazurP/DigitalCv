@@ -1,4 +1,5 @@
-﻿
+﻿@using AppDigitalCv.Security
+@model AppDigitalCv.ViewModels.CursosVM
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,19 +8,65 @@
 @using (Html.BeginForm("Create", "Cursos"))
 {
     @Html.AntiForgeryToken()
-<div class="bs-container" style="min-height:960px;">
-    <section class="content-header">
-        <h1>
-            Cursos Impartidos
-            <small>(Agregar)</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
-            <li> <a href="#"> Cursos</a></li>
-            <li class="active"> Cursos Impartidos </li>
-        </ol>
-    </section>
-    <br />
-</div>
+    <div class="bs-container" style="min-height:960px;">
+        <section class="content-header">
+            <h1>
+                Cursos Impartidos
+                <small>(Agregar)</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
+                <li> <a href="#"> Cursos</a></li>
+                <li class="active"> Cursos Impartidos </li>
+            </ol>
+        </section>
+        <br />
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h5 class="box-title">
+                            <label class="text-success emailtitleletter">
+                                <i class="text-success fa fa-graduation-cap"></i>
+                                @SessionPersister.AccountSession.NombreCompleto
+                            </label>
+                            <span class="emailtitleletter btn-link"><i class="fa fa-graduation-cap"></i></span>@Html.ActionLink("Agregar Más Cursos", "", null, htmlAttributes: new { @class = "emailtitleletter text-right btn-link " })
+                            <span class="emailtitleletter btn-link"><i class="glyphicon glyphicon-tag"></i></span>@Html.ActionLink("Agregar Institución", "", null, htmlAttributes: new { @class = "emailtitleletter text-right btn-link " })
+                        </h5>
+                        <!-- /.box-tools --> 
+                    </div>
+                    <div class="box-body"> 
+                        <div class="form-group">
+                            <div class="form-group">
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label>Cursos:&nbsp;&nbsp;</label>
+                                        @Html.DropDownList("Cursos", null, htmlAttributes: new { @class = "form-control input-sm", id = "Id" })
+                                        <label>Institución:</label>
+                                        @Html.DropDownList("Institucion", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdInstitucionSuperior" })
+                                        <label>Fecha de Inicio:</label>
+                                        @Html.TextBoxFor(model => model.FechaInicio, new { @class = "form-control input-sm", placeholder = "Fecha Inicial", required = "", type = "date" })
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <label>Fecha de Final:</label>
+                                    @Html.TextBoxFor(model => model.FechaTermino, new { @class = "form-control input-sm", required = "", type = "date" })
+                                    <label>Existe Evidencia:</label>
+                                    <br />
+                                    <input type="radio" id="rdbSi" name="seleccion" value="SI " class="custom-control-input" checked="checked"><label for="si">SI</label>
+                                    <input type="radio" id="rdbNo" name="seleccion" value="NO" class="custom-control-input"><label for="no">NO</label>
+                                    <br />
+                                    <label>Evidencia Documentada:</label>
+                                    @Html.TextBoxFor(model => model.StrUrlDocumento, new { @class = "form-control", @type = "file", required = "", id = "strUrlDocumento" })
+                                    
+                                </div>
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         </div>
+    </div>
 }
 

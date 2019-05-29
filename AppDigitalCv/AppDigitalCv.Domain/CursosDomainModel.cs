@@ -14,5 +14,6 @@ namespace AppDigitalCv.Domain
         public string FechaInicio { get; set; }
         public string FechaTermino { get; set; }
         public int IdPersonal { get; set; }
+        public string StrUrlDocumento { get; set; }
     }
 }
