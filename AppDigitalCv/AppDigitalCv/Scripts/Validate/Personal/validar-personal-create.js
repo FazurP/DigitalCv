@@ -8,6 +8,7 @@
     $('#Enviar').attr('disabled', true);
     $('#IdEstadoCivil').attr('disabled', true);
     $('input[id=sexo]').attr('disabled', true);
+    $('#Homoclave').attr('readonly', true);
 
     //Evento para el campo de texto Nombre
     $('#Nombre').keyup(function () {
@@ -19,7 +20,7 @@
             $('#Materno').attr('disabled', true);
             $('#Curp').attr('disabled', true);
             $('#Rfc').attr('disabled', true);
-            $('#Homoclave').attr('disabled', true);
+            //$('#Homoclave').attr('disabled', true);
             $('#Semblanza').attr('disabled', true);
             $('#Enviar').attr('disabled', true);
             $('#IdEstadoCivil').attr('disabled', true);
@@ -51,7 +52,7 @@
             $('#Materno').attr('disabled', true);
             $('#Curp').attr('disabled', true);
             $('#Rfc').attr('disabled', true);
-            $('#Homoclave').attr('disabled', true);
+            //$('#Homoclave').attr('disabled', true);
             $('#Semblanza').attr('disabled', true);
             $('#Enviar').attr('disabled', true);
             $('#IdEstadoCivil').attr('disabled', true);
@@ -82,7 +83,7 @@
 
             $('#Curp').attr('disabled', true);
             $('#Rfc').attr('disabled', true);
-            $('#Homoclave').attr('disabled', true);
+            //$('#Homoclave').attr('disabled', true);
             $('#Semblanza').attr('disabled', true);
             $('#Enviar').attr('disabled', true);
             $('#IdEstadoCivil').attr('disabled', true);
@@ -110,7 +111,7 @@
         if (estadoCivil == 0 || estadoCivil == '0' || estadoCivil == "0") {
             $('#Curp').attr('disabled', true);
             $('#Rfc').attr('disabled', true);
-            $('#Homoclave').attr('disabled', true);
+            //$('#Homoclave').attr('disabled', true);
             $('#Semblanza').attr('disabled', true);
             $('#Enviar').attr('disabled', true);
             $('input[id=sexo]').attr('disabled', true);
@@ -135,7 +136,7 @@
         if (sexo == 0) {
             $('#Curp').attr('disabled', true);
             $('#Rfc').attr('disabled', true);
-            $('#Homoclave').attr('disabled', true);
+            //$('#Homoclave').attr('disabled', true);
             $('#Semblanza').attr('disabled', true);
             $('#Enviar').attr('disabled', true);
 
@@ -157,7 +158,7 @@
         if (texto == "") {
 
             $('#Rfc').attr('disabled', true);
-            $('#Homoclave').attr('disabled', true);
+            //$('#Homoclave').attr('disabled', true);
             $('#Semblanza').attr('disabled', true);
             $('#Enviar').attr('disabled', true);
 
@@ -179,7 +180,7 @@
 
         if (texto == "") {
 
-            $('#Homoclave').attr('disabled', true);
+            //$('#Homoclave').attr('disabled', true);
             $('#Semblanza').attr('disabled', true);
             $('#Enviar').attr('disabled', true);
 

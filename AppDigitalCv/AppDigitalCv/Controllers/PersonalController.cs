@@ -52,9 +52,12 @@ namespace AppDigitalCv.Controllers
           
             if (ModelState.IsValid)
             {
-                if (personalVM.ArchivoCurp != null && personalVM.ArchivoRfc != null && personalVM.ImageFile != null)
+                if (personalVM.ArchivoCurp != null && personalVM.ArchivoRfc != null && personalVM.ImageFile != null 
+                    && personalVM.ArchivoCurp.ContentType.Equals("application/pdf") 
+                    && personalVM.ArchivoRfc.ContentType.Equals("application/pdf")
+                    && personalVM.ImageFile.ContentType.Equals("image/jpeg"))
                 {
-                    string nombreCompleto = personalVM.Nombre + " " + personalVM.ApellidoPaterno + " " + personalVM.ApellidoMaterno;
+                      string nombreCompleto = personalVM.Nombre + " " + personalVM.ApellidoPaterno + " " + personalVM.ApellidoMaterno;
                     this.CrearDirectorioUsuario(personalVM);
                                                            
                 }

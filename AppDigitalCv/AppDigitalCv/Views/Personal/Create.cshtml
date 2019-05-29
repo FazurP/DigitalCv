@@ -97,7 +97,7 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
                                         <label for="ethomoclave">Homoclave:</label>
-                                        @Html.TextBoxFor(model => model.HomoClave, new { @class = "form-control input-sm", placeholder = "Homoclave", id = "Homoclave", required = "", disabled = "" })
+                                        @Html.TextBoxFor(model => model.HomoClave, new { @class = "form-control input-sm", placeholder = "Homoclave", id = "Homoclave", required = ""})
                                                     @Html.ValidationMessageFor(model => model.HomoClave, "", new { @class = "text-danger" })
                                                 </div>
             
@@ -188,7 +188,7 @@
 <script src="~/Scripts/Validate/Personal/validate-personal-create-regExp.js"></script>
 <link href="~/Content/toastr.min.css" rel="stylesheet" />
 <script src="~/Scripts/toastr.min.js"></script>
-<script src="~/Scripts/Validate/Personal/validate-personal-upload.js"></script>
+@*<script src="~/Scripts/Validate/Personal/validate-personal-upload.js"></script>*@
 <script src="~/Scripts/Validate/Personal/calculate-homo-clave.js"></script>
 <script>
 
@@ -226,7 +226,7 @@
                 var type = file.type;
                 var size = ~~(file.size / 1024) + "KB";
 
-                $("#targetImg").attr('src', _file.target.result);
+                $("#targetImg").attr('src', _file.target.result);          
                 $("#description").text("Tamaño de la Foto: " + size);
                 $("imgPreview").show();
                 toastr.success("Fotografía es Cargada Correctamente").show();

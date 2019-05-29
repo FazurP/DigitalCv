@@ -20,7 +20,7 @@ namespace AppDigitalCv.Repository
         public Nullable<System.DateTime> dteVigenciaDocumento { get; set; }
         public string strIdentificador { get; set; }
     
-        public virtual catDocumentos catDocumentos { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
+        public virtual catDocumentos catDocumentos { get; set; }
     }
 }
