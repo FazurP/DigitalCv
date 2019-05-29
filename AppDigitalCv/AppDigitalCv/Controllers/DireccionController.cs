@@ -68,22 +68,18 @@ namespace AppDigitalCv.Controllers
         /// <param name="direccionVM"> Pide un objeto de direccion como parametro e incluye solo algunos campos </param>
         /// <returns> Regresa la vista de crear </returns>
         [HttpPost]
-        public ActionResult Create([Bind(Include = "StrCalle,StrNumeroInterior,StrNumeroExterior,IdColonia")]DireccionVM direccionVM)
+        public ActionResult Create([Bind(Include = "StrCalle,StrNumeroInterior,StrNumeroExterior,IdColonia,IdEstado,IdPais,IdMunicipio")]DireccionVM direccionVM)
         {
             if (ModelState.IsValid)
             {
-                AddEditDireccion(direccionVM);
-                ViewBag.Pais = new SelectList(IdireccionBusiness.GetPais(), "IdPais", "StrValor");
-                ViewBag.Estados = new SelectList("");
-                ViewBag.Municipios = new SelectList("");
-                ViewBag.IdColonia = new SelectList("");
-                return View("Create");
+                    AddEditDireccion(direccionVM);
+                    //ViewBag.Pais = new SelectList(IdireccionBusiness.GetPais(), "IdPais", "StrValor");
+                    //ViewBag.Estados = new SelectList("");
+                    //ViewBag.Municipios = new SelectList("");
+                    //ViewBag.IdColonia = new SelectList("");
+                    return RedirectToAction("Create","Direccion");
             }
-            ViewBag.Pais = new SelectList(IdireccionBusiness.GetPais(), "IdPais", "StrValor");
-            ViewBag.Estados = new SelectList("");
-            ViewBag.Municipios = new SelectList("");
-            ViewBag.IdColonia = new SelectList("");
-            return View("Create");
+            return RedirectToAction("Create","Direccion");
         }
 
         /// <summary>

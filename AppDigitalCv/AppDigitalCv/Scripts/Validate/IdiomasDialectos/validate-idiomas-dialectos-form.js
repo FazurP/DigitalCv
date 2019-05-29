@@ -25,7 +25,7 @@
             $('#StrComunicacionPorcentaje').get(0).selectedIndex = 0;
         } else {
 
-            toastr.success("Idioma Seleccionado.", "Digital-Cv dice:", { timeOut:1000 });
+            toastr.success("Idioma Seleccionado.", "Digital-Cv dice:", { timeOut: 1000, closeButton: true });
             $('#StrEscrituraProcentaje').prop('disabled', false);
         }
 
@@ -45,7 +45,7 @@
             $('#StrEntendimientoPorcentaje').get(0).selectedIndex = 0;
             $('#StrComunicacionPorcentaje').get(0).selectedIndex = 0;
         } else {
-            toastr.success("Porcentaje de Escritura Seleccionado.", "Digital-Cv dice:", { timeOut: 1000 });
+            toastr.success("Porcentaje de Escritura Seleccionado.", "Digital-Cv dice:", { timeOut: 1000, closeButton: true });
             $('#StrLecturaPorcentaje').prop('disabled', false);
         }
 
@@ -63,7 +63,7 @@
             $('#StrEntendimientoPorcentaje').get(0).selectedIndex = 0;
             $('#StrComunicacionPorcentaje').get(0).selectedIndex = 0;
         } else {
-            toastr.success("Porcentaje de Lectura Seleccionado.", "Digital-Cv dice:", { timeOut: 1000 });
+            toastr.success("Porcentaje de Lectura Seleccionado.", "Digital-Cv dice:", { timeOut: 1000, closeButton: true });
             $('#StrEntendimientoPorcentaje').prop('disabled', false);
         }
     })
@@ -79,7 +79,7 @@
 
             $('#StrComunicacionPorcentaje').get(0).selectedIndex = 0;
         } else {
-            toastr.success("Porcentaje de Entendimiento Seleccionado.", "Digital-Cv dice:", { timeOut: 1000 });
+            toastr.success("Porcentaje de Entendimiento Seleccionado.", "Digital-Cv dice:", { timeOut: 1000, closeButton: true });
             $('#StrComunicacionPorcentaje').prop('disabled', false);
         }
     })
@@ -93,7 +93,7 @@
             $('#btnSubmit').prop('disabled', true);
 
         } else {
-            toastr.success("Porcentaje de Comunicación Seleccionado.", "Digital-Cv dice:", { timeOut: 1000 });
+            toastr.success("Porcentaje de Comunicación Seleccionado.", "Digital-Cv dice:", { timeOut: 1000, closeButton: true });
             $('#btnSubmit').prop('disabled', false);
         }
     })

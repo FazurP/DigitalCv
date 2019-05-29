@@ -27,9 +27,15 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            if (SessionPersister.AccountSession == null)
+            {
+                return RedirectToAction("Login","Seguridad");
+            }
+            else { 
             ViewBag.IdDeporte = new SelectList(deporteBusiness.GetDeportes(), "IdDeporte", "StrDescripcion");
             ViewBag.IdFrecuencia = new SelectList(frecuenciaBusiness.GetFrecuencia(),"IdFrecuencia", "StrDescripcion");
             return View();
+            }
         }
         [HttpPost]
         public ActionResult Create(DeportePersonalVM deportePersonalVM)
@@ -56,7 +62,7 @@ namespace AppDigitalCv.Controllers
                 ViewBag.IdDeporte = new SelectList(deporteBusiness.GetDeportes(), "IdDeporte", "StrDescripcion");
                 ViewBag.IdFrecuencia = new SelectList(frecuenciaBusiness.GetFrecuencia(), "IdFrecuencia", "StrDescripcion");
 
-                return View("Create");
+                return RedirectToAction("Create","HabitosPersonales");
             }
 
             ViewBag.IdDeporte = new SelectList(deporteBusiness.GetDeportes(), "IdDeporte", "StrDescripcion");

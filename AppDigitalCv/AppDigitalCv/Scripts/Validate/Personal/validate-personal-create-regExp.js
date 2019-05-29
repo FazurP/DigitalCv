@@ -4,7 +4,7 @@
         var regex = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$");
         var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
         if (!regex.test(key)) {
-            toastr.warning("Solo se admiten cadenas de texto.");
+            toastr.warning("Solo se Admiten Cadenas de Texto.", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
             e.preventDefault();
             return false;
         }
@@ -14,7 +14,7 @@
         var regex = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$");
         var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
         if (!regex.test(key)) {
-            toastr.warning("Solo se admiten cadenas de texto.");
+            toastr.warning("Solo se Admiten Cadenas de Texto.", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
             e.preventDefault();
             return false;
         }
@@ -24,7 +24,7 @@
         var regex = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$");
         var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
         if (!regex.test(key)) {
-            toastr.warning("Solo se admiten cadenas de texto.");
+            toastr.warning("Solo se Admiten Cadenas de Texto.", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
             e.preventDefault();
             return false;
         }
@@ -36,7 +36,7 @@
         var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
         if (!regex.test(key)) {
 
-            toastr.warning("Ingresa un formato de curp valido");
+            toastr.warning("Ingresa un Formato de Curp Valido", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
             e.preventDefault();
             return false;
 
@@ -63,7 +63,7 @@
         var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
         if (!regex.test(key)) {
 
-            toastr.warning("Solo se admiten cadenas de texto.");
+            toastr.warning("Solo se Admiten Cadenas de Texto.");
             e.preventDefault();
             return false;
 

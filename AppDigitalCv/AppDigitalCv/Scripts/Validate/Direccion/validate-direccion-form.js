@@ -1,116 +1,158 @@
 ﻿$(document).ready(function () {
 
-
-    var p = $("#Pais").val();
-    var e = $("#Estados").val();
-    var m = $("#Municipios").val();
-    var c = $("#IdColonia").val();
-    $('#NInterior').attr("disabled", true);
-    $('#NExterior').attr("disabled", true);
-    $('#Calle').attr("disabled", true);
-    $('#codigoPostal').attr("disabled", true);
-
-
-    if (p == "0" || p == "") {
-        $('#Enviar').attr("disabled", true);
-
-    }
+    $('#Estados').prop('disabled',true);
+    $('#Municipios').prop('disabled',true);
+    $('#IdColonia').prop('disabled',true);
+    $('#codigoPostal').prop('disabled',true);
+    $('#Calle').prop('disabled',true);
+    $('#NInterior').prop('disabled',true);
+    $('#NExterior').prop('disabled',true);
+    $('#Enviar').prop('disabled', true);
 
     $('#Pais').change(function () {
 
-        var pp = $("#Pais").val();
+        var pais = $('#Pais').val();
 
-        if (pp == "0" || pp == "") {
-            $('#Enviar').attr("disabled", true);
+        if (pais == null || pais == 0 || pais == '0' || pais == "0") {
+
+            $('#Estados').prop('disabled', true);
+            $('#Municipios').prop('disabled', true);
+            $('#IdColonia').prop('disabled', true);
+            $('#codigoPostal').prop('disabled', true);
+            $('#Calle').prop('disabled', true);
+            $('#NInterior').prop('disabled', true);
+            $('#NExterior').prop('disabled', true);
+            $('#Enviar').prop('disabled', true);
+
+            $('#Estados').val(0);
+            $('#Municipios').val(0);
+            $('#IdColonia').val(0);
+            $('#codigoPostal').val('');
+            $('#Calle').val('');
+            $('#NInterior').val('');
+            $('#NExterior').val('');
         } else {
-            toastr.success("Pais Seleccionado");
+            $('#Estados').prop('disabled', false);
+            toastr.success("Pais Seleccionado.", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
         }
 
     })
+
     $('#Estados').change(function () {
 
-        var ee = $("#Estados").val();
+        var estado = $('#Estados').val();
 
-        if (ee == "0" || ee == "") {
-            $('#Enviar').attr("disabled", true);
+        if (estado == null || estado == 0 || estado == '0' || estado == "0") {
+
+            $('#Municipios').prop('disabled', true);
+            $('#IdColonia').prop('disabled', true);
+            $('#codigoPostal').prop('disabled', true);
+            $('#Calle').prop('disabled', true);
+            $('#NInterior').prop('disabled', true);
+            $('#NExterior').prop('disabled', true);
+            $('#Enviar').prop('disabled', true);
+
+            $('#Municipios').val(0);
+            $('#IdColonia').val(0);
+            $('#codigoPostal').val('');
+            $('#Calle').val('');
+            $('#NInterior').val('');
+            $('#NExterior').val('');
         } else {
-            toastr.success("Estado Seleccionado");
+            $('#Municipios').prop('disabled', false);
+            toastr.success("Estado Seleccionado.", "Digital-Cv dice", { timeOut: 1000, closeButton: true  });
         }
     })
+
     $('#Municipios').change(function () {
 
-        var mm = $("#Municipios").val();
+        var municipio = $('#Municipios').val();
 
-        if (mm == "0" || mm == "") {
-            $('#Enviar').attr("disabled", true);
+        if (municipio == null || municipio == 0 || municipio == '0' || municipio == "0") {
+
+            $('#IdColonia').prop('disabled', true);
+            $('#codigoPostal').prop('disabled', true);
+            $('#Calle').prop('disabled', true);
+            $('#NInterior').prop('disabled', true);
+            $('#NExterior').prop('disabled', true);
+            $('#Enviar').prop('disabled', true);
+
+            $('#IdColonia').val(0);
+            $('#codigoPostal').val('');
+            $('#Calle').val('');
+            $('#NInterior').val('');
+            $('#NExterior').val('');
         } else {
-            toastr.success("Municipio Seleccionado");
+            $('#IdColonia').prop('disabled', false);
+            toastr.success("Municipio Seleccionado.", "Digital-Cv dice", { timeOut: 1000, closeButton: true  });
         }
     })
+
     $('#IdColonia').change(function () {
 
-        var cc = $("#IdColonia").val();
+        var colonia = $('#IdColonia').val();
 
-        if (cc == "0" || cc == "") {
-            $('#Enviar').attr("disabled", true);
-            $('#Calle').attr("disabled", true);
+        if (colonia == null || colonia == 0 || colonia == '0' || colonia == "0") {
+
+            $('#codigoPostal').prop('disabled', true);
+            $('#Calle').prop('disabled', true);
+            $('#NInterior').prop('disabled', true);
+            $('#NExterior').prop('disabled', true);
+            $('#Enviar').prop('disabled', true);
+
+            $('#codigoPostal').val('');
+            $('#Calle').val('');
+            $('#NInterior').val('');
+            $('#NExterior').val('');
         } else {
-            $('#Calle').attr("disabled", false);
-            toastr.success("Municipio Seleccionado");
+            $('#Calle').prop('disabled', false);
+            toastr.success("Colonia Seleccionada.", "Digital-Cv dice", { timeOut: 1000, closeButton: true })
         }
     })
 
     $('#Calle').keyup(function () {
 
-        var texto = $('#Calle').val();
+        var calle = $('#Calle').val();
 
-        if (texto == "") {
-            $('#Enviar').attr("disabled", true);
-            $('#NInterior').attr("disabled", true);
-            $('#NExterior').attr("disabled", true);
+        if (calle == null || calle == '' || calle == "" || calle === '' || calle === "") {
 
-            $('#NInterior').val("");
-            $('#NExterior').val("");
+            $('#NInterior').prop('disabled', true);
+            $('#NExterior').prop('disabled', true);
+            $('#Enviar').prop('disabled', true);
+
+            $('#NInterior').val('');
+            $('#NExterior').val('');
         } else {
-
-            $('#NInterior').attr("disabled", false);
-
+            $('#NInterior').prop('disabled', false);
         }
 
     })
 
     $('#NInterior').keyup(function () {
 
-        var texto = $('#NInterior').val();
+        var nInterior = $('#NInterior').val();
 
-        if (texto == "") {
+        if (nInterior == null || nInterior == '' || nInterior == "" || nInterior === '' || nInterior === "") {
 
-            $('#Enviar').attr("disabled", true);
+            $('#NExterior').prop('disabled', true);
+            $('#Enviar').prop('disabled', true);
 
-            $('#NExterior').attr("disabled", true);
-            $('#NExterior').val("");
-
+            $('#NExterior').val('');
         } else {
-
-            $('#NExterior').attr("disabled", false);
-
+            $('#NExterior').prop('disabled', false);
         }
-
     })
 
     $('#NExterior').keyup(function () {
 
-        var texto = $('#NExterior').val();
+        var nExterior = $('#NExterior').val();
 
-        if (texto == "") {
-
-            $('#Enviar').attr("disabled", true);
-
+        if (nExterior == null || nExterior == '' || nExterior == "" || nExterior === '' || nExterior === "") {
+            $('#Enviar').prop('disabled', true);
         } else {
-            $('#Enviar').attr("disabled", false);
-
+            $('#Enviar').prop('disabled', false);
         }
-
     })
+
 
 })

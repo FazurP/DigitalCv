@@ -3,36 +3,32 @@
 
 <div>
     <form id="myForm">
-
-        <div class="form-horizontal">
+        @Html.HiddenFor(m => m.IdPersonal, new { @class = "form-control input-sm", id = "IdPersonal" })
+        @Html.HiddenFor(m => m.IdDocumento, new { @class = "form-control input-sm", id = "IdDocumento" })
+        @Html.HiddenFor(m => m.DteFechaInicioPremio)
+        @Html.HiddenFor(m => m.DteFechaFinPremio)
+        <div class="form-inline">
             <div class="form-group">
-                ¿Deseas <strong>Eliminar</strong> este registro realmente?
-            </div>
-            
-            <div class="form-group">
-                @Html.HiddenFor(m => m.IdPersonal, new { @class = "form-control input-sm", id = "IdPersonal" })
-                @Html.HiddenFor(m => m.IdDocumento, new { @class = "form-control input-sm", id = "IdDocumento" })
-                @Html.HiddenFor(m => m.DteFechaInicioPremio)
-                @Html.HiddenFor(m => m.DteFechaFinPremio)
-                
-            </div>
-            <div class="form-group">
-                Nombre del Premio:
-                @Html.TextBoxFor(m => m.StrNombrePremio)
-                Actividad Desempeñada:
-                @Html.TextBoxFor(m => m.StrActividadDesempeniada)
-            </div>
-            <div class="form-group">
-                Fecha del Premio:
-                @Html.TextBoxFor(m => m.DteFechaObtencionPremio, new { @class = "form-control input-sm", @placeholder = "Nombre del Familiar" })
-
-                <a href="#" id="btnSubmit">
-                    <i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i>
-                </a>
-            </div>
-            <div class="form-group">
-                <div style="text-align:center;display:none" id="loaderDiv">
-                    <img src="~/Imagenes/loading-blue.gif" width="150" />
+                <div class="row">
+                    <div class="col-lg-3">
+                        <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+                    </div>
+                    <div class="col-lg-3">
+                        ¿Deseas <strong>Eliminar</strong> este registro realmente?
+                    </div>
+                    <div class="col-lg-6">
+                        <label>Nombre del Premio</label>
+                        @Html.TextBoxFor(m => m.StrNombrePremio, new { @class = "form-control input-sm", @placeholder = "Nombre de la Alergia", @disabled = "disabled" })
+                        <label>Actividad Desempeñada</label>
+                        @Html.TextBoxFor(m => m.StrActividadDesempeniada, new { @class = "form-control input-sm", @placeholder = "Nombre de la Alergia", @disabled = "disabled" })
+                        <label>Fecha de Obtencion del Premio</label>
+                        @Html.TextBoxFor(m => m.DteFechaObtencionPremio, new { @class = "form-control input-sm", @placeholder = "Nombre de la Alergia", @disabled = "disabled" })
+                    <br />
+                    <br />
+                        <a href="#" id="btnSubmit">
+                            <i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

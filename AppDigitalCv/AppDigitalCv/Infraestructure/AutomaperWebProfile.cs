@@ -173,6 +173,51 @@ namespace AppDigitalCv.Infraestructure
             CreateMap<InstitucionSuperiorDomainModel, InstitucionSuperiorVM>();
             CreateMap<InstitucionSuperiorVM, InstitucionSuperiorDomainModel>();
 
+            //DocumentacionPersonal
+            CreateMap<DocumentacionPersonalVM, DocumentacionPersonalDomainModel>();
+            CreateMap<DocumentacionPersonalDomainModel, DocumentacionPersonalVM>();
+
+            //NumeroLicenciaManejo
+            CreateMap<NumeroLicenciaManejoVM, NumeroLicenciaManejoDomainModel>();
+            CreateMap<NumeroLicenciaManejoDomainModel, NumeroLicenciaManejoVM>();
+            //NumeroPasaporte
+            CreateMap<NumeroPasaporteVM, NumeroPasaporteDomainModel>();
+            CreateMap<NumeroPasaporteDomainModel, NumeroPasaporteVM>();
+            //NumeroVisaUSA
+            CreateMap<NumeroVisaUsaVM, NumeroVisaUsaDomainModel>();
+            CreateMap<NumeroVisaUsaDomainModel, NumeroVisaUsaVM>();
+            //NumeroVisaCanada
+            CreateMap<NumeroVisaCanadaVM, NumeroVisaCanadaDomainModel>();
+            CreateMap<NumeroVisaCanadaDomainModel, NumeroVisaCanadaVM>();
+            //NumeroSeguridadSocial
+            CreateMap<NumeroSeguridadSocialVM, NumeroSeguridadSocialDomainModel>();
+            CreateMap<NumeroSeguridadSocialDomainModel, NumeroSeguridadSocialVM>();
+            //RegistroProfEstatal
+            CreateMap<RegistroProfEstatalVM, RegistroProfEstatalDomainModel>();
+            CreateMap<RegistroProfEstatalDomainModel, RegistroProfEstatalVM>();
+            //NumeroCartillaMilitar
+            CreateMap<NumeroCartillaMilitarVM, NumeroCartillaMilitarDomainModel>();
+            CreateMap<NumeroCartillaMilitarDomainModel, NumeroCartillaMilitarVM>();
+
+            //VigenciaLicenciaManejo
+            CreateMap<VigenciaLicenciaManejoVM, VigenciaLicenciaManejoDomainModel>();
+            CreateMap<VigenciaLicenciaManejoDomainModel, VigenciaLicenciaManejoVM>();
+            //VigenciaPasaporte
+            CreateMap<VigenciaPasaporteVM, VigenciaPasaporteDomainModel>();
+            CreateMap<VigenciaPasaporteDomainModel, VigenciaPasaporteVM>();
+            //VigenciaVisaUsa
+            CreateMap<VigenciaVisaUsaVM, VigenciaVisaUsaDomainModel>();
+            CreateMap<VigenciaVisaUsaDomainModel, VigenciaVisaUsaVM>();
+            //VigenciaVisaCanada
+            CreateMap<VigenciaVisaCanadaVM, VigenciaVisaCanadaDomainModel>();
+            CreateMap<VigenciaVisaCanadaDomainModel, VigenciaVisaCanadaVM>();
+            //VigenciaSeguridadSocial
+            CreateMap<VigenciaSeguridadSocialVM, VigenciaSeguridadSocialDomainModel>();
+            CreateMap<VigenciaSeguridadSocialDomainModel, VigenciaSeguridadSocialVM>();
+            //VigenciaRegistroProfEstatal
+            CreateMap<VigenciaRegistroProfEstatalVM, VigenciaRegistroProfEstatalDomainModel>();
+            CreateMap<VigenciaRegistroProfEstatalDomainModel, VigenciaRegistroProfEstatalVM>();
+
         }
 
 

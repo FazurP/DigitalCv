@@ -53,11 +53,15 @@ namespace AppDigitalCv.Controllers
         {
             if (ModelState.IsValid)
             {
-                datosContactoVM.IdPersonal = 1; ///este dato es temporal
-                this.AddEditDatosContacto(datosContactoVM);
-                return View("Create");
+                if (datosContactoVM != null)
+                {
+                    datosContactoVM.IdPersonal = SessionPersister.AccountSession.IdPersonal;
+                    this.AddEditDatosContacto(datosContactoVM);
+                    return RedirectToAction("Create","DatosContacto");
+                }
+               
             }
-            return View("Create");
+            return RedirectToAction("Create","DatosContacto");
         }
 
         [HttpGet]

@@ -393,9 +393,13 @@
     <Content Include="Scripts\Validate\Direccion\validate-direccion-regExp.js" />
     <Content Include="Scripts\Validate\Documentos\validate-documentos-upload.js" />
     <Content Include="Scripts\Validate\EstadoCivil\validate-estado-civil-radio.js" />
+    <Content Include="Scripts\Validate\EstadoSalud\validate-estado-salud-form.js" />
+    <Content Include="Scripts\Validate\HabitosPersonales\validate-habitos-personales-form.js" />
+    <Content Include="Scripts\Validate\HabitosPersonales\validate-habitos-personales-regExp.js" />
     <Content Include="Scripts\Validate\Hijos\validate-hijos-form.js" />
     <Content Include="Scripts\Validate\Hijos\validate-hijos-regExp.js" />
     <Content Include="Scripts\Validate\IdiomasDialectos\validate-idiomas-dialectos-form.js" />
+    <Content Include="Scripts\Validate\Personal\calculate-homo-clave.js" />
     <Content Include="Scripts\Validate\Personal\validar-personal-create.js" />
     <Content Include="Scripts\Validate\Personal\validate-personal-create-regExp.js" />
     <Content Include="Scripts\Validate\Personal\validate-personal-upload.js" />
@@ -484,6 +488,7 @@
     <Content Include="Views\TipoContratacion\Create.cshtml" />
     <Content Include="Views\TipoContratacion\_TipoContrato.cshtml" />
     <Content Include="Views\Cursos\Create.cshtml" />
+    <Content Include="Views\DocumentacionPersonal\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -503,6 +508,7 @@
     <Compile Include="Controllers\DatosFamiliaresController.cs" />
     <Compile Include="Controllers\DialectoIdiomaController.cs" />
     <Compile Include="Controllers\DireccionController.cs" />
+    <Compile Include="Controllers\DocumentacionPersonalController.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />
     <Compile Include="Controllers\EstadoCivilController.cs" />
     <Compile Include="Controllers\EstadoSaludController.cs" />
@@ -550,6 +556,7 @@
     <Compile Include="ViewModels\DeporteVM.cs" />
     <Compile Include="ViewModels\DialectoVM.cs" />
     <Compile Include="ViewModels\DireccionVM.cs" />
+    <Compile Include="ViewModels\DocumentacionPersonalVM.cs" />
     <Compile Include="ViewModels\DocumentoPersonalVM.cs" />
     <Compile Include="ViewModels\DocumentosVM.cs" />
     <Compile Include="ViewModels\EdificioVM.cs" />
@@ -565,6 +572,12 @@
     <Compile Include="ViewModels\InstitucionSuperiorVM.cs" />
     <Compile Include="ViewModels\MunicipioVM.cs" />
     <Compile Include="ViewModels\NivelSalarialVM.cs" />
+    <Compile Include="ViewModels\NumeroCartillaMilitarVM.cs" />
+    <Compile Include="ViewModels\NumeroLicenciaManejoVM.cs" />
+    <Compile Include="ViewModels\NumeroPasaporteVM.cs" />
+    <Compile Include="ViewModels\NumeroSeguridadSocialVM.cs" />
+    <Compile Include="ViewModels\NumeroVisaCanadaVM.cs" />
+    <Compile Include="ViewModels\NumeroVisaUsaVM.cs" />
     <Compile Include="ViewModels\PaisVM.cs" />
     <Compile Include="ViewModels\ParentescoVM.cs" />
     <Compile Include="ViewModels\PasatiempoVM.cs" />
@@ -573,6 +586,7 @@
     <Compile Include="ViewModels\Porcentajes.cs" />
     <Compile Include="ViewModels\PremiosDocenteVM.cs" />
     <Compile Include="ViewModels\ProgramaEducativoVM.cs" />
+    <Compile Include="ViewModels\RegistroProfEstatalVM.cs" />
     <Compile Include="ViewModels\SalariosVM.cs" />
     <Compile Include="ViewModels\SessionManagerVM.cs" />
     <Compile Include="ViewModels\TipoContratoVM.cs" />
@@ -580,6 +594,12 @@
     <Compile Include="ViewModels\TipoEstudioVM.cs" />
     <Compile Include="ViewModels\TipoSangreVM.cs" />
     <Compile Include="ViewModels\UnidadesAcademicasVM.cs" />
+    <Compile Include="ViewModels\VigenciaLicenciaManejoVM.cs" />
+    <Compile Include="ViewModels\VigenciaPasaporteVM.cs" />
+    <Compile Include="ViewModels\VigenciaRegistroProfEstatalVM.cs" />
+    <Compile Include="ViewModels\VigenciaSeguridadSocialVM.cs" />
+    <Compile Include="ViewModels\VigenciaVisaCanadaVM.cs" />
+    <Compile Include="ViewModels\VigenciaVisaUsaVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

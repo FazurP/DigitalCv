@@ -60,6 +60,11 @@ namespace AppDigitalCv.Controllers
                         icompetenciaPersonalBusiness.AddUpdateCompetencias(IdPersonal, int.Parse(IdCompetencia));
                     }
                 }
+                else
+                {
+
+                    RedirectToAction("Create","Competencias");
+                }
 
             }
             else {

@@ -38,9 +38,16 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.Enfermedades = new SelectList(IenfermedadesBusiness.GetEnfermedades(), "IdEnfermedad", "StrDescripcion");
-            ViewBag.TipoSangre = new SelectList(ItipoSangreBusiness.GetTipoSangre(), "IdTipoSangre", "StrDescripcion");
-            return View();
+            if (SessionPersister.AccountSession == null)
+            {
+                return RedirectToAction("Login", "Seguridad");
+            }
+            else
+            {
+                ViewBag.Enfermedades = new SelectList(IenfermedadesBusiness.GetEnfermedades(), "IdEnfermedad", "StrDescripcion");
+                ViewBag.TipoSangre = new SelectList(ItipoSangreBusiness.GetTipoSangre(), "IdTipoSangre", "StrDescripcion");
+                return View();
+            }
         }
 
         [HttpPost]
