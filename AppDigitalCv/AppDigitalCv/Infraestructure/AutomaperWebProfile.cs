@@ -162,7 +162,6 @@ namespace AppDigitalCv.Infraestructure
             CreateMap<DatosLaboralesAdministrativosDomainModel, DatosLaboralesAdministrativosVM>();
          
             
-
             //Curso
             CreateMap<CursoDomainModel, CursoVM>();
             CreateMap<CursoVM, CursoDomainModel>();
@@ -173,10 +172,10 @@ namespace AppDigitalCv.Infraestructure
             CreateMap<InstitucionSuperiorDomainModel, InstitucionSuperiorVM>();
             CreateMap<InstitucionSuperiorVM, InstitucionSuperiorDomainModel>();
 
+
             //DocumentacionPersonal
             CreateMap<DocumentacionPersonalVM, DocumentacionPersonalDomainModel>();
             CreateMap<DocumentacionPersonalDomainModel, DocumentacionPersonalVM>();
-
             //NumeroLicenciaManejo
             CreateMap<NumeroLicenciaManejoVM, NumeroLicenciaManejoDomainModel>();
             CreateMap<NumeroLicenciaManejoDomainModel, NumeroLicenciaManejoVM>();
@@ -198,28 +197,17 @@ namespace AppDigitalCv.Infraestructure
             //NumeroCartillaMilitar
             CreateMap<NumeroCartillaMilitarVM, NumeroCartillaMilitarDomainModel>();
             CreateMap<NumeroCartillaMilitarDomainModel, NumeroCartillaMilitarVM>();
-
-            //VigenciaLicenciaManejo
-            CreateMap<VigenciaLicenciaManejoVM, VigenciaLicenciaManejoDomainModel>();
-            CreateMap<VigenciaLicenciaManejoDomainModel, VigenciaLicenciaManejoVM>();
-            //VigenciaPasaporte
-            CreateMap<VigenciaPasaporteVM, VigenciaPasaporteDomainModel>();
-            CreateMap<VigenciaPasaporteDomainModel, VigenciaPasaporteVM>();
-            //VigenciaVisaUsa
-            CreateMap<VigenciaVisaUsaVM, VigenciaVisaUsaDomainModel>();
-            CreateMap<VigenciaVisaUsaDomainModel, VigenciaVisaUsaVM>();
-            //VigenciaVisaCanada
-            CreateMap<VigenciaVisaCanadaVM, VigenciaVisaCanadaDomainModel>();
-            CreateMap<VigenciaVisaCanadaDomainModel, VigenciaVisaCanadaVM>();
-            //VigenciaSeguridadSocial
-            CreateMap<VigenciaSeguridadSocialVM, VigenciaSeguridadSocialDomainModel>();
-            CreateMap<VigenciaSeguridadSocialDomainModel, VigenciaSeguridadSocialVM>();
-            //VigenciaRegistroProfEstatal
-            CreateMap<VigenciaRegistroProfEstatalVM, VigenciaRegistroProfEstatalDomainModel>();
-            CreateMap<VigenciaRegistroProfEstatalDomainModel, VigenciaRegistroProfEstatalVM>();
+            //Ife
+            CreateMap<IfeVM, IfeDomainModel>();
+            CreateMap<IfeDomainModel, IfeVM>();
+            //Comprobante
+            CreateMap<ComprobanteDomicilioVM, ComprobanteDomicilioDomainModel>();
+            CreateMap<ComprobanteDomicilioDomainModel, ComprobanteDomicilioVM>();
+            //Solicitud
+            CreateMap<SolicitudEmpleoVM, SolicitudEmpleoDomainModel>();
+            CreateMap<SolicitudEmpleoDomainModel, SolicitudEmpleoVM>();
 
         }
-
 
         public static void Run()
         {
@@ -227,11 +215,8 @@ namespace AppDigitalCv.Infraestructure
             AutoMapper.Mapper.Initialize(a =>
             {
                 a.AddProfile<AutomaperWebProfile>();
-
-
             });
         }
-
         
     }
 }

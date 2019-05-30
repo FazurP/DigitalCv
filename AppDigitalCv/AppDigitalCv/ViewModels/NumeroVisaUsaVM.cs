@@ -8,5 +8,8 @@ namespace AppDigitalCv.ViewModels
     public class NumeroVisaUsaVM
     {
         public string strNumeroDocumento { get; set; }
+        public DateTime dteVigenciaDocumento { get; set; }
+        public virtual DocumentosVM DocumentosVM { get; set; }
+        public string strIdentificador { get; set; }
     }
 }

@@ -9,5 +9,8 @@ namespace AppDigitalCv.Domain
     public class NumeroVisaUsaDomainModel
     {
         public string strNumeroDocumento { get; set; }
+        public DateTime dteVigenciaDocumento { get; set; }
+        public virtual DocumentosDomainModel DocumentosDM { get; set; }
+        public string strIdentificador { get; set; }
     }
 }

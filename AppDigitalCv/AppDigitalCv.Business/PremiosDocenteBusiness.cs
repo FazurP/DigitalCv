@@ -21,8 +21,6 @@ namespace AppDigitalCv.Business
         {
             unitOfWork = _unitOfWork;
             premiosDocenteRepository = new PremiosDocenteRepository(unitOfWork);
-
-
         }
 
         /// <summary>

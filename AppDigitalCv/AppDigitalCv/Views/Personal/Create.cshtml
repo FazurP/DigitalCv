@@ -74,7 +74,7 @@
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
                                         <label for="curpInputFile">Cargar Archivo del Curp:</label>
-                                        @Html.TextBoxFor(model => model.ArchivoCurp, new { @class = "form-control", @type = "file", required = "", id = "UCurp" })
+                                        @Html.TextBoxFor(model => model.ArchivoCurp, new { @class = "form-control", @type = "file", required = "", id = "IDCurp" })
                                         @Html.ValidationMessageFor(model => model.ArchivoCurp, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -188,7 +188,7 @@
 <script src="~/Scripts/Validate/Personal/validate-personal-create-regExp.js"></script>
 <link href="~/Content/toastr.min.css" rel="stylesheet" />
 <script src="~/Scripts/toastr.min.js"></script>
-@*<script src="~/Scripts/Validate/Personal/validate-personal-upload.js"></script>*@
+<script src="~/Scripts/Validate/Personal/validate-personal-upload.js"></script>
 <script src="~/Scripts/Validate/Personal/calculate-homo-clave.js"></script>
 <script>
 

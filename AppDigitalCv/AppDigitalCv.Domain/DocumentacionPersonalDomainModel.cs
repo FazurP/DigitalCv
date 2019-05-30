@@ -17,9 +17,10 @@ namespace AppDigitalCv.Domain
         public virtual NumeroVisaCanadaDomainModel NumeroVisaCanadaDM { get; set; }
         public virtual NumeroVisaUsaDomainModel NumeroVisaUsaDM { get; set; }
         public virtual RegistroProfEstatalDomainModel RegistroProfEstatalDM { get; set; }
-        public DateTime dteVigenciaDocumento { get; set; }
-        public string strIdentificador { get; set; }
-        public virtual DocumentosDomainModel DocumentosDM { get; set; }
+        //public string strIdentificador { get; set; }
+        //public virtual DocumentosDomainModel DocumentosDM { get; set; }
+        public virtual IfeDomainModel IfeDM { get; set; }
+        public virtual ComprobanteDomicilioDomainModel ComprobanteDomicilioDM { get; set; }
+        public virtual SolicitudEmpleoDomainModel SolicitudEmpleoDM { get; set; }
     }
-
 }

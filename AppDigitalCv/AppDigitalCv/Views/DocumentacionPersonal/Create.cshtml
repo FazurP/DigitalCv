@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "myForm", id = "myForm" }))
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
     <div class="bs-container" style="min-height:960px;">
@@ -33,57 +33,132 @@
                         </h5>
 
                     </div>
-                    <div class="box-body">
-                   
-                        <div class="form-group">
-                            
+                    <div class="box-body">                  
+                        <div class="form-group">                         
                             <div class="col-sm-4 col-md-4 col-lg-4">
                                 <div class="form-group">
                                     <label>Numero de Licencia de Manejo</label>
-                                    @Html.TextBoxFor(model => model.NumeroLicenciaManejoVM.strNumeroDocumento, htmlAttributes: new { @placeholder = "Numero de Licencia de Manejo", @required = "", id = "txtNoLicenciaManejo", @class = "form-control input-sm" })
+                                    @Html.TextBoxFor(model => model.NumeroLicenciaManejoVM.strNumeroDocumento, htmlAttributes: new { @placeholder = "Numero de Licencia de Manejo",  id = "txtNoLicenciaManejo", @class = "form-control input-sm" })
                                 </div>
                                 <div class="form-group">
                                     <label>Numero de Pasaporte</label>
-                                    @Html.TextBoxFor(model => model.NumeroPasaporteVM.strNumeroDocumento, htmlAttributes: new { @placeholder = "Numero de Pasaporte", @required = "", id = "txtNoPasaporte", @class = "form-control input-sm" })
+                                    @Html.TextBoxFor(model => model.NumeroPasaporteVM.strNumeroDocumento, htmlAttributes: new { @placeholder = "Numero de Pasaporte",  id = "txtNoPasaporte", @class = "form-control input-sm" })
                                 </div>
                                 <div class="form-group">
                                     <label>Numero de Visa USA</label>
-                                    @Html.TextBoxFor(model => model.NumeroVisaUsaVM.strNumeroDocumento, htmlAttributes: new { @placeholder = "Numero de Visa USA", @required = "", id = "txtNumeroVisaUsa", @class = "form-control input-sm" })
+                                    @Html.TextBoxFor(model => model.NumeroVisaUsaVM.strNumeroDocumento, htmlAttributes: new { @placeholder = "Numero de Visa USA", id = "txtNumeroVisaUsa", @class = "form-control input-sm" })
                                 </div>
                                 <div class="form-group">
                                     <label>Numero de Visa Canada</label>
-                                    @Html.TextBoxFor(model => model.NumeroVisaCanadaVM.strNumeroDocumento, htmlAttributes: new { @placeholder = "Numero de Visa Canada", @required = "", id = "txtNumeroVisaCanada", @class = "form-control input-sm" })
+                                    @Html.TextBoxFor(model => model.NumeroVisaCanadaVM.strNumeroDocumento, htmlAttributes: new { @placeholder = "Numero de Visa Canada", id = "txtNumeroVisaCanada", @class = "form-control input-sm" })
                                 </div>
                                 <div class="form-group">
                                     <label>Numero de Seguridad Social</label>
-                                    @Html.TextBoxFor(model => model.NumeroSeguridadSocialVM.strNumeroDocumento, htmlAttributes: new { @placeholder = "Numero de Seguridas Social", @required = "", id = "txtNumeroSeguridadSocial", @class = "form-control input-sm" })
+                                    @Html.TextBoxFor(model => model.NumeroSeguridadSocialVM.strNumeroDocumento, htmlAttributes: new { @placeholder = "Numero de Seguridas Social", id = "txtNumeroSeguridadSocial", @class = "form-control input-sm" })
                                 </div>
                                 <div class="form-group">
                                     <label>Registro Prof. Estatal</label>
-                                    @Html.TextBoxFor(model => model.RegistroProfEstatalVM.strNumeroDocumento, htmlAttributes: new { @placeholder = "Registro Prof. Estatal", @required = "", @id = "txtRegistroEstatal", @class = "form-control input-sm" })
+                                    @Html.TextBoxFor(model => model.RegistroProfEstatalVM.strNumeroDocumento, htmlAttributes: new { @placeholder = "Registro Prof. Estatal",  @id = "txtRegistroEstatal", @class = "form-control input-sm" })
                                 </div>
                                 <div class="form-group">
                                     <label>Numero Cartilla del Servicio Militar</label>
-                                    @Html.TextBoxFor(model => model.NumeroCartillaMilitarVM.strNumeroDocumento, htmlAttributes: new { @placeholder = "Numero de Cartilla del Servicio Militar", @required = "", @id = "txtNumeroCartillaMilitar", @class = "form-control input-sm" })
+                                    @Html.TextBoxFor(model => model.NumeroCartillaMilitarVM.strNumeroDocumento, htmlAttributes: new { @placeholder = "Numero de Cartilla del Servicio Militar",  @id = "txtNumeroCartillaMilitar", @class = "form-control input-sm" })
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" id="btnSubmit" value="Guardar" class="btn btn-success" />
                                 </div>
                             </div>                       
                             <div class="col-sm-8 col-md-8 col-lg-8">
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label>Vigencia Licencia de Manejo</label>
-                                        @Html.TextBoxFor(model => model.dteVigenciaDocumento, htmlAttributes: new { @placeholder = "Vigencia de Licencia de Manejo", @required = "", @id = "txtVigenciaLicenciaManejo", @class = "form-control input-sm", @type = "date" })
+                                        @Html.TextBoxFor(model => model.NumeroLicenciaManejoVM.dteVigenciaDocumento, htmlAttributes: new {@id = "txtVigenciaLicenciaManejo", @class = "form-control input-sm", @type = "date" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Vigencia del Pasaporte</label>
+                                        @Html.TextBoxFor(model => model.NumeroPasaporteVM.dteVigenciaDocumento, htmlAttributes: new {  @id = "txtVigenciaPasaporte", @class = "form-control input-sm", @type = "date" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Vigencia de Visa de USA</label>
+                                        @Html.TextBoxFor(model => model.NumeroVisaUsaVM.dteVigenciaDocumento, htmlAttributes: new {  @id = "txtVigenciaVisaUsa", @class = "form-control input-sm", @type = "date" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Vigencia Visa de Canada</label>
+                                        @Html.TextBoxFor(model => model.NumeroVisaCanadaVM.dteVigenciaDocumento, htmlAttributes: new {  @id = "txtVigenciaVisaCanada", @class = "form-control input-sm", @type = "date" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Vigencia de Seguridad Social</label>
+                                        @Html.TextBoxFor(model => model.NumeroSeguridadSocialVM.dteVigenciaDocumento, htmlAttributes: new  {@id = "txtVigenciaSeguridadSocial", @class = "form-control input-sm", @type = "date" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Vigencia de Registro Estatal</label>
+                                        @Html.TextBoxFor(model => model.RegistroProfEstatalVM.dteVigenciaDocumento, htmlAttributes: new { @id = "txtVigenciaProfEstatal", @class = "form-control input-sm", @type = "date" })
+                                    </div>
+                                    <div class="form-group">
+                                        <br />
+                                        <br />
+                                        <br />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>IFE</label>
+                                    </div>
+                                    <div class="form-group">
+                                        &nbsp;
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Comprobante de Domicilio</label>
+                                    </div>
+                                    <div class="form-group">
+                                        &nbsp;
+                                    </div>  
+                                    <div class="form-group">
+                                        <label>Solicitud de Empleo</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label>Evidencia</label>
-                                        @Html.TextBoxFor(model => model.DocumentosVM.StrUrl, htmlAttributes: new { @id = "inputUploadLicenciaManejo", @class = "form-control input-sm", @type = "file" })
-                                    </div>                           
+                                        @Html.TextBoxFor(model => model.NumeroLicenciaManejoVM.DocumentosVM.DocumentoFile, htmlAttributes: new {@id = "DocumentoFile", @class = "form-control input-sm", @type = "file" })
+                                    </div>      
+                                    <div class="form-group">
+                                        <label>Evidencia</label>
+                                        @Html.TextBoxFor(model => model.NumeroPasaporteVM.DocumentosVM.DocumentoFile, htmlAttributes: new {@id="inputUploadPasaporte",@class = "form-control input-sm", @type = "file"})
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Evidencia</label>
+                                        @Html.TextBoxFor(model => model.NumeroVisaUsaVM.DocumentosVM.DocumentoFile,htmlAttributes: new { @id="inputUploadVisaUsa", @class = "form-control input-sm", @type = "file"})
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Evidencia</label>
+                                        @Html.TextBoxFor(model => model.NumeroVisaCanadaVM.DocumentosVM.DocumentoFile, htmlAttributes: new {@id = "inputUploadVisaCanada", @class = "form-control input-sm", @type = "file"})
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Evidencia</label>
+                                        @Html.TextBoxFor(model => model.NumeroSeguridadSocialVM.DocumentosVM.DocumentoFile, htmlAttributes: new {@id = "inputUploadSeguridadSocial", @class = "form-control input-sm", @type = "file"})
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Evidencia</label>
+                                        @Html.TextBoxFor(model => model.RegistroProfEstatalVM.DocumentosVM.DocumentoFile, htmlAttributes: new { @id = "inputUploadProfEstatal", @class = "form-control input-sm", @type = "file"})
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Evidencia</label>
+                                        @Html.TextBoxFor(model => model.NumeroCartillaMilitarVM.DocumentosVM.DocumentoFile, htmlAttributes: new { @id = "inputUploadCartillaMilitar", @class = "form-control input-sm", @type = "file"})
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Evidencia</label>
+                                        @Html.TextBoxFor(model => model.IfeVM.DocumentosVM.DocumentoFile, htmlAttributes: new {  @id = "inputUploadIfe", @class = "form-control input-sm", @type = "file"})
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Evidencia</label>
+                                        @Html.TextBoxFor(model => model.ComprobanteDomicilioVM.DocumentosVM.DocumentoFile, htmlAttributes: new {  @id = "inputUploadComprobanteDomicilio", @class = "form-control input-sm", @type = "file"})
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Evidencia</label>
+                                        @Html.TextBoxFor(model => model.SolicitudEmpleoVM.DocumentosVM.DocumentoFile, htmlAttributes: new { @id = "inputUploadSolicitudEmpleo", @class = "form-control input-sm", @type = "file" })
+                                    </div>
                                 </div>                             
                             </div>
                         </div>
-
-
                         <div class="form-group-sm">
                             <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
                             <div class="form-group" id="addTable">
