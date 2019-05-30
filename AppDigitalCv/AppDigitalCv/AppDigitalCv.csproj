@@ -383,6 +383,9 @@
     <Content Include="Scripts\Validate\Competencias\validate-competencias-form.js" />
     <Content Include="Scripts\Validate\ContactoEmergencia\valida-contacto-emergencia-regExp.js" />
     <Content Include="Scripts\Validate\ContactoEmergencia\validate-contacto-emergencia-form.js" />
+    <Content Include="Scripts\Validate\Cursos\validate-cursos-form.js" />
+    <Content Include="Scripts\Validate\Curso\validate-curso-create.js" />
+    <Content Include="Scripts\Validate\Curso\validate-curso.js" />
     <Content Include="Scripts\Validate\DatosContacto\validate-datos-contacto-email.js" />
     <Content Include="Scripts\Validate\DatosContacto\validate-datos-contacto-form.js" />
     <Content Include="Scripts\Validate\DatosContacto\validate-datos-contacto-regExp.js" />
@@ -489,6 +492,7 @@
     <Content Include="Views\TipoContratacion\_TipoContrato.cshtml" />
     <Content Include="Views\Cursos\Create.cshtml" />
     <Content Include="Views\DocumentacionPersonal\Create.cshtml" />
+    <Content Include="Views\Curso\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -503,6 +507,7 @@
     <Compile Include="Controllers\CompetenciasController.cs" />
     <Compile Include="Controllers\CompetenciaTiController.cs" />
     <Compile Include="Controllers\ContactoEmergenciaController.cs" />
+    <Compile Include="Controllers\CursoController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\DatosContactoController.cs" />
     <Compile Include="Controllers\DatosFamiliaresController.cs" />

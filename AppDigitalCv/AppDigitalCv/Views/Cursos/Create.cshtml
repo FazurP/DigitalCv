@@ -31,7 +31,7 @@
                                 @SessionPersister.AccountSession.NombreCompleto
                             </label>
                             &nbsp;&nbsp;
-                            <span class="emailtitleletter btn-link"><i class="fa fa-graduation-cap"></i></span>@Html.ActionLink("Agregar Más Cursos", "", null, htmlAttributes: new { @class = "emailtitleletter text-right btn-link " })
+                            <span class="emailtitleletter btn-link"><i class="fa fa-graduation-cap"></i></span>@Html.ActionLink("Agregar Más Cursos", "Create","Curso", null, htmlAttributes: new { @class = "emailtitleletter text-right btn-link " })
                             <span class="emailtitleletter btn-link"><i class="glyphicon glyphicon-tag"></i></span>@Html.ActionLink("Agregar Institución", "", null, htmlAttributes: new { @class = "emailtitleletter text-right btn-link " })
                         </h5>
                         <!-- /.box-tools --> 
@@ -42,26 +42,30 @@
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <div class="form-group">
                                         <label>Cursos:&nbsp;&nbsp;</label>
-                                        @Html.DropDownList("Cursos", null, htmlAttributes: new { @class = "form-control input-sm", id = "Id" })
+                                        @Html.DropDownList("Cursos", null, htmlAttributes: new { @class = "form-control input-sm", id = "Cursos" })
                                         <label>Institución:</label>
                                         @Html.DropDownList("Institucion", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdInstitucionSuperior" })
                                         <label>Fecha de Inicio:</label>
-                                        @Html.TextBoxFor(model => model.FechaInicio, new { @class = "form-control input-sm", placeholder = "Fecha Inicial", required = "", type = "date" })
+                                        @Html.TextBoxFor(model => model.FechaInicio, new { @class = "form-control input-sm", placeholder = "Fecha Inicial", required = "", type = "date",id= "FechaInicio" })
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <label>Fecha de Final:</label>
-                                    @Html.TextBoxFor(model => model.FechaTermino, new { @class = "form-control input-sm", required = "", type = "date" })
+                                    @Html.TextBoxFor(model => model.FechaTermino, new { @class = "form-control input-sm", required = "", type = "date",id= "FechaTermino" })
                                     <label>Existe Evidencia:</label>
                                     <br />
-                                    <input type="radio" id="rdbSi" name="seleccion" value="SI " class="custom-control-input" checked="checked"><label for="si">SI</label>
-                                    <input type="radio" id="rdbNo" name="seleccion" value="NO" class="custom-control-input"><label for="no">NO</label>
+                                    <input type="radio" id="rdbSi" name="seleccion" value="SI " class="custom-control-input"><label for="si">SI</label>
+                                    <input type="radio" id="rdbNo" name="seleccion" value="NO" class="custom-control-input" checked="checked"><label for="no">NO</label>
                                     <br />
                                     <label>Evidencia Documentada:</label>
                                     @Html.TextBoxFor(model => model.StrUrlDocumento, new { @class = "form-control", @type = "file", required = "", id = "strUrlDocumento" })
-                                    
-                                </div>
 
+                                </div>
+                                <br />
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <br />
+                                    <input type="submit" value="Guardar" class="btn btn-sm btn-success" id="btnSubmit" />
+                                </div>
                             </div>
                     </div>
                 </div>
@@ -70,4 +74,7 @@
          </div>
     </div>
 }
-
+@section scripts
+{
+    <script src="~/Scripts/Validate/Cursos/validate-cursos-form.js"></script>
+}
