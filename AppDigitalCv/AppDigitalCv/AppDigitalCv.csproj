@@ -402,6 +402,8 @@
     <Content Include="Scripts\Validate\Hijos\validate-hijos-form.js" />
     <Content Include="Scripts\Validate\Hijos\validate-hijos-regExp.js" />
     <Content Include="Scripts\Validate\IdiomasDialectos\validate-idiomas-dialectos-form.js" />
+    <Content Include="Scripts\Validate\Institucion\validate-institucion-create.js" />
+    <Content Include="Scripts\Validate\Institucion\validate-institucion.js" />
     <Content Include="Scripts\Validate\Personal\calculate-homo-clave.js" />
     <Content Include="Scripts\Validate\Personal\validar-personal-create.js" />
     <Content Include="Scripts\Validate\Personal\validate-personal-create-regExp.js" />
@@ -493,6 +495,7 @@
     <Content Include="Views\Cursos\Create.cshtml" />
     <Content Include="Views\DocumentacionPersonal\Create.cshtml" />
     <Content Include="Views\Curso\Create.cshtml" />
+    <Content Include="Views\InstitucionSuperior\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -520,6 +523,7 @@
     <Compile Include="Controllers\HabitosPersonalesController.cs" />
     <Compile Include="Controllers\HijosController.cs" />
     <Compile Include="Controllers\IdiomaDialectoController.cs" />
+    <Compile Include="Controllers\InstitucionSuperiorController.cs" />
     <Compile Include="Controllers\PersonalAsociacionesController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Controllers\PremiosDocenteController.cs" />
