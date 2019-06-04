@@ -14,5 +14,12 @@ namespace AppDigitalCv.Business.Interface
         /// </summary>
         /// <returns>una lista de cursos consultados</returns>
         List<CursoDomainModel> GetCursos();
+
+        /// <summary>
+        /// Este metodo se ecarga de insertar o actualizar una entidad del tipo curso
+        /// </summary>
+        /// <param name="cursoDM">Entidad del tipo CursoDomainModel</param>
+        /// <returns>una cadena de confirmación</returns>
+        string AddUpdateCurso(CursoDomainModel cursoDM);
     }
 }

@@ -383,6 +383,9 @@
     <Content Include="Scripts\Validate\Competencias\validate-competencias-form.js" />
     <Content Include="Scripts\Validate\ContactoEmergencia\valida-contacto-emergencia-regExp.js" />
     <Content Include="Scripts\Validate\ContactoEmergencia\validate-contacto-emergencia-form.js" />
+    <Content Include="Scripts\Validate\Cursos\validate-cursos-form.js" />
+    <Content Include="Scripts\Validate\Curso\validate-curso-create.js" />
+    <Content Include="Scripts\Validate\Curso\validate-curso.js" />
     <Content Include="Scripts\Validate\DatosContacto\validate-datos-contacto-email.js" />
     <Content Include="Scripts\Validate\DatosContacto\validate-datos-contacto-form.js" />
     <Content Include="Scripts\Validate\DatosContacto\validate-datos-contacto-regExp.js" />
@@ -401,6 +404,8 @@
     <Content Include="Scripts\Validate\Hijos\validate-hijos-form.js" />
     <Content Include="Scripts\Validate\Hijos\validate-hijos-regExp.js" />
     <Content Include="Scripts\Validate\IdiomasDialectos\validate-idiomas-dialectos-form.js" />
+    <Content Include="Scripts\Validate\Institucion\validate-institucion-create.js" />
+    <Content Include="Scripts\Validate\Institucion\validate-institucion.js" />
     <Content Include="Scripts\Validate\Personal\calculate-homo-clave.js" />
     <Content Include="Scripts\Validate\Personal\validar-personal-create.js" />
     <Content Include="Scripts\Validate\Personal\validate-personal-create-regExp.js" />
@@ -494,6 +499,8 @@
     <Content Include="Views\DocumentacionPersonal\_Eliminar.cshtml" />
     <Content Include="Views\DocumentacionPersonalV2\Create.cshtml" />
     <Content Include="Views\Error\NoScript.cshtml" />
+    <Content Include="Views\Curso\Create.cshtml" />
+    <Content Include="Views\InstitucionSuperior\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -508,6 +515,7 @@
     <Compile Include="Controllers\CompetenciasController.cs" />
     <Compile Include="Controllers\CompetenciaTiController.cs" />
     <Compile Include="Controllers\ContactoEmergenciaController.cs" />
+    <Compile Include="Controllers\CursoController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\DatosContactoController.cs" />
     <Compile Include="Controllers\DatosFamiliaresController.cs" />
@@ -521,6 +529,7 @@
     <Compile Include="Controllers\HabitosPersonalesController.cs" />
     <Compile Include="Controllers\HijosController.cs" />
     <Compile Include="Controllers\IdiomaDialectoController.cs" />
+    <Compile Include="Controllers\InstitucionSuperiorController.cs" />
     <Compile Include="Controllers\PersonalAsociacionesController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Controllers\PremiosDocenteController.cs" />

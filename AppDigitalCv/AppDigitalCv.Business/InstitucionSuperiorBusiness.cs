@@ -32,5 +32,41 @@ namespace AppDigitalCv.Business
             institucionSuperiorDomainModels.Insert(0,new InstitucionSuperiorDomainModel {IdInstitucionSuperior=0,StrDescripcion="Seleccionar" });
             return institucionSuperiorDomainModels;
         }
+
+        /// <summary>
+        /// Este metodo se ecarga de insertar o actualizar una entidad del tipo curso
+        /// </summary>
+        /// <param name="cursoDM">Entidad del tipo CursoDomainModel</param>
+        /// <returns>una cadena de confirmación</returns>
+        public string AddUpdateInstitucionSuperior(InstitucionSuperiorDomainModel institucionSuperiorDM)
+        {
+            string resultado = string.Empty;
+            if (institucionSuperiorDM.IdInstitucionSuperior > 0)
+            {
+                //buscamos por id y lo almacenamos en nuestra entidad de entityframework
+              catInstitucionSuperior catInstitucion = institucionSuperiorRepository.SingleOrDefault(p => p.idInstitucionSuperior == institucionSuperiorDM.IdInstitucionSuperior);
+
+                if (catInstitucion != null)
+                {
+                    catInstitucion.idInstitucionSuperior = institucionSuperiorDM.IdInstitucionSuperior;
+                    catInstitucion.strDescripcion = institucionSuperiorDM.StrDescripcion;
+                    catInstitucion.strObservacion = institucionSuperiorDM.StrObservacion;
+                    institucionSuperiorRepository.Update(catInstitucion);
+                    resultado = "Se Actualizo correctamente";
+                }
+            }
+            else
+            {
+                catInstitucionSuperior catInstitucion = new catInstitucionSuperior();
+                catInstitucion.strDescripcion = institucionSuperiorDM.StrDescripcion;
+                catInstitucion.strObservacion = institucionSuperiorDM.StrObservacion;
+                institucionSuperiorRepository.Insert(catInstitucion);
+                resultado = "Se insertaron correctamente los valores";
+            }
+
+            return resultado;
+        }
+
+
     }
 }

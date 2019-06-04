@@ -5,7 +5,7 @@
     @* BEGIN Logo *@
     <a href="@Url.Action("Index", "Home")" class="logo">
         @* Mini logo for sidebar 50x50 pixels *@
-        <span class="logo-mini"><b>A</b>LT</span>
+        <span class="logo-mini"><b>UT</b>TT</span>
         @* Logo for regular state and mobile devices *@
         <span class="logo-lg"><b>Digital</b>-Cv</span>
     </a>
@@ -29,17 +29,17 @@
                         <li>
                             <ul class="menu">
                                 <li>
-                                    <a href="#">
+                                    <a href="@Url.Action("Create","Cursos")">
+                                        <span>Cursos Impartidos</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
                                         </div>
-                                        <h4>
-                                            Cursos Impartidos
-                                            @*<small><i class="fa fa-clock-o"></i> 5 mins</small>*@
-                                        </h4>
-                                        <p>Agregar cursos</p>
+
+                                        <p class="text-green">Agregar cursos</p>
                                     </a>
+
                                 </li>
+                                
                             </ul>
                         </li>
                         <li class="footer"><a href="#">See All Messages</a></li>
