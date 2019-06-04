@@ -142,6 +142,22 @@
                     </li>
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-pencil-square-o"></i><span>Documentos Adicionales</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="@Url.IsLinkActive("Create","DocumentacionPersonal")">
+                        <a href="@Url.Action("Create","DocumentacionPersonal")">Documentacion Personal V1</a>
+                    </li>
+                    <li class="@Url.IsLinkActive("Create","DocumentacionPersonalV2")">
+                        <a href="@Url.Action("Create","DocumentacionPersonalV2")">Documentacion Personal V2</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
         @* END Menu *@
     </section>

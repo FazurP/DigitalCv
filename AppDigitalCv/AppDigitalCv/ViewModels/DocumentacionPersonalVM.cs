@@ -16,8 +16,9 @@ namespace AppDigitalCv.ViewModels
         public virtual NumeroVisaCanadaVM NumeroVisaCanadaVM { get; set; }
         public virtual NumeroVisaUsaVM NumeroVisaUsaVM { get; set; }
         public virtual RegistroProfEstatalVM RegistroProfEstatalVM { get; set; }
-        //public string strIdentificador { get; set; }
-        //public virtual DocumentosVM DocumentosVM { get; set; }
+        public string strIdentificador { get; set; }
+        public string strNumeroDocumento { get; set; }
+        public DateTime dteVigenciaDocumento { get; set; }
         public virtual IfeVM IfeVM { get; set; }
         public virtual ComprobanteDomicilioVM ComprobanteDomicilioVM { get; set; }
         public virtual SolicitudEmpleoVM SolicitudEmpleoVM { get; set; }

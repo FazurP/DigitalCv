@@ -16,5 +16,7 @@ namespace AppDigitalCv.ViewModels
         [Required(ErrorMessage = "El archivo es obligatorio")]
         public HttpPostedFileWrapper DocumentoFile { get; set; }
 
+        public virtual DocumentacionPersonalVM DocumentacionPersonalVMs { get; set; }
+
     }
 }

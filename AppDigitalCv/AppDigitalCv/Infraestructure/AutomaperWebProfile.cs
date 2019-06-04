@@ -207,6 +207,9 @@ namespace AppDigitalCv.Infraestructure
             CreateMap<SolicitudEmpleoVM, SolicitudEmpleoDomainModel>();
             CreateMap<SolicitudEmpleoDomainModel, SolicitudEmpleoVM>();
 
+            //Documentacion Personal V2
+            CreateMap<DocumentacionPersonalV2VM, DocumentacionPersonalV2DomainModel>();
+            CreateMap<DocumentacionPersonalV2DomainModel, DocumentacionPersonalV2VM>();
         }
 
         public static void Run()

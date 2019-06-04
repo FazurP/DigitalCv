@@ -8,6 +8,8 @@ namespace AppDigitalCv.Domain
 {
     public class IfeDomainModel
     {
+        public int idPersonal { get; set; }
+        public int idDocumento { get; set; }
         public virtual DocumentosDomainModel DocumentosDM { get; set; }
         public string strIdentificador { get; set; }
     }

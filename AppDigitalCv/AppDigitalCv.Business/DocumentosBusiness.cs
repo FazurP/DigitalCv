@@ -15,6 +15,7 @@ namespace AppDigitalCv.Business
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly DocumentosRepository documentosRepository;
+        private readonly DocumentacionPersonalRepository documentacionPersonalRepository;
         //listo
         public DocumentosBusiness(IUnitOfWork _unitOfWork)
         {
@@ -22,6 +23,7 @@ namespace AppDigitalCv.Business
             ///terminemos la clase
             unitOfWork = _unitOfWork;
             documentosRepository = new DocumentosRepository(unitOfWork);
+            documentacionPersonalRepository = new DocumentacionPersonalRepository(unitOfWork);
         }
 
         /// <summary>
@@ -113,7 +115,27 @@ namespace AppDigitalCv.Business
         }
 
 
+        public List<DocumentosDomainModel> GetDocumetosByIdPersonal(int _idPersonal)
+        {
+            List<DocumentosDomainModel> documentosDM = new List<DocumentosDomainModel>();
+            Expression<Func<tblDocumentacionPersonal, bool>> predicate = p => p.idPersonal == _idPersonal;
+            List<tblDocumentacionPersonal> tblDocumentacion = documentacionPersonalRepository.GetAll(predicate).ToList<tblDocumentacionPersonal>();
 
+            foreach (tblDocumentacionPersonal item in tblDocumentacion)
+            {
+                DocumentosDomainModel documentos = new DocumentosDomainModel();
+
+                documentos.IdDocumento = item.catDocumentos.idDocumento;
+                documentos.StrDescripcion = item.catDocumentos.strDescripcion;
+                documentos.StrObservacion = item.catDocumentos.strObservacion;
+                documentos.StrUrl = item.catDocumentos.strUrl;
+
+                documentosDM.Add(documentos);
+            }
+
+            return documentosDM;
+
+        }
 
 
     }

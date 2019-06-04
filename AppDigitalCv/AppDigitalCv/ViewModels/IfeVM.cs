@@ -7,6 +7,8 @@ namespace AppDigitalCv.ViewModels
 {
     public class IfeVM
     {
+        public int idPersonal { get; set; }
+        public int idDocumento { get; set; }
         public virtual DocumentosVM DocumentosVM { get; set; }
         public string strIdentificador { get; set; }
     }

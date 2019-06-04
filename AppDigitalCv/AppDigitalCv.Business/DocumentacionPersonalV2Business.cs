@@ -11,25 +11,24 @@ using System.Threading.Tasks;
 
 namespace AppDigitalCv.Business
 {
-    public class DocumentacionPersonalBusiness : IDocumentacionPersonalBusiness
+    public class DocumentacionPersonalV2Business: IDocumentacionPersonalV2Business
     {
-
         private readonly IUnitOfWork unitOfWork;
-        private readonly DocumentacionPersonalRepository documentacionPersonalRepository;
-        public DocumentacionPersonalBusiness(IUnitOfWork _unitOfWork)
+        private readonly DocumentacionPersonalV2Repository documentacionPersonalRepository;
+        public DocumentacionPersonalV2Business(IUnitOfWork _unitOfWork)
         {
             unitOfWork = _unitOfWork;
-            documentacionPersonalRepository = new DocumentacionPersonalRepository(unitOfWork);
+            documentacionPersonalRepository = new DocumentacionPersonalV2Repository(unitOfWork);
         }
 
-        public bool AddDocumentacionPersonal(DocumentacionPersonalDomainModel documentacionPersonalDM)
+        public bool AddDocumentacionPersonal(DocumentacionPersonalV2DomainModel documentacionPersonalDM)
         {
             bool respuesta = false;
             string resultado = string.Empty;
             tblPremiosDocente tblPremios = new tblPremiosDocente();
             tblDocumentacionPersonal tblDocumentacionPersonal = new tblDocumentacionPersonal();
             tblDocumentacionPersonal.idDocumento = documentacionPersonalDM.idDocumento;
-            tblDocumentacionPersonal.idPersonal = documentacionPersonalDM.idPersonal;
+            tblDocumentacionPersonal.idPersonal = documentacionPersonalDM.idPesonal;
             tblDocumentacionPersonal.strIdentificador = documentacionPersonalDM.strIdentificador;
             tblDocumentacionPersonal.strNumeroDocumento = documentacionPersonalDM.strNumeroDocumento;
             tblDocumentacionPersonal.dteVigenciaDocumento = documentacionPersonalDM.dteVigenciaDocumento;
@@ -39,7 +38,7 @@ namespace AppDigitalCv.Business
             return respuesta;
         }
 
-        public bool DeleteDocumentacionPersonal(int _idDocumento,int _idPersonal)
+        public bool DeleteDocumentacionPersonal(int _idDocumento, int _idPersonal)
         {
             bool respuesta = false;
             Expression<Func<tblDocumentacionPersonal, bool>> predicate = p => p.idDocumento == _idDocumento && p.idPersonal
