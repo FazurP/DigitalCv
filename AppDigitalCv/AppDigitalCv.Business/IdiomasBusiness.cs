@@ -1,4 +1,4 @@
-﻿using AppDigitalCv.Business.Interface;
+﻿ using AppDigitalCv.Business.Interface;
 using AppDigitalCv.Domain;
 using AppDigitalCv.Repository;
 using AppDigitalCv.Repository.Infraestructure.Contract;

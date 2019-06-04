@@ -24,7 +24,7 @@
                         <div class="form-group">
                             Deporte Prácticado: @Html.TextBoxFor(model => model.DeporteVM.StrDescripcion, new { @class = "form-control input-sm", @placeholder = "Deporte Favorito", disabled = "disabled" })
                         </div>
-                        <a href="#" id="btnSubmit" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>                 
+                        <a href="#" id="btnEnviar" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>                 
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
     $(document).ready(function () {
        
         
-        $("#btnSubmit").click(function () {
+        $("#btnEnviar").click(function () {
 
             var DeportePersonalVM = {};
             var idPersonal =  @SessionPersister.AccountSession.IdPersonal;

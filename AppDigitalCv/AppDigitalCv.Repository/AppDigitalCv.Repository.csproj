@@ -125,6 +125,7 @@
     <Compile Include="DeporteRepository.cs" />
     <Compile Include="DialectoIdiomaRepository.cs" />
     <Compile Include="DocumentacionPersonalRepository.cs" />
+    <Compile Include="DocumentacionPersonalV2Repository.cs" />
     <Compile Include="DocumentosRepository.cs" />
     <Compile Include="catEdificio.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>

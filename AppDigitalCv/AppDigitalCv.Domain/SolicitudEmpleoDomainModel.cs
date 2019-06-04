@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace AppDigitalCv.Domain
 {
-    public class NumeroVisaCanadaDomainModel
+    public class SolicitudEmpleoDomainModel
     {
         public int idPersonal { get; set; }
         public int idDocumento { get; set; }
-        public string strNumeroDocumento { get; set; }
-        public DateTime dteVigenciaDocumento { get; set; }
         public virtual DocumentosDomainModel DocumentosDM { get; set; }
         public string strIdentificador { get; set; }
     }

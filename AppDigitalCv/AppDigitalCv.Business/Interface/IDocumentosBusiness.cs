@@ -30,6 +30,8 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="IdDocumento">el identificador del documento</param>
         /// <returns>retorna una entidad del documento</returns>
         DocumentosDomainModel GetDocumentoByIdDocumento(int IdDocumento);
+
+        List<DocumentosDomainModel> GetDocumetosByIdPersonal(int _idPersonal);
     }
 
     

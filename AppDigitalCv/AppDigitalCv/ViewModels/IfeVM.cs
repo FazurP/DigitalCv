@@ -5,12 +5,10 @@ using System.Web;
 
 namespace AppDigitalCv.ViewModels
 {
-    public class NumeroSeguridadSocialVM
+    public class IfeVM
     {
         public int idPersonal { get; set; }
         public int idDocumento { get; set; }
-        public string strNumeroDocumento { get; set; }
-        public DateTime dteVigenciaDocumento { get; set; }
         public virtual DocumentosVM DocumentosVM { get; set; }
         public string strIdentificador { get; set; }
     }

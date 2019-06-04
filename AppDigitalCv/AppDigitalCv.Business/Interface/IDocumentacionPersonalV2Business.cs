@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace AppDigitalCv.Business.Interface
 {
-    public interface IDocumentacionPersonalBusiness
+    public interface IDocumentacionPersonalV2Business
     {
-        bool AddDocumentacionPersonal(DocumentacionPersonalDomainModel documentacionPersonalDM);
+        bool AddDocumentacionPersonal(DocumentacionPersonalV2DomainModel documentacionPersonalDM);
         bool DeleteDocumentacionPersonal(int _idDocumento, int _idPersonal);
     }
 }
