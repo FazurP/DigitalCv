@@ -71,11 +71,13 @@
     <Compile Include="DialectoIdiomaBusiness.cs" />
     <Compile Include="DireccionBusiness.cs" />
     <Compile Include="DocumentacionPersonalBusiness.cs" />
+    <Compile Include="DocumentacionPersonalV2Business.cs" />
     <Compile Include="DocumentosBusiness.cs" />
     <Compile Include="EdificioBusiness.cs" />
     <Compile Include="EmergenciaBusiness.cs" />
     <Compile Include="EnfermedadBusiness.cs" />
     <Compile Include="Enum\EnumFamiliares.cs" />
+    <Compile Include="Enum\ListDocumentos.cs" />
     <Compile Include="EstadoBusiness.cs" />
     <Compile Include="EstadoCivilBusiness.cs" />
     <Compile Include="EstadoSaludBusiness.cs" />
@@ -101,6 +103,7 @@
     <Compile Include="Interface\IDialectoBusiness.cs" />
     <Compile Include="Interface\IDialectoIdiomaBusiness.cs" />
     <Compile Include="Interface\IDocumentacionPersonalBusiness.cs" />
+    <Compile Include="Interface\IDocumentacionPersonalV2Business.cs" />
     <Compile Include="Interface\IDocumentosBusiness.cs" />
     <Compile Include="Interface\IEdificioBusiness.cs" />
     <Compile Include="Interface\IEmergenciaBusiness.cs" />

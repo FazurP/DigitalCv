@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +54,7 @@
     <Compile Include="CompetenciasPersonalDomainModel.cs" />
     <Compile Include="CompetenciasTiDomainModel.cs" />
     <Compile Include="CompetenciaTiDomainModel.cs" />
+    <Compile Include="ComprobanteDomicilioDomainModel.cs" />
     <Compile Include="CuerpoAcademicoDomainModel.cs" />
     <Compile Include="CursoDomainModel.cs" />
     <Compile Include="CursosDomainModel.cs" />
@@ -65,6 +67,7 @@
     <Compile Include="DialectoIdiomaDomainModel.cs" />
     <Compile Include="DireccionDomainModel.cs" />
     <Compile Include="DocumentacionPersonalDomainModel.cs" />
+    <Compile Include="DocumentacionPersonalV2DomainModel.cs" />
     <Compile Include="DocumentoPersonalDomainModel.cs" />
     <Compile Include="DocumentosDomainModel.cs" />
     <Compile Include="EdificioDomainModel.cs" />
@@ -78,6 +81,7 @@
     <Compile Include="FrecuenciaDomainModel.cs" />
     <Compile Include="IdiomaDialectoDomainModel.cs" />
     <Compile Include="IdiomaDomainModel.cs" />
+    <Compile Include="IfeDomainModel.cs" />
     <Compile Include="InstitucionSuperiorDomainModel.cs" />
     <Compile Include="MunicipioDomainModel.cs" />
     <Compile Include="NivelSalarialDomainModel.cs" />
@@ -98,17 +102,12 @@
     <Compile Include="RegistroProfEstatalDomainModel.cs" />
     <Compile Include="SalariosDomainModel.cs" />
     <Compile Include="SessionManagerDomainModel.cs" />
+    <Compile Include="SolicitudEmpleoDomainModel.cs" />
     <Compile Include="TipoContratoDomainModel.cs" />
     <Compile Include="TipoEmpresaDomainModel.cs" />
     <Compile Include="TipoEstudioDomainModel.cs" />
     <Compile Include="TipoSangreDomainModel.cs" />
     <Compile Include="UnidadesAcademicasDomainModel.cs" />
-    <Compile Include="VigenciaLicenciaManejoDomainModel.cs" />
-    <Compile Include="VigenciaPasaporteDomainModel.cs" />
-    <Compile Include="VigenciaRegistroProfEstatalDomainModel.cs" />
-    <Compile Include="VigenciaSeguridadSocialDomainModel.cs" />
-    <Compile Include="VigenciaVisaCanadaDomainModel.cs" />
-    <Compile Include="VigenciaVisaUsaDomainModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppDigitalCv.Repository\AppDigitalCv.Repository.csproj">

@@ -13,5 +13,10 @@ namespace AppDigitalCv.Controllers
         {
             return View();
         }
+
+        public ActionResult NoScript()
+        {
+            return View();
+        }
     }
 }
