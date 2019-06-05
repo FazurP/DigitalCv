@@ -8,6 +8,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+//cargamos el archivo de recursos
+using AppDigitalCv.Business.Recursos;
 
 namespace AppDigitalCv.Business
 {
@@ -59,6 +61,42 @@ namespace AppDigitalCv.Business
             {
                 return null;
             }
+        }
+
+        /// <summary>
+        /// Este metodo se encarga de consultar el usuario y validar la cuenta a traves de un servicio externo
+        /// </summary>
+        /// <param name="AccountDomain">recibe una entidad del tipo accountdomain</param>
+        /// <returns>una entidad accountDomainModel</returns>
+        public AccountDomainModel ValidarLoginService(AccountDomainModel AccountDomain)
+        {
+            ServiceClient.wsusuariosSoapClient usuarioClient = new ServiceClient.wsusuariosSoapClient();
+            AccountDomainModel account = new AccountDomainModel();
+            #region  Credenciales Externas
+            ServiceClient.Seguridad seguridad = new ServiceClient.Seguridad();
+            seguridad.SegUsuario = Recursos.BaseConfiguration.SegUsuario;
+            seguridad.SegPassword = Recursos.BaseConfiguration.SegPassword;
+            #endregion
+
+            #region Validacion del usuario Interno
+            ServiceClient.Usuario usuario = new ServiceClient.Usuario();
+            usuario.NomUsuario = AccountDomain.Nombre;
+            usuario.Password = AccountDomain.Password;
+            #endregion
+
+            #region Consumo de Servicio
+            var user= usuarioClient.ConsultaUsuarios(seguridad, usuario);
+            if (user != null)
+            {
+                account.IdUsuario = int.Parse(user.IdUsuario);
+                account.Nombre = user.Nombre;
+                account.NombreCompleto = user.Nombre + " " + user.ApellidoPaterno + " " + user.ApellidoMaterno;
+                account.Password = user.Clave;
+                account.Email = user.Correo_Electronico;
+            }
+            return account;
+            #endregion
+
         }
 
     }
