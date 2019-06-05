@@ -34,6 +34,7 @@ namespace AppDigitalCv.Repository
             this.tblTelefono = new HashSet<tblTelefono>();
             this.tblCursos = new HashSet<tblCursos>();
             this.tblDocumentacionPersonal = new HashSet<tblDocumentacionPersonal>();
+            this.tblPortafolioPersonal = new HashSet<tblPortafolioPersonal>();
         }
     
         public int idPersonal { get; set; }
@@ -93,5 +94,7 @@ namespace AppDigitalCv.Repository
         public virtual ICollection<tblCursos> tblCursos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblDocumentacionPersonal> tblDocumentacionPersonal { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblPortafolioPersonal> tblPortafolioPersonal { get; set; }
     }
 }

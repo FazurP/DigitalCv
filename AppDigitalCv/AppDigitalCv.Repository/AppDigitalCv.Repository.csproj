@@ -273,6 +273,9 @@
     <Compile Include="tblPersonalAsociaciones.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblPortafolioPersonal.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblPremiosDocente.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>

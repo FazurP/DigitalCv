@@ -12,18 +12,17 @@ namespace AppDigitalCv.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class tblCursos
+    public partial class tblPortafolioPersonal
     {
         public int id { get; set; }
-        public Nullable<int> idCurso { get; set; }
-        public Nullable<int> idInstitucion { get; set; }
-        public Nullable<System.DateTime> dteFechaInicio { get; set; }
-        public Nullable<System.DateTime> dteFechaTermino { get; set; }
-        public Nullable<int> idPersonal { get; set; }
-        public string strUrlDocumento { get; set; }
+        public int idDocumento { get; set; }
+        public int idPersonal { get; set; }
+        public string strPeriodo { get; set; }
+        public string strAño { get; set; }
+        public string strTipo { get; set; }
+        public string strUrl { get; set; }
     
-        public virtual catCurso catCurso { get; set; }
-        public virtual catInstitucionSuperior catInstitucionSuperior { get; set; }
+        public virtual catDocumentos catDocumentos { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
     }
 }

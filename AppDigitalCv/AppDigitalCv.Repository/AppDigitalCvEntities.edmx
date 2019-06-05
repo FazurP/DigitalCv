@@ -360,6 +360,7 @@
           <Property Name="dteFechaInicio" Type="date" />
           <Property Name="dteFechaTermino" Type="date" />
           <Property Name="idPersonal" Type="int" />
+          <Property Name="strUrlDocumento" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="tblDatosContacto">
           <Key>
@@ -498,6 +499,18 @@
           <Property Name="idAsociacion" Type="int" Nullable="false" />
           <Property Name="dteFecha" Type="datetime" />
           <Property Name="strTipoParticipacion" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tblPortafolioPersonal">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idDocumento" Type="int" Nullable="false" />
+          <Property Name="idPersonal" Type="int" Nullable="false" />
+          <Property Name="strPeriodo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="strAño" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="strTipo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="strUrl" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tblPremiosDocente">
           <Key>
@@ -1087,6 +1100,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblPortafolioPersonal_catDocumentos">
+          <End Role="catDocumentos" Type="Self.catDocumentos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblPortafolioPersonal" Type="Self.tblPortafolioPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catDocumentos">
+              <PropertyRef Name="idDocumento" />
+            </Principal>
+            <Dependent Role="tblPortafolioPersonal">
+              <PropertyRef Name="idDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPortafolioPersonal_tblPersonal">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblPortafolioPersonal" Type="Self.tblPortafolioPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblPortafolioPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblTelefono_tblPersonal">
           <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1286,6 +1327,7 @@
           <EntitySet Name="tblPasatiempo" EntityType="Self.tblPasatiempo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPersonal" EntityType="Self.tblPersonal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPersonalAsociaciones" EntityType="Self.tblPersonalAsociaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPortafolioPersonal" EntityType="Self.tblPortafolioPersonal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPremiosDocente" EntityType="Self.tblPremiosDocente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblTelefono" EntityType="Self.tblTelefono" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUsuarioRol" EntityType="Self.tblUsuarioRol" Schema="dbo" store:Type="Tables" />
@@ -1472,6 +1514,14 @@
           <AssociationSet Name="FK_tblCursos_tblPersonal" Association="Self.FK_tblCursos_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblCursos" EntitySet="tblCursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPortafolioPersonal_catDocumentos" Association="Self.FK_tblPortafolioPersonal_catDocumentos">
+            <End Role="catDocumentos" EntitySet="catDocumentos" />
+            <End Role="tblPortafolioPersonal" EntitySet="tblPortafolioPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPortafolioPersonal_tblPersonal" Association="Self.FK_tblPortafolioPersonal_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblPortafolioPersonal" EntitySet="tblPortafolioPersonal" />
           </AssociationSet>
           <AssociationSet Name="FK_tblTelefono_tblPersonal" Association="Self.FK_tblTelefono_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
@@ -1837,6 +1887,15 @@
           <AssociationSet Name="fk_documento_premiosDocente" Association="bdGestionDocenteModel.fk_documento_premiosDocente">
             <End Role="catDocumentos" EntitySet="catDocumentos" />
             <End Role="tblPremiosDocente" EntitySet="tblPremiosDocente" />
+          </AssociationSet>
+          <EntitySet Name="tblPortafolioPersonal" EntityType="bdGestionDocenteModel.tblPortafolioPersonal" />
+          <AssociationSet Name="FK_tblPortafolioPersonal_catDocumentos" Association="bdGestionDocenteModel.FK_tblPortafolioPersonal_catDocumentos">
+            <End Role="catDocumentos" EntitySet="catDocumentos" />
+            <End Role="tblPortafolioPersonal" EntitySet="tblPortafolioPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPortafolioPersonal_tblPersonal" Association="bdGestionDocenteModel.FK_tblPortafolioPersonal_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblPortafolioPersonal" EntitySet="tblPortafolioPersonal" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="catAlergias">
@@ -2808,6 +2867,7 @@
           <NavigationProperty Name="tblTelefono" Relationship="bdGestionDocenteModel.FK_tblTelefono_tblPersonal" FromRole="tblPersonal" ToRole="tblTelefono" />
           <NavigationProperty Name="tblCursos" Relationship="bdGestionDocenteModel.FK_tblCursos_tblPersonal" FromRole="tblPersonal" ToRole="tblCursos" />
           <NavigationProperty Name="tblDocumentacionPersonal" Relationship="bdGestionDocenteModel.fk_personal_documentacionPersonal" FromRole="tblPersonal" ToRole="tblDocumentacionPersonal" />
+          <NavigationProperty Name="tblPortafolioPersonal" Relationship="bdGestionDocenteModel.FK_tblPortafolioPersonal_tblPersonal" FromRole="tblPersonal" ToRole="tblPortafolioPersonal" />
         </EntityType>
         <Association Name="fk_direccion_personal">
           <End Type="bdGestionDocenteModel.catDireccion" Role="catDireccion" Multiplicity="0..1" />
@@ -3062,6 +3122,7 @@
           <NavigationProperty Name="catCurso" Relationship="bdGestionDocenteModel.FK_tblCursos_catCurso" FromRole="tblCursos" ToRole="catCurso" />
           <NavigationProperty Name="catInstitucionSuperior" Relationship="bdGestionDocenteModel.FK_tblCursos_catInstitucionSuperior" FromRole="tblCursos" ToRole="catInstitucionSuperior" />
           <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_tblCursos_tblPersonal" FromRole="tblCursos" ToRole="tblPersonal" />
+          <Property Name="strUrlDocumento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_tblCursos_catCurso">
           <End Type="bdGestionDocenteModel.catCurso" Role="catCurso" Multiplicity="0..1" />
@@ -3134,6 +3195,7 @@
           <Property Name="strUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblDocumentacionPersonal" Relationship="bdGestionDocenteModel.fk_documento_documentacionPersonal" FromRole="catDocumentos" ToRole="tblDocumentacionPersonal" />
           <NavigationProperty Name="tblPremiosDocente" Relationship="bdGestionDocenteModel.fk_documento_premiosDocente" FromRole="catDocumentos" ToRole="tblPremiosDocente" />
+          <NavigationProperty Name="tblPortafolioPersonal" Relationship="bdGestionDocenteModel.FK_tblPortafolioPersonal_catDocumentos" FromRole="catDocumentos" ToRole="tblPortafolioPersonal" />
         </EntityType>
         <Association Name="fk_documento_documentacionPersonal">
           <End Type="bdGestionDocenteModel.catDocumentos" Role="catDocumentos" Multiplicity="1" />
@@ -3156,6 +3218,48 @@
             </Principal>
             <Dependent Role="tblPremiosDocente">
               <PropertyRef Name="idDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblPortafolioPersonal">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idDocumento" Type="Int32" Nullable="false" />
+          <Property Name="idPersonal" Type="Int32" Nullable="false" />
+          <Property Name="strPeriodo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="strAño" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="strTipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="catDocumentos" Relationship="bdGestionDocenteModel.FK_tblPortafolioPersonal_catDocumentos" FromRole="tblPortafolioPersonal" ToRole="catDocumentos" />
+          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_tblPortafolioPersonal_tblPersonal" FromRole="tblPortafolioPersonal" ToRole="tblPersonal" />
+          <Property Name="strUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_tblPortafolioPersonal_catDocumentos">
+          <End Type="bdGestionDocenteModel.catDocumentos" Role="catDocumentos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblPortafolioPersonal" Role="tblPortafolioPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catDocumentos">
+              <PropertyRef Name="idDocumento" />
+            </Principal>
+            <Dependent Role="tblPortafolioPersonal">
+              <PropertyRef Name="idDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPortafolioPersonal_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblPortafolioPersonal" Role="tblPortafolioPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblPortafolioPersonal">
+              <PropertyRef Name="idPersonal" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3715,6 +3819,7 @@
           <EntitySetMapping Name="tblCursos">
             <EntityTypeMapping TypeName="bdGestionDocenteModel.tblCursos">
               <MappingFragment StoreEntitySet="tblCursos">
+                <ScalarProperty Name="strUrlDocumento" ColumnName="strUrlDocumento" />
                 <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
                 <ScalarProperty Name="dteFechaTermino" ColumnName="dteFechaTermino" />
                 <ScalarProperty Name="dteFechaInicio" ColumnName="dteFechaInicio" />
@@ -3742,6 +3847,19 @@
                 <ScalarProperty Name="strObservacion" ColumnName="strObservacion" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
                 <ScalarProperty Name="idDocumento" ColumnName="idDocumento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPortafolioPersonal">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblPortafolioPersonal">
+              <MappingFragment StoreEntitySet="tblPortafolioPersonal">
+                <ScalarProperty Name="strUrl" ColumnName="strUrl" />
+                <ScalarProperty Name="strTipo" ColumnName="strTipo" />
+                <ScalarProperty Name="strAño" ColumnName="strAño" />
+                <ScalarProperty Name="strPeriodo" ColumnName="strPeriodo" />
+                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
+                <ScalarProperty Name="idDocumento" ColumnName="idDocumento" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

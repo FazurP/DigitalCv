@@ -8,6 +8,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
+
 namespace AppDigitalCv.Controllers
 {
     public class SeguridadController : Controller
@@ -45,6 +47,7 @@ namespace AppDigitalCv.Controllers
         [HttpPost]
         public ActionResult Login(AccountViewModel accountViewModel)
         {
+           
             AccountDomainModel accountDomainModel = new AccountDomainModel();
             AutoMapper.Mapper.Map(accountViewModel,accountDomainModel);
 
