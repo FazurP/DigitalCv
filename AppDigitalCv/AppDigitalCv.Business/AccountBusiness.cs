@@ -69,7 +69,7 @@ namespace AppDigitalCv.Business
         /// <param name="AccountDomain">recibe una entidad del tipo accountdomain</param>
         /// <returns>una entidad accountDomainModel</returns>
         public AccountDomainModel ValidarLoginService(AccountDomainModel AccountDomain)
-        {
+        {/*
             ServiceClient.wsusuariosSoapClient usuarioClient = new ServiceClient.wsusuariosSoapClient();
             
             AccountDomainModel account = new AccountDomainModel();
@@ -97,7 +97,8 @@ namespace AppDigitalCv.Business
             }
             return account;
             #endregion
-
+            */
+            return null;
         }
 
     }
