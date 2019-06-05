@@ -53,7 +53,8 @@ namespace AppDigitalCv.Controllers
 
             if(!string.IsNullOrEmpty(accountViewModel.Email) && !string.IsNullOrEmpty(accountViewModel.Password))
             {
-                accountDomainModel = IAccountBusiness.ValidarLogin(accountDomainModel);
+                //accountDomainModel = IAccountBusiness.ValidarLogin(accountDomainModel);
+                accountDomainModel = IAccountBusiness.ValidarLoginService(accountDomainModel);
                 if (accountDomainModel != null)
                 {
                     AccountViewModel viewAccount = new AccountViewModel();

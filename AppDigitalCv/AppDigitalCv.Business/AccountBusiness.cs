@@ -71,6 +71,7 @@ namespace AppDigitalCv.Business
         public AccountDomainModel ValidarLoginService(AccountDomainModel AccountDomain)
         {
             ServiceClient.wsusuariosSoapClient usuarioClient = new ServiceClient.wsusuariosSoapClient();
+            
             AccountDomainModel account = new AccountDomainModel();
             #region  Credenciales Externas
             ServiceClient.Seguridad seguridad = new ServiceClient.Seguridad();
