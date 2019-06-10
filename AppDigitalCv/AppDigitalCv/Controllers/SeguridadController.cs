@@ -7,8 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
-
+using System.Web.Security;
 
 namespace AppDigitalCv.Controllers
 {
@@ -86,5 +85,12 @@ namespace AppDigitalCv.Controllers
            
         }
 
+
+        public ActionResult LogOut()
+        {
+            SessionPersister.LogOutSession();
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Seguridad");
+        }
     }
 }

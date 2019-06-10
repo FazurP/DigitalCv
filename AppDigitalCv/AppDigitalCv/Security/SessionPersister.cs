@@ -49,5 +49,15 @@ namespace AppDigitalCv.Security
             }
         }
 
+
+        /// <summary>
+        /// Este metodo se encarga de eliminar todos los elementos establecidos en la sesion asi como todos
+        /// los elementos de autenticacion de la sesion.
+        /// </summary>
+        public static void LogOutSession()
+        {
+            HttpContext.Current.Session.RemoveAll();
+            HttpContext.Current.Session.Abandon();
+        }
     }
 }

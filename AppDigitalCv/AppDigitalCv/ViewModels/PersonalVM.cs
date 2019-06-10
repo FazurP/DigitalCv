@@ -52,7 +52,9 @@ namespace AppDigitalCv.ViewModels
         public string strLogros { get; set; }
 
         [Required(ErrorMessage = "El archivo es obligatorio")]
+
         public HttpPostedFileWrapper ImageFile { get; set; }    
+
         public string strUrlFoto { get; set; }
         public string strUrlCurp { get; set; }
         public string strUrlRfc { get; set; }

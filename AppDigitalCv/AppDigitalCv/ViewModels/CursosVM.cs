@@ -14,5 +14,6 @@ namespace AppDigitalCv.ViewModels
         public string FechaTermino { get; set; }
         public int IdPersonal { get; set; }
         public  string StrUrlDocumento { get; set; }
+        public HttpPostedFileWrapper DocumentoPDF { get; set; }
     }
 }
