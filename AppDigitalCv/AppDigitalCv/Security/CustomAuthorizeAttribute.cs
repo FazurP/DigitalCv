@@ -14,6 +14,8 @@ namespace AppDigitalCv.Security
     {
         private IAccountBusiness IaccountBusiness;
 
+        
+
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
             

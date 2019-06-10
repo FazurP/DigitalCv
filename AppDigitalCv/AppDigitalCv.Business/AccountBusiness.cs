@@ -25,6 +25,7 @@ namespace AppDigitalCv.Business
             accountRepository = new AccountRepository(unitOfWork);
         }
 
+        
         /// <summary>
         /// Este metodo se encarga de validar el login de un usuario
         /// </summary>

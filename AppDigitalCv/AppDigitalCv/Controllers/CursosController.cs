@@ -12,15 +12,17 @@ using System.IO;
 
 namespace AppDigitalCv.Controllers
 {
-    [Authorize]
+    
     public class CursosController : Controller
     {
         IInstitucionSuperiorBusiness institucionSuperiorBusiness;
         ICursoBusiness cursoBusiness;
-        public CursosController(IInstitucionSuperiorBusiness _institucionSuperiorBusiness, ICursoBusiness _cursoBusiness)
+        ICursosBusiness cursosBusiness;
+        public CursosController(IInstitucionSuperiorBusiness _institucionSuperiorBusiness, ICursoBusiness _cursoBusiness, ICursosBusiness _cursosBusiness)
         {
             institucionSuperiorBusiness = _institucionSuperiorBusiness;
             cursoBusiness = _cursoBusiness;
+            cursosBusiness = _cursosBusiness;
         }
 
 
@@ -51,7 +53,8 @@ namespace AppDigitalCv.Controllers
                 AutoMapper.Mapper.Map(cursosVM,cursosDM);
                 if (GuardarArchivo(cursosDM, nombre)) ///aqui se guarda el archivo
                 {
-
+                    cursosDM.StrUrlDocumento = Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombre + "/"+cursosDM.DocumentoPDF.FileName;
+                    cursosBusiness.AddUpdateCursos(cursosDM);
                 }
                 else
                 {

@@ -59,6 +59,7 @@
     <Compile Include="CompetenciasPersonalBusiness.cs" />
     <Compile Include="CompetenciasTiBusiness.cs" />
     <Compile Include="CursoBusiness.cs" />
+    <Compile Include="CursosBusiness.cs" />
     <Compile Include="DatosContactoBusiness.cs" />
     <Compile Include="DeporteBusiness.cs" />
     <Compile Include="DeportePersonalBusiness.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Interface\ICompetenciasBusiness.cs" />
     <Compile Include="Interface\ICompetenciasTiBusiness.cs" />
     <Compile Include="Interface\ICursoBusiness.cs" />
+    <Compile Include="Interface\ICursosBusiness.cs" />
     <Compile Include="Interface\IDatosContacto.cs" />
     <Compile Include="Interface\IDeporteBusiness.cs" />
     <Compile Include="Interface\IDeportePersonalBusiness.cs" />
