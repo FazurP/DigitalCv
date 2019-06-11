@@ -33,6 +33,10 @@ namespace AppDigitalCv.Repository
             this.tblPremiosDocente = new HashSet<tblPremiosDocente>();
             this.tblTelefono = new HashSet<tblTelefono>();
             this.tblCursos = new HashSet<tblCursos>();
+            this.tblPortafolioPersonal = new HashSet<tblPortafolioPersonal>();
+            this.tblParticipacionDocente = new HashSet<tblParticipacionDocente>();
+            this.tblParticipacionInstitucionalExterna = new HashSet<tblParticipacionInstitucionalExterna>();
+            this.tblParticipacionInstitucionalInterna = new HashSet<tblParticipacionInstitucionalInterna>();
             this.tblDocumentacionPersonal = new HashSet<tblDocumentacionPersonal>();
         }
     
@@ -91,6 +95,14 @@ namespace AppDigitalCv.Repository
         public virtual ICollection<tblTelefono> tblTelefono { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCursos> tblCursos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblPortafolioPersonal> tblPortafolioPersonal { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblParticipacionDocente> tblParticipacionDocente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblParticipacionInstitucionalExterna> tblParticipacionInstitucionalExterna { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblParticipacionInstitucionalInterna> tblParticipacionInstitucionalInterna { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblDocumentacionPersonal> tblDocumentacionPersonal { get; set; }
     }
