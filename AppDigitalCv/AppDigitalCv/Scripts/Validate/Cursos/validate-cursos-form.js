@@ -71,13 +71,9 @@
         var fechaTermino = $('#FechaTermino').val();
         if (fechaTermino == null || fechaTermino == 0 || fechaTermino == '0' || fechaTermino == "0")
         {
-            if (Date.parse($('#FechaTermino').val()) >= Date.parse($('#FechaInicio').val() )) {
+            
                 $('#btnSubmit').prop('disabled', true);
-            }
-            else
-            {
-                toastr.warning('Selecciona una fecha valida', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
-            }            
+                             
         }
         else {
             $('#btnSubmit').prop('disabled', false);

@@ -42,9 +42,9 @@
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <div class="form-group">
                                         <label>Cursos:&nbsp;&nbsp;</label>
-                                        @Html.DropDownList("IdCurso", null, htmlAttributes: new { @class = "form-control input-sm",id= "IdCurso" })
+                                        @Html.DropDownList("IdCurso", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdCurso" })
                                         <label>Institución:</label>
-                                        @Html.DropDownList("IdInstitucionSuperior", null, htmlAttributes: new { @class = "form-control input-sm",id= "IdInstitucionSuperior" })
+                                        @Html.DropDownList("IdInstitucionSuperior", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdInstitucionSuperior" })
                                         <label>Fecha de Inicio:</label>
                                         @Html.TextBoxFor(model => model.FechaInicio, new { @class = "form-control input-sm", placeholder = "Fecha Inicial", required = "", type = "date", id = "FechaInicio" })
                                     </div>
@@ -85,10 +85,12 @@
             </div>
         </div>
     </div>
+    
 }
 @section scripts
 {
+    
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Scripts/Validate/Cursos/validate-cursos-form.js"></script>
-    <script src="~/Scripts/Validate/Cursos/validate-cursos-upload.js"></script>
+    <script src="~/Scripts/Validate/Cursos/validate-cursos-form.js?v=1"></script>
+    <script src="~/Scripts/Validate/Cursos/validate-cursos-upload.js?v=1"></script>
 }
