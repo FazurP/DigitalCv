@@ -73,11 +73,13 @@ namespace AppDigitalCv.Controllers
             ViewBag.IdInstitucionSuperior = new SelectList(institucionSuperiorBusiness.GetInstitucionSuperior(), "IdInstitucionSuperior", "StrDescripcion");
             return View("Create");
         }
-
-
-
-
-
+        
+        /// <summary>
+        /// Este metodo se encarga de guardar un archivo dentro de la estructura de directorios de la aplicacion
+        /// </summary>
+        /// <param name="cursosDM">una entidad del tipo cursosDM</param>
+        /// <param name="nombre">el nombre de la ruta principal del archivo</param>
+        /// <returns>un valor boolean</returns>
         private bool GuardarArchivo(CursosDomainModel cursosDM,string nombre)
         {
             bool respuesta = false;
