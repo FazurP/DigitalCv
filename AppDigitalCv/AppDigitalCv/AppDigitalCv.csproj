@@ -73,6 +73,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
@@ -384,6 +385,7 @@
     <Content Include="Scripts\Validate\ContactoEmergencia\valida-contacto-emergencia-regExp.js" />
     <Content Include="Scripts\Validate\ContactoEmergencia\validate-contacto-emergencia-form.js" />
     <Content Include="Scripts\Validate\Cursos\validate-cursos-form.js" />
+    <Content Include="Scripts\Validate\Cursos\validate-cursos-upload.js" />
     <Content Include="Scripts\Validate\Curso\validate-curso-create.js" />
     <Content Include="Scripts\Validate\Curso\validate-curso.js" />
     <Content Include="Scripts\Validate\DatosContacto\validate-datos-contacto-email.js" />
@@ -506,6 +508,7 @@
     <Content Include="Views\Error\NoScript.cshtml" />
     <Content Include="Views\Curso\Create.cshtml" />
     <Content Include="Views\InstitucionSuperior\Create.cshtml" />
+
     <Content Include="Views\PortafolioPersonal\Create.cshtml" />
     <Content Include="Views\ParticipacionInstitucionalExterna\Create.cshtml" />
     <Content Include="Views\ParticipacionInstitucionalExterna\_Eliminar.cshtml" />
@@ -513,6 +516,10 @@
     <Content Include="Views\ParticipacionInstitucionalInterna\Create.cshtml" />
     <Content Include="Views\ParticipacionInstitucionalInterna\_Eliminar.cshtml" />
     <Content Include="Views\ParticipacionInstitucionalInterna\_Editar.cshtml" />
+
+    <Content Include="Views\Cursos\_Editar.cshtml" />
+    <Content Include="Views\Cursos\_Eliminar.cshtml" />
+
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -781,6 +788,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursosSistema.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

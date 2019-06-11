@@ -21,5 +21,12 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="AccountDomain">recibe un objeto del tipo account</param>
         /// <returns>regresa un objeto del tipo accountDomainModel</returns>
         AccountDomainModel ValidarLogin(AccountDomainModel AccountDomain);
+
+        /// <summary>
+        /// Este metodo se encarga de consultar el usuario y validar la cuenta a traves de un servicio externo
+        /// </summary>
+        /// <param name="AccountDomain">recibe una entidad del tipo accountdomain</param>
+        /// <returns>una entidad accountDomainModel</returns>
+        AccountDomainModel ValidarLoginService(AccountDomainModel AccountDomain);
     }
 }

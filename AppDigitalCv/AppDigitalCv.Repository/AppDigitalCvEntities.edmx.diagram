@@ -130,9 +130,11 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionDocente_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_tblPersonal" />
+
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblDocumentacionPersonal" Width="1.5" PointX="16.5" PointY="19.375" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_documento_documentacionPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_personal_documentacionPersonal" />
+
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

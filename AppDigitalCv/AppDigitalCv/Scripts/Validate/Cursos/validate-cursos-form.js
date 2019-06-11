@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    $('#strUrlDocumento').prop('disabled', true);
+    $('#DocumentoPDF').prop('disabled', true);
     $('#IdInstitucionSuperior').prop('disabled', true);
     $('#FechaInicio').prop('disabled', true);
     $('#FechaTermino').prop('disabled', true);
@@ -8,18 +8,18 @@
 
 
     $('#rdbSi').change(function () {
-        $('#strUrlDocumento').prop('disabled', false);
+        $('#DocumentoPDF').prop('disabled', false);
         toastr.info("Seleccione su(s) Evidencia(s) del Curso(s) Impartido.", "Digital-Cv dice", { timeOut: 1000, closeButton: true })
     })
 
     $('#rdbNo').change(function () {
-        $('#strUrlDocumento').prop('disabled', true);
+        $('#DocumentoPDF').prop('disabled', true);
                
     })
 
-    $('#Cursos').change(function () {
+    $('#IdCurso').change(function () {
 
-        var curso = $('#Cursos').val();
+        var curso = $('#IdCurso').val();
 
         if (curso == null || curso == 0 || curso == '0' || curso == "0") {
 
@@ -71,7 +71,9 @@
         var fechaTermino = $('#FechaTermino').val();
         if (fechaTermino == null || fechaTermino == 0 || fechaTermino == '0' || fechaTermino == "0")
         {
-            $('#btnSubmit').prop('disabled', true);
+            
+                $('#btnSubmit').prop('disabled', true);
+                             
         }
         else {
             $('#btnSubmit').prop('disabled', false);

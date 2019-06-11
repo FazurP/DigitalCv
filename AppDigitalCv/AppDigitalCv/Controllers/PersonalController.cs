@@ -34,9 +34,6 @@ namespace AppDigitalCv.Controllers
             if (SessionPersister.AccountSession != null)
             {
                 ViewBag.IdEstadoCivil = new SelectList(estadoCivilBusiness.GetEstadoCivil(), "IdEstadoCivil", "StrDescripcion");
-
-
-
                 return View();
             }
             else {

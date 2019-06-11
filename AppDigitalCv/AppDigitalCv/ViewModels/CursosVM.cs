@@ -14,5 +14,10 @@ namespace AppDigitalCv.ViewModels
         public string FechaTermino { get; set; }
         public int IdPersonal { get; set; }
         public  string StrUrlDocumento { get; set; }
+        public HttpPostedFileWrapper DocumentoPDF { get; set; }
+
+        //atributos de el id del curso y el id de la institucion
+        public int IdCurso { get; set; }
+        public int IdInstitucionSuperior { get; set; }
     }
 }

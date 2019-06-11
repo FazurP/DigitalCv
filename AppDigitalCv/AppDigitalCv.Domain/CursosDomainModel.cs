@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace AppDigitalCv.Domain
 {
@@ -15,5 +16,9 @@ namespace AppDigitalCv.Domain
         public string FechaTermino { get; set; }
         public int IdPersonal { get; set; }
         public string StrUrlDocumento { get; set; }
+        public HttpPostedFileWrapper DocumentoPDF { get; set; }
+        //atributos de el id del curso y el id de la institucion
+        public int IdCurso { get; set; }
+        public int IdInstitucionSuperior { get; set; }
     }
 }
