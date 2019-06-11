@@ -503,6 +503,8 @@
     <Content Include="Views\Error\NoScript.cshtml" />
     <Content Include="Views\Curso\Create.cshtml" />
     <Content Include="Views\InstitucionSuperior\Create.cshtml" />
+    <Content Include="Views\Cursos\_Editar.cshtml" />
+    <Content Include="Views\Cursos\_Eliminar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
