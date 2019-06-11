@@ -10,8 +10,8 @@ namespace AppDigitalCv.Business.Interface
     //esta es la interfaz ligada a la clase donde se encuentran los metodos de adminsitracion CRUD
     public interface IDocumentosBusiness
     {
-        string AddUpdateDocumento(DocumentosDomainModel documentosDM);
-        
+        DocumentosDomainModel AddUpdateDocumento(DocumentosDomainModel documentosDM);
+
         /// <summary>
         /// Este metodo se encarga de guardar un documento y al finalizr la taera devuelve dicho documento
         /// </summary>
