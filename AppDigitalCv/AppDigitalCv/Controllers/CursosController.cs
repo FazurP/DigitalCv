@@ -137,7 +137,13 @@ namespace AppDigitalCv.Controllers
         }
 
 
-
+        public JsonResult ConsultarJson()
+        {
+            int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
+            List<CursosDomainModel> cursos = new List<CursosDomainModel>();
+            cursos = cursosBusiness.GetCursosPersonalesById(IdentityPersonal).ToList();
+            return Json(cursos, JsonRequestBehavior.AllowGet);
+        }
 
         #endregion
 
