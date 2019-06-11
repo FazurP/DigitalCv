@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Security;
 using System.IO;
+using AppDigitalCv.Models;
 
 namespace AppDigitalCv.Controllers
 {
@@ -95,6 +96,51 @@ namespace AppDigitalCv.Controllers
             }
             return respuesta;
         }
+
+
+        #region  Consultar los datos de los cursos del personal
+
+        [HttpGet]
+        public JsonResult GetCursosPersonales(DataTablesParam param)
+        {
+            int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
+            List<CursosDomainModel> cursos = new List<CursosDomainModel>();
+
+            int pageNo = 1;
+            if (param.iDisplayStart >= param.iDisplayLength)
+            {
+                pageNo = (param.iDisplayStart / param.iDisplayLength) + 1;
+            }
+
+            int totalCount = 0;
+            if (param.sSearch != null)
+            {
+                
+                cursos = cursosBusiness.GetCursosPersonalesById(IdentityPersonal).Where(p=>p.CursoDomainModel.StrDescripcion.Contains(param.sSearch)).ToList();
+            }
+            else
+            {
+                
+                totalCount = cursosBusiness.GetCursosPersonalesById(IdentityPersonal).Count();
+                cursos = cursosBusiness.GetCursosPersonalesById(IdentityPersonal).OrderBy(P => P.FechaInicio)
+                         .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
+            }
+            return Json(new
+            {
+                aaData = cursos,
+                sEcho = param.sEcho,
+                iTotalDisplayRecords = cursos.Count(),
+                iTotalRecords = cursos.Count()
+
+            }, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+
+
+        #endregion
+
 
     }
 }

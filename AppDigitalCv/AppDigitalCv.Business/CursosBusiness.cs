@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -67,6 +68,50 @@ namespace AppDigitalCv.Business
 
             return resultado;
         }
+
+
+        /// <summary>
+        /// Este metodo se encarga de consultar los cursos personales de un personal de la institucion
+        /// </summary>
+        /// <param name="idPersonal">el identificador del personal</param>
+        /// <returns>regresa una lista de todos los cursos</returns>
+        public List<CursosDomainModel> GetCursosPersonalesById(int idPersonal)
+        {
+            List<CursosDomainModel> cursosPersonales = new List<CursosDomainModel>();
+
+            Expression<Func<tblCursos, bool>> predicado = p => p.idPersonal.Equals(idPersonal);
+            List<tblCursos> lista = cursosRepository.GetAll(predicado).ToList<tblCursos>();
+
+            if (lista != null)
+            {
+                foreach (var c in lista)
+                {
+                    CursoDomainModel cursoDomain = new CursoDomainModel();
+                    cursoDomain.Id = c.idCurso.Value;
+                    cursoDomain.StrDescripcion = c.catCurso.strDescripcion;
+
+                    InstitucionSuperiorDomainModel institucionSuperior = new InstitucionSuperiorDomainModel();
+                    institucionSuperior.IdInstitucionSuperior = c.idInstitucion.Value;
+                    institucionSuperior.StrDescripcion = c.catInstitucionSuperior.strDescripcion;
+
+                    CursosDomainModel cursosDomain = new CursosDomainModel();
+                    cursosDomain.CursoDomainModel = cursoDomain;
+                    cursosDomain.InstitucionSuperiorDomainModel = institucionSuperior;
+                    cursosDomain.Id = c.id;
+                    cursosDomain.IdPersonal = c.idPersonal.Value;
+                    cursosDomain.FechaInicio = c.dteFechaInicio.Value.ToShortDateString();
+                    cursosDomain.FechaTermino = c.dteFechaTermino.Value.ToShortDateString();
+                    cursosDomain.IdCurso = c.idCurso.Value;
+                    cursosDomain.IdInstitucionSuperior = c.idInstitucion.Value;
+                    cursosDomain.StrUrlDocumento = c.strUrlDocumento;
+                    cursosPersonales.Add(cursosDomain);
+                    
+                }
+            }
+
+            return cursosPersonales;
+        }
+
 
     }
 }

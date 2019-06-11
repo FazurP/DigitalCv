@@ -147,7 +147,7 @@
                 else {
                     oTable = $('#tblDocumentos').DataTable({
                         "bServerSide": true,
-                        "sAjaxSource": '/HabitosPersonales/GetDeportesPersonales',
+                        "sAjaxSource": '/Cursos/GetCursosPersonales',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
