@@ -109,7 +109,10 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblCursos_catCurso" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblCursos_catInstitucionSuperior" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblCursos_tblPersonal" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblDocumentacionPersonal" Width="1.5" PointX="16.5" PointY="19.875" />
+        <AssociationConnector Association="bdGestionDocenteModel.fk_personal_documentacionPersonal" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catDocumentos" Width="1.5" PointX="11.25" PointY="16" />
+        <AssociationConnector Association="bdGestionDocenteModel.fk_documento_documentacionPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_documento_premiosDocente" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblPortafolioPersonal" Width="1.5" PointX="16.5" PointY="23.125" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblPortafolioPersonal_catDocumentos" />
@@ -130,11 +133,6 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionDocente_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_tblPersonal" />
-
-        <EntityTypeShape EntityType="bdGestionDocenteModel.tblDocumentacionPersonal" Width="1.5" PointX="16.5" PointY="19.375" />
-        <AssociationConnector Association="bdGestionDocenteModel.fk_documento_documentacionPersonal" />
-        <AssociationConnector Association="bdGestionDocenteModel.fk_personal_documentacionPersonal" />
-
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
