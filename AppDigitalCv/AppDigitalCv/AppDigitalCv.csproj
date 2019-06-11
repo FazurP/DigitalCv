@@ -385,6 +385,7 @@
     <Content Include="Scripts\Validate\ContactoEmergencia\valida-contacto-emergencia-regExp.js" />
     <Content Include="Scripts\Validate\ContactoEmergencia\validate-contacto-emergencia-form.js" />
     <Content Include="Scripts\Validate\Cursos\validate-cursos-form.js" />
+    <Content Include="Scripts\Validate\Cursos\validate-cursos-upload.js" />
     <Content Include="Scripts\Validate\Curso\validate-curso-create.js" />
     <Content Include="Scripts\Validate\Curso\validate-curso.js" />
     <Content Include="Scripts\Validate\DatosContacto\validate-datos-contacto-email.js" />

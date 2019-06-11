@@ -120,6 +120,9 @@
   <data name="DOCUMENTO_USUARIO" xml:space="preserve">
     <value>~/Imagenes/Usuarios/</value>
   </data>
+  <data name="ERROR_COMPARACION_FECHA" xml:space="preserve">
+    <value>La Selección de las fechas no es correcta, verifícala por favor.</value>
+  </data>
   <data name="ERROR_GUARDADO_ARCHIVO" xml:space="preserve">
     <value>El Archivo no se pudo guardar de forma adecuada, intenta de nuevo.</value>
   </data>

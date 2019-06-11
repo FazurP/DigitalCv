@@ -50,15 +50,19 @@ namespace AppDigitalCv.Business
             }
             else
             {
-                tblCursos tblCursos = new tblCursos();
-                tblCursos.idCurso = cursosDM.CursoDomainModel.Id;
-                tblCursos.idInstitucion = cursosDM.InstitucionSuperiorDomainModel.IdInstitucionSuperior;
-                tblCursos.idPersonal = cursosDM.IdPersonal;
-                tblCursos.dteFechaInicio = DateTime.Parse(cursosDM.FechaInicio);
-                tblCursos.dteFechaTermino = DateTime.Parse(cursosDM.FechaTermino);
-                tblCursos.strUrlDocumento = cursosDM.StrUrlDocumento;
-                cursosRepository.Insert(tblCursos);
-                resultado = "Se insertaron correctamente los valores";
+                if (!cursosDM.FechaInicio.Equals(string.Empty) && !cursosDM.FechaTermino.Equals(string.Empty))
+                {
+                    tblCursos tblCursos = new tblCursos();
+                    tblCursos.idCurso = cursosDM.IdCurso;
+                    tblCursos.idInstitucion = cursosDM.IdInstitucionSuperior;
+                    tblCursos.idPersonal = cursosDM.IdPersonal;
+                    tblCursos.dteFechaInicio = DateTime.Parse(cursosDM.FechaInicio);
+                    tblCursos.dteFechaTermino = DateTime.Parse(cursosDM.FechaTermino);
+                    tblCursos.strUrlDocumento = cursosDM.StrUrlDocumento;
+                    cursosRepository.Insert(tblCursos);
+                    resultado = "Se insertaron correctamente los valores";
+                }
+                
             }
 
             return resultado;

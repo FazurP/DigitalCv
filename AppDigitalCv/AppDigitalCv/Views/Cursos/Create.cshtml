@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("Create", "Cursos",FormMethod.Post,new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Cursos", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="bs-container" style="min-height:960px;">
@@ -31,39 +31,46 @@
                                 @SessionPersister.AccountSession.NombreCompleto
                             </label>
                             &nbsp;&nbsp;
-                            <span class="emailtitleletter btn-link"><i class="fa fa-graduation-cap"></i></span>@Html.ActionLink("Agregar Más Cursos", "Create","Curso", null, htmlAttributes: new { @class = "emailtitleletter text-right btn-link " })
-                            <span class="emailtitleletter btn-link"><i class="glyphicon glyphicon-tag"></i></span>@Html.ActionLink("Agregar Institución", "Create","InstitucionSuperior" ,null, htmlAttributes: new { @class = "emailtitleletter text-right btn-link " })
+                            <span class="emailtitleletter btn-link"><i class="fa fa-graduation-cap"></i></span>@Html.ActionLink("Agregar Más Cursos", "Create", "Curso", null, htmlAttributes: new { @class = "emailtitleletter text-right btn-link " })
+                            <span class="emailtitleletter btn-link"><i class="glyphicon glyphicon-tag"></i></span>@Html.ActionLink("Agregar Institución", "Create", "InstitucionSuperior", null, htmlAttributes: new { @class = "emailtitleletter text-right btn-link " })
                         </h5>
-                        <!-- /.box-tools --> 
+                        <!-- /.box-tools -->
                     </div>
-                    <div class="box-body"> 
+                    <div class="box-body">
                         <div class="form-group">
                             <div class="form-group">
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <div class="form-group">
                                         <label>Cursos:&nbsp;&nbsp;</label>
-                                        @Html.DropDownList("Cursos", null, htmlAttributes: new { @class = "form-control input-sm", id = "Cursos" })
+                                        @Html.DropDownList("IdCurso", null, htmlAttributes: new { @class = "form-control input-sm",id= "IdCurso" })
                                         <label>Institución:</label>
-                                        @Html.DropDownList("Institucion", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdInstitucionSuperior" })
+                                        @Html.DropDownList("IdInstitucionSuperior", null, htmlAttributes: new { @class = "form-control input-sm",id= "IdInstitucionSuperior" })
                                         <label>Fecha de Inicio:</label>
-                                        @Html.TextBoxFor(model => model.FechaInicio, new { @class = "form-control input-sm", placeholder = "Fecha Inicial", required = "", type = "date",id= "FechaInicio" })
+                                        @Html.TextBoxFor(model => model.FechaInicio, new { @class = "form-control input-sm", placeholder = "Fecha Inicial", required = "", type = "date", id = "FechaInicio" })
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <label>Fecha de Final:</label>
                                     @Html.TextBoxFor(model => model.FechaTermino, new { @class = "form-control input-sm", required = "", type = "date", id = "FechaTermino" })
+                                    @if (ViewBag.ErrorFechaComparacion != null)
+                                    {
+                                        <label class="text-red">
+                                            @ViewBag.ErrorFechaComparacion
+                                        </label>
+                                        <br />
+                                    }
                                     <label>Existe Evidencia:</label>
                                     <br />
                                     <input type="radio" id="rdbSi" name="seleccion" value="SI " class="custom-control-input"><label for="si">SI</label>
                                     <input type="radio" id="rdbNo" name="seleccion" value="NO" class="custom-control-input" checked="checked"><label for="no">NO</label>
                                     <br />
-                                    <label>Evidencia Documentada:</label>
+                                    <label>Evidencia Documentada(Documento en formato PDF):</label>
                                     @Html.TextBoxFor(model => model.DocumentoPDF, new { @class = "form-control", @type = "file", required = "", id = "DocumentoPDF" })
                                     @if (ViewBag.ErrorArchivo != null)
                                     {
-                                    <label class="text-red">
-                                        @ViewBag.ErrorArchivo
-                                    </label>
+                                        <label class="text-red">
+                                            @ViewBag.ErrorArchivo
+                                        </label>
                                     }
                                 </div>
                                 <br />
@@ -72,14 +79,16 @@
                                     <input type="submit" value="Guardar" class="btn btn-sm btn-success" id="btnSubmit" />
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-         </div>
     </div>
 }
 @section scripts
 {
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/Validate/Cursos/validate-cursos-form.js"></script>
+    <script src="~/Scripts/Validate/Cursos/validate-cursos-upload.js"></script>
 }

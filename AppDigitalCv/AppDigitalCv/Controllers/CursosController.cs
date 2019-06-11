@@ -31,8 +31,8 @@ namespace AppDigitalCv.Controllers
         {
             if (SessionPersister.AccountSession != null)
             {
-                ViewBag.Cursos = new SelectList(cursoBusiness.GetCursos(), "Id", "StrDescripcion");
-                ViewBag.Institucion = new SelectList(institucionSuperiorBusiness.GetInstitucionSuperior(), "IdInstitucionSuperior", "StrDescripcion");
+                ViewBag.IdCurso = new SelectList(cursoBusiness.GetCursos(), "Id", "StrDescripcion");
+                ViewBag.IdInstitucionSuperior = new SelectList(institucionSuperiorBusiness.GetInstitucionSuperior(), "IdInstitucionSuperior", "StrDescripcion");
                 return View();
             }
             else
@@ -43,28 +43,35 @@ namespace AppDigitalCv.Controllers
 
 
         [HttpPost]
-        public ActionResult Create([Bind(Include = "Id,IdInstitucionSuperior,FechaInicio,FechaTermino,DocumentoPDF")]CursosVM cursosVM)
+        public ActionResult Create([Bind(Include = "IdCurso,IdInstitucionSuperior,FechaInicio,FechaTermino,DocumentoPDF")]CursosVM cursosVM)
         {
             string nombre = SessionPersister.AccountSession.NombreCompleto;
-            
+            cursosVM.IdPersonal = SessionPersister.AccountSession.IdPersonal;
             if (ModelState.IsValid)
             {
-                CursosDomainModel cursosDM = new CursosDomainModel();
-                AutoMapper.Mapper.Map(cursosVM,cursosDM);
-                if (GuardarArchivo(cursosDM, nombre)) ///aqui se guarda el archivo
+                if (DateTime.Parse(cursosVM.FechaInicio) <= DateTime.Parse(cursosVM.FechaTermino))
                 {
-                    cursosDM.StrUrlDocumento = Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombre + "/"+cursosDM.DocumentoPDF.FileName;
-                    cursosBusiness.AddUpdateCursos(cursosDM);
+                    CursosDomainModel cursosDM = new CursosDomainModel();
+                    AutoMapper.Mapper.Map(cursosVM, cursosDM);
+                    if (GuardarArchivo(cursosDM, nombre))
+                    {
+                        cursosDM.StrUrlDocumento = Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombre + "/" + cursosDM.DocumentoPDF.FileName;
+                        cursosBusiness.AddUpdateCursos(cursosDM);
+                    }
+                    else
+                    {
+                        ViewBag.ErrorArchivo = Recursos.RecursosSistema.ERROR_GUARDADO_ARCHIVO;
+                    }
                 }
                 else
                 {
-                    ViewBag.ErrorArchivo = Recursos.RecursosSistema.ERROR_GUARDADO_ARCHIVO;
+                    ViewBag.ErrorFechaComparacion=Recursos.RecursosSistema.ERROR_COMPARACION_FECHA;
                 }
 
             }
-            ViewBag.Cursos = new SelectList(cursoBusiness.GetCursos(), "Id", "StrDescripcion");
-            ViewBag.Institucion = new SelectList(institucionSuperiorBusiness.GetInstitucionSuperior(), "IdInstitucionSuperior", "StrDescripcion");
-            return View();
+            ViewBag.IdCurso = new SelectList(cursoBusiness.GetCursos(), "Id", "StrDescripcion");
+            ViewBag.IdInstitucionSuperior = new SelectList(institucionSuperiorBusiness.GetInstitucionSuperior(), "IdInstitucionSuperior", "StrDescripcion");
+            return View("Create");
         }
 
 
