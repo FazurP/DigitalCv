@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    $('#strUrlDocumento').prop('disabled', true);
+    $('#DocumentoPDF').prop('disabled', true);
     $('#IdInstitucionSuperior').prop('disabled', true);
     $('#FechaInicio').prop('disabled', true);
     $('#FechaTermino').prop('disabled', true);
@@ -8,12 +8,12 @@
 
 
     $('#rdbSi').change(function () {
-        $('#strUrlDocumento').prop('disabled', false);
+        $('#DocumentoPDF').prop('disabled', false);
         toastr.info("Seleccione su(s) Evidencia(s) del Curso(s) Impartido.", "Digital-Cv dice", { timeOut: 1000, closeButton: true })
     })
 
     $('#rdbNo').change(function () {
-        $('#strUrlDocumento').prop('disabled', true);
+        $('#DocumentoPDF').prop('disabled', true);
                
     })
 
