@@ -32,6 +32,7 @@ namespace AppDigitalCv.Business
             tblDocumentacionPersonal.strIdentificador = documentacionPersonalDM.strIdentificador;
             tblDocumentacionPersonal.strNumeroDocumento = documentacionPersonalDM.strNumeroDocumento;
             tblDocumentacionPersonal.dteVigenciaDocumento = documentacionPersonalDM.dteVigenciaDocumento;
+            tblDocumentacionPersonal.dteExpedicion = documentacionPersonalDM.dteExpedicion;
 
             documentacionPersonalRepository.Insert(tblDocumentacionPersonal);
             respuesta = true;

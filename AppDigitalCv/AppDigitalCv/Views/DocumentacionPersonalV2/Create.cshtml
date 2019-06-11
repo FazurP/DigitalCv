@@ -39,16 +39,20 @@
                                 <label>Tipo de Documento</label>
                                 @Html.DropDownList("strIdentificador",null,htmlAttributes: new { @class="form-control input-sm",@id="Documentos"})
                             </div>
-                            <div class="form-group col-lg-3">
-                                <label>Numero de Documento</label>
+                            <div class="form-group col-lg-2">
+                                <label id="lblNumero">Numero de Documento</label>
                                 @Html.TextBoxFor(model => model.strNumeroDocumento,new { @class="form-control input-sm ", @id="Numero"})
                             </div>
-                            <div class="form-group col-lg-3">
-                                <label>Vigencia</label>
+                            <div class="form-group col-lg-2">
+                                <label id="lblExpedicion">Expedición</label>
+                                @Html.TextBoxFor(model => model.dteExpedicion, new { @class = "form-control input-sm", @type = "date", @id = "Expedicion" })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <label id="lblVigencia">Vigencia</label>
                                 @Html.TextBoxFor(model => model.dteVigenciaDocumento, new { @class = "form-control input-sm", @type="date", @id="Vigencia" })
                             </div>
                             <div class="form-group col-lg-3">
-                                <label>Evidencia</label>
+                                <label id="lblEvidencia">Evidencia</label>
                                 @Html.TextBoxFor(model => model.DocumentosVM.DocumentoFile, new { @class = "form-control input-sm", @type = "file", @id="Evidencia" })
                             </div>
                             <div class="form-group col-lg-3">

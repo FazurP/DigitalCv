@@ -210,6 +210,20 @@ namespace AppDigitalCv.Infraestructure
             //Documentacion Personal V2
             CreateMap<DocumentacionPersonalV2VM, DocumentacionPersonalV2DomainModel>();
             CreateMap<DocumentacionPersonalV2DomainModel, DocumentacionPersonalV2VM>();
+
+            CreateMap<PortafolioPersonalVM, PortafolioPersonalDomainModel>();
+            CreateMap<PortafolioPersonalDomainModel, PortafolioPersonalVM>();
+
+            //ParticipacionInstitucionalExterna
+            CreateMap<ParticipacionInstitucionalExternaVM, ParticipacionInstitucionalExternaDomainModel>();
+            CreateMap<ParticipacionInstitucionalExternaDomainModel, ParticipacionInstitucionalExternaVM>();
+
+            //Periodo
+            CreateMap<PeriodoVM, PeriodoDomainModel>();
+            CreateMap<PeriodoDomainModel, PeriodoVM>();
+            //ParticipacionInstitucionalInterna
+            CreateMap<ParticipacionInstitucionalInternaDomainModel, ParticipacionInstitucionalInternaVM>();
+            CreateMap<ParticipacionInstitucionalInternaVM, ParticipacionInstitucionalInternaDomainModel>();
         }
 
         public static void Run()

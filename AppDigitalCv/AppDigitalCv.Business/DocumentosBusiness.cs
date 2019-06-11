@@ -31,8 +31,9 @@ namespace AppDigitalCv.Business
         /// </summary>
         /// <param name="documentosDM">recibe una entidad como documento</param>
         /// <returns>una cadena de confirmación</returns>
-        public string AddUpdateDocumento(DocumentosDomainModel documentosDM)
+        public DocumentosDomainModel AddUpdateDocumento(DocumentosDomainModel documentosDM)
         {
+            DocumentosDomainModel documentoDM = new DocumentosDomainModel();
             string resultado = string.Empty;
             if (documentosDM.IdDocumento > 0)  
             {
@@ -45,7 +46,11 @@ namespace AppDigitalCv.Business
                     catDocumentos.strObservacion = documentosDM.StrObservacion;
                     catDocumentos.strUrl = documentosDM.StrUrl;
                     documentosRepository.Update(catDocumentos);
-                    resultado = "Se Actualizo correctamente";
+                    Expression<Func<catDocumentos, bool>> predicado = p => p.strUrl.Equals(catDocumentos.strUrl);
+                    catDocumentos documento = documentosRepository.SingleOrDefault(predicado);                   
+                    documentoDM.IdDocumento = documento.idDocumento;
+                    documentoDM.StrUrl = documento.strUrl;
+                  
                 }
             }
             else
@@ -56,9 +61,13 @@ namespace AppDigitalCv.Business
                 catDocumentos.strObservacion = documentosDM.StrObservacion;
                 catDocumentos.strUrl = documentosDM.StrUrl;
                 var record = documentosRepository.Insert(catDocumentos);
-                resultado = "Se insertaron correctamente los valores";
+                Expression<Func<catDocumentos, bool>> predicado = p => p.strUrl.Equals(catDocumentos.strUrl);
+                catDocumentos documento = documentosRepository.SingleOrDefault(predicado);
+                documentoDM.IdDocumento = documento.idDocumento;
+                documentoDM.StrUrl = documento.strUrl;
+            
             }
-            return resultado;
+            return documentoDM;
         }
 
 
