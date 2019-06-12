@@ -93,7 +93,10 @@
     <Compile Include="NumeroVisaUsaDomainModel.cs" />
     <Compile Include="PaisDomainModel.cs" />
     <Compile Include="ParentescoDomainModel.cs" />
+    <Compile Include="ParticipacionInstitucionalExternaDomainModel.cs" />
+    <Compile Include="ParticipacionInstitucionalInternaDomainModel.cs" />
     <Compile Include="PasatiempoDomainModel.cs" />
+    <Compile Include="PeriodoDomainModel.cs" />
     <Compile Include="PersonalAsociacionesDomainModel.cs" />
     <Compile Include="PersonalDomainModel.cs" />
     <Compile Include="PremiosDocenteDomainModel.cs" />
@@ -103,6 +106,7 @@
     <Compile Include="SalariosDomainModel.cs" />
     <Compile Include="SessionManagerDomainModel.cs" />
     <Compile Include="SolicitudEmpleoDomainModel.cs" />
+    <Compile Include="TipoActividadDomainModel.cs" />
     <Compile Include="TipoContratoDomainModel.cs" />
     <Compile Include="TipoEmpresaDomainModel.cs" />
     <Compile Include="TipoEstudioDomainModel.cs" />
