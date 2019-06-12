@@ -24,6 +24,8 @@
                         Formación Docente &nbsp;<i class="fa  fa-graduation-cap"></i>
                         <span class="label label-success"></span>
                     </a>
+
+
                     <ul class="dropdown-menu">
                         <li class="header">Formación Docente</li>
                         <li>
@@ -39,12 +41,51 @@
                                     </a>
 
                                 </li>
-                                
+
                             </ul>
                         </li>
                         <li class="footer"><a href="#">See All Messages</a></li>
                     </ul>
                 </li>
+
+                <li class="dropdown messages-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Participación Institucional &nbsp;<i class="fa  fa-star"></i>
+                        <span class="label label-success"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">Participación Institucional</li>
+                        <li>
+                            <ul class="menu">
+                                <li>
+                                    <a href="@Url.Action("Create","ParticipacionInstitucionalExterna")">
+                                        <span>Participacion Institucional Externa</span>
+                                        <div class="pull-left">
+                                            <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
+                                        </div>
+
+                                        <p class="text-green">Agregar Participación</p>
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Create","ParticipacionInstitucionalInterna")">
+                                        <span>Participacion Institucional Interna</span>
+                                        <div class="pull-left">
+                                            <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
+                                        </div>
+
+                                        <p class="text-green">Agregar Participación</p>
+                                    </a>
+
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="footer"><a href="#">See All Messages</a></li>
+                    </ul>
+                </li>
+              
                 @* END Messages *@
                 @* BEGIN Messages *@
                 <li class="dropdown messages-menu">
@@ -171,8 +212,9 @@
                             </div>
                             <div class="pull-right">
                                 <a href="@Url.Action("LogOut","Seguridad")" class="btn btn-default btn-flat" id="BtnCerrarSession">
-                                
-                                Salir</a>
+
+                                    Salir
+                                </a>
                                 @*<button type="submit" class="btn btn-default btn-flat" id="BtnCerrarSession">Sign out</button>*@
 
                             </div>
