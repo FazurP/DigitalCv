@@ -147,6 +147,27 @@ namespace AppDigitalCv.Controllers
 
         #endregion
 
+        #region Eliminar datos personales
 
+        /// <summary>
+        /// Este Metodo se encarga de consultar los datos y mostrarlos en una vista parcial
+        /// </summary>
+        /// <param name="idPersonal">el identificador  del personal</param>
+        /// <returns>una vista con los datos solicitados</returns>
+        public ActionResult DeleteCursosPersonal(int Id)
+        {
+            CursosDomainModel cursosDomain =  new CursosDomainModel();
+            CursosVM cursosVM = new CursosVM();
+
+            if (Id > 0)
+            {
+                cursosDomain = cursosBusiness.GetCursoPersonalById(Id);
+            }
+            
+            AutoMapper.Mapper.Map(cursosDomain, cursosVM);
+            return PartialView("_Eliminar", cursosVM);
+        }
+
+        #endregion
     }
 }

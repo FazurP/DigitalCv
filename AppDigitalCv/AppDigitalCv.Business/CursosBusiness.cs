@@ -112,6 +112,36 @@ namespace AppDigitalCv.Business
             return cursosPersonales;
         }
 
+        /// <summary>
+        /// Este metodo se encarga de consultar el curso de una persona por id
+        /// </summary>
+        /// <param name="Id">el identificador del curso</param>
+        /// <returns>una entidad del tipo cursosdomainmodel</returns>
+        public CursosDomainModel GetCursoPersonalById(int Id)
+        {
+            CursosDomainModel cursosDomain = new CursosDomainModel();
+            Expression<Func<tblCursos, bool>> predicado = p => p.id.Equals(Id);
+            tblCursos  tblcurso= cursosRepository.SingleOrDefault(predicado);
+
+            CursoDomainModel cursoDomain = new CursoDomainModel();
+            cursoDomain.Id = tblcurso.catCurso.id;
+            cursoDomain.StrDescripcion = tblcurso.catCurso.strDescripcion;
+
+            InstitucionSuperiorDomainModel institucionSuperior = new InstitucionSuperiorDomainModel();
+            institucionSuperior.IdInstitucionSuperior = tblcurso.catInstitucionSuperior.idInstitucionSuperior;
+            institucionSuperior.StrDescripcion = tblcurso.catInstitucionSuperior.strDescripcion;
+
+
+            cursosDomain.InstitucionSuperiorDomainModel = institucionSuperior;
+            cursosDomain.Id = tblcurso.id;
+            cursosDomain.IdPersonal = tblcurso.idPersonal.Value;
+            cursosDomain.FechaInicio = tblcurso.dteFechaInicio.Value.ToShortDateString();
+            cursosDomain.FechaTermino = tblcurso.dteFechaTermino.Value.ToShortDateString();
+            cursosDomain.IdCurso = tblcurso.idCurso.Value;
+            cursosDomain.IdInstitucionSuperior = tblcurso.idInstitucion.Value;
+            cursosDomain.StrUrlDocumento = tblcurso.strUrlDocumento;
+            return cursosDomain;
+        }
 
     }
 }
