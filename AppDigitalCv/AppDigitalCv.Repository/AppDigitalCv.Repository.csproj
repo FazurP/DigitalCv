@@ -271,6 +271,9 @@
     <Compile Include="tblEnfermedadPersonal.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblExperienciaLaboralExterna.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblIdiomaDialectoPersonal.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
