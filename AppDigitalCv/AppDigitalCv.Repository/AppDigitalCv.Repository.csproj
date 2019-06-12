@@ -225,7 +225,10 @@
     <Compile Include="NivelSalarialRepository.cs" />
     <Compile Include="PaisRepository.cs" />
     <Compile Include="ParentescoRepository.cs" />
+    <Compile Include="ParticipacionInstitucionalExternaRepository.cs" />
+    <Compile Include="ParticipacionInstitucionalInternaRepository.cs" />
     <Compile Include="PasatiempoRepository.cs" />
+    <Compile Include="PeriodoRepository.cs" />
     <Compile Include="PersonalAsociacionesRepository.cs" />
     <Compile Include="PersonalRepository.cs" />
     <Compile Include="PremiosDocenteRepository.cs" />
@@ -302,6 +305,7 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="TelefonoRepository.cs" />
+    <Compile Include="TipoActividadRepository.cs" />
     <Compile Include="TipoContratoRepository.cs" />
     <Compile Include="TipoEmpresaRepository.cs" />
     <Compile Include="TipoEstudioRepository.cs" />
