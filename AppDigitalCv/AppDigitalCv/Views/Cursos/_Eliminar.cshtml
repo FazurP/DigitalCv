@@ -1,4 +1,5 @@
 ﻿@model AppDigitalCv.ViewModels.CursosVM
+
 @using AppDigitalCv.Security
 <div>
     <form id="myForm">
@@ -14,8 +15,16 @@
                         ¿Deseas <strong>Eliminar</strong> este registro realmente?
                     </div>
                     <div class="col-lg-6">
-                        @Html.TextBoxFor(model => model.InstitucionSuperiorVM.StrDescripcion, new { @class = "form-control input-sm", @placeholder = "Nombre de la Institucion", @disabled = "disabled" })
-
+                        <ul class="todo-list">
+                            <li class="list-unstyled">
+                                @Html.DisplayFor(model => model.InstitucionSuperiorVM.StrDescripcion, new { @class = "form-control input-sm", @placeholder = "Nombre de la Institucion", @disabled = "disabled" })
+                                
+                            </li>
+                            <li class="list-unstyled">
+                                @Html.DisplayFor(model => model.CursoVM.StrDescripcion, new { @class = "form-control input-sm", @placeholder = "Nombre del curso", @disabled = "disabled" })
+                            </li>
+                        </ul>
+                        <hr />
                         <a href="#" id="btnSubmit">
                             <i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i>
                         </a>
@@ -26,13 +35,13 @@
     </form>
 </div>
 <script>
-        $(document).ready(function () {
+    $(document).ready(function () {
 
-            $("#btnSubmit").click(function () {
+        $("#btnSubmit").click(function () {
 
             $("#loaderDiv").show();
 
-                 var myformdat = $("#myFormulario").serialize();
+            var myformdat = $("#myFormulario").serialize();
 
             $.ajax({
 
@@ -49,5 +58,5 @@
             })
         })
 
-        })
+    })
 </script>

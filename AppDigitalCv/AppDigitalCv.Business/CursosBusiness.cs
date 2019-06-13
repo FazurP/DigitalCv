@@ -131,7 +131,7 @@ namespace AppDigitalCv.Business
             institucionSuperior.IdInstitucionSuperior = tblcurso.catInstitucionSuperior.idInstitucionSuperior;
             institucionSuperior.StrDescripcion = tblcurso.catInstitucionSuperior.strDescripcion;
 
-
+            cursosDomain.CursoDomainModel = cursoDomain;
             cursosDomain.InstitucionSuperiorDomainModel = institucionSuperior;
             cursosDomain.Id = tblcurso.id;
             cursosDomain.IdPersonal = tblcurso.idPersonal.Value;

@@ -159,12 +159,27 @@ namespace AppDigitalCv.Controllers
             CursosDomainModel cursosDomain =  new CursosDomainModel();
             CursosVM cursosVM = new CursosVM();
 
+            CursoVM cursoVM = new CursoVM();
+            InstitucionSuperiorVM superiorVM = new InstitucionSuperiorVM();
+
             if (Id > 0)
             {
                 cursosDomain = cursosBusiness.GetCursoPersonalById(Id);
+                
+                CursoDomainModel cursoDomain = new CursoDomainModel();
+                cursoDomain.Id = cursosDomain.CursoDomainModel.Id;
+                cursoDomain.StrDescripcion = cursosDomain.CursoDomainModel.StrDescripcion;
+                AutoMapper.Mapper.Map(cursoDomain, cursoVM);
+                InstitucionSuperiorDomainModel superiorDM = new InstitucionSuperiorDomainModel();
+                superiorDM.IdInstitucionSuperior = cursosDomain.InstitucionSuperiorDomainModel.IdInstitucionSuperior;
+                superiorDM.StrDescripcion = cursosDomain.InstitucionSuperiorDomainModel.StrDescripcion;
+                AutoMapper.Mapper.Map(superiorDM, superiorVM);
+                AutoMapper.Mapper.Map(cursosDomain, cursosVM);
+                cursosVM.InstitucionSuperiorVM = superiorVM;
+                cursosVM.CursoVM = cursoVM;
             }
             
-            AutoMapper.Mapper.Map(cursosDomain, cursosVM);
+            
             return PartialView("_Eliminar", cursosVM);
         }
 
