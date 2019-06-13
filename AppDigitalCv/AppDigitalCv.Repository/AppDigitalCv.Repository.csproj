@@ -212,6 +212,7 @@
     <Compile Include="EstadoCivilRepository.cs" />
     <Compile Include="EstadoRepository.cs" />
     <Compile Include="EstadoSaludRepository.cs" />
+    <Compile Include="ExperienciaLaboralExternaRepository.cs" />
     <Compile Include="FamiliarRepository.cs" />
     <Compile Include="FrecuenciaRepository.cs" />
     <Compile Include="IdiomaDialectoRepository.cs" />
