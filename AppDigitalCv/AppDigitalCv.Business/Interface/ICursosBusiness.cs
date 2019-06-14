@@ -29,5 +29,13 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="Id">el identificador del curso</param>
         /// <returns>una entidad del tipo cursosdomainmodel</returns>
         CursosDomainModel GetCursoPersonalById(int Id);
+
+        /// <summary>
+        /// Este metodo se encarga de eliminar una entidad dentro de la base de datos
+        /// </summary>
+        /// <param name="IdCompetenciaTIPersonal">el identificador de la entidad a eliminar</param>
+        /// <returns>regresa un valor booleano true o false dependiendo la condición</returns>
+        bool DeleteCursosPersonal(int Id);
+
     }
 }

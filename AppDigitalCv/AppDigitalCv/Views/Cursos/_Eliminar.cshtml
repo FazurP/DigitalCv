@@ -1,5 +1,4 @@
 ﻿@model AppDigitalCv.ViewModels.CursosVM
-
 @using AppDigitalCv.Security
 <div>
     <form id="myForm">
@@ -8,24 +7,24 @@
         <div class="form-inline">
             <div class="form-group">
                 <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 col-md-3 col-sm-3">
                         <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 col-md-3 col-sm-3">
                         ¿Deseas <strong>Eliminar</strong> este registro realmente?
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-md-6">
                         <ul class="todo-list">
                             <li class="list-unstyled">
                                 @Html.DisplayFor(model => model.InstitucionSuperiorVM.StrDescripcion, new { @class = "form-control input-sm", @placeholder = "Nombre de la Institucion", @disabled = "disabled" })
-                                
+
                             </li>
                             <li class="list-unstyled">
                                 @Html.DisplayFor(model => model.CursoVM.StrDescripcion, new { @class = "form-control input-sm", @placeholder = "Nombre del curso", @disabled = "disabled" })
                             </li>
                         </ul>
                         <hr />
-                        <a href="#" id="btnSubmit">
+                        <a href="#" id="btnEliminar">
                             <i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i>
                         </a>
                     </div>
@@ -34,29 +33,33 @@
         </div>
     </form>
 </div>
-<script>
-    $(document).ready(function () {
 
-        $("#btnSubmit").click(function () {
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
 
-            $("#loaderDiv").show();
+    <script>
+        $(document).ready(function () {
 
-            var myformdat = $("#myFormulario").serialize();
+            $("#btnEliminar").click(function () {
 
-            $.ajax({
+                //$("#loaderDiv").show();
 
-                type: "POST",
-                url: "/ParticipacionInstitucionalExterna/DeleteParticipacion",
-                data: myformdat,
-                success: function () {
-                    $("#loaderDiv").hide();
-                    $("#myModal").modal("hide");
-                    window.location.href = "/ParticipacionInstitucionalExterna/Create";
+                var myformdat = $("#myForm").serialize();
 
-                }
+                $.ajax({
 
+                    type: "POST",
+                    url: "/Cursos/EliminarCursosPersonales",
+                    data: myformdat,
+                    success: function () {
+                        $("#loaderDiv").hide();
+                        $("#myModal").modal("hide");
+                        window.location.href = "/Cursos/Create";
+
+                    }
+
+                })
             })
-        })
 
-    })
-</script>
+        })
+    </script>

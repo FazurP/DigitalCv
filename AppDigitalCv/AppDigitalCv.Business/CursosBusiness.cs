@@ -143,5 +143,26 @@ namespace AppDigitalCv.Business
             return cursosDomain;
         }
 
+
+
+        /// <summary>
+        /// Este metodo se encarga de eliminar una entidad dentro de la base de datos
+        /// </summary>
+        /// <param name="Id">el identificador de la entidad a eliminar</param>
+        /// <returns>regresa un valor booleano true o false dependiendo la condición</returns>
+        public bool DeleteCursosPersonal(int Id)
+        {
+            bool respuesta = false;
+            Expression<Func<tblCursos, bool>> predicado = p => p.id.Equals(Id);
+            cursosRepository.Delete(predicado);
+            respuesta = true;
+            return respuesta;
+
+        }
+
+
+
+
+
     }
 }
