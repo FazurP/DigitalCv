@@ -22,15 +22,16 @@
         if (dateStart > dateCurrent) {
             toastr.warning('La Fecha de Inicio no Puede ser Mayor a la Actual', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
             $(this).val('');
-            $('#dteFechaTerminio').prop('disabled', true);
+            $('#dteFechaTermino').prop('disabled', true);
             return false;
         }
 
     });
 
-    $('#dteFechaTerminio').change(function () {
+    $('#dteFechaTermino').change(function () {
        
         dateEnd = $(this).val();
+      
 
         var day;
         var month;

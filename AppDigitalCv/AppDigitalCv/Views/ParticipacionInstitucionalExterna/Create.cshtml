@@ -55,7 +55,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Fecha de Termino</label>
-                                    @Html.TextBoxFor(model => model.dteFechaTermino, new { @class = "form-control input-sm", @id = "dteFechaTerminio", @type = "date" })
+                                    @Html.TextBoxFor(model => model.dteFechaTermino, new { @class = "form-control input-sm", @id = "dteFechaTermino", @type = "date" })
                                 </div>
                                 <div class="form-group">
                                     <label>Evidencia en PDF</label>
@@ -121,7 +121,7 @@
     <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/Scripts/Validate/ParticipacionInstitucionalExterna/validate-participacion-institucional-externa-form.js"></script>
     <script src="~/Scripts/Validate/ParticipacionInstitucionalExterna/validate-participacion-institucion-externa-upload.js"></script>
-    <script src="~/Scripts/Validate/RangoFechas/validate-participacion-institucional-externa-date.js"></script>
+    <script src="~/Scripts/Validate/ParticipacionInstitucionalExterna/validate-participacion-institucional-externa-date.js"></script>
 
     <script>
 
@@ -208,7 +208,7 @@
                                     return '<a href="#" onclick="AddEditar(' + idCatDocumento + ')"><i class="btn btn-sm btn-success fa fa-pencil-square-o"></i></a>'
                                 }
                             },
-                             {
+                            {
                                 "data": "idCatDocumento",
                                 "render": function (idCatDocumento, type, full, meta) {
 
