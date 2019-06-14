@@ -401,6 +401,9 @@
     <Content Include="Scripts\Validate\Documentos\validate-documentos-upload.js" />
     <Content Include="Scripts\Validate\EstadoCivil\validate-estado-civil-radio.js" />
     <Content Include="Scripts\Validate\EstadoSalud\validate-estado-salud-form.js" />
+    <Content Include="Scripts\Validate\ExperienciaLaboralExterna\validate-experiencia-laboral-externa-form.js" />
+    <Content Include="Scripts\Validate\ExperienciaLaboralExterna\validate-experiencia-laboral-externa-upload.js" />
+    <Content Include="Scripts\Validate\ExperienciaLaboralExterna\validate-experiencia-laboral-externa-date.js" />
     <Content Include="Scripts\Validate\HabitosPersonales\validate-habitos-personales-form.js" />
     <Content Include="Scripts\Validate\HabitosPersonales\validate-habitos-personales-regExp.js" />
     <Content Include="Scripts\Validate\Hijos\validate-hijos-form.js" />
@@ -410,8 +413,10 @@
     <Content Include="Scripts\Validate\Institucion\validate-institucion.js" />
     <Content Include="Scripts\Validate\ParticipacionInstitucionalExterna\validate-participacion-institucion-externa-upload.js" />
     <Content Include="Scripts\Validate\ParticipacionInstitucionalExterna\validate-participacion-institucional-externa-form.js" />
+    <Content Include="Scripts\Validate\ParticipacionInstitucionalExterna\validate-participacion-institucional-externa-date.js" />
     <Content Include="Scripts\Validate\ParticipacionInstitucionalInterna\validate-participacion-institucional-interna-form.js" />
     <Content Include="Scripts\Validate\ParticipacionInstitucionalInterna\validate-participacion-institucional-interna-upload.js" />
+    <Content Include="Scripts\Validate\ParticipacionInstitucionalInterna\validate-participacion-institucional-interna-date.js" />
     <Content Include="Scripts\Validate\Personal\calculate-homo-clave.js" />
     <Content Include="Scripts\Validate\Personal\validar-personal-create.js" />
     <Content Include="Scripts\Validate\Personal\validate-personal-create-regExp.js" />
@@ -419,7 +424,6 @@
     <Content Include="Scripts\Validate\PremiosDocente\validate-premios-docente-upload.js" />
     <Content Include="Scripts\Validate\Premios\validate-premios-form.js" />
     <Content Include="Scripts\Validate\Premios\validate-premios-regExp.js" />
-    <Content Include="Scripts\Validate\RangoFechas\validate-participacion-institucional-externa-date.js" />
     <Content Include="Scripts\Validate\ScriptTest.js" />
     <Content Include="Scripts\Validate\validate-datos-contacto-email.js" />
     <Content Include="Views\index.html" />
@@ -516,6 +520,9 @@
     <Content Include="Views\ParticipacionInstitucionalInterna\Create.cshtml" />
     <Content Include="Views\ParticipacionInstitucionalInterna\_Editar.cshtml" />
     <Content Include="Views\ParticipacionInstitucionalInterna\_Eliminar.cshtml" />
+    <Content Include="Views\ExperienciaLaboralExterna\Create.cshtml" />
+    <Content Include="Views\ExperienciaLaboralExterna\_Eliminar.cshtml" />
+    <Content Include="Views\ExperienciaLaboralExterna\_Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -541,6 +548,7 @@
     <Compile Include="Controllers\DocumentosController.cs" />
     <Compile Include="Controllers\EstadoCivilController.cs" />
     <Compile Include="Controllers\EstadoSaludController.cs" />
+    <Compile Include="Controllers\ExperienciaLaboralExternaController.cs" />
     <Compile Include="Controllers\HabitosPersonalesController.cs" />
     <Compile Include="Controllers\HijosController.cs" />
     <Compile Include="Controllers\IdiomaDialectoController.cs" />
@@ -598,6 +606,7 @@
     <Compile Include="ViewModels\EstadoCivilVM.cs" />
     <Compile Include="ViewModels\EstadoSaludVM.cs" />
     <Compile Include="ViewModels\EstadoVM.cs" />
+    <Compile Include="ViewModels\ExperienciaLaboralExternaVM.cs" />
     <Compile Include="ViewModels\FamiliaresVM.cs" />
     <Compile Include="ViewModels\FrecuenciaVM.cs" />
     <Compile Include="ViewModels\IdiomaDialectoVM.cs" />

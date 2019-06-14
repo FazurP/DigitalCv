@@ -3,7 +3,7 @@
     $('#ddlInstitucion').prop('disabled', true);
     $('#ddlPeriodo').prop('disabled', true);
     $('#dteFechaInicio').prop('disabled', true);
-    $('#dteFechaTerminio').prop('disabled', true);
+    $('#dteFechaTermino').prop('disabled', true);
     $('#inputUploadFile').prop('disabled', true);
     $('#btnGuardar').prop('disabled', true);
 
@@ -15,14 +15,14 @@
             $('#ddlInstitucion').prop('disabled', true);
             $('#ddlPeriodo').prop('disabled', true);
             $('#dteFechaInicio').prop('disabled', true);
-            $('#dteFechaTerminio').prop('disabled', true);
+            $('#dteFechaTermino').prop('disabled', true);
             $('#inputUploadFile').prop('disabled', true);
             $('#btnGuardar').prop('disabled', true);
 
             $('#ddlInstitucion').val(0);
             $('#ddlPeriodo').val(0);
             $('#dteFechaInicio').val('');
-            $('#dteFechaTerminio').val('');
+            $('#dteFechaTermino').val('');
             $('#inputUploadFile').val('');
         } else {
             $('#ddlInstitucion').prop('disabled', false);
@@ -37,17 +37,17 @@
         if (institucion == null || institucion == 0 || institucion == '0' || institucion == "0") {
             $('#ddlPeriodo').prop('disabled', true);
             $('#dteFechaInicio').prop('disabled', true);
-            $('#dteFechaTerminio').prop('disabled', true);
+            $('#dteFechaTermino').prop('disabled', true);
             $('#inputUploadFile').prop('disabled', true);
             $('#btnGuardar').prop('disabled', true);
 
             $('#ddlPeriodo').val(0);
             $('#dteFechaInicio').val('');
-            $('#dteFechaTerminio').val('');
+            $('#dteFechaTermino').val('');
             $('#inputUploadFile').val('');
         } else {
             $('#ddlPeriodo').prop('disabled', false);
-            toastr.info('Institución Seleccionada', 'Digital-Cv dice', { timeOut: 1000, closeButton: true })
+            toastr.success('Institución Seleccionada', 'Digital-Cv dice', { timeOut: 1000, closeButton: true })
         }
 
     })
@@ -58,16 +58,16 @@
 
         if (periodo == null || periodo == 0 || periodo == '0' || periodo == "0") {
             $('#dteFechaInicio').prop('disabled', true);
-            $('#dteFechaTerminio').prop('disabled', true);
+            $('#dteFechaTermino').prop('disabled', true);
             $('#inputUploadFile').prop('disabled', true);
             $('#btnGuardar').prop('disabled', true);
 
             $('#dteFechaInicio').val('');
-            $('#dteFechaTerminio').val('');
+            $('#dteFechaTermino').val('');
             $('#inputUploadFile').val('');
         } else {
             $('#dteFechaInicio').prop('disabled', false);
-            toastr.info('Periodo Seleccionado', 'Digital-Cv dice', { timeOut: 1000, closeButton: true })
+            toastr.success('Periodo Seleccionado', 'Digital-Cv dice', { timeOut: 1000, closeButton: true })
         }
 
     })
@@ -76,19 +76,19 @@
         var fecha = $(this).val();
 
         if (fecha == null || fecha == "" || fecha == '') {
-            $('#dteFechaTerminio').prop('disabled', true);
+            $('#dteFechaTermino').prop('disabled', true);
             $('#inputUploadFile').prop('disabled', true);
             $('#btnGuardar').prop('disabled', true);
 
-            $('#dteFechaTerminio').val('');
+            $('#dteFechaTermino').val('');
             $('#inputUploadFile').val('');
         } else {
-            $('#dteFechaTerminio').prop('disabled', false);
+            $('#dteFechaTermino').prop('disabled', false);
         }
 
     })
 
-    $('#dteFechaTerminio').change(function () {
+    $('#dteFechaTermino').change(function () {
         var fecha = $(this).val();
 
         if (fecha == null || fecha == '' || fecha == "") {

@@ -133,7 +133,11 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionDocente_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_tblPersonal" />
-      </Diagram>
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblExperienciaLaboralExterna" Width="1.5" PointX="16.5" PointY="27" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralExterna_catDocumentos" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralExterna_tblPersonal" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralExterna_catPeriodo" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -76,6 +76,7 @@
     <Compile Include="EstadoCivilDomainModel.cs" />
     <Compile Include="EstadoDomainModel.cs" />
     <Compile Include="EstadoSaludDomainModel.cs" />
+    <Compile Include="ExperienciaLaboralExternaDomainModel.cs" />
     <Compile Include="FamiliarDomainModel.cs" />
     <Compile Include="FamiliaresDomainModel.cs" />
     <Compile Include="FrecuenciaDomainModel.cs" />

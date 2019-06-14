@@ -74,6 +74,7 @@ namespace AppDigitalCv
             container.RegisterType<IParticipacionInstitucionalExternaBusiness, ParticipacionInstitucionalExternaBusiness>();
             container.RegisterType<ITipoActividad, TipoActividadBusiness>();
             container.RegisterType<IParticipacionInstitucionalInternaBusiness, ParticipacionInstitucionalInternaBusiness>();
+            container.RegisterType<IExperienciaLaboralExterna, ExperienciaLaboralExternaBusiness>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

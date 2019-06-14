@@ -4,7 +4,7 @@
     $('#idCatPeriodo').prop('disabled', true)
     $('#txtActividad').prop('disabled', true)
     $('#dteFechaInicio').prop('disabled', true)
-    $('#dteFechaTerminio').prop('disabled', true)
+    $('#dteFechaTermino').prop('disabled', true)
     $('#inputUploadFile').prop('disabled', true)
     $('#btnGuardar').prop('disabled', true)
 
@@ -17,7 +17,7 @@
             $('#idCatPeriodo').prop('disabled', true)
             $('#txtActividad').prop('disabled', true)
             $('#dteFechaInicio').prop('disabled', true)
-            $('#dteFechaTerminio').prop('disabled', true)
+            $('#dteFechaTermino').prop('disabled', true)
             $('#inputUploadFile').prop('disabled', true)
             $('#btnGuardar').prop('disabled', true)
 
@@ -25,7 +25,7 @@
             $('#idCatPeriodo').val(0);
             $('#txtActividad').val('');
             $('#dteFechaInicio').val('');
-            $('#dteFechaTerminio').val('');
+            $('#dteFechaTermino').val('');
             $('#inputUploadFile').val('');
         } else {
             $('#idCatTipoActividad').prop('disabled', false)
@@ -44,14 +44,14 @@
             $('#idCatPeriodo').prop('disabled', true)
             $('#txtActividad').prop('disabled', true)
             $('#dteFechaInicio').prop('disabled', true)
-            $('#dteFechaTerminio').prop('disabled', true)
+            $('#dteFechaTermino').prop('disabled', true)
             $('#inputUploadFile').prop('disabled', true)
             $('#btnGuardar').prop('disabled', true)
 
             $('#idCatPeriodo').val(0);
             $('#txtActividad').val('');
             $('#dteFechaInicio').val('');
-            $('#dteFechaTerminio').val('');
+            $('#dteFechaTermino').val('');
             $('#inputUploadFile').val('');
         } else {
             $('#idCatPeriodo').prop('disabled', false)
@@ -67,13 +67,13 @@
         if (dato == null || dato == 0 || dato == '0' || dato == "0") {
             $('#txtActividad').prop('disabled', true)
             $('#dteFechaInicio').prop('disabled', true)
-            $('#dteFechaTerminio').prop('disabled', true)
+            $('#dteFechaTermino').prop('disabled', true)
             $('#inputUploadFile').prop('disabled', true)
             $('#btnGuardar').prop('disabled', true)
 
             $('#txtActividad').val('');
             $('#dteFechaInicio').val('');
-            $('#dteFechaTerminio').val('');
+            $('#dteFechaTermino').val('');
             $('#inputUploadFile').val('');
         } else {
             $('#txtActividad').prop('disabled', false)
@@ -88,12 +88,12 @@
 
         if (dato == null || dato == '' || dato == "") {
             $('#dteFechaInicio').prop('disabled', true)
-            $('#dteFechaTerminio').prop('disabled', true)
+            $('#dteFechaTermino').prop('disabled', true)
             $('#inputUploadFile').prop('disabled', true)
             $('#btnGuardar').prop('disabled', true)
 
             $('#dteFechaInicio').val('');
-            $('#dteFechaTerminio').val('');
+            $('#dteFechaTermino').val('');
             $('#inputUploadFile').val('');
         } else {
             $('#dteFechaInicio').prop('disabled', false)
@@ -106,19 +106,19 @@
         var dato = $(this).val();
 
         if (dato == null || dato == '' || dato == "") {
-            $('#dteFechaTerminio').prop('disabled', true)
+            $('#dteFechaTermino').prop('disabled', true)
             $('#inputUploadFile').prop('disabled', true)
             $('#btnGuardar').prop('disabled', true)
 
-            $('#dteFechaTerminio').val('');
+            $('#dteFechaTermino').val('');
             $('#inputUploadFile').val('');
         } else {
-            $('#dteFechaTerminio').prop('disabled', false)
+            $('#dteFechaTermino').prop('disabled', false)
         }
 
     })
 
-    $('#dteFechaTerminio').change(function () {
+    $('#dteFechaTermino').change(function () {
 
         var dato = $(this).val();
 
