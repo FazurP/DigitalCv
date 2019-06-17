@@ -18,6 +18,7 @@ namespace AppDigitalCv.Repository
         public catArea()
         {
             this.tblDatosLaboralesAdministrativos = new HashSet<tblDatosLaboralesAdministrativos>();
+            this.tblExperienciaLaboralInterna = new HashSet<tblExperienciaLaboralInterna>();
         }
     
         public int idArea { get; set; }
@@ -26,5 +27,7 @@ namespace AppDigitalCv.Repository
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblDatosLaboralesAdministrativos> tblDatosLaboralesAdministrativos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblExperienciaLaboralInterna> tblExperienciaLaboralInterna { get; set; }
     }
 }
