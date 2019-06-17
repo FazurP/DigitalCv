@@ -523,6 +523,8 @@
     <Content Include="Views\ExperienciaLaboralExterna\Create.cshtml" />
     <Content Include="Views\ExperienciaLaboralExterna\_Eliminar.cshtml" />
     <Content Include="Views\ExperienciaLaboralExterna\_Editar.cshtml" />
+    <Content Include="Views\ExperienciaLaboralInterna\Create.cshtml" />
+    <Content Include="Views\Shared\_TipoContrato.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -773,7 +775,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Usuarios\" />
-    <Folder Include="Views\ExperienciaLaboralInterna\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppDigitalCv.Business\AppDigitalCv.Business.csproj">
