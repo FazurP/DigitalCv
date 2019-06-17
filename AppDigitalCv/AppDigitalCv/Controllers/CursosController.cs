@@ -74,7 +74,8 @@ namespace AppDigitalCv.Controllers
             ViewBag.IdInstitucionSuperior = new SelectList(institucionSuperiorBusiness.GetInstitucionSuperior(), "IdInstitucionSuperior", "StrDescripcion");
             return View("Create");
         }
-        
+
+        #region Trabajo con Archivos
         /// <summary>
         /// Este metodo se encarga de guardar un archivo dentro de la estructura de directorios de la aplicacion
         /// </summary>
@@ -97,6 +98,34 @@ namespace AppDigitalCv.Controllers
             return respuesta;
         }
 
+        /// <summary>
+        /// Este metodo se encarga de eliminar un archivoes invocado por el controlador
+        /// </summary>
+        /// <param name="cursosVM">recibe una entidad del tipo cursosVM</param>
+        /// <param name="nombre">recibe una cadena</param>
+        /// <returns>una respuesta booleana</returns>
+        public bool EliminarArchivo(CursosVM cursosVM, string nombre)
+        {
+            bool respuesta = false;
+            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO +nombre + "/"));
+            
+            try
+            {
+                if (Directory.Exists(path))
+                {
+                    string pathCompleto = Server.MapPath(cursosVM.StrUrlDocumento);
+                    System.IO.File.Delete(pathCompleto);
+                    respuesta = true;
+                }
+            }
+            catch (System.IO.IOException ex)
+            {
+
+                string mensajeErr = ex.Message;
+            }
+            return respuesta;
+        }
+        #endregion
 
         #region  Consultar los datos de los cursos del personal
 
@@ -147,6 +176,68 @@ namespace AppDigitalCv.Controllers
 
         #endregion
 
+        #region Eliminar datos personales
 
+        /// <summary>
+        /// Este Metodo se encarga de consultar los datos y mostrarlos en una vista parcial
+        /// </summary>
+        /// <param name="idPersonal">el identificador  del personal</param>
+        /// <returns>una vista con los datos solicitados</returns>
+        public ActionResult DeleteCursosPersonal(int Id)
+        {
+            CursosDomainModel cursosDomain =  new CursosDomainModel();
+            CursosVM cursosVM = new CursosVM();
+
+            CursoVM cursoVM = new CursoVM();
+            InstitucionSuperiorVM superiorVM = new InstitucionSuperiorVM();
+
+            if (Id > 0)
+            {
+                cursosDomain = cursosBusiness.GetCursoPersonalById(Id);
+                
+                CursoDomainModel cursoDomain = new CursoDomainModel();
+                cursoDomain.Id = cursosDomain.CursoDomainModel.Id;
+                cursoDomain.StrDescripcion = cursosDomain.CursoDomainModel.StrDescripcion;
+                AutoMapper.Mapper.Map(cursoDomain, cursoVM);
+                InstitucionSuperiorDomainModel superiorDM = new InstitucionSuperiorDomainModel();
+                superiorDM.IdInstitucionSuperior = cursosDomain.InstitucionSuperiorDomainModel.IdInstitucionSuperior;
+                superiorDM.StrDescripcion = cursosDomain.InstitucionSuperiorDomainModel.StrDescripcion;
+                AutoMapper.Mapper.Map(superiorDM, superiorVM);
+                AutoMapper.Mapper.Map(cursosDomain, cursosVM);
+                cursosVM.InstitucionSuperiorVM = superiorVM;
+                cursosVM.CursoVM = cursoVM;
+            }
+            
+            
+            return PartialView("_Eliminar", cursosVM);
+        }
+
+        #region Eliminar Cursos Personales
+        /// <summary>
+        /// Este metodo se encarga de presentar los datos a la vista que se van a eliminar
+        /// </summary>
+        /// <param name="deportePersonalVM">recibe un identificador del trabajador</param>
+        /// <returns>regresa una vista con los datos eliminados</returns>
+        public ActionResult EliminarCursosPersonales(int Id)
+        {
+            int _idPersonal = SessionPersister.AccountSession.IdPersonal;
+            string nombre = SessionPersister.AccountSession.NombreCompleto;
+            if (Id >0)
+            {
+              
+                CursosDomainModel cursoDM = cursosBusiness.GetCursoPersonalById(Id);
+                CursosVM cursosVM = new CursosVM();
+                AutoMapper.Mapper.Map(cursoDM, cursosVM);
+                this.EliminarArchivo(cursosVM, nombre);
+                cursosBusiness.DeleteCursosPersonal(Id);
+            }
+
+            ViewBag.IdCurso = new SelectList(cursoBusiness.GetCursos(), "Id", "StrDescripcion");
+            ViewBag.IdInstitucionSuperior = new SelectList(institucionSuperiorBusiness.GetInstitucionSuperior(), "IdInstitucionSuperior", "StrDescripcion");
+            return View("Create");
+        }
+        #endregion
+
+        #endregion
     }
 }

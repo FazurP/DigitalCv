@@ -89,7 +89,6 @@
                                         <th>Fecha de Inicio</th>
                                         <th>Fecha de Termino</th>
                                         <th>Descripción del curso</th>
-                                        <th>Editar</th>
                                         <th>Eliminar</th>
                                     </tr>
                                 </thead>
@@ -128,7 +127,7 @@
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"
             integrity="sha256-8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw="
             crossorigin="anonymous"></script>
-
+    <script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/Validate/Cursos/validate-cursos-form.js?v=1"></script>
@@ -146,8 +145,8 @@
 
         };
 
-        var AddDelete = function (idDeportePersonal) {
-            var url = "/HabitosPersonales/DeleteHabitosPersonales?idDeportePersonal=" + idDeportePersonal;
+        var AddDelete = function (Id) {
+            var url = "/Cursos/DeleteCursosPersonal?Id=" + Id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -209,13 +208,13 @@
                             { "data": "FechaInicio" },
                             { "data": "FechaTermino" },
                             { "data": "CursoDomainModel.StrDescripcion" },
-                            {
+                            /*{
                                 "data": "Id",
                                 "render": function (Id, type, full, meta) {
 
                                     return '<a href="#" onclick="AddEditar(' + Id + ')"><i class="btn btn-sm btn-success fa fa-pencil-square-o"></i></a>'
                                 }
-                            },
+                            },*/
                             {
                                 "data": "Id",
                                 "render": function (Id, type, full, meta) {

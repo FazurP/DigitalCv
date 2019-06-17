@@ -37,6 +37,7 @@ namespace AppDigitalCv.Controllers
             return View();
             }
         }
+
         [HttpPost]
         public ActionResult Create(DeportePersonalVM deportePersonalVM)
         {

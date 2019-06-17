@@ -112,6 +112,57 @@ namespace AppDigitalCv.Business
             return cursosPersonales;
         }
 
+        /// <summary>
+        /// Este metodo se encarga de consultar el curso de una persona por id
+        /// </summary>
+        /// <param name="Id">el identificador del curso</param>
+        /// <returns>una entidad del tipo cursosdomainmodel</returns>
+        public CursosDomainModel GetCursoPersonalById(int Id)
+        {
+            CursosDomainModel cursosDomain = new CursosDomainModel();
+            Expression<Func<tblCursos, bool>> predicado = p => p.id.Equals(Id);
+            tblCursos  tblcurso= cursosRepository.SingleOrDefault(predicado);
+
+            CursoDomainModel cursoDomain = new CursoDomainModel();
+            cursoDomain.Id = tblcurso.catCurso.id;
+            cursoDomain.StrDescripcion = tblcurso.catCurso.strDescripcion;
+
+            InstitucionSuperiorDomainModel institucionSuperior = new InstitucionSuperiorDomainModel();
+            institucionSuperior.IdInstitucionSuperior = tblcurso.catInstitucionSuperior.idInstitucionSuperior;
+            institucionSuperior.StrDescripcion = tblcurso.catInstitucionSuperior.strDescripcion;
+
+            cursosDomain.CursoDomainModel = cursoDomain;
+            cursosDomain.InstitucionSuperiorDomainModel = institucionSuperior;
+            cursosDomain.Id = tblcurso.id;
+            cursosDomain.IdPersonal = tblcurso.idPersonal.Value;
+            cursosDomain.FechaInicio = tblcurso.dteFechaInicio.Value.ToShortDateString();
+            cursosDomain.FechaTermino = tblcurso.dteFechaTermino.Value.ToShortDateString();
+            cursosDomain.IdCurso = tblcurso.idCurso.Value;
+            cursosDomain.IdInstitucionSuperior = tblcurso.idInstitucion.Value;
+            cursosDomain.StrUrlDocumento = tblcurso.strUrlDocumento;
+            return cursosDomain;
+        }
+
+
+
+        /// <summary>
+        /// Este metodo se encarga de eliminar una entidad dentro de la base de datos
+        /// </summary>
+        /// <param name="Id">el identificador de la entidad a eliminar</param>
+        /// <returns>regresa un valor booleano true o false dependiendo la condición</returns>
+        public bool DeleteCursosPersonal(int Id)
+        {
+            bool respuesta = false;
+            Expression<Func<tblCursos, bool>> predicado = p => p.id.Equals(Id);
+            cursosRepository.Delete(predicado);
+            respuesta = true;
+            return respuesta;
+
+        }
+
+
+
+
 
     }
 }

@@ -22,5 +22,20 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="idPersonal">el identificador del personal</param>
         /// <returns>regresa una lista de todos los cursos</returns>
         List<CursosDomainModel> GetCursosPersonalesById(int idPersonal);
+
+        /// <summary>
+        /// Este metodo se encarga de consultar el curso de una persona por id
+        /// </summary>
+        /// <param name="Id">el identificador del curso</param>
+        /// <returns>una entidad del tipo cursosdomainmodel</returns>
+        CursosDomainModel GetCursoPersonalById(int Id);
+
+        /// <summary>
+        /// Este metodo se encarga de eliminar una entidad dentro de la base de datos
+        /// </summary>
+        /// <param name="IdCompetenciaTIPersonal">el identificador de la entidad a eliminar</param>
+        /// <returns>regresa un valor booleano true o false dependiendo la condición</returns>
+        bool DeleteCursosPersonal(int Id);
+
     }
 }
