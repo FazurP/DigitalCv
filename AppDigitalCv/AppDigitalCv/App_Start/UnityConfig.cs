@@ -66,8 +66,6 @@ namespace AppDigitalCv
             container.RegisterType<ICursoBusiness, CursoBusiness>();
 
             container.RegisterType<ICursosBusiness, CursosBusiness>();
-            
-
             container.RegisterType<IDocumentacionPersonalBusiness, DocumentacionPersonalBusiness>();
             container.RegisterType<IDocumentacionPersonalV2Business, DocumentacionPersonalV2Business>();
             container.RegisterType<IPeriodoBusiness,PeriodoBusiness>();
@@ -75,6 +73,7 @@ namespace AppDigitalCv
             container.RegisterType<ITipoActividad, TipoActividadBusiness>();
             container.RegisterType<IParticipacionInstitucionalInternaBusiness, ParticipacionInstitucionalInternaBusiness>();
             container.RegisterType<IExperienciaLaboralExterna, ExperienciaLaboralExternaBusiness>();
+            container.RegisterType<IParticipacionDocenteBusiness, ParticipacionDocenteBusiness>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }
