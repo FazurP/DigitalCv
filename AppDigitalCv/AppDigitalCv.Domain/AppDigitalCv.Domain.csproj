@@ -95,6 +95,7 @@
     <Compile Include="NumeroVisaUsaDomainModel.cs" />
     <Compile Include="PaisDomainModel.cs" />
     <Compile Include="ParentescoDomainModel.cs" />
+    <Compile Include="ParticipacionDocenteDomainModel.cs" />
     <Compile Include="ParticipacionInstitucionalExternaDomainModel.cs" />
     <Compile Include="ParticipacionInstitucionalInternaDomainModel.cs" />
     <Compile Include="PasatiempoDomainModel.cs" />

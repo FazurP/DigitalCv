@@ -557,6 +557,7 @@
     <Compile Include="Controllers\HijosController.cs" />
     <Compile Include="Controllers\IdiomaDialectoController.cs" />
     <Compile Include="Controllers\InstitucionSuperiorController.cs" />
+    <Compile Include="Controllers\ParticipacionDocenteController.cs" />
     <Compile Include="Controllers\ParticipacionInstitucionalExternaController.cs" />
     <Compile Include="Controllers\ParticipacionInstitucionalInternaController.cs" />
     <Compile Include="Controllers\PersonalAsociacionesController.cs" />
@@ -628,6 +629,7 @@
     <Compile Include="ViewModels\NumeroVisaUsaVM.cs" />
     <Compile Include="ViewModels\PaisVM.cs" />
     <Compile Include="ViewModels\ParentescoVM.cs" />
+    <Compile Include="ViewModels\ParticipacionDocenteVM.cs" />
     <Compile Include="ViewModels\ParticipacionInstitucionalExternaVM.cs" />
     <Compile Include="ViewModels\ParticipacionInstitucionalInternaVM.cs" />
     <Compile Include="ViewModels\PasatiempoVM.cs" />
@@ -776,6 +778,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Usuarios\" />
+    <Folder Include="Views\ParticipacionDocente\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppDigitalCv.Business\AppDigitalCv.Business.csproj">

@@ -234,6 +234,10 @@ namespace AppDigitalCv.Infraestructure
             //ExperienciaLaboralInterna
             CreateMap<ExperienciaLaboralInternaVM, ExperienciaLaboralInternaDomainModel>();
             CreateMap<ExperienciaLaboralInternaDomainModel, ExperienciaLaboralInternaVM>();
+            //participacion docente
+            CreateMap<ParticipacionDocenteVM, DatosContactoDomainModel>();
+            CreateMap<DatosContactoDomainModel, ParticipacionDocenteVM>();
+
         }
 
         public static void Run()
