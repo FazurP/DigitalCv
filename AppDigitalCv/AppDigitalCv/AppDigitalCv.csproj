@@ -627,6 +627,7 @@
     <Compile Include="ViewModels\NumeroVisaUsaVM.cs" />
     <Compile Include="ViewModels\PaisVM.cs" />
     <Compile Include="ViewModels\ParentescoVM.cs" />
+    <Compile Include="ViewModels\ParticipacionDocenteVM.cs" />
     <Compile Include="ViewModels\ParticipacionInstitucionalExternaVM.cs" />
     <Compile Include="ViewModels\ParticipacionInstitucionalInternaVM.cs" />
     <Compile Include="ViewModels\PasatiempoVM.cs" />
