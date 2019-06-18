@@ -1301,7 +1301,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblParticipacionDocente_catDocumentos">
+        <Association Name="FK_tblParticipacionDocente_catDocumentos1">
           <End Role="catDocumentos" Type="Self.catDocumentos" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -1315,7 +1315,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblParticipacionDocente_tblPersonal">
+        <Association Name="FK_tblParticipacionDocente_tblPersonal1">
           <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -1909,11 +1909,11 @@
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblExperienciaLaboralInterna" EntitySet="tblExperienciaLaboralInterna" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblParticipacionDocente_catDocumentos" Association="Self.FK_tblParticipacionDocente_catDocumentos">
+          <AssociationSet Name="FK_tblParticipacionDocente_catDocumentos1" Association="Self.FK_tblParticipacionDocente_catDocumentos1">
             <End Role="catDocumentos" EntitySet="catDocumentos" />
             <End Role="tblParticipacionDocente" EntitySet="tblParticipacionDocente" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblParticipacionDocente_tblPersonal" Association="Self.FK_tblParticipacionDocente_tblPersonal">
+          <AssociationSet Name="FK_tblParticipacionDocente_tblPersonal1" Association="Self.FK_tblParticipacionDocente_tblPersonal1">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblParticipacionDocente" EntitySet="tblParticipacionDocente" />
           </AssociationSet>
