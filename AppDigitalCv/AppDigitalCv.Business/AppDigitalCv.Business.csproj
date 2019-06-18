@@ -78,6 +78,7 @@
     <Compile Include="EstadoCivilBusiness.cs" />
     <Compile Include="EstadoSaludBusiness.cs" />
     <Compile Include="ExperienciaLaboralExternaBusiness.cs" />
+    <Compile Include="ExperienciaLaboralInternaBusiness.cs" />
     <Compile Include="FamiliarBusiness.cs" />
     <Compile Include="FrecuenciaBusiness.cs" />
     <Compile Include="IdiomaDialectoBusiness.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Interface\IEdificioBusiness.cs" />
     <Compile Include="Interface\IEmergenciaBusiness.cs" />
     <Compile Include="Interface\IEstadoSaludBusiness.cs" />
+    <Compile Include="Interface\IExperienciaLaboralInternaBusiness.cs" />
     <Compile Include="Interface\IExperienciaLaboralExterna.cs" />
     <Compile Include="Interface\IFamiliarBusiness.cs" />
     <Compile Include="Interface\IFrecuenciaBusiness.cs" />

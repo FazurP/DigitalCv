@@ -524,7 +524,8 @@
     <Content Include="Views\ExperienciaLaboralExterna\_Eliminar.cshtml" />
     <Content Include="Views\ExperienciaLaboralExterna\_Editar.cshtml" />
     <Content Include="Views\ExperienciaLaboralInterna\Create.cshtml" />
-    <Content Include="Views\Shared\_TipoContrato.cshtml" />
+    <Content Include="Views\Shared\_TipoDeContrato.cshtml" />
+    <Content Include="Views\ExperienciaLaboralInterna\_Eliminar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

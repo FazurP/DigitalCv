@@ -41,6 +41,9 @@ namespace AppDigitalCv.Business
                 tipoContratoDM.idSalario = item.idSalario;
                 tipoContratosDM.Add(tipoContratoDM);
             }
+
+          
+
             return tipoContratosDM;
 
         }
