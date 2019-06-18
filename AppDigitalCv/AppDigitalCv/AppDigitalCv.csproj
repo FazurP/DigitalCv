@@ -404,6 +404,9 @@
     <Content Include="Scripts\Validate\ExperienciaLaboralExterna\validate-experiencia-laboral-externa-form.js" />
     <Content Include="Scripts\Validate\ExperienciaLaboralExterna\validate-experiencia-laboral-externa-upload.js" />
     <Content Include="Scripts\Validate\ExperienciaLaboralExterna\validate-experiencia-laboral-externa-date.js" />
+    <Content Include="Scripts\Validate\ExperienciaLaboralInterna\validate-experiencia-laboral-interna-date.js" />
+    <Content Include="Scripts\Validate\ExperienciaLaboralInterna\validate-experiencia-laboral-interna-form.js" />
+    <Content Include="Scripts\Validate\ExperienciaLaboralInterna\validate-experiencia-laboral-interna-regExp.js" />
     <Content Include="Scripts\Validate\HabitosPersonales\validate-habitos-personales-form.js" />
     <Content Include="Scripts\Validate\HabitosPersonales\validate-habitos-personales-regExp.js" />
     <Content Include="Scripts\Validate\Hijos\validate-hijos-form.js" />
