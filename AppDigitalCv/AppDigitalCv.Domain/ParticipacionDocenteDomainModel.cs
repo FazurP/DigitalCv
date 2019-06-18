@@ -11,16 +11,17 @@ namespace AppDigitalCv.Domain
         public int Id { get; set; }
         public int IdCatDocumento { get; set; }
         public int IdPersonal { get; set; }
-        public int StrEvento { get; set; }
-        public int StrTipoEvento { get; set; }
-        public int StrParticipacion { get; set; }
-        public int StrTipoParticipacion { get; set; }
+        public string StrEvento { get; set; }
+        public string StrTipoEvento { get; set; }
+        public string StrParticipacion { get; set; }
+        public string StrTipoParticipacion { get; set; }
         public bool BitPonencia { get; set; }
         public string StrNombrePonencia { get; set; }
         public string StrNombreInstitucionEmpresa { get; set; }
         public string StrLugar { get; set; }
-        public int DteFecha { get; set; }
+        public string DteFecha { get; set; }
 
-
+        public virtual DocumentosDomainModel CatDocumentosDM { get; set; }
+        public virtual PersonalDomainModel PersonalDM { get; set; }
     }
 }

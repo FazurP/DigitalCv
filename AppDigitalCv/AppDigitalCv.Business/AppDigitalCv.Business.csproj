@@ -118,6 +118,7 @@
     <Compile Include="Interface\IInstitucionSuperiorBusiness.cs" />
     <Compile Include="Interface\IPaisBusiness.cs" />
     <Compile Include="Interface\IParentescoBusiness.cs" />
+    <Compile Include="Interface\IParticipacionDocenteBusiness.cs" />
     <Compile Include="Interface\IParticipacionInstitucionalExternaBusiness.cs" />
     <Compile Include="Interface\IParticipacionInstitucionalInternaBusiness.cs" />
     <Compile Include="Interface\IPeriodoBusiness.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="Interface\IUnidadesAcademicasBusiness.cs" />
     <Compile Include="PaisBusiness.cs" />
     <Compile Include="ParentescoBusiness.cs" />
+    <Compile Include="ParticipacionDocenteBusiness.cs" />
     <Compile Include="ParticipacionInstitucionalExternaBusiness.cs" />
     <Compile Include="ParticipacionInstitucionalInternaBusiness.cs" />
     <Compile Include="PeriodoBusiness.cs" />
