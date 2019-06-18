@@ -150,5 +150,38 @@ namespace AppDigitalCv.Controllers
 
             return View();
         }
+        [HttpGet]
+        public ActionResult GetExperienciaEdit(int _idExperiencia)
+        {
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
+            ExperienciaLaboralInternaDomainModel experienciaLaboralInternaDM = ExperienciaLaboralInternaBusiness.GetExperiencia(idPersonal, _idExperiencia);
+            ExperienciaLaboralInternaVM experienciaLaboralInternaVM = new ExperienciaLaboralInternaVM();
+
+            if (experienciaLaboralInternaDM != null)
+            {
+                AutoMapper.Mapper.Map(experienciaLaboralInternaDM, experienciaLaboralInternaVM);
+                return PartialView("_Editar", experienciaLaboralInternaVM);
+            }
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult EditExperiencia(ExperienciaLaboralInternaVM experienciaLaboralInternaVM)
+        {
+
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
+
+            ExperienciaLaboralInternaDomainModel experienciaDM = new ExperienciaLaboralInternaDomainModel();
+
+            if (experienciaLaboralInternaVM.id > 0)
+            {
+                AutoMapper.Mapper.Map(experienciaLaboralInternaVM, experienciaDM);
+
+                ExperienciaLaboralInternaBusiness.AddUpdateExperienciaLaboralInterna(experienciaDM);
+            }
+
+            return View();
+        }
+
     }
 }

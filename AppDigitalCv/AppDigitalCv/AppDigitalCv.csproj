@@ -405,6 +405,9 @@
     <Content Include="Scripts\Validate\ExperienciaLaboralExterna\validate-experiencia-laboral-externa-form.js" />
     <Content Include="Scripts\Validate\ExperienciaLaboralExterna\validate-experiencia-laboral-externa-upload.js" />
     <Content Include="Scripts\Validate\ExperienciaLaboralExterna\validate-experiencia-laboral-externa-date.js" />
+    <Content Include="Scripts\Validate\ExperienciaLaboralInterna\validate-experiencia-laboral-interna-date.js" />
+    <Content Include="Scripts\Validate\ExperienciaLaboralInterna\validate-experiencia-laboral-interna-form.js" />
+    <Content Include="Scripts\Validate\ExperienciaLaboralInterna\validate-experiencia-laboral-interna-regExp.js" />
     <Content Include="Scripts\Validate\HabitosPersonales\validate-habitos-personales-form.js" />
     <Content Include="Scripts\Validate\HabitosPersonales\validate-habitos-personales-regExp.js" />
     <Content Include="Scripts\Validate\Hijos\validate-hijos-form.js" />
@@ -527,7 +530,11 @@
     <Content Include="Views\ExperienciaLaboralInterna\Create.cshtml" />
     <Content Include="Views\Shared\_TipoDeContrato.cshtml" />
     <Content Include="Views\ExperienciaLaboralInterna\_Eliminar.cshtml" />
+
+    <Content Include="Views\ExperienciaLaboralInterna\_Editar.cshtml" />
+
     <Content Include="Views\ParticipacionDocente\Create.cshtml" />
+
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
