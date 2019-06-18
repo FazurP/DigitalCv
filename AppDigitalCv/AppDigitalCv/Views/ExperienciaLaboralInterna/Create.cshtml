@@ -3,7 +3,6 @@
 
 @using (Html.BeginForm(FormMethod.Post))
 {
-
     @Html.AntiForgeryToken()
     <div class="bs-container" style="min-height:960px;">
         <section class="content-header">
@@ -28,28 +27,36 @@
                                 @SessionPersister.AccountSession.NombreCompleto
                             </label>
                         </h5>
-
                     </div>
                     <div class="box-body">
                         <div class="form-group">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Categoria</label>
-                                    @Html.DropDownList("idCategoria", null, new { @class = "form-control input-sm", @id="Categoria" })
+                                    @Html.DropDownList("idCategoria", null, new { @class = "form-control input-sm", @id = "idCategoria" })
                                     <label>Tipo de Contrato</label>
-                                    @Html.DropDownList("idTipoContrato", null, new { @class = "form-control input-sm" })
+                                    @Html.DropDownList("idTipoContrato", null, htmlAttributes: new { @class = "form-control input-sm", id = "idTipoContrato" })
+                                    <label>Area</label>
+                                    @Html.DropDownList("idArea", null, new { @class = "form-control input-sm",@id ="idArea" })
+                                    <label>Programa Educativo</label>
+                                    @Html.DropDownList("idProgramaEducativo", null, new { @class = "form-control input-sm",@id="idProgramaEducativo"}) 
                                 </div>
                             </div>
-
                             <div class="col-lg-6">
-
+                                <label>Periodo</label>
+                                    @Html.DropDownList("idPeriodo", null, new { @class = "form-control input-sm",@id="idPeriodo" })
+                                    <label>Fecha de Inicio</label>
+                                    @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm", @type = "date" })
+                                    <label>Fecha de Termino</label>
+                                    @Html.TextBoxFor(model => model.dteFechaTermino, new { @class = "form-control input-sm", @type = "date" })
+                                    <label>Actividad Desempeñada</label>
+                                    @Html.TextBoxFor(model => model.strActividadDesempeñada, new { @class = "form-control input-sm" })
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <input type="submit" id="btnGuardar" value="Guardar" class="btn btn-success" />
                                 </div>
                             </div>
-
                             <div class="form-group-sm">
                                 <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
                                 <div class="form-group" id="addTable">
@@ -60,7 +67,6 @@
                                                 <th></th>
                                                 <th>Editar</th>
                                                 <th>Eliminar</th>
-
                                             </tr>
                                         </thead>
                                         <tbody id="tblBody"></tbody>
@@ -115,9 +121,22 @@
             })
 
         };
+
+        var AddEliminar = function (IdDireccion) {
+
+            var url = "/Direccion/GeDireccion?IdDireccion=" + IdDireccion;
+
+            $("#myModalBodyDiv1").load(url, function () {
+                $("#myModal1").modal("show");
+
+            })
+
+        };
+
+
         $(document).ready(function () {
 
-             $("#Categoria").change(function () {
+             $("#idCategoria").change(function () {
                 var idCategoria = $(this).val();
 
                 $.ajax({
@@ -125,8 +144,8 @@
                     url: "/ExperienciaLaboralInterna/GetTipoContratoByCategoria?idCategoria=" + idCategoria,
                     contentType: "html",
                     success: function (response) {
-                        $("#Categoria").empty();
-                        $("#Categoria").append(response);
+                        $("#idTipoContrato").empty();
+                        $("#idTipoContrato").append(response);
                     },
                     error: function (error) {
 
