@@ -5,6 +5,7 @@ using AppDigitalCv.Repository.Infraestructure.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -62,11 +63,68 @@ namespace AppDigitalCv.Business
             return respuesta;
         }
 
-        public List<ExperienciaLaboralInternaDomainModel> GetExperienciasByPersonal()
+        public List<ExperienciaLaboralInternaDomainModel> GetExperienciasByPersonal(int _idPersonal)
         {
             List<ExperienciaLaboralInternaDomainModel> experienciaLaboralInternaDomainModels = new List<ExperienciaLaboralInternaDomainModel>();
 
+            Expression<Func<tblExperienciaLaboralInterna, bool>> predicate = p => p.idPersonal == _idPersonal;
+            List<tblExperienciaLaboralInterna> tblExperiencias = experienciaLaboralInternaRepository.GetAll(predicate).ToList();
+
+            foreach (tblExperienciaLaboralInterna tblExperiencia in tblExperiencias)
+            {
+                ExperienciaLaboralInternaDomainModel experienciaLaboralInternaDM = new ExperienciaLaboralInternaDomainModel();
+
+                experienciaLaboralInternaDM.id = tblExperiencia.id;
+                experienciaLaboralInternaDM.idArea = tblExperiencia.idArea.Value;
+                experienciaLaboralInternaDM.idPeriodo = tblExperiencia.idPeriodo.Value;
+                experienciaLaboralInternaDM.idPersonal = tblExperiencia.idPersonal.Value;
+                experienciaLaboralInternaDM.idProgramaEducativo = tblExperiencia.idProgramaEduactivo.Value;
+                experienciaLaboralInternaDM.idTipoContrato = tblExperiencia.idTipoContrato.Value;
+                experienciaLaboralInternaDM.strActividadDesempeñada = tblExperiencia.strActividadDesempenada;
+                experienciaLaboralInternaDM.dteFechaInicio = tblExperiencia.dteFechaInicio.Value;
+                experienciaLaboralInternaDM.dteFechaTermino = tblExperiencia.dteFechaFin.Value;
+
+                experienciaLaboralInternaDomainModels.Add(experienciaLaboralInternaDM);
+
+            }
+
             return experienciaLaboralInternaDomainModels;
+        }
+
+        public ExperienciaLaboralInternaDomainModel GetExperiencia(int _idPersonal,int _idExperiencia)
+        {
+            ExperienciaLaboralInternaDomainModel experienciaLaboralInternaDM = new ExperienciaLaboralInternaDomainModel();
+
+            Expression<Func<tblExperienciaLaboralInterna, bool>> predicate = p => p.idPersonal == _idPersonal && p.id
+             == _idExperiencia;
+
+            tblExperienciaLaboralInterna tblExperienciaLaboral = experienciaLaboralInternaRepository.GetAll(predicate).FirstOrDefault();
+
+            experienciaLaboralInternaDM.id = tblExperienciaLaboral.id;
+            experienciaLaboralInternaDM.idArea = tblExperienciaLaboral.idArea.Value;
+            experienciaLaboralInternaDM.idPeriodo = tblExperienciaLaboral.idPeriodo.Value;
+            experienciaLaboralInternaDM.idPersonal = tblExperienciaLaboral.idPersonal.Value;
+            experienciaLaboralInternaDM.idProgramaEducativo = tblExperienciaLaboral.idProgramaEduactivo.Value;
+            experienciaLaboralInternaDM.idTipoContrato = tblExperienciaLaboral.idTipoContrato.Value;
+            experienciaLaboralInternaDM.strActividadDesempeñada = tblExperienciaLaboral.strActividadDesempenada;
+            experienciaLaboralInternaDM.dteFechaInicio = tblExperienciaLaboral.dteFechaInicio.Value;
+            experienciaLaboralInternaDM.dteFechaTermino = tblExperienciaLaboral.dteFechaFin.Value;
+
+            return experienciaLaboralInternaDM;
+        }
+
+        public bool DeleteExperiencias(int _idPersonal, int _idExperiencia)
+        {
+            bool respuesta = false;
+            Expression<Func<tblExperienciaLaboralInterna, bool>> predicare = p => p.idPersonal == _idPersonal
+             && p.id == _idExperiencia;
+
+            experienciaLaboralInternaRepository.Delete(predicare);
+
+            respuesta = true;
+
+            return respuesta;
+
         }
     }
 }

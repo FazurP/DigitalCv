@@ -98,16 +98,16 @@ namespace AppDigitalCv.Controllers
             int totalCount = 0;
             if (param.sSearch != null)
             {
-                experienciaDM = ExperienciaLaboralInternaBusiness.GetExperienciaLaboralByPersonal(IdentityPersonal).Where(p => p.strInstitucionEmpresa.Contains(param.sSearch)).ToList();
+                experienciaDM = ExperienciaLaboralInternaBusiness.GetExperienciasByPersonal(IdentityPersonal).Where(p => p.strActividadDesempeñada.Contains(param.sSearch)).ToList();
 
 
             }
             else
             {
-                totalCount = ExperienciaLaboralInternaBusiness.GetExperienciaLaboralByPersonal(IdentityPersonal).Count();
+                totalCount = ExperienciaLaboralInternaBusiness.GetExperienciasByPersonal(IdentityPersonal).Count();
 
 
-                experienciaDM = ExperienciaLaboralInternaBusiness.GetExperienciaLaboralByPersonal(IdentityPersonal).OrderBy(p => p.strInstitucionEmpresa)
+                experienciaDM = ExperienciaLaboralInternaBusiness.GetExperienciasByPersonal(IdentityPersonal).OrderBy(p => p.strActividadDesempeñada)
                     .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
 
             }
@@ -120,6 +120,35 @@ namespace AppDigitalCv.Controllers
 
             }, JsonRequestBehavior.AllowGet);
 
+        }
+        [HttpGet]
+        public ActionResult GetExperiencia(int _idExperiencia)
+        {
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
+            ExperienciaLaboralInternaDomainModel experienciaLaboralInternaDM = ExperienciaLaboralInternaBusiness.GetExperiencia(idPersonal, _idExperiencia);
+            ExperienciaLaboralInternaVM experienciaLaboralInternaVM = new ExperienciaLaboralInternaVM();
+
+            if (experienciaLaboralInternaDM != null)
+            {
+                AutoMapper.Mapper.Map(experienciaLaboralInternaDM, experienciaLaboralInternaVM);
+                return PartialView("_Eliminar", experienciaLaboralInternaVM);
+            }
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult DeleteExperiencia(ExperienciaLaboralInternaVM experienciaLaboralInternaVM)
+        {
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
+
+            ExperienciaLaboralInternaDomainModel experienciaLaboralInternaDM = ExperienciaLaboralInternaBusiness.GetExperiencia(idPersonal,experienciaLaboralInternaVM.id);
+
+            if (experienciaLaboralInternaDM != null)
+            {
+                ExperienciaLaboralInternaBusiness.DeleteExperiencias(idPersonal, experienciaLaboralInternaDM.id);
+            }
+
+            return View();
         }
     }
 }
