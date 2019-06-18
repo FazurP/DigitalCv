@@ -523,6 +523,8 @@
     <Content Include="Views\ExperienciaLaboralExterna\Create.cshtml" />
     <Content Include="Views\ExperienciaLaboralExterna\_Eliminar.cshtml" />
     <Content Include="Views\ExperienciaLaboralExterna\_Editar.cshtml" />
+    <Content Include="Views\ExperienciaLaboralInterna\Create.cshtml" />
+    <Content Include="Views\Shared\_TipoContrato.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -549,6 +551,7 @@
     <Compile Include="Controllers\EstadoCivilController.cs" />
     <Compile Include="Controllers\EstadoSaludController.cs" />
     <Compile Include="Controllers\ExperienciaLaboralExternaController.cs" />
+    <Compile Include="Controllers\ExperienciaLaboralInternaController.cs" />
     <Compile Include="Controllers\HabitosPersonalesController.cs" />
     <Compile Include="Controllers\HijosController.cs" />
     <Compile Include="Controllers\IdiomaDialectoController.cs" />
@@ -607,6 +610,7 @@
     <Compile Include="ViewModels\EstadoSaludVM.cs" />
     <Compile Include="ViewModels\EstadoVM.cs" />
     <Compile Include="ViewModels\ExperienciaLaboralExternaVM.cs" />
+    <Compile Include="ViewModels\ExperienciaLaboralInternaVM.cs" />
     <Compile Include="ViewModels\FamiliaresVM.cs" />
     <Compile Include="ViewModels\FrecuenciaVM.cs" />
     <Compile Include="ViewModels\IdiomaDialectoVM.cs" />

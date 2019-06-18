@@ -475,6 +475,20 @@
           <Property Name="strMotivoConclucion" Type="varchar" MaxLength="200" />
           <Property Name="strPuestoDesempeñado" Type="varchar" MaxLength="150" />
         </EntityType>
+        <EntityType Name="tblExperienciaLaboralInterna">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPersonal" Type="int" />
+          <Property Name="idTipoContrato" Type="int" />
+          <Property Name="idArea" Type="int" />
+          <Property Name="idProgramaEduactivo" Type="int" />
+          <Property Name="idPeriodo" Type="int" />
+          <Property Name="dteFechaInicio" Type="date" />
+          <Property Name="dteFechaFin" Type="date" />
+          <Property Name="strActividadDesempenada" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="tblIdiomaDialectoPersonal">
           <Key>
             <PropertyRef Name="idIdiomaDialectoPersonal" />
@@ -1217,6 +1231,76 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblExperienciaLaboralInterna_catArea">
+          <End Role="catArea" Type="Self.catArea" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblExperienciaLaboralInterna" Type="Self.tblExperienciaLaboralInterna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catArea">
+              <PropertyRef Name="idArea" />
+            </Principal>
+            <Dependent Role="tblExperienciaLaboralInterna">
+              <PropertyRef Name="idArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExperienciaLaboralInterna_catPeriodo">
+          <End Role="catPeriodo" Type="Self.catPeriodo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblExperienciaLaboralInterna" Type="Self.tblExperienciaLaboralInterna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catPeriodo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblExperienciaLaboralInterna">
+              <PropertyRef Name="idPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExperienciaLaboralInterna_catProgramaEducativo">
+          <End Role="catProgramaEducativo" Type="Self.catProgramaEducativo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblExperienciaLaboralInterna" Type="Self.tblExperienciaLaboralInterna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catProgramaEducativo">
+              <PropertyRef Name="idProgramaEducativo" />
+            </Principal>
+            <Dependent Role="tblExperienciaLaboralInterna">
+              <PropertyRef Name="idProgramaEduactivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExperienciaLaboralInterna_catTipoContrato">
+          <End Role="catTipoContrato" Type="Self.catTipoContrato" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblExperienciaLaboralInterna" Type="Self.tblExperienciaLaboralInterna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catTipoContrato">
+              <PropertyRef Name="idTipoContrato" />
+            </Principal>
+            <Dependent Role="tblExperienciaLaboralInterna">
+              <PropertyRef Name="idTipoContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExperienciaLaboralInterna_tblPersonal">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblExperienciaLaboralInterna" Type="Self.tblExperienciaLaboralInterna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblExperienciaLaboralInterna">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblParticipacionDocente_catDocumentos">
           <End Role="catDocumentos" Type="Self.catDocumentos" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -1597,6 +1681,7 @@
           <EntitySet Name="tblEmergencia" EntityType="Self.tblEmergencia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblEnfermedadPersonal" EntityType="Self.tblEnfermedadPersonal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblExperienciaLaboralExterna" EntityType="Self.tblExperienciaLaboralExterna" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblExperienciaLaboralInterna" EntityType="Self.tblExperienciaLaboralInterna" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblIdiomaDialectoPersonal" EntityType="Self.tblIdiomaDialectoPersonal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblParticipacionDocente" EntityType="Self.tblParticipacionDocente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblParticipacionInstitucionalExterna" EntityType="Self.tblParticipacionInstitucionalExterna" Schema="dbo" store:Type="Tables" />
@@ -1803,6 +1888,26 @@
           <AssociationSet Name="FK_tblExperienciaLaboralExterna_tblPersonal" Association="Self.FK_tblExperienciaLaboralExterna_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblExperienciaLaboralExterna" EntitySet="tblExperienciaLaboralExterna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExperienciaLaboralInterna_catArea" Association="Self.FK_tblExperienciaLaboralInterna_catArea">
+            <End Role="catArea" EntitySet="catArea" />
+            <End Role="tblExperienciaLaboralInterna" EntitySet="tblExperienciaLaboralInterna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExperienciaLaboralInterna_catPeriodo" Association="Self.FK_tblExperienciaLaboralInterna_catPeriodo">
+            <End Role="catPeriodo" EntitySet="catPeriodo" />
+            <End Role="tblExperienciaLaboralInterna" EntitySet="tblExperienciaLaboralInterna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExperienciaLaboralInterna_catProgramaEducativo" Association="Self.FK_tblExperienciaLaboralInterna_catProgramaEducativo">
+            <End Role="catProgramaEducativo" EntitySet="catProgramaEducativo" />
+            <End Role="tblExperienciaLaboralInterna" EntitySet="tblExperienciaLaboralInterna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExperienciaLaboralInterna_catTipoContrato" Association="Self.FK_tblExperienciaLaboralInterna_catTipoContrato">
+            <End Role="catTipoContrato" EntitySet="catTipoContrato" />
+            <End Role="tblExperienciaLaboralInterna" EntitySet="tblExperienciaLaboralInterna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExperienciaLaboralInterna_tblPersonal" Association="Self.FK_tblExperienciaLaboralInterna_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblExperienciaLaboralInterna" EntitySet="tblExperienciaLaboralInterna" />
           </AssociationSet>
           <AssociationSet Name="FK_tblParticipacionDocente_catDocumentos" Association="Self.FK_tblParticipacionDocente_catDocumentos">
             <End Role="catDocumentos" EntitySet="catDocumentos" />
@@ -2292,6 +2397,27 @@
             <End Role="catPeriodo" EntitySet="catPeriodo" />
             <End Role="tblExperienciaLaboralExterna" EntitySet="tblExperienciaLaboralExterna" />
           </AssociationSet>
+          <EntitySet Name="tblExperienciaLaboralInterna" EntityType="bdGestionDocenteModel.tblExperienciaLaboralInterna" />
+          <AssociationSet Name="FK_tblExperienciaLaboralInterna_catArea" Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catArea">
+            <End Role="catArea" EntitySet="catArea" />
+            <End Role="tblExperienciaLaboralInterna" EntitySet="tblExperienciaLaboralInterna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExperienciaLaboralInterna_catPeriodo" Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catPeriodo">
+            <End Role="catPeriodo" EntitySet="catPeriodo" />
+            <End Role="tblExperienciaLaboralInterna" EntitySet="tblExperienciaLaboralInterna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExperienciaLaboralInterna_catProgramaEducativo" Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catProgramaEducativo">
+            <End Role="catProgramaEducativo" EntitySet="catProgramaEducativo" />
+            <End Role="tblExperienciaLaboralInterna" EntitySet="tblExperienciaLaboralInterna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExperienciaLaboralInterna_catTipoContrato" Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catTipoContrato">
+            <End Role="catTipoContrato" EntitySet="catTipoContrato" />
+            <End Role="tblExperienciaLaboralInterna" EntitySet="tblExperienciaLaboralInterna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExperienciaLaboralInterna_tblPersonal" Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblExperienciaLaboralInterna" EntitySet="tblExperienciaLaboralInterna" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="catAlergias">
           <Key>
@@ -2312,6 +2438,7 @@
           <Property Name="strDescripcion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblDatosLaboralesAdministrativos" Relationship="bdGestionDocenteModel.fk_area_datosLaboralesAdministrativos" FromRole="catArea" ToRole="tblDatosLaboralesAdministrativos" />
+          <NavigationProperty Name="tblExperienciaLaboralInterna" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catArea" FromRole="catArea" ToRole="tblExperienciaLaboralInterna" />
         </EntityType>
         <EntityType Name="catAsociaciones">
           <Key>
@@ -2535,6 +2662,7 @@
           <NavigationProperty Name="tblDatosLaboralesDocente" Relationship="bdGestionDocenteModel.fk_programaEducativo_datosLaboralesDocente" FromRole="catProgramaEducativo" ToRole="tblDatosLaboralesDocente" />
           <NavigationProperty Name="catTipoEstudio" Relationship="bdGestionDocenteModel.fk_tipoestudio_programaEducativo" FromRole="catProgramaEducativo" ToRole="catTipoEstudio" />
           <NavigationProperty Name="tblParticipacionInstitucionalInterna" Relationship="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_catProgramaEducativo" FromRole="catProgramaEducativo" ToRole="tblParticipacionInstitucionalInterna" />
+          <NavigationProperty Name="tblExperienciaLaboralInterna" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catProgramaEducativo" FromRole="catProgramaEducativo" ToRole="tblExperienciaLaboralInterna" />
         </EntityType>
         <EntityType Name="catRoles">
           <Key>
@@ -2587,6 +2715,7 @@
           <NavigationProperty Name="catSalarios" Relationship="bdGestionDocenteModel.fk_salarios_tipoContrato" FromRole="catTipoContrato" ToRole="catSalarios" />
           <NavigationProperty Name="tblDatosLaboralesAdministrativos" Relationship="bdGestionDocenteModel.fk_tipocontrato_datosLaboralesAdministrativos" FromRole="catTipoContrato" ToRole="tblDatosLaboralesAdministrativos" />
           <NavigationProperty Name="tblDatosLaboralesDocente" Relationship="bdGestionDocenteModel.fk_tipoContrato_datosLaboralesDocente" FromRole="catTipoContrato" ToRole="tblDatosLaboralesDocente" />
+          <NavigationProperty Name="tblExperienciaLaboralInterna" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catTipoContrato" FromRole="catTipoContrato" ToRole="tblExperienciaLaboralInterna" />
         </EntityType>
         <EntityType Name="catTipoEmpresa">
           <Key>
@@ -3269,6 +3398,7 @@
           <NavigationProperty Name="tblParticipacionInstitucionalExterna" Relationship="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_tblPersonal" FromRole="tblPersonal" ToRole="tblParticipacionInstitucionalExterna" />
           <NavigationProperty Name="tblParticipacionInstitucionalInterna" Relationship="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_tblPersonal" FromRole="tblPersonal" ToRole="tblParticipacionInstitucionalInterna" />
           <NavigationProperty Name="tblExperienciaLaboralExterna" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralExterna_tblPersonal" FromRole="tblPersonal" ToRole="tblExperienciaLaboralExterna" />
+          <NavigationProperty Name="tblExperienciaLaboralInterna" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_tblPersonal" FromRole="tblPersonal" ToRole="tblExperienciaLaboralInterna" />
         </EntityType>
         <Association Name="fk_direccion_personal">
           <End Type="bdGestionDocenteModel.catDireccion" Role="catDireccion" Multiplicity="0..1" />
@@ -3678,6 +3808,7 @@
           <NavigationProperty Name="tblParticipacionInstitucionalExterna" Relationship="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_catPeriodo" FromRole="catPeriodo" ToRole="tblParticipacionInstitucionalExterna" />
           <NavigationProperty Name="tblParticipacionInstitucionalInterna" Relationship="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_catPeriodo" FromRole="catPeriodo" ToRole="tblParticipacionInstitucionalInterna" />
           <NavigationProperty Name="tblExperienciaLaboralExterna" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralExterna_catPeriodo" FromRole="catPeriodo" ToRole="tblExperienciaLaboralExterna" />
+          <NavigationProperty Name="tblExperienciaLaboralInterna" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catPeriodo" FromRole="catPeriodo" ToRole="tblExperienciaLaboralInterna" />
         </EntityType>
         <EntityType Name="catTipoActividad">
           <Key>
@@ -3954,6 +4085,95 @@
             </Principal>
             <Dependent Role="tblExperienciaLaboralExterna">
               <PropertyRef Name="idPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblExperienciaLaboralInterna">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPersonal" Type="Int32" />
+          <Property Name="idTipoContrato" Type="Int32" />
+          <Property Name="idArea" Type="Int32" />
+          <Property Name="idProgramaEduactivo" Type="Int32" />
+          <Property Name="idPeriodo" Type="Int32" />
+          <Property Name="dteFechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaFin" Type="DateTime" Precision="0" />
+          <Property Name="strActividadDesempenada" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="catArea" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catArea" FromRole="tblExperienciaLaboralInterna" ToRole="catArea" />
+          <NavigationProperty Name="catPeriodo" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catPeriodo" FromRole="tblExperienciaLaboralInterna" ToRole="catPeriodo" />
+          <NavigationProperty Name="catProgramaEducativo" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catProgramaEducativo" FromRole="tblExperienciaLaboralInterna" ToRole="catProgramaEducativo" />
+          <NavigationProperty Name="catTipoContrato" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catTipoContrato" FromRole="tblExperienciaLaboralInterna" ToRole="catTipoContrato" />
+          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_tblPersonal" FromRole="tblExperienciaLaboralInterna" ToRole="tblPersonal" />
+        </EntityType>
+        <Association Name="FK_tblExperienciaLaboralInterna_catArea">
+          <End Type="bdGestionDocenteModel.catArea" Role="catArea" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblExperienciaLaboralInterna" Role="tblExperienciaLaboralInterna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catArea">
+              <PropertyRef Name="idArea" />
+            </Principal>
+            <Dependent Role="tblExperienciaLaboralInterna">
+              <PropertyRef Name="idArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExperienciaLaboralInterna_catPeriodo">
+          <End Type="bdGestionDocenteModel.catPeriodo" Role="catPeriodo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblExperienciaLaboralInterna" Role="tblExperienciaLaboralInterna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catPeriodo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblExperienciaLaboralInterna">
+              <PropertyRef Name="idPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExperienciaLaboralInterna_catProgramaEducativo">
+          <End Type="bdGestionDocenteModel.catProgramaEducativo" Role="catProgramaEducativo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblExperienciaLaboralInterna" Role="tblExperienciaLaboralInterna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catProgramaEducativo">
+              <PropertyRef Name="idProgramaEducativo" />
+            </Principal>
+            <Dependent Role="tblExperienciaLaboralInterna">
+              <PropertyRef Name="idProgramaEduactivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExperienciaLaboralInterna_catTipoContrato">
+          <End Type="bdGestionDocenteModel.catTipoContrato" Role="catTipoContrato" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblExperienciaLaboralInterna" Role="tblExperienciaLaboralInterna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catTipoContrato">
+              <PropertyRef Name="idTipoContrato" />
+            </Principal>
+            <Dependent Role="tblExperienciaLaboralInterna">
+              <PropertyRef Name="idTipoContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExperienciaLaboralInterna_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblExperienciaLaboralInterna" Role="tblExperienciaLaboralInterna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblExperienciaLaboralInterna">
+              <PropertyRef Name="idPersonal" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4633,6 +4853,21 @@
                 <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
                 <ScalarProperty Name="idTipoPersonal" ColumnName="idTipoPersonal" />
                 <ScalarProperty Name="idDocumento" ColumnName="idDocumento" />
+                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblExperienciaLaboralInterna">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblExperienciaLaboralInterna">
+              <MappingFragment StoreEntitySet="tblExperienciaLaboralInterna">
+                <ScalarProperty Name="strActividadDesempenada" ColumnName="strActividadDesempenada" />
+                <ScalarProperty Name="dteFechaFin" ColumnName="dteFechaFin" />
+                <ScalarProperty Name="dteFechaInicio" ColumnName="dteFechaInicio" />
+                <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
+                <ScalarProperty Name="idProgramaEduactivo" ColumnName="idProgramaEduactivo" />
+                <ScalarProperty Name="idArea" ColumnName="idArea" />
+                <ScalarProperty Name="idTipoContrato" ColumnName="idTipoContrato" />
                 <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

@@ -213,6 +213,7 @@
     <Compile Include="EstadoRepository.cs" />
     <Compile Include="EstadoSaludRepository.cs" />
     <Compile Include="ExperienciaLaboralExternaRepository.cs" />
+    <Compile Include="ExperienciaLaboralInternaRepository.cs" />
     <Compile Include="FamiliarRepository.cs" />
     <Compile Include="FrecuenciaRepository.cs" />
     <Compile Include="IdiomaDialectoRepository.cs" />
@@ -273,6 +274,9 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblExperienciaLaboralExterna.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblExperienciaLaboralInterna.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblIdiomaDialectoPersonal.cs">
