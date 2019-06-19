@@ -55,7 +55,11 @@ namespace AppDigitalCv.Controllers
         {
             if (ModelState.IsValid)
             {
-                this.AddUpdateExperienciaLaboralInterna(experienciaLaboralInternaVM);
+                if (experienciaLaboralInternaVM.dteFechaTermino > experienciaLaboralInternaVM.dteFechaInicio)
+                {
+                    this.AddUpdateExperienciaLaboralInterna(experienciaLaboralInternaVM);
+                }
+               
             }
             return RedirectToAction("Create","ExperienciaLaboralInterna");
         }
