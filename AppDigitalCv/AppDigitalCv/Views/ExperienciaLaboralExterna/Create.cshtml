@@ -47,16 +47,28 @@
                                     @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm", @id = "dteFechaInicio", @type = "date" })
                                 </div>
                             </div>
-
                             <div class="col-lg-6">
                                 <label>Fecha de Termino</label>
                                 @Html.TextBoxFor(model => model.dteFechaFinal, new { @class = "form-control input-sm", @id = "dteFechaTermino", @type = "date" })
+                                @if (ViewBag.ErrorFechaComparacion != null)
+                                {
+                                    <label class="text-red">
+                                        @ViewBag.ErrorFechaComparacion
+                                    </label>
+                                    <br />
+                                }
                                 <label>Actividades Realizadas</label>
                                 @Html.TextAreaFor(model => model.strActividades, new { @class = "form-control input-sm", @id = "txtActividades" })
                                 <label>Motivo de Conclusión</label>
                                 @Html.TextBoxFor(model => model.strMotivoConclusion, new { @class = "form-control input-sm", @id = "txtMotivoConclusion" })
                                 <label>Evidencia del Documento en PDF</label>
                                 @Html.TextBoxFor(model => model.documentosVM.DocumentoFile, new { @class = "form-control input-sm", @id = "inputFileUpload", @type = "file" })
+                                @if (ViewBag.ErrorArchivo != null)
+                                {
+                                    <label class="text-red">
+                                        @ViewBag.ErrorArchivo
+                                    </label>
+                                }
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">

@@ -133,6 +133,8 @@
 
         sexo = $('input[id=sexo]').val();      
 
+        alert(sexo);
+
         if (sexo == 0) {
             $('#Curp').attr('disabled', true);
             $('#Rfc').attr('disabled', true);
@@ -147,6 +149,7 @@
             $('#Semblanza').val("");
 
         } else {
+            toastr.success('Sexo Seleccionado', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
             $('#Curp').attr('disabled', false);
         }
     })

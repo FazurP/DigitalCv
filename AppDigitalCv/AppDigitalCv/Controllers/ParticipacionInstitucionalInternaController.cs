@@ -29,7 +29,10 @@ namespace AppDigitalCv.Controllers
             documentosBusiness = _documentosBusiness;
             participacionInstitucionalInternaBusiness = _participacionInstitucionalInternaBusiness;
         }
-
+        /// <summary>
+        /// Este metodo se encarga de cargar la pagina principal
+        /// </summary>
+        /// <returns>una vista</returns>
         [HttpGet]
         public ActionResult Create()
         {
@@ -45,7 +48,11 @@ namespace AppDigitalCv.Controllers
             }
            
         }
-
+        /// <summary>
+        /// Este metodo se encarga de obtener los datos y validar los mismos
+        /// </summary>
+        /// <param name="institucionalInternaVM"></param>
+        /// <returns>una vista</returns>
         [HttpPost]
         public ActionResult Create (ParticipacionInstitucionalInternaVM institucionalInternaVM)
         {
@@ -55,7 +62,10 @@ namespace AppDigitalCv.Controllers
             }
             return RedirectToAction("Create","ParticipacionInstitucionalInterna");
         }
-
+        /// <summary>
+        /// Este metodo se encarga de guardar los documentos en el servidor
+        /// </summary>
+        /// <param name="institucionalInternaVM"></param>
         public void CrearDocumentoPersonales(ParticipacionInstitucionalInternaVM institucionalInternaVM)
         {
 
@@ -95,7 +105,11 @@ namespace AppDigitalCv.Controllers
                 this.AddUpdatePartipacionInstitucionalInterna(institucionalInternaVM);
             }
         }
-
+        /// <summary>
+        /// Este metodo se encarga de insertar el objeto en la base de datos
+        /// </summary>
+        /// <param name="institucionalInternaVM"></param>
+        /// <returns></returns>
         public bool AddUpdatePartipacionInstitucionalInterna(ParticipacionInstitucionalInternaVM institucionalInternaVM)
         {
             bool respuesta = false;
@@ -112,6 +126,11 @@ namespace AppDigitalCv.Controllers
             respuesta = participacionInstitucionalInternaBusiness.AddUpdateParticipacion(participacionInstitucionalInternaDM);
             return respuesta;
         }
+        /// <summary>
+        /// Este metodo se encarga de cargar y mostrar los objetos de la persona en la tabla
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns>un Json con los objetos</returns>
         [HttpGet]
         public JsonResult GetParticipaciones(DataTablesParam param)
         {
@@ -151,6 +170,11 @@ namespace AppDigitalCv.Controllers
 
         }
         #region Metodos para la eliminacion
+        /// <summary>
+        /// Este metodo se encarga de obtener un objeto y pasarlo a la vista parcial _Eliminar
+        /// </summary>
+        /// <param name="idCatDocumento"></param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult GetParticipacionById(int idCatDocumento)
         {
@@ -167,6 +191,11 @@ namespace AppDigitalCv.Controllers
 
             return View();
         }        
+        /// <summary>
+        /// Este metodo se encarga de Eliminar un objeto de la base de datos
+        /// </summary>
+        /// <param name="participacionVM"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult DeleteParticipacion(ParticipacionInstitucionalInternaVM participacionVM)
         {
@@ -183,6 +212,11 @@ namespace AppDigitalCv.Controllers
         }
         #endregion
         #region Metodos para la Actualizacion
+        /// <summary>
+        /// Este metodo se encarga de obtener un objeto y pasarlo a la vista parcial _Editar
+        /// </summary>
+        /// <param name="idCatDocumento"></param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult GetParticipacionByIdEdit(int idCatDocumento)
         {
@@ -203,6 +237,10 @@ namespace AppDigitalCv.Controllers
             return View();
 
         }
+        /// <summary>
+        /// Este metodo se encarga de actualizar un objeto de la base de datos
+        /// </summary>
+        /// <param name="participacionInstitucionalInternaVM"></param>
         [HttpPost]
         public void EditarParticipacionPersonal(ParticipacionInstitucionalInternaVM participacionInstitucionalInternaVM)
         {

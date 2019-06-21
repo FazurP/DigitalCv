@@ -21,7 +21,11 @@ namespace AppDigitalCv.Business
             unitofWork = _unitOfWork;
             experienciaLaboralExternaRepository = new ExperienciaLaboralExternaRepository(unitofWork);
         }
-
+        /// <summary>
+        /// Este metodo se encarga de insertar o actualizar un objeto de la base de datos.
+        /// </summary>
+        /// <param name="experienciaLaboralExternaDM"></param>
+        /// <returns>true o false</returns>
         public bool AddUpdateExperiencia(ExperienciaLaboralExternaDomainModel experienciaLaboralExternaDM)
         {
             bool respuesta = false;
@@ -66,7 +70,11 @@ namespace AppDigitalCv.Business
 
             return respuesta;
         }
-
+        /// <summary>
+        /// Este metodo se encarga de obtener una lista de objetos de la persona desde la base de datos.
+        /// </summary>
+        /// <param name="idPersonal"></param>
+        /// <returns>una lista con los objetos</returns>
         public List<ExperienciaLaboralExternaDomainModel> GetExperienciaLaboralByPersonal (int idPersonal)
         {
             List<ExperienciaLaboralExternaDomainModel> experienciaLaboralExterna = new List<ExperienciaLaboralExternaDomainModel>();
@@ -96,14 +104,17 @@ namespace AppDigitalCv.Business
 
             return experienciaLaboralExterna;
         }
-
+        /// <summary>
+        /// Este metodo se encarga de obtener un objeto de la persona desde la base de datos.
+        /// </summary>
+        /// <param name="idDocumento"></param>
+        /// <param name="idPersonal"></param>
+        /// <returns>un objeto de la persona</returns>
         public ExperienciaLaboralExternaDomainModel GetExperienciaLaboral(int idDocumento,int idPersonal)
         {
-
             ExperienciaLaboralExternaDomainModel experienciaLaboralDM = new ExperienciaLaboralExternaDomainModel();
-
-            Expression<Func<tblExperienciaLaboralExterna, bool>> predicate = p => p.idDocumento == idDocumento && p.idPersonal
-             == idPersonal;
+            Expression<Func<tblExperienciaLaboralExterna, bool>> predicate = p => p.idDocumento == idDocumento && 
+            p.idPersonal == idPersonal;
 
             tblExperienciaLaboralExterna tblExperiencia = experienciaLaboralExternaRepository.
                 GetAll(predicate).FirstOrDefault<tblExperienciaLaboralExterna>();
@@ -123,14 +134,15 @@ namespace AppDigitalCv.Business
             return experienciaLaboralDM;
 
         }
-
+  
         public ExperienciaLaboralExternaDomainModel GetExperienciaLaboralEdit(int idDocumento, int idPersonal)
         {
             ExperienciaLaboralExternaDomainModel experienciaLaboralDM = new ExperienciaLaboralExternaDomainModel();
             Expression<Func<tblExperienciaLaboralExterna, bool>> predicate = p => p.idDocumento == idDocumento &&
              p.idPersonal == idPersonal;
 
-            tblExperienciaLaboralExterna tblExperiencia = experienciaLaboralExternaRepository.GetAll(predicate).FirstOrDefault();
+            tblExperienciaLaboralExterna tblExperiencia = experienciaLaboralExternaRepository.
+                GetAll(predicate).FirstOrDefault();
 
             experienciaLaboralDM.id = tblExperiencia.id;
             experienciaLaboralDM.documento = tblExperiencia.catDocumentos.strUrl;
