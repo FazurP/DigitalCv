@@ -32,6 +32,10 @@ namespace AppDigitalCv.Controllers
             periodoBusiness = _periodoBusiness;
             ExperienciaLaboralInternaBusiness = _experienciaLaboralInternaBusiness;
         }
+        /// <summary>
+        /// Este metodo se encarga de cargar la vista principal
+        /// </summary>
+        /// <returns>una vista</returns>
         [HttpGet]
         public ActionResult Create()
         {
@@ -49,17 +53,30 @@ namespace AppDigitalCv.Controllers
                 return RedirectToAction("Login","Seguridad");
             }        
         }
-
+        /// <summary>
+        /// Este metodo se encarga de recibir los datos ingresados por el usuario y de validar que los mismos
+        /// sean validos
+        /// </summary>
+        /// <param name="experienciaLaboralInternaVM"></param>
+        /// <returns>una vista</returns>
         [HttpPost]
         public ActionResult Create(ExperienciaLaboralInternaVM experienciaLaboralInternaVM)
         {
             if (ModelState.IsValid)
             {
-                this.AddUpdateExperienciaLaboralInterna(experienciaLaboralInternaVM);
+                if (experienciaLaboralInternaVM.dteFechaTermino > experienciaLaboralInternaVM.dteFechaInicio)
+                {
+                    this.AddUpdateExperienciaLaboralInterna(experienciaLaboralInternaVM);
+                }
+               
             }
             return RedirectToAction("Create","ExperienciaLaboralInterna");
         }
-
+        /// <summary>
+        /// Este metodo se encarga de mappear los datos y insertarlos en la base de datos.
+        /// </summary>
+        /// <param name="experienciaLaboralInternaVM"></param>
+        /// <returns>true o false</returns>
         public bool AddUpdateExperienciaLaboralInterna(ExperienciaLaboralInternaVM experienciaLaboralInternaVM)
         {
             experienciaLaboralInternaVM.idPersonal = SessionPersister.AccountSession.IdPersonal;
@@ -71,7 +88,11 @@ namespace AppDigitalCv.Controllers
             respuesta = true;
             return respuesta;
         }
-
+        /// <summary>
+        /// Este metodo se encarga de obtener un objeto y pintarlo en una vista parcial de un DropDawnList
+        /// </summary>
+        /// <param name="idCategoria"></param>
+        /// <returns>Una vista parcial con el objeto</returns>
         [HttpPost]
         public ActionResult GetTipoContratoByCategoria(int idCategoria)
         {
@@ -82,7 +103,11 @@ namespace AppDigitalCv.Controllers
             ViewBag.idTipoContrato = new SelectList(tipoContratoVM, "idTipoContrato", "strDescripcion");
             return PartialView("_TipoDeContrato");
         }
-
+        /// <summary>
+        /// Este metodo se encarga de cargar y mostrar los objetos correspondientes de la persona en la tabla
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns>un Json con los objetos</returns>
         [HttpGet]
         public JsonResult GetExperiencias(DataTablesParam param)
         {
@@ -121,6 +146,11 @@ namespace AppDigitalCv.Controllers
             }, JsonRequestBehavior.AllowGet);
 
         }
+        /// <summary>
+        /// Este metodo se encarga de obtener un objeto y pasarlo a la vista parcial _Eliminar
+        /// </summary>
+        /// <param name="_idExperiencia"></param>
+        /// <returns>una vista parcial con el obejto</returns>
         [HttpGet]
         public ActionResult GetExperiencia(int _idExperiencia)
         {
@@ -136,6 +166,11 @@ namespace AppDigitalCv.Controllers
 
             return View();
         }
+        /// <summary>
+        /// Este  metodo se encarga de eliminar un objeto de la base de datos
+        /// </summary>
+        /// <param name="experienciaLaboralInternaVM"></param>
+        /// <returns>una vista</returns>
         [HttpPost]
         public ActionResult DeleteExperiencia(ExperienciaLaboralInternaVM experienciaLaboralInternaVM)
         {
@@ -150,6 +185,11 @@ namespace AppDigitalCv.Controllers
 
             return View();
         }
+        /// <summary>
+        /// Este metodo se encarga de obtener un objeto y pasarlo a la vista parcial _Editar
+        /// </summary>
+        /// <param name="_idExperiencia"></param>
+        /// <returns>una vista parcial con el objeto</returns>
         [HttpGet]
         public ActionResult GetExperienciaEdit(int _idExperiencia)
         {
@@ -165,6 +205,11 @@ namespace AppDigitalCv.Controllers
 
             return View();
         }
+        /// <summary>
+        /// Este metodo se encarga de actualizar un objeto de la base de datos.
+        /// </summary>
+        /// <param name="experienciaLaboralInternaVM"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult EditExperiencia(ExperienciaLaboralInternaVM experienciaLaboralInternaVM)
         {

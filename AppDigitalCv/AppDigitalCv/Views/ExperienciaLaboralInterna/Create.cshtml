@@ -37,20 +37,20 @@
                                     <label>Tipo de Contrato</label>
                                     @Html.DropDownList("idTipoContrato", null, htmlAttributes: new { @class = "form-control input-sm", id = "idTipoContrato" })
                                     <label>Area</label>
-                                    @Html.DropDownList("idArea", null, new { @class = "form-control input-sm",@id ="idArea" })
+                                    @Html.DropDownList("idArea", null, new { @class = "form-control input-sm", @id = "idArea" })
                                     <label>Programa Educativo</label>
-                                    @Html.DropDownList("idProgramaEducativo", null, new { @class = "form-control input-sm",@id="idProgramaEducativo"}) 
+                                    @Html.DropDownList("idProgramaEducativo", null, new { @class = "form-control input-sm", @id = "idProgramaEducativo" })
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <label>Periodo</label>
-                                    @Html.DropDownList("idPeriodo", null, new { @class = "form-control input-sm",@id="idPeriodo" })
-                                    <label>Fecha de Inicio</label>
-                                    @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm", @type = "date",id="dteFechaInicio"})
-                                    <label>Fecha de Termino</label>
-                                    @Html.TextBoxFor(model => model.dteFechaTermino, new { @class = "form-control input-sm", @type = "date",id="dteFechaTermino" })
-                                    <label>Actividad Desempeñada</label>
-                                    @Html.TextBoxFor(model => model.strActividadDesempeñada, new { @class = "form-control input-sm",id="strActividadDesempeñada" })
+                                @Html.DropDownList("idPeriodo", null, new { @class = "form-control input-sm", @id = "idPeriodo" })
+                                <label>Fecha de Inicio</label>
+                                @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm", @type = "date", id = "dteFechaInicio" })
+                                <label>Fecha de Termino</label>
+                                @Html.TextBoxFor(model => model.dteFechaTermino, new { @class = "form-control input-sm", @type = "date", id = "dteFechaTermino" })
+                                <label>Actividad Desempeñada</label>
+                                @Html.TextBoxFor(model => model.strActividadDesempeñada, new { @class = "form-control input-sm", id = "strActividadDesempeñada" })
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
@@ -103,12 +103,12 @@
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"
             integrity="sha256-8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw="
             crossorigin="anonymous"></script>
-    <script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-    <script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
-    <!-- JS para llenar el dropdowList de estados por medio de la seleccion de un pais -->
+    <script src="~/Scripts/Validate/ExperienciaLaboralInterna/validate-experiencia-laboral-interna-date.js"></script>
+    <script src="~/Scripts/Validate/ExperienciaLaboralInterna/validate-experiencia-laboral-interna-regExp.js"></script>
+    <script src="~/Scripts/Validate/ExperienciaLaboralInterna/validate-experiencia-laboral-interna-form.js"></script>
     <script>
 
         var AddEditar = function (id) {
@@ -135,7 +135,7 @@
 
         $(document).ready(function () {
 
-             $("#idCategoria").change(function () {
+            $("#idCategoria").change(function () {
                 var idCategoria = $(this).val();
 
                 $.ajax({

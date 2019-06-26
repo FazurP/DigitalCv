@@ -21,7 +21,11 @@ namespace AppDigitalCv.Business
             unitOfWork = _unitOfWork;
             experienciaLaboralInternaRepository = new ExperienciaLaboralInternaRepository(unitOfWork);
         }
-
+        /// <summary>
+        /// Este metodo se encarga de insertar o actualizar un objeto de la persona en la base de datos.
+        /// </summary>
+        /// <param name="experienciaLaboralInternaDM"></param>
+        /// <returns>true o false</returns>
         public bool AddUpdateExperienciaLaboralInterna(ExperienciaLaboralInternaDomainModel experienciaLaboralInternaDM)
         {
             bool respuesta = false;
@@ -62,7 +66,11 @@ namespace AppDigitalCv.Business
 
             return respuesta;
         }
-
+        /// <summary>
+        /// Este metodo se encarga de obtener una lista de objetos de una persona desde la base de datos.
+        /// </summary>
+        /// <param name="_idPersonal"></param>
+        /// <returns>una lista con los objetos</returns>
         public List<ExperienciaLaboralInternaDomainModel> GetExperienciasByPersonal(int _idPersonal)
         {
             List<ExperienciaLaboralInternaDomainModel> experienciaLaboralInternaDomainModels = new List<ExperienciaLaboralInternaDomainModel>();
@@ -90,7 +98,12 @@ namespace AppDigitalCv.Business
 
             return experienciaLaboralInternaDomainModels;
         }
-
+        /// <summary>
+        /// Este metodo se encarga de obtener un objeto de una persona desde la base de datos.
+        /// </summary>
+        /// <param name="_idPersonal"></param>
+        /// <param name="_idExperiencia"></param>
+        /// <returns>un objeto</returns>
         public ExperienciaLaboralInternaDomainModel GetExperiencia(int _idPersonal,int _idExperiencia)
         {
             ExperienciaLaboralInternaDomainModel experienciaLaboralInternaDM = new ExperienciaLaboralInternaDomainModel();
@@ -112,7 +125,12 @@ namespace AppDigitalCv.Business
 
             return experienciaLaboralInternaDM;
         }
-
+        /// <summary>
+        /// Este metodo se encarga de eliminar un objeto de una persona de la base de datos.
+        /// </summary>
+        /// <param name="_idPersonal"></param>
+        /// <param name="_idExperiencia"></param>
+        /// <returns>true o false</returns>
         public bool DeleteExperiencias(int _idPersonal, int _idExperiencia)
         {
             bool respuesta = false;

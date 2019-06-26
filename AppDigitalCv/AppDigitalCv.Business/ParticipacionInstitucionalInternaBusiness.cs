@@ -20,7 +20,11 @@ namespace AppDigitalCv.Business
             unitofWork = _unitOfWork;
             participacionInstitucionalInternaRepository = new ParticipacionInstitucionalInternaRepository(unitofWork);
         }
-
+        /// <summary>
+        /// Este metodo se encarga de insertar o actualizar un objeto de una persona, en la base de datos
+        /// </summary>
+        /// <param name="participacionInstitucionalInternaDM"></param>
+        /// <returns>true o false</returns>
         public bool AddUpdateParticipacion(ParticipacionInstitucionalInternaDomainModel participacionInstitucionalInternaDM)
         {
 
@@ -69,6 +73,11 @@ namespace AppDigitalCv.Business
             return respuesta;
 
         }
+        /// <summary>
+        /// Este metodo se encarga de obtener una lista de objetos de una persona, desde la base de datos
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>una lista con los objetos</returns>
         public List<ParticipacionInstitucionalInternaDomainModel> GetParticipacionesPersonalesById(int id)
         {
             List<ParticipacionInstitucionalInternaDomainModel> participaciones = new List<ParticipacionInstitucionalInternaDomainModel>();
@@ -95,7 +104,12 @@ namespace AppDigitalCv.Business
             return participaciones;
 
         }
-
+        /// <summary>
+        /// Este metodo se encarga de obtener un objeto de una participacion, de la base de datos.
+        /// </summary>
+        /// <param name="idPersonal"></param>
+        /// <param name="idDocumento"></param>
+        /// <returns>un objeto</returns>
         public ParticipacionInstitucionalInternaDomainModel GetParticipacion(int idPersonal, int idDocumento)
         {
             ParticipacionInstitucionalInternaDomainModel participacionDM = new ParticipacionInstitucionalInternaDomainModel();

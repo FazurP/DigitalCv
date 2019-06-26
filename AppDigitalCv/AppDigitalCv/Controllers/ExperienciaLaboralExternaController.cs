@@ -72,6 +72,10 @@ namespace AppDigitalCv.Controllers
                         experienciaLaboralExterna.AddUpdateExperiencia(experienciaLaboralDM);
 
                     }
+                    else
+                    {
+                        ViewBag.ErrorArchivo = Recursos.RecursosSistema.ERROR_GUARDADO_ARCHIVO;
+                    }
                 }
                 else
                 {
@@ -101,7 +105,11 @@ namespace AppDigitalCv.Controllers
             }
             return respuesta;
         }
-
+        /// <summary>
+        /// Este metodo se encarga de obtener y mostrar los objetos correspondiantes a la persona en una tabla
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns>un Json con los objetos</returns>
         [HttpGet]
         public JsonResult GetExperiencias(DataTablesParam param)
         {
@@ -140,6 +148,11 @@ namespace AppDigitalCv.Controllers
             }, JsonRequestBehavior.AllowGet);
 
         }
+        /// <summary>
+        /// Ese metodo se encarga de obtener un objeto y pasarlo a la vista parcial _Eliminar
+        /// </summary>
+        /// <param name="idDocumento"></param>
+        /// <returns>una vista parcial</returns>
         [HttpGet]
         public ActionResult GetExperencia(int idDocumento)
         {
@@ -155,6 +168,11 @@ namespace AppDigitalCv.Controllers
 
             return View();
         }
+        /// <summary>
+        /// Este metodo se encarga de borrar un objeto de la base de datos.
+        /// </summary>
+        /// <param name="experienciaVM"></param>
+        /// <returns>una vista</returns>
         [HttpPost]
         public ActionResult DeleteExperiencia(ExperienciaLaboralExternaVM experienciaVM)
         {
@@ -170,7 +188,11 @@ namespace AppDigitalCv.Controllers
                 
             return RedirectToAction("Create","ExperienciaLaboralExterna");
         }
-
+        /// <summary>
+        /// Este metodo se encarga de obtener un objeto y pasarlo a la vista parcial _Editar
+        /// </summary>
+        /// <param name="idDocumento"></param>
+        /// <returns>una vista parcial</returns>
         [HttpGet]
         public ActionResult GetExperenciaEdit(int idDocumento)
         {
@@ -186,6 +208,11 @@ namespace AppDigitalCv.Controllers
 
             return View();
         }
+        /// <summary>
+        /// Este metodo se encarga de actualizar un objeto de la base de datos.
+        /// </summary>
+        /// <param name="experienciaLaboralExternaVM"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult EditExperiencia(ExperienciaLaboralExternaVM experienciaLaboralExternaVM)
         {

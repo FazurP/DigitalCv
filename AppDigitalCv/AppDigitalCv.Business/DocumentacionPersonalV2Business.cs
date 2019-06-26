@@ -20,7 +20,11 @@ namespace AppDigitalCv.Business
             unitOfWork = _unitOfWork;
             documentacionPersonalRepository = new DocumentacionPersonalV2Repository(unitOfWork);
         }
-
+        /// <summary>
+        /// Este metodo se encarga de insertar o actualizar un objeto de documentacionPersonal, en la base de datos.
+        /// </summary>
+        /// <param name="documentacionPersonalDM"></param>
+        /// <returns>true o false</returns>
         public bool AddDocumentacionPersonal(DocumentacionPersonalV2DomainModel documentacionPersonalDM)
         {
             bool respuesta = false;
@@ -37,7 +41,12 @@ namespace AppDigitalCv.Business
             respuesta = true;
             return respuesta;
         }
-
+        /// <summary>
+        /// Este metodo se encarga de eliminar un objeto de DocumentacionPersonal, de la base de datos. 
+        /// </summary>
+        /// <param name="_idDocumento"></param>
+        /// <param name="_idPersonal"></param>
+        /// <returns>true o false</returns>
         public bool DeleteDocumentacionPersonal(int _idDocumento, int _idPersonal)
         {
             bool respuesta = false;
