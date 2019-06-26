@@ -107,7 +107,6 @@
     //Evento para el campo de Estado Civil
     $('#IdEstadoCivil').change(function () {
         var estadoCivil = $('#IdEstadoCivil').val();
-
         if (estadoCivil == 0 || estadoCivil == '0' || estadoCivil == "0") {
             $('#Curp').attr('disabled', true);
             $('#Rfc').attr('disabled', true);
@@ -128,20 +127,14 @@
     })
     //Evento para el campo de Sexo
     $('input[id=sexo]').change(function () {
-
-        var sexo = false;
-
-        sexo = $('input[id=sexo]').val();      
-
-        alert(sexo);
-
-        if (sexo == 0) {
+        var sexo = $('input[id=sexo]:checked').val();
+        debugger;
+        if (sexo == null || sexo == '' || sexo == "") {
             $('#Curp').attr('disabled', true);
             $('#Rfc').attr('disabled', true);
             //$('#Homoclave').attr('disabled', true);
             $('#Semblanza').attr('disabled', true);
             $('#Enviar').attr('disabled', true);
-
 
             $('#Curp').val("");
             $('#Rfc').val("");

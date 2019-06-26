@@ -143,6 +143,13 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catProgramaEducativo" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catTipoContrato" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_tblPersonal" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblCapituloLibro" Width="1.5" PointX="16.5" PointY="31.875" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblInformeTecnico" Width="1.5" PointX="19.5" PointY="26" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblInformeTecnico_catDocumentos" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblCapituloLibro_catStatus" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblInformeTecnico_catStatus" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblCapituloLibro_tblPersonal" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblInformeTecnico_tblPersonal" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

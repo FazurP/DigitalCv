@@ -33,7 +33,7 @@
                     </div>
                     <div role="form">
                         <div class="box-body">
-                            <div class="form-group  ">
+                            <div class="form-group">
                                 <label for="etNombre">Nombre:</label>
                                 @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control input-sm", placeholder = "Tu Nombre", id = "Nombre", required = "", patern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
                                 @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
@@ -62,8 +62,9 @@
                             <div class="form-group">
                                 <label for="etSexo">Sexo:</label>
                                 <br />
-                                Femenino: @Html.RadioButtonFor(model => model.StrGenero, "Femenino", new { id = "sexo", required = "" })
-                                Masculino: @Html.RadioButtonFor(model => model.StrGenero, "Masculino", new { id = "sexo", required = "" })
+                                Femenino: @Html.RadioButtonFor(model => model.StrGenero,"Femenino", new {id="sexo", required = "" })
+                                Masculino: @Html.RadioButtonFor(model => model.StrGenero,"Masculino", new {id="sexo", required = "" })
+                                Otro: @Html.RadioButtonFor(model => model.StrGenero,"Otro",new { id="sexo",required = ""})
                             </div>
                             <div class="form-group">
                                 <div class="row">
@@ -100,11 +101,13 @@
                                         @Html.TextBoxFor(model => model.HomoClave, new { @class = "form-control input-sm", placeholder = "Homoclave", id = "Homoclave", required = "" })
                                         @Html.ValidationMessageFor(model => model.HomoClave, "", new { @class = "text-danger" })
                                     </div>
-
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                                        <label>No Conoces tu Curp?</label>
+                                        <br />
+                                        <a href="https://www.gob.mx/curp/" target="_blank">Haz Click Aqui.</a>
+                                    </div>
                                 </div>
-
                             </div>
-
                             <div class="form-group">
                                 <label for="etSemblanza">Semblanza:</label>
                                 @Html.TextAreaFor(model => model.strLogros, new { @class = "form-control", rows = 3, id = "Semblanza", required = "", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ. ]+$" })
@@ -182,76 +185,77 @@
     <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
 </noscript>
 
-
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Scripts/Validate/Personal/validar-personal-create.js"></script>
-<script src="~/Scripts/Validate/Personal/validate-personal-create-regExp.js"></script>
 <link href="~/Content/toastr.min.css" rel="stylesheet" />
-<script src="~/Scripts/toastr.min.js"></script>
-<script src="~/Scripts/Validate/Personal/validate-personal-upload.js"></script>
-<script src="~/Scripts/Validate/Personal/calculate-homo-clave.js"></script>
-<script>
+    @section scripts{
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"
+                integrity="sha256-8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw="
+                crossorigin="anonymous"></script>
+        <script src="~/Scripts/toastr.min.js"></script>
+        <script src="~/Scripts/Validate/Personal/validar-personal-create.js?v=1"></script>
+        <script src="~/Scripts/Validate/Personal/validate-personal-create-regExp.js"></script>
+        <script src="~/Scripts/Validate/Personal/validate-personal-upload.js"></script>
+        <script src="~/Scripts/Validate/Personal/calculate-homo-clave.js"></script>
+        <script>
+            $(document).ready(function () {
+
+                //$('#btn').click(function () {
+                //    var dat = $("input[id='sexo']:checked").val();
+
+                //    alert(dat);
+                //})
 
 
+                $("#fotoInputFile").change(function () {
 
-    $(document).ready(function () {
+                    var File = this.files;
+                    if (File && File[0]) {
+                        ReadImage(File[0]);
+                    }
+                })
+            })
+            var ReadImage = function (file) {
 
-        //$('#btn').click(function () {
-        //    var dat = $("input[id='sexo']:checked").val();
+                var reader = new FileReader;
+                var image = new Image;
+                ///leemos un documento de una URL
+                reader.readAsDataURL(file);
+                reader.onload = function (_file) {
+                    image.src = _file.target.result;
+                    image.onload = function () {
 
-        //    alert(dat);
-        //})
+                        var height = this.height;
+                        var width = this.width;
+                        var type = file.type;
+                        var size = ~~(file.size / 1024) + "KB";
 
+                        $("#targetImg").attr('src', _file.target.result);
+                        $("#description").text("Tamaño de la Foto: " + size);
+                        $("imgPreview").show();
+                        toastr.success("Fotografía es Cargada Correctamente").show();
+                    }
 
-        $("#fotoInputFile").change(function () {
+                }
 
-            var File = this.files;
-            if (File && File[0]) {
-                ReadImage(File[0]);
             }
-        })
-    })
-    var ReadImage = function (file) {
+            ///esta funcion se encarga de subir una imagen hacia el servidor
+            var Uploadimage = function () {
 
-        var reader = new FileReader;
-        var image = new Image;
-        ///leemos un documento de una URL
-        reader.readAsDataURL(file);
-        reader.onload = function (_file) {
-            image.src = _file.target.result;
-            image.onload = function () {
-
-                var height = this.height;
-                var width = this.width;
-                var type = file.type;
-                var size = ~~(file.size / 1024) + "KB";
-
-                $("#targetImg").attr('src', _file.target.result);
-                $("#description").text("Tamaño de la Foto: " + size);
-                $("imgPreview").show();
-                toastr.success("Fotografía es Cargada Correctamente").show();
+                var file = $("#targetImg").get(0).files[0];
+                var data = new FormData;
+                data.append("ImageFile", file[0]);
+                $.ajax({
+                    type: "Post",
+                    url: "/",
+                    data: data,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        toastr.success("Fotografía es Cargada Correctamente", "Digital-Cv dice", { timeOut: 1000 }).show();
+                    }
+                })
             }
 
-        }
 
-    }
-    ///esta funcion se encarga de subir una imagen hacia el servidor
-    var Uploadimage = function () {
+        </script>
+}
 
-        var file = $("#targetImg").get(0).files[0];
-        var data = new FormData;
-        data.append("ImageFile", file[0]);
-        $.ajax({
-            type: "Post",
-            url: "/",
-            data: data,
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                toastr.success("Fotografía es Cargada Correctamente", "Digital-Cv dice", { timeOut: 1000 }).show();
-            }
-        })
-    }
-
-
-</script>

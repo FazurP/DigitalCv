@@ -532,6 +532,7 @@
     <Content Include="Views\ExperienciaLaboralInterna\_Eliminar.cshtml" />
     <Content Include="Views\ExperienciaLaboralInterna\_Editar.cshtml" />
     <Content Include="Views\ParticipacionDocente\Create.cshtml" />
+    <Content Include="Views\CapituloLibro\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -543,6 +544,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\AlergiasController.cs" />
     <Compile Include="Controllers\AsociacionController.cs" />
+    <Compile Include="Controllers\CapituloLibroController.cs" />
     <Compile Include="Controllers\CompetenciasController.cs" />
     <Compile Include="Controllers\CompetenciaTiController.cs" />
     <Compile Include="Controllers\ContactoEmergenciaController.cs" />
