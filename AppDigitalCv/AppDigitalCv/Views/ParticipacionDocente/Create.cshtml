@@ -56,15 +56,15 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                                               
+
                                 <div class="form-group-sm">
-                                    Nombre de la Institución o Empresa:@Html.TextBoxFor(model=>model.StrNombreInstitucionEmpresa, htmlAttributes: new { @class = "form-control input-sm", id = "StrNombreInstitucionEmpresa", title = "Nombre de la Institución o Empresa ", required = "required", placeholder = "Ingresa el nombre de la empresa o institución", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
+                                    Nombre de la Institución o Empresa:@Html.TextBoxFor(model => model.StrNombreInstitucionEmpresa, htmlAttributes: new { @class = "form-control input-sm", id = "StrNombreInstitucionEmpresa", title = "Nombre de la Institución o Empresa ", required = "required", placeholder = "Ingresa el nombre de la empresa o institución", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
                                 </div>
                                 <div class="form-group-sm">
-                                    Lugar:@Html.TextBoxFor(model=>model.StrLugar, htmlAttributes: new { @class = "form-control input-sm", id = "StrLugar", title = "Lugar donde se presento la ponencia ", required = "required", placeholder = "Ingresa el lugar", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
+                                    Lugar:@Html.TextBoxFor(model => model.StrLugar, htmlAttributes: new { @class = "form-control input-sm", id = "StrLugar", title = "Lugar donde se presento la ponencia ", required = "required", placeholder = "Ingresa el lugar", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
                                 </div>
                                 <div class="form-group-sm">
-                                    Fecha:@Html.TextBoxFor(model=>model.DteFecha, htmlAttributes: new { @class = "form-control input-sm", id = "DteFecha", title = "Fecha de la Ponencia ", required = "required", placeholder = "Ingresa la Fecha", type = "date" })
+                                    Fecha:@Html.TextBoxFor(model => model.DteFecha, htmlAttributes: new { @class = "form-control input-sm", id = "DteFecha", title = "Fecha de la Ponencia ", required = "required", placeholder = "Ingresa la Fecha", type = "date" })
                                 </div>
                                 <br />
                                 <br />
@@ -82,5 +82,7 @@
 }
 @section scripts
 {
-
+    <script src="~/Scripts/jquery-2.1.4.min.js?v=1"></script>
+    <script src="~/Scripts/toastr.min.js?v=1"></script>
+    <script src="~/Scripts/Validate/ParticipacionDocente/validate-participacion-docente-form.js?v=1"></script>
 }

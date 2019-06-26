@@ -415,6 +415,7 @@
     <Content Include="Scripts\Validate\IdiomasDialectos\validate-idiomas-dialectos-form.js" />
     <Content Include="Scripts\Validate\Institucion\validate-institucion-create.js" />
     <Content Include="Scripts\Validate\Institucion\validate-institucion.js" />
+    <Content Include="Scripts\Validate\ParticipacionDocente\validate-participacion-docente-form.js" />
     <Content Include="Scripts\Validate\ParticipacionInstitucionalExterna\validate-participacion-institucion-externa-upload.js" />
     <Content Include="Scripts\Validate\ParticipacionInstitucionalExterna\validate-participacion-institucional-externa-form.js" />
     <Content Include="Scripts\Validate\ParticipacionInstitucionalExterna\validate-participacion-institucional-externa-date.js" />

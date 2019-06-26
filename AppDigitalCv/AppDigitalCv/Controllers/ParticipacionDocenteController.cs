@@ -1,5 +1,6 @@
 ﻿using AppDigitalCv.Business.Interface;
 using AppDigitalCv.Security;
+using AppDigitalCv.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,13 @@ namespace AppDigitalCv.Controllers
                 return View("~/Views/Seguridad/Login.cshtml");
             }
         }
+
+        [HttpPost]
+        public ActionResult Create([Bind()] ParticipacionDocenteVM participacionDocenteVM)
+        {
+            return View();
+        }
+
 
     }
 }
