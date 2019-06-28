@@ -659,6 +659,14 @@
           <Property Name="dteFechaFinPremio" Type="datetime" />
           <Property Name="strTipoPremio" Type="varchar" MaxLength="150" />
         </EntityType>
+        <EntityType Name="tblProgresoProdep">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPersonal" Type="int" />
+          <Property Name="idStatus" Type="int" />
+        </EntityType>
         <EntityType Name="tblTelefono">
           <Key>
             <PropertyRef Name="idTelefono" />
@@ -1806,6 +1814,7 @@
           <EntitySet Name="tblPersonalAsociaciones" EntityType="Self.tblPersonalAsociaciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPortafolioPersonal" EntityType="Self.tblPortafolioPersonal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPremiosDocente" EntityType="Self.tblPremiosDocente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProgresoProdep" EntityType="Self.tblProgresoProdep" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblTelefono" EntityType="Self.tblTelefono" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUsuarioRol" EntityType="Self.tblUsuarioRol" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="fk_alegia_alergiaPersonal" Association="Self.fk_alegia_alergiaPersonal">
@@ -2575,6 +2584,7 @@
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblCapituloLibro" EntitySet="tblCapituloLibro" />
           </AssociationSet>
+          <EntitySet Name="tblProgresoProdep" EntityType="bdGestionDocenteModel.tblProgresoProdep" />
           </EntityContainer>
         <EntityType Name="catAlergias">
           <Key>
@@ -4457,6 +4467,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tblProgresoProdep">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPersonal" Type="Int32" />
+          <Property Name="idStatus" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5192,6 +5210,15 @@
                 <ScalarProperty Name="enumEstadoActual" ColumnName="enumEstadoActual" />
                 <ScalarProperty Name="strTitulo" ColumnName="strTitulo" />
                 <ScalarProperty Name="strAutor" ColumnName="strAutor" />
+                <ScalarProperty Name="idStatus" ColumnName="idStatus" />
+                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProgresoProdep">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblProgresoProdep">
+              <MappingFragment StoreEntitySet="tblProgresoProdep">
                 <ScalarProperty Name="idStatus" ColumnName="idStatus" />
                 <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
                 <ScalarProperty Name="id" ColumnName="id" />

@@ -314,6 +314,9 @@
     <Compile Include="tblPremiosDocente.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblProgresoProdep.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblTelefono.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>

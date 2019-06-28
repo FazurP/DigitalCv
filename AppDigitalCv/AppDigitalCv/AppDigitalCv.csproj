@@ -534,6 +534,8 @@
     <Content Include="Views\ExperienciaLaboralInterna\_Editar.cshtml" />
     <Content Include="Views\ParticipacionDocente\Create.cshtml" />
     <Content Include="Views\CapituloLibro\Create.cshtml" />
+    <Content Include="Views\CapituloLibro\_Eliminar.cshtml" />
+    <Content Include="Views\CapituloLibro\_Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

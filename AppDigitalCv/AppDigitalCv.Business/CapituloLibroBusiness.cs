@@ -28,7 +28,22 @@ namespace AppDigitalCv.Business
 
             if (capituloLibroDomainModel.id > 0)
             {
+                tblCapituloLibro tblCapituloLibro = capituloLibroRepository.GetAll
+                    (p => p.id == capituloLibroDomainModel.id).FirstOrDefault<tblCapituloLibro>();
 
+                if (tblCapituloLibro != null)
+                {
+                    tblCapituloLibro.strAutor = capituloLibroDomainModel.strAutor;
+                    tblCapituloLibro.strAutores = capituloLibroDomainModel.strAutores;
+                    tblCapituloLibro.strEdicion = capituloLibroDomainModel.strEdicion;
+                    tblCapituloLibro.strEditorial = capituloLibroDomainModel.strEditorial;
+                    tblCapituloLibro.strISBN = capituloLibroDomainModel.strISBN;
+                    tblCapituloLibro.strTiraje = capituloLibroDomainModel.strTiraje;
+                    tblCapituloLibro.strTitulo = capituloLibroDomainModel.strTitulo;
+                    tblCapituloLibro.strTituloCapitulo = capituloLibroDomainModel.strTituloCapitulo;
+
+                    capituloLibroRepository.Update(tblCapituloLibro);
+                }
             }
             else {
                 tblCapituloLibro tblCapitulo = new tblCapituloLibro();
@@ -90,6 +105,48 @@ namespace AppDigitalCv.Business
             }
 
             return capituloLibroDomainModels;
+
+        }
+
+        public CapituloLibroDomainModel GetCapituloLibro(int _idCapitulolibro) {
+            CapituloLibroDomainModel capituloLibroDM = new CapituloLibroDomainModel();
+
+            Expression<Func<tblCapituloLibro, bool>> predicate = p => p.id == _idCapitulolibro;
+
+            tblCapituloLibro tblCapituloLibro = capituloLibroRepository.GetAll(predicate).FirstOrDefault<tblCapituloLibro>();
+
+            capituloLibroDM.id = tblCapituloLibro.id;
+            capituloLibroDM.idPais = tblCapituloLibro.idPais.Value;
+            capituloLibroDM.idPersonal = tblCapituloLibro.idPersonal.Value;
+            capituloLibroDM.idStatus = tblCapituloLibro.idStatus.Value;
+            capituloLibroDM.paginaInicio = tblCapituloLibro.paginaInicio.Value;
+            capituloLibroDM.paginaTermino = tblCapituloLibro.paginaTermino.Value;
+            capituloLibroDM.strAutor = tblCapituloLibro.strAutor;
+            capituloLibroDM.strAutores = tblCapituloLibro.strAutores;
+            capituloLibroDM.strEdicion = tblCapituloLibro.strEdicion;
+            capituloLibroDM.strEditorial = tblCapituloLibro.strEditorial;
+            capituloLibroDM.strISBN = tblCapituloLibro.strISBN;
+            capituloLibroDM.strTiraje = tblCapituloLibro.strTiraje;
+            capituloLibroDM.strTitulo = tblCapituloLibro.strTitulo;
+            capituloLibroDM.strTituloCapitulo = tblCapituloLibro.strTituloCapitulo;
+            capituloLibroDM.enumProposito = tblCapituloLibro.enumProposito;
+            capituloLibroDM.enumEstadoActual = tblCapituloLibro.enumEstadoActual;
+            capituloLibroDM.dteFechaPublicacion = tblCapituloLibro.dteFechaPublicacion.Value;
+            capituloLibroDM.bitLigarCurriculum = tblCapituloLibro.bitLigarCurriculum.Value;
+
+            return capituloLibroDM;
+        }
+
+        public bool DeleteCapituloLibro(int _idCapituloLibro) {
+
+            bool respuesta = false;
+
+            Expression<Func<tblCapituloLibro, bool>> predicate = p => p.id == _idCapituloLibro;
+
+            capituloLibroRepository.Delete(predicate);
+            respuesta = true;
+
+            return respuesta;
 
         }
     }

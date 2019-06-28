@@ -11,5 +11,7 @@ namespace AppDigitalCv.Business.Interface
     {
         bool AddUpdateCapituloLibro(CapituloLibroDomainModel capituloLibroDomainModel);
         List<CapituloLibroDomainModel> GetCapitulosLibrosByPersonal(int _idPersonal);
+        CapituloLibroDomainModel GetCapituloLibro(int _idCapitulolibro);
+        bool DeleteCapituloLibro(int _idCapituloLibro);
     }
 }
