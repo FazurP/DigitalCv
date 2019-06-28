@@ -19,7 +19,7 @@ namespace AppDigitalCv.Repository
         public Nullable<int> idStatus { get; set; }
         public string strAutor { get; set; }
         public string strTitulo { get; set; }
-        public Nullable<int> enumEstadoActual { get; set; }
+        public string enumEstadoActual { get; set; }
         public Nullable<int> idPais { get; set; }
         public string strEditorial { get; set; }
         public string strEdicion { get; set; }

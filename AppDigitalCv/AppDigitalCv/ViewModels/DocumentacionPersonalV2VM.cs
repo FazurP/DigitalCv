@@ -9,7 +9,7 @@ namespace AppDigitalCv.ViewModels
 {
     public class DocumentacionPersonalV2VM
     {
-        ListDocumentos documentos = new ListDocumentos();
+        List documentos = new List();
 
         public int idPesonal { get; set; }
         public int idDocumento { get; set; }

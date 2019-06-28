@@ -593,6 +593,7 @@
     <Compile Include="ViewModels\AlergiasVM.cs" />
     <Compile Include="ViewModels\AreaVM.cs" />
     <Compile Include="ViewModels\AsociacionesVM.cs" />
+    <Compile Include="ViewModels\CapituloLibroVM.cs" />
     <Compile Include="ViewModels\CategoriaVM.cs" />
     <Compile Include="ViewModels\ColoniaVM.cs" />
     <Compile Include="ViewModels\CompetenciasPersonalVM.cs" />

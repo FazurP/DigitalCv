@@ -1,4 +1,6 @@
-﻿@using AppDigitalCv.Security
+﻿@model AppDigitalCv.ViewModels.CapituloLibroVM
+
+@using AppDigitalCv.Security
 
 
 @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
@@ -32,38 +34,49 @@
                         <div class="form-group">
                             <div class="col-lg-6">
                                 <label>Autor(es) del Libro</label>
+                                @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm" })
                                 <br />
                                 <label>Titulo del Libro</label>
+                                @Html.TextBoxFor(model => model.strTitulo, new { @class = "form-control input-sm" })
                                 <br />
                                 <label>Estado Actual del Libro</label>
-                                @Html.DropDownList("a",null, new { @class="form-control input-sm"})
+                                @Html.DropDownList("enumEstadoActual", null, new { @class = "form-control input-sm" })
                                 <label>Pais</label>
-                                @Html.DropDownList("a",null, new { @class="form-control input-sm"})
+                                @Html.DropDownList("IdPais", null, new { @class = "form-control input-sm" })
                                 <label>Editorial</label>
+                                @Html.TextBoxFor(model => model.strEditorial, new { @class = "form-control input-sm" })
                                 <br />
                                 <label>Edición</label>
+                                @Html.TextBoxFor(model => model.strEdicion, new { @class = "form-control input-sm" })
                                 <br />
                                 <label>Fecha de Publicación</label>
+                                @Html.TextBoxFor(model => model.dteFechaPublicacion, new { @class = "form-control input-sm", type = "date" })
                                 <br />
                                 <label>Tiraje</label>
+                                @Html.TextBoxFor(model => model.strTiraje, new { @class = "form-control input-sm" })
                                 <br />
                             </div>
-                            <div class="col-lg-6">                        
-                            <label>ISBN</label>
-                            <br />
-                            <label>Propósito</label>
-                                @Html.DropDownList("a",null, new { @class="form-control input-sm"})
-                            <label>Titulo del Capítulo</label>
-                            <br />
-                            <label>Autor(es) del Capítulo</label>
-                            <br />
-                            <label>De la Página</label>
-                            <br />
-                            <label>A la Página</label>
-                            <br />
-                            <label>Considera Para el Curriculum</label>
-                                Si @Html.RadioButton("a","a", new { @class="form-control input-sm"})
-                                No @Html.RadioButton("a","a", new { @class="form-control input-sm"})
+                            <div class="col-lg-6">
+                                <label>ISBN</label>
+                                @Html.TextBoxFor(model => model.strISBN, new { @class = "form-control input-sm" })
+                                <br />
+                                <label>Propósito</label>
+                                @Html.DropDownList("enumProposito", null, new { @class = "form-control input-sm" })
+                                <label>Titulo del Capítulo</label>
+                                @Html.TextBoxFor(model => model.strTituloCapitulo, new { @class = "form-control input-sm" })
+                                <br />
+                                <label>Autor(es) del Capítulo</label>
+                                @Html.TextBoxFor(model => model.strAutores, new { @class = "form-control input-sm" })
+                                <br />
+                                <label>De la Página</label>
+                                @Html.TextBoxFor(model => model.paginaInicio, new { @class = "form-control input-sm" })
+                                <br />
+                                <label>A la Página</label>
+                                @Html.TextBoxFor(model => model.paginaTermino, new { @class = "form-control input-sm" })
+                                <br />
+                                <label>Considera Para el Curriculum</label>
+                                Si @Html.RadioButtonFor(model => model.bitLigarCurriculum, true, new { @class = "form-control input-sm" })
+                                No @Html.RadioButtonFor(model => model.bitLigarCurriculum, false, new { @class = "form-control input-sm" })
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -76,10 +89,10 @@
                             <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
                             <div class="form-group" id="addTable">
                                 <br />
-                                <table id="tblActividad" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
+                                <table id="tblLibro" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
                                     <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
                                         <tr>
-                                            <th>Actividad</th>
+                                            <th>Titulo</th>
                                             <th>Editar</th>
                                             <th>Eliminar</th>
 
@@ -111,4 +124,132 @@
             </div>
         </div>
     </div>
+}
+
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/toastr.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+@section scripts{
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script>
+
+        var AddEditar = function (id) {
+
+            var url = "/ExperienciaLaboralInterna/GetExperienciaEdit?_idExperiencia=" + id;
+
+            $("#myModalBodyDiv1").load(url, function () {
+                $("#myModal1").modal("show");
+
+            })
+
+        };
+
+        var AddEliminar = function (id) {
+
+            var url = "/CapituloLibro/GetExperiencia?_idExperiencia=" + id;
+
+            $("#myModalBodyDiv1").load(url, function () {
+                $("#myModal1").modal("show");
+
+            })
+
+        };
+
+                $(document).ready(function () {
+
+                    $("#idCategoria").change(function () {
+                        var idCategoria = $(this).val();
+
+                        $.ajax({
+                            type: "Post",
+                            url: "/ExperienciaLaboralInterna/GetTipoContratoByCategoria?idCategoria=" + idCategoria,
+                            contentType: "html",
+                            success: function (response) {
+                                $("#idTipoContrato").empty();
+                                $("#idTipoContrato").append(response);
+                            },
+                            error: function (error) {
+
+                            }
+                        });
+                    });
+
+                    var oTable;
+
+                    BindDataTable();
+
+                    function BindDataTable() {
+
+                        if ($.fn.DataTable.isDataTable('#tblLibro')) {
+                            oTable.Draw();
+                        }
+                        else {
+                            oTable = $('#tblLibro').DataTable({
+
+                                "bServerSide": true,
+                                "sAjaxSource": '/CapituloLibro/GetCapitulosLibros',
+                                "fnServerData": function (sSource, aoData, fnCallback) {
+                                    $.ajax({
+                                        type: "Get",
+                                        data: aoData,
+                                        url: sSource,
+                                        success: fnCallback
+                                    })
+                                },
+                                "pageLength": 5,
+                                "paging": true,
+                                "language": {
+
+                                    "sProcessing": "Procesando...",
+                                    "sLengthMenu": "Mostrar _MENU_ registros",
+                                    "sZeroRecords": "No se encontraron resultados",
+                                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                                    "sInfoPostFix": "",
+                                    "sSearch": "Buscar:",
+                                    "sUrl": "",
+                                    "sInfoThousands": ",",
+                                    "sLoadingRecords": "Cargando...",
+                                    "oPaginate": {
+                                        "sFirst": "Primero",
+                                        "sLast": "Último",
+                                        "sNext": "Siguiente",
+                                        "sPrevious": "Anterior"
+                                    },
+                                    "oAria": {
+                                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                                    }
+                                },
+                                "dataSrc": "",
+                                "columns": [
+
+                                    { "data": "strTitulo" },
+
+                                    {
+                                        "data": "id",
+                                        "render": function (id, type, full, meta) {
+
+                                            return '<a href="#" onclick="AddEditar(' + id + ')"><i class="btn btn-sm btn-success fa fa-pencil-square-o"></i></a>'
+                                        }
+                                    },
+                                    {
+                                        "data": "id",
+                                        "render": function (id, type, full, meta) {
+
+                                            return '<a href="#" onclick="AddEliminar(' + id + ')"><i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i></a>'
+                                        }
+                                    },
+                                ]
+                            });
+                        }
+                    }
+
+                })
+
+    </script>
 }

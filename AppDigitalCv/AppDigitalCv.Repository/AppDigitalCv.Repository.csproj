@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="AreaRepository.cs" />
     <Compile Include="AsociacionesRepository.cs" />
+    <Compile Include="CapituloLibroRepository.cs" />
     <Compile Include="catAlergias.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>

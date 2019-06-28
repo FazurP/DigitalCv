@@ -40,8 +40,8 @@ namespace AppDigitalCv.Repository
             this.tblParticipacionInstitucionalInterna = new HashSet<tblParticipacionInstitucionalInterna>();
             this.tblExperienciaLaboralExterna = new HashSet<tblExperienciaLaboralExterna>();
             this.tblExperienciaLaboralInterna = new HashSet<tblExperienciaLaboralInterna>();
-            this.tblCapituloLibro = new HashSet<tblCapituloLibro>();
             this.tblInformeTecnico = new HashSet<tblInformeTecnico>();
+            this.tblCapituloLibro = new HashSet<tblCapituloLibro>();
         }
     
         public int idPersonal { get; set; }
@@ -114,8 +114,8 @@ namespace AppDigitalCv.Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblExperienciaLaboralInterna> tblExperienciaLaboralInterna { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblCapituloLibro> tblCapituloLibro { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblInformeTecnico> tblInformeTecnico { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblCapituloLibro> tblCapituloLibro { get; set; }
     }
 }
