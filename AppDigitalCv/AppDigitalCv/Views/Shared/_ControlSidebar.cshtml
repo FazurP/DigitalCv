@@ -1,4 +1,8 @@
-﻿<aside class="control-sidebar control-sidebar-dark">
+﻿@using AppDigitalCv.Business;
+@using AppDigitalCv.Domain;
+@using AppDigitalCv.Security;
+
+<aside class="control-sidebar control-sidebar-dark">
     @* BEGIN Tabs *@
     <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
         <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-hourglass"></i></a></li>
@@ -10,18 +14,18 @@
         <div class="tab-pane active" id="control-sidebar-home-tab">
             <h3 class="control-sidebar-heading">Control de Progresos</h3>
             @*<ul class="control-sidebar-menu">
-                <li>
-                    <a href="javascript::;">
-                        <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+            <li>
+                <a href="javascript::;">
+                    <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
-                        <div class="menu-info">
-                            <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+                    <div class="menu-info">
+                        <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
 
-                            <p>Will be 23 on April 24th</p>
-                        </div>
-                    </a>
-                </li>
-            </ul>*@
+                        <p>Will be 23 on April 24th</p>
+                    </div>
+                </a>
+            </li>
+        </ul>*@
 
             <h3 class="control-sidebar-heading">Porcentaje de PRODEP</h3>
             <ul class="control-sidebar-menu">
@@ -29,14 +33,57 @@
                     <a href="javascript::;">
                         <h4 class="control-sidebar-subheading">
                             % Completado
-                            <span class="pull-right-container">
-                                <span class="label label-danger pull-right">70%</span>
-                            </span>
-                        </h4>
+                            @{
+                                ProgresoProdepBusiness progresoProdep = new ProgresoProdepBusiness();
 
-                        <div class="progress progress-xxs">
-                            <div class="progress-bar progress-bar-success" style="width: 70%"></div>
-                        </div>
+                                if (SessionPersister.AccountSession != null)
+                                {
+                                    ViewBag.Progreso = new List<ProgresoProdepDomainModel>(progresoProdep.GetProgresoByPersonalBreak(SessionPersister.AccountSession.IdPersonal));
+                                    if (ViewBag.Progreso.Count == 1)
+                                    {
+                                        <span class="pull-right-container">
+                                            <span class="label label-danger pull-right">10%</span>
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="pull-right-container">
+                                            <span class="label label-danger pull-right">0%</span>
+                                        </span>
+                                    }
+                                }
+                                else
+                                {
+                                    <span class="pull-right-container">
+                                        <span class="label label-danger pull-right">0%</span>
+                                    </span>
+                                }
+                            }
+                        </h4>
+                        @{
+                            if (SessionPersister.AccountSession != null)
+                            {
+                                if (ViewBag.Progreso.Count == 1)
+                                {
+                                    <div class="progress progress-xxs">
+                                        <div class="progress-bar progress-bar-success" style="width: 10%"></div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="progress progress-xxs">
+                                        <div class="progress-bar progress-bar-success" style="width: 0"></div>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-success" style="width: 0"></div>
+                                </div>
+                            }
+
+                        }
                     </a>
                 </li>
             </ul>

@@ -48,6 +48,7 @@
     <Compile Include="AlergiasPersonalDomainModel.cs" />
     <Compile Include="AreaDomainModel.cs" />
     <Compile Include="AsociacionesDomainModel.cs" />
+    <Compile Include="CapituloLibroDomainModel.cs" />
     <Compile Include="CategoriaDomainModel.cs" />
     <Compile Include="ColoniaDomainModel.cs" />
     <Compile Include="CompetenciasDomainModel.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="PersonalDomainModel.cs" />
     <Compile Include="PremiosDocenteDomainModel.cs" />
     <Compile Include="ProgramaEducativoDomainModel.cs" />
+    <Compile Include="ProgresoProdepDomainModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistroProfEstatalDomainModel.cs" />
     <Compile Include="SalariosDomainModel.cs" />

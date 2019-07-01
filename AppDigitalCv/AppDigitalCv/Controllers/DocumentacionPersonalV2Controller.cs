@@ -14,7 +14,7 @@ namespace AppDigitalCv.Controllers
 {
     public class DocumentacionPersonalV2Controller : Controller
     {
-        ListDocumentos documentos = new ListDocumentos();
+        List documentos = new List();
 
         IPersonalBusiness IpersonalBusiness;
         IDocumentosBusiness IdocumentosBusiness;

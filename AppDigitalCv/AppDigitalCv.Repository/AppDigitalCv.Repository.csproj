@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="AreaRepository.cs" />
     <Compile Include="AsociacionesRepository.cs" />
+    <Compile Include="CapituloLibroRepository.cs" />
     <Compile Include="catAlergias.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
@@ -236,6 +237,7 @@
     <Compile Include="PersonalRepository.cs" />
     <Compile Include="PremiosDocenteRepository.cs" />
     <Compile Include="ProgramaEducativoRepository.cs" />
+    <Compile Include="ProgresoProdepRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SalariosRepository.cs" />
     <Compile Include="sysdiagrams.cs">
@@ -311,6 +313,9 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPremiosDocente.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProgresoProdep.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblTelefono.cs">
