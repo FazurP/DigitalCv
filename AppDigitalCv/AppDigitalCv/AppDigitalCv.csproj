@@ -381,6 +381,7 @@
     <Content Include="Scripts\Validate\Asociaciones\validate-asociaciones-form.js" />
     <Content Include="Scripts\Validate\Asociaciones\validate-asociaciones-regExp.js" />
     <Content Include="Scripts\Validate\Block\validate-block-click.js" />
+    <Content Include="Scripts\Validate\CapituloLibro\validate-capitulo-libro-form.js" />
     <Content Include="Scripts\Validate\CompetenciasTi\validate-competencias-ti-checked.js" />
     <Content Include="Scripts\Validate\Competencias\validate-competencias-form.js" />
     <Content Include="Scripts\Validate\ContactoEmergencia\valida-contacto-emergencia-regExp.js" />
@@ -651,6 +652,7 @@
     <Compile Include="ViewModels\Porcentajes.cs" />
     <Compile Include="ViewModels\PremiosDocenteVM.cs" />
     <Compile Include="ViewModels\ProgramaEducativoVM.cs" />
+    <Compile Include="ViewModels\ProgresoProdepVM.cs" />
     <Compile Include="ViewModels\RegistroProfEstatalVM.cs" />
     <Compile Include="ViewModels\SalariosVM.cs" />
     <Compile Include="ViewModels\SessionManagerVM.cs" />

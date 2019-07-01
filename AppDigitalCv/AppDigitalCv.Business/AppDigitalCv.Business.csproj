@@ -130,6 +130,7 @@
     <Compile Include="Interface\IPersonalBusiness.cs" />
     <Compile Include="Interface\IPremiosDocenteBusiness.cs" />
     <Compile Include="Interface\IProgramaEducativoBusiness.cs" />
+    <Compile Include="Interface\IProgresoProdep.cs" />
     <Compile Include="Interface\ITelefono.cs" />
     <Compile Include="Interface\ITipoActividad.cs" />
     <Compile Include="Interface\ITipoContratoBusiness.cs" />
@@ -146,6 +147,7 @@
     <Compile Include="PersonalBusiness.cs" />
     <Compile Include="PremiosDocenteBusiness.cs" />
     <Compile Include="ProgramaEducativoBusiness.cs" />
+    <Compile Include="ProgresoProdepBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recursos\BaseConfiguration.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -237,6 +237,7 @@
     <Compile Include="PersonalRepository.cs" />
     <Compile Include="PremiosDocenteRepository.cs" />
     <Compile Include="ProgramaEducativoRepository.cs" />
+    <Compile Include="ProgresoProdepRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SalariosRepository.cs" />
     <Compile Include="sysdiagrams.cs">

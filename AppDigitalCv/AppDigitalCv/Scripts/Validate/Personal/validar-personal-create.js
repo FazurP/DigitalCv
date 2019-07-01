@@ -128,7 +128,6 @@
     //Evento para el campo de Sexo
     $('input[id=sexo]').change(function () {
         var sexo = $('input[id=sexo]:checked').val();
-        debugger;
         if (sexo == null || sexo == '' || sexo == "") {
             $('#Curp').attr('disabled', true);
             $('#Rfc').attr('disabled', true);

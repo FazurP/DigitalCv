@@ -2,6 +2,7 @@
 @using WebHelpers.Mvc5.Enum
 @using AppDigitalCv.Security
 
+
 <!DOCTYPE html>
 
 <html>
@@ -37,18 +38,20 @@
         <div class="content-wrapper">
             <section class="content-header">
                 @*<h1>
-                        @ViewBag.Title
-                        <small>@ViewBag.Description</small>
-                    </h1>*@
+                    @ViewBag.Title
+                    <small>@ViewBag.Description</small>
+                </h1>*@
             </section>
 
             <section class="content">
-                
+
                 @RenderBody()
             </section>
         </div>
+      
+            @Html.Partial("_ControlSidebar")
+        
 
-        @Html.Partial("_ControlSidebar")
     </div>
 
     <script src="@RouteJs.RouteJsHandler.HandlerUrl"></script>

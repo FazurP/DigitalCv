@@ -240,7 +240,9 @@ namespace AppDigitalCv.Infraestructure
             //Capitulo Libro
             CreateMap<CapituloLibroVM, CapituloLibroDomainModel>();
             CreateMap<CapituloLibroDomainModel, CapituloLibroVM>();
-
+            //ProgresoProdep
+            CreateMap<ProgresoProdepVM, ProgresoProdepDomainModel>();
+            CreateMap<ProgresoProdepDomainModel, ProgresoProdepVM>();
         }
 
         public static void Run()
