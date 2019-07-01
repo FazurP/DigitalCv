@@ -44,6 +44,8 @@ namespace AppDigitalCv.Controllers
                     ParticipacionDocenteDomainModel participacionDocenteDM = new ParticipacionDocenteDomainModel();
                     AutoMapper.Mapper.Map(participacionDocenteVM, participacionDocenteDM);
                     IparticipacionDocenteBusiness.AddUpdateParticipacionDocente(participacionDocenteDM);
+                    ///verificar la insercion.
+
                 }
             }
 
