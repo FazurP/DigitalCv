@@ -7,7 +7,7 @@
     $('#StrNombreInstitucionEmpresa').prop('disabled', true);
     $('#StrLugar').prop('disabled', true);
     $('#DteFecha').prop('disabled', true);
-
+    $('#btnEnviar').prop('disabled',true);
 
 
     $('#StrEvento').keyup(function () {
@@ -115,6 +115,7 @@
         }
         else {
             $('#DteFecha').prop('disabled', false);
+            $('#btnEnviar').prop('disabled', false);
         }
 
 

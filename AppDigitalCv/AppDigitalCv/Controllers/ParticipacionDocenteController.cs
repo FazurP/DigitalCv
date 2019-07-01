@@ -1,4 +1,5 @@
 ﻿using AppDigitalCv.Business.Interface;
+using AppDigitalCv.Domain;
 using AppDigitalCv.Security;
 using AppDigitalCv.ViewModels;
 using System;
@@ -32,8 +33,22 @@ namespace AppDigitalCv.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create([Bind()] ParticipacionDocenteVM participacionDocenteVM)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,StrEvento,StrTipoEvento,StrParticipacion,StrTipoParticipacion,BitPonencia,StrNombrePonencia,StrNombreInstitucionEmpresa,StrLugar,DteFecha,CatDocumentosVM,")] ParticipacionDocenteVM participacionDocenteVM)
         {
+            if (ModelState.IsValid)
+            {
+                if (participacionDocenteVM != null)
+                {
+                    participacionDocenteVM.IdPersonal  = SessionPersister.AccountSession.IdPersonal;
+                    ParticipacionDocenteDomainModel participacionDocenteDM = new ParticipacionDocenteDomainModel();
+                    AutoMapper.Mapper.Map(participacionDocenteVM, participacionDocenteDM);
+                    IparticipacionDocenteBusiness.AddUpdateParticipacionDocente(participacionDocenteDM);
+                    ///verificar la insercion.
+
+                }
+            }
+
             return View();
         }
 
