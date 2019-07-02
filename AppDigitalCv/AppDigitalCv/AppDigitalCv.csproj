@@ -575,6 +575,7 @@
     <Compile Include="Controllers\IdiomaDialectoController.cs" />
     <Compile Include="Controllers\InformeTecnicoController.cs" />
     <Compile Include="Controllers\InstitucionSuperiorController.cs" />
+    <Compile Include="Controllers\LibroController.cs" />
     <Compile Include="Controllers\ParticipacionDocenteController.cs" />
     <Compile Include="Controllers\ParticipacionInstitucionalExternaController.cs" />
     <Compile Include="Controllers\ParticipacionInstitucionalInternaController.cs" />
@@ -800,6 +801,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Usuarios\" />
+    <Folder Include="Views\Libro\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppDigitalCv.Business\AppDigitalCv.Business.csproj">
