@@ -122,6 +122,7 @@
     <Compile Include="Interface\IEstadoCivilBusiness.cs" />
     <Compile Include="Interface\IInformeTecnicoBusiness.cs" />
     <Compile Include="Interface\IInstitucionSuperiorBusiness.cs" />
+    <Compile Include="Interface\ILibroBusiness.cs" />
     <Compile Include="Interface\IPaisBusiness.cs" />
     <Compile Include="Interface\IParentescoBusiness.cs" />
     <Compile Include="Interface\IParticipacionDocenteBusiness.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Interface\ITipoEmpresaBusiness.cs" />
     <Compile Include="Interface\ITipoSangreBusiness.cs" />
     <Compile Include="Interface\IUnidadesAcademicasBusiness.cs" />
+    <Compile Include="LibroBusiness.cs" />
     <Compile Include="PaisBusiness.cs" />
     <Compile Include="ParentescoBusiness.cs" />
     <Compile Include="ParticipacionDocenteBusiness.cs" />
