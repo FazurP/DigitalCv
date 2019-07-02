@@ -246,6 +246,9 @@ namespace AppDigitalCv.Infraestructure
             //Informe Tecnico
             CreateMap<InformeTecnicoVM, InformeTecnicoDomainModel>();
             CreateMap<InformeTecnicoDomainModel, InformeTecnicoVM>();
+            //Libro
+            CreateMap<LibroVM, LibroDomainModel>();
+            CreateMap<LibroDomainModel, LibroVM>();
         }
 
         public static void Run()

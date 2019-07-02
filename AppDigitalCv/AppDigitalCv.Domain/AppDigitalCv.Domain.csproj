@@ -87,6 +87,7 @@
     <Compile Include="IfeDomainModel.cs" />
     <Compile Include="InformeTecnicoDomainModel.cs" />
     <Compile Include="InstitucionSuperiorDomainModel.cs" />
+    <Compile Include="LibroDomainModel.cs" />
     <Compile Include="MunicipioDomainModel.cs" />
     <Compile Include="NivelSalarialDomainModel.cs" />
     <Compile Include="NumeroCartillaMilitarDomainModel.cs" />
