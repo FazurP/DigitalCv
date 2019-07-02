@@ -17,5 +17,8 @@ namespace AppDigitalCv.Repository
         public int id { get; set; }
         public Nullable<int> idPersonal { get; set; }
         public Nullable<int> idStatus { get; set; }
+    
+        public virtual catStatus catStatus { get; set; }
+        public virtual tblPersonal tblPersonal { get; set; }
     }
 }

@@ -143,14 +143,16 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catProgramaEducativo" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catTipoContrato" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_tblPersonal" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.tblInformeTecnico" Width="1.5" PointX="19.5" PointY="26" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblInformeTecnico_catDocumentos" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblInformeTecnico_catStatus" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblInformeTecnico_tblPersonal" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblCapituloLibro" Width="1.5" PointX="16.5" PointY="31.875" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblCapituloLibro_catStatus" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblCapituloLibro_tblPersonal" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblProgresoProdep" Width="1.5" PointX="7.375" PointY="3.75" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblProgresoProdep_catStatus" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblProgresoProdep_tblPersonal" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblInformeTecnico" Width="1.5" PointX="19.5" PointY="26.125" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblInformeTecnico_catDocumentos" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblInformeTecnico_catStatus" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblInformeTecnico_tblPersonal" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

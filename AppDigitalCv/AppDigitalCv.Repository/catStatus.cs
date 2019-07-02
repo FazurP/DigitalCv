@@ -18,8 +18,9 @@ namespace AppDigitalCv.Repository
         public catStatus()
         {
             this.catUsuarios = new HashSet<catUsuarios>();
-            this.tblInformeTecnico = new HashSet<tblInformeTecnico>();
             this.tblCapituloLibro = new HashSet<tblCapituloLibro>();
+            this.tblProgresoProdep = new HashSet<tblProgresoProdep>();
+            this.tblInformeTecnico = new HashSet<tblInformeTecnico>();
         }
     
         public int idStatus { get; set; }
@@ -29,8 +30,10 @@ namespace AppDigitalCv.Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<catUsuarios> catUsuarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblInformeTecnico> tblInformeTecnico { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCapituloLibro> tblCapituloLibro { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblProgresoProdep> tblProgresoProdep { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblInformeTecnico> tblInformeTecnico { get; set; }
     }
 }

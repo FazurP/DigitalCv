@@ -45,6 +45,12 @@
                                             <span class="label label-danger pull-right">10%</span>
                                         </span>
                                     }
+                                    else if (ViewBag.Progreso.Count == 2)
+                                    {
+                                        <span class="pull-right-container">
+                                            <span class="label label-danger pull-right">20%</span>
+                                        </span>
+                                    }
                                     else
                                     {
                                         <span class="pull-right-container">
@@ -67,6 +73,12 @@
                                 {
                                     <div class="progress progress-xxs">
                                         <div class="progress-bar progress-bar-success" style="width: 10%"></div>
+                                    </div>
+                                }
+                                else if (ViewBag.Progreso.Count == 2)
+                                {
+                                    <div class="progress progress-xxs">
+                                        <div class="progress-bar progress-bar-success" style="width: 20%"></div>
                                     </div>
                                 }
                                 else

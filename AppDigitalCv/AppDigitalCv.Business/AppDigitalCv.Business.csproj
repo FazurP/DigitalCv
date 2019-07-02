@@ -84,6 +84,7 @@
     <Compile Include="FrecuenciaBusiness.cs" />
     <Compile Include="IdiomaDialectoBusiness.cs" />
     <Compile Include="IdiomasBusiness.cs" />
+    <Compile Include="InformeTecnicoBusiness.cs" />
     <Compile Include="InstitucionSuperiorBusiness.cs" />
     <Compile Include="Interface\IAccountBusiness.cs" />
     <Compile Include="Interface\IAlergiasBusiness.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Interface\IEnfermedadBusiness.cs" />
     <Compile Include="Interface\IEstadoBusiness.cs" />
     <Compile Include="Interface\IEstadoCivilBusiness.cs" />
+    <Compile Include="Interface\IInformeTecnicoBusiness.cs" />
     <Compile Include="Interface\IInstitucionSuperiorBusiness.cs" />
     <Compile Include="Interface\IPaisBusiness.cs" />
     <Compile Include="Interface\IParentescoBusiness.cs" />
