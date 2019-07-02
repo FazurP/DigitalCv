@@ -29,7 +29,7 @@ namespace AppDigitalCv.Repository
         public string strISBN { get; set; }
         public Nullable<System.DateTime> FechaPublicacion { get; set; }
         public string strProposito { get; set; }
-        public string bitConsideraCurriculum { get; set; }
+        public Nullable<bool> bitConsideraCurriculum { get; set; }
     
         public virtual CatPais CatPais { get; set; }
         public virtual catStatus catStatus { get; set; }

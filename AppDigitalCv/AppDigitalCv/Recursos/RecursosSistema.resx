@@ -147,6 +147,9 @@
   <data name="REGISTRO_INFORME_TECNICO" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="REGISTRO_LIBRO" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="URL_PERFIL" xml:space="preserve">
     <value>Imagenes/Usuarios/</value>
   </data>

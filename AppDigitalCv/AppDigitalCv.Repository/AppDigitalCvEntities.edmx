@@ -565,7 +565,7 @@
           <Property Name="strISBN" Type="varchar" MaxLength="250" />
           <Property Name="FechaPublicacion" Type="date" />
           <Property Name="strProposito" Type="varchar" MaxLength="250" />
-          <Property Name="bitConsideraCurriculum" Type="nchar" MaxLength="10" />
+          <Property Name="bitConsideraCurriculum" Type="bit" />
         </EntityType>
         <EntityType Name="tblParticipacionDocente">
           <Key>
@@ -4662,7 +4662,7 @@
           <Property Name="strISBN" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="FechaPublicacion" Type="DateTime" Precision="0" />
           <Property Name="strProposito" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="bitConsideraCurriculum" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="bitConsideraCurriculum" Type="Boolean" />
           <NavigationProperty Name="CatPais" Relationship="bdGestionDocenteModel.FK_tblLibro_CatPais" FromRole="tblLibro" ToRole="CatPais" />
           <NavigationProperty Name="catStatus" Relationship="bdGestionDocenteModel.FK_tblLibro_catStatus" FromRole="tblLibro" ToRole="catStatus" />
           <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_tblLibro_tblPersonal" FromRole="tblLibro" ToRole="tblPersonal" />
