@@ -50,5 +50,19 @@ namespace AppDigitalCv.Business.Enum
 
             return proposito;
         }
+
+        public List<string> FillTipoParticipacion()
+        {
+            List<string> list = new List<string>();
+
+            list.Insert(0, "--Seleccionar--");
+            list.Insert(1, "Autor");
+            list.Insert(2, "Compilador");
+            list.Insert(3, "Editor");
+            list.Insert(4, "Coordinador");
+            list.Insert(5, "Traductor");
+
+            return list;
+        }
     }
 }

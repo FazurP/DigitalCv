@@ -542,6 +542,7 @@
     <Content Include="Views\InformeTecnico\Create.cshtml" />
     <Content Include="Views\InformeTecnico\_Eliminar.cshtml" />
     <Content Include="Views\InformeTecnico\_Editar.cshtml" />
+    <Content Include="Views\Libro\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -801,7 +802,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Usuarios\" />
-    <Folder Include="Views\Libro\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppDigitalCv.Business\AppDigitalCv.Business.csproj">

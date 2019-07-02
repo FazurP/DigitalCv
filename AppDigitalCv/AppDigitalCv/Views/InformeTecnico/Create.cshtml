@@ -167,23 +167,6 @@
 
         $(document).ready(function () {
 
-            $("#idCategoria").change(function () {
-                var idCategoria = $(this).val();
-
-                $.ajax({
-                    type: "Post",
-                    url: "/ExperienciaLaboralInterna/GetTipoContratoByCategoria?idCategoria=" + idCategoria,
-                    contentType: "html",
-                    success: function (response) {
-                        $("#idTipoContrato").empty();
-                        $("#idTipoContrato").append(response);
-                    },
-                    error: function (error) {
-
-                    }
-                });
-            });
-
             var oTable;
 
             BindDataTable();

@@ -26,6 +26,10 @@ namespace AppDigitalCv.Controllers
         {
             if (SessionPersister.AccountSession != null)
             {
+                ViewBag.strTipoParticipacion = new SelectList(list.FillTipoParticipacion());
+                ViewBag.strEstadoActual = new SelectList(list.FillEstado());
+                ViewBag.strProposito = new SelectList(list.FillProposito());
+                ViewBag.idPais = new SelectList(paisBusiness.GetPais(), "idPais", "strValor");
                 return View();
             }
             else {
