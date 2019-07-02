@@ -153,6 +153,10 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblInformeTecnico_catDocumentos" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblInformeTecnico_catStatus" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblInformeTecnico_tblPersonal" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblLibro" Width="1.5" PointX="16.5" PointY="8.5" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblLibro_CatPais" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblLibro_catStatus" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblLibro_tblPersonal" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

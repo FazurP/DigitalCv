@@ -18,6 +18,7 @@ namespace AppDigitalCv.Repository
         public CatPais()
         {
             this.CatEstado = new HashSet<CatEstado>();
+            this.tblLibro = new HashSet<tblLibro>();
         }
     
         public int id { get; set; }
@@ -25,5 +26,7 @@ namespace AppDigitalCv.Repository
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CatEstado> CatEstado { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblLibro> tblLibro { get; set; }
     }
 }

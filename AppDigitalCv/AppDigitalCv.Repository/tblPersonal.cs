@@ -43,6 +43,7 @@ namespace AppDigitalCv.Repository
             this.tblCapituloLibro = new HashSet<tblCapituloLibro>();
             this.tblProgresoProdep = new HashSet<tblProgresoProdep>();
             this.tblInformeTecnico = new HashSet<tblInformeTecnico>();
+            this.tblLibro = new HashSet<tblLibro>();
         }
     
         public int idPersonal { get; set; }
@@ -120,5 +121,7 @@ namespace AppDigitalCv.Repository
         public virtual ICollection<tblProgresoProdep> tblProgresoProdep { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblInformeTecnico> tblInformeTecnico { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblLibro> tblLibro { get; set; }
     }
 }

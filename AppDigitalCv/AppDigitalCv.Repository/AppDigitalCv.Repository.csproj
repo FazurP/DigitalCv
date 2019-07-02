@@ -292,6 +292,9 @@
     <Compile Include="tblInformeTecnico.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblLibro.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblParticipacionDocente.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
