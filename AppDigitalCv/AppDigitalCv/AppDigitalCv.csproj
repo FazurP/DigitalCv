@@ -543,6 +543,8 @@
     <Content Include="Views\InformeTecnico\_Eliminar.cshtml" />
     <Content Include="Views\InformeTecnico\_Editar.cshtml" />
     <Content Include="Views\Libro\Create.cshtml" />
+    <Content Include="Views\Libro\_Eliminar.cshtml" />
+    <Content Include="Views\Libro\_Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
