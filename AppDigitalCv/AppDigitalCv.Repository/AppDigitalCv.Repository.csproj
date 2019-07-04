@@ -225,6 +225,7 @@
     <Compile Include="Infraestructure\UnitOfWork.cs" />
     <Compile Include="InstitucionSuperiorRepository.cs" />
     <Compile Include="LibroRepository.cs" />
+    <Compile Include="ManualOperacionRepository.cs" />
     <Compile Include="MunicipioRepository.cs" />
     <Compile Include="NivelSalarialRepository.cs" />
     <Compile Include="PaisRepository.cs" />
