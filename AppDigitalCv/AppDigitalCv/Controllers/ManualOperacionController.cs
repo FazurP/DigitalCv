@@ -1,4 +1,5 @@
 ﻿using AppDigitalCv.Business.Interface;
+using AppDigitalCv.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,16 @@ namespace AppDigitalCv.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            if (SessionPersister.AccountSession != null)
+            {
+                ViewBag.idPais = new SelectList(paisBusiness.GetPais(),"idPais","strValor");
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login","Seguridad");
+            }
+           
         }
     }
 }
