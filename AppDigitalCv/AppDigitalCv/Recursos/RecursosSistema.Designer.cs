@@ -160,6 +160,15 @@ namespace AppDigitalCv.Recursos {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a 5.
+        /// </summary>
+        internal static string REGISTRO_MANUAL_OPERACION {
+            get {
+                return ResourceManager.GetString("REGISTRO_MANUAL_OPERACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Imagenes/Usuarios/.
         /// </summary>
         internal static string URL_PERFIL {

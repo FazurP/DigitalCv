@@ -150,6 +150,9 @@
   <data name="REGISTRO_LIBRO" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="REGISTRO_MANUAL_OPERACION" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="URL_PERFIL" xml:space="preserve">
     <value>Imagenes/Usuarios/</value>
   </data>
