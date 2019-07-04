@@ -551,6 +551,7 @@
     <Content Include="Views\Libro\_Editar.cshtml" />
     <Content Include="Views\ManualOperacion\Create.cshtml" />
     <Content Include="Views\ManualOperacion\_Eliminar.cshtml" />
+    <Content Include="Views\ManualOperacion\_Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

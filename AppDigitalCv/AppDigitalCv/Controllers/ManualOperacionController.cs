@@ -153,5 +153,35 @@ namespace AppDigitalCv.Controllers
             return RedirectToAction("Create","ManualOperacion");
         }
 
+        [HttpGet]
+        public ActionResult GetManualOperacionUpdate(int _idManualOperacion)
+        {
+            ManualOperacionDomainModel manualOperacionDM = new ManualOperacionDomainModel();
+
+            manualOperacionDM = operacionBusiness.GetManualOperacion(_idManualOperacion);
+
+            if (manualOperacionDM != null)
+            {
+                ManualOperacionVM manualOperacionVM = new ManualOperacionVM();
+                AutoMapper.Mapper.Map(manualOperacionDM,manualOperacionVM);
+                return PartialView("_Editar",manualOperacionVM);
+            }
+            return PartialView("_Editar");
+        }
+
+        [HttpPost]
+        public ActionResult UpdateManualOperacion(ManualOperacionVM manualOperacionVM)
+        {
+            if (manualOperacionVM.id > 0)
+            {
+                ManualOperacionDomainModel manualOperacionDM = new ManualOperacionDomainModel();
+
+                AutoMapper.Mapper.Map(manualOperacionVM,manualOperacionDM);
+                operacionBusiness.AddUpdateManualOperacion(manualOperacionDM);
+            }
+
+            return RedirectToAction("Create","ManualOperacion");
+        }
+
     }
 }

@@ -27,7 +27,19 @@ namespace AppDigitalCv.Business
 
             if (manualOperacionDM.id > 0)
             {
+                Expression<Func<tblManualOperacion, bool>> predicate = p => p.id == manualOperacionDM.id;
+                tblManualOperacion tblManual = manualOperacionRepository.GetAll(predicate).FirstOrDefault();
 
+                if (tblManual != null)
+                {
+                    tblManual.strAutor = manualOperacionDM.strAutor;
+                    tblManual.strDescripcion = manualOperacionDM.strDescripcion;
+                    tblManual.strInstitucionBeneficiaria = manualOperacionDM.strInstitucionBeneficiaria;
+                    tblManual.strNombre = manualOperacionDM.strNombre;
+
+                    manualOperacionRepository.Update(tblManual);
+                    respuesta = true;
+                }
             }
             else
             {
@@ -39,6 +51,7 @@ namespace AppDigitalCv.Business
                     tblManual.strDescripcion = manualOperacionDM.strDescripcion;
                     tblManual.strInstitucionBeneficiaria = manualOperacionDM.strInstitucionBeneficiaria;
                     tblManual.strNombre = manualOperacionDM.strNombre;
+                    tblManual.strAutor = manualOperacionDM.strAutor;
                     tblManual.dteFechaPublicacion = manualOperacionDM.dteFechaPublicacion;
 
                     manualOperacionRepository.Insert(tblManual);
