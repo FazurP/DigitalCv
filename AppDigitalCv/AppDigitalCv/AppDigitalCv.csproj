@@ -418,6 +418,7 @@
     <Content Include="Scripts\Validate\InformeTecnico\validate-informe-tecnico-upload.js" />
     <Content Include="Scripts\Validate\Institucion\validate-institucion-create.js" />
     <Content Include="Scripts\Validate\Institucion\validate-institucion.js" />
+    <Content Include="Scripts\Validate\Libro\validate-libro-form.js" />
     <Content Include="Scripts\Validate\ParticipacionDocente\validate-participacion-docente-form.js" />
     <Content Include="Scripts\Validate\ParticipacionInstitucionalExterna\validate-participacion-institucion-externa-upload.js" />
     <Content Include="Scripts\Validate\ParticipacionInstitucionalExterna\validate-participacion-institucional-externa-form.js" />
