@@ -2,7 +2,7 @@
 
     $('#Autor').keypress(function (e) {
         let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
-        let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ. ]+$");
+        let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ., ]+$");
 
         if (!regExp.test(data)) {
             e.preventDefault();
