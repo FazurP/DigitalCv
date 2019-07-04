@@ -415,6 +415,7 @@
     <Content Include="Scripts\Validate\Hijos\validate-hijos-regExp.js" />
     <Content Include="Scripts\Validate\IdiomasDialectos\validate-idiomas-dialectos-form.js" />
     <Content Include="Scripts\Validate\InformeTecnico\validate-informe-tecnico-form.js" />
+    <Content Include="Scripts\Validate\InformeTecnico\validate-informe-tecnico-regExp.js" />
     <Content Include="Scripts\Validate\InformeTecnico\validate-informe-tecnico-upload.js" />
     <Content Include="Scripts\Validate\Institucion\validate-institucion-create.js" />
     <Content Include="Scripts\Validate\Institucion\validate-institucion.js" />
