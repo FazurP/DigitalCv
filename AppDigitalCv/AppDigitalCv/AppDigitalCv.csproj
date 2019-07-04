@@ -648,6 +648,7 @@
     <Compile Include="ViewModels\InformeTecnicoVM.cs" />
     <Compile Include="ViewModels\InstitucionSuperiorVM.cs" />
     <Compile Include="ViewModels\LibroVM.cs" />
+    <Compile Include="ViewModels\ManualOperacionVM.cs" />
     <Compile Include="ViewModels\MunicipioVM.cs" />
     <Compile Include="ViewModels\NivelSalarialVM.cs" />
     <Compile Include="ViewModels\NumeroCartillaMilitarVM.cs" />
