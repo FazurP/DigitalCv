@@ -249,6 +249,9 @@ namespace AppDigitalCv.Infraestructure
             //Libro
             CreateMap<LibroVM, LibroDomainModel>();
             CreateMap<LibroDomainModel, LibroVM>();
+            //ManualOperacion
+            CreateMap<ManualOperacionVM, ManualOperacionDomainModel>();
+            CreateMap<ManualOperacionDomainModel, ManualOperacionVM>();
         }
 
         public static void Run()
