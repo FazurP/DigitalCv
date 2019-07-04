@@ -157,6 +157,10 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblLibro_CatPais" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblLibro_catStatus" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblLibro_tblPersonal" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblManualOperacion" Width="1.5" PointX="19.5" PointY="11.25" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblManualOperacion_CatPais" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblManualOperacion_catStatus" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblManualOperacion_tblPersonal" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

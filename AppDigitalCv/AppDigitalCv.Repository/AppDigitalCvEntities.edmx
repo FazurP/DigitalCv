@@ -567,6 +567,19 @@
           <Property Name="strProposito" Type="varchar" MaxLength="250" />
           <Property Name="bitConsideraCurriculum" Type="bit" />
         </EntityType>
+        <EntityType Name="tblManualOperacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPais" Type="int" />
+          <Property Name="idStatus" Type="int" />
+          <Property Name="idPersonal" Type="int" />
+          <Property Name="strNombre" Type="varchar" MaxLength="250" />
+          <Property Name="strDescripcion" Type="varchar" MaxLength="8000" />
+          <Property Name="strInstitucionBeneficiaria" Type="varchar" MaxLength="250" />
+          <Property Name="dteFechaPublicacion" Type="date" />
+        </EntityType>
         <EntityType Name="tblParticipacionDocente">
           <Key>
             <PropertyRef Name="id" />
@@ -1485,6 +1498,48 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblManualOperacion_CatPais">
+          <End Role="CatPais" Type="Self.CatPais" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblManualOperacion" Type="Self.tblManualOperacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatPais">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblManualOperacion">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblManualOperacion_catStatus">
+          <End Role="catStatus" Type="Self.catStatus" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblManualOperacion" Type="Self.tblManualOperacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catStatus">
+              <PropertyRef Name="idStatus" />
+            </Principal>
+            <Dependent Role="tblManualOperacion">
+              <PropertyRef Name="idStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblManualOperacion_tblPersonal">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblManualOperacion" Type="Self.tblManualOperacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblManualOperacion">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblParticipacionDocente_catDocumentos1">
           <End Role="catDocumentos" Type="Self.catDocumentos" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -1898,6 +1953,7 @@
           <EntitySet Name="tblIdiomaDialectoPersonal" EntityType="Self.tblIdiomaDialectoPersonal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblInformeTecnico" EntityType="Self.tblInformeTecnico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblLibro" EntityType="Self.tblLibro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblManualOperacion" EntityType="Self.tblManualOperacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblParticipacionDocente" EntityType="Self.tblParticipacionDocente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblParticipacionInstitucionalExterna" EntityType="Self.tblParticipacionInstitucionalExterna" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblParticipacionInstitucionalInterna" EntityType="Self.tblParticipacionInstitucionalInterna" Schema="dbo" store:Type="Tables" />
@@ -2156,6 +2212,18 @@
           <AssociationSet Name="FK_tblLibro_tblPersonal" Association="Self.FK_tblLibro_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblLibro" EntitySet="tblLibro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblManualOperacion_CatPais" Association="Self.FK_tblManualOperacion_CatPais">
+            <End Role="CatPais" EntitySet="CatPais" />
+            <End Role="tblManualOperacion" EntitySet="tblManualOperacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblManualOperacion_catStatus" Association="Self.FK_tblManualOperacion_catStatus">
+            <End Role="catStatus" EntitySet="catStatus" />
+            <End Role="tblManualOperacion" EntitySet="tblManualOperacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblManualOperacion_tblPersonal" Association="Self.FK_tblManualOperacion_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblManualOperacion" EntitySet="tblManualOperacion" />
           </AssociationSet>
           <AssociationSet Name="FK_tblParticipacionDocente_catDocumentos1" Association="Self.FK_tblParticipacionDocente_catDocumentos1">
             <End Role="catDocumentos" EntitySet="catDocumentos" />
@@ -2718,6 +2786,19 @@
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblLibro" EntitySet="tblLibro" />
           </AssociationSet>
+          <EntitySet Name="tblManualOperacion" EntityType="bdGestionDocenteModel.tblManualOperacion" />
+          <AssociationSet Name="FK_tblManualOperacion_CatPais" Association="bdGestionDocenteModel.FK_tblManualOperacion_CatPais">
+            <End Role="CatPais" EntitySet="CatPais" />
+            <End Role="tblManualOperacion" EntitySet="tblManualOperacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblManualOperacion_catStatus" Association="bdGestionDocenteModel.FK_tblManualOperacion_catStatus">
+            <End Role="catStatus" EntitySet="catStatus" />
+            <End Role="tblManualOperacion" EntitySet="tblManualOperacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblManualOperacion_tblPersonal" Association="bdGestionDocenteModel.FK_tblManualOperacion_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblManualOperacion" EntitySet="tblManualOperacion" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="catAlergias">
           <Key>
@@ -2939,6 +3020,7 @@
           <Property Name="strValor" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CatEstado" Relationship="bdGestionDocenteModel.FK_CatEstado_CatPais" FromRole="CatPais" ToRole="CatEstado" />
           <NavigationProperty Name="tblLibro" Relationship="bdGestionDocenteModel.FK_tblLibro_CatPais" FromRole="CatPais" ToRole="tblLibro" />
+          <NavigationProperty Name="tblManualOperacion" Relationship="bdGestionDocenteModel.FK_tblManualOperacion_CatPais" FromRole="CatPais" ToRole="tblManualOperacion" />
         </EntityType>
         <EntityType Name="catParentesco">
           <Key>
@@ -2997,6 +3079,7 @@
           <NavigationProperty Name="tblProgresoProdep" Relationship="bdGestionDocenteModel.FK_tblProgresoProdep_catStatus" FromRole="catStatus" ToRole="tblProgresoProdep" />
           <NavigationProperty Name="tblInformeTecnico" Relationship="bdGestionDocenteModel.FK_tblInformeTecnico_catStatus" FromRole="catStatus" ToRole="tblInformeTecnico" />
           <NavigationProperty Name="tblLibro" Relationship="bdGestionDocenteModel.FK_tblLibro_catStatus" FromRole="catStatus" ToRole="tblLibro" />
+          <NavigationProperty Name="tblManualOperacion" Relationship="bdGestionDocenteModel.FK_tblManualOperacion_catStatus" FromRole="catStatus" ToRole="tblManualOperacion" />
         </EntityType>
         <EntityType Name="catTipoAlergias">
           <Key>
@@ -3708,6 +3791,7 @@
           <NavigationProperty Name="tblProgresoProdep" Relationship="bdGestionDocenteModel.FK_tblProgresoProdep_tblPersonal" FromRole="tblPersonal" ToRole="tblProgresoProdep" />
           <NavigationProperty Name="tblInformeTecnico" Relationship="bdGestionDocenteModel.FK_tblInformeTecnico_tblPersonal" FromRole="tblPersonal" ToRole="tblInformeTecnico" />
           <NavigationProperty Name="tblLibro" Relationship="bdGestionDocenteModel.FK_tblLibro_tblPersonal" FromRole="tblPersonal" ToRole="tblLibro" />
+          <NavigationProperty Name="tblManualOperacion" Relationship="bdGestionDocenteModel.FK_tblManualOperacion_tblPersonal" FromRole="tblPersonal" ToRole="tblManualOperacion" />
         </EntityType>
         <Association Name="fk_direccion_personal">
           <End Type="bdGestionDocenteModel.catDireccion" Role="catDireccion" Multiplicity="0..1" />
@@ -4709,6 +4793,64 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tblManualOperacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPais" Type="Int32" />
+          <Property Name="idStatus" Type="Int32" />
+          <Property Name="idPersonal" Type="Int32" />
+          <Property Name="strNombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="strDescripcion" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="strInstitucionBeneficiaria" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="dteFechaPublicacion" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CatPais" Relationship="bdGestionDocenteModel.FK_tblManualOperacion_CatPais" FromRole="tblManualOperacion" ToRole="CatPais" />
+          <NavigationProperty Name="catStatus" Relationship="bdGestionDocenteModel.FK_tblManualOperacion_catStatus" FromRole="tblManualOperacion" ToRole="catStatus" />
+          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_tblManualOperacion_tblPersonal" FromRole="tblManualOperacion" ToRole="tblPersonal" />
+        </EntityType>
+        <Association Name="FK_tblManualOperacion_CatPais">
+          <End Type="bdGestionDocenteModel.CatPais" Role="CatPais" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblManualOperacion" Role="tblManualOperacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatPais">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblManualOperacion">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblManualOperacion_catStatus">
+          <End Type="bdGestionDocenteModel.catStatus" Role="catStatus" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblManualOperacion" Role="tblManualOperacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catStatus">
+              <PropertyRef Name="idStatus" />
+            </Principal>
+            <Dependent Role="tblManualOperacion">
+              <PropertyRef Name="idStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblManualOperacion_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblManualOperacion" Role="tblManualOperacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblManualOperacion">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5477,6 +5619,20 @@
                 <ScalarProperty Name="idStatus" ColumnName="idStatus" />
                 <ScalarProperty Name="idPais" ColumnName="idPais" />
                 <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblManualOperacion">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblManualOperacion">
+              <MappingFragment StoreEntitySet="tblManualOperacion">
+                <ScalarProperty Name="dteFechaPublicacion" ColumnName="dteFechaPublicacion" />
+                <ScalarProperty Name="strInstitucionBeneficiaria" ColumnName="strInstitucionBeneficiaria" />
+                <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
+                <ScalarProperty Name="strNombre" ColumnName="strNombre" />
+                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
+                <ScalarProperty Name="idStatus" ColumnName="idStatus" />
+                <ScalarProperty Name="idPais" ColumnName="idPais" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
