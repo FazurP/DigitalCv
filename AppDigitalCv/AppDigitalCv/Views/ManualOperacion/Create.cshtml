@@ -42,7 +42,7 @@
                                 <label>Institución Beneficiaria</label>
                                 @Html.TextBoxFor(model => model.strInstitucionBeneficiaria, new { @class = "form-control input-sm", id = "Institucion" })
                                 <label>Pais</label>
-                                @Html.DropDownList("idPais", null, new { @class = "form-control input", id = "Pais" })
+                                @Html.DropDownList("idPais", null, new { @class = "form-control input-sm", id = "Pais" })
                                 <label>Fecha de Publicación</label>
                                 @Html.TextBoxFor(model => model.dteFechaPublicacion, new { @class = "form-control input-sm", type = "date", id = "Fecha" })
                             </div>
@@ -115,7 +115,7 @@
 
         var AddEliminar = function (id) {
 
-            var url = "/Libro/GetLibroDelete?_idLibro=" + id;
+            var url = "/ManualOperacion/GetManualOperacionDelete?_idManualOperacion=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");

@@ -10,5 +10,8 @@ namespace AppDigitalCv.Business.Interface
     public interface IManualOperacionBusiness
     {
         bool AddUpdateManualOperacion(ManualOperacionDomainModel manualOperacionDM);
+        List<ManualOperacionDomainModel> GetManualesByPersonal(int _idPersonal);
+        ManualOperacionDomainModel GetManualOperacion(int _idManual);
+        bool DeleteManualOperacion(int _idManual);
     }
 }

@@ -18,6 +18,7 @@ namespace AppDigitalCv.Repository
         public Nullable<int> idPais { get; set; }
         public Nullable<int> idStatus { get; set; }
         public Nullable<int> idPersonal { get; set; }
+        public string strAutor { get; set; }
         public string strNombre { get; set; }
         public string strDescripcion { get; set; }
         public string strInstitucionBeneficiaria { get; set; }

@@ -575,6 +575,7 @@
           <Property Name="idPais" Type="int" />
           <Property Name="idStatus" Type="int" />
           <Property Name="idPersonal" Type="int" />
+          <Property Name="strAutor" Type="varchar" MaxLength="250" />
           <Property Name="strNombre" Type="varchar" MaxLength="250" />
           <Property Name="strDescripcion" Type="varchar" MaxLength="8000" />
           <Property Name="strInstitucionBeneficiaria" Type="varchar" MaxLength="250" />
@@ -4801,6 +4802,7 @@
           <Property Name="idPais" Type="Int32" />
           <Property Name="idStatus" Type="Int32" />
           <Property Name="idPersonal" Type="Int32" />
+          <Property Name="strAutor" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strNombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strDescripcion" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
           <Property Name="strInstitucionBeneficiaria" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
@@ -5630,6 +5632,7 @@
                 <ScalarProperty Name="strInstitucionBeneficiaria" ColumnName="strInstitucionBeneficiaria" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
                 <ScalarProperty Name="strNombre" ColumnName="strNombre" />
+                <ScalarProperty Name="strAutor" ColumnName="strAutor" />
                 <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
                 <ScalarProperty Name="idStatus" ColumnName="idStatus" />
                 <ScalarProperty Name="idPais" ColumnName="idPais" />
