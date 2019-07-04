@@ -382,6 +382,7 @@
     <Content Include="Scripts\Validate\Asociaciones\validate-asociaciones-regExp.js" />
     <Content Include="Scripts\Validate\Block\validate-block-click.js" />
     <Content Include="Scripts\Validate\CapituloLibro\validate-capitulo-libro-form.js" />
+    <Content Include="Scripts\Validate\CapituloLibro\validate-capitulo-libro-regExp.js" />
     <Content Include="Scripts\Validate\CompetenciasTi\validate-competencias-ti-checked.js" />
     <Content Include="Scripts\Validate\Competencias\validate-competencias-form.js" />
     <Content Include="Scripts\Validate\ContactoEmergencia\valida-contacto-emergencia-regExp.js" />
