@@ -32,15 +32,15 @@
                         <div class="form-group">
                             <div class="col-lg-6">
                                 <label>Autor(es)</label>
-                                @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "Autor" })
+                                @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "Autor", pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$" })
                                 <label>Nombre del Manual</label>
-                                @Html.TextBoxFor(model => model.strNombre, new { @class = "form-control input-sm", id = "Nombre" })
+                                @Html.TextBoxFor(model => model.strNombre, new { @class = "form-control input-sm", id = "Nombre", pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$" })
                                 <label>Descripción</label>
-                                @Html.TextBoxFor(model => model.strDescripcion, new { @class = "form-control input-sm", id = "Descripcion" })
+                                @Html.TextBoxFor(model => model.strDescripcion, new { @class = "form-control input-sm", id = "Descripcion", pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$" })
                             </div>
                             <div class="col-lg-6">
                                 <label>Institución Beneficiaria</label>
-                                @Html.TextBoxFor(model => model.strInstitucionBeneficiaria, new { @class = "form-control input-sm", id = "Institucion" })
+                                @Html.TextBoxFor(model => model.strInstitucionBeneficiaria, new { @class = "form-control input-sm", id = "Institucion", pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$" })
                                 <label>Pais</label>
                                 @Html.DropDownList("idPais", null, new { @class = "form-control input-sm", id = "Pais" })
                                 <label>Fecha de Publicación</label>
