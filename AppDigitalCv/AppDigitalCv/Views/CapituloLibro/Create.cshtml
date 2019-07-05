@@ -35,11 +35,11 @@
                             <div class="col-lg-6">
                                 <div>
                                     <label>Autor(es) del Libro</label>
-                                    @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "Autor" })
+                                    @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "Autor", pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$" })
                                 </div>
                                 <div>
                                     <label>Titulo del Libro</label>
-                                    @Html.TextBoxFor(model => model.strTitulo, new { @class = "form-control input-sm", id = "Titulo" })
+                                    @Html.TextBoxFor(model => model.strTitulo, new { @class = "form-control input-sm", id = "Titulo", pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$" })
                                 </div>
                                 <div>
                                     <label>Estado Actual del Libro</label>
@@ -51,11 +51,11 @@
                                 </div>
                                 <div>
                                     <label>Editorial</label>
-                                    @Html.TextBoxFor(model => model.strEditorial, new { @class = "form-control input-sm", id = "Editorial" })
+                                    @Html.TextBoxFor(model => model.strEditorial, new { @class = "form-control input-sm", id = "Editorial", pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9,. ]+$" })
                                 </div>
                                 <div>
                                     <label>Edición</label>
-                                    @Html.TextBoxFor(model => model.strEdicion, new { @class = "form-control input-sm", id = "Edicion" })
+                                    @Html.TextBoxFor(model => model.strEdicion, new { @class = "form-control input-sm", id = "Edicion", pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9,. ]+$" })
                                 </div>
                                 <div>
                                     <label>Fecha de Publicación</label>
@@ -63,13 +63,13 @@
                                 </div>
                                 <div>
                                     <label>Tiraje</label>
-                                    @Html.TextBoxFor(model => model.strTiraje, new { @class = "form-control input-sm", id = "Tiraje" })
+                                    @Html.TextBoxFor(model => model.strTiraje, new { @class = "form-control input-sm", id = "Tiraje", pattern="^[0-9]+$" })
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div>
                                     <label>ISBN</label>
-                                    @Html.TextBoxFor(model => model.strISBN, new { @class = "form-control input-sm", id = "ISBN" })
+                                    @Html.TextBoxFor(model => model.strISBN, new { @class = "form-control input-sm", id = "ISBN", pattern="^[0-9]+$" })
                                 </div>
                                 <div>
                                     <label>Propósito</label>
@@ -77,19 +77,19 @@
                                 </div>
                                 <div>
                                     <label>Titulo del Capítulo</label>
-                                    @Html.TextBoxFor(model => model.strTituloCapitulo, new { @class = "form-control input-sm", id = "TituloCapitulo" })
+                                    @Html.TextBoxFor(model => model.strTituloCapitulo, new { @class = "form-control input-sm", id = "TituloCapitulo", pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$" })
                                 </div>
                                 <div>
                                     <label>Autor(es) del Capítulo</label>
-                                    @Html.TextBoxFor(model => model.strAutores, new { @class = "form-control input-sm", id = "Autores" })
+                                    @Html.TextBoxFor(model => model.strAutores, new { @class = "form-control input-sm", id = "Autores", pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$" })
                                 </div>
                                 <div>
                                     <label>De la Página</label>
-                                    @Html.TextBoxFor(model => model.paginaInicio, new { @class = "form-control input-sm", id = "PaginaInicio" })
+                                    @Html.TextBoxFor(model => model.paginaInicio, new { @class = "form-control input-sm", id = "PaginaInicio", pattern="^[0-9]+$" })
                                 </div>
                                 <div>
                                     <label>A la Página</label>
-                                    @Html.TextBoxFor(model => model.paginaTermino, new { @class = "form-control input-sm", id = "PaginaFin" })
+                                    @Html.TextBoxFor(model => model.paginaTermino, new { @class = "form-control input-sm", id = "PaginaFin", pattern="^[0-9]+$" })
                                 </div>
                                 <div>
                                     <label>Considera Para el Curriculum</label>
