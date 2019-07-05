@@ -33,11 +33,11 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Autor(es)</label>
-                                    @Html.TextBoxFor(model => model.strAutores, new { @class = "form-control input-sm", id = "Autor" })
+                                    @Html.TextBoxFor(model => model.strAutores, new { @class = "form-control input-sm", id = "Autor", pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$" })
                                 </div>
                                 <div class="form-group">
                                     <label>Titulo del Libro</label>
-                                    @Html.TextBoxFor(model => model.strTituloLibro, new { @class = "form-control input-sm", id = "TituloLibro" })
+                                    @Html.TextBoxFor(model => model.strTituloLibro, new { @class = "form-control input-sm", id = "TituloLibro", pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$" })
                                 </div>
                                 <div class="form-group">
                                     <label>Tipo de Participación</label>
@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Editorial</label>
-                                    @Html.TextBoxFor(model => model.strEditorial, new { @class = "form-control input-sm", id = "Editorial" })
+                                    @Html.TextBoxFor(model => model.strEditorial, new { @class = "form-control input-sm", id = "Editorial", pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9,. ]+$" })
                                 </div>
                                 <div class="form-group">
                                     <label>Pais</label>
@@ -59,19 +59,19 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Paginas</label>
-                                    @Html.TextBoxFor(model => model.Paginas, new { @class = "form-control input-sm", id = "Paginas" })
+                                    @Html.TextBoxFor(model => model.Paginas, new { @class = "form-control input-sm", id = "Paginas", pattern="^[0-9]+$" })
                                 </div>
                                 <div class="form-group">
                                     <label>Edición</label>
-                                    @Html.TextBoxFor(model => model.strEdicion, new { @class = "form-control input-sm", id = "Edicion" })
+                                    @Html.TextBoxFor(model => model.strEdicion, new { @class = "form-control input-sm", id = "Edicion", pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9,. ]+$" })
                                 </div>
                                 <div class="form-group">
                                     <label>Tiraje</label>
-                                    @Html.TextBoxFor(model => model.strTiraje, new { @class = "form-control input-sm", id = "Tiraje" })
+                                    @Html.TextBoxFor(model => model.strTiraje, new { @class = "form-control input-sm", id = "Tiraje", pattern="^[0-9]+$" })
                                 </div>
                                 <div class="form-group">
                                     <label>ISBN</label>
-                                    @Html.TextBoxFor(model => model.strISBM, new { @class = "form-control input-sm", id = "ISBN" })
+                                    @Html.TextBoxFor(model => model.strISBM, new { @class = "form-control input-sm", id = "ISBN", pattern="^[0-9]+$" })
                                 </div>
                                 <div class="form-group">
                                     <label>Fecha de Publicación</label>
