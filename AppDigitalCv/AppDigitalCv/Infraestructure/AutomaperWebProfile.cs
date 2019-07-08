@@ -252,6 +252,9 @@ namespace AppDigitalCv.Infraestructure
             //ManualOperacion
             CreateMap<ManualOperacionVM, ManualOperacionDomainModel>();
             CreateMap<ManualOperacionDomainModel, ManualOperacionVM>();
+            //ProductividadInnovadora
+            CreateMap<ProductividadInnovadoraVM, ProductividadInnovadoraDomainModel>();
+            CreateMap<ProductividadInnovadoraDomainModel, ProductividadInnovadoraVM>();
         }
 
         public static void Run()
