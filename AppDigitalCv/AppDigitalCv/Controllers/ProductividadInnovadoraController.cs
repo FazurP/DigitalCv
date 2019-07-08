@@ -189,6 +189,31 @@ namespace AppDigitalCv.Controllers
 
             return RedirectToAction("Create","ProductivadInnovadora");
         }
-       
+        [HttpGet]
+        public ActionResult GetProductividadUpdate(int _idProductividad)
+        {
+            ProductividadInnovadoraVM productividadInnovadoraVM = new ProductividadInnovadoraVM();
+            ProductividadInnovadoraDomainModel productividadInnovadoraDM = new ProductividadInnovadoraDomainModel();
+
+            productividadInnovadoraDM = productividadInnovadoraBusiness.GetProductividad(_idProductividad);
+
+            if (productividadInnovadoraDM != null)
+            {
+                AutoMapper.Mapper.Map(productividadInnovadoraDM, productividadInnovadoraVM);
+                return PartialView("_Editar", productividadInnovadoraVM);
+            }
+            return PartialView("_Editar");
+        }
+        [HttpPost]
+        public ActionResult UpdateProductividad(ProductividadInnovadoraVM productividadInnovadoraVM)
+        {
+            ProductividadInnovadoraDomainModel productividadInnovadoraDM = new ProductividadInnovadoraDomainModel();
+            if (productividadInnovadoraVM.id > 0)
+            {
+                AutoMapper.Mapper.Map(productividadInnovadoraVM, productividadInnovadoraDM);
+                productividadInnovadoraBusiness.AddUpdateProductividadInnovador(productividadInnovadoraDM);
+            }
+            return RedirectToAction("Create","ProductividadInnovadora");
+        }
     }
 }

@@ -119,7 +119,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header" style="background-color:#3C8DBC;color:white;">
                                                 <a href="#" class="close" data-dismiss="modal">&times;</a>
-                                                <h5 class="modal-title"><label style="font-size:medium;">Libro</label></h5>
+                                                <h5 class="modal-title"><label style="font-size:medium;">Productividad Innovadora</label></h5>
                                             </div>
                                             <div class="modal-body" id="myModalBodyDiv1">
                                             </div>
@@ -148,7 +148,7 @@
 
         var AddEditar = function (id) {
 
-            var url = "/Libro/GetLibroUpdate?_idLibro=" + id;
+            var url = "/ProductividadInnovadora/GetProductividadUpdate?_idProductividad=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");

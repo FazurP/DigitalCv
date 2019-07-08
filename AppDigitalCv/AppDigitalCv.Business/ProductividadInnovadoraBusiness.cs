@@ -27,7 +27,20 @@ namespace AppDigitalCv.Business
 
             if (productividadInnovadoraDomainModel.id > 0)
             {
+                Expression<Func<tblProductividadInnovadora, bool>> predicate = p => p.id == productividadInnovadoraDomainModel.id;
+                tblProductividadInnovadora tblProductividad = produccionInnovadoraRepository.GetAll(predicate).FirstOrDefault();
+                if (tblProductividad != null)
+                {
+                    tblProductividad.strAutor = productividadInnovadoraDomainModel.strAutor;
+                    tblProductividad.strTitulo = productividadInnovadoraDomainModel.strTitulo;
+                    tblProductividad.strDescripcion = productividadInnovadoraDomainModel.strDescripcion;
+                    tblProductividad.strUso = productividadInnovadoraDomainModel.strUso;
+                    tblProductividad.strNumeroRegistro = productividadInnovadoraDomainModel.strNumeroRegistro;
+                    tblProductividad.strUsuario = productividadInnovadoraDomainModel.strUsuario;
 
+                    produccionInnovadoraRepository.Update(tblProductividad);
+                    respuesta = true;
+                }
             }
             else
             {

@@ -555,6 +555,7 @@
     <Content Include="Views\ManualOperacion\_Editar.cshtml" />
     <Content Include="Views\ProductividadInnovadora\Create.cshtml" />
     <Content Include="Views\ProductividadInnovadora\_Eliminar.cshtml" />
+    <Content Include="Views\ProductividadInnovadora\_Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
