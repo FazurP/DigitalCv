@@ -64,5 +64,23 @@ namespace AppDigitalCv.Business.Enum
 
             return list;
         }
+
+        public List<string> FillTipoProductividadInnovador()
+        {
+            List<string> list = new List<string>();
+
+            list.Insert(0, "--Seleccionar--");
+
+            return list;
+        }
+
+        public List<string> FillClasificacionInternacional()
+        {
+            List<string> list = new List<string>();
+
+            list.Insert(0, "--Seleccionar--");
+
+            return list;
+        }
     }
 }

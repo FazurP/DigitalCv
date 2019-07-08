@@ -30,9 +30,11 @@ namespace AppDigitalCv.Repository
         public Nullable<System.DateTime> dteFechaRegistro { get; set; }
         public string strProposito { get; set; }
         public Nullable<bool> bitConsideraCurriculum { get; set; }
+        public Nullable<int> idStatus { get; set; }
     
         public virtual catDocumentos catDocumentos { get; set; }
         public virtual CatPais CatPais { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
+        public virtual catStatus catStatus { get; set; }
     }
 }

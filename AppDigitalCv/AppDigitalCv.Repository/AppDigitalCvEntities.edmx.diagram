@@ -165,6 +165,7 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblProductividadInnovadora_catDocumentos" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblProductividadInnovadora_CatPais" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblProductividadInnovadora_tblPersonal" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblProductividadInnovadora_catStatus" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

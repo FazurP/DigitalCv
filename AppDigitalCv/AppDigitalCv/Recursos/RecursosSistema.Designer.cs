@@ -169,6 +169,15 @@ namespace AppDigitalCv.Recursos {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a 6.
+        /// </summary>
+        internal static string REGISTRO_PRODUCTIVIDAD_INNOVADORA {
+            get {
+                return ResourceManager.GetString("REGISTRO_PRODUCTIVIDAD_INNOVADORA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Imagenes/Usuarios/.
         /// </summary>
         internal static string URL_PERFIL {

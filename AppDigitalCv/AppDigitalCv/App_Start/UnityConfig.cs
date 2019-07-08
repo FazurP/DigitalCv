@@ -81,6 +81,7 @@ namespace AppDigitalCv
             container.RegisterType<IInformeTecnicoBusiness, InformeTecnicoBusiness>();
             container.RegisterType<ILibroBusiness, LibroBusiness>();
             container.RegisterType<IManualOperacionBusiness, ManualOperacionBusiness>();
+            container.RegisterType<IProductividadInnovadoraBusiness, ProductividadInnovadoraBusiness>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

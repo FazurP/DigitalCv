@@ -13,6 +13,7 @@ namespace AppDigitalCv.Domain
         public int idDocumento { get; set; }
         public DocumentosDomainModel documentosDomainModel { get; set; }
         public int idPersonal { get; set; }
+        public int idStatus { get; set; }
         public string strAutor { get; set; }
         public string strTipoProductividadInnovadora { get; set; }
         public string strTitulo { get; set; }

@@ -702,6 +702,7 @@
           <Property Name="idPais" Type="int" />
           <Property Name="idDocumento" Type="int" />
           <Property Name="idPersonal" Type="int" />
+          <Property Name="idStatus" Type="int" />
           <Property Name="strAutor" Type="varchar" MaxLength="250" />
           <Property Name="strTipoProductividadInnovadora" Type="varchar" MaxLength="250" />
           <Property Name="strTitulo" Type="varchar" MaxLength="250" />
@@ -1772,6 +1773,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblProductividadInnovadora_catStatus">
+          <End Role="catStatus" Type="Self.catStatus" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProductividadInnovadora" Type="Self.tblProductividadInnovadora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catStatus">
+              <PropertyRef Name="idStatus" />
+            </Principal>
+            <Dependent Role="tblProductividadInnovadora">
+              <PropertyRef Name="idStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblProductividadInnovadora_tblPersonal">
           <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -2350,6 +2365,10 @@
             <End Role="CatPais" EntitySet="CatPais" />
             <End Role="tblProductividadInnovadora" EntitySet="tblProductividadInnovadora" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblProductividadInnovadora_catStatus" Association="Self.FK_tblProductividadInnovadora_catStatus">
+            <End Role="catStatus" EntitySet="catStatus" />
+            <End Role="tblProductividadInnovadora" EntitySet="tblProductividadInnovadora" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblProductividadInnovadora_tblPersonal" Association="Self.FK_tblProductividadInnovadora_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblProductividadInnovadora" EntitySet="tblProductividadInnovadora" />
@@ -2889,6 +2908,10 @@
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblProductividadInnovadora" EntitySet="tblProductividadInnovadora" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblProductividadInnovadora_catStatus" Association="bdGestionDocenteModel.FK_tblProductividadInnovadora_catStatus">
+            <End Role="catStatus" EntitySet="catStatus" />
+            <End Role="tblProductividadInnovadora" EntitySet="tblProductividadInnovadora" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="catAlergias">
           <Key>
@@ -3171,6 +3194,7 @@
           <NavigationProperty Name="tblInformeTecnico" Relationship="bdGestionDocenteModel.FK_tblInformeTecnico_catStatus" FromRole="catStatus" ToRole="tblInformeTecnico" />
           <NavigationProperty Name="tblLibro" Relationship="bdGestionDocenteModel.FK_tblLibro_catStatus" FromRole="catStatus" ToRole="tblLibro" />
           <NavigationProperty Name="tblManualOperacion" Relationship="bdGestionDocenteModel.FK_tblManualOperacion_catStatus" FromRole="catStatus" ToRole="tblManualOperacion" />
+          <NavigationProperty Name="tblProductividadInnovadora" Relationship="bdGestionDocenteModel.FK_tblProductividadInnovadora_catStatus" FromRole="catStatus" ToRole="tblProductividadInnovadora" />
         </EntityType>
         <EntityType Name="catTipoAlergias">
           <Key>
@@ -4968,6 +4992,8 @@
           <NavigationProperty Name="catDocumentos" Relationship="bdGestionDocenteModel.FK_tblProductividadInnovadora_catDocumentos" FromRole="tblProductividadInnovadora" ToRole="catDocumentos" />
           <NavigationProperty Name="CatPais" Relationship="bdGestionDocenteModel.FK_tblProductividadInnovadora_CatPais" FromRole="tblProductividadInnovadora" ToRole="CatPais" />
           <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_tblProductividadInnovadora_tblPersonal" FromRole="tblProductividadInnovadora" ToRole="tblPersonal" />
+          <Property Name="idStatus" Type="Int32" />
+          <NavigationProperty Name="catStatus" Relationship="bdGestionDocenteModel.FK_tblProductividadInnovadora_catStatus" FromRole="tblProductividadInnovadora" ToRole="catStatus" />
         </EntityType>
         <Association Name="FK_tblProductividadInnovadora_catDocumentos">
           <End Type="bdGestionDocenteModel.catDocumentos" Role="catDocumentos" Multiplicity="0..1">
@@ -5008,6 +5034,20 @@
             </Principal>
             <Dependent Role="tblProductividadInnovadora">
               <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductividadInnovadora_catStatus">
+          <End Type="bdGestionDocenteModel.catStatus" Role="catStatus" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblProductividadInnovadora" Role="tblProductividadInnovadora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catStatus">
+              <PropertyRef Name="idStatus" />
+            </Principal>
+            <Dependent Role="tblProductividadInnovadora">
+              <PropertyRef Name="idStatus" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5801,6 +5841,7 @@
           <EntitySetMapping Name="tblProductividadInnovadora">
             <EntityTypeMapping TypeName="bdGestionDocenteModel.tblProductividadInnovadora">
               <MappingFragment StoreEntitySet="tblProductividadInnovadora">
+                <ScalarProperty Name="idStatus" ColumnName="idStatus" />
                 <ScalarProperty Name="bitConsideraCurriculum" ColumnName="bitConsideraCurriculum" />
                 <ScalarProperty Name="strProposito" ColumnName="strProposito" />
                 <ScalarProperty Name="dteFechaRegistro" ColumnName="dteFechaRegistro" />

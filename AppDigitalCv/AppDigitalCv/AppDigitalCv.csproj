@@ -553,6 +553,7 @@
     <Content Include="Views\ManualOperacion\Create.cshtml" />
     <Content Include="Views\ManualOperacion\_Eliminar.cshtml" />
     <Content Include="Views\ManualOperacion\_Editar.cshtml" />
+    <Content Include="Views\ProductividadInnovadora\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -594,6 +595,7 @@
     <Compile Include="Controllers\PersonalAsociacionesController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Controllers\PremiosDocenteController.cs" />
+    <Compile Include="Controllers\ProductividadInnovadoraController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Controllers\TipoContratacionController.cs" />
     <Compile Include="Infraestructure\AutomaperWebProfile.cs" />
@@ -815,6 +817,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Usuarios\" />
+    <Folder Include="Views\ProductividadInnovaroda\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppDigitalCv.Business\AppDigitalCv.Business.csproj">
