@@ -10,6 +10,7 @@ using AppDigitalCv.ViewModels;
 using AppDigitalCv.Domain;
 using System.IO;
 using AppDigitalCv.Business.Enum;
+using AppDigitalCv.Models;
 
 namespace AppDigitalCv.Controllers
 {
@@ -110,6 +111,43 @@ namespace AppDigitalCv.Controllers
                 respuesta = true;
             }
             return respuesta;
+        }
+
+        public JsonResult GetProductividad(DataTablesParam param)
+        {
+            int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
+            List<ProductividadInnovadoraDomainModel> productividadDM = new List<ProductividadInnovadoraDomainModel>();
+
+            int pageNo = 1;
+            if (param.iDisplayStart >= param.iDisplayLength)
+            {
+                pageNo = (param.iDisplayStart / param.iDisplayLength) + 1;
+            }
+
+            int totalCount = 0;
+            if (param.sSearch != null)
+            {
+                productividadDM = productividadInnovadoraBusiness.GetProductividad(IdentityPersonal).Where(p => p.strTitulo.Contains(param.sSearch)).ToList();
+
+
+            }
+            else
+            {
+                totalCount = productividadInnovadoraBusiness.GetProductividad(IdentityPersonal).Count();
+
+
+                productividadDM = productividadInnovadoraBusiness.GetProductividad(IdentityPersonal).OrderBy(p => p.strTitulo)
+                    .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
+
+            }
+            return Json(new
+            {
+                aaData = productividadDM,
+                sEcho = param.sEcho,
+                iTotalDisplayRecords = productividadDM.Count(),
+                iTotalRecords = productividadDM.Count()
+
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }

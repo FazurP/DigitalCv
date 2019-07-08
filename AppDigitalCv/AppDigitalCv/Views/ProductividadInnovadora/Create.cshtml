@@ -102,7 +102,7 @@
                             <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
                             <div class="form-group" id="addTable">
                                 <br />
-                                <table id="tblPructividad" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
+                                <table id="tblProductividad" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
                                     <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
                                         <tr>
                                             <th>Titulo</th>
@@ -175,11 +175,11 @@
 
             function BindDataTable() {
 
-                if ($.fn.DataTable.isDataTable('#tblPructividad')) {
+                if ($.fn.DataTable.isDataTable('#tblProductividad')) {
                     oTable.Draw();
                 }
                 else {
-                    oTable = $('#tblPructividad').DataTable({
+                    oTable = $('#tblProductividad').DataTable({
 
                         "bServerSide": true,
                         "sAjaxSource": '/ProductividadInnovadora/GetProductividad',
@@ -221,7 +221,7 @@
                         "dataSrc": "",
                         "columns": [
 
-                            { "data": "strTituloLibro" },
+                            { "data": "strTitulo" },
 
                             {
                                 "data": "id",

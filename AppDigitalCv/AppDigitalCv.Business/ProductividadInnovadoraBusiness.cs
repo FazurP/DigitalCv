@@ -5,6 +5,7 @@ using AppDigitalCv.Repository.Infraestructure.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -54,6 +55,42 @@ namespace AppDigitalCv.Business
             }
 
             return respuesta;
+        }
+
+        public List<ProductividadInnovadoraDomainModel> GetProductividad(int _idPersonal)
+        {
+            List<ProductividadInnovadoraDomainModel> productividad = new List<ProductividadInnovadoraDomainModel>();
+
+            Expression<Func<tblProductividadInnovadora, bool>> predicate = p => p.idPersonal == _idPersonal;
+            List<tblProductividadInnovadora> tblProductividad = produccionInnovadoraRepository.GetAll(predicate).ToList();
+
+            foreach (tblProductividadInnovadora item in tblProductividad)
+            {
+                ProductividadInnovadoraDomainModel productividadInnovadoraDM = new ProductividadInnovadoraDomainModel();
+
+                productividadInnovadoraDM.id = item.id;
+                productividadInnovadoraDM.idDocumento = item.idDocumento.Value;
+                productividadInnovadoraDM.idPais = item.idPais.Value;
+                productividadInnovadoraDM.idPersonal = item.idPersonal.Value;
+                productividadInnovadoraDM.idStatus = item.idStatus.Value;
+                productividadInnovadoraDM.strAutor = item.strAutor;
+                productividadInnovadoraDM.strClasificacionInternacionalPatentes = item.strClasificacionInternacionalPatentes;
+                productividadInnovadoraDM.strDescripcion = item.strDescripcion;
+                productividadInnovadoraDM.strEstadoActual = item.strEstadoActual;
+                productividadInnovadoraDM.strNumeroRegistro = item.strNumeroRegistro;
+                productividadInnovadoraDM.strProposito = item.strProposito;
+                productividadInnovadoraDM.strTipoProductividadInnovadora = item.strTipoProductividadInnovadora;
+                productividadInnovadoraDM.strTitulo = item.strTitulo;
+                productividadInnovadoraDM.strUso = item.strUso;
+                productividadInnovadoraDM.strUsuario = item.strUsuario;
+                productividadInnovadoraDM.dteFechaRegistro = item.dteFechaRegistro.Value;
+                productividadInnovadoraDM.bitConsideraCurriculum = item.bitConsideraCurriculum.Value;
+
+                productividad.Add(productividadInnovadoraDM);
+
+            }
+
+            return productividad;
         }
     }
 }

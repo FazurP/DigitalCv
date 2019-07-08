@@ -10,5 +10,6 @@ namespace AppDigitalCv.Business.Interface
     public interface IProductividadInnovadoraBusiness
     {
         bool AddUpdateProductividadInnovador(ProductividadInnovadoraDomainModel productividadInnovadoraDomainModel);
+        List<ProductividadInnovadoraDomainModel> GetProductividad(int _idPersonal);
     }
 }
