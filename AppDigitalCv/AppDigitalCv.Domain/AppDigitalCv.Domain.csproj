@@ -107,6 +107,7 @@
     <Compile Include="PersonalAsociacionesDomainModel.cs" />
     <Compile Include="PersonalDomainModel.cs" />
     <Compile Include="PremiosDocenteDomainModel.cs" />
+    <Compile Include="ProductividadInnovadoraDomainModel.cs" />
     <Compile Include="ProgramaEducativoDomainModel.cs" />
     <Compile Include="ProgresoProdepDomainModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
