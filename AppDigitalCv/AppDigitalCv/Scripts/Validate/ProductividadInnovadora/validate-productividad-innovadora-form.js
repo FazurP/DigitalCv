@@ -79,6 +79,7 @@
             $('#Proposito').get(0).selectedIndex = 0;
             $('#inputFileUpload').val('');
         } else {
+            toastr.success('Productividad Innovadora Seleccionada', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
             $('#Titulo').prop('disabled', false);
         }
     })
@@ -166,6 +167,7 @@
             $('#Proposito').get(0).selectedIndex = 0;
             $('#inputFileUpload').val('');
         } else {
+            toastr.success('Clasificación de Patentes Seleccionada', 'Digital-Cv dice', { timeOut: 1000, closeButton: true })
             $('#Uso').prop('disabled', false);
         }
     })
@@ -214,6 +216,7 @@
             $('#Proposito').get(0).selectedIndex = 0;
             $('#inputFileUpload').val('');
         } else {
+            toastr.success('Estado Actual Seleccionado', 'Digital-Cv dice', { timeOut: 1000, closeButton: true })
             $('#NumeroRegistro').prop('disabled', false);
         }
     })
@@ -271,6 +274,7 @@
             $('#Proposito').get(0).selectedIndex = 0;
             $('#inputFileUpload').val('');
         } else {
+            toastr.success('Pais Seleccionado', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
             $('#FechaRegistro').prop('disabled', false);
         }
     })
@@ -299,6 +303,7 @@
 
             $('#inputFileUpload').val('');
         } else {
+            toastr.success('Proposito Seleccionado', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
             $('#inputFileUpload').prop('disabled', false);
         }
     })
