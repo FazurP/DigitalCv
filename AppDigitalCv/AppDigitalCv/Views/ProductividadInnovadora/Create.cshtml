@@ -33,63 +33,63 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Autor(es)</label>
-                                    @Html.TextBoxFor(model => model.strAutor, new { @class="form-control input-sm",id="Autor" })
+                                    @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "Autor" })
                                 </div>
                                 <div class="form-group">
                                     <label>Tipo de Productividad Innovadora</label>
-                                    @Html.DropDownList("strTipoProductividadInnovadora",null,new{ @class = "form-control input-sm",id="Innovadora"})
+                                    @Html.DropDownList("strTipoProductividadInnovadora", null, new { @class = "form-control input-sm", id = "Innovadora" })
                                 </div>
                                 <div class="form-group">
                                     <label>Titulo</label>
-                                    @Html.TextBoxFor(model => model.strTitulo, new { @class="form-control input-sm", id="Titulo"})
+                                    @Html.TextBoxFor(model => model.strTitulo, new { @class = "form-control input-sm", id = "Titulo" })
                                 </div>
                                 <div class="form-group">
                                     <label>Descripción</label>
-                                    @Html.TextBoxFor(model => model.strDescripcion, new { @class = "form-control input-sm",id="Descripcion"})
+                                    @Html.TextBoxFor(model => model.strDescripcion, new { @class = "form-control input-sm", id = "Descripcion" })
                                 </div>
                                 <div class="form-group">
                                     <label>Clasificación Internacional de Patentes</label>
-                                    @Html.DropDownList("strClasificacionInternacionalPatentes",null,new { @class ="form-control input-sm",id="Patentes"})
+                                    @Html.DropDownList("strClasificacionInternacionalPatentes", null, new { @class = "form-control input-sm", id = "Patentes" })
                                 </div>
                                 <div class="form-group">
                                     <label>Uso</label>
-                                    @Html.TextBoxFor(model => model.strUso,new { @class = "form-control input-sm",id="Uso"})
+                                    @Html.TextBoxFor(model => model.strUso, new { @class = "form-control input-sm", id = "Uso" })
                                 </div>
                                 <div class="form-group">
                                     <label>Estado Actual</label>
-                                    @Html.DropDownList("strEstadoActual",null, new{ @class = "form-control input-sm",id="EstadoActual"})
+                                    @Html.DropDownList("strEstadoActual", null, new { @class = "form-control input-sm", id = "EstadoActual" })
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Número de Registro</label>
-                                    @Html.TextBoxFor(model => model.strNumeroRegistro,new { @class = "form-control input-sm",id="NumeroRegistro"})
+                                    @Html.TextBoxFor(model => model.strNumeroRegistro, new { @class = "form-control input-sm", id = "NumeroRegistro" })
                                 </div>
                                 <div class="form-group">
                                     <label>Usuario</label>
-                                    @Html.TextBoxFor(model => model.strUsuario,new { @class = "form-control input-sm",id="Usuario"})
+                                    @Html.TextBoxFor(model => model.strUsuario, new { @class = "form-control input-sm", id = "Usuario" })
                                 </div>
                                 <div class="form-group">
                                     <label>País</label>
-                                    @Html.DropDownList("idPais",null,new { @class="form-control input-sm",id="Pais"})
+                                    @Html.DropDownList("idPais", null, new { @class = "form-control input-sm", id = "Pais" })
                                 </div>
                                 <div class="form-group">
                                     <label>Fecha de Registro</label>
-                                    @Html.TextBoxFor(model => model.dteFechaRegistro,new { @class ="form-control input-sm",id="FechaRegistro",type="date"})
+                                    @Html.TextBoxFor(model => model.dteFechaRegistro, new { @class = "form-control input-sm", id = "FechaRegistro", type = "date" })
                                 </div>
                                 <div class="form-group">
                                     <label>Propósito</label>
-                                    @Html.DropDownList("strProposito",null,new { @class = "form-control input-sm",id="Proposito" })
+                                    @Html.DropDownList("strProposito", null, new { @class = "form-control input-sm", id = "Proposito" })
                                 </div>
                                 <div class="form-group">
                                     <label>Evidencia en Archivo PDF</label>
-                                    @Html.TextBoxFor(model => model.documentoVM.DocumentoFile, new { @class = "form-control input-sm",id="inputFileUpload",type="file"})
+                                    @Html.TextBoxFor(model => model.documentoVM.DocumentoFile, new { @class = "form-control input-sm", id = "inputFileUpload", type = "file" })
                                 </div>
                                 <div class="form-group">
-                                    <label>Considera para Curriculum</label>   
+                                    <label>Considera para Curriculum</label>
                                     <br />
-                                    Si @Html.RadioButtonFor(model => model.bitConsideraCurriculum,true,new { @class ="form-control input-sm",id="cv"})
-                                    No @Html.RadioButtonFor(model => model.bitConsideraCurriculum,false,new { @class ="form-control input-sm",id="cv"})
+                                    Si @Html.RadioButtonFor(model => model.bitConsideraCurriculum, true, new { @class = "form-control input-sm", id = "cv" })
+                                    No @Html.RadioButtonFor(model => model.bitConsideraCurriculum, false, new { @class = "form-control input-sm", id = "cv" })
                                 </div>
                             </div>
                         </div>
@@ -144,6 +144,7 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/Validate/ProductividadInnovadora/validate-productividad-innovadora-form.js"></script>
     <script>
 
         var AddEditar = function (id) {
