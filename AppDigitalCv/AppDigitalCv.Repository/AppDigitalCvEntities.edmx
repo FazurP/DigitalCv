@@ -694,6 +694,27 @@
           <Property Name="dteFechaFinPremio" Type="datetime" />
           <Property Name="strTipoPremio" Type="varchar" MaxLength="150" />
         </EntityType>
+        <EntityType Name="tblProductividadInnovadora">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPais" Type="int" />
+          <Property Name="idDocumento" Type="int" />
+          <Property Name="idPersonal" Type="int" />
+          <Property Name="strAutor" Type="varchar" MaxLength="250" />
+          <Property Name="strTipoProductividadInnovadora" Type="varchar" MaxLength="250" />
+          <Property Name="strTitulo" Type="varchar" MaxLength="250" />
+          <Property Name="strDescripcion" Type="varchar" MaxLength="250" />
+          <Property Name="strClasificacionInternacionalPatentes" Type="varchar" MaxLength="250" />
+          <Property Name="strUso" Type="varchar" MaxLength="250" />
+          <Property Name="strEstadoActual" Type="varchar" MaxLength="250" />
+          <Property Name="strNumeroRegistro" Type="varchar" MaxLength="250" />
+          <Property Name="strUsuario" Type="varchar" MaxLength="250" />
+          <Property Name="dteFechaRegistro" Type="date" />
+          <Property Name="strProposito" Type="varchar" MaxLength="250" />
+          <Property Name="bitConsideraCurriculum" Type="bit" />
+        </EntityType>
         <EntityType Name="tblProgresoProdep">
           <Key>
             <PropertyRef Name="id" />
@@ -1723,6 +1744,48 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblProductividadInnovadora_catDocumentos">
+          <End Role="catDocumentos" Type="Self.catDocumentos" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProductividadInnovadora" Type="Self.tblProductividadInnovadora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catDocumentos">
+              <PropertyRef Name="idDocumento" />
+            </Principal>
+            <Dependent Role="tblProductividadInnovadora">
+              <PropertyRef Name="idDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductividadInnovadora_CatPais">
+          <End Role="CatPais" Type="Self.CatPais" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProductividadInnovadora" Type="Self.tblProductividadInnovadora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatPais">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblProductividadInnovadora">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductividadInnovadora_tblPersonal">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProductividadInnovadora" Type="Self.tblProductividadInnovadora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblProductividadInnovadora">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblProgresoProdep_catStatus">
           <End Role="catStatus" Type="Self.catStatus" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -1963,6 +2026,7 @@
           <EntitySet Name="tblPersonalAsociaciones" EntityType="Self.tblPersonalAsociaciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPortafolioPersonal" EntityType="Self.tblPortafolioPersonal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPremiosDocente" EntityType="Self.tblPremiosDocente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductividadInnovadora" EntityType="Self.tblProductividadInnovadora" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProgresoProdep" EntityType="Self.tblProgresoProdep" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblTelefono" EntityType="Self.tblTelefono" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUsuarioRol" EntityType="Self.tblUsuarioRol" Schema="dbo" store:Type="Tables" />
@@ -2277,6 +2341,18 @@
           <AssociationSet Name="FK_tblPortafolioPersonal_tblPersonal" Association="Self.FK_tblPortafolioPersonal_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblPortafolioPersonal" EntitySet="tblPortafolioPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductividadInnovadora_catDocumentos" Association="Self.FK_tblProductividadInnovadora_catDocumentos">
+            <End Role="catDocumentos" EntitySet="catDocumentos" />
+            <End Role="tblProductividadInnovadora" EntitySet="tblProductividadInnovadora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductividadInnovadora_CatPais" Association="Self.FK_tblProductividadInnovadora_CatPais">
+            <End Role="CatPais" EntitySet="CatPais" />
+            <End Role="tblProductividadInnovadora" EntitySet="tblProductividadInnovadora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductividadInnovadora_tblPersonal" Association="Self.FK_tblProductividadInnovadora_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblProductividadInnovadora" EntitySet="tblProductividadInnovadora" />
           </AssociationSet>
           <AssociationSet Name="FK_tblProgresoProdep_catStatus" Association="Self.FK_tblProgresoProdep_catStatus">
             <End Role="catStatus" EntitySet="catStatus" />
@@ -2800,6 +2876,19 @@
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblManualOperacion" EntitySet="tblManualOperacion" />
           </AssociationSet>
+          <EntitySet Name="tblProductividadInnovadora" EntityType="bdGestionDocenteModel.tblProductividadInnovadora" />
+          <AssociationSet Name="FK_tblProductividadInnovadora_catDocumentos" Association="bdGestionDocenteModel.FK_tblProductividadInnovadora_catDocumentos">
+            <End Role="catDocumentos" EntitySet="catDocumentos" />
+            <End Role="tblProductividadInnovadora" EntitySet="tblProductividadInnovadora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductividadInnovadora_CatPais" Association="bdGestionDocenteModel.FK_tblProductividadInnovadora_CatPais">
+            <End Role="CatPais" EntitySet="CatPais" />
+            <End Role="tblProductividadInnovadora" EntitySet="tblProductividadInnovadora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductividadInnovadora_tblPersonal" Association="bdGestionDocenteModel.FK_tblProductividadInnovadora_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblProductividadInnovadora" EntitySet="tblProductividadInnovadora" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="catAlergias">
           <Key>
@@ -3022,6 +3111,7 @@
           <NavigationProperty Name="CatEstado" Relationship="bdGestionDocenteModel.FK_CatEstado_CatPais" FromRole="CatPais" ToRole="CatEstado" />
           <NavigationProperty Name="tblLibro" Relationship="bdGestionDocenteModel.FK_tblLibro_CatPais" FromRole="CatPais" ToRole="tblLibro" />
           <NavigationProperty Name="tblManualOperacion" Relationship="bdGestionDocenteModel.FK_tblManualOperacion_CatPais" FromRole="CatPais" ToRole="tblManualOperacion" />
+          <NavigationProperty Name="tblProductividadInnovadora" Relationship="bdGestionDocenteModel.FK_tblProductividadInnovadora_CatPais" FromRole="CatPais" ToRole="tblProductividadInnovadora" />
         </EntityType>
         <EntityType Name="catParentesco">
           <Key>
@@ -3793,6 +3883,7 @@
           <NavigationProperty Name="tblInformeTecnico" Relationship="bdGestionDocenteModel.FK_tblInformeTecnico_tblPersonal" FromRole="tblPersonal" ToRole="tblInformeTecnico" />
           <NavigationProperty Name="tblLibro" Relationship="bdGestionDocenteModel.FK_tblLibro_tblPersonal" FromRole="tblPersonal" ToRole="tblLibro" />
           <NavigationProperty Name="tblManualOperacion" Relationship="bdGestionDocenteModel.FK_tblManualOperacion_tblPersonal" FromRole="tblPersonal" ToRole="tblManualOperacion" />
+          <NavigationProperty Name="tblProductividadInnovadora" Relationship="bdGestionDocenteModel.FK_tblProductividadInnovadora_tblPersonal" FromRole="tblPersonal" ToRole="tblProductividadInnovadora" />
         </EntityType>
         <Association Name="fk_direccion_personal">
           <End Type="bdGestionDocenteModel.catDireccion" Role="catDireccion" Multiplicity="0..1" />
@@ -4127,6 +4218,7 @@
           <NavigationProperty Name="tblParticipacionInstitucionalInterna" Relationship="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_catDocumentos" FromRole="catDocumentos" ToRole="tblParticipacionInstitucionalInterna" />
           <NavigationProperty Name="tblExperienciaLaboralExterna" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralExterna_catDocumentos" FromRole="catDocumentos" ToRole="tblExperienciaLaboralExterna" />
           <NavigationProperty Name="tblInformeTecnico" Relationship="bdGestionDocenteModel.FK_tblInformeTecnico_catDocumentos" FromRole="catDocumentos" ToRole="tblInformeTecnico" />
+          <NavigationProperty Name="tblProductividadInnovadora" Relationship="bdGestionDocenteModel.FK_tblProductividadInnovadora_catDocumentos" FromRole="catDocumentos" ToRole="tblProductividadInnovadora" />
         </EntityType>
         <Association Name="fk_documento_documentacionPersonal">
           <End Type="bdGestionDocenteModel.catDocumentos" Role="catDocumentos" Multiplicity="1" />
@@ -4849,6 +4941,72 @@
               <PropertyRef Name="idPersonal" />
             </Principal>
             <Dependent Role="tblManualOperacion">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblProductividadInnovadora">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPais" Type="Int32" />
+          <Property Name="idDocumento" Type="Int32" />
+          <Property Name="idPersonal" Type="Int32" />
+          <Property Name="strAutor" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="strTipoProductividadInnovadora" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="strTitulo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="strDescripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="strClasificacionInternacionalPatentes" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="strUso" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="strEstadoActual" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="strNumeroRegistro" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="strUsuario" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="dteFechaRegistro" Type="DateTime" Precision="0" />
+          <Property Name="strProposito" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="bitConsideraCurriculum" Type="Boolean" />
+          <NavigationProperty Name="catDocumentos" Relationship="bdGestionDocenteModel.FK_tblProductividadInnovadora_catDocumentos" FromRole="tblProductividadInnovadora" ToRole="catDocumentos" />
+          <NavigationProperty Name="CatPais" Relationship="bdGestionDocenteModel.FK_tblProductividadInnovadora_CatPais" FromRole="tblProductividadInnovadora" ToRole="CatPais" />
+          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_tblProductividadInnovadora_tblPersonal" FromRole="tblProductividadInnovadora" ToRole="tblPersonal" />
+        </EntityType>
+        <Association Name="FK_tblProductividadInnovadora_catDocumentos">
+          <End Type="bdGestionDocenteModel.catDocumentos" Role="catDocumentos" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblProductividadInnovadora" Role="tblProductividadInnovadora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catDocumentos">
+              <PropertyRef Name="idDocumento" />
+            </Principal>
+            <Dependent Role="tblProductividadInnovadora">
+              <PropertyRef Name="idDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductividadInnovadora_CatPais">
+          <End Type="bdGestionDocenteModel.CatPais" Role="CatPais" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblProductividadInnovadora" Role="tblProductividadInnovadora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatPais">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblProductividadInnovadora">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductividadInnovadora_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblProductividadInnovadora" Role="tblProductividadInnovadora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblProductividadInnovadora">
               <PropertyRef Name="idPersonal" />
             </Dependent>
           </ReferentialConstraint>
@@ -5635,6 +5793,28 @@
                 <ScalarProperty Name="strAutor" ColumnName="strAutor" />
                 <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
                 <ScalarProperty Name="idStatus" ColumnName="idStatus" />
+                <ScalarProperty Name="idPais" ColumnName="idPais" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductividadInnovadora">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblProductividadInnovadora">
+              <MappingFragment StoreEntitySet="tblProductividadInnovadora">
+                <ScalarProperty Name="bitConsideraCurriculum" ColumnName="bitConsideraCurriculum" />
+                <ScalarProperty Name="strProposito" ColumnName="strProposito" />
+                <ScalarProperty Name="dteFechaRegistro" ColumnName="dteFechaRegistro" />
+                <ScalarProperty Name="strUsuario" ColumnName="strUsuario" />
+                <ScalarProperty Name="strNumeroRegistro" ColumnName="strNumeroRegistro" />
+                <ScalarProperty Name="strEstadoActual" ColumnName="strEstadoActual" />
+                <ScalarProperty Name="strUso" ColumnName="strUso" />
+                <ScalarProperty Name="strClasificacionInternacionalPatentes" ColumnName="strClasificacionInternacionalPatentes" />
+                <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
+                <ScalarProperty Name="strTitulo" ColumnName="strTitulo" />
+                <ScalarProperty Name="strTipoProductividadInnovadora" ColumnName="strTipoProductividadInnovadora" />
+                <ScalarProperty Name="strAutor" ColumnName="strAutor" />
+                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
+                <ScalarProperty Name="idDocumento" ColumnName="idDocumento" />
                 <ScalarProperty Name="idPais" ColumnName="idPais" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
