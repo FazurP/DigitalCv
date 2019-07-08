@@ -673,6 +673,7 @@
     <Compile Include="ViewModels\PersonalVM.cs" />
     <Compile Include="ViewModels\Porcentajes.cs" />
     <Compile Include="ViewModels\PremiosDocenteVM.cs" />
+    <Compile Include="ViewModels\ProductividadInnovadoraVM.cs" />
     <Compile Include="ViewModels\ProgramaEducativoVM.cs" />
     <Compile Include="ViewModels\ProgresoProdepVM.cs" />
     <Compile Include="ViewModels\RegistroProfEstatalVM.cs" />
