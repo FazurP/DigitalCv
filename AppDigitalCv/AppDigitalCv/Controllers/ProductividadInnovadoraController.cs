@@ -32,6 +32,7 @@ namespace AppDigitalCv.Controllers
             documentosBusiness = _documentosBusiness;
             progresoProdep = _progresoProdep;
         }
+       
         [HttpGet]
         public ActionResult Create()
         {
@@ -112,7 +113,7 @@ namespace AppDigitalCv.Controllers
             }
             return respuesta;
         }
-
+        [HttpGet]
         public JsonResult GetProductividad(DataTablesParam param)
         {
             int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
@@ -127,16 +128,16 @@ namespace AppDigitalCv.Controllers
             int totalCount = 0;
             if (param.sSearch != null)
             {
-                productividadDM = productividadInnovadoraBusiness.GetProductividad(IdentityPersonal).Where(p => p.strTitulo.Contains(param.sSearch)).ToList();
+                productividadDM = productividadInnovadoraBusiness.GetProductividades(IdentityPersonal).Where(p => p.strTitulo.Contains(param.sSearch)).ToList();
 
 
             }
             else
             {
-                totalCount = productividadInnovadoraBusiness.GetProductividad(IdentityPersonal).Count();
+                totalCount = productividadInnovadoraBusiness.GetProductividades(IdentityPersonal).Count();
 
 
-                productividadDM = productividadInnovadoraBusiness.GetProductividad(IdentityPersonal).OrderBy(p => p.strTitulo)
+                productividadDM = productividadInnovadoraBusiness.GetProductividades(IdentityPersonal).OrderBy(p => p.strTitulo)
                     .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
 
             }
@@ -149,5 +150,45 @@ namespace AppDigitalCv.Controllers
 
             }, JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
+        public ActionResult GetProductividadDelete(int _idProductividad)
+        {
+            ProductividadInnovadoraVM productividadInnovadoraVM = new ProductividadInnovadoraVM();
+            ProductividadInnovadoraDomainModel productividadInnovadoraDM = new ProductividadInnovadoraDomainModel();
+
+            productividadInnovadoraDM = productividadInnovadoraBusiness.GetProductividad(_idProductividad);
+
+            if (productividadInnovadoraDM != null)
+            {
+                AutoMapper.Mapper.Map(productividadInnovadoraDM, productividadInnovadoraVM);
+                return PartialView("_Eliminar", productividadInnovadoraVM);
+            }
+
+            return PartialView("_Eliminar");
+        }
+        [HttpPost]
+        public ActionResult DeleteProductividad(ProductividadInnovadoraVM productividadInnovadoraVM)
+        {
+            ProductividadInnovadoraDomainModel productividadInnovadoraDM = new ProductividadInnovadoraDomainModel();
+
+            productividadInnovadoraDM = productividadInnovadoraBusiness.GetProductividad(productividadInnovadoraVM.id);
+
+            if (productividadInnovadoraDM !=  null)
+            {
+                if (productividadInnovadoraBusiness.GetProductividades(SessionPersister.AccountSession.IdPersonal).Count == 1)
+                {
+                    ProgresoProdepDomainModel progresoProdepDM = progresoProdep.GetProgresoPersonal(SessionPersister.AccountSession.IdPersonal, int.Parse(Recursos.RecursosSistema.REGISTRO_PRODUCTIVIDAD_INNOVADORA));
+                    documentosBusiness.DeleteDocumento(productividadInnovadoraDM.idDocumento);
+                    progresoProdep.DeleteProgresoProdep(progresoProdepDM.id);
+                }
+                else
+                {
+                    documentosBusiness.DeleteDocumento(productividadInnovadoraDM.idDocumento);
+                }
+            }
+
+            return RedirectToAction("Create","ProductivadInnovadora");
+        }
+       
     }
 }

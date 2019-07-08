@@ -57,7 +57,7 @@ namespace AppDigitalCv.Business
             return respuesta;
         }
 
-        public List<ProductividadInnovadoraDomainModel> GetProductividad(int _idPersonal)
+        public List<ProductividadInnovadoraDomainModel> GetProductividades(int _idPersonal)
         {
             List<ProductividadInnovadoraDomainModel> productividad = new List<ProductividadInnovadoraDomainModel>();
 
@@ -92,5 +92,45 @@ namespace AppDigitalCv.Business
 
             return productividad;
         }
+
+        public ProductividadInnovadoraDomainModel GetProductividad(int _idProductividad)
+        {
+            ProductividadInnovadoraDomainModel productividadInnovadoraDM = new ProductividadInnovadoraDomainModel();
+
+            Expression<Func<tblProductividadInnovadora, bool>> predicate = p => p.id == _idProductividad;
+            tblProductividadInnovadora tblProductividad = produccionInnovadoraRepository.GetAll(predicate).FirstOrDefault<tblProductividadInnovadora>();
+
+            productividadInnovadoraDM.id = tblProductividad.id;
+            productividadInnovadoraDM.idDocumento = tblProductividad.idDocumento.Value;
+            productividadInnovadoraDM.idPais = tblProductividad.idPais.Value;
+            productividadInnovadoraDM.idPersonal = tblProductividad.idPersonal.Value;
+            productividadInnovadoraDM.idStatus = tblProductividad.idStatus.Value;
+            productividadInnovadoraDM.strAutor = tblProductividad.strAutor;
+            productividadInnovadoraDM.strClasificacionInternacionalPatentes = tblProductividad.strClasificacionInternacionalPatentes;
+            productividadInnovadoraDM.strDescripcion = tblProductividad.strDescripcion;
+            productividadInnovadoraDM.strEstadoActual = tblProductividad.strEstadoActual;
+            productividadInnovadoraDM.strNumeroRegistro = tblProductividad.strNumeroRegistro;
+            productividadInnovadoraDM.strProposito = tblProductividad.strProposito;
+            productividadInnovadoraDM.strTipoProductividadInnovadora = tblProductividad.strTipoProductividadInnovadora;
+            productividadInnovadoraDM.strTitulo = tblProductividad.strTitulo;
+            productividadInnovadoraDM.strUso = tblProductividad.strUso;
+            productividadInnovadoraDM.strUsuario = tblProductividad.strUsuario;
+            productividadInnovadoraDM.dteFechaRegistro = tblProductividad.dteFechaRegistro.Value;
+            productividadInnovadoraDM.bitConsideraCurriculum = tblProductividad.bitConsideraCurriculum.Value;
+
+            return productividadInnovadoraDM;
+        }
+
+        public bool DeleteProductividad(int _idProductividad)
+        {
+            bool respuesta = false;
+            Expression<Func<tblProductividadInnovadora, bool>> predicate = p => p.id == _idProductividad;
+            produccionInnovadoraRepository.Delete(predicate);
+            respuesta = true;
+
+            return respuesta;
+
+        }
+
     }
 }
