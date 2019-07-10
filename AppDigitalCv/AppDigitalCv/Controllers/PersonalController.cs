@@ -142,6 +142,64 @@ namespace AppDigitalCv.Controllers
             AutoMapper.Mapper.Map(personalDM,personalVM);
             return View();
         }
+        [HttpGet]
+        public ActionResult GetPersonalDelete(int _idPersonal)
+        {
+            PersonalVM personalVM = new PersonalVM();
+            PersonalDomainModel personalDM = new PersonalDomainModel();
+
+            personalDM = IPersonalBussines.GetPersonalById(_idPersonal);
+
+            if (personalDM != null)
+            {
+                AutoMapper.Mapper.Map(personalDM,personalVM);
+                return PartialView("_Eliminar", personalVM);
+            }
+
+            return PartialView("_Eliminar");
+        }
+
+        [HttpPost]
+        public ActionResult DeletePersonal(PersonalVM personalVM)
+        {
+            PersonalDomainModel personalDM = new PersonalDomainModel();
+
+            personalDM = IPersonalBussines.GetPersonalById(personalVM.IdEstadoCivil);
+            if (personalDM != null)
+            {
+                IPersonalBussines.DeletePersonal(personalDM.idPersonal);
+            }
+            return RedirectToAction("Create","Personal");
+        }
+
+        [HttpGet]
+        public ActionResult GetPersonalUpdate(int _idPersonal)
+        {
+            PersonalVM personalVM = new PersonalVM();
+            PersonalDomainModel personalDM = new PersonalDomainModel();
+
+            personalDM = IPersonalBussines.GetPersonalById(_idPersonal);
+
+            if (personalDM != null)
+            {
+                ViewBag.IdEstadoCivil = new SelectList(estadoCivilBusiness.GetEstadoCivil(), "IdEstadoCivil", "StrDescripcion");
+                AutoMapper.Mapper.Map(personalDM,personalVM);
+                return PartialView("_Editar",personalVM);
+            }
+            return PartialView("_Editar");
+        }
+
+        [HttpPost]
+        public ActionResult UpdatePersonal(PersonalVM personalVM)
+        {
+            if (personalVM.idPersonal > 0)
+            {
+                PersonalDomainModel personalDM = new PersonalDomainModel();
+                AutoMapper.Mapper.Map(personalVM, personalDM);
+                IPersonalBussines.AddUpdatePersonal(personalDM);
+            }
+            return RedirectToAction("Editar","Personal");
+        }
 
         #region Estos metodos y vista seran borrados
 

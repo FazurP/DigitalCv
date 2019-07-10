@@ -559,6 +559,9 @@
     <Content Include="Views\ProductividadInnovadora\Create.cshtml" />
     <Content Include="Views\ProductividadInnovadora\_Eliminar.cshtml" />
     <Content Include="Views\ProductividadInnovadora\_Editar.cshtml" />
+    <Content Include="Views\Personal\_Eliminar.cshtml" />
+    <Content Include="Views\Personal\_Editar.cshtml" />
+    <Content Include="Views\ProduccionesArtisticas\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -600,6 +603,7 @@
     <Compile Include="Controllers\PersonalAsociacionesController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Controllers\PremiosDocenteController.cs" />
+    <Compile Include="Controllers\ProduccionesArtisticasController.cs" />
     <Compile Include="Controllers\ProductividadInnovadoraController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Controllers\TipoContratacionController.cs" />
@@ -680,6 +684,8 @@
     <Compile Include="ViewModels\PersonalVM.cs" />
     <Compile Include="ViewModels\Porcentajes.cs" />
     <Compile Include="ViewModels\PremiosDocenteVM.cs" />
+    <Compile Include="ViewModels\ProduccionArtisticaVM.cs" />
+    <Compile Include="ViewModels\ProduccionesArtisticasVM.cs" />
     <Compile Include="ViewModels\ProductividadInnovadoraVM.cs" />
     <Compile Include="ViewModels\ProgramaEducativoVM.cs" />
     <Compile Include="ViewModels\ProgresoProdepVM.cs" />

@@ -26,6 +26,7 @@ namespace AppDigitalCv.Repository
             this.tblExperienciaLaboralExterna = new HashSet<tblExperienciaLaboralExterna>();
             this.tblInformeTecnico = new HashSet<tblInformeTecnico>();
             this.tblProductividadInnovadora = new HashSet<tblProductividadInnovadora>();
+            this.tblProduccionArtistica = new HashSet<tblProduccionArtistica>();
         }
     
         public int idDocumento { get; set; }
@@ -51,5 +52,7 @@ namespace AppDigitalCv.Repository
         public virtual ICollection<tblInformeTecnico> tblInformeTecnico { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblProductividadInnovadora> tblProductividadInnovadora { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblProduccionArtistica> tblProduccionArtistica { get; set; }
     }
 }

@@ -255,6 +255,12 @@ namespace AppDigitalCv.Infraestructure
             //ProductividadInnovadora
             CreateMap<ProductividadInnovadoraVM, ProductividadInnovadoraDomainModel>();
             CreateMap<ProductividadInnovadoraDomainModel, ProductividadInnovadoraVM>();
+            //ProduccionArtistica
+            CreateMap<ProduccionArtisticaVM, ProduccionArtisticaDomainModel>();
+            CreateMap<ProduccionArtisticaDomainModel, ProduccionArtisticaVM>();
+            //ProduccionesArtisticas
+            CreateMap<ProduccionesArtisticasVM, ProduccionesArtisticasDomainModel>();
+            CreateMap<ProduccionesArtisticasDomainModel, ProduccionesArtisticasVM>();
         }
 
         public static void Run()

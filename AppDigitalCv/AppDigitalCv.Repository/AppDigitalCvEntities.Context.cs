@@ -94,5 +94,7 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<tblLibro> tblLibro { get; set; }
         public virtual DbSet<tblManualOperacion> tblManualOperacion { get; set; }
         public virtual DbSet<tblProductividadInnovadora> tblProductividadInnovadora { get; set; }
+        public virtual DbSet<catProduccionArtistica> catProduccionArtistica { get; set; }
+        public virtual DbSet<tblProduccionArtistica> tblProduccionArtistica { get; set; }
     }
 }

@@ -116,6 +116,9 @@
     <Compile Include="catPeriodo.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="catProduccionArtistica.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="catTipoActividad.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
@@ -238,6 +241,8 @@
     <Compile Include="PersonalAsociacionesRepository.cs" />
     <Compile Include="PersonalRepository.cs" />
     <Compile Include="PremiosDocenteRepository.cs" />
+    <Compile Include="ProduccionArtisticaRepository.cs" />
+    <Compile Include="ProduccionesArtisticasRepository.cs" />
     <Compile Include="ProduccionInnovadoraRepository.cs" />
     <Compile Include="ProgramaEducativoRepository.cs" />
     <Compile Include="ProgresoProdepRepository.cs" />
@@ -323,6 +328,9 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPremiosDocente.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProduccionArtistica.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblProductividadInnovadora.cs">
