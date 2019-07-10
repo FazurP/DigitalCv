@@ -243,6 +243,9 @@ namespace AppDigitalCv.Infraestructure
             //ProgresoProdep
             CreateMap<ProgresoProdepVM, ProgresoProdepDomainModel>();
             CreateMap<ProgresoProdepDomainModel, ProgresoProdepVM>();
+            //participacion docente
+            CreateMap<ParticipacionDocenteDomainModel, ParticipacionDocenteVM>();
+            CreateMap<ParticipacionDocenteVM, ParticipacionDocenteDomainModel>();
         }
 
         public static void Run()

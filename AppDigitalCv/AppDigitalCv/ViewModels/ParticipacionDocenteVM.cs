@@ -9,7 +9,9 @@ namespace AppDigitalCv.ViewModels
     public class ParticipacionDocenteVM
     {
         public int Id { get; set; }
+
         public int IdCatDocumento { get; set; }
+
         public int IdPersonal { get; set; }
 
         [Required(ErrorMessage = "El Nombre del Evento es Obligatorio")]
@@ -33,9 +35,10 @@ namespace AppDigitalCv.ViewModels
         public string DteFecha { get; set; }
 
         public virtual DocumentosVM CatDocumentosVM{ get; set; }
-        public virtual PersonalVM PersonalVM { get; set; }
 
-        [Required(ErrorMessage = "El archivo es obligatorio")]
-        public HttpPostedFileWrapper DcomentoPDF{ get; set; }
+        //public virtual PersonalVM PersonalVM { get; set; }
+
+        //[Required(ErrorMessage = "El archivo es obligatorio")]
+        //public HttpPostedFileWrapper DcomentoPDF{ get; set; }
     }
 }
