@@ -37,6 +37,11 @@ namespace AppDigitalCv.Business
                 produccionArtisticas.Add(produccionArtisticaDM);
             }
 
+            ProduccionArtisticaDomainModel produccionArtistica = new ProduccionArtisticaDomainModel();
+            produccionArtistica.id = 0;
+            produccionArtistica.strDescripcion = "--Seleccionar--";
+            produccionArtisticas.Insert(0, produccionArtistica);
+
             return produccionArtisticas;
         }
     }

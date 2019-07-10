@@ -442,6 +442,7 @@
     <Content Include="Scripts\Validate\ScriptTest.js" />
     <Content Include="Scripts\Validate\ProductividadInnovadora\validate-productividad-innovadora-form.js" />
     <Content Include="Scripts\Validate\validate-datos-contacto-email.js" />
+    <Content Include="Scripts\Validate\ProduccionesArtisticas\validate-producciones-artisticas-form.js" />
     <Content Include="Views\index.html" />
     <Content Include="Web.config" />
     <Content Include="Views\Personal\Create.cshtml" />
@@ -562,6 +563,8 @@
     <Content Include="Views\Personal\_Eliminar.cshtml" />
     <Content Include="Views\Personal\_Editar.cshtml" />
     <Content Include="Views\ProduccionesArtisticas\Create.cshtml" />
+    <Content Include="Views\ProduccionesArtisticas\_Eliminar.cshtml" />
+    <Content Include="Views\ProduccionesArtisticas\_Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -12,7 +12,7 @@ namespace AppDigitalCv.ViewModels
         public int idPersonal { get; set; }
         public int idStatus { get; set; }
         public int idDocumento { get; set; }
-        public int idProduccionesArtistica { get; set; }
+        public int idProduccionesArtisticas { get; set; }
         public DocumentosVM documentosVM { get; set; }
         public string strAutor { get; set; }
         public string strNombreObra { get; set; }

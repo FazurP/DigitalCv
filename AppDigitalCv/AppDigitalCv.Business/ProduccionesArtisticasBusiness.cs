@@ -28,7 +28,19 @@ namespace AppDigitalCv.Business
 
             if (produccionesArtisticasDM.id > 0)
             {
+                Expression<Func<tblProduccionArtistica, bool>> predicate = p => p.id == produccionesArtisticasDM.id;
+                tblProduccionArtistica tblProduccion = produccionesArtisticasRepository.GetAll(predicate).FirstOrDefault();
 
+                if (tblProduccion != null)
+                {
+                    tblProduccion.strAutor = produccionesArtisticasDM.strAutor;
+                    tblProduccion.strDescripcion = produccionesArtisticasDM.strDescripcion;
+                    tblProduccion.strNombreObra = produccionesArtisticasDM.strNombreObra;
+                    tblProduccion.strLugarPresento = produccionesArtisticasDM.strLugarPresento;
+
+                    produccionesArtisticasRepository.Update(tblProduccion);
+                    respuesta = true;
+                }
             }
             else
             {

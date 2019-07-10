@@ -1,0 +1,75 @@
+﻿@model AppDigitalCv.ViewModels.ProduccionesArtisticasVM
+@using AppDigitalCv.Security
+
+<div>
+    <form id="myForm" enctype="multipart/form-data">
+
+        @Html.HiddenFor(model => model.id, new { id = "id" })
+
+        <div class="bs-container">
+
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-7">
+                    @Html.Label("Datos de la Obra")
+                    <hr />
+                    <label>Autor(es)</label>
+                    @Html.TextBoxFor(model => model.strAutor,new { @class = "form-control input-sm",id="txtAutor" })
+                <label>Nombre de la Obra</label>
+                    @Html.TextBoxFor(model => model.strNombreObra, new { @class = "form-control input-sm",id="txtObra" })
+                <label>Descripción</label>
+                    @Html.TextBoxFor(model => model.strDescripcion, new { @class = "form-control input-sm",id="txtDescripcion"})
+                <label>Lugar de Presentación</label>
+                    @Html.TextBoxFor(model => model.strLugarPresento, new { @class = "form-control input-sm",id="txtLugar"})
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-lg-6 col-lg-offset-4">
+                        <a href="#" id="btnSubmit" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#btnSubmit").click(function () {
+
+            var ProduccionesArtisticasVM = {};
+            var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+
+            ProduccionesArtisticasVM.id = $('#id').val();
+            ProduccionesArtisticasVM.strAutor = $('#txtAutor').val();
+            ProduccionesArtisticasVM.strNombreObra = $('#txtObra').val();
+            ProduccionesArtisticasVM.strDescripcion = $('#txtDescripcion').val();
+            ProduccionesArtisticasVM.strLugarPresento = $('#txtLugar').val();
+ 
+            $.ajax({
+                type: "POST",
+                url: "/ProduccionesArtisticas/UpdateProducciones",
+                data: { produccionesArtisticasVM: ProduccionesArtisticasVM},
+                success: function () {
+                    $("#myModal1").modal("hide");
+                    window.location.href = "/ProduccionesArtisticas/Create";
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(textStatus);
+                    console.log(textStatus);
+
+                }
+            })
+        });
+    });
+</script>
+
+
+
+
+
