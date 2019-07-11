@@ -33,35 +33,35 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Tipo de Producción Artistica</label>
-                                    @Html.DropDownList("idProduccionesArtisticas", null, new { @class = "form-control input-sm",id="Produccion" })
+                                    @Html.DropDownList("idProduccionesArtisticas", null, new { @class = "form-control input-sm", id = "Produccion" })
                                     <label>Pais</label>
-                                    @Html.DropDownList("idPais", null, new { @class = "form-control input-sm",id="Pais" })
+                                    @Html.DropDownList("idPais", null, new { @class = "form-control input-sm", id = "Pais" })
                                     <label>Autor(es)</label>
-                                    @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm",id="Autor" })
+                                    @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "Autor" })
                                     <label>Nombre de la Obra</label>
-                                    @Html.TextBoxFor(model => model.strNombreObra, new { @class = "form-control input-sm",id="Nombre" })
+                                    @Html.TextBoxFor(model => model.strNombreObra, new { @class = "form-control input-sm", id = "Nombre" })
                                     <label>Descripción</label>
-                                    @Html.TextAreaFor(model => model.strDescripcion, new { @class = "form-control input-sm",id="Descripcion" })
+                                    @Html.TextAreaFor(model => model.strDescripcion, new { @class = "form-control input-sm", id = "Descripcion" })
                                     <label>Impacto de la Investigación</label>
-                                    @Html.TextAreaFor(model => model.strImpactoInvestigacion, new { @class = "form-control input-sm",id="Investigacion" })
+                                    @Html.TextAreaFor(model => model.strImpactoInvestigacion, new { @class = "form-control input-sm", id = "Investigacion" })
                                     <label>Impacto de la Metodologia</label>
-                                    @Html.TextAreaFor(model => model.strImpactoMetodologia, new { @class = "form-control input-sm",id="Metodologia" })
+                                    @Html.TextAreaFor(model => model.strImpactoMetodologia, new { @class = "form-control input-sm", id = "Metodologia" })
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Impacto del Diseño</label>
-                                    @Html.TextAreaFor(model => model.strImpactoDiseño, new { @class = "form-control input-sm",id="Diseño" })
+                                    @Html.TextAreaFor(model => model.strImpactoDiseño, new { @class = "form-control input-sm", id = "Diseño" })
                                     <label>Impacto de la Innovación</label>
-                                    @Html.TextAreaFor(model => model.strImpactoInnovacion, new { @class = "form-control input-sm",id="Innovacion" })
+                                    @Html.TextAreaFor(model => model.strImpactoInnovacion, new { @class = "form-control input-sm", id = "Innovacion" })
                                     <label>Fecha de Publicación</label>
-                                    @Html.TextBoxFor(model => model.dteFechaPublicacion, new { @class = "form-control input-sm", type = "date",id="Publicacion" })
+                                    @Html.TextBoxFor(model => model.dteFechaPublicacion, new { @class = "form-control input-sm", type = "date", id = "Publicacion" })
                                     <label>Lugar de Presentación</label>
-                                    @Html.TextBoxFor(model => model.strLugarPresento, new { @class = "form-control input-sm",id="Presentacion" })
+                                    @Html.TextBoxFor(model => model.strLugarPresento, new { @class = "form-control input-sm", id = "Presentacion" })
                                     <label>Proposito</label>
-                                    @Html.DropDownList("strProposito", null, new { @class = "form-control input-sm",id="Proposito" })
+                                    @Html.DropDownList("strProposito", null, new { @class = "form-control input-sm", id = "Proposito" })
                                     <label>Envidencia del Documento en PDF</label>
-                                    @Html.TextBoxFor(model => model.documentosVM.DocumentoFile, new { @class = "form-control input-sm", type = "file",id="inputFileUpload" })
+                                    @Html.TextBoxFor(model => model.documentosVM.DocumentoFile, new { @class = "form-control input-sm", type = "file", id = "inputFileUpload" })
                                     <label>Desea Considerar para Curriculum</label>
                                     <br />
                                     Si @Html.RadioButtonFor(model => model.bitLigarCurriculum, true, new { @class = "form-control input-sm" })
@@ -121,6 +121,8 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/Scripts/Validate/ProduccionesArtisticas/validate-producciones-artisticas-form.js"></script>
+    <script src="~/Scripts/Validate/ProduccionesArtisticas/validate-producciones-artisticas-date.js"></script>
+    <script src="~/Scripts/Validate/ProduccionesArtisticas/validate-producciones-artisticas-upload.js"></script>
 
 
     <script>
