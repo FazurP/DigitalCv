@@ -53,6 +53,7 @@ namespace AppDigitalCv.Controllers
 
                     IparticipacionDocenteBusiness.AddUpdateParticipacionDocente(participacionDocenteDM);
                     ///verificar la insercion.
+                    ///vericiar  que el archivo se vaya termiando
 
                 }
             }
