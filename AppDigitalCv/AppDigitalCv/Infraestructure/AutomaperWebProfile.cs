@@ -243,6 +243,7 @@ namespace AppDigitalCv.Infraestructure
             //ProgresoProdep
             CreateMap<ProgresoProdepVM, ProgresoProdepDomainModel>();
             CreateMap<ProgresoProdepDomainModel, ProgresoProdepVM>();
+
             //Informe Tecnico
             CreateMap<InformeTecnicoVM, InformeTecnicoDomainModel>();
             CreateMap<InformeTecnicoDomainModel, InformeTecnicoVM>();
@@ -261,6 +262,11 @@ namespace AppDigitalCv.Infraestructure
             //ProduccionesArtisticas
             CreateMap<ProduccionesArtisticasVM, ProduccionesArtisticasDomainModel>();
             CreateMap<ProduccionesArtisticasDomainModel, ProduccionesArtisticasVM>();
+
+            //participacion docente
+            CreateMap<ParticipacionDocenteDomainModel, ParticipacionDocenteVM>();
+            CreateMap<ParticipacionDocenteVM, ParticipacionDocenteDomainModel>();
+
         }
 
         public static void Run()

@@ -33,9 +33,12 @@ namespace AppDigitalCv.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,StrEvento,StrTipoEvento,StrParticipacion,StrTipoParticipacion,BitPonencia,StrNombrePonencia,StrNombreInstitucionEmpresa,StrLugar,DteFecha,CatDocumentosVM,")] ParticipacionDocenteVM participacionDocenteVM)
+        [ValidateAntiForgeryToken] 
+        public ActionResult Create([Bind(Include="Id,StrEvento,StrTipoEvento,StrParticipacion,StrTipoParticipacion,BitPonencia,StrNombrePonencia,StrNombreInstitucionEmpresa,StrLugar,DteFecha,CatDocumentosVM,")] ParticipacionDocenteVM participacionDocenteVM)
         {
+            int IdPersonal = SessionPersister.AccountSession.IdPersonal;
+            participacionDocenteVM.IdPersonal = IdPersonal;
+
             if (ModelState.IsValid)
             {
                 if (participacionDocenteVM != null)
@@ -43,8 +46,14 @@ namespace AppDigitalCv.Controllers
                     participacionDocenteVM.IdPersonal  = SessionPersister.AccountSession.IdPersonal;
                     ParticipacionDocenteDomainModel participacionDocenteDM = new ParticipacionDocenteDomainModel();
                     AutoMapper.Mapper.Map(participacionDocenteVM, participacionDocenteDM);
+
+                    DocumentosDomainModel documentosDM = new DocumentosDomainModel();
+                    AutoMapper.Mapper.Map(participacionDocenteVM.CatDocumentosVM, documentosDM );
+                    participacionDocenteDM.CatDocumentosDM = documentosDM;
+
                     IparticipacionDocenteBusiness.AddUpdateParticipacionDocente(participacionDocenteDM);
                     ///verificar la insercion.
+                    ///vericiar  que el archivo se vaya termiando
 
                 }
             }

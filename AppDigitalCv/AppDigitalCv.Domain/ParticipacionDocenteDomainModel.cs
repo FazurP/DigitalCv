@@ -22,6 +22,6 @@ namespace AppDigitalCv.Domain
         public string DteFecha { get; set; }
 
         public virtual DocumentosDomainModel CatDocumentosDM { get; set; }
-        public virtual PersonalDomainModel PersonalDM { get; set; }
+        //public virtual PersonalDomainModel PersonalDM { get; set; }
     }
 }
