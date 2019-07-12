@@ -116,6 +116,9 @@
     <Compile Include="catPeriodo.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="catProduccionArtistica.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="catTipoActividad.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
@@ -224,6 +227,8 @@
     <Compile Include="Infraestructure\Contract\IUnitOfWork.cs" />
     <Compile Include="Infraestructure\UnitOfWork.cs" />
     <Compile Include="InstitucionSuperiorRepository.cs" />
+    <Compile Include="LibroRepository.cs" />
+    <Compile Include="ManualOperacionRepository.cs" />
     <Compile Include="MunicipioRepository.cs" />
     <Compile Include="NivelSalarialRepository.cs" />
     <Compile Include="PaisRepository.cs" />
@@ -236,9 +241,13 @@
     <Compile Include="PersonalAsociacionesRepository.cs" />
     <Compile Include="PersonalRepository.cs" />
     <Compile Include="PremiosDocenteRepository.cs" />
+    <Compile Include="ProduccionArtisticaRepository.cs" />
+    <Compile Include="ProduccionesArtisticasRepository.cs" />
+    <Compile Include="ProduccionInnovadoraRepository.cs" />
     <Compile Include="ProgramaEducativoRepository.cs" />
     <Compile Include="ProgresoProdepRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="InformeTecnicoRepository.cs" />
     <Compile Include="SalariosRepository.cs" />
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
@@ -291,6 +300,12 @@
     <Compile Include="tblInformeTecnico.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblLibro.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblManualOperacion.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblParticipacionDocente.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
@@ -313,6 +328,12 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPremiosDocente.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProduccionArtistica.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProductividadInnovadora.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblProgresoProdep.cs">

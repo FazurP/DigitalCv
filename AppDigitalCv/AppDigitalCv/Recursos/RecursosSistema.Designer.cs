@@ -142,6 +142,51 @@ namespace AppDigitalCv.Recursos {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a 3.
+        /// </summary>
+        internal static string REGISTRO_INFORME_TECNICO {
+            get {
+                return ResourceManager.GetString("REGISTRO_INFORME_TECNICO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a 4.
+        /// </summary>
+        internal static string REGISTRO_LIBRO {
+            get {
+                return ResourceManager.GetString("REGISTRO_LIBRO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a 5.
+        /// </summary>
+        internal static string REGISTRO_MANUAL_OPERACION {
+            get {
+                return ResourceManager.GetString("REGISTRO_MANUAL_OPERACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a 7.
+        /// </summary>
+        internal static string REGISTRO_PRODUCCIONES_ARTISTICAS {
+            get {
+                return ResourceManager.GetString("REGISTRO_PRODUCCIONES_ARTISTICAS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a 6.
+        /// </summary>
+        internal static string REGISTRO_PRODUCTIVIDAD_INNOVADORA {
+            get {
+                return ResourceManager.GetString("REGISTRO_PRODUCTIVIDAD_INNOVADORA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Imagenes/Usuarios/.
         /// </summary>
         internal static string URL_PERFIL {

@@ -22,12 +22,12 @@ namespace AppDigitalCv.Repository
         public string strNombreProyecto { get; set; }
         public string strAlcance { get; set; }
         public string strInstitucionBeneficiaria { get; set; }
-        public string dteFechaInicio { get; set; }
-        public Nullable<int> enumEstadoActual { get; set; }
+        public Nullable<System.DateTime> dteFechaInicio { get; set; }
+        public string enumEstadoActual { get; set; }
         public Nullable<System.DateTime> dteElaboracionInforme { get; set; }
         public Nullable<int> numeroPaginas { get; set; }
         public Nullable<int> idPais { get; set; }
-        public Nullable<int> enumProposito { get; set; }
+        public string enumProposito { get; set; }
         public Nullable<bool> bitLigarCurriculum { get; set; }
     
         public virtual catDocumentos catDocumentos { get; set; }

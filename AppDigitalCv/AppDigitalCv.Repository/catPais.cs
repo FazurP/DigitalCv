@@ -18,6 +18,10 @@ namespace AppDigitalCv.Repository
         public CatPais()
         {
             this.CatEstado = new HashSet<CatEstado>();
+            this.tblLibro = new HashSet<tblLibro>();
+            this.tblManualOperacion = new HashSet<tblManualOperacion>();
+            this.tblProductividadInnovadora = new HashSet<tblProductividadInnovadora>();
+            this.tblProduccionArtistica = new HashSet<tblProduccionArtistica>();
         }
     
         public int id { get; set; }
@@ -25,5 +29,13 @@ namespace AppDigitalCv.Repository
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CatEstado> CatEstado { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblLibro> tblLibro { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblManualOperacion> tblManualOperacion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblProductividadInnovadora> tblProductividadInnovadora { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblProduccionArtistica> tblProduccionArtistica { get; set; }
     }
 }

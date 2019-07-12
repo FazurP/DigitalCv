@@ -73,20 +73,20 @@ namespace AppDigitalCv.Business
 
             }
             else {
-                if (progresoProdepRepository.Exists(p => p.idPersonal == progresoProdepDM.idPersonal && p.idStatus == 2))
+                if (progresoProdepRepository.Exists(p => p.idPersonal == progresoProdepDM.idPersonal && p.idStatus == progresoProdepDM.idStatus))
                 {
                     respuesta = false;
                 }
                 else {
-                
-                tblProgresoProdep tblProgresoProdep = new tblProgresoProdep();
 
-                tblProgresoProdep.id = progresoProdepDM.id;
-                tblProgresoProdep.idPersonal = progresoProdepDM.idPersonal;
-                tblProgresoProdep.idStatus = progresoProdepDM.idStatus;
+                    tblProgresoProdep tblProgresoProdep = new tblProgresoProdep();
 
-                progresoProdepRepository.Insert(tblProgresoProdep);
-                respuesta = true;
+                    tblProgresoProdep.id = progresoProdepDM.id;
+                    tblProgresoProdep.idPersonal = progresoProdepDM.idPersonal;
+                    tblProgresoProdep.idStatus = progresoProdepDM.idStatus;
+
+                    progresoProdepRepository.Insert(tblProgresoProdep);
+                    respuesta = true;
                 }
             }
 

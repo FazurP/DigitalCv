@@ -269,6 +269,18 @@ namespace AppDigitalCv.Business
             }
             return respuesta;
         }
+
+        public bool DeletePersonal(int _idPersonal)
+        {
+            bool respuesta = false;
+
+            Expression<Func<tblPersonal, bool>> predicate = p => p.idPersonal == _idPersonal;
+
+            personalRepository.Delete(predicate);
+            respuesta = true;
+
+            return respuesta;
+        }
        
 
     }

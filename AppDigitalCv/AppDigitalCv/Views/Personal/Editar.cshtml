@@ -25,7 +25,7 @@
         </section>
         <br />
         <div class="row">
-            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="box box-success">
                     <!--box-primary-->
                     <div class="box-header ">
@@ -52,23 +52,31 @@
                                                 <th><i class="fa fa-user"></i>&nbsp;Nombre</th>
                                                 <th><i class="fa fa-tag"></i>&nbsp; Apellido Paterno</th>
                                                 <th><i class="fa fa-tag"></i>&nbsp; Apellido Materno</th>
-                                                <th><i class="fa fa-check-square-o"></i>&nbsp; Curp</th>
-                                                <th><i class="fa fa-check-square-o"></i>&nbsp; Rfc</th>
-                                                <th><i class="glyphicon glyphicon-pencil"></i>&nbsp;Editar</th>
+                                                <th><i class="glyphicon glyphicon-pencil"></i>&nbsp;Actualizar</th>
                                             </tr>
                                         </thead>
                                     </table>
+                                    <div class="modal fade" id="myModal1">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                                                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                                                    <h5 class="modal-title"><label style="font-size:medium;">Datos Personales</label></h5>
+                                                </div>
+                                                <div class="modal-body" id="myModalBodyDiv1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="box-footer">
-
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            @*<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <p class="box-title text-blue comment-text"><i class="text-blue fa fa-folder-open"></i>Documentos</p>
@@ -81,7 +89,6 @@
                     </div>
                     <div class="box-body">
                         <ul class="products-list product-list-in-box" id="ListaDocumentos">
-
                             <li class="item" id="tagCurp">
                                 <div class="product-img">
                                     <img src="~/Imagenes/pdf_descargar.jpg" alt="Curp document">
@@ -96,9 +103,6 @@
                                     </span>
                                 </div>
                             </li>
-
-                            <!-- /.item -->
-
                             <li class="item" id="tagRfc">
                                 <div class="product-img">
                                     <img src="~/Imagenes/pdf_descargar.jpg" alt="Rfc document">
@@ -116,9 +120,9 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div>*@
             <!--Cargamos los elementos de link para subir archivos nuevamente-->
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3  offset-md-9">
+            @*<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3  offset-md-9">
                 <div class="info-box" id="tagAddDocumentos">
                     <span class="info-box-icon bg-green"><i class="fa fa-files-o"></i></span>
 
@@ -131,7 +135,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div>*@
         </div>
 
     </div>
@@ -152,6 +156,16 @@
     <script src="~/Scripts/jquery.dataTables.min.js"></script>
     <script src="~/Scripts/boostrap.dataTables.min.js"></script>
     <script>
+
+        var AddUpdate = function (idPersonal) {
+            var url = "/Personal/GetPersonalUpdate?_idPersonal=" + idPersonal;
+            $("#myModalBodyDiv1").load(url, function () {
+                $("#myModal1").modal("show");
+
+            })
+
+        };
+
         $(document).ready(function () {
 
             $('#tagAddDocumentos').hide();
@@ -198,22 +212,22 @@
                     "datatype": "json", "dataSrc": ""
                 },
                 "columns": [
-                    { "data": "Nombre"},
+                    { "data": "Nombre" },
                     { "data": "ApellidoPaterno" },
                     { "data": "ApellidoMaterno" },
-                    { "data": "Curp"},
-                    { "data": "Rfc" },
                     {
                         "data": "idPersonal",
                         "render": function (idPersonal, type, full, meta) {
 
-                            return '<a href="#" onclick="AddDelete(' + idPersonal + ')"><i class="btn btn-sm btn-success fa fa-pencil-square-o"></i></a>'
+                            return '<a href="#" onclick="AddUpdate(' + idPersonal + ')"><i class="btn btn-sm btn-success fa fa-pencil-square-o"></i></a>'
                         }
                     }
 
 
                 ]
             });
+
+          
 
             $('#bEliminarCurp').click(function () {
 

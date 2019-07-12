@@ -382,6 +382,7 @@
     <Content Include="Scripts\Validate\Asociaciones\validate-asociaciones-regExp.js" />
     <Content Include="Scripts\Validate\Block\validate-block-click.js" />
     <Content Include="Scripts\Validate\CapituloLibro\validate-capitulo-libro-form.js" />
+    <Content Include="Scripts\Validate\CapituloLibro\validate-capitulo-libro-regExp.js" />
     <Content Include="Scripts\Validate\CompetenciasTi\validate-competencias-ti-checked.js" />
     <Content Include="Scripts\Validate\Competencias\validate-competencias-form.js" />
     <Content Include="Scripts\Validate\ContactoEmergencia\valida-contacto-emergencia-regExp.js" />
@@ -414,8 +415,14 @@
     <Content Include="Scripts\Validate\Hijos\validate-hijos-form.js" />
     <Content Include="Scripts\Validate\Hijos\validate-hijos-regExp.js" />
     <Content Include="Scripts\Validate\IdiomasDialectos\validate-idiomas-dialectos-form.js" />
+    <Content Include="Scripts\Validate\InformeTecnico\validate-informe-tecnico-form.js" />
+    <Content Include="Scripts\Validate\InformeTecnico\validate-informe-tecnico-regExp.js" />
+    <Content Include="Scripts\Validate\InformeTecnico\validate-informe-tecnico-upload.js" />
     <Content Include="Scripts\Validate\Institucion\validate-institucion-create.js" />
     <Content Include="Scripts\Validate\Institucion\validate-institucion.js" />
+    <Content Include="Scripts\Validate\Libro\validate-libro-form.js" />
+    <Content Include="Scripts\Validate\Libro\validate-libro-regExp.js" />
+    <Content Include="Scripts\Validate\ManualOperacion\validate-manual-operacion-form.js" />
     <Content Include="Scripts\Validate\ParticipacionDocente\validate-participacion-docente-form.js" />
     <Content Include="Scripts\Validate\ParticipacionInstitucionalExterna\validate-participacion-institucion-externa-upload.js" />
     <Content Include="Scripts\Validate\ParticipacionInstitucionalExterna\validate-participacion-institucional-externa-form.js" />
@@ -430,8 +437,14 @@
     <Content Include="Scripts\Validate\PremiosDocente\validate-premios-docente-upload.js" />
     <Content Include="Scripts\Validate\Premios\validate-premios-form.js" />
     <Content Include="Scripts\Validate\Premios\validate-premios-regExp.js" />
+    <Content Include="Scripts\Validate\ProduccionesArtisticas\validate-producciones-artisticas-date.js" />
+    <Content Include="Scripts\Validate\ProduccionesArtisticas\validate-producciones-artisticas-upload.js" />
+    <Content Include="Scripts\Validate\ProductividadInnovadora\validate-productividad-innovadora-date.js" />
+    <Content Include="Scripts\Validate\ProductividadInnovadora\validate-productividad-innovadora-regExp.js" />
     <Content Include="Scripts\Validate\ScriptTest.js" />
+    <Content Include="Scripts\Validate\ProductividadInnovadora\validate-productividad-innovadora-form.js" />
     <Content Include="Scripts\Validate\validate-datos-contacto-email.js" />
+    <Content Include="Scripts\Validate\ProduccionesArtisticas\validate-producciones-artisticas-form.js" />
     <Content Include="Views\index.html" />
     <Content Include="Web.config" />
     <Content Include="Views\Personal\Create.cshtml" />
@@ -537,6 +550,23 @@
     <Content Include="Views\CapituloLibro\Create.cshtml" />
     <Content Include="Views\CapituloLibro\_Eliminar.cshtml" />
     <Content Include="Views\CapituloLibro\_Editar.cshtml" />
+    <Content Include="Views\InformeTecnico\Create.cshtml" />
+    <Content Include="Views\InformeTecnico\_Eliminar.cshtml" />
+    <Content Include="Views\InformeTecnico\_Editar.cshtml" />
+    <Content Include="Views\Libro\Create.cshtml" />
+    <Content Include="Views\Libro\_Eliminar.cshtml" />
+    <Content Include="Views\Libro\_Editar.cshtml" />
+    <Content Include="Views\ManualOperacion\Create.cshtml" />
+    <Content Include="Views\ManualOperacion\_Eliminar.cshtml" />
+    <Content Include="Views\ManualOperacion\_Editar.cshtml" />
+    <Content Include="Views\ProductividadInnovadora\Create.cshtml" />
+    <Content Include="Views\ProductividadInnovadora\_Eliminar.cshtml" />
+    <Content Include="Views\ProductividadInnovadora\_Editar.cshtml" />
+    <Content Include="Views\Personal\_Eliminar.cshtml" />
+    <Content Include="Views\Personal\_Editar.cshtml" />
+    <Content Include="Views\ProduccionesArtisticas\Create.cshtml" />
+    <Content Include="Views\ProduccionesArtisticas\_Eliminar.cshtml" />
+    <Content Include="Views\ProduccionesArtisticas\_Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -568,13 +598,18 @@
     <Compile Include="Controllers\HabitosPersonalesController.cs" />
     <Compile Include="Controllers\HijosController.cs" />
     <Compile Include="Controllers\IdiomaDialectoController.cs" />
+    <Compile Include="Controllers\InformeTecnicoController.cs" />
     <Compile Include="Controllers\InstitucionSuperiorController.cs" />
+    <Compile Include="Controllers\LibroController.cs" />
+    <Compile Include="Controllers\ManualOperacionController.cs" />
     <Compile Include="Controllers\ParticipacionDocenteController.cs" />
     <Compile Include="Controllers\ParticipacionInstitucionalExternaController.cs" />
     <Compile Include="Controllers\ParticipacionInstitucionalInternaController.cs" />
     <Compile Include="Controllers\PersonalAsociacionesController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Controllers\PremiosDocenteController.cs" />
+    <Compile Include="Controllers\ProduccionesArtisticasController.cs" />
+    <Compile Include="Controllers\ProductividadInnovadoraController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Controllers\TipoContratacionController.cs" />
     <Compile Include="Infraestructure\AutomaperWebProfile.cs" />
@@ -631,7 +666,10 @@
     <Compile Include="ViewModels\IdiomaDialectoVM.cs" />
     <Compile Include="ViewModels\IdiomaVM.cs" />
     <Compile Include="ViewModels\IfeVM.cs" />
+    <Compile Include="ViewModels\InformeTecnicoVM.cs" />
     <Compile Include="ViewModels\InstitucionSuperiorVM.cs" />
+    <Compile Include="ViewModels\LibroVM.cs" />
+    <Compile Include="ViewModels\ManualOperacionVM.cs" />
     <Compile Include="ViewModels\MunicipioVM.cs" />
     <Compile Include="ViewModels\NivelSalarialVM.cs" />
     <Compile Include="ViewModels\NumeroCartillaMilitarVM.cs" />
@@ -651,6 +689,9 @@
     <Compile Include="ViewModels\PersonalVM.cs" />
     <Compile Include="ViewModels\Porcentajes.cs" />
     <Compile Include="ViewModels\PremiosDocenteVM.cs" />
+    <Compile Include="ViewModels\ProduccionArtisticaVM.cs" />
+    <Compile Include="ViewModels\ProduccionesArtisticasVM.cs" />
+    <Compile Include="ViewModels\ProductividadInnovadoraVM.cs" />
     <Compile Include="ViewModels\ProgramaEducativoVM.cs" />
     <Compile Include="ViewModels\ProgresoProdepVM.cs" />
     <Compile Include="ViewModels\RegistroProfEstatalVM.cs" />
@@ -792,6 +833,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Usuarios\" />
+    <Folder Include="Views\ProductividadInnovaroda\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppDigitalCv.Business\AppDigitalCv.Business.csproj">

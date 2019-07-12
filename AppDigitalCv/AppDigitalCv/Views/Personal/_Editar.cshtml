@@ -1,0 +1,99 @@
+﻿@model AppDigitalCv.ViewModels.PersonalVM
+@using AppDigitalCv.Security
+
+<div>
+    <form id="myForm" enctype="multipart/form-data">
+
+        @Html.HiddenFor(model => model.idPersonal, new { id = "id" })
+
+        <div class="bs-container">
+
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-7">
+                    @Html.Label("Datos Personales")
+                    <hr />
+                    <label>Nombre</label>
+                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control input-sm", id = "txtNombre" })
+                    <label>Apellido Paterno</label>
+                    @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control input-sm", id = "txtApellidoPaterno" })
+                    <label>Apellido Materno</label>
+                    @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control input-sm", id = "txtAPellidoMaterno" })
+                    <label>Estado Civil</label>
+                    @Html.DropDownList("IdEstadoCivil", null, new { @class = "form-control input-sm", id = "EstadoCivil" })
+                    <label>Sexo</label>
+                    <br />
+                    Femenino: @Html.RadioButtonFor(model => model.StrGenero, "Femenino", new { id = "sexo", required = "" })
+                    Masculino: @Html.RadioButtonFor(model => model.StrGenero, "Masculino", new { id = "sexo", required = "" })
+                    Otro: @Html.RadioButtonFor(model => model.StrGenero, "Otro", new { id = "sexo", required = "" })
+                <br />
+                    <label>Curp</label>
+                    @Html.TextBoxFor(model => model.Curp, new { @class = "form-control input-sm", id = "txtCurp" })
+                <label>Archivo Curp</label>
+                    @Html.TextBoxFor(model => model.ArchivoCurp,new { @class = "form-control input-sm",id = "inputFileUploadCurp", type="file"})
+                    <label>RFC</label>
+                    @Html.TextBoxFor(model => model.RFC, new { @class = "form-control input-sm", id = "txtRfc" })
+                    <label>Archivo RFC</label>
+                    @Html.TextBoxFor(model => model.ArchivoRfc, new { @class = "form-control input-sm", id = "inputFileUploadRfc", type = "file" })
+                    <label>Homoclave</label>
+                    @Html.TextBoxFor(model => model.HomoClave, new { @class = "form-control input-sm", id = "Homoclave", @readonly = "" })
+                    <label>Semblanza</label>
+                    @Html.TextAreaFor(model => model.strLogros, new { @class = "form-control input-sm",id = "Logros"})
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-lg-6 col-lg-offset-4">
+                        <a href="#" id="btnSubmit" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#btnSubmit").click(function () {
+
+            var PersonalVM = {};
+            var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+
+            PersonalVM.id = $('#id').val();
+            PersonalVM.Nombre = $('#txtNombre').val();
+            PersonalVM.ApellidoPaterno = $('#txtApellidoPaterno').val();
+            PersonalVM.ApellidoMaterno = $('#txtAPellidoMaterno').val();
+            PersonalVM.IdEstadoCivil = $('#EstadoCivil').val();
+            PersonalVM.StrGenero = $('#sexo').val();
+            PersonalVM.Curp = $('#txtCurp').val();
+            PersonalVM.ArchivoCurp = $('#inputFileUploadCurp').val();
+            PersonalVM.RFC = $('#txtRfc').val();
+            PersonalVM.ArchivoRfc = $('#inputFileUploadRfc').val();
+            PersonalVM.HomoClave = $('#Homoclave').val();
+            PersonalVM.strLogros = $('#Logros').val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Personal/UpdatePersonal",
+                data: { personalVM: PersonalVM},
+                success: function () {
+                    $("#myModal1").modal("hide");
+                    window.location.href = "/Personal/Editar";
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(textStatus);
+                    console.log(textStatus);
+
+                }
+            })
+        });
+    });
+</script>
+
+
+
+

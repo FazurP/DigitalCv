@@ -1,0 +1,75 @@
+﻿@model AppDigitalCv.ViewModels.InformeTecnicoVM
+@using AppDigitalCv.Security
+
+<div>
+    <form id="myForm" enctype="multipart/form-data">
+
+        @Html.HiddenFor(model => model.id, new { id = "id" })
+
+        <div class="bs-container">
+
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-7">
+                    @Html.Label("Datos del Informe Tecnico")
+                    <hr />
+                    <label>Autor</label>
+                    @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "Autor"})
+                    <label>Nombre del Proyecto</label>
+                    @Html.TextBoxFor(model => model.strNombreProyecto, new { @class = "form-control input-sm", id = "NombreProyecto"})
+                    <label>Alcance</label>
+                    @Html.TextBoxFor(model => model.strAlcance, new { @class = "form-control input-sm",id = "Alcance"})
+                    <label>Intitución Beneficiaria</label>
+                    @Html.TextBoxFor(model => model.strInstitucionBeneficiaria, new { @class = "form-control input-sm", id = "InstitucionBeneficiaria"})
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-lg-6 col-lg-offset-4">
+                        <a href="#" id="btnEnviar" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i>Actualizar</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#btnEnviar").click(function () {
+
+            var InformeTecnicoVM = {};
+            var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+
+            InformeTecnicoVM.id = $('#id').val();
+            InformeTecnicoVM.strAutor = $('#Autor').val();
+            InformeTecnicoVM.strNombreProyecto = $('#NombreProyecto').val();
+            InformeTecnicoVM.strAlcance = $('#Alcance').val();
+            InformeTecnicoVM.strInstitucionBeneficiaria = $('#InstitucionBeneficiaria').val();
+
+            $.ajax({
+                type: "POST",
+                url: "/InformeTecnico/UpdateInformeTecnico",
+                data: { informeTecnicoVM: InformeTecnicoVM},
+                success: function () {
+                    $("#myModal1").modal("hide");
+                    window.location.href = "/InformeTecnico/Create";
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(textStatus);
+                    console.log(textStatus);
+
+                }
+            })
+        });
+    });
+</script>
+
+
+

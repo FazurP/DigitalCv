@@ -88,8 +88,13 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<tblParticipacionInstitucionalInterna> tblParticipacionInstitucionalInterna { get; set; }
         public virtual DbSet<tblExperienciaLaboralExterna> tblExperienciaLaboralExterna { get; set; }
         public virtual DbSet<tblExperienciaLaboralInterna> tblExperienciaLaboralInterna { get; set; }
-        public virtual DbSet<tblInformeTecnico> tblInformeTecnico { get; set; }
         public virtual DbSet<tblCapituloLibro> tblCapituloLibro { get; set; }
         public virtual DbSet<tblProgresoProdep> tblProgresoProdep { get; set; }
+        public virtual DbSet<tblInformeTecnico> tblInformeTecnico { get; set; }
+        public virtual DbSet<tblLibro> tblLibro { get; set; }
+        public virtual DbSet<tblManualOperacion> tblManualOperacion { get; set; }
+        public virtual DbSet<tblProductividadInnovadora> tblProductividadInnovadora { get; set; }
+        public virtual DbSet<catProduccionArtistica> catProduccionArtistica { get; set; }
+        public virtual DbSet<tblProduccionArtistica> tblProduccionArtistica { get; set; }
     }
 }

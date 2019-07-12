@@ -80,5 +80,7 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="idPersonal">el identificador de la persona</param>
         /// <returns>respuesta booleana</returns>
         bool AddUpdatePersonalDireccion(DireccionDomainModel direccionDomainM, int idPersonal);
+
+        bool DeletePersonal(int _idPersonal);
     }
 }

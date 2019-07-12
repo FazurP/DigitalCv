@@ -50,5 +50,37 @@ namespace AppDigitalCv.Business.Enum
 
             return proposito;
         }
+
+        public List<string> FillTipoParticipacion()
+        {
+            List<string> list = new List<string>();
+
+            list.Insert(0, "--Seleccionar--");
+            list.Insert(1, "Autor");
+            list.Insert(2, "Compilador");
+            list.Insert(3, "Editor");
+            list.Insert(4, "Coordinador");
+            list.Insert(5, "Traductor");
+
+            return list;
+        }
+
+        public List<string> FillTipoProductividadInnovador()
+        {
+            List<string> list = new List<string>();
+
+            list.Insert(0, "--Seleccionar--");
+
+            return list;
+        }
+
+        public List<string> FillClasificacionInternacional()
+        {
+            List<string> list = new List<string>();
+
+            list.Insert(0, "--Seleccionar--");
+
+            return list;
+        }
     }
 }
