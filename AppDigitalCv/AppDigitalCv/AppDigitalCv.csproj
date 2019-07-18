@@ -694,6 +694,7 @@
     <Compile Include="ViewModels\ProductividadInnovadoraVM.cs" />
     <Compile Include="ViewModels\ProgramaEducativoVM.cs" />
     <Compile Include="ViewModels\ProgresoProdepVM.cs" />
+    <Compile Include="ViewModels\PrototipoVM.cs" />
     <Compile Include="ViewModels\RegistroProfEstatalVM.cs" />
     <Compile Include="ViewModels\SalariosVM.cs" />
     <Compile Include="ViewModels\SessionManagerVM.cs" />
