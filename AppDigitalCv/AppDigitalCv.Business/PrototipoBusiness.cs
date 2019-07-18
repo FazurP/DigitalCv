@@ -29,7 +29,19 @@ namespace AppDigitalCv.Business
 
             if (prototipoDomainModel.id > 0)
             {
+                Expression<Func<tblPrototipo, bool>> predicate = p => p.id == prototipoDomainModel.id;
+                tblPrototipo tblPrototipo = prototipoRepository.GetAll(predicate).FirstOrDefault();
 
+                if (tblPrototipo != null)
+                {
+                    tblPrototipo.strAutor = prototipoDomainModel.strAutor;
+                    tblPrototipo.strCaracteristicas = prototipoDomainModel.strCaracteristicas;
+                    tblPrototipo.strInstitucionDestinada = prototipoDomainModel.strInstitucionDestinada;
+                    tblPrototipo.strNombrePrototipo = prototipoDomainModel.strNombrePrototipo;
+                    tblPrototipo.strObjetivos = prototipoDomainModel.strObjetivos;
+                    prototipoRepository.Update(tblPrototipo);
+                    respuesta = true;
+                }
             }
             else
             {
@@ -96,7 +108,7 @@ namespace AppDigitalCv.Business
         {
             PrototipoDomainModel prototipoDM = new PrototipoDomainModel();
 
-            Expression<Func<tblPrototipo, bool>> predicate = p => p.idPersonal == _idPrototipo;
+            Expression<Func<tblPrototipo, bool>> predicate = p => p.id == _idPrototipo;
             tblPrototipo tblPrototipo = prototipoRepository.GetAll(predicate).FirstOrDefault();
 
             prototipoDM.id = tblPrototipo.id;

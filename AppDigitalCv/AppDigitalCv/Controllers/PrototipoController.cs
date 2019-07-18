@@ -191,5 +191,40 @@ namespace AppDigitalCv.Controllers
 
             return RedirectToAction("Create","Prototipo");
         }
+
+        [HttpGet]
+        public ActionResult GetPropositoUpdate(int _idPrototipo)
+        {
+            PrototipoDomainModel prototipoDM = new PrototipoDomainModel();
+
+            prototipoDM = prototipoBusiness.GetPrototipoById(_idPrototipo);
+
+            if (prototipoDM != null)
+            {
+                PrototipoVM prototipoVM = new PrototipoVM();
+
+                AutoMapper.Mapper.Map(prototipoDM, prototipoVM);
+
+                return PartialView("_Editar", prototipoVM);
+            }
+
+            return PartialView("_Editar");
+        }
+
+        [HttpPost]
+        public ActionResult UpdatePrototipo(PrototipoVM prototipoVM)
+        {
+            PrototipoDomainModel prototipoDM = new PrototipoDomainModel();
+
+            if (prototipoVM.id > 0)
+            {
+                AutoMapper.Mapper.Map(prototipoVM,prototipoDM);
+
+                prototipoBusiness.AddUpdatePrototipo(prototipoDM);
+            }
+
+            return RedirectToAction("Create","Prototipo");
+        }
+
     }
 }
