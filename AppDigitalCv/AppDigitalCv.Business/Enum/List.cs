@@ -82,5 +82,18 @@ namespace AppDigitalCv.Business.Enum
 
             return list;
         }
+
+        public List<string> FillTipoPrototipo()
+        {
+            List<string> list = new List<string>();
+
+            list.Insert(0, "--Seleccionar--");
+            list.Insert(1, "Arquitectonico");
+            list.Insert(2, "Programa de Computo");
+            list.Insert(3, "Diseño Industrial");
+            list.Insert(4, "Desarrollo Industrial");
+
+            return list;
+        }
     }
 }

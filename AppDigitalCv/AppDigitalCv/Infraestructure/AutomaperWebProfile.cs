@@ -267,6 +267,10 @@ namespace AppDigitalCv.Infraestructure
             CreateMap<ParticipacionDocenteDomainModel, ParticipacionDocenteVM>();
             CreateMap<ParticipacionDocenteVM, ParticipacionDocenteDomainModel>();
 
+            //Prototipo
+            CreateMap<PrototipoVM, PrototipoDomainModel>();
+            CreateMap<PrototipoDomainModel, PrototipoVM>();
+
         }
 
         public static void Run()

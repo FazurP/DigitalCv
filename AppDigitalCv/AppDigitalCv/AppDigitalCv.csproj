@@ -567,6 +567,7 @@
     <Content Include="Views\ProduccionesArtisticas\Create.cshtml" />
     <Content Include="Views\ProduccionesArtisticas\_Eliminar.cshtml" />
     <Content Include="Views\ProduccionesArtisticas\_Editar.cshtml" />
+    <Content Include="Views\Prototipo\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -610,6 +611,7 @@
     <Compile Include="Controllers\PremiosDocenteController.cs" />
     <Compile Include="Controllers\ProduccionesArtisticasController.cs" />
     <Compile Include="Controllers\ProductividadInnovadoraController.cs" />
+    <Compile Include="Controllers\PrototipoController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Controllers\TipoContratacionController.cs" />
     <Compile Include="Infraestructure\AutomaperWebProfile.cs" />

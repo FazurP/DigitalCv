@@ -10,6 +10,7 @@ namespace AppDigitalCv.ViewModels
         public int id { get; set; }
         public int idPais { get; set; }
         public int idDocumento { get; set; }
+        public DocumentosVM documentosVM { get; set; }
         public int idPersonal { get; set; }
         public int idStatsu { get; set; }
         public string strAutor { get; set; }
