@@ -1,6 +1,7 @@
 ﻿using AppDigitalCv.Business.Enum;
 using AppDigitalCv.Business.Interface;
 using AppDigitalCv.Domain;
+using AppDigitalCv.Models;
 using AppDigitalCv.Repository.Infraestructure.Contract;
 using AppDigitalCv.Security;
 using AppDigitalCv.ViewModels;
@@ -108,6 +109,44 @@ namespace AppDigitalCv.Controllers
                 respuesta = true;
             }
             return respuesta;
+        }
+
+        [HttpGet]
+        public JsonResult GetPrototipos(DataTablesParam param)
+        {
+            int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
+            List<PrototipoDomainModel> prototipos = new List<PrototipoDomainModel>();
+
+            int pageNo = 1;
+            if (param.iDisplayStart >= param.iDisplayLength)
+            {
+                pageNo = (param.iDisplayStart / param.iDisplayLength) + 1;
+            }
+
+            int totalCount = 0;
+            if (param.sSearch != null)
+            {
+                prototipos = prototipoBusiness.GetPrototipos(IdentityPersonal).Where(p => p.strNombrePrototipo.Contains(param.sSearch)).ToList();
+
+
+            }
+            else
+            {
+                totalCount = prototipoBusiness.GetPrototipos(IdentityPersonal).Count();
+
+
+                prototipos = prototipoBusiness.GetPrototipos(IdentityPersonal).OrderBy(p => p.strNombrePrototipo)
+                    .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
+
+            }
+            return Json(new
+            {
+                aaData = prototipos,
+                sEcho = param.sEcho,
+                iTotalDisplayRecords = prototipos.Count(),
+                iTotalRecords = prototipos.Count()
+
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }

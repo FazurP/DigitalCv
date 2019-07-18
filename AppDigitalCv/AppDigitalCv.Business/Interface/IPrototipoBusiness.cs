@@ -10,5 +10,7 @@ namespace AppDigitalCv.Business.Interface
     public interface IPrototipoBusiness
     {
         bool AddUpdatePrototipo(PrototipoDomainModel prototipoDomainModel);
+
+        List<PrototipoDomainModel> GetPrototipos(int _idPersonal);
     }
 }

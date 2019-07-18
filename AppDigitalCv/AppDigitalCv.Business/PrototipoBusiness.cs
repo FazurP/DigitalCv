@@ -5,6 +5,7 @@ using AppDigitalCv.Repository.Infraestructure.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -54,6 +55,41 @@ namespace AppDigitalCv.Business
             }
 
             return respuesta;
+        }
+
+        public List<PrototipoDomainModel> GetPrototipos(int _idPersonal)
+        {
+            List<PrototipoDomainModel> prototipos = new List<PrototipoDomainModel>();
+
+            Expression<Func<tblPrototipo, bool>> predicate = p => p.idPersonal == _idPersonal;
+            List<tblPrototipo> tblPrototipos = prototipoRepository.GetAll(predicate).ToList();
+
+            foreach (tblPrototipo tblPrototipo in tblPrototipos)
+            {
+                PrototipoDomainModel prototipoDM = new PrototipoDomainModel();
+
+                prototipoDM.id = tblPrototipo.id;
+                prototipoDM.idDocumento = tblPrototipo.idDocumento.Value;
+                prototipoDM.idPais = tblPrototipo.idPais.Value;
+                prototipoDM.idPersonal = tblPrototipo.idPersonal.Value;
+                prototipoDM.idStatsu = tblPrototipo.idStatus.Value;
+                prototipoDM.strAutor = tblPrototipo.strAutor;
+                prototipoDM.strCaracteristicas = tblPrototipo.strCaracteristicas;
+                prototipoDM.strEstadoActual = tblPrototipo.strEstadoActual;
+                prototipoDM.strInstitucionDestinada = tblPrototipo.strInstitucionDestinada;
+                prototipoDM.strNombrePrototipo = tblPrototipo.strNombrePrototipo;
+                prototipoDM.strObjetivos = tblPrototipo.strObjetivos;
+                prototipoDM.strProposito = tblPrototipo.strProposito;
+                prototipoDM.strTipoPrototipo = tblPrototipo.strTipoPrototipo;
+                prototipoDM.dteFechaPublicacion = tblPrototipo.dteFechaPublicacion.Value;
+                prototipoDM.bitConsideraCurriculum = tblPrototipo.bitConsideraCurriculum.Value;
+
+                prototipos.Add(prototipoDM);
+
+            }
+
+            return prototipos;
+
         }
     }
 }
