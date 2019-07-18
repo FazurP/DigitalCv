@@ -1,9 +1,12 @@
 ﻿using AppDigitalCv.Business.Enum;
 using AppDigitalCv.Business.Interface;
+using AppDigitalCv.Domain;
 using AppDigitalCv.Repository.Infraestructure.Contract;
 using AppDigitalCv.Security;
+using AppDigitalCv.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -15,15 +18,20 @@ namespace AppDigitalCv.Controllers
         IPaisBusiness paisBusiness;
         IUnitOfWork unitofWork;
         IDocumentosBusiness documentosBusiness;
+        IPrototipoBusiness prototipoBusiness;
+        IProgresoProdep progresoProdep;
         List list = new List();
 
-        public PrototipoController(IUnitOfWork _unitOfWork, IPaisBusiness _paisBusiness, IDocumentosBusiness _documentosBusiness)
+        public PrototipoController(IUnitOfWork _unitOfWork, IPaisBusiness _paisBusiness, IDocumentosBusiness _documentosBusiness,
+            IPrototipoBusiness _prototipoBusiness, IProgresoProdep _progresoProdep)
         {
             unitofWork = _unitOfWork;
             paisBusiness = _paisBusiness;
             documentosBusiness = _documentosBusiness;
+            prototipoBusiness = _prototipoBusiness;
+            progresoProdep = _progresoProdep;
         }
-        
+
         [HttpGet]
         public ActionResult Create()
         {
@@ -31,15 +39,75 @@ namespace AppDigitalCv.Controllers
             {
                 ViewBag.strTipoPrototipo = new SelectList(list.FillTipoPrototipo());
                 ViewBag.strEstadoActual = new SelectList(list.FillEstado());
-                ViewBag.idPais = new SelectList(paisBusiness.GetPais(),"idPais","strValor");
+                ViewBag.idPais = new SelectList(paisBusiness.GetPais(), "idPais", "strValor");
                 ViewBag.strProposito = new SelectList(list.FillProposito());
                 return View();
             }
             else
             {
-                return RedirectToAction("Login","Seguridad");
+                return RedirectToAction("Login", "Seguridad");
             }
-           
+
+        }
+
+        [HttpPost]
+        public ActionResult Create(PrototipoVM prototipoVM)
+        {
+            if (ModelState.IsValid)
+            {
+                PrototipoDomainModel prototipoDM = new PrototipoDomainModel();
+                ProgresoProdepDomainModel progresoProdepDM = new ProgresoProdepDomainModel();
+                DocumentosDomainModel documentosDM = new DocumentosDomainModel();
+
+                string nombre = SessionPersister.AccountSession.NombreCompleto;
+                int idPersonal = SessionPersister.AccountSession.IdPersonal;
+                int idStatus = int.Parse(Recursos.RecursosSistema.REGISTRO_PROTOTIPO);
+
+                prototipoVM.idPersonal = idPersonal;
+                prototipoVM.idStatsu = idStatus;
+
+                AutoMapper.Mapper.Map(prototipoVM,prototipoDM);
+                AutoMapper.Mapper.Map(prototipoVM.documentosVM, documentosDM);
+                prototipoDM.documentosDM = documentosDM;
+
+                if (GuadarArchivo(prototipoDM,nombre))
+                {
+                    prototipoDM.documentosDM.StrUrl = prototipoDM.documentosDM.DocumentoFile.FileName;
+                    DocumentosDomainModel documento = documentosBusiness.AddDocumento(documentosDM);
+                    prototipoDM.idDocumento = documento.IdDocumento;
+                    prototipoBusiness.AddUpdatePrototipo(prototipoDM);
+                    progresoProdepDM.idPersonal = idPersonal;
+                    progresoProdepDM.idStatus = idStatus;
+                    progresoProdep.AddUpdateProgresoProdep(progresoProdepDM);
+                }
+
+            }
+
+            return RedirectToAction("Create","Prototipo");
+        }
+
+        public bool GuadarArchivo(PrototipoDomainModel prototipoDomainModel, string nombre)
+        {
+            bool respuesta = false;
+
+            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombre + "/"));
+
+            if (Directory.Exists(path))
+            {
+                if (prototipoDomainModel.documentosDM.DocumentoFile.ContentType.Equals("application/pdf"))
+                {
+                    string pahtCompleto = Path.Combine(path, Path.GetFileName(prototipoDomainModel.documentosDM.DocumentoFile.FileName));
+                    prototipoDomainModel.documentosDM.DocumentoFile.SaveAs(pahtCompleto);
+                    respuesta = true;
+                }
+            }
+            else
+            {
+                DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
+                GuadarArchivo(prototipoDomainModel, nombre);
+                respuesta = true;
+            }
+            return respuesta;
         }
     }
 }

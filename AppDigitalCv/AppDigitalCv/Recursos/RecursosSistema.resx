@@ -159,6 +159,9 @@
   <data name="REGISTRO_PRODUCTIVIDAD_INNOVADORA" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="REGISTRO_PROTOTIPO" xml:space="preserve">
+    <value>8</value>
+  </data>
   <data name="URL_PERFIL" xml:space="preserve">
     <value>Imagenes/Usuarios/</value>
   </data>

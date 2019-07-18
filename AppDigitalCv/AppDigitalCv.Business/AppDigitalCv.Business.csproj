@@ -138,6 +138,7 @@
     <Compile Include="Interface\IProductividadInnovadoraBusiness.cs" />
     <Compile Include="Interface\IProgramaEducativoBusiness.cs" />
     <Compile Include="Interface\IProgresoProdep.cs" />
+    <Compile Include="Interface\IPrototipoBusiness.cs" />
     <Compile Include="Interface\ITelefono.cs" />
     <Compile Include="Interface\ITipoActividad.cs" />
     <Compile Include="Interface\ITipoContratoBusiness.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="ProgramaEducativoBusiness.cs" />
     <Compile Include="ProgresoProdepBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PrototipoBusiness.cs" />
     <Compile Include="Recursos\BaseConfiguration.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
