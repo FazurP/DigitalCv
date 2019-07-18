@@ -343,6 +343,9 @@
     <Compile Include="tblPrototipo.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblProyectoInvestigacionAplicadaDesarrolloTecnologico.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblTelefono.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>

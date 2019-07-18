@@ -178,6 +178,10 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblPrototipo_CatPais" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblPrototipo_catStatus" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblPrototipo_tblPersonal" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblProyectoInvestigacionAplicadaDesarrolloTecnologico" Width="1.5" PointX="22.5" PointY="29.75" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_catDocumentos" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_catStatus" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_tblPersonal" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
