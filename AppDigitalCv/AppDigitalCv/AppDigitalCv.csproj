@@ -441,6 +441,7 @@
     <Content Include="Scripts\Validate\ProduccionesArtisticas\validate-producciones-artisticas-upload.js" />
     <Content Include="Scripts\Validate\ProductividadInnovadora\validate-productividad-innovadora-date.js" />
     <Content Include="Scripts\Validate\ProductividadInnovadora\validate-productividad-innovadora-regExp.js" />
+    <Content Include="Scripts\Validate\Prototipo\validate-prototipo-form.js" />
     <Content Include="Scripts\Validate\ScriptTest.js" />
     <Content Include="Scripts\Validate\ProductividadInnovadora\validate-productividad-innovadora-form.js" />
     <Content Include="Scripts\Validate\validate-datos-contacto-email.js" />

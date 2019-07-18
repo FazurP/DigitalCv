@@ -33,17 +33,17 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Autor(es)</label>
-                                    @Html.TextBoxFor(model => model.strAutor, new { @class="form-control input-sm", id="txtAutor"})
+                                    @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "txtAutor" })
                                     <label>Tipo de Prototipo</label>
-                                    @Html.DropDownList("strTipoPrototipo", null,new { @class = "form-control input-sm",id="ddlTipoPrototipo"})
+                                    @Html.DropDownList("strTipoPrototipo", null, new { @class = "form-control input-sm", id = "ddlTipoPrototipo" })
                                     <label>Nombre del Prototipo</label>
-                                    @Html.TextBoxFor(model => model.strNombrePrototipo, new { @class="form-control input-sm",id="txtNombrePrototipo"})
+                                    @Html.TextBoxFor(model => model.strNombrePrototipo, new { @class = "form-control input-sm", id = "txtNombrePrototipo" })
                                     <label>Objetivos</label>
-                                    @Html.TextAreaFor(model => model.strObjetivos, new { @class="form-control input-sm",id="txtObjetivos"})
+                                    @Html.TextAreaFor(model => model.strObjetivos, new { @class = "form-control input-sm", id = "txtObjetivos" })
                                     <label>Caracteristicas</label>
-                                    @Html.TextAreaFor(model => model.strCaracteristicas, new { @class="form-control input-sm",id="txtCaracteristicas"})
+                                    @Html.TextAreaFor(model => model.strCaracteristicas, new { @class = "form-control input-sm", id = "txtCaracteristicas" })
                                     <label>Institución Para la que Fue Creado</label>
-                                    @Html.TextBoxFor(model => model.strInstitucionDestinada, new { @class="form-control input-sm",id="txtInstitucionDestinada"})          
+                                    @Html.TextBoxFor(model => model.strInstitucionDestinada, new { @class = "form-control input-sm", id = "txtInstitucionDestinada" })
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -51,17 +51,17 @@
                                     <label>Fecha de Publicación</label>
                                     @Html.TextBoxFor(model => model.dteFechaPublicacion, new { @class = "form-control input-sm", id = "dteFechaPublicacion", type = "date" })
                                     <label>Estado Actual</label>
-                                    @Html.DropDownList("strEstadoActual", null,new { @class="form-control input-sm",id="ddlEstadoActual"})
+                                    @Html.DropDownList("strEstadoActual", null, new { @class = "form-control input-sm", id = "ddlEstadoActual" })
                                     <label>Pais</label>
-                                    @Html.DropDownList("idPais",null,new { @class="form-control input-sm",id="ddlPais"})
+                                    @Html.DropDownList("idPais", null, new { @class = "form-control input-sm", id = "ddlPais" })
                                     <label>Proposito</label>
-                                    @Html.DropDownList("strProposito", null,new { @class="form-control input-sm",id="ddlProposito",})
+                                    @Html.DropDownList("strProposito", null, new { @class = "form-control input-sm", id = "ddlProposito", })
                                     <label>Evidencia del Documento en PDF</label>
-                                    @Html.TextBoxFor(model => model.documentosVM.DocumentoFile, new { @class = "form-control input-sm",id="inputFileUpload",type="file" })
+                                    @Html.TextBoxFor(model => model.documentosVM.DocumentoFile, new { @class = "form-control input-sm", id = "inputFileUpload", type = "file" })
                                     <label>Considera para el Curriculum</label>
                                     <br />
-                                    Si @Html.RadioButtonFor(model => model.bitConsideraCurriculum,true, new { @class="form-control input-sm",id="cv"})
-                                    No @Html.RadioButtonFor(model => model.bitConsideraCurriculum,false, new { @class="form-control input-sm",id="cv"})
+                                    Si @Html.RadioButtonFor(model => model.bitConsideraCurriculum, true, new { @class = "form-control input-sm", id = "cv" })
+                                    No @Html.RadioButtonFor(model => model.bitConsideraCurriculum, false, new { @class = "form-control input-sm", id = "cv" })
                                 </div>
                             </div>
                         </div>
@@ -116,6 +116,7 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/Validate/Prototipo/validate-prototipo-form.js"></script>
 
 
 
