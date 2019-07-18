@@ -148,5 +148,48 @@ namespace AppDigitalCv.Controllers
 
             }, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public ActionResult GetPrototipoDelete(int _idPrototipo)
+        {
+            PrototipoDomainModel prototipoDM = new PrototipoDomainModel();
+
+            prototipoDM = prototipoBusiness.GetPrototipoById(_idPrototipo);
+
+            if (prototipoDM != null)
+            {
+                PrototipoVM prototipoVM = new PrototipoVM();
+
+                AutoMapper.Mapper.Map(prototipoDM,prototipoVM);
+
+                return PartialView("_Eliminar",prototipoVM);
+            }
+
+            return PartialView("_Eliminar");
+        }
+
+        [HttpPost]
+        public ActionResult DeletePrototipo(PrototipoVM prototipoVM)
+        {
+            PrototipoDomainModel prototipoDM = new PrototipoDomainModel();
+
+            prototipoDM = prototipoBusiness.GetPrototipoById(prototipoVM.id);
+
+            if (prototipoDM != null)
+            {
+                if (prototipoBusiness.GetPrototipos(SessionPersister.AccountSession.IdPersonal).Count == 1)
+                {
+                    ProgresoProdepDomainModel progresoProdepDM = progresoProdep.GetProgresoPersonal(SessionPersister.AccountSession.IdPersonal, int.Parse(Recursos.RecursosSistema.REGISTRO_PROTOTIPO));
+                    documentosBusiness.DeleteDocumento(prototipoDM.idDocumento);
+                    progresoProdep.DeleteProgresoProdep(progresoProdepDM.id);
+                }
+                else
+                {
+                    documentosBusiness.DeleteDocumento(prototipoDM.idDocumento);
+                }
+            }
+
+            return RedirectToAction("Create","Prototipo");
+        }
     }
 }

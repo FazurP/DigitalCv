@@ -12,5 +12,9 @@ namespace AppDigitalCv.Business.Interface
         bool AddUpdatePrototipo(PrototipoDomainModel prototipoDomainModel);
 
         List<PrototipoDomainModel> GetPrototipos(int _idPersonal);
+
+        PrototipoDomainModel GetPrototipoById(int _idPrototipo);
+
+        bool DeletePrototipoById(int _idPrototipo);
     }
 }

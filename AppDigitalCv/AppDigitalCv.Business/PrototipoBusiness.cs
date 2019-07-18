@@ -91,5 +91,43 @@ namespace AppDigitalCv.Business
             return prototipos;
 
         }
+
+        public PrototipoDomainModel GetPrototipoById(int _idPrototipo)
+        {
+            PrototipoDomainModel prototipoDM = new PrototipoDomainModel();
+
+            Expression<Func<tblPrototipo, bool>> predicate = p => p.idPersonal == _idPrototipo;
+            tblPrototipo tblPrototipo = prototipoRepository.GetAll(predicate).FirstOrDefault();
+
+            prototipoDM.id = tblPrototipo.id;
+            prototipoDM.idDocumento = tblPrototipo.idDocumento.Value;
+            prototipoDM.idPais = tblPrototipo.idPais.Value;
+            prototipoDM.idPersonal = tblPrototipo.idPersonal.Value;
+            prototipoDM.idStatsu = tblPrototipo.idStatus.Value;
+            prototipoDM.strAutor = tblPrototipo.strAutor;
+            prototipoDM.strCaracteristicas = tblPrototipo.strCaracteristicas;
+            prototipoDM.strEstadoActual = tblPrototipo.strEstadoActual;
+            prototipoDM.strInstitucionDestinada = tblPrototipo.strInstitucionDestinada;
+            prototipoDM.strNombrePrototipo = tblPrototipo.strNombrePrototipo;
+            prototipoDM.strObjetivos = tblPrototipo.strObjetivos;
+            prototipoDM.strProposito = tblPrototipo.strProposito;
+            prototipoDM.strTipoPrototipo = tblPrototipo.strTipoPrototipo;
+            prototipoDM.dteFechaPublicacion = tblPrototipo.dteFechaPublicacion.Value;
+            prototipoDM.bitConsideraCurriculum = tblPrototipo.bitConsideraCurriculum.Value;
+
+            return prototipoDM;
+        }
+
+        public bool DeletePrototipoById(int _idPrototipo)
+        {
+            bool respueta = false;
+
+            Expression<Func<tblPrototipo, bool>> predicate = p => p.id == _idPrototipo;
+
+            prototipoRepository.Delete(predicate);
+            respueta = true;
+
+            return respueta;
+        }
     }
 }
