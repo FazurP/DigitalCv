@@ -173,6 +173,11 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblProduccionArtistica_catProduccionArtistica" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblProduccionArtistica_catStatus" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblProduccionArtistica_tblPersonal" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblPrototipo" Width="1.5" PointX="22.5" PointY="11.875" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblPrototipo_catDocumentos" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblPrototipo_CatPais" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblPrototipo_catStatus" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblPrototipo_tblPersonal" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

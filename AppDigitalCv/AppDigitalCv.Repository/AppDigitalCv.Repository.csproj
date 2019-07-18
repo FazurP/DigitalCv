@@ -248,6 +248,7 @@
     <Compile Include="ProgresoProdepRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InformeTecnicoRepository.cs" />
+    <Compile Include="PrototipoRepository.cs" />
     <Compile Include="SalariosRepository.cs" />
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
@@ -337,6 +338,9 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblProgresoProdep.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPrototipo.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblTelefono.cs">
