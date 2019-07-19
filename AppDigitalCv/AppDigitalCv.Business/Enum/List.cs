@@ -95,5 +95,16 @@ namespace AppDigitalCv.Business.Enum
 
             return list;
         }
+
+        public List<string> FllTipoPatrocinador()
+        {
+            List<string> list = new List<string>();
+
+            list.Insert(0, "--Seleccionar--");
+            list.Insert(1, "Interno");
+            list.Insert(2, "Externo");
+
+            return list;
+        }
     }
 }

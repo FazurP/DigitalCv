@@ -196,6 +196,15 @@ namespace AppDigitalCv.Recursos {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a 9.
+        /// </summary>
+        internal static string REGISTRO_PROYECTO_INVESTIGACION {
+            get {
+                return ResourceManager.GetString("REGISTRO_PROYECTO_INVESTIGACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Imagenes/Usuarios/.
         /// </summary>
         internal static string URL_PERFIL {

@@ -271,6 +271,10 @@ namespace AppDigitalCv.Infraestructure
             CreateMap<PrototipoVM, PrototipoDomainModel>();
             CreateMap<PrototipoDomainModel, PrototipoVM>();
 
+            //ProyectoInvestigacionAplicadaDesarrolloTecnologico
+            CreateMap<ProyectoInvestigacionVM, ProyectoInvestigacionDomainModel>();
+            CreateMap<ProyectoInvestigacionDomainModel, ProyectoInvestigacionVM>();
+
         }
 
         public static void Run()

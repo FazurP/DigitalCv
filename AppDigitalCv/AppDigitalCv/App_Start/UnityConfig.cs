@@ -85,6 +85,7 @@ namespace AppDigitalCv
             container.RegisterType<IProduccionesArtisticasBusiness, ProduccionesArtisticasBusiness>();
             container.RegisterType<IProduccionArtistica, ProduccionArtisticaBusiness>();
             container.RegisterType<IPrototipoBusiness, PrototipoBusiness>();
+            container.RegisterType<IProyectoInvestigacionBusiness, ProyectoInvestigacionBusiness>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }
