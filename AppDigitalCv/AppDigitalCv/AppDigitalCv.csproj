@@ -657,6 +657,7 @@
     <Compile Include="ViewModels\DeportePersonalVM.cs" />
     <Compile Include="ViewModels\DeporteVM.cs" />
     <Compile Include="ViewModels\DialectoVM.cs" />
+    <Compile Include="ViewModels\DireccionIndividualizadaVM.cs" />
     <Compile Include="ViewModels\DireccionVM.cs" />
     <Compile Include="ViewModels\DocumentacionPersonalV2VM.cs" />
     <Compile Include="ViewModels\DocumentacionPersonalVM.cs" />

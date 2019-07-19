@@ -67,6 +67,7 @@
     <Compile Include="DialectoBusiness.cs" />
     <Compile Include="DialectoIdiomaBusiness.cs" />
     <Compile Include="DireccionBusiness.cs" />
+    <Compile Include="DireccionIndividualizadaBusiness.cs" />
     <Compile Include="DocumentacionPersonalBusiness.cs" />
     <Compile Include="DocumentacionPersonalV2Business.cs" />
     <Compile Include="DocumentosBusiness.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Interface\IDeportePersonalBusiness.cs" />
     <Compile Include="Interface\IDialectoBusiness.cs" />
     <Compile Include="Interface\IDialectoIdiomaBusiness.cs" />
+    <Compile Include="Interface\IDireccionIndividualizadaBusiness.cs" />
     <Compile Include="Interface\IDocumentacionPersonalBusiness.cs" />
     <Compile Include="Interface\IDocumentacionPersonalV2Business.cs" />
     <Compile Include="Interface\IDocumentosBusiness.cs" />

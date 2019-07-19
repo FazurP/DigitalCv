@@ -275,6 +275,10 @@ namespace AppDigitalCv.Infraestructure
             CreateMap<ProyectoInvestigacionVM, ProyectoInvestigacionDomainModel>();
             CreateMap<ProyectoInvestigacionDomainModel, ProyectoInvestigacionVM>();
 
+            //Direccion Individualizada 
+            CreateMap<DireccionIndividualizadaVM, DireccionIndividualizadaDomainModel>();
+            CreateMap<DireccionIndividualizadaDomainModel, DireccionIndividualizadaVM>();
+
         }
 
         public static void Run()

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace AppDigitalCv.Domain
+namespace AppDigitalCv.ViewModels
 {
-    public class DireccionIndividualizadaDomainModel
+    public class DireccionIndividualizadaVM
     {
         public int id { get; set; }
         public int idPersonal { get; set; }
