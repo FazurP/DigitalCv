@@ -134,6 +134,7 @@
     <Compile Include="DeportePersonalRepository.cs" />
     <Compile Include="DeporteRepository.cs" />
     <Compile Include="DialectoIdiomaRepository.cs" />
+    <Compile Include="DireccionIndividualizadaRepository.cs" />
     <Compile Include="DocumentacionPersonalRepository.cs" />
     <Compile Include="DocumentacionPersonalV2Repository.cs" />
     <Compile Include="DocumentosRepository.cs" />
@@ -279,6 +280,9 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDeportePersonal.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblDireccionIndividualizada.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDocumentacionPersonal.cs">

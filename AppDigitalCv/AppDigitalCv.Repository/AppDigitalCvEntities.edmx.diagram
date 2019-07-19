@@ -182,6 +182,11 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_catDocumentos" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_catStatus" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_tblPersonal" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblDireccionIndividualizada" Width="1.5" PointX="13.5" PointY="6" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblDireccionIndividualizada_catInstitucionSuperior" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblDireccionIndividualizada_catStatus" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblDireccionIndividualizada_catTipoEstudio" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblDireccionIndividualizada_tblPersonal" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
