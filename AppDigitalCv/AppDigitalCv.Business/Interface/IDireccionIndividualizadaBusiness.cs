@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppDigitalCv.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace AppDigitalCv.Business.Interface
 {
     public interface IDireccionIndividualizadaBusiness
     {
-
+        bool AddUpdateDireccionIndividualizada(DireccionIndividualizadaDomainModel direccionIndividualizadaDM);
     }
 }

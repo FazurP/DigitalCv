@@ -106,5 +106,16 @@ namespace AppDigitalCv.Business.Enum
 
             return list;
         }
+
+        public List<string> FillEstadoDireccionIndividualizada()
+        {
+            List<string> list = new List<string>();
+
+            list.Insert(0, "--Seleccionar--");
+            list.Insert(1, "En Proceso");
+            list.Insert(2, "Concluida");
+
+            return list;
+        }
     }
 }

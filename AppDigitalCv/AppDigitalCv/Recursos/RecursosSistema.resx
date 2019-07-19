@@ -141,6 +141,9 @@
   <data name="INGRESAR_NOMBRE" xml:space="preserve">
     <value>Ingresa el Nombre.</value>
   </data>
+  <data name="REGISTRO_DIRECCION_INDIVIDUALIZADA" xml:space="preserve">
+    <value>10</value>
+  </data>
   <data name="REGISTRO_EXITOSO" xml:space="preserve">
     <value>2</value>
   </data>

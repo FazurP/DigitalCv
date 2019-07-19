@@ -133,6 +133,15 @@ namespace AppDigitalCv.Recursos {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a 10.
+        /// </summary>
+        internal static string REGISTRO_DIRECCION_INDIVIDUALIZADA {
+            get {
+                return ResourceManager.GetString("REGISTRO_DIRECCION_INDIVIDUALIZADA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a 2.
         /// </summary>
         internal static string REGISTRO_EXITOSO {

@@ -1,4 +1,5 @@
 ﻿using AppDigitalCv.Business.Interface;
+using AppDigitalCv.Domain;
 using AppDigitalCv.Repository;
 using AppDigitalCv.Repository.Infraestructure.Contract;
 using System;
@@ -18,6 +19,26 @@ namespace AppDigitalCv.Business
         {
             unitofWork = _unitOfWork;
             tipoEstudioRepository = new TipoEstudioRepository(unitofWork);
+        }
+
+        public List<TipoEstudioDomainModel> GetTiposEstudios()
+        {
+            List<TipoEstudioDomainModel> tipoEstudios = new List<TipoEstudioDomainModel>();
+
+            List<catTipoEstudio> catTipos = tipoEstudioRepository.GetAll().ToList();
+
+            foreach (catTipoEstudio item in catTipos)
+            {
+                TipoEstudioDomainModel tipoEstudioDM = new TipoEstudioDomainModel();
+
+                tipoEstudioDM.idTipoEstudio = item.idTipoEstudio;
+                tipoEstudioDM.strDescripcion = item.strDescripcion;
+                tipoEstudioDM.strObservacion = item.strObservacion;
+
+                tipoEstudios.Add(tipoEstudioDM);
+            }
+
+            return tipoEstudios;
         }
     }
 }
