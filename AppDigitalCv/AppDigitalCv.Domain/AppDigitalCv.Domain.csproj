@@ -67,6 +67,7 @@
     <Compile Include="DialectoDomainModel.cs" />
     <Compile Include="DialectoIdiomaDomainModel.cs" />
     <Compile Include="DireccionDomainModel.cs" />
+    <Compile Include="DireccionIndividualizadaDomainModel.cs" />
     <Compile Include="DocumentacionPersonalDomainModel.cs" />
     <Compile Include="DocumentacionPersonalV2DomainModel.cs" />
     <Compile Include="DocumentoPersonalDomainModel.cs" />
