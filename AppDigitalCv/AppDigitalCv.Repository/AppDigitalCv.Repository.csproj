@@ -122,6 +122,9 @@
     <Compile Include="catTipoActividad.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="catTipoProducto.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="CompetenciasPersonalRepository.cs" />
     <Compile Include="CompetenciasRepository.cs" />
     <Compile Include="CompetenciasTiPersonalRepository.cs" />
@@ -292,6 +295,9 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblEnfermedadPersonal.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEstadiaEmpresa.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblExperienciaLaboralExterna.cs">

@@ -187,6 +187,13 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblDireccionIndividualizada_catStatus" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblDireccionIndividualizada_catTipoEstudio" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblDireccionIndividualizada_tblPersonal" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.catTipoProducto" Width="1.5" PointX="17.25" PointY="5.75" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblEstadiaEmpresa" Width="1.5" PointX="19.5" PointY="4.75" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblEstadiaEmpresa_catDocumentos" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblEstadiaEmpresa_catProgramaEducativo" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblEstadiaEmpresa_catStatus" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblEstadiaEmpresa_catTipoProducto" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblEstadiaEmpresa_tblPersonal" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
