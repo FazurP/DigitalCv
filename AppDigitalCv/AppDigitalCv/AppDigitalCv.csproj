@@ -604,6 +604,7 @@
     <Compile Include="Controllers\DocumentacionPersonalController.cs" />
     <Compile Include="Controllers\DocumentacionPersonalV2Controller.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />
+    <Compile Include="Controllers\EstadiaEmpresaController.cs" />
     <Compile Include="Controllers\EstadoCivilController.cs" />
     <Compile Include="Controllers\EstadoSaludController.cs" />
     <Compile Include="Controllers\ExperienciaLaboralExternaController.cs" />
@@ -853,6 +854,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Usuarios\" />
+    <Folder Include="Views\EstadiaEmpresa\" />
     <Folder Include="Views\ProductividadInnovaroda\" />
   </ItemGroup>
   <ItemGroup>

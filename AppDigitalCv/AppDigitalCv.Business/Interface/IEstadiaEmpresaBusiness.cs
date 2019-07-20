@@ -15,6 +15,6 @@ namespace AppDigitalCv.Business.Interface
 
         EstadiaEmpresaDomainModel GetEstadiaEmpresaById(int _idEstadia);
 
-        bool DeleteEstadia(int _idEstadia)
+        bool DeleteEstadia(int _idEstadia);
     }
 }
