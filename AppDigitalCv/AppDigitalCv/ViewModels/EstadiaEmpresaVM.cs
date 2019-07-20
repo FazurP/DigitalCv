@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace AppDigitalCv.Domain
+namespace AppDigitalCv.ViewModels
 {
-    public class EstadiaEmpresaDomainModel
+    public class EstadiaEmpresaVM
     {
         public int id { get; set; }
         public int idTipoProducto { get; set; }
@@ -14,7 +13,7 @@ namespace AppDigitalCv.Domain
         public int idPersonal { get; set; }
         public int idStatus { get; set; }
         public int idDocumento { get; set; }
-        public DocumentosDomainModel documentosDM { get; set; }
+        public DocumentosVM documentosVM { get; set; }
         public string strNombreEstadia { get; set; }
         public string strResumenProyecto { get; set; }
         public string strObjetivo { get; set; }

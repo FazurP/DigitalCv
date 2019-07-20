@@ -672,6 +672,7 @@
     <Compile Include="ViewModels\EdificioVM.cs" />
     <Compile Include="ViewModels\EmergenciaViewModel.cs" />
     <Compile Include="ViewModels\EnfermedadVM.cs" />
+    <Compile Include="ViewModels\EstadiaEmpresaVM.cs" />
     <Compile Include="ViewModels\EstadoCivilVM.cs" />
     <Compile Include="ViewModels\EstadoSaludVM.cs" />
     <Compile Include="ViewModels\EstadoVM.cs" />
@@ -720,6 +721,7 @@
     <Compile Include="ViewModels\TipoContratoVM.cs" />
     <Compile Include="ViewModels\TipoEmpresaVM.cs" />
     <Compile Include="ViewModels\TipoEstudioVM.cs" />
+    <Compile Include="ViewModels\TipoProductoVM.cs" />
     <Compile Include="ViewModels\TipoSangreVM.cs" />
     <Compile Include="ViewModels\UnidadesAcademicasVM.cs" />
   </ItemGroup>
