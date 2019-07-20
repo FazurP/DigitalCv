@@ -575,6 +575,8 @@
     <Content Include="Views\Prototipo\_Editar.cshtml" />
     <Content Include="Views\ProyectoInvestigacion\Create.cshtml" />
     <Content Include="Views\DireccionIndividualizada\Create.cshtml" />
+    <Content Include="Views\DireccionIndividualizada\_Eliminar.cshtml" />
+    <Content Include="Views\DireccionIndividualizada\_Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -847,6 +849,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Usuarios\" />
+    <Folder Include="Scripts\Validate\DireccionIndividualizada\" />
     <Folder Include="Views\ProductividadInnovaroda\" />
   </ItemGroup>
   <ItemGroup>

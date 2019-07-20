@@ -1,6 +1,7 @@
 ﻿using AppDigitalCv.Business.Enum;
 using AppDigitalCv.Business.Interface;
 using AppDigitalCv.Domain;
+using AppDigitalCv.Models;
 using AppDigitalCv.Security;
 using AppDigitalCv.ViewModels;
 using System;
@@ -80,5 +81,113 @@ namespace AppDigitalCv.Controllers
             return respuesta;
 
         }
+
+        [HttpGet]
+        public JsonResult GetDirecciones(DataTablesParam param)
+        {
+            int identityPersonal = SessionPersister.AccountSession.IdPersonal;
+            List<DireccionIndividualizadaDomainModel> DireccionesDM = new List<DireccionIndividualizadaDomainModel>();
+
+            int pageNo = 1;
+
+            if (param.iDisplayStart >= param.iDisplayLength)
+            {
+                pageNo = (param.iDisplayStart / param.iDisplayLength) + 1;
+            }
+
+            int totalCount = 0;
+
+            if (param.sSearch != null)
+            {
+                DireccionesDM = direccionIndividualizadaBusiness.GetDireccionesByIdPersonal(identityPersonal).Where(p => p.strTituloTesis.Contains(param.sSearch)).ToList();
+            }
+            else
+            {
+                totalCount = direccionIndividualizadaBusiness.GetDireccionesByIdPersonal(identityPersonal).Count();
+
+                DireccionesDM = direccionIndividualizadaBusiness.GetDireccionesByIdPersonal(identityPersonal).OrderBy(p => p.strTituloTesis).Skip((pageNo - 1)
+                    * param.iDisplayLength).Take(param.iDisplayLength).ToList();
+            }
+
+            return Json(new
+            {
+
+                aaData = DireccionesDM,
+                sEcho = param.sEcho,
+                iTotalDisplayRecords = DireccionesDM.Count(),
+                iTotalRecords = DireccionesDM.Count()
+
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult GetDireccionDelete(int _idDireccion)
+        {
+            DireccionIndividualizadaVM direccionIndividualizadaVM = new DireccionIndividualizadaVM();
+            DireccionIndividualizadaDomainModel direccionIndividualizadaDM = new DireccionIndividualizadaDomainModel();
+
+            direccionIndividualizadaDM = direccionIndividualizadaBusiness.GetDireccionById(_idDireccion);
+
+            if (direccionIndividualizadaDM != null)
+            {
+                AutoMapper.Mapper.Map(direccionIndividualizadaDM,direccionIndividualizadaVM);
+                return PartialView("_Eliminar", direccionIndividualizadaVM);
+            }
+
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteDireccion(DireccionIndividualizadaVM direccionIndividualizadaVM)
+        {
+            DireccionIndividualizadaDomainModel direccionIndividualizadaDM = new DireccionIndividualizadaDomainModel();
+
+            direccionIndividualizadaDM = direccionIndividualizadaBusiness.GetDireccionById(direccionIndividualizadaVM.id);
+
+            if (direccionIndividualizadaDM != null)
+            {
+                if (direccionIndividualizadaBusiness.GetDireccionesByIdPersonal(SessionPersister.AccountSession.IdPersonal).Count == 1)
+                {
+                    direccionIndividualizadaBusiness.DeleteDireccion(direccionIndividualizadaDM.id);
+                    ProgresoProdepDomainModel progresoProdepDM = progresoProdep.GetProgresoPersonal(SessionPersister.AccountSession.IdPersonal,
+                        int.Parse(Recursos.RecursosSistema.REGISTRO_DIRECCION_INDIVIDUALIZADA));
+                    progresoProdep.DeleteProgresoProdep(progresoProdepDM.id);
+                }
+                direccionIndividualizadaBusiness.DeleteDireccion(direccionIndividualizadaDM.id);
+            }
+            return RedirectToAction("Create","DireccionIndividualizada");
+
+        }
+
+        [HttpGet]
+        public ActionResult GetDireccionUpdate(int _idDireccion)
+        {
+            DireccionIndividualizadaVM direccionIndividualizadaVM = new DireccionIndividualizadaVM();
+            DireccionIndividualizadaDomainModel direccionIndividualizadaDM = new DireccionIndividualizadaDomainModel();
+
+            direccionIndividualizadaDM = direccionIndividualizadaBusiness.GetDireccionById(_idDireccion);
+
+            if (direccionIndividualizadaDM != null)
+            {
+                AutoMapper.Mapper.Map(direccionIndividualizadaDM, direccionIndividualizadaVM);
+                return PartialView("_Editar", direccionIndividualizadaVM);
+            }
+
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult UpdateDireccion(DireccionIndividualizadaVM direccionIndividualizadaVM)
+        {
+            DireccionIndividualizadaDomainModel direccionIndividualizadaDM = new DireccionIndividualizadaDomainModel();
+
+            if (direccionIndividualizadaVM.id > 0)
+            {
+                AutoMapper.Mapper.Map(direccionIndividualizadaVM,direccionIndividualizadaDM);
+                direccionIndividualizadaBusiness.AddUpdateDireccionIndividualizada(direccionIndividualizadaDM);
+            }
+            return RedirectToAction("Create","DireccionIndividualizada");
+        }
+
     }
 }
