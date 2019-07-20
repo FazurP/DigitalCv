@@ -217,6 +217,7 @@
     <Compile Include="EdificioRepository.cs" />
     <Compile Include="EmergenciaRepository.cs" />
     <Compile Include="EnfermedadesRepository.cs" />
+    <Compile Include="EstadiaEmpresaRepository.cs" />
     <Compile Include="EstadoCivilRepository.cs" />
     <Compile Include="EstadoRepository.cs" />
     <Compile Include="EstadoSaludRepository.cs" />
@@ -368,6 +369,7 @@
     <Compile Include="TipoContratoRepository.cs" />
     <Compile Include="TipoEmpresaRepository.cs" />
     <Compile Include="TipoEstudioRepository.cs" />
+    <Compile Include="TipoProductoRepository.cs" />
     <Compile Include="TipoSangreRepository.cs" />
     <Compile Include="UnidadesAcademicasRepository.cs" />
   </ItemGroup>
