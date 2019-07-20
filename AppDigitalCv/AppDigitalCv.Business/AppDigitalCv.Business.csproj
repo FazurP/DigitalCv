@@ -76,6 +76,7 @@
     <Compile Include="EnfermedadBusiness.cs" />
     <Compile Include="Enum\EnumFamiliares.cs" />
     <Compile Include="Enum\List.cs" />
+    <Compile Include="EstadiaEmpresaBusiness.cs" />
     <Compile Include="EstadoBusiness.cs" />
     <Compile Include="EstadoCivilBusiness.cs" />
     <Compile Include="EstadoSaludBusiness.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Interface\IDocumentosBusiness.cs" />
     <Compile Include="Interface\IEdificioBusiness.cs" />
     <Compile Include="Interface\IEmergenciaBusiness.cs" />
+    <Compile Include="Interface\IEstadiaEmpresaBusiness.cs" />
     <Compile Include="Interface\IEstadoSaludBusiness.cs" />
     <Compile Include="Interface\IExperienciaLaboralInternaBusiness.cs" />
     <Compile Include="Interface\IExperienciaLaboralExterna.cs" />
@@ -147,6 +149,7 @@
     <Compile Include="Interface\ITipoContratoBusiness.cs" />
     <Compile Include="Interface\ITipoEmpresaBusiness.cs" />
     <Compile Include="Interface\ITipoEstudioBusiness.cs" />
+    <Compile Include="Interface\ITipoProductoBusiness.cs" />
     <Compile Include="Interface\ITipoSangreBusiness.cs" />
     <Compile Include="Interface\IUnidadesAcademicasBusiness.cs" />
     <Compile Include="LibroBusiness.cs" />
@@ -178,6 +181,7 @@
     <Compile Include="TipoContratoBusiness.cs" />
     <Compile Include="TipoEmpresaBusiness.cs" />
     <Compile Include="TipoEstudioBusiness.cs" />
+    <Compile Include="TipoProductoBusiness.cs" />
     <Compile Include="TipoSangreBusiness.cs" />
     <Compile Include="UnidadesAcademicasBusiness.cs" />
   </ItemGroup>
