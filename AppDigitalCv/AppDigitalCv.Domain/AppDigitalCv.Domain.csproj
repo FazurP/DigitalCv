@@ -75,6 +75,7 @@
     <Compile Include="EdificioDomainModel.cs" />
     <Compile Include="EmergenciaDomianModel.cs" />
     <Compile Include="EnfermedadDomainModel.cs" />
+    <Compile Include="EstadiaEmpresaDomainModel.cs" />
     <Compile Include="EstadoCivilDomainModel.cs" />
     <Compile Include="EstadoDomainModel.cs" />
     <Compile Include="EstadoSaludDomainModel.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="TipoContratoDomainModel.cs" />
     <Compile Include="TipoEmpresaDomainModel.cs" />
     <Compile Include="TipoEstudioDomainModel.cs" />
+    <Compile Include="TipoProductoDomainModel.cs" />
     <Compile Include="TipoSangreDomainModel.cs" />
     <Compile Include="UnidadesAcademicasDomainModel.cs" />
   </ItemGroup>
