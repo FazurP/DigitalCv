@@ -397,6 +397,8 @@
     <Content Include="Scripts\Validate\DatosFamiliares\validate-datos-familiares-form.js" />
     <Content Include="Scripts\Validate\DatosFamiliares\validate-datos-familiares-regExp.js" />
     <Content Include="Scripts\Validate\DialectoIdiomas\validate-dialectos-idiomas-form.js" />
+    <Content Include="Scripts\Validate\DireccionIndividualizada\validate-direccion-individualizada-date.js" />
+    <Content Include="Scripts\Validate\DireccionIndividualizada\validate-direccion-individualizada-form.js" />
     <Content Include="Scripts\Validate\Direccion\validate-direccion-form.js" />
     <Content Include="Scripts\Validate\Direccion\validate-direccion-regExp.js" />
     <Content Include="Scripts\Validate\DocumentacionPersonal\validate-documentacion-personal-v1-form.js" />
@@ -849,7 +851,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Usuarios\" />
-    <Folder Include="Scripts\Validate\DireccionIndividualizada\" />
     <Folder Include="Views\ProductividadInnovaroda\" />
   </ItemGroup>
   <ItemGroup>

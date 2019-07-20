@@ -38,6 +38,13 @@ namespace AppDigitalCv.Business
                 tipoEstudios.Add(tipoEstudioDM);
             }
 
+            TipoEstudioDomainModel tipoEstudio = new TipoEstudioDomainModel();
+
+            tipoEstudio.idTipoEstudio = 0;
+            tipoEstudio.strDescripcion = "--Seleccionar--";
+
+            tipoEstudios.Insert(0,tipoEstudio);
+
             return tipoEstudios;
         }
     }

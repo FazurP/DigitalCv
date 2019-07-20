@@ -33,28 +33,28 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Titulo de la Tesis o Proyecto Individual</label>
-                                    @Html.TextBoxFor(model => model.strTituloTesis, new { @class="form-control input-sm",id="txtTituloTesis"})
+                                    @Html.TextBoxFor(model => model.strTituloTesis, new { @class = "form-control input-sm", id = "txtTituloTesis" })
                                     <label>Grado de Estudios</label>
-                                    @Html.DropDownList("idTipoEstudio", null,new{ @class="form-control input-sm",id="ddlGrado"})
+                                    @Html.DropDownList("idTipoEstudio", null, new { @class = "form-control input-sm", id = "ddlGrado" })
                                     <label>Fecha de Inicio</label>
-                                    @Html.TextBoxFor(model => model.dteFechaInicio,new { @class="form-control input-sm",id="FechaInicio",type="date"})
+                                    @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm", id = "FechaInicio", type = "date" })
                                     <label>Fecha de Término</label>
-                                    @Html.TextBoxFor(model => model.dteFechaTermino, new { @class="form-control input-sm",id="FechaTermino",type="date"})
-                                    
+                                    @Html.TextBoxFor(model => model.dteFechaTermino, new { @class = "form-control input-sm", id = "FechaTermino", type = "date" })
+
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Numero de Alumnos</label>
-                                    @Html.TextBoxFor(model => model.strNumeroAlumnos,new { @class="form-control input-sm",id="txtNumeroAlumnos"})
+                                    @Html.TextBoxFor(model => model.strNumeroAlumnos, new { @class = "form-control input-sm", id = "txtNumeroAlumnos" })
                                     <label>Estado de la Dirección Individualizada</label>
-                                    @Html.DropDownList("strEstadoDireccionIndividualizada",null,new { @class="form-control input-sm",id="ddlEstadoDireccion"})
+                                    @Html.DropDownList("strEstadoDireccionIndividualizada", null, new { @class = "form-control input-sm", id = "ddlEstadoDireccion" })
                                     <label>Institución Superior Donde la Realiza</label>
-                                    @Html.DropDownList("idInstitucionSuperior", null,new { @class="form-control input-sm",id="ddlInstitucionSuperior"})
+                                    @Html.DropDownList("idInstitucionSuperior", null, new { @class = "form-control input-sm", id = "ddlInstitucionSuperior" })
                                     <label>Considera para Curriculum</label>
                                     <br />
-                                    Si @Html.RadioButtonFor(model => model.bitConsideraCurriculum, true, new { @class="form-control input-sm",id="cv"})
-                                    No @Html.RadioButtonFor(model => model.bitConsideraCurriculum, false, new { @class="form-control input-sm",id="cv"})
+                                    Si @Html.RadioButtonFor(model => model.bitConsideraCurriculum, true, new { @class = "form-control input-sm", id = "cv" })
+                                    No @Html.RadioButtonFor(model => model.bitConsideraCurriculum, false, new { @class = "form-control input-sm", id = "cv" })
                                 </div>
                             </div>
                         </div>
@@ -109,7 +109,8 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-
+    <script src="~/Scripts/Validate/DireccionIndividualizada/validate-direccion-individualizada-form.js"></script>
+    <script src="~/Scripts/Validate/DireccionIndividualizada/validate-direccion-individualizada-date.js"></script>
 
 
 
