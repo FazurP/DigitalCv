@@ -1,4 +1,5 @@
-﻿using AppDigitalCv.Business.Interface;
+﻿using AppDigitalCv.Business.Enum;
+using AppDigitalCv.Business.Interface;
 using AppDigitalCv.Repository.Infraestructure.Contract;
 using AppDigitalCv.Security;
 using System;
@@ -16,6 +17,7 @@ namespace AppDigitalCv.Controllers
         IProgramaEducativoBusiness programaEducativoBusiness;
         IProgresoProdep progresoProdep;
         IDocumentosBusiness documentosBusiness;
+        List list = new List();
 
         public EstadiaEmpresaController(IEstadiaEmpresaBusiness _estadiaEmpresaBusiness,ITipoProductoBusiness _tipoProductoBusiness,
             IProgramaEducativoBusiness _programaEducativoBusiness, IProgresoProdep _progresoProdep, IDocumentosBusiness _documentosBusiness)
@@ -27,10 +29,14 @@ namespace AppDigitalCv.Controllers
             documentosBusiness = _documentosBusiness;
         }
 
+        [HttpGet]
         public ActionResult Create()
         {
             if (SessionPersister.AccountSession != null)
             {
+                ViewBag.idTipoProducto = new SelectList(tipoProductoBusiness.GetAllTipoProducto(),"id","strDescripcion");
+                ViewBag.idProgramaEducativo = new SelectList(programaEducativoBusiness.GetProgramasEducativos(), "idProgramaEducativo", "strDescripcion");
+                ViewBag.strEstadoEstadia = new SelectList(list.FillEstadoEstadia());
                 return View();
             }
             else
