@@ -1,6 +1,7 @@
 ﻿using AppDigitalCv.Business.Enum;
 using AppDigitalCv.Business.Interface;
 using AppDigitalCv.Domain;
+using AppDigitalCv.Models;
 using AppDigitalCv.Repository.Infraestructure.Contract;
 using AppDigitalCv.Security;
 using AppDigitalCv.ViewModels;
@@ -106,6 +107,82 @@ namespace AppDigitalCv.Controllers
                 respuesta = true;
             }
             return respuesta;
+        }
+
+        [HttpGet]
+        public JsonResult GetEstadias(DataTablesParam param)
+        {
+            int identityPersonal = SessionPersister.AccountSession.IdPersonal;
+            List<EstadiaEmpresaDomainModel> estadiasDM = new List<EstadiaEmpresaDomainModel>();
+
+            int pageNo = 1;
+
+            if (param.iDisplayStart >= param.iDisplayLength)
+            {
+                pageNo = (param.iDisplayStart / param.iDisplayLength) + 1;
+            }
+
+            int totalCount = 0;
+
+            if (param.sSearch != null)
+            {
+                estadiasDM = estadiaEmpresaBusiness.GetAllEstadiaEmpresaByIdPersonal(identityPersonal).Where(p => p.strNombreEstadia.Contains(param.sSearch)).ToList();
+            }
+            else
+            {
+                totalCount = estadiaEmpresaBusiness.GetAllEstadiaEmpresaByIdPersonal(identityPersonal).Count();
+
+                estadiasDM = estadiaEmpresaBusiness.GetAllEstadiaEmpresaByIdPersonal(identityPersonal).OrderBy(p => p.strNombreEstadia).Skip((pageNo - 1)
+                    * param.iDisplayLength).Take(param.iDisplayLength).ToList();
+            }
+
+            return Json(new
+            {
+
+                aaData = estadiasDM,
+                sEcho = param.sEcho,
+                iTotalDisplayRecords = estadiasDM.Count(),
+                iTotalRecords = estadiasDM.Count()
+
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult GetEstadiaDelete(int _idEstadia)
+        {
+            EstadiaEmpresaDomainModel estadiaEmpresaDM = new EstadiaEmpresaDomainModel();
+            EstadiaEmpresaVM estadiaEmpresaVM = new EstadiaEmpresaVM();
+
+            estadiaEmpresaDM = estadiaEmpresaBusiness.GetEstadiaEmpresaById(_idEstadia);
+
+            if (estadiaEmpresaDM != null)
+            {
+                AutoMapper.Mapper.Map(estadiaEmpresaDM,estadiaEmpresaVM);
+                return PartialView("_Eliminar",estadiaEmpresaVM);
+            }
+
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteEstadia(EstadiaEmpresaVM estadiaEmpresaVM)
+        {
+            EstadiaEmpresaDomainModel estadiaEmpresaDM = new EstadiaEmpresaDomainModel();
+
+            estadiaEmpresaDM = estadiaEmpresaBusiness.GetEstadiaEmpresaById(estadiaEmpresaVM.id);
+
+            if (estadiaEmpresaDM != null)
+            {
+                if (progresoProdep.GetProgresoByPersonal(SessionPersister.AccountSession.IdPersonal).Count == 1)
+                {
+                    documentosBusiness.DeleteDocumento(estadiaEmpresaDM.idDocumento);
+                    ProgresoProdepDomainModel progresoProdepDM = progresoProdep.GetProgresoPersonal(SessionPersister.AccountSession.IdPersonal,int.Parse(Recursos.RecursosSistema.REGISTRO_ESTADIA_EMPRESA));
+                    progresoProdep.DeleteProgresoProdep(progresoProdepDM.id);
+                }
+                    documentosBusiness.DeleteDocumento(estadiaEmpresaDM.idDocumento);
+            }
+
+            return RedirectToAction("Create","EstadiaEmpresa");
         }
     }
 }

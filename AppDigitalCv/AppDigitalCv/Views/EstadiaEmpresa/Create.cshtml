@@ -80,7 +80,7 @@
                             <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
                             <div class="form-group" id="addTable">
                                 <br />
-                                <table id="tblPrototipo" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
+                                <table id="tblEstadia" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
                                     <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
                                         <tr>
                                             <th>Nombre del Prototipo</th>
@@ -138,7 +138,7 @@
 
         var AddEliminar = function (id) {
 
-            var url = "/Prototipo/GetPrototipoDelete?_idPrototipo=" + id;
+            var url = "/EstadiaEmpresa/GetEstadiaDelete?_idEstadia=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -154,14 +154,14 @@
 
             function BindDataTable() {
 
-                if ($.fn.DataTable.isDataTable('#tblPrototipo')) {
+                if ($.fn.DataTable.isDataTable('#tblEstadia')) {
                     oTable.Draw();
                 }
                 else {
-                    oTable = $('#tblPrototipo').DataTable({
+                    oTable = $('#tblEstadia').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/Prototipo/GetPrototipos',
+                        "sAjaxSource": '/EstadiaEmpresa/GetEstadias',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -200,7 +200,7 @@
                         "dataSrc": "",
                         "columns": [
 
-                            { "data": "strNombrePrototipo" },
+                            { "data": "strNombreEstadia" },
 
                             {
                                 "data": "id",

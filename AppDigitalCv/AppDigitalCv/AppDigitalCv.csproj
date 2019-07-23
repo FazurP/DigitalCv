@@ -580,6 +580,7 @@
     <Content Include="Views\DireccionIndividualizada\_Eliminar.cshtml" />
     <Content Include="Views\DireccionIndividualizada\_Editar.cshtml" />
     <Content Include="Views\EstadiaEmpresa\Create.cshtml" />
+    <Content Include="Views\EstadiaEmpresa\_Eliminar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
