@@ -1,0 +1,87 @@
+﻿@model AppDigitalCv.ViewModels.EstadiaEmpresaVM
+@using AppDigitalCv.Security
+
+<div>
+    <form id="myForm" enctype="multipart/form-data">
+
+        @Html.HiddenFor(model => model.id, new { id = "id" })
+
+        <div class="bs-container">
+
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-7">
+                    @Html.Label("Datos de la Estadia")
+                    <hr />
+                    <label>Nombre de la Estadia</label>
+                    @Html.TextBoxFor(model => model.strNombreEstadia, new { @class="form-control input-sm",id="NombreEstadia"})
+                <label>Resumen del Proyecto</label>
+                    @Html.TextBoxFor(model => model.strResumenProyecto, new { @class="form-control input-sm",id="Resumen"})
+                <label>Objetivo</label>
+                    @Html.TextBoxFor(model => model.strObjetivo, new { @class="form-control input-sm",id="Objetivo"})
+                <label>Numero de Alumnos</label>
+                    @Html.TextBoxFor(model => model.strNumeroAlumnos, new { @class="form-control input-sm",id="NumeroAlumnos"})
+                <label>Numero de Horas</label>
+                    @Html.TextBoxFor(model => model.strNumeroHoras, new { @class="form-control input-sm",id="NumeroHoras"})
+                <label>Nombre de la Empresa o Institución</label>
+                    @Html.TextBoxFor(model => model.strNombreEmpresaInstitucion,new { @class="form-control input-sm",id="NombreEmpresa"})
+                <label>Puntos Criticos a Resolver</label>
+                    @Html.TextBoxFor(model => model.strPuntosCriticosResolver, new { @class="form-control input-sm",id="PuntosCriticos"})
+                <label>Logros o Beneficios Obtenidos</label>
+                    @Html.TextBoxFor(model => model.strLogrosBeneficiosObtenidos, new { @class="form-control input-sm",id="LogrosObtenidos"})
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-lg-6 col-lg-offset-4">
+                        <a href="#" id="btnSubmit" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#btnSubmit").click(function () {
+
+            var EstadiaEmpresaVM = {};
+            var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+
+            EstadiaEmpresaVM.id = $('#id').val();
+            EstadiaEmpresaVM.strNombreEstadia = $('#NombreEstadia').val();
+            EstadiaEmpresaVM.strResumenProyecto = $('#Resumen').val();
+            EstadiaEmpresaVM.strObjetivo = $('#Objetivo').val();
+            EstadiaEmpresaVM.strNumeroAlumnos = $('#NumeroAlumnos').val();
+            EstadiaEmpresaVM.strNumeroHoras = $('#NumeroHoras').val();
+            EstadiaEmpresaVM.strNombreEmpresaInstitucion = $('#NombreEmpresa').val();
+            EstadiaEmpresaVM.strPuntosCriticosResolver = $('#PuntosCriticos').val();
+            EstadiaEmpresaVM.strLogrosBeneficiosObtenidos = $('#LogrosObtenidos').val();
+            $.ajax({
+                type: "POST",
+                url: "/EstadiaEmpresa/UpdateEstadia",
+                data: { estadiaEmpresaVM: EstadiaEmpresaVM},
+                success: function () {
+                    $("#myModal1").modal("hide");
+                    window.location.href = "/EstadiaEmpresa/Create";
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(textStatus);
+                    console.log(textStatus);
+
+                }
+            })
+        });
+    });
+</script>
+
+
+
+
+
+

@@ -184,5 +184,38 @@ namespace AppDigitalCv.Controllers
 
             return RedirectToAction("Create","EstadiaEmpresa");
         }
+
+        [HttpGet]
+        public ActionResult GetEstadiaUpdate(int _idEstadia)
+        {
+            EstadiaEmpresaDomainModel estadiaEmpresaDM = new EstadiaEmpresaDomainModel();
+            EstadiaEmpresaVM empresaVM = new EstadiaEmpresaVM();
+
+            estadiaEmpresaDM = estadiaEmpresaBusiness.GetEstadiaEmpresaById(_idEstadia);
+
+            if (estadiaEmpresaDM != null)
+            {
+                AutoMapper.Mapper.Map(estadiaEmpresaDM,empresaVM);
+                return PartialView("_Editar",empresaVM);
+            }
+
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult UpdateEstadia(EstadiaEmpresaVM estadiaEmpresaVM)
+        {
+
+            EstadiaEmpresaDomainModel estadiaEmpresaDM = new EstadiaEmpresaDomainModel();
+
+            if (estadiaEmpresaVM.id > 0)
+            {
+                AutoMapper.Mapper.Map(estadiaEmpresaVM,estadiaEmpresaDM);
+
+                estadiaEmpresaBusiness.AddUpdateEstadiaEmpresa(estadiaEmpresaDM);
+            }
+
+            return RedirectToAction("Create","EstadiaEmpresa");
+        }
     }
 }

@@ -28,7 +28,23 @@ namespace AppDigitalCv.Business
 
             if (estadiaEmpresaDM.id > 0)
             {
+                Expression<Func<tblEstadiaEmpresa, bool>> predicate = p => p.id == estadiaEmpresaDM.id;
+                tblEstadiaEmpresa tblEstadiaEmpresa = estadiaEmpresaRepository.GetAll(predicate).FirstOrDefault();
 
+                if (tblEstadiaEmpresa != null)
+                {
+                    tblEstadiaEmpresa.strNombreEstadia = estadiaEmpresaDM.strNombreEstadia;
+                    tblEstadiaEmpresa.strResumenProyecto = estadiaEmpresaDM.strResumenProyecto;
+                    tblEstadiaEmpresa.strObjetivo = estadiaEmpresaDM.strObjetivo;
+                    tblEstadiaEmpresa.strNumeroAlumnos = estadiaEmpresaDM.strNumeroAlumnos;
+                    tblEstadiaEmpresa.strNumeroHoras = estadiaEmpresaDM.strNumeroHoras;
+                    tblEstadiaEmpresa.strNombreEmpresaInstitucion = estadiaEmpresaDM.strNombreEmpresaInstitucion;
+                    tblEstadiaEmpresa.strPuntosCriticosResolver = estadiaEmpresaDM.strPuntosCriticosResolver;
+                    tblEstadiaEmpresa.strLogrosBeneficiosObtenidos = estadiaEmpresaDM.strLogrosBeneficiosObtenidos;
+
+                    estadiaEmpresaRepository.Update(tblEstadiaEmpresa);
+                    respuesta = true;
+                }
             }
             else
             {
