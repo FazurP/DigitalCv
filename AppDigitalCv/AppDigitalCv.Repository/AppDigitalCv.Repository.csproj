@@ -374,6 +374,7 @@
     <Compile Include="TipoEstudioRepository.cs" />
     <Compile Include="TipoProductoRepository.cs" />
     <Compile Include="TipoSangreRepository.cs" />
+    <Compile Include="TutoriasRepository.cs" />
     <Compile Include="UnidadesAcademicasRepository.cs" />
   </ItemGroup>
   <ItemGroup>

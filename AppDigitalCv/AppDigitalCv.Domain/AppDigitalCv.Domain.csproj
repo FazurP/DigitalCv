@@ -127,6 +127,7 @@
     <Compile Include="TipoEstudioDomainModel.cs" />
     <Compile Include="TipoProductoDomainModel.cs" />
     <Compile Include="TipoSangreDomainModel.cs" />
+    <Compile Include="TutoriasDomainModel.cs" />
     <Compile Include="UnidadesAcademicasDomainModel.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -731,6 +731,7 @@
     <Compile Include="ViewModels\TipoProductoVM.cs" />
     <Compile Include="ViewModels\TipoSangreVM.cs" />
     <Compile Include="ViewModels\UnidadesAcademicasVM.cs" />
+    <Compile Include="ViewModels\TutoriasVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
