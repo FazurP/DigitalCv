@@ -101,5 +101,6 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<tblDireccionIndividualizada> tblDireccionIndividualizada { get; set; }
         public virtual DbSet<catTipoProducto> catTipoProducto { get; set; }
         public virtual DbSet<tblEstadiaEmpresa> tblEstadiaEmpresa { get; set; }
+        public virtual DbSet<tblTutoria> tblTutoria { get; set; }
     }
 }

@@ -849,6 +849,23 @@
           <Property Name="strTelefonoRecados" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="idPersonal" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="tblTutoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPersonal" Type="int" />
+          <Property Name="idStatus" Type="int" />
+          <Property Name="idTipoEstudio" Type="int" />
+          <Property Name="idProgramaEductivo" Type="int" />
+          <Property Name="strTutoria" Type="varchar" MaxLength="250" />
+          <Property Name="strNumeroEstudiantes" Type="varchar" MaxLength="250" />
+          <Property Name="strNombreEstudiante" Type="varchar" MaxLength="2500" />
+          <Property Name="dteFechaInicio" Type="date" />
+          <Property Name="dteFechaTermino" Type="date" />
+          <Property Name="strTipo" Type="varchar" MaxLength="250" />
+          <Property Name="strEstadoTutoria" Type="varchar" MaxLength="250" />
+        </EntityType>
         <EntityType Name="tblUsuarioRol">
           <Key>
             <PropertyRef Name="idRolUsuario" />
@@ -2252,6 +2269,62 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblTutoria_catProgramaEducativo">
+          <End Role="catProgramaEducativo" Type="Self.catProgramaEducativo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTutoria" Type="Self.tblTutoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catProgramaEducativo">
+              <PropertyRef Name="idProgramaEducativo" />
+            </Principal>
+            <Dependent Role="tblTutoria">
+              <PropertyRef Name="idProgramaEductivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTutoria_catStatus">
+          <End Role="catStatus" Type="Self.catStatus" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTutoria" Type="Self.tblTutoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catStatus">
+              <PropertyRef Name="idStatus" />
+            </Principal>
+            <Dependent Role="tblTutoria">
+              <PropertyRef Name="idStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTutoria_catTipoEstudio">
+          <End Role="catTipoEstudio" Type="Self.catTipoEstudio" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTutoria" Type="Self.tblTutoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catTipoEstudio">
+              <PropertyRef Name="idTipoEstudio" />
+            </Principal>
+            <Dependent Role="tblTutoria">
+              <PropertyRef Name="idTipoEstudio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTutoria_tblPersonal">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTutoria" Type="Self.tblTutoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblTutoria">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_tipoAlergias_alergias">
           <End Role="catTipoAlergias" Type="Self.catTipoAlergias" Multiplicity="1" />
           <End Role="catAlergias" Type="Self.catAlergias" Multiplicity="*" />
@@ -2460,6 +2533,7 @@
           <EntitySet Name="tblPrototipo" EntityType="Self.tblPrototipo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" EntityType="Self.tblProyectoInvestigacionAplicadaDesarrolloTecnologico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblTelefono" EntityType="Self.tblTelefono" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTutoria" EntityType="Self.tblTutoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUsuarioRol" EntityType="Self.tblUsuarioRol" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="fk_alegia_alergiaPersonal" Association="Self.fk_alegia_alergiaPersonal">
             <End Role="catAlergias" EntitySet="catAlergias" />
@@ -2884,6 +2958,22 @@
           <AssociationSet Name="FK_tblTelefono_tblPersonal" Association="Self.FK_tblTelefono_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblTelefono" EntitySet="tblTelefono" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTutoria_catProgramaEducativo" Association="Self.FK_tblTutoria_catProgramaEducativo">
+            <End Role="catProgramaEducativo" EntitySet="catProgramaEducativo" />
+            <End Role="tblTutoria" EntitySet="tblTutoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTutoria_catStatus" Association="Self.FK_tblTutoria_catStatus">
+            <End Role="catStatus" EntitySet="catStatus" />
+            <End Role="tblTutoria" EntitySet="tblTutoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTutoria_catTipoEstudio" Association="Self.FK_tblTutoria_catTipoEstudio">
+            <End Role="catTipoEstudio" EntitySet="catTipoEstudio" />
+            <End Role="tblTutoria" EntitySet="tblTutoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTutoria_tblPersonal" Association="Self.FK_tblTutoria_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblTutoria" EntitySet="tblTutoria" />
           </AssociationSet>
           <AssociationSet Name="fk_tipoAlergias_alergias" Association="Self.fk_tipoAlergias_alergias">
             <End Role="catTipoAlergias" EntitySet="catTipoAlergias" />
@@ -3503,6 +3593,23 @@
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblEstadiaEmpresa" EntitySet="tblEstadiaEmpresa" />
           </AssociationSet>
+          <EntitySet Name="tblTutoria" EntityType="bdGestionDocenteModel.tblTutoria" />
+          <AssociationSet Name="FK_tblTutoria_catProgramaEducativo" Association="bdGestionDocenteModel.FK_tblTutoria_catProgramaEducativo">
+            <End Role="catProgramaEducativo" EntitySet="catProgramaEducativo" />
+            <End Role="tblTutoria" EntitySet="tblTutoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTutoria_catStatus" Association="bdGestionDocenteModel.FK_tblTutoria_catStatus">
+            <End Role="catStatus" EntitySet="catStatus" />
+            <End Role="tblTutoria" EntitySet="tblTutoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTutoria_catTipoEstudio" Association="bdGestionDocenteModel.FK_tblTutoria_catTipoEstudio">
+            <End Role="catTipoEstudio" EntitySet="catTipoEstudio" />
+            <End Role="tblTutoria" EntitySet="tblTutoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTutoria_tblPersonal" Association="bdGestionDocenteModel.FK_tblTutoria_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblTutoria" EntitySet="tblTutoria" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="catAlergias">
           <Key>
@@ -3755,6 +3862,7 @@
           <NavigationProperty Name="tblParticipacionInstitucionalInterna" Relationship="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_catProgramaEducativo" FromRole="catProgramaEducativo" ToRole="tblParticipacionInstitucionalInterna" />
           <NavigationProperty Name="tblExperienciaLaboralInterna" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catProgramaEducativo" FromRole="catProgramaEducativo" ToRole="tblExperienciaLaboralInterna" />
           <NavigationProperty Name="tblEstadiaEmpresa" Relationship="bdGestionDocenteModel.FK_tblEstadiaEmpresa_catProgramaEducativo" FromRole="catProgramaEducativo" ToRole="tblEstadiaEmpresa" />
+          <NavigationProperty Name="tblTutoria" Relationship="bdGestionDocenteModel.FK_tblTutoria_catProgramaEducativo" FromRole="catProgramaEducativo" ToRole="tblTutoria" />
         </EntityType>
         <EntityType Name="catRoles">
           <Key>
@@ -3795,6 +3903,7 @@
           <NavigationProperty Name="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" Relationship="bdGestionDocenteModel.FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_catStatus" FromRole="catStatus" ToRole="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" />
           <NavigationProperty Name="tblDireccionIndividualizada" Relationship="bdGestionDocenteModel.FK_tblDireccionIndividualizada_catStatus" FromRole="catStatus" ToRole="tblDireccionIndividualizada" />
           <NavigationProperty Name="tblEstadiaEmpresa" Relationship="bdGestionDocenteModel.FK_tblEstadiaEmpresa_catStatus" FromRole="catStatus" ToRole="tblEstadiaEmpresa" />
+          <NavigationProperty Name="tblTutoria" Relationship="bdGestionDocenteModel.FK_tblTutoria_catStatus" FromRole="catStatus" ToRole="tblTutoria" />
         </EntityType>
         <EntityType Name="catTipoAlergias">
           <Key>
@@ -3838,6 +3947,7 @@
           <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="catProgramaEducativo" Relationship="bdGestionDocenteModel.fk_tipoestudio_programaEducativo" FromRole="catTipoEstudio" ToRole="catProgramaEducativo" />
           <NavigationProperty Name="tblDireccionIndividualizada" Relationship="bdGestionDocenteModel.FK_tblDireccionIndividualizada_catTipoEstudio" FromRole="catTipoEstudio" ToRole="tblDireccionIndividualizada" />
+          <NavigationProperty Name="tblTutoria" Relationship="bdGestionDocenteModel.FK_tblTutoria_catTipoEstudio" FromRole="catTipoEstudio" ToRole="tblTutoria" />
         </EntityType>
         <EntityType Name="catTipoSangre">
           <Key>
@@ -4514,6 +4624,7 @@
           <NavigationProperty Name="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" Relationship="bdGestionDocenteModel.FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_tblPersonal" FromRole="tblPersonal" ToRole="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" />
           <NavigationProperty Name="tblDireccionIndividualizada" Relationship="bdGestionDocenteModel.FK_tblDireccionIndividualizada_tblPersonal" FromRole="tblPersonal" ToRole="tblDireccionIndividualizada" />
           <NavigationProperty Name="tblEstadiaEmpresa" Relationship="bdGestionDocenteModel.FK_tblEstadiaEmpresa_tblPersonal" FromRole="tblPersonal" ToRole="tblEstadiaEmpresa" />
+          <NavigationProperty Name="tblTutoria" Relationship="bdGestionDocenteModel.FK_tblTutoria_tblPersonal" FromRole="tblPersonal" ToRole="tblTutoria" />
         </EntityType>
         <Association Name="fk_direccion_personal">
           <End Type="bdGestionDocenteModel.catDireccion" Role="catDireccion" Multiplicity="0..1" />
@@ -6093,6 +6204,83 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tblTutoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPersonal" Type="Int32" />
+          <Property Name="idStatus" Type="Int32" />
+          <Property Name="idTipoEstudio" Type="Int32" />
+          <Property Name="idProgramaEductivo" Type="Int32" />
+          <Property Name="strTutoria" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="strNumeroEstudiantes" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="strNombreEstudiante" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
+          <Property Name="dteFechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaTermino" Type="DateTime" Precision="0" />
+          <Property Name="strTipo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="strEstadoTutoria" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="catProgramaEducativo" Relationship="bdGestionDocenteModel.FK_tblTutoria_catProgramaEducativo" FromRole="tblTutoria" ToRole="catProgramaEducativo" />
+          <NavigationProperty Name="catStatus" Relationship="bdGestionDocenteModel.FK_tblTutoria_catStatus" FromRole="tblTutoria" ToRole="catStatus" />
+          <NavigationProperty Name="catTipoEstudio" Relationship="bdGestionDocenteModel.FK_tblTutoria_catTipoEstudio" FromRole="tblTutoria" ToRole="catTipoEstudio" />
+          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_tblTutoria_tblPersonal" FromRole="tblTutoria" ToRole="tblPersonal" />
+        </EntityType>
+        <Association Name="FK_tblTutoria_catProgramaEducativo">
+          <End Type="bdGestionDocenteModel.catProgramaEducativo" Role="catProgramaEducativo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblTutoria" Role="tblTutoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catProgramaEducativo">
+              <PropertyRef Name="idProgramaEducativo" />
+            </Principal>
+            <Dependent Role="tblTutoria">
+              <PropertyRef Name="idProgramaEductivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTutoria_catStatus">
+          <End Type="bdGestionDocenteModel.catStatus" Role="catStatus" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblTutoria" Role="tblTutoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catStatus">
+              <PropertyRef Name="idStatus" />
+            </Principal>
+            <Dependent Role="tblTutoria">
+              <PropertyRef Name="idStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTutoria_catTipoEstudio">
+          <End Type="bdGestionDocenteModel.catTipoEstudio" Role="catTipoEstudio" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblTutoria" Role="tblTutoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catTipoEstudio">
+              <PropertyRef Name="idTipoEstudio" />
+            </Principal>
+            <Dependent Role="tblTutoria">
+              <PropertyRef Name="idTipoEstudio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTutoria_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblTutoria" Role="tblTutoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblTutoria">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -7021,6 +7209,24 @@
                 <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
                 <ScalarProperty Name="idProgramaEducativo" ColumnName="idProgramaEducativo" />
                 <ScalarProperty Name="idTipoProducto" ColumnName="idTipoProducto" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTutoria">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblTutoria">
+              <MappingFragment StoreEntitySet="tblTutoria">
+                <ScalarProperty Name="strEstadoTutoria" ColumnName="strEstadoTutoria" />
+                <ScalarProperty Name="strTipo" ColumnName="strTipo" />
+                <ScalarProperty Name="dteFechaTermino" ColumnName="dteFechaTermino" />
+                <ScalarProperty Name="dteFechaInicio" ColumnName="dteFechaInicio" />
+                <ScalarProperty Name="strNombreEstudiante" ColumnName="strNombreEstudiante" />
+                <ScalarProperty Name="strNumeroEstudiantes" ColumnName="strNumeroEstudiantes" />
+                <ScalarProperty Name="strTutoria" ColumnName="strTutoria" />
+                <ScalarProperty Name="idProgramaEductivo" ColumnName="idProgramaEductivo" />
+                <ScalarProperty Name="idTipoEstudio" ColumnName="idTipoEstudio" />
+                <ScalarProperty Name="idStatus" ColumnName="idStatus" />
+                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -361,6 +361,9 @@
     <Compile Include="tblTelefono.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblTutoria.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblUsuarioRol.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
