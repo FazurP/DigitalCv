@@ -404,6 +404,9 @@
     <Content Include="Scripts\Validate\DocumentacionPersonal\validate-documentacion-personal-v1-form.js" />
     <Content Include="Scripts\Validate\DocumentacionPersonal\validate-documentacion-personal-v2-form.js" />
     <Content Include="Scripts\Validate\Documentos\validate-documentos-upload.js" />
+    <Content Include="Scripts\Validate\EstadiaEmpresa\validate-estadia-empresa-date.js" />
+    <Content Include="Scripts\Validate\EstadiaEmpresa\validate-estadia-empresa-form.js" />
+    <Content Include="Scripts\Validate\EstadiaEmpresa\validate-estadia-empresa-upload.js" />
     <Content Include="Scripts\Validate\EstadoCivil\validate-estado-civil-radio.js" />
     <Content Include="Scripts\Validate\EstadoSalud\validate-estado-salud-form.js" />
     <Content Include="Scripts\Validate\ExperienciaLaboralExterna\validate-experiencia-laboral-externa-form.js" />

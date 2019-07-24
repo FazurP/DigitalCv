@@ -40,6 +40,13 @@ namespace AppDigitalCv.Business
                 tipoProductos.Add(tipoProductoDM);
             }
 
+            TipoProductoDomainModel tipoProducto = new TipoProductoDomainModel();
+
+            tipoProducto.id = 0;
+            tipoProducto.strDescripcion = "--Seleccionar--";
+
+            tipoProductos.Insert(0,tipoProducto);
+
             return tipoProductos;
         }
     }

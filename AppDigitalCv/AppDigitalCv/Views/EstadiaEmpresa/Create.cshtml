@@ -41,33 +41,33 @@
                                     <label>Objetivo</label>
                                     @Html.TextAreaFor(model => model.strObjetivo, new { @class = "form-control input-sm", id = "txtObjetivo" })
                                     <label>Programa Educativo</label>
-                                    @Html.DropDownList("idProgramaEducativo", null, new { @class="form-control input-sm",id="ddlProgramaEducativo"})
+                                    @Html.DropDownList("idProgramaEducativo", null, new { @class = "form-control input-sm", id = "ddlProgramaEducativo" })
                                     <label>Fecha de Inicio</label>
-                                    @Html.TextBoxFor(model => model.dteFechaInicio, new { @class="form-control input-sm",id="dteFechaInicio",type="date"})
+                                    @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm", id = "dteFechaInicio", type = "date" })
                                     <label>Fecha de Termino</label>
-                                    @Html.TextBoxFor(model => model.dteFechaTermino, new { @class="form-control input-sm",id="dteFechaTermino",type="date"})
+                                    @Html.TextBoxFor(model => model.dteFechaTermino, new { @class = "form-control input-sm", id = "dteFechaTermino", type = "date" })
                                     <label>Numero de Alumos</label>
-                                    @Html.TextBoxFor(model => model.strNumeroAlumnos, new { @class="form-control input-sm",id="txtNumeroAlumnos"})
+                                    @Html.TextBoxFor(model => model.strNumeroAlumnos, new { @class = "form-control input-sm", id = "txtNumeroAlumnos" })
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Numero de Horas</label>
-                                    @Html.TextAreaFor(model => model.strNumeroHoras, new { @class="form-control input-sm",id="txtNumeroHoras"})
+                                    @Html.TextAreaFor(model => model.strNumeroHoras, new { @class = "form-control input-sm", id = "txtNumeroHoras" })
                                     <label>Nombre de la Empresa o Institución</label>
-                                    @Html.TextBoxFor(model => model.strNombreEmpresaInstitucion, new { @class="form-control input-sm",id="txtNombreEmpresa"})
+                                    @Html.TextBoxFor(model => model.strNombreEmpresaInstitucion, new { @class = "form-control input-sm", id = "txtNombreEmpresa" })
                                     <label>Puntos Criticos a Resolver</label>
-                                    @Html.TextBoxFor(model => model.strPuntosCriticosResolver, new { @class="form-control input-sm",id="txtPuntosCriticos"})
+                                    @Html.TextBoxFor(model => model.strPuntosCriticosResolver, new { @class = "form-control input-sm", id = "txtPuntosCriticos" })
                                     <label>Logros o Beneficios Obtenidos</label>
-                                    @Html.TextBoxFor(model => model.strLogrosBeneficiosObtenidos, new { @class="form-control input-sm",id="txtLogros"})
+                                    @Html.TextBoxFor(model => model.strLogrosBeneficiosObtenidos, new { @class = "form-control input-sm", id = "txtLogros" })
                                     <label>Estado de la Estadia</label>
-                                    @Html.DropDownList("strEstadoEstadia", null,new { @class="form-control input-sm",id="ddlEstadoEstadia"})
+                                    @Html.DropDownList("strEstadoEstadia", null, new { @class = "form-control input-sm", id = "ddlEstadoEstadia" })
                                     <label>Archivo de Resultados Obtenidos en PDF</label>
-                                    @Html.TextBoxFor(model => model.documentosVM.DocumentoFile,new { @class="form-control input-sm",id="inputFileUpload",type="file"})
+                                    @Html.TextBoxFor(model => model.documentosVM.DocumentoFile, new { @class = "form-control input-sm", id = "inputFileUpload", type = "file" })
                                     <label>Considera para Curriculum</label>
                                     <br />
-                                    Si @Html.RadioButtonFor(model => model.bitConsideraCurriculum,true, new { @class="form-contrl input-sm",id="cv"})
-                                    No @Html.RadioButtonFor(model => model.bitConsideraCurriculum,false, new { @class="form-contrl input-sm",id="cv"})
+                                    Si @Html.RadioButtonFor(model => model.bitConsideraCurriculum, true, new { @class = "form-contrl input-sm", id = "cv" })
+                                    No @Html.RadioButtonFor(model => model.bitConsideraCurriculum, false, new { @class = "form-contrl input-sm", id = "cv" })
                                 </div>
                             </div>
                         </div>
@@ -122,6 +122,9 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/Validate/EstadiaEmpresa/validate-estadia-empresa-form.js"></script>
+    <script src="~/Scripts/Validate/EstadiaEmpresa/validate-estadia-empresa-upload.js"></script>
+    <script src="~/Scripts/Validate/EstadiaEmpresa/validate-estadia-empresa-date.js"></script>
 
     <script>
 
