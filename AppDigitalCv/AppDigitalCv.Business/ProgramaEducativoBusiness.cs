@@ -5,6 +5,7 @@ using AppDigitalCv.Repository.Infraestructure.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,6 +40,29 @@ namespace AppDigitalCv.Business
             programaEducativoDM.strDescripcion = "--Seleccionar--";
             programasEducativos.Insert(0,programaEducativoDM);
             return programasEducativos;
+        }
+
+        public List<ProgramaEducativoDomainModel> GetProgramasEducativosByTipoEstudio(int _idTipoEstudio)
+        {
+            List<ProgramaEducativoDomainModel> programas = new List<ProgramaEducativoDomainModel>();
+
+            Expression<Func<catProgramaEducativo, bool>> predicate = p => p.idTipoEstudio == _idTipoEstudio;
+            List<catProgramaEducativo> catProgramaEducativos = programaEducativoRepository.GetAll(predicate).ToList();
+
+            foreach (catProgramaEducativo item in catProgramaEducativos)
+            {
+                ProgramaEducativoDomainModel programaEducativoDM = new ProgramaEducativoDomainModel();
+
+                programaEducativoDM.idInstitucionSuperior = item.idInstitucionSuperior;
+                programaEducativoDM.idProgramaEducativo = item.idProgramaEducativo;
+                programaEducativoDM.idTipoEstudio = item.idTipoEstudio;
+                programaEducativoDM.strDescripcion = item.strDescripcion;
+                programaEducativoDM.strObservacion = item.strObservacion;
+
+                programas.Add(programaEducativoDM);
+            }
+
+            return programas;
         }
     }
 }

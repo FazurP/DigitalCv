@@ -10,5 +10,7 @@ namespace AppDigitalCv.Business.Interface
     public interface IProgramaEducativoBusiness
     {
         List<ProgramaEducativoDomainModel> GetProgramasEducativos();
+
+        List<ProgramaEducativoDomainModel> GetProgramasEducativosByTipoEstudio(int _idTipoEstudio);
     }
 }

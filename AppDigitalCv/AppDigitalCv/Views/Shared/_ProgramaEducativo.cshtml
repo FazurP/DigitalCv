@@ -1,0 +1,10 @@
+﻿<option value=""> -- Seleccionar -- </option>
+@if (ViewBag.idProgramaEducativo != null)
+{
+    foreach (var item in ViewBag.idProgramaEducativo)
+    {
+        <option value="@item.Value"> @item.Text </option>
+    }
+}
+
+

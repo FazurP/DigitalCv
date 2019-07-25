@@ -286,6 +286,10 @@ namespace AppDigitalCv.Infraestructure
             //TipoProducto
             CreateMap<TipoProductoVM, TipoProductoDomainModel>();
             CreateMap<TipoProductoDomainModel, TipoProductoDomainModel>();
+            
+            //Tutorias
+            CreateMap<TutoriasVM, TutoriasDomainModel>();
+            CreateMap<TutoriasDomainModel, TutoriasVM>();
 
         }
 

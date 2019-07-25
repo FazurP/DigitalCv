@@ -90,6 +90,7 @@ namespace AppDigitalCv
             container.RegisterType<ITipoEstudioBusiness, TipoEstudioBusiness>();
             container.RegisterType<IEstadiaEmpresaBusiness, EstadiaEmpresaBusiness>();
             container.RegisterType<ITipoProductoBusiness,TipoProductoBusiness>();
+            container.RegisterType<ITutoriasBusiness, TutoriasBusiness>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

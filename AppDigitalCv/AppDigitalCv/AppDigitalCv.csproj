@@ -585,6 +585,8 @@
     <Content Include="Views\EstadiaEmpresa\Create.cshtml" />
     <Content Include="Views\EstadiaEmpresa\_Eliminar.cshtml" />
     <Content Include="Views\EstadiaEmpresa\_Editar.cshtml" />
+    <Content Include="Views\Tutorias\Create.cshtml" />
+    <Content Include="Views\Shared\_ProgramaEducativo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -634,6 +636,7 @@
     <Compile Include="Controllers\ProyectoInvestigacionController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Controllers\TipoContratacionController.cs" />
+    <Compile Include="Controllers\TutoriasController.cs" />
     <Compile Include="Infraestructure\AutomaperWebProfile.cs" />
     <Compile Include="Models\DataTablesParam.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -730,8 +733,8 @@
     <Compile Include="ViewModels\TipoEstudioVM.cs" />
     <Compile Include="ViewModels\TipoProductoVM.cs" />
     <Compile Include="ViewModels\TipoSangreVM.cs" />
-    <Compile Include="ViewModels\UnidadesAcademicasVM.cs" />
     <Compile Include="ViewModels\TutoriasVM.cs" />
+    <Compile Include="ViewModels\UnidadesAcademicasVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

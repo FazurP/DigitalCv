@@ -129,6 +129,37 @@ namespace AppDigitalCv.Business.Enum
             return list;
         }
 
-        
+        public List<string> FillTutoria()
+        {
+            List<string> list = new List<string>();
+
+            list.Insert(0,"--Seleccionar--");
+            list.Insert(1, "Individual");
+            list.Insert(2, "Grupal");
+
+            return list;
+        }
+
+        public List<string> FillTipoTutoria()
+        {
+            List<string> list = new List<string>();
+
+            list.Insert(0,"--Seleccionar--");
+            list.Insert(1,"Guia en el Media Universitario y Academico");
+            list.Insert(2,"Apoyo Metodologico en la Disciplina, Especialidad o Area de Conocimiento");
+
+            return list;
+        }
+
+        public List<string> FillEstadoTutoria()
+        {
+            List<string> list = new List<string>();
+
+            list.Insert(0,"--Seleccionar--");
+            list.Insert(1,"En Proceso");
+            list.Insert(2,"Concluida");
+
+            return list;
+        }
     }
 }
