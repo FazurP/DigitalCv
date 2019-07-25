@@ -151,6 +151,7 @@
     <Compile Include="Interface\ITipoEstudioBusiness.cs" />
     <Compile Include="Interface\ITipoProductoBusiness.cs" />
     <Compile Include="Interface\ITipoSangreBusiness.cs" />
+    <Compile Include="Interface\ITutoriasBusiness.cs" />
     <Compile Include="Interface\IUnidadesAcademicasBusiness.cs" />
     <Compile Include="LibroBusiness.cs" />
     <Compile Include="ManualOperacionBusiness.cs" />
@@ -183,6 +184,7 @@
     <Compile Include="TipoEstudioBusiness.cs" />
     <Compile Include="TipoProductoBusiness.cs" />
     <Compile Include="TipoSangreBusiness.cs" />
+    <Compile Include="TutoriasBusiness.cs" />
     <Compile Include="UnidadesAcademicasBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
