@@ -12,7 +12,7 @@ namespace AppDigitalCv.Domain
         public int idPersonal { get; set; }
         public int idStatus { get; set; }
         public int idTipoEstudio { get; set; }
-        public int idProgramaEducativo { get; set; }
+        public int idProgramaEductivo { get; set; }
         public string strTutoria { get; set; }
         public string strNumeroEstudiantes { get; set; }
         public string strNombreEstudantes { get; set; }

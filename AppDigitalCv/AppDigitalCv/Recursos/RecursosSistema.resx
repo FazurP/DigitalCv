@@ -171,6 +171,9 @@
   <data name="REGISTRO_PROYECTO_INVESTIGACION" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="REGISTRO_TUTORIAS" xml:space="preserve">
+    <value>12</value>
+  </data>
   <data name="URL_PERFIL" xml:space="preserve">
     <value>Imagenes/Usuarios/</value>
   </data>

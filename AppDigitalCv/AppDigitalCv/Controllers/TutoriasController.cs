@@ -59,11 +59,46 @@ namespace AppDigitalCv.Controllers
 
                 AutoMapper.Mapper.Map(programaEducativos,programasVM);
 
-                ViewBag.idProgramaEducativo = new SelectList(programasVM,
+                ViewBag.idProgramaEductivo = new SelectList(programasVM,
                 "idProgramaEducativo", "strDescripcion");
             }         
 
             return PartialView("_ProgramaEducativo");
+        }
+
+        [HttpPost]
+        public ActionResult Create(TutoriasVM tutoriasVM)
+        {
+            if (ModelState.IsValid)
+            {
+                this.AddUpdateTutorias(tutoriasVM);
+            }
+
+            return RedirectToAction("Create","Tutorias");
+        }
+
+        public bool AddUpdateTutorias(TutoriasVM tutoriasVM)
+        {
+            bool respuesta = false;
+
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
+            int idStatus = int.Parse(Recursos.RecursosSistema.REGISTRO_TUTORIAS);
+
+            tutoriasVM.idPersonal = idPersonal;
+            tutoriasVM.idStatus = idStatus;
+
+            TutoriasDomainModel tutoriasDM = new TutoriasDomainModel();
+            ProgresoProdepDomainModel progresoProdepDM = new ProgresoProdepDomainModel();
+
+            progresoProdepDM.idPersonal = idPersonal;
+            progresoProdepDM.idStatus = idStatus;
+
+            AutoMapper.Mapper.Map(tutoriasVM,tutoriasDM);
+            tutoriasBusiness.AddUpdateTutorias(tutoriasDM);
+            progresoProdep.AddUpdateProgresoProdep(progresoProdepDM);
+            respuesta = true;
+
+            return respuesta;
         }
 
     }
