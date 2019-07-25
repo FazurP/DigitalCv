@@ -10,6 +10,8 @@ namespace AppDigitalCv.Business.Interface
     public interface ITutoriasBusiness
     {
         bool AddUpdateTutorias(TutoriasDomainModel tutoriasDM);
+        List<TutoriasDomainModel> GetAllTutoriasByIdPersonal(int _idPersonal);
+        TutoriasDomainModel GetTutoriaById(int _idTutoria);
 
     }
 }
