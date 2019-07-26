@@ -12,6 +12,6 @@ namespace AppDigitalCv.Business.Interface
         bool AddUpdateTutorias(TutoriasDomainModel tutoriasDM);
         List<TutoriasDomainModel> GetAllTutoriasByIdPersonal(int _idPersonal);
         TutoriasDomainModel GetTutoriaById(int _idTutoria);
-
+        bool DeleteTutoria(int _idTutoria);
     }
 }

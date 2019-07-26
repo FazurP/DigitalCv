@@ -109,14 +109,11 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
 
-
-
-
     <script>
 
         var AddEditar = function (id) {
 
-            var url = "/Prototipo/GetPropositoUpdate?_idPrototipo=" + id;
+            var url = "/Tutorias/GetTutoriaUpdate?_idTutoria=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -127,7 +124,7 @@
 
         var AddEliminar = function (id) {
 
-            var url = "/Prototipo/GetPrototipoDelete?_idPrototipo=" + id;
+            var url = "/Tutorias/GetTutoriaDelete?_idTutoria=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");

@@ -28,7 +28,17 @@ namespace AppDigitalCv.Business
 
             if (tutoriasDM.id > 0)
             {
+                Expression<Func<tblTutoria, bool>> predicate = p => p.id == tutoriasDM.id;
+                tblTutoria tblTutoria = tutoriaRepository.GetAll(predicate).FirstOrDefault();
 
+                if (tblTutoria != null)
+                {
+                    tblTutoria.strNombreEstudiante = tutoriasDM.strNombreEstudantes;
+                    tblTutoria.strNumeroEstudiantes = tutoriasDM.strNumeroEstudiantes;
+
+                    tutoriaRepository.Update(tblTutoria);
+                    respuesta = true;
+                }
             }
             else
             {
@@ -104,7 +114,18 @@ namespace AppDigitalCv.Business
             tutoriasDM.dteFechaTermino = tblTutoria.dteFechaTermino.Value;
 
             return tutoriasDM;
-        } 
+        }
+
+        public bool DeleteTutoria(int _idTutoria)
+        {
+            bool respuesta = false;
+
+            Expression<Func<tblTutoria, bool>> predicate = p => p.id == _idTutoria;
+
+            tutoriaRepository.Delete(predicate);
+
+            return respuesta;
+        }
 
 
         

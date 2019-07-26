@@ -1,0 +1,56 @@
+﻿@model AppDigitalCv.ViewModels.TutoriasVM
+@using AppDigitalCv.Security
+<div>
+    <form id="myFormulario">
+        @Html.HiddenFor(model => model.id, new { @class = "form-control input-sm", id = "id" })
+        <div class="form-inline">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                        <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                        ¿Deseas <strong>Eliminar</strong> este registro realmente?
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <ul class="todo-list">
+                            <li class="list-unstyled">
+                                @Html.DisplayFor(model => model.strNombreEstudantes, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
+
+                            </li>
+                        </ul>
+                        <hr />
+                        <a href="#" id="btnEliminar">
+                            <i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+        $(document).ready(function () {
+
+            $("#btnEliminar").click(function () {
+
+                var myformdat = $("#myFormulario").serialize();
+                $.ajax({
+
+                    type: "POST",
+                    url: "/Tutorias/DeleteTutoria",
+                    data: myformdat,
+                    success: function () {
+                        $("#loaderDiv").hide();
+                        $("#myModal").modal("hide");
+                        window.location.href = "/Tutorias/Create";
+                    }
+
+                })
+            })
+
+        })
+</script>
+
+

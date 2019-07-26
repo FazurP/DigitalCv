@@ -153,10 +153,68 @@ namespace AppDigitalCv.Controllers
 
                 AutoMapper.Mapper.Map(tutoriasDM,tutoriasVM);
 
-                return PartialView("_Editar",tutoriasVM);
+                return PartialView("_Eliminar",tutoriasVM);
             }
 
             return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteTutoria(TutoriasVM tutoriasVM)
+        {
+            TutoriasDomainModel tutoriasDM = new TutoriasDomainModel();
+
+            tutoriasDM = tutoriasBusiness.GetTutoriaById(tutoriasVM.id);
+
+            if (tutoriasDM != null)
+            {
+                if (tutoriasBusiness.GetAllTutoriasByIdPersonal(SessionPersister.AccountSession.IdPersonal).Count == 1)
+                {
+                    tutoriasBusiness.DeleteTutoria(tutoriasDM.id);
+                    ProgresoProdepDomainModel progresoProdepDM = progresoProdep.GetProgresoPersonal(SessionPersister.AccountSession.IdPersonal
+                        ,int.Parse(Recursos.RecursosSistema.REGISTRO_TUTORIAS));
+                    progresoProdep.DeleteProgresoProdep(progresoProdepDM.id);
+                }
+                tutoriasBusiness.DeleteTutoria(tutoriasDM.id);
+            }
+
+            return RedirectToAction("Create","Tutorias");
+        }
+
+        [HttpGet]
+        public ActionResult GetTutoriaUpdate(int _idTutoria)
+        {
+            TutoriasDomainModel tutoriasDM = new TutoriasDomainModel();
+
+            tutoriasDM = tutoriasBusiness.GetTutoriaById(_idTutoria);
+
+            if (tutoriasDM != null)
+            {
+                TutoriasVM tutoriasVM = new TutoriasVM();
+
+                AutoMapper.Mapper.Map(tutoriasDM, tutoriasVM);
+
+                return PartialView("_Editar", tutoriasVM);
+            }
+
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult UpdateTutoria(TutoriasVM tutoriasVM)
+        {
+
+            if (tutoriasVM.id > 0)
+            {
+                TutoriasDomainModel tutoriasDM = new TutoriasDomainModel();
+
+                AutoMapper.Mapper.Map(tutoriasVM,tutoriasDM);
+
+                tutoriasBusiness.AddUpdateTutorias(tutoriasDM);
+
+            }
+
+            return RedirectToAction("Create","Tutorias");
         }
 
     }

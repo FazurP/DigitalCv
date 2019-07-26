@@ -587,6 +587,8 @@
     <Content Include="Views\EstadiaEmpresa\_Editar.cshtml" />
     <Content Include="Views\Tutorias\Create.cshtml" />
     <Content Include="Views\Shared\_ProgramaEducativo.cshtml" />
+    <Content Include="Views\Tutorias\_Eliminar.cshtml" />
+    <Content Include="Views\Tutorias\_Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
