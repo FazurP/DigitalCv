@@ -33,15 +33,15 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Tutoria</label>
-                                    @Html.DropDownList("strTutoria",null,new { @class="form-control input-sm",id="ddlTutoria"})
-                                <label>Nivel</label>
-                                    @Html.DropDownList("idTipoEstudio",null,new { @class="form-control input-sm",id="ddlNivel"})
-                                <label>Programa Educativo</label>
-                                    @Html.DropDownList("idProgramaEductivo",null,new { @class="form-control input-sm",id="ddlProgramaEducativo"})
-                                <label>Numero de Estudiantes</label>
-                                    @Html.TextBoxFor(model => model.strNumeroEstudiantes, new { @class="form-control input-sm",id="txtNumeroEstudiantes"})
-                                <label>Nombre del Estudiante</label>
-                                    @Html.TextBoxFor(model => model.strNombreEstudantes, new { @class="form-control input-sm",id="txtNombreEstudiante"})
+                                    @Html.DropDownList("strTutoria", null, new { @class = "form-control input-sm", id = "ddlTutoria" })
+                                    <label>Nivel</label>
+                                    @Html.DropDownList("idTipoEstudio", null, new { @class = "form-control input-sm", id = "ddlNivel" })
+                                    <label>Programa Educativo</label>
+                                    @Html.DropDownList("idProgramaEductivo", null, new { @class = "form-control input-sm", id = "ddlProgramaEducativo" })
+                                    <label>Numero de Estudiantes</label>
+                                    @Html.TextBoxFor(model => model.strNumeroEstudiantes, new { @class = "form-control input-sm", id = "txtNumeroEstudiantes" })
+                                    <label>Nombre del Estudiante</label>
+                                    @Html.TextBoxFor(model => model.strNombreEstudantes, new { @class = "form-control input-sm", id = "txtNombreEstudiante" })
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -50,10 +50,10 @@
                                     @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm", id = "dteFechaInicio", type = "date" })
                                     <label>Fecha de Termino</label>
                                     @Html.TextBoxFor(model => model.dteFechaTermino, new { @class = "form-control input-sm", id = "dteFechaTermino", type = "date" })
-                                <label>Tipo</label>
-                                    @Html.DropDownList("strTipo",null,new { @class="form-control input-sm",id="ddlTipo"})
-                                <label>Estado de la Tutoria</label>
-                                    @Html.DropDownList("strEstadoTutoria",null,new { @class="form-control input-sm",id="ddlEstadoTutoria"})
+                                    <label>Tipo</label>
+                                    @Html.DropDownList("strTipo", null, new { @class = "form-control input-sm", id = "ddlTipo" })
+                                    <label>Estado de la Tutoria</label>
+                                    @Html.DropDownList("strEstadoTutoria", null, new { @class = "form-control input-sm", id = "ddlEstadoTutoria" })
                                 </div>
                             </div>
                         </div>
@@ -108,6 +108,8 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/Validate/Tutorias/validate-tutorias-form.js"></script>
+    <script src="~/Scripts/Validate/Tutorias/validate-tutorias-date.js"></script>
 
     <script>
 
@@ -135,7 +137,7 @@
 
         $(document).ready(function () {
 
-             $("#ddlNivel").change(function () {
+            $("#ddlNivel").change(function () {
                 var idNivel = $(this).val();
 
                 $.ajax({

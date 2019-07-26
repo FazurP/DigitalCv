@@ -451,6 +451,8 @@
     <Content Include="Scripts\Validate\Prototipo\validate-prototipo-upload.js" />
     <Content Include="Scripts\Validate\ScriptTest.js" />
     <Content Include="Scripts\Validate\ProductividadInnovadora\validate-productividad-innovadora-form.js" />
+    <Content Include="Scripts\Validate\Tutorias\validate-tutorias-date.js" />
+    <Content Include="Scripts\Validate\Tutorias\validate-tutorias-form.js" />
     <Content Include="Scripts\Validate\validate-datos-contacto-email.js" />
     <Content Include="Scripts\Validate\ProduccionesArtisticas\validate-producciones-artisticas-form.js" />
     <Content Include="Views\index.html" />
