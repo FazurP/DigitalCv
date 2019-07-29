@@ -11,5 +11,7 @@ namespace AppDigitalCv.Business.Interface
     {
         bool AddUpdateProyectoInvestigacion(ProyectoInvestigacionDomainModel proyectoInvestigacionDM);
         List<ProyectoInvestigacionDomainModel> GetProyectosByIdPersonal(int _idPersonal);
+        ProyectoInvestigacionDomainModel GetProyectoById(int _idProyecto);
+        bool DeleteProyecto(int _idProyecto);
     }
 }

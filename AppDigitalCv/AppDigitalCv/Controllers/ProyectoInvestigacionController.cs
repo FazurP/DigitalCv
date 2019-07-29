@@ -54,7 +54,6 @@ namespace AppDigitalCv.Controllers
                 ProyectoInvestigacionDomainModel proyectoInvestigacionDM = new ProyectoInvestigacionDomainModel();
                 ProgresoProdepDomainModel progresoProdepDM = new ProgresoProdepDomainModel();
                 DocumentosDomainModel documentoDMResumen = new DocumentosDomainModel();
-                DocumentosDomainModel documentoDMReseña = new DocumentosDomainModel();
 
                 string nombre = SessionPersister.AccountSession.NombreCompleto;
                 int idPersonal = SessionPersister.AccountSession.IdPersonal;
@@ -65,19 +64,15 @@ namespace AppDigitalCv.Controllers
 
                 AutoMapper.Mapper.Map(proyectoInvestigacionVM,proyectoInvestigacionDM);
                 AutoMapper.Mapper.Map(proyectoInvestigacionVM.documentosVMResumen, documentoDMResumen);
-                AutoMapper.Mapper.Map(proyectoInvestigacionVM.documentosVMReseña, documentoDMReseña);
                 proyectoInvestigacionDM.documentosDMResumen = documentoDMResumen;
-                proyectoInvestigacionDM.documentosDMReseña = documentoDMReseña;
+               
 
                 if (GuadarArchivo(proyectoInvestigacionDM,nombre))
                 {
                     proyectoInvestigacionDM.documentosDMResumen.StrUrl = proyectoInvestigacionDM.documentosDMResumen.DocumentoFile.FileName;
-                    proyectoInvestigacionDM.documentosDMReseña.StrUrl = proyectoInvestigacionDM.documentosDMReseña.DocumentoFile.FileName;
+                    
                     DocumentosDomainModel documentosDMResumen = documentosBusiness.AddDocumento(documentoDMResumen);
-                    DocumentosDomainModel documentosDMReseña = documentosBusiness.AddDocumento(documentoDMReseña);
                     proyectoInvestigacionDM.idDocumento = documentosDMResumen.IdDocumento;
-                    proyectoInvestigacionBusiness.AddUpdateProyectoInvestigacion(proyectoInvestigacionDM);
-                    proyectoInvestigacionDM.idDocumento = documentosDMReseña.IdDocumento;
                     proyectoInvestigacionBusiness.AddUpdateProyectoInvestigacion(proyectoInvestigacionDM);
                     progresoProdepDM.idPersonal = idPersonal;
                     progresoProdepDM.idStatus = idStatus;
@@ -97,14 +92,12 @@ namespace AppDigitalCv.Controllers
 
             if (Directory.Exists(path))
             {
-                if (proyectoInvestigacionDM.documentosDMResumen.DocumentoFile.ContentType.Equals("application/pdf")
-                    && proyectoInvestigacionDM.documentosDMReseña.DocumentoFile.ContentType.Equals("application/pdf"))
+                if (proyectoInvestigacionDM.documentosDMResumen.DocumentoFile.ContentType.Equals("application/pdf"))
                 {
                     string pahtCompletoResumen = Path.Combine(path, Path.GetFileName(proyectoInvestigacionDM.documentosDMResumen.DocumentoFile.FileName));
                     proyectoInvestigacionDM.documentosDMResumen.DocumentoFile.SaveAs(pahtCompletoResumen);
 
-                    string pathCompletoReseña = Path.Combine(path, Path.GetFileName(proyectoInvestigacionDM.documentosDMReseña.DocumentoFile.FileName));
-                    proyectoInvestigacionDM.documentosDMReseña.DocumentoFile.SaveAs(pathCompletoReseña);
+                   
 
                     respuesta = true;
                 }
@@ -154,6 +147,76 @@ namespace AppDigitalCv.Controllers
                 iTotalRecords = proyectos.Count()
 
             }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult GetProyectoDelete(int _idProyecto)
+        {
+
+            ProyectoInvestigacionDomainModel proyectoInvestigacionDM = new ProyectoInvestigacionDomainModel();
+            proyectoInvestigacionDM = proyectoInvestigacionBusiness.GetProyectoById(_idProyecto);
+
+            if (proyectoInvestigacionDM != null)
+            {
+                ProyectoInvestigacionVM proyectoInvestigacionVM = new ProyectoInvestigacionVM();
+
+                AutoMapper.Mapper.Map(proyectoInvestigacionDM,proyectoInvestigacionVM);
+
+                return PartialView("_Eliminar",proyectoInvestigacionVM);
+            }
+
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteProyecto(ProyectoInvestigacionVM proyectoInvestigacionVM)
+        {
+            ProyectoInvestigacionDomainModel proyectoInvestigacionDM = new ProyectoInvestigacionDomainModel();
+
+            proyectoInvestigacionDM = proyectoInvestigacionBusiness.GetProyectoById(proyectoInvestigacionVM.id);
+
+            if (proyectoInvestigacionDM != null)
+            {
+                proyectoInvestigacionBusiness.DeleteProyecto(proyectoInvestigacionDM.id);
+            }
+
+            return RedirectToAction("Create","ProyectoInvestigacion");
+        }
+
+        [HttpGet]
+        public ActionResult GetProyectoUpdate(int _idProyecto)
+        {
+            ProyectoInvestigacionDomainModel proyectoInvestigacionDM = new ProyectoInvestigacionDomainModel();
+
+            proyectoInvestigacionDM = proyectoInvestigacionBusiness.GetProyectoById(_idProyecto);
+
+            if (proyectoInvestigacionDM != null)
+            {
+
+                ProyectoInvestigacionVM proyectoInvestigacionVM = new ProyectoInvestigacionVM();
+
+                AutoMapper.Mapper.Map(proyectoInvestigacionDM,proyectoInvestigacionVM);
+
+                return PartialView("_Editar",proyectoInvestigacionVM);
+
+            }
+
+            return PartialView(); 
+        }
+
+        [HttpPost]
+        public ActionResult UpdateProyecto(ProyectoInvestigacionVM proyectoInvestigacionVM)
+        {
+
+            if (proyectoInvestigacionVM.id > 0)
+            {
+                ProyectoInvestigacionDomainModel proyectoInvestigacionDM = new ProyectoInvestigacionDomainModel();
+
+                AutoMapper.Mapper.Map(proyectoInvestigacionVM, proyectoInvestigacionDM);
+                proyectoInvestigacionBusiness.AddUpdateProyectoInvestigacion(proyectoInvestigacionDM);
+            }
+
+            return RedirectToAction("Create","ProyectoInvestigacion");
         }
 
     }

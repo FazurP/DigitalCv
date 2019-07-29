@@ -1,0 +1,82 @@
+﻿@model AppDigitalCv.ViewModels.ProyectoInvestigacionVM
+@using AppDigitalCv.Security
+
+<div>
+    <form id="myForm" enctype="multipart/form-data">
+
+        @Html.HiddenFor(model => model.id, new { id = "id" })
+
+        <div class="bs-container">
+
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-7">
+                    @Html.Label("Datos del Proyecto de Investigación")
+                    <hr />
+                    <label>Titulo del Proyecto</label>
+                    @Html.TextBoxFor(model => model.strTituloProyecto, new { @class="form-control input-sm",id="TituloProyecto"})
+                <label>Nombre del Patrocinador</label>
+                    @Html.TextBoxFor(model => model.strNombrePatrocinador, new { @class="form-control input-sm",id="NombrePatrocinador"})
+                <label>Investigadores Participantes</label>
+                    @Html.TextAreaFor(model => model.strInvestigadoresParticipantes, new { @class="form-control input-sm",id="InvestigadoresParticipantes"})
+                <label>Alumnos Participantes</label>
+                    @Html.TextAreaFor(model => model.strAlumnosParticipantes, new { @class="form-control input-sm",id="AlumnosParticipantes"})
+                <label>Actividades Realizadas</label>
+                    @Html.TextAreaFor(model => model.strActividadesRealizadas, new { @class="form-control input-sm",id="ActividadesRealizadas"})
+                <label>Convocatoria</label>
+                    @Html.TextBoxFor(model => model.strConvocatoria, new { @class="form-control input-sm",id="Convocatoria"})
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-lg-6 col-lg-offset-4">
+                        <a href="#" id="btnSubmit" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#btnSubmit").click(function () {
+
+            var ProyectoInvestigacionVM = {};
+            var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+
+            ProyectoInvestigacionVM.id = $('#id').val();
+            ProyectoInvestigacionVM.strTituloProyecto = $('#TituloProyecto').val();
+            ProyectoInvestigacionVM.strNombrePatrocinador = $('#NombrePatrocinador').val();
+            ProyectoInvestigacionVM.strInvestigadoresParticipantes = $('#InvestigadoresParticipantes').val();
+            ProyectoInvestigacionVM.strAlumnosParticipantes = $('#AlumnosParticipantes').val();
+            ProyectoInvestigacionVM.strActividadesRealizadas = $('#ActividadesRealizadas').val();
+            ProyectoInvestigacionVM.strConvocatoria = $('#Convocatoria').val();
+
+            $.ajax({
+                type: "POST",
+                url: "/ProyectoInvestigacion/UpdateProyecto",
+                data: { proyectoInvestigacionVM: ProyectoInvestigacionVM},
+                success: function () {
+                    $("#myModal1").modal("hide");
+                    window.location.href = "/ProyectoInvestigacion/Create";
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(textStatus);
+                    console.log(textStatus);
+
+                }
+            })
+        });
+    });
+</script>
+
+
+
+
+
+

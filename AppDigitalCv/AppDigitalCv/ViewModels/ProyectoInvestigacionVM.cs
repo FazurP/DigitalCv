@@ -11,7 +11,6 @@ namespace AppDigitalCv.ViewModels
         public int idDocumento { get; set; }
         public int idStatus { get; set; }
         public int idPersonal { get; set; }
-        public DocumentosVM documentosVMReseña { get; set; }
         public DocumentosVM documentosVMResumen { get; set; }
         public string strTituloProyecto { get; set; }
         public string strNombrePatrocinador { get; set; }

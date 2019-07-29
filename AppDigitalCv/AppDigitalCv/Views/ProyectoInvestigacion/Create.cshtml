@@ -33,40 +33,40 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Titulo del Proyecto</label>
-                                    @Html.TextBoxFor(model => model.strTituloProyecto, new { @class="form-control input-sm",id="txtTituloProyecto"})
+                                    @Html.TextBoxFor(model => model.strTituloProyecto, new { @class = "form-control input-sm", id = "txtTituloProyecto" })
                                     <label>Nombre del Patrocinador</label>
-                                    @Html.TextBoxFor(model => model.strNombrePatrocinador, new { @class="form-control input-sm",id="txtNombrePatrocinador"})
+                                    @Html.TextBoxFor(model => model.strNombrePatrocinador, new { @class = "form-control input-sm", id = "txtNombrePatrocinador" })
                                     <label>Fecha de Inicio del Proyecto</label>
-                                    @Html.TextBoxFor(model => model.dteFechaInicio, new { @class="form-control input-sm",id="dteFechaInicio",type="date"})
+                                    @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm", id = "dteFechaInicio", type = "date" })
                                     <label>Fecha de Fin del Proyecto</label>
-                                    @Html.TextBoxFor(model => model.dteFechaTermino, new { @class="form-control input-sm",id="dteFechaFin",type="date"})
+                                    @Html.TextBoxFor(model => model.dteFechaTermino, new { @class = "form-control input-sm", id = "dteFechaFin", type = "date" })
                                     <label>Tipo de Patrocinador</label>
-                                    @Html.DropDownList("strTipoPatrocinador", null,new { @class="form-control input-sm",id="ddlTipoPatrocinador"})
+                                    @Html.DropDownList("strTipoPatrocinador", null, new { @class = "form-control input-sm", id = "ddlTipoPatrocinador" })
                                     <label>Investigadores Participantes</label>
-                                    @Html.TextAreaFor(model => model.strInvestigadoresParticipantes, new { @class="form-control input-sm",id="txtInvestigadores"})
-                                    <label>Alumnos Participantes</label>
-                                    @Html.TextAreaFor(model => model.strAlumnosParticipantes, new { @class="form-control input-sm",id="txtAlumnos"})
+                                    @Html.TextAreaFor(model => model.strInvestigadoresParticipantes, new { @class = "form-control input-sm", id = "txtInvestigadores" })
+
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
+                                    <label>Alumnos Participantes</label>
+                                    @Html.TextAreaFor(model => model.strAlumnosParticipantes, new { @class = "form-control input-sm", id = "txtAlumnos" })
                                     <label>Actividades Realizadas</label>
-                                    @Html.TextAreaFor(model => model.strActividadesRealizadas, new { @class="form-control input-sm",id="txtActividades"})
+                                    @Html.TextAreaFor(model => model.strActividadesRealizadas, new { @class = "form-control input-sm", id = "txtActividades" })
                                     <label>Convocatoria</label>
-                                    @Html.TextBoxFor(model => model.strConvocatoria, new { @class="form-control input-sm",id="txtConvocatoria"})
+                                    @Html.TextBoxFor(model => model.strConvocatoria, new { @class = "form-control input-sm", id = "txtConvocatoria" })
                                     <label>Evidencia del Resumen del Proyecto en PDF</label>
-                                    @Html.TextBoxFor(model => model.documentosVMResumen.DocumentoFile, new { @class="form-control input-sm",id="inputFileUploadResumen",type="file"})
-                                    <label>Evidencia de la Reseña del Proyecto en PDF</label>
-                                    @Html.TextBoxFor(model => model.documentosVMReseña.DocumentoFile, new { @class="form-control input-sm",id="inputFileUploadReseña",type="file"})
+                                    @Html.TextBoxFor(model => model.documentosVMResumen.DocumentoFile, new { @class = "form-control input-sm", id = "inputFileUploadResumen", type = "file" })
+
                                     <label>Es un Proyecto Tecnológico</label>
                                     <br />
-                                    Si @Html.RadioButtonFor(model => model.bitProyectoTecnologico,true, new { @class="form-control input-sm",id="pt"})
-                                    No @Html.RadioButtonFor(model => model.bitProyectoTecnologico,false, new { @class="form-control input-sm",id="pt"})
+                                    Si @Html.RadioButtonFor(model => model.bitProyectoTecnologico, true, new { @class = "form-control input-sm", id = "pt" })
+                                    No @Html.RadioButtonFor(model => model.bitProyectoTecnologico, false, new { @class = "form-control input-sm", id = "pt" })
                                     <br />
                                     <label>Considera para Curriculum</label>
                                     <br />
-                                    Si @Html.RadioButtonFor(model => model.bitConsideraCurriculum,true,new { @class="form-control input-sm",id="cv"})
-                                    No @Html.RadioButtonFor(model => model.bitConsideraCurriculum,false,new { @class="form-control input-sm",id="cv"})
+                                    Si @Html.RadioButtonFor(model => model.bitConsideraCurriculum, true, new { @class = "form-control input-sm", id = "cv" })
+                                    No @Html.RadioButtonFor(model => model.bitConsideraCurriculum, false, new { @class = "form-control input-sm", id = "cv" })
                                 </div>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                                 <table id="tblProyecto" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
                                     <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
                                         <tr>
-                                            <th>Nombre del Prototipo</th>
+                                            <th>Titulo del Proyecto</th>
                                             <th>Editar</th>
                                             <th>Eliminar</th>
 
@@ -121,12 +121,15 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/Validate/ProyectoInvestigacion/validate-proyecto-investigacion-form.js"></script>
+    <script src="~/Scripts/Validate/ProyectoInvestigacion/validate-proyecto-investigacion-upload.js"></script>
+    <script src="~/Scripts/Validate/ProyectoInvestigacion/validate-proyecto-investigacion-date.js"></script>
 
     <script>
 
         var AddEditar = function (id) {
 
-            var url = "/Prototipo/GetPropositoUpdate?_idPrototipo=" + id;
+            var url = "/ProyectoInvestigacion/GetProyectoUpdate?_idProyecto=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -137,7 +140,7 @@
 
         var AddEliminar = function (id) {
 
-            var url = "/Prototipo/GetPrototipoDelete?_idPrototipo=" + id;
+            var url = "/ProyectoInvestigacion/GetProyectoDelete?_idProyecto=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");

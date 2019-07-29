@@ -28,7 +28,21 @@ namespace AppDigitalCv.Business
 
             if (proyectoInvestigacionDM.id > 0)
             {
+                Expression<Func<tblProyectoInvestigacionAplicadaDesarrolloTecnologico, bool>> predicate = p => p.id == proyectoInvestigacionDM.id;
+                tblProyectoInvestigacionAplicadaDesarrolloTecnologico tblProyectoInvestigacionAplicadaDesarrolloTecnologico = proyectoInvestigacionRepository.GetAll(predicate).FirstOrDefault();
 
+                if (tblProyectoInvestigacionAplicadaDesarrolloTecnologico != null)
+                {
+                    tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strTituloProyecto = proyectoInvestigacionDM.strTituloProyecto;
+                    tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strNombrePatrocinador = proyectoInvestigacionDM.strNombrePatrocinador;
+                    tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strInvestigadoresParticipantes = proyectoInvestigacionDM.strInvestigadoresParticipantes;
+                    tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strAlumnosParticipantes = proyectoInvestigacionDM.strAlumnosParticipantes;
+                    tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strConvocatoria = proyectoInvestigacionDM.strConvocatoria;
+                    tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strActividadesRealizadas = proyectoInvestigacionDM.strActividadesRealizadas;
+
+                    proyectoInvestigacionRepository.Update(tblProyectoInvestigacionAplicadaDesarrolloTecnologico);
+                    respuesta = true;
+                }
             }
             else
             {
@@ -86,6 +100,45 @@ namespace AppDigitalCv.Business
 
             return proyectos;
 
+        }
+
+        public ProyectoInvestigacionDomainModel GetProyectoById(int _idProyecto)
+        {
+            Expression<Func<tblProyectoInvestigacionAplicadaDesarrolloTecnologico, bool>> predicate = p => p.id == _idProyecto;
+            tblProyectoInvestigacionAplicadaDesarrolloTecnologico tblProyectoInvestigacionAplicadaDesarrolloTecnologico =
+                proyectoInvestigacionRepository.GetAll(predicate).FirstOrDefault();
+
+            ProyectoInvestigacionDomainModel proyectoInvestigacionDM = new ProyectoInvestigacionDomainModel();
+
+            proyectoInvestigacionDM.id = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.id;
+            proyectoInvestigacionDM.idDocumento = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.idDocumento.Value;
+            proyectoInvestigacionDM.idPersonal = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.idPersonal.Value;
+            proyectoInvestigacionDM.idStatus = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.idStatus.Value;
+            proyectoInvestigacionDM.strActividadesRealizadas = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strActividadesRealizadas;
+            proyectoInvestigacionDM.strAlumnosParticipantes = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strAlumnosParticipantes;
+            proyectoInvestigacionDM.strConvocatoria = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strConvocatoria;
+            proyectoInvestigacionDM.strInvestigadoresParticipantes = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strInvestigadoresParticipantes;
+            proyectoInvestigacionDM.strNombrePatrocinador = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strNombrePatrocinador;
+            proyectoInvestigacionDM.strTipoPatrocinador = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strTipoPatrocinador;
+            proyectoInvestigacionDM.strTituloProyecto = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strTituloProyecto;
+            proyectoInvestigacionDM.dteFechaInicio = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.dteFechaInicio.Value;
+            proyectoInvestigacionDM.dteFechaTermino = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.dteFechaTermino.Value;
+            proyectoInvestigacionDM.bitConsideraCurriculum = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.bitConsideraCurriculum.Value;
+            proyectoInvestigacionDM.bitProyectoTecnologico = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.bitProyectoTecnologico.Value;
+
+            return proyectoInvestigacionDM;
+        }
+
+        public bool DeleteProyecto(int _idProyecto)
+        {
+            bool respuesta = false;
+
+            Expression<Func<tblProyectoInvestigacionAplicadaDesarrolloTecnologico, bool>> predicate = p => p.id == _idProyecto;
+
+            proyectoInvestigacionRepository.Delete(predicate);
+            respuesta = true;
+
+            return respuesta;
         }
 
     }
