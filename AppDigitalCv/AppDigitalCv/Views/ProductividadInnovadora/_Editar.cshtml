@@ -46,31 +46,47 @@
 
         $("#btnSubmit").click(function () {
 
-            var ProductividadInnovadoraVM = {};
-            var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
-            
-            ProductividadInnovadoraVM.id = $('#id').val();
-            ProductividadInnovadoraVM.strAutor = $('#txtAutores').val();
-            ProductividadInnovadoraVM.strTitulo = $('#txtTitulo').val();
-            ProductividadInnovadoraVM.strDescripcion = $('#txtDescripcion').val();
-            ProductividadInnovadoraVM.strUso = $('#txtUso').val();
-            ProductividadInnovadoraVM.strNumeroRegistro = $('#txtNumeroRegistro').val();
-            ProductividadInnovadoraVM.strUsuario = $('#txtUsuario').val();
-            debugger;
-            $.ajax({
-                type: "POST",
-                url: "/ProductividadInnovadora/UpdateProductividad",
-                data: { productividadInnovadoraVM: ProductividadInnovadoraVM},
-                success: function () {
-                    $("#myModal1").modal("hide");
-                    window.location.href = "/ProductividadInnovadora/Create";
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    alert(textStatus);
-                    console.log(textStatus);
+            let autores = $('#txtAutores').val();
+            let titulo = $('#txtTitulo').val();
+            let descripcion = $('#txtDescripcion').val();
+            let uso = $('#txtUso').val();
+            let numeroRegistro = $('#txtNumeroRegistro').val();
+            let usuario = $('#txtUsuario').val();
 
-                }
-            })
+            if (autores != "" && titulo != "" && descripcion != "" && uso != "" && numeroRegistro != "" && usuario != "") {
+
+                var ProductividadInnovadoraVM = {};
+                var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+
+                ProductividadInnovadoraVM.id = $('#id').val();
+                ProductividadInnovadoraVM.strAutor = $('#txtAutores').val();
+                ProductividadInnovadoraVM.strTitulo = $('#txtTitulo').val();
+                ProductividadInnovadoraVM.strDescripcion = $('#txtDescripcion').val();
+                ProductividadInnovadoraVM.strUso = $('#txtUso').val();
+                ProductividadInnovadoraVM.strNumeroRegistro = $('#txtNumeroRegistro').val();
+                ProductividadInnovadoraVM.strUsuario = $('#txtUsuario').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/ProductividadInnovadora/UpdateProductividad",
+                    data: { productividadInnovadoraVM: ProductividadInnovadoraVM },
+                    success: function () {
+                        $("#myModal1").modal("hide");
+                        window.location.href = "/ProductividadInnovadora/Create";
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        alert(textStatus);
+                        console.log(textStatus);
+
+                    }
+                });
+
+            } else
+            {
+                toastr.warning('No Puedes Dejar Campos Vacios', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            }
+
+          
         });
     });
 </script>

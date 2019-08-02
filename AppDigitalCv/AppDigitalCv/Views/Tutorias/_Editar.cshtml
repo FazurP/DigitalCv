@@ -37,27 +37,37 @@
 
         $("#btnSubmit").click(function () {
 
-            var TutoriasVM = {};
-            var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+            let numeroEstudiantes = $('#NumeroEstudiantes').val();
+            let nombreEstudiantes = $('#NombreEstudiante').val();
+        
+            if (numeroEstudiantes != "" && nombreEstudiantes != "") {
+                var TutoriasVM = {};
+                var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
 
-            TutoriasVM.id = $('#id').val();
-            TutoriasVM.strNumeroEstudiantes = $('#NumeroEstudiantes').val();
-            TutoriasVM.strNombreEstudantes = $('#NombreEstudiante').val();
+                TutoriasVM.id = $('#id').val();
+                TutoriasVM.strNumeroEstudiantes = $('#NumeroEstudiantes').val();
+                TutoriasVM.strNombreEstudantes = $('#NombreEstudiante').val();
 
-            $.ajax({
-                type: "POST",
-                url: "/Tutorias/UpdateTutoria",
-                data: { tutoriasVM: TutoriasVM},
-                success: function () {
-                    $("#myModal1").modal("hide");
-                    window.location.href = "/Tutorias/Create";
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    alert(textStatus);
-                    console.log(textStatus);
+                $.ajax({
+                    type: "POST",
+                    url: "/Tutorias/UpdateTutoria",
+                    data: { tutoriasVM: TutoriasVM },
+                    success: function () {
+                        $("#myModal1").modal("hide");
+                        window.location.href = "/Tutorias/Create";
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        alert(textStatus);
+                        console.log(textStatus);
 
-                }
-            })
+                    }
+                })
+            } else
+            {
+                toastr.warning('No Puedes Dejar Campos Vacios', 'Digital-Cv dice', { timeOut: 1000, closeButton:true });
+            }
+
+           
         });
     });
 </script>

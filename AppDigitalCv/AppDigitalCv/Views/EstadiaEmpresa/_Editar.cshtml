@@ -50,32 +50,52 @@
 
         $("#btnSubmit").click(function () {
 
-            var EstadiaEmpresaVM = {};
-            var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+            let nombreEstadia = $('#NombreEstadia').val();
+            let resumen = $('#Resumen').val();
+            let objetivo = $('#Objetivo').val();
+            let numeroAlumnos = $('#NumeroAlumnos').val();
+            let numeroHoras = $('#NumeroHoras').val();
+            let nombreEmpresa = $('#NombreEmpresa').val();
+            let puntosCriticos = $('#PuntosCriticos').val();
+            let logrosObtenidos = $('#LogrosObtenidos').val();
+          
+            if (nombreEstadia != "" && resumen != "" && objetivo != "" && numeroAlumnos != "" && numeroHoras != ""
+                && nombreEmpresa != "" && puntosCriticos != "" && logrosObtenidos != "") {
 
-            EstadiaEmpresaVM.id = $('#id').val();
-            EstadiaEmpresaVM.strNombreEstadia = $('#NombreEstadia').val();
-            EstadiaEmpresaVM.strResumenProyecto = $('#Resumen').val();
-            EstadiaEmpresaVM.strObjetivo = $('#Objetivo').val();
-            EstadiaEmpresaVM.strNumeroAlumnos = $('#NumeroAlumnos').val();
-            EstadiaEmpresaVM.strNumeroHoras = $('#NumeroHoras').val();
-            EstadiaEmpresaVM.strNombreEmpresaInstitucion = $('#NombreEmpresa').val();
-            EstadiaEmpresaVM.strPuntosCriticosResolver = $('#PuntosCriticos').val();
-            EstadiaEmpresaVM.strLogrosBeneficiosObtenidos = $('#LogrosObtenidos').val();
-            $.ajax({
-                type: "POST",
-                url: "/EstadiaEmpresa/UpdateEstadia",
-                data: { estadiaEmpresaVM: EstadiaEmpresaVM},
-                success: function () {
-                    $("#myModal1").modal("hide");
-                    window.location.href = "/EstadiaEmpresa/Create";
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    alert(textStatus);
-                    console.log(textStatus);
 
-                }
-            })
+                var EstadiaEmpresaVM = {};
+                var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+
+                EstadiaEmpresaVM.id = $('#id').val();
+                EstadiaEmpresaVM.strNombreEstadia = $('#NombreEstadia').val();
+                EstadiaEmpresaVM.strResumenProyecto = $('#Resumen').val();
+                EstadiaEmpresaVM.strObjetivo = $('#Objetivo').val();
+                EstadiaEmpresaVM.strNumeroAlumnos = $('#NumeroAlumnos').val();
+                EstadiaEmpresaVM.strNumeroHoras = $('#NumeroHoras').val();
+                EstadiaEmpresaVM.strNombreEmpresaInstitucion = $('#NombreEmpresa').val();
+                EstadiaEmpresaVM.strPuntosCriticosResolver = $('#PuntosCriticos').val();
+                EstadiaEmpresaVM.strLogrosBeneficiosObtenidos = $('#LogrosObtenidos').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/EstadiaEmpresa/UpdateEstadia",
+                    data: { estadiaEmpresaVM: EstadiaEmpresaVM },
+                    success: function () {
+                        $("#myModal1").modal("hide");
+                        window.location.href = "/EstadiaEmpresa/Create";
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        alert(textStatus);
+                        console.log(textStatus);
+
+                    }
+                });
+
+            } else
+            {
+                toastr.warning('No Puedes Dejar Campos Vacios', 'Digital-Cv dice', { timeOut: 1000, closeButton:true });
+            }
+
+
         });
     });
 </script>

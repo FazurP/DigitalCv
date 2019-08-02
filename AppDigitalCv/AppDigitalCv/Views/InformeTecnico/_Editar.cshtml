@@ -16,13 +16,13 @@
                     @Html.Label("Datos del Informe Tecnico")
                     <hr />
                     <label>Autor</label>
-                    @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "Autor"})
+                    @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "txtAutor"})
                     <label>Nombre del Proyecto</label>
-                    @Html.TextBoxFor(model => model.strNombreProyecto, new { @class = "form-control input-sm", id = "NombreProyecto"})
+                    @Html.TextBoxFor(model => model.strNombreProyecto, new { @class = "form-control input-sm", id = "txtNombreProyecto"})
                     <label>Alcance</label>
-                    @Html.TextBoxFor(model => model.strAlcance, new { @class = "form-control input-sm",id = "Alcance"})
+                    @Html.TextBoxFor(model => model.strAlcance, new { @class = "form-control input-sm",id = "txtAlcance"})
                     <label>Intitución Beneficiaria</label>
-                    @Html.TextBoxFor(model => model.strInstitucionBeneficiaria, new { @class = "form-control input-sm", id = "InstitucionBeneficiaria"})
+                    @Html.TextBoxFor(model => model.strInstitucionBeneficiaria, new { @class = "form-control input-sm", id = "txtInstitucionBeneficiaria"})
                 </div>
 
                 <div class="row">
@@ -44,29 +44,40 @@
 
         $("#btnEnviar").click(function () {
 
-            var InformeTecnicoVM = {};
-            var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+            let autor = $('#txtAutor').val();
+            let nombreProyecto = $('#txtNombreProyecto').val();
+            let alcance = $('#txtAlcance').val();
+            let institucion = $('#txtInstitucionBeneficiaria').val();
+              
+            if (autor != "" && nombreProyecto != "" && alcance != "" && institucion != "") {
+                var InformeTecnicoVM = {};
+                var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
 
-            InformeTecnicoVM.id = $('#id').val();
-            InformeTecnicoVM.strAutor = $('#Autor').val();
-            InformeTecnicoVM.strNombreProyecto = $('#NombreProyecto').val();
-            InformeTecnicoVM.strAlcance = $('#Alcance').val();
-            InformeTecnicoVM.strInstitucionBeneficiaria = $('#InstitucionBeneficiaria').val();
+                InformeTecnicoVM.id = $('#id').val();
+                InformeTecnicoVM.strAutor = $('#txtAutor').val();
+                InformeTecnicoVM.strNombreProyecto = $('#txtNombreProyecto').val();
+                InformeTecnicoVM.strAlcance = $('#txtAlcance').val();
+                InformeTecnicoVM.strInstitucionBeneficiaria = $('#txtInstitucionBeneficiaria').val();
+         
+                $.ajax({
+                    type: "POST",
+                    url: "/InformeTecnico/UpdateInformeTecnico",
+                    data: { informeTecnicoVM: InformeTecnicoVM },
+                    success: function () {
+                        $("#myModal1").modal("hide");
+                        window.location.href = "/InformeTecnico/Create";
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        alert(textStatus);
+                        console.log(textStatus);
 
-            $.ajax({
-                type: "POST",
-                url: "/InformeTecnico/UpdateInformeTecnico",
-                data: { informeTecnicoVM: InformeTecnicoVM},
-                success: function () {
-                    $("#myModal1").modal("hide");
-                    window.location.href = "/InformeTecnico/Create";
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    alert(textStatus);
-                    console.log(textStatus);
-
-                }
-            })
+                    }
+                })
+            } else
+            {
+                toastr.warning('No Puedes Dejar Campos Vacios', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            }
+           
         });
     });
 </script>

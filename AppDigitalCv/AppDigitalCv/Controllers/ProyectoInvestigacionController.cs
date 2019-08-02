@@ -177,7 +177,13 @@ namespace AppDigitalCv.Controllers
 
             if (proyectoInvestigacionDM != null)
             {
-                proyectoInvestigacionBusiness.DeleteProyecto(proyectoInvestigacionDM.id);
+                if (proyectoInvestigacionBusiness.GetProyectosByIdPersonal(SessionPersister.AccountSession.IdPersonal).Count == 1)
+                {
+                    documentosBusiness.DeleteDocumento(proyectoInvestigacionDM.idDocumento);
+                    ProgresoProdepDomainModel progresoProdepDM = progresoProdep.GetProgresoPersonal(SessionPersister.AccountSession.IdPersonal,int.Parse(Recursos.RecursosSistema.REGISTRO_PROYECTO_INVESTIGACION));
+                    progresoProdep.DeleteProgresoProdep(progresoProdepDM.id);
+                }
+                documentosBusiness.DeleteDocumento(proyectoInvestigacionDM.idDocumento);
             }
 
             return RedirectToAction("Create","ProyectoInvestigacion");

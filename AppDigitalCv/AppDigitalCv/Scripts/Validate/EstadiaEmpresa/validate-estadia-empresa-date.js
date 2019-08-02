@@ -18,14 +18,26 @@
         day = dateNow.getDate();
 
         var dateCurrent;
-
+    
         if (month == 10 || month == 11 || month == 12) {
+            if (day < 10) {
+                dateCurrent = year + '-' + month + '-' + 0 + day;
+            } else
+            {
+                dateCurrent = year + '-' + month + '-' + day;
+            }
              dateCurrent = year + '-' + month + '-' + day;
         } else
         {
-             dateCurrent = year + '-' + 0 + month + '-' + day;
+            if (day < 10) {
+                dateCurrent = year + '-' + 0 + month + '-' + 0 + day;
+            } else
+            {
+                dateCurrent = year + '-' + 0 + month + '-' + day;
+            }
+            
         }
-
+      
         if (dateStart > dateCurrent) {
             toastr.warning('La Fecha de Inicio no Puede ser Mayor a la Actual', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
             $(this).val('');
@@ -51,9 +63,20 @@
         var dateCurrent;
 
         if (month == 10 || month == 11 || month == 12) {
-            dateCurrent = year + '-' + month + '-' + day;
+            if (day < 10) {
+                dateCurrent = year + '-' + month + '-' + 0 + day;
+            } else
+            {
+                dateCurrent = year + '-' + month + '-' + day;
+            }
+           
         } else {
-            dateCurrent = year + '-' + 0 + month + '-' + day;
+            if (day < 10) {
+                dateCurrent = year + '-' + 0 + month + '-' + 0 + day;
+            } else
+            {
+                dateCurrent = year + '-' + 0 + month + '-' +  day;
+            }
         }
 
         if (dateEnd < dateStart) {

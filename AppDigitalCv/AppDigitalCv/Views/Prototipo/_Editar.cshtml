@@ -44,30 +44,43 @@
 
         $("#btnSubmit").click(function () {
 
-            var PrototipoVM = {};
-            var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+            let autor = $('#Autor').val();
+            let nombrePrototipo = $('#NombrePrototipo').val();
+            let objetivos = $('#Objetivos').val();
+            let caracteristicas = $('#Caracteristicas').val();
+            let beneficiario = $('#Beneficiario').val();
 
-            PrototipoVM.id = $('#id').val();
-            PrototipoVM.strAutor = $('#Autor').val();
-            PrototipoVM.strNombrePrototipo = $('#NombrePrototipo').val();
-            PrototipoVM.strObjetivos = $('#Objetivos').val();
-            PrototipoVM.strCaracteristicas = $('#Caracteristicas').val();
-            PrototipoVM.strInstitucionDestinada = $('#Beneficiario').val();
+            if (autor != "" && nombrePrototipo != "" && objetivos != "" && caracteristicas != "" && beneficiario != "") {
+                var PrototipoVM = {};
+                var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
 
-            $.ajax({
-                type: "POST",
-                url: "/Prototipo/UpdatePrototipo",
-                data: { prototipoVM: PrototipoVM},
-                success: function () {
-                    $("#myModal1").modal("hide");
-                    window.location.href = "/Prototipo/Create";
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    alert(textStatus);
-                    console.log(textStatus);
+                PrototipoVM.id = $('#id').val();
+                PrototipoVM.strAutor = $('#Autor').val();
+                PrototipoVM.strNombrePrototipo = $('#NombrePrototipo').val();
+                PrototipoVM.strObjetivos = $('#Objetivos').val();
+                PrototipoVM.strCaracteristicas = $('#Caracteristicas').val();
+                PrototipoVM.strInstitucionDestinada = $('#Beneficiario').val();
 
-                }
-            })
+                $.ajax({
+                    type: "POST",
+                    url: "/Prototipo/UpdatePrototipo",
+                    data: { prototipoVM: PrototipoVM },
+                    success: function () {
+                        $("#myModal1").modal("hide");
+                        window.location.href = "/Prototipo/Create";
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        alert(textStatus);
+                        console.log(textStatus);
+
+                    }
+                })
+            } else
+            {
+                toastr.warning('No Puedes Dejar Campos Vacios', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            }
+
+            
         });
     });
 </script>

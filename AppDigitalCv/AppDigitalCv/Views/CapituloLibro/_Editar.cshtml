@@ -16,24 +16,24 @@
                     @Html.Label("Datos del Capitulo");
                     <hr />
                     <label>Autor:</label>
-                    @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "Autor" })
+                    @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "txtAutor" })
                     <label>Titulo</label>
-                    @Html.TextBoxFor(model => model.strTitulo, new { @class = "form-control input-sm", id = "Titulo" })
+                    @Html.TextBoxFor(model => model.strTitulo, new { @class = "form-control input-sm", id = "txtTitulo" })
                     <label>Editorial</label>
-                    @Html.TextBoxFor(model => model.strEditorial, new { @class = "form-control input-sm", id = "Editorial" })
+                    @Html.TextBoxFor(model => model.strEditorial, new { @class = "form-control input-sm", id = "txtEditorial" })
                     <label>Edicion</label>
-                    @Html.TextBoxFor(model => model.strEdicion, new { @class = "form-control input-sm", id = "Edicion" })
+                    @Html.TextBoxFor(model => model.strEdicion, new { @class = "form-control input-sm", id = "txtEdicion" })
                     <label>Tiraje</label>
-                    @Html.TextBoxFor(model => model.strTiraje, new { @class = "form-control input-sm", id = "Tiraje" })
+                    @Html.TextBoxFor(model => model.strTiraje, new { @class = "form-control input-sm", id = "txtTiraje" })
                     <label>ISBN</label>
-                    @Html.TextBoxFor(model => model.strISBN, new { @class = "form-control input-sm", id = "ISBN" })
+                    @Html.TextBoxFor(model => model.strISBN, new { @class = "form-control input-sm", id = "txtISBN" })
                     <hr />
                     @Html.Label("Datos del Capitulo")
                     <hr />
                     <label>Titulo del Capitulo</label>
-                    @Html.TextBoxFor(model => model.strTituloCapitulo, new { @class = "form-control input-sm", id = "TituloCapitulo" })
+                    @Html.TextBoxFor(model => model.strTituloCapitulo, new { @class = "form-control input-sm", id = "txtTituloCapitulo" })
                     <label>Autores</label>
-                    @Html.TextBoxFor(model => model.strAutores, new { @class = "form-control input-sm", id = "Autores" })
+                    @Html.TextBoxFor(model => model.strAutores, new { @class = "form-control input-sm", id = "txtAutores" })
                 </div>
 
                 <div class="row">
@@ -58,33 +58,55 @@
 
         $("#btnEnviar").click(function () {
 
-            var CapituloLibroVM = {};
-            var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+            let autor = $('#txtAutor').val();
+            let titulo = $('#txtEditorial').val();
+            let editorial = $('#txtEditorial').val();
+            let edicion = $('#txtEdicion').val();
+            let tiraje = $('#txtTiraje').val();
+            let isbn = $('#txtISBN').val();
+            let tituloCapitulo = $('#txtTituloCapitulo').val();
+            let autores = $('#txtAutores').val();
 
-            CapituloLibroVM.id = $('#id').val();
-            CapituloLibroVM.strAutor = $('#Autor').val();
-            CapituloLibroVM.strTitulo = $('#Titulo').val();
-            CapituloLibroVM.strEditorial = $('#Editorial').val();
-            CapituloLibroVM.strEdicion = $('#Edicion').val();
-            CapituloLibroVM.strTiraje = $('#Tiraje').val();
-            CapituloLibroVM.strISBN = $('#ISBN').val();
-            CapituloLibroVM.strTituloCapitulo = $('#TituloCapitulo').val();
-            CapituloLibroVM.strAutores = $('#Autores').val();
+         
 
-            $.ajax({
-                type: "POST",
-                url: "/CapituloLibro/UpdateCapituloLibro",
-                data: { capituloLibroVM: CapituloLibroVM},
-                success: function () {
-                    $("#myModal1").modal("hide");
-                    window.location.href = "/CapituloLibro/Create";
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    alert(textStatus);
-                    console.log(textStatus);
+            if (autor != "" && titulo != "" && editorial != "" && edicion != "" && tiraje != "" && isbn != "" && tituloCapitulo != ""
+                && autores != "") {
 
-                }
-            })
+                var CapituloLibroVM = {};
+                var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+
+                CapituloLibroVM.id = $('#id').val();
+                CapituloLibroVM.strAutor = $('#txtAutor').val();
+                CapituloLibroVM.strTitulo = $('#txtTitulo').val();
+                CapituloLibroVM.strEditorial = $('#txtEditorial').val();
+                CapituloLibroVM.strEdicion = $('#txtEdicion').val();
+                CapituloLibroVM.strTiraje = $('#txtTiraje').val();
+                CapituloLibroVM.strISBN = $('#txtISBN').val();
+                CapituloLibroVM.strTituloCapitulo = $('#txtTituloCapitulo').val();
+                CapituloLibroVM.strAutores = $('#txtAutores').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/CapituloLibro/UpdateCapituloLibro",
+                    data: { capituloLibroVM: CapituloLibroVM },
+                    success: function () {
+                        $("#myModal1").modal("hide");
+                        window.location.href = "/CapituloLibro/Create";
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        alert(textStatus);
+                        console.log(textStatus);
+
+                    }
+                })
+
+            } else
+            {
+                toastr.warning('No Puedes Dejar Campos Vacios', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            }
+
+
+            
         });
     });
 </script>

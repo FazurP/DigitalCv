@@ -70,6 +70,10 @@ namespace AppDigitalCv.Business.Enum
             List<string> list = new List<string>();
 
             list.Insert(0, "--Seleccionar--");
+            list.Insert(1, "Patente");
+            list.Insert(2, "Modelo de Utilidad");
+            list.Insert(3, "Marca");
+            list.Insert(4, "Denominacion de Origen");
 
             return list;
         }
@@ -79,6 +83,14 @@ namespace AppDigitalCv.Business.Enum
             List<string> list = new List<string>();
 
             list.Insert(0, "--Seleccionar--");
+            list.Insert(1, "A. Necesidades Corrientes de la Vida");
+            list.Insert(2, "B. Tecnicas Industriales Diversas: Transportes");
+            list.Insert(3, "C. Química: Metalúrgica");
+            list.Insert(4, "D. Texiles: Papel");
+            list.Insert(5, "E. Construcciones fijas");
+            list.Insert(6, "F. Mecanica: Iluminacion: Calefaccion: Armamento: Voladura");
+            list.Insert(7, "G. Fisica");
+            list.Insert(8, "H. Electricidad");
 
             return list;
         }

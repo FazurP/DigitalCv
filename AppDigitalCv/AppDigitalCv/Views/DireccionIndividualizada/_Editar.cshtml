@@ -37,28 +37,39 @@
     $(document).ready(function () {
 
         $("#btnSubmit").click(function () {
-           
-            var DireccionIndividualizadaVM = {};
-            var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
 
-            DireccionIndividualizadaVM.id = $('#id').val();
-            DireccionIndividualizadaVM.strTituloTesis = $('#titulo').val();
-            DireccionIndividualizadaVM.strNumeroAlumnos = $('#numeroAlumnos').val();
+            let titulo = $('#titulo').val();
+            let numeroAlumnos = $('#numeroAlumnos').val();
 
-            $.ajax({
-                type: "POST",
-                url: "/DireccionIndividualizada/UpdateDireccion",
-                data: { direccionIndividualizadaVM: DireccionIndividualizadaVM},
-                success: function () {
-                    $("#myModal1").modal("hide");
-                    window.location.href = "/DireccionIndividualizada/Create";
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    alert(textStatus);
-                    console.log(textStatus);
+            if (titulo != "" && numeroAlumnos != "") {
 
-                }
-            })
+                var DireccionIndividualizadaVM = {};
+                var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+
+                DireccionIndividualizadaVM.id = $('#id').val();
+                DireccionIndividualizadaVM.strTituloTesis = $('#titulo').val();
+                DireccionIndividualizadaVM.strNumeroAlumnos = $('#numeroAlumnos').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/DireccionIndividualizada/UpdateDireccion",
+                    data: { direccionIndividualizadaVM: DireccionIndividualizadaVM },
+                    success: function () {
+                        $("#myModal1").modal("hide");
+                        window.location.href = "/DireccionIndividualizada/Create";
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        alert(textStatus);
+                        console.log(textStatus);
+
+                    }
+                })
+            } else
+            {
+                toastr.warning('No Puedes Dejar Campos Vacios', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            }
+
+
         });
     });
 </script>

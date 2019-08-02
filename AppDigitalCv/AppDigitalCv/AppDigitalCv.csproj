@@ -456,8 +456,10 @@
     <Content Include="Scripts\Validate\ProductividadInnovadora\validate-productividad-innovadora-form.js" />
     <Content Include="Scripts\Validate\Tutorias\validate-tutorias-date.js" />
     <Content Include="Scripts\Validate\Tutorias\validate-tutorias-form.js" />
+    <Content Include="Scripts\Validate\Tutorias\_Modal\validate-modal-tutorias-regExp.js" />
     <Content Include="Scripts\Validate\validate-datos-contacto-email.js" />
     <Content Include="Scripts\Validate\ProduccionesArtisticas\validate-producciones-artisticas-form.js" />
+    <Content Include="Scripts\Validate\_Modals\ProyectoInvestigacion\partial-proyecto-investigacion-data.js" />
     <Content Include="Views\index.html" />
     <Content Include="Web.config" />
     <Content Include="Views\Personal\Create.cshtml" />

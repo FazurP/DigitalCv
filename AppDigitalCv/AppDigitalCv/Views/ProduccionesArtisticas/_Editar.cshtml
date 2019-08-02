@@ -42,6 +42,13 @@
 
         $("#btnSubmit").click(function () {
 
+            let autor = $('#txtAutor').val();
+            let obra = $('#txtObra').val();
+            let descripcion = $('#txtDescripcion').val();
+            let lugar = $('#txtLugar').val();
+
+            if (autor != "" && obra != "" && descripcion != "" && lugar != "") {
+
             var ProduccionesArtisticasVM = {};
             var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
 
@@ -50,7 +57,7 @@
             ProduccionesArtisticasVM.strNombreObra = $('#txtObra').val();
             ProduccionesArtisticasVM.strDescripcion = $('#txtDescripcion').val();
             ProduccionesArtisticasVM.strLugarPresento = $('#txtLugar').val();
- 
+
             $.ajax({
                 type: "POST",
                 url: "/ProduccionesArtisticas/UpdateProducciones",
@@ -65,6 +72,12 @@
 
                 }
             })
+            } else
+            {
+                  toastr.warning('No Puedes Dejar Campos Vacios', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            }
+
+
         });
     });
 </script>

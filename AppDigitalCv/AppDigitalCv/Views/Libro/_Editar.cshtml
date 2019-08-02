@@ -46,31 +46,49 @@
 
         $("#btnSubmit").click(function () {
 
-            var LibroVM = {};
-            var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+            let autores = $('#txtAutores').val();
+            let tituloLibro = $('#txtTitulo').val();
+            let editorial = $('#txtEditorial').val();
+            let edicion = $('#txtEdicion').val();
+            let tiraje = $('#txtTiraje').val();
+            let isbm = $('#txtISBM').val();
 
-            LibroVM.id = $('#id').val();
-            LibroVM.strAutores = $('#txtAutores').val();
-            LibroVM.strTituloLibro = $('#txtTitulo').val();
-            LibroVM.strEditorial = $('#txtEditorial').val();
-            LibroVM.strEdicion = $('#txtEdicion').val();
-            LibroVM.strTiraje = $('#txtTiraje').val();
-            LibroVM.strISBM = $('#txtISBM').val();
+    
 
-            $.ajax({
-                type: "POST",
-                url: "/Libro/UpdateLibro",
-                data: { libroVM: LibroVM},
-                success: function () {
-                    $("#myModal1").modal("hide");
-                    window.location.href = "/Libro/Create";
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    alert(textStatus);
-                    console.log(textStatus);
+            if (autores != "" && tituloLibro != "" && editorial != "" && edicion != "" && tiraje != "" && isbm != "") {
 
-                }
-            })
+                var LibroVM = {};
+                var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+
+                LibroVM.id = $('#id').val();
+                LibroVM.strAutores = $('#txtAutores').val();
+                LibroVM.strTituloLibro = $('#txtTitulo').val();
+                LibroVM.strEditorial = $('#txtEditorial').val();
+                LibroVM.strEdicion = $('#txtEdicion').val();
+                LibroVM.strTiraje = $('#txtTiraje').val();
+                LibroVM.strISBM = $('#txtISBM').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Libro/UpdateLibro",
+                    data: { libroVM: LibroVM },
+                    success: function () {
+                        $("#myModal1").modal("hide");
+                        window.location.href = "/Libro/Create";
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        alert(textStatus);
+                        console.log(textStatus);
+
+                    }
+                })
+
+            } else
+            {
+                toastr.warning('No Puedes Dejar Campos Vacios', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            }
+
+            
         });
     });
 </script>

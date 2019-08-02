@@ -46,31 +46,49 @@
 
         $("#btnSubmit").click(function () {
 
-            var ProyectoInvestigacionVM = {};
-            var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+            let tituloProyecto = $('#TituloProyecto').val();
+            let nombrePatrocinador = $('#NombrePatrocinador').val();
+            let investigadoresParticipantes = $('#InvestigadoresParticipantes').val();
+            let alumnosParticipantes = $('#AlumnosParticipantes').val();
+            let actividadesRealizadas = $('#ActividadesRealizadas').val();
+            let convocatoria = $('#Convocatoria').val();
 
-            ProyectoInvestigacionVM.id = $('#id').val();
-            ProyectoInvestigacionVM.strTituloProyecto = $('#TituloProyecto').val();
-            ProyectoInvestigacionVM.strNombrePatrocinador = $('#NombrePatrocinador').val();
-            ProyectoInvestigacionVM.strInvestigadoresParticipantes = $('#InvestigadoresParticipantes').val();
-            ProyectoInvestigacionVM.strAlumnosParticipantes = $('#AlumnosParticipantes').val();
-            ProyectoInvestigacionVM.strActividadesRealizadas = $('#ActividadesRealizadas').val();
-            ProyectoInvestigacionVM.strConvocatoria = $('#Convocatoria').val();
+            if (tituloProyecto != "" && nombrePatrocinador != "" && investigadoresParticipantes != "" && alumnosParticipantes != ""
+                && actividadesRealizadas != "" && convocatoria != "") {
 
-            $.ajax({
-                type: "POST",
-                url: "/ProyectoInvestigacion/UpdateProyecto",
-                data: { proyectoInvestigacionVM: ProyectoInvestigacionVM},
-                success: function () {
-                    $("#myModal1").modal("hide");
-                    window.location.href = "/ProyectoInvestigacion/Create";
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    alert(textStatus);
-                    console.log(textStatus);
+                var ProyectoInvestigacionVM = {};
+                var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
 
-                }
-            })
+                ProyectoInvestigacionVM.id = $('#id').val();
+                ProyectoInvestigacionVM.strTituloProyecto = $('#TituloProyecto').val();
+                ProyectoInvestigacionVM.strNombrePatrocinador = $('#NombrePatrocinador').val();
+                ProyectoInvestigacionVM.strInvestigadoresParticipantes = $('#InvestigadoresParticipantes').val();
+                ProyectoInvestigacionVM.strAlumnosParticipantes = $('#AlumnosParticipantes').val();
+                ProyectoInvestigacionVM.strActividadesRealizadas = $('#ActividadesRealizadas').val();
+                ProyectoInvestigacionVM.strConvocatoria = $('#Convocatoria').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/ProyectoInvestigacion/UpdateProyecto",
+                    data: { proyectoInvestigacionVM: ProyectoInvestigacionVM },
+                    success: function () {
+                        $("#myModal1").modal("hide");
+                        window.location.href = "/ProyectoInvestigacion/Create";
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        alert(textStatus);
+                        console.log(textStatus);
+
+                    }
+                })
+
+            } else
+            {
+                toastr.warning('No Puedes Dejar Campos Vacios', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            }
+           
+
+           
         });
     });
 </script>

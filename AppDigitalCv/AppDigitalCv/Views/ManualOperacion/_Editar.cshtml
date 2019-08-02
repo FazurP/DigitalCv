@@ -47,28 +47,40 @@
 
         $("#btnEnviar").click(function () {
 
-            var ManualOperacionVM = {};
+            let autor = $('#txtAutor').val();
+            let nombre = $('#txtNombre').val();
+            let descripcion = $('#txtDescripcion').val();
+            let institucion = $('#txtInstitucion').val();
 
-            ManualOperacionVM.id = $('#id').val();
-            ManualOperacionVM.strAutor = $('#txtAutor').val();
-            ManualOperacionVM.strNombre = $('#txtNombre').val();
-            ManualOperacionVM.strDescripcion = $('#txtDescripcion').val();
-            ManualOperacionVM.strInstitucionBeneficiaria = $('#txtInstitucion').val();
+            if (autor != "" && nombre != "" && descripcion != "" && institucion != "") {
+                var ManualOperacionVM = {};
 
-            $.ajax({
-                type: "POST",
-                url: "/ManualOperacion/UpdateManualOperacion",
-                data: { manualOperacionVM: ManualOperacionVM},
-                success: function () {
-                    $("#myModal1").modal("hide");
-                    window.location.href = "/ManualOperacion/Create";
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    alert(textStatus);
-                    console.log(textStatus);
+                ManualOperacionVM.id = $('#id').val();
+                ManualOperacionVM.strAutor = $('#txtAutor').val();
+                ManualOperacionVM.strNombre = $('#txtNombre').val();
+                ManualOperacionVM.strDescripcion = $('#txtDescripcion').val();
+                ManualOperacionVM.strInstitucionBeneficiaria = $('#txtInstitucion').val();
 
-                }
-            })
+                $.ajax({
+                    type: "POST",
+                    url: "/ManualOperacion/UpdateManualOperacion",
+                    data: { manualOperacionVM: ManualOperacionVM },
+                    success: function () {
+                        $("#myModal1").modal("hide");
+                        window.location.href = "/ManualOperacion/Create";
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        alert(textStatus);
+                        console.log(textStatus);
+
+                    }
+                })
+            } else
+            {
+                toastr.warning('No Puedes Dejar Campos Vacios', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            }
+
+           
         });
     });
 </script>
