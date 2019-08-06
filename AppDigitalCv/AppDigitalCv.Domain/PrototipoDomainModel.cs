@@ -24,5 +24,9 @@ namespace AppDigitalCv.Domain
         public string strEstadoActual { get; set; }
         public string strProposito { get; set; }
         public bool bitConsideraCurriculum { get; set; }
+
+        //Campos de prueba temporales
+
+        public string strNombreDocumento { get; set; }
     }
 }

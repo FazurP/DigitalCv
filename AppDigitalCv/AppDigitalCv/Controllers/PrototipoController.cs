@@ -42,6 +42,7 @@ namespace AppDigitalCv.Controllers
                 ViewBag.strEstadoActual = new SelectList(list.FillEstado());
                 ViewBag.idPais = new SelectList(paisBusiness.GetPais(), "idPais", "strValor");
                 ViewBag.strProposito = new SelectList(list.FillProposito());
+
                 return View();
             }
             else

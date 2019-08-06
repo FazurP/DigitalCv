@@ -23,5 +23,9 @@ namespace AppDigitalCv.ViewModels
         public string strEstadoActual { get; set; }
         public string strProposito { get; set; }
         public bool bitConsideraCurriculum { get; set; }
+        
+        //Campos Temporales
+
+        public string strNombreDocumento { get; set; }
     }
 }

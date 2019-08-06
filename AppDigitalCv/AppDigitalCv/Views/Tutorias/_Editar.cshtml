@@ -35,6 +35,29 @@
 
     $(document).ready(function () {
 
+        $('#NumeroEstudiantes').keypress(function (e) {
+             let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            let regExp = new RegExp("^[0-9 ]+$");
+
+            if (!regExp.test(data))
+            {
+                e.preventDefault();
+                toastr.warning('Solo se Permiten Numeros', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            }
+        });
+
+        $('#NombreEstudiante').keypress(function (e) {
+
+            let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$");
+
+            if (!regExp.test(data)) {
+                e.preventDefault();
+                toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            }
+
+        });
+
         $("#btnSubmit").click(function () {
 
             let numeroEstudiantes = $('#NumeroEstudiantes').val();

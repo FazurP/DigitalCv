@@ -27,13 +27,37 @@
                 increaseArea: '20%' /* optional */
             });
         });
+
+        $(document).ready(function () {
+
+            $('#modal-default').addClass('back');
+            $('#modal-blur').addClass('blur');
+
+        });
     </script>
+
+    <style>
+
+        .blur {
+            filter:opacity(0.9);
+        }
+
+
+        .back {
+            /*filter: opacity(0.5);
+            filter: blur(20px);*/
+            background:url(../../Imagenes/4K-Field-Desktop-Wallpaper-For-PC.jpg) no-repeat;
+            background-size:cover;
+            
+        }
+    </style>
+
 </head>
 <body>
     @using (Html.BeginForm("Login", "Seguridad", FormMethod.Post))
         {
         <div class="modal modal-default fade" id="modal-default">
-            <div class="modal-dialog">
+            <div class="modal-dialog" id="modal-blur">
                 <div class="modal-content">
                     <div class="modal-header" style="background-color:#3C8DBC;color:white;">
                         @*<button type="button" class="close" data-dismiss="modal" aria-label="Close">

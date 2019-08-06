@@ -48,6 +48,28 @@
 
     $(document).ready(function () {
 
+        $('#NombreEstadia').keypress(function (e) {
+            let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$");
+
+            if (!regExp.test(data)) {
+                toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+                e.preventDefault();
+            }
+        });
+
+        $('#Resumen').keypress(function (e) {
+
+            let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$");
+
+            if (!regExp.test(data)) {
+                e.preventDefault();
+                toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            }
+
+        });
+
         $("#btnSubmit").click(function () {
 
             let nombreEstadia = $('#NombreEstadia').val();

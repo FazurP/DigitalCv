@@ -224,6 +224,7 @@
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Global.asax" />
+    <Content Include="Imagenes\4K-Field-Desktop-Wallpaper-For-PC.jpg" />
     <Content Include="Imagenes\anonimo_base.gif" />
     <Content Include="Imagenes\anonimo_perfil.jpg" />
     <Content Include="Content\toastr.scss" />

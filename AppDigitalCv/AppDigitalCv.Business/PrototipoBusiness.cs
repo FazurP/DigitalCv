@@ -95,6 +95,7 @@ namespace AppDigitalCv.Business
                 prototipoDM.strTipoPrototipo = tblPrototipo.strTipoPrototipo;
                 prototipoDM.dteFechaPublicacion = tblPrototipo.dteFechaPublicacion.Value;
                 prototipoDM.bitConsideraCurriculum = tblPrototipo.bitConsideraCurriculum.Value;
+                prototipoDM.strNombreDocumento = tblPrototipo.catDocumentos.strUrl;
 
                 prototipos.Add(prototipoDM);
 
