@@ -230,7 +230,7 @@ namespace AppDigitalCv.Controllers
                 ViewBag.idCatTipoActividad = new SelectList(tipoActividad.GetTiposActividades(), "id", "strDescripcion");
                 ViewBag.idCatPeriodo = new SelectList(periodoBusiness.GetPeriodos(), "id", "strDescripcion");
             
-                ParticipacionInstitucionalExternaVM participacionVM = new ParticipacionInstitucionalExternaVM();
+                ParticipacionInstitucionalInternaVM participacionVM = new ParticipacionInstitucionalInternaVM();
                 AutoMapper.Mapper.Map(participacionDM, participacionVM);
                 return PartialView("_Editar", participacionVM);
             }

@@ -98,6 +98,7 @@ namespace AppDigitalCv.Business
                 productividadInnovadoraDM.strUsuario = item.strUsuario;
                 productividadInnovadoraDM.dteFechaRegistro = item.dteFechaRegistro.Value;
                 productividadInnovadoraDM.bitConsideraCurriculum = item.bitConsideraCurriculum.Value;
+                productividadInnovadoraDM.strNombreDocumento = item.catDocumentos.strUrl;
 
                 productividad.Add(productividadInnovadoraDM);
 

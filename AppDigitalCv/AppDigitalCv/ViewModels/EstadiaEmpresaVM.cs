@@ -26,5 +26,6 @@ namespace AppDigitalCv.ViewModels
         public string strLogrosBeneficiosObtenidos { get; set; }
         public string strEstadoEstadia { get; set; }
         public bool bitConsideraCurriculum { get; set; }
+        public string strNombreDocumento { get; set; }
     }
 }

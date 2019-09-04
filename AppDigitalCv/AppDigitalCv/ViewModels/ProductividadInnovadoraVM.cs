@@ -25,5 +25,6 @@ namespace AppDigitalCv.ViewModels
         public DateTime dteFechaRegistro { get; set; }
         public string strProposito { get; set; }
         public bool bitConsideraCurriculum { get; set; }
+        public string strNombreDocumento { get; set; }
     }
 }

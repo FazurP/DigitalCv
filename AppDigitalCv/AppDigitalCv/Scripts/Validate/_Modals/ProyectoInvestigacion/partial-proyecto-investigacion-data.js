@@ -76,6 +76,13 @@ $(document).ready(function () {
                     { "data": "strTituloProyecto" },
 
                     {
+                        "data": "strNombreDocumento",
+                        "render": function (strNombreDocumento) {
+                            return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + strNombreDocumento + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'
+                        }
+                    },
+
+                    {
                         "data": "id",
                         "render": function (id, type, full, meta) {
 

@@ -24,5 +24,6 @@ namespace AppDigitalCv.Domain
         public string strConvocatoria { get; set; }
         public bool bitProyectoTecnologico { get; set; }
         public bool bitConsideraCurriculum { get; set; }
+        public string strNombreDocumento { get; set; }
     }
 }

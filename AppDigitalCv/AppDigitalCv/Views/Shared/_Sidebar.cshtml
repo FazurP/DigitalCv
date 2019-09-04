@@ -48,9 +48,6 @@
                     <li class="@Url.IsLinkActive("InfoPersonal","Personal")">
                         <a href="@Url.Action("InfoPersonal","Personal")"><i class="fa fa-user-plus"></i><span>Informacion Personal</span> </a>
                     </li>
-                    <li class="@Url.IsLinkActive("AgregarDocumentos","Personal")">
-                        <a href="@Url.Action("AgregarDocumentos","Personal")"><i class="fa fa-file-pdf-o"></i><span>Documentos</span> </a>
-                    </li>
                     <li class="@Url.IsLinkActive("Create","Direccion")">
                         <a href="@Url.Action("Create","Direccion")"><i class="fa fa-pencil-square-o"></i><span>Direccion</span></a>
                     </li>
@@ -69,16 +66,12 @@
                     <li class="@Url.IsLinkActive("Create","PersonalAsociaciones")">
                         <a href="@Url.Action("Create","PersonalAsociaciones")"><i class="fa  fa-coffee"></i><span>Asociaciones</span></a>
                     </li>
-                    <li class="@Url.IsLinkActive("EditarDatosDireccion", "Direccion")">
-                        <a href="@Url.Action("EditarDatosDireccion", "Direccion")"><i class="fa fa-newspaper-o"></i><span>Editar Datos de Direccion</span></a>
-                    </li>
-                    
                     <li class="@Url.IsLinkActive("Create","ContactoEmergencia")">
                         <a href="@Url.Action("Create","ContactoEmergencia")"><i class="fa fa-plus-square"></i><span>Contacto de Emergencia</span></a>
                     </li>
-                    <li class="@Url.IsLinkActive("Create","TipoContratacion")">
+                    @*<li class="@Url.IsLinkActive("Create","TipoContratacion")">
                         <a href="@Url.Action("Create","TipoContratacion")"><i class="fa fa-search-minus"></i><span>Tipo de Contratacion</span></a>
-                    </li>
+                    </li>*@
                 </ul>
             </li>
             <li class="treeview">

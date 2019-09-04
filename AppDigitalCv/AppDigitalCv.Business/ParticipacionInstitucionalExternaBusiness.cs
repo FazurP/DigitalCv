@@ -39,11 +39,6 @@ namespace AppDigitalCv.Business
 
                 if (participacion != null)
                 {
-                    participacion.id = participacionInstitucionalExternaDM.id;
-                    participacion.idCatDocumento = participacionInstitucionalExternaDM.idCatDocumento;
-                    participacion.idCatInstitucionSuperior = participacionInstitucionalExternaDM.idCatInstitucionSuperior;
-                    participacion.idCatPeriodo = participacionInstitucionalExternaDM.idCatPeriodo;
-                    participacion.idPersonal = participacionInstitucionalExternaDM.idPersonal;
                     participacion.strActividad = participacionInstitucionalExternaDM.strActividad;
                     participacion.dteFechaInicio = participacionInstitucionalExternaDM.dteFechaInicio;
                     participacion.dteFechaTermino = participacionInstitucionalExternaDM.dteFechaTermino;

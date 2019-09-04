@@ -26,5 +26,6 @@ namespace AppDigitalCv.Domain
         public string strLugarPresento{ get; set; }
         public string strProposito { get; set; }
         public bool bitLigarCurriculum { get; set; }
+        public string strNombreDocumento { get; set; }
     }
 }

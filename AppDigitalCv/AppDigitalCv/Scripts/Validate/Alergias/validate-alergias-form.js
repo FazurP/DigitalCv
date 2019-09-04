@@ -52,6 +52,7 @@
            
         
     })
+
     $('#Alergenos').change(function () {
 
         var alergenos = $('#Alergenos').val();

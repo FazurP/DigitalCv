@@ -99,6 +99,7 @@ namespace AppDigitalCv.Business
                 produccionesArtisticasDM.strProposito = tblProduccion.strProposito;
                 produccionesArtisticasDM.dteFechaPublicacion = tblProduccion.dteFechaPublicacion.Value;
                 produccionesArtisticasDM.bitLigarCurriculum = tblProduccion.bitConsideraCurriculum.Value;
+                produccionesArtisticasDM.strNombreDocumento = tblProduccion.catDocumentos.strUrl;
 
                 produccionesArtisticas.Add(produccionesArtisticasDM);
             }

@@ -15,33 +15,16 @@
             </div>
             <div class="row">
                 <div class="form-group col-lg-7">
-                    <label class="titleletter">Datos Actuales</label>
-                    <hr />
-                    <label>Institucion Superior</label>
-                    @Html.TextBoxFor(model => model.institucionSuperior, new { @class = "form-control input-sm", @disabled = "true" })
-                    <label>Periodo</label>
-                    @Html.TextBoxFor(model => model.periodo, new { @class = "form-control input-sm", @disabled = "true" })
-                    <label>Documento</label>
-                    @Html.TextBoxFor(model => model.documento, new { @class = "form-control input-sm", @disabled = "true" })
-                    <label>Actividad</label>
-                    @Html.TextBoxFor(model => model.strActividad, new { @class = "form-control input-sm", @disabled = "true" })
-                    <label>Fecha de Inicio</label>
-                    @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm", @disabled = "true" })
-                    <label>Fecha de Termino</label>
-                    @Html.TextBoxFor(model => model.dteFechaTermino, new { @class = "form-control input-sm", @disabled = "true" })
-                    <br />
-                    <label class="titleletter">Nuevos Datos</label>
-                    <hr />
-                    <label>Institucion Superior</label>
+                    @*<label>Institucion Superior</label>
                     @Html.DropDownList("idCatInstitucionSuperior", null, new { @class = "form-control input-sm" })
                     <label>Periodo</label>
-                    @Html.DropDownList("idCatPeriodo", null, new { @class = "form-control input-sm" })
+                    @Html.DropDownList("idCatPeriodo", null, new { @class = "form-control input-sm" })*@
                     <label>Actividad</label>
-                    @Html.TextBox("Actividad", null, new { @class = "form-control input-sm" })
+                    @Html.TextBoxFor(model => model.strActividad, null, new { @class = "form-control input-sm",id="Actividad" })
                     <label>Fecha de Inicio</label>
-                    @Html.TextBox("FechaInicio", null, new { @class = "form-control input-sm", @type = "date" })
+                    @Html.TextBoxFor(model => model.dteFechaInicio, null, new { @class = "form-control input-sm", @type = "date",id="FechaInicio" })
                     <label>Fecha de Termino</label>
-                    @Html.TextBox("FechaTermino", null, new { @class = "form-control input-sm", @type = "date" })
+                    @Html.TextBoxFor(model => model.dteFechaTermino, null, new { @class = "form-control input-sm", @type = "date",id="FechaTermino" })
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-6 col-lg-offset-4">
@@ -63,22 +46,24 @@
 
     $(document).ready(function () {
 
-
         $("#btnEnviar").click(function () {
 
-            var prueba =  $('#id').val();
 
-            alert(prueba);
+            let actividad = $('#Actividad').val();
+            let fechaInicio = $('#FechaInicio').val();
+            let fechaTermino = $('#FechaTermino').val();
 
+            if (actividad != "" && fechaInicio != "" && fechaTermino != "") {
+                
             var ParticipacionInstitucionalExternaVM = {};
             var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
 
             ParticipacionInstitucionalExternaVM.IdPersonal = IdPersonal;
             ParticipacionInstitucionalExternaVM.id = $('#id').val();
 
-            ParticipacionInstitucionalExternaVM.idCatInstitucionSuperior = $('#idCatInstitucionSuperior').val();
-            ParticipacionInstitucionalExternaVM.idCatPeriodo = $('#idCatPeriodo').val();
-            ParticipacionInstitucionalExternaVM.idCatDocumento = $('#idCatDocumento').val();
+            //ParticipacionInstitucionalExternaVM.idCatInstitucionSuperior = $('#idCatInstitucionSuperior').val();
+            //ParticipacionInstitucionalExternaVM.idCatPeriodo = $('#idCatPeriodo').val();
+            //ParticipacionInstitucionalExternaVM.idCatDocumento = $('#idCatDocumento').val();
             ParticipacionInstitucionalExternaVM.strActividad = $('#Actividad').val();
             ParticipacionInstitucionalExternaVM.dteFechaInicio = $('#FechaInicio').val();
             ParticipacionInstitucionalExternaVM.dteFechaTermino = $('#FechaTermino').val();
@@ -96,6 +81,10 @@
 
                 }
             })
+            } else
+            {
+                toastr.warning('No Puedes Dejar Campos Vacios', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            }
         });
     });
 </script>

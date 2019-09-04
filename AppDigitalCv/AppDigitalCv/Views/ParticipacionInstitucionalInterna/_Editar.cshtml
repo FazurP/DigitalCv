@@ -15,31 +15,6 @@
             </div>
             <div class="row">
                 <div class="form-group col-lg-7">
-                    <label class="titleletter">Datos Actuales</label>
-                    <hr />
-                    <label>Programa Educativo</label>
-                    @Html.TextBoxFor(model => model.programaEducativo, new { @class = "form-control input-sm", @disabled = "true" })
-                    <label>Tipo de Actividad</label>
-                    @Html.TextBoxFor(model => model.TipoActividad, new { @class = "form-control input-sm", @disabled = "true" })
-                    <label>Periodo</label>
-                    @Html.TextBoxFor(model => model.periodo, new { @class = "form-control input-sm", @disabled = "true" })
-                    <label>Actividad</label>
-                    @Html.TextBoxFor(model => model.strActividad, new { @class = "form-control input-sm", @disabled = "true" })
-                    <label>Fecha de Inicio</label>
-                    @Html.TextBoxFor(model => model.fechaInicio, new { @class = "form-control input-sm", @disabled = "true" })
-                    <label>Fecha de Termino</label>
-                    @Html.TextBoxFor(model => model.fechaTermino, new { @class = "form-control input-sm", @disabled = "true" })
-                    <label>Documento</label>
-                    @Html.TextBoxFor(model => model.documento, new { @class = "form-control input-sm", @disabled = "true" })
-                    <br />
-                    <label class="titleletter">Nuevos Datos</label>
-                    <hr />
-                    <label>Programa Educativo</label>
-                    @Html.DropDownList("idCatProgramaEducativo", null, new { @class = "form-control input-sm" })
-                    <label>Tipo de Actividad</label>
-                    @Html.DropDownList("idCatTipoActividad", null, new { @class = "form-control input-sm" })
-                    <label>Periodo</label>
-                    @Html.DropDownList("idCatPeriodo", null, new { @class = "form-control input-sm" })
                     <label>Actividad</label>
                     @Html.TextBox("Actividad",null, new { @class = "form-control input-sm" })
                     <label>Fecha de Inicio</label>
@@ -47,9 +22,6 @@
                     <label>Fecha de Termino</label>
                     @Html.TextBox("FechaTermino", null, new { @class = "form-control input-sm", @type = "date" })
                 </div>
-
-              
-
                 <div class="row">
                     <div class="form-group col-lg-6 col-lg-offset-4">
                         <a href="#" id="btnEnviar" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
@@ -72,37 +44,40 @@
 
         $("#btnEnviar").click(function () {
 
-            var prueba =  $('#id').val();
+            let actividad = $('#Actividad').val();
+            let fechaInicio = $('#FechaInicio').val();
+            let fechaTermino = $('#FechaTermino').val();
 
-            alert(prueba);
+            if (actividad != "" && fechaInicio != "" && fechaTermino != "") {
+                var ParticipacionInstitucionalInternaVM = {};
+                var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
 
-            var ParticipacionInstitucionalInternaVM = {};
-            var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+                ParticipacionInstitucionalInternaVM.IdPersonal = IdPersonal;
+                ParticipacionInstitucionalInternaVM.id = $('#id').val();
 
-            ParticipacionInstitucionalInternaVM.IdPersonal = IdPersonal;
-            ParticipacionInstitucionalInternaVM.id = $('#id').val();
+                ParticipacionInstitucionalInternaVM.strActividad = $('#Actividad').val();
+                ParticipacionInstitucionalInternaVM.fechaInicio = $('#FechaInicio').val();
+                ParticipacionInstitucionalInternaVM.fechaTermino = $('#FechaTermino').val();
 
-            ParticipacionInstitucionalInternaVM.idCatProgramaEducativo = $('#idCatProgramaEducativo').val();
-            ParticipacionInstitucionalInternaVM.idCatTipoActividad = $('#idCatTipoActividad').val();
-            ParticipacionInstitucionalInternaVM.idCatPeriodo = $('#idCatPeriodo').val();
-            ParticipacionInstitucionalInternaVM.strActividad = $('#Actividad').val();
-            ParticipacionInstitucionalInternaVM.fechaInicio = $('#FechaInicio').val();
-            ParticipacionInstitucionalInternaVM.fechaTermino = $('#FechaTermino').val();
-          
-            $.ajax({
-                type: "POST",
-                url: "/ParticipacionInstitucionalInterna/EditarParticipacionPersonal",
-                data: { participacionInstitucionalExternaVM: ParticipacionInstitucionalExternaVM},
-                success: function () {
-                    $("#myModal1").modal("hide");
-                    window.location.href = "/ParticipacionInstitucionalInterna/Create";
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    alert(textStatus);
-                    console.log(textStatus);
+                $.ajax({
+                    type: "POST",
+                    url: "/ParticipacionInstitucionalInterna/EditarParticipacionPersonal",
+                    data: { participacionInstitucionalExternaVM: ParticipacionInstitucionalExternaVM },
+                    success: function () {
+                        $("#myModal1").modal("hide");
+                        window.location.href = "/ParticipacionInstitucionalInterna/Create";
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        alert(textStatus);
+                        console.log(textStatus);
 
-                }
-            })
+                    }
+                })
+            } else
+            {
+                toastr.warning('No Puedes Dejar Campos Vacios', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            }
+           
         });
     });
 </script>

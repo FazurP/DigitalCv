@@ -94,6 +94,7 @@ namespace AppDigitalCv.Business
                 proyectoInvestigacionDM.dteFechaTermino = item.dteFechaTermino.Value;
                 proyectoInvestigacionDM.bitConsideraCurriculum = item.bitConsideraCurriculum.Value;
                 proyectoInvestigacionDM.bitProyectoTecnologico = item.bitProyectoTecnologico.Value;
+                proyectoInvestigacionDM.strNombreDocumento = item.catDocumentos.strUrl;
                 proyectos.Add(proyectoInvestigacionDM);
 
             }

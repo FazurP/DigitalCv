@@ -102,6 +102,7 @@ namespace AppDigitalCv.Business
                 estadiaEmpresaDM.dteFechaInicio = item.dteFechaInicio.Value;
                 estadiaEmpresaDM.dteFechaTermino = item.dteFechaTermino.Value;
                 estadiaEmpresaDM.bitConsideraCurriculum = item.bitConsideraCurriculum.Value;
+                estadiaEmpresaDM.strNombreDocumento = item.catDocumentos.strUrl;
 
                 estadiaEmpresas.Add(estadiaEmpresaDM);
             }
