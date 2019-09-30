@@ -23,5 +23,6 @@ namespace AppDigitalCv.ViewModels
         public string enumProposito { get; set; }
         public DocumentosVM DocumentosVM { get; set; }
         public bool bitLigarCurriculum { get; set; }
+        public string strNombreDocumento { get; set; }
     }
 }

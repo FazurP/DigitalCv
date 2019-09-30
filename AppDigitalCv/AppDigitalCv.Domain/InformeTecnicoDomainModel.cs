@@ -24,6 +24,7 @@ namespace AppDigitalCv.Domain
         public string enumProposito { get; set; }
         public DocumentosDomainModel DocumentosDM { get; set; }
         public bool bitLigarCurriculum { get; set; }
+        public string strNombreDocumento { get; set; }
 
     }
 }

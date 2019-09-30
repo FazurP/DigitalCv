@@ -50,9 +50,9 @@
                                         id = "Actividad"
                                     })
                                     <label>Periodo Inicial de Entrega:</label>
-                                    @Html.TextBoxFor(model => model.DteFechaInicioPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Selecciona la Fecha de Inicio",id="fechaInicio" })
+                                    @Html.TextBoxFor(model => model.DteFechaInicioPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Selecciona la Fecha de Inicio", id = "fechaInicio" })
                                     <label>Periodo Final de Entrega</label>
-                                    @Html.TextBoxFor(model => model.DteFechaFinPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Selecciona la Fecha Final de Entrega",id="fechaFin" })
+                                    @Html.TextBoxFor(model => model.DteFechaFinPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Selecciona la Fecha Final de Entrega", id = "fechaFin" })
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-6">
@@ -62,7 +62,7 @@
                                     <label>Nombre de la Institución:</label>
                                     @Html.TextBoxFor(model => model.StrInstitucion, new { @class = "form-control input-sm", placeholder = "Institución", title = "Escribe el Nombre de la Institución", required = "", pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}", id = "Institucion" })
                                     <label>Año de Entrega del Premio:</label>
-                                    @Html.TextBoxFor(model => model.DteFechaObtencionPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Fecha de Entrega del Premio",id="fechaObtencion" })
+                                    @Html.TextBoxFor(model => model.DteFechaObtencionPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Fecha de Entrega del Premio", id = "fechaObtencion" })
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-6">
@@ -126,17 +126,17 @@
 }
 
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
-@*<script src="~/Scripts/jquery-3.3.1.min.js"></script>*@
-<script src="~/Scripts/toastr.min.js"></script>
+
 <link href="~/Content/toastr.min.css" rel="stylesheet" />
-<script src="~/Scripts/Validate/Premios/validate-premios-form.js"></script>
-<script src="~/Scripts/Validate/Premios/validate-premios-regExp.js"></script>
-<script src="~/Scripts/Validate/PremiosDocente/validate-premios-docente-upload.js"></script>
+
 @section Scripts
 {
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js" integrity="sha256-8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw=" crossorigin="anonymous"></script>
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/Validate/Premios/validate-premios-form.js"></script>
+    <script src="~/Scripts/Validate/Premios/validate-premios-regExp.js"></script>
+    <script src="~/Scripts/Validate/PremiosDocente/validate-premios-docente-upload.js"></script>
 
     <script>
 

@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-6">
-                               <input type="submit" value="Guardar" class="btn btn-sm btn-success" id="btnSubmit" />
+                                <input type="submit" value="Guardar" class="btn btn-sm btn-success" id="btnSubmit" />
                             </div>
                         </div>
 
@@ -114,16 +114,15 @@
 }
 
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
-<script src="~/Scripts/Validate/HabitosPersonales/validate-habitos-personales-form.js"></script>
-<script src="~/Scripts/Validate/HabitosPersonales/validate-habitos-personales-regExp.js"></script>
+<link href="~/Content/toastr.min.css" rel="stylesheet" />
+
 @section scripts
 {
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"
-            integrity="sha256-8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw="
-            crossorigin="anonymous"></script>
-
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/Validate/HabitosPersonales/validate-habitos-personales-form.js"></script>
+    <script src="~/Scripts/Validate/HabitosPersonales/validate-habitos-personales-regExp.js"></script>
     <script>
 
         var AddEditar = function (idDeportePersonal) {

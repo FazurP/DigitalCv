@@ -3,8 +3,7 @@
     $('#Enfermedades').prop('disabled', true);
     $('#btnAgregar').prop('disabled', true);
 
-
-    $('#rdbSi').change(function () {
+    $('#rdbSi').on("change",function () {
         $('#Enfermedades').prop('disabled', false);
         toastr.info("Selecciona tu(s) Enfermedad(es)", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
     })

@@ -89,6 +89,7 @@ namespace AppDigitalCv.Business
                 informeTecnicoDM.dteFechaInicio = tblInformeTecnico.dteFechaInicio.Value;
                 informeTecnicoDM.enumEstadoActual = tblInformeTecnico.enumEstadoActual;
                 informeTecnicoDM.enumProposito = tblInformeTecnico.enumProposito;
+                informeTecnicoDM.strNombreDocumento = tblInformeTecnico.catDocumentos.strUrl;
 
                 informeTecnicos.Add(informeTecnicoDM);
             }
