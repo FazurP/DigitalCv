@@ -48,11 +48,13 @@
     <Compile Include="AlergiasPersonalDomainModel.cs" />
     <Compile Include="AreaDomainModel.cs" />
     <Compile Include="AsociacionesDomainModel.cs" />
+    <Compile Include="CapacitacionCompetenciasProfesionalesDomainModel.cs" />
     <Compile Include="CapituloLibroDomainModel.cs" />
     <Compile Include="CategoriaDomainModel.cs" />
     <Compile Include="ColoniaDomainModel.cs" />
     <Compile Include="CompetenciasDomainModel.cs" />
     <Compile Include="CompetenciasPersonalDomainModel.cs" />
+    <Compile Include="CompetenciasProfesionalesDomainModel.cs" />
     <Compile Include="CompetenciasTiDomainModel.cs" />
     <Compile Include="CompetenciaTiDomainModel.cs" />
     <Compile Include="ComprobanteDomicilioDomainModel.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="IdiomaDomainModel.cs" />
     <Compile Include="IfeDomainModel.cs" />
     <Compile Include="InformeTecnicoDomainModel.cs" />
+    <Compile Include="InstitucionAcreditaCapacitacionProfesionalDomainModel.cs" />
     <Compile Include="InstitucionSuperiorDomainModel.cs" />
     <Compile Include="LibroDomainModel.cs" />
     <Compile Include="ManualOperacionDomainModel.cs" />

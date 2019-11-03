@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CodigoError" xml:space="preserve">
+    <value>correcto</value>
+  </data>
   <data name="DOCUMENTO_USUARIO" xml:space="preserve">
     <value>~/Imagenes/Usuarios/</value>
   </data>
@@ -173,6 +176,12 @@
   </data>
   <data name="REGISTRO_TUTORIAS" xml:space="preserve">
     <value>12</value>
+  </data>
+  <data name="SegPassword" xml:space="preserve">
+    <value>pando1410</value>
+  </data>
+  <data name="SegUsuario" xml:space="preserve">
+    <value>Pando</value>
   </data>
   <data name="URL_PERFIL" xml:space="preserve">
     <value>Imagenes/Usuarios/</value>

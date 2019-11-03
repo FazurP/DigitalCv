@@ -18,6 +18,8 @@ namespace AppDigitalCv.Repository
         public catCategoria()
         {
             this.catTipoContrato = new HashSet<catTipoContrato>();
+            this.Organizaciones_Salud = new HashSet<Organizaciones_Salud>();
+            this.TblUsuario = new HashSet<TblUsuario>();
         }
     
         public int idCategoria { get; set; }
@@ -26,5 +28,9 @@ namespace AppDigitalCv.Repository
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<catTipoContrato> catTipoContrato { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Organizaciones_Salud> Organizaciones_Salud { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblUsuario> TblUsuario { get; set; }
     }
 }

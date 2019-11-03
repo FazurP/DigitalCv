@@ -27,7 +27,7 @@ namespace AppDigitalCv.Repository
         public string strPuestoDesempeñado { get; set; }
     
         public virtual catDocumentos catDocumentos { get; set; }
-        public virtual tblPersonal tblPersonal { get; set; }
         public virtual catPeriodo catPeriodo { get; set; }
+        public virtual tblPersonal tblPersonal { get; set; }
     }
 }

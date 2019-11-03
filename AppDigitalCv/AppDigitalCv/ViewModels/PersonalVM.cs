@@ -51,7 +51,7 @@ namespace AppDigitalCv.ViewModels
         [Required(ErrorMessage = "La Semblanza es requerida")]
         public string strLogros { get; set; }
 
-        [Required(ErrorMessage = "El archivo es obligatorio")]
+
 
         public HttpPostedFileWrapper ImageFile { get; set; }    
 

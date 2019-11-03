@@ -173,6 +173,37 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Connected Services\Usuarios\AppDigitalCv.Usuarios.ConsultarHorarioProfesorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\Usuarios\AppDigitalCv.Usuarios.ConsultaUsuarios2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\Usuarios\AppDigitalCv.Usuarios.ConsultaUsuarios3Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\Usuarios\AppDigitalCv.Usuarios.ConsultaUsuariosAlumnoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\Usuarios\AppDigitalCv.Usuarios.ConsultaUsuariosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\Usuarios\AppDigitalCv.Usuarios.Message.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\Usuarios\AppDigitalCv.Usuarios.MessageAlumno.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\Usuarios\AppDigitalCv.Usuarios.MessageHorarios.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\Usuarios\wsusuarios.disco" />
+    <None Include="Connected Services\Usuarios\configuration91.svcinfo" />
+    <None Include="Connected Services\Usuarios\configuration.svcinfo" />
+    <None Include="Connected Services\Usuarios\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Content\animate.css" />
     <Content Include="Content\animate.min.css" />
     <Content Include="Content\css\cardview.css" />
@@ -226,7 +257,7 @@
     <Content Include="Global.asax" />
     <Content Include="Imagenes\4K-Field-Desktop-Wallpaper-For-PC.jpg" />
     <Content Include="Imagenes\anonimo_base.gif" />
-    <Content Include="Imagenes\anonimo_perfil.jpg" />
+    <Content Include="Imagenes\perfil.jpg" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <Content Include="Imagenes\conferencias.png" />
@@ -253,10 +284,15 @@
     <Content Include="Imagenes\reportes.png" />
     <Content Include="Imagenes\usertest-160x160.jpg" />
     <Content Include="Scripts\boostrap.dataTables.min.js" />
+    <None Include="Connected Services\Usuarios\wsusuarios.wsdl" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\digitalcvtest - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\digitalcvtest - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -440,6 +476,7 @@
     <Content Include="Scripts\Validate\ParticipacionInstitucionalInterna\validate-participacion-institucional-interna-upload.js" />
     <Content Include="Scripts\Validate\ParticipacionInstitucionalInterna\validate-participacion-institucional-interna-date.js" />
     <Content Include="Scripts\Validate\Personal\calculate-homo-clave.js" />
+    <Content Include="Scripts\Validate\Personal\generate-curp.js" />
     <Content Include="Scripts\Validate\Personal\validar-personal-create.js" />
     <Content Include="Scripts\Validate\Personal\validate-personal-create-regExp.js" />
     <Content Include="Scripts\Validate\Personal\validate-personal-upload.js" />
@@ -602,6 +639,8 @@
     <Content Include="Views\Tutorias\_Editar.cshtml" />
     <Content Include="Views\ProyectoInvestigacion\_Eliminar.cshtml" />
     <Content Include="Views\ProyectoInvestigacion\_Editar.cshtml" />
+    <Content Include="Views\CapacitacionCompetenciasProfesionales\Create.cshtml" />
+    <Content Include="Views\OtrasCapacitaciones\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -611,8 +650,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Connected Services\Usuarios\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AlergiasController.cs" />
     <Compile Include="Controllers\AsociacionController.cs" />
+    <Compile Include="Controllers\CapacitacionCompetenciasProfesionalesController.cs" />
     <Compile Include="Controllers\CapituloLibroController.cs" />
     <Compile Include="Controllers\CompetenciasController.cs" />
     <Compile Include="Controllers\CompetenciaTiController.cs" />
@@ -639,6 +684,7 @@
     <Compile Include="Controllers\InstitucionSuperiorController.cs" />
     <Compile Include="Controllers\LibroController.cs" />
     <Compile Include="Controllers\ManualOperacionController.cs" />
+    <Compile Include="Controllers\OtrasCapacitacionesController.cs" />
     <Compile Include="Controllers\ParticipacionDocenteController.cs" />
     <Compile Include="Controllers\ParticipacionInstitucionalExternaController.cs" />
     <Compile Include="Controllers\ParticipacionInstitucionalInternaController.cs" />
@@ -658,6 +704,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Recursos\RecursosSistema.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -671,10 +722,12 @@
     <Compile Include="ViewModels\AlergiasVM.cs" />
     <Compile Include="ViewModels\AreaVM.cs" />
     <Compile Include="ViewModels\AsociacionesVM.cs" />
+    <Compile Include="ViewModels\CapacitacionCompetenciasProfesionalesVM.cs" />
     <Compile Include="ViewModels\CapituloLibroVM.cs" />
     <Compile Include="ViewModels\CategoriaVM.cs" />
     <Compile Include="ViewModels\ColoniaVM.cs" />
     <Compile Include="ViewModels\CompetenciasPersonalVM.cs" />
+    <Compile Include="ViewModels\CompetenciasProfesionalesVM.cs" />
     <Compile Include="ViewModels\CompetenciasTiVM.cs" />
     <Compile Include="ViewModels\CompetenciasVM.cs" />
     <Compile Include="ViewModels\CompetenciaTiVM.cs" />
@@ -708,7 +761,9 @@
     <Compile Include="ViewModels\IdiomaDialectoVM.cs" />
     <Compile Include="ViewModels\IdiomaVM.cs" />
     <Compile Include="ViewModels\IfeVM.cs" />
+    <Compile Include="ViewModels\ImageVM.cs" />
     <Compile Include="ViewModels\InformeTecnicoVM.cs" />
+    <Compile Include="ViewModels\InstitucionAcreditaCapacitacionProfesionalVM.cs" />
     <Compile Include="ViewModels\InstitucionSuperiorVM.cs" />
     <Compile Include="ViewModels\LibroVM.cs" />
     <Compile Include="ViewModels\ManualOperacionVM.cs" />
@@ -903,6 +958,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\Usuarios\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

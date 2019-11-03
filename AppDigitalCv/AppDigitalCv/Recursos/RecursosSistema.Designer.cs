@@ -61,6 +61,15 @@ namespace AppDigitalCv.Recursos {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a correcto.
+        /// </summary>
+        internal static string CodigoError {
+            get {
+                return ResourceManager.GetString("CodigoError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ~/Imagenes/Usuarios/.
         /// </summary>
         internal static string DOCUMENTO_USUARIO {
@@ -228,6 +237,24 @@ namespace AppDigitalCv.Recursos {
         internal static string REGISTRO_TUTORIAS {
             get {
                 return ResourceManager.GetString("REGISTRO_TUTORIAS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a pando1410.
+        /// </summary>
+        internal static string SegPassword {
+            get {
+                return ResourceManager.GetString("SegPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Pando.
+        /// </summary>
+        internal static string SegUsuario {
+            get {
+                return ResourceManager.GetString("SegUsuario", resourceCulture);
             }
         }
         

@@ -18,6 +18,7 @@ namespace AppDigitalCv.Repository
         public CatEstado()
         {
             this.CatMunicipio = new HashSet<CatMunicipio>();
+            this.TblMemoriasExtenso = new HashSet<TblMemoriasExtenso>();
         }
     
         public int id { get; set; }
@@ -27,5 +28,7 @@ namespace AppDigitalCv.Repository
         public virtual CatPais CatPais { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CatMunicipio> CatMunicipio { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblMemoriasExtenso> TblMemoriasExtenso { get; set; }
     }
 }

@@ -27,5 +27,10 @@ namespace AppDigitalCv.Domain
         public int idDireccion { get; set; }
         public int idFamiliar { get; set; }
         public TipoSangreDomainModel TipoSangreDomainModel { get; set; }
+
+
+        //Objetos de las relaciones
+
+        public AccountDomainModel AccountDomainModel { get; set; }
     }
 }

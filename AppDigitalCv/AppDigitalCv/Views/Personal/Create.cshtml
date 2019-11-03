@@ -24,12 +24,7 @@
             <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h5 class="box-title">
-                            <label class="text-success emailtitleletter">
-                                <i class="text-success fa fa-graduation-cap"></i>
-                                @SessionPersister.AccountSession.NombreCompleto
-                            </label>&nbsp;
-                        </h5>
+                       
                     </div>
                     <div role="form">
                         <div class="box-body">
@@ -62,9 +57,9 @@
                             <div class="form-group">
                                 <label for="etSexo">Sexo:</label>
                                 <br />
-                                Femenino: @Html.RadioButtonFor(model => model.StrGenero,"Femenino", new {id="sexo", required = "" })
-                                Masculino: @Html.RadioButtonFor(model => model.StrGenero,"Masculino", new {id="sexo", required = "" })
-                                Otro: @Html.RadioButtonFor(model => model.StrGenero,"Otro",new { id="sexo",required = ""})
+                                Femenino: @Html.RadioButtonFor(model => model.StrGenero, "Femenino", new { id = "sexo", required = "" })
+                                Masculino: @Html.RadioButtonFor(model => model.StrGenero, "Masculino", new { id = "sexo", required = "" })
+                                Otro: @Html.RadioButtonFor(model => model.StrGenero, "Otro", new { id = "sexo", required = "" })
                             </div>
                             <div class="form-group">
                                 <div class="row">
@@ -129,7 +124,7 @@
                     <div class="box box-success">
                         <div class="box-body box-profile">
                             <div id="imgPreview">
-                                <img id="targetImg" alt="User profile picture" src="~/Imagenes/anonimo_perfil.jpg" class="profile-user-img img-responsive img-circle">
+                                <img id="targetImg" alt="User profile picture" src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil.jpeg" class="profile-user-img img-responsive img-circle">
                             </div>
                             <h3 class="profile-username text-center">User Admin.</h3>
                             <p class="text-muted text-center">Ingeniero en Software.</p>
@@ -186,74 +181,97 @@
 </noscript>
 
 <link href="~/Content/toastr.min.css" rel="stylesheet" />
-    @section scripts{
-        <script src="~/Scripts/toastr.min.js"></script>
-        <script src="~/Scripts/Validate/Personal/validar-personal-create.js?v=1"></script>
-        <script src="~/Scripts/Validate/Personal/validate-personal-create-regExp.js"></script>
-        <script src="~/Scripts/Validate/Personal/validate-personal-upload.js"></script>
-        <script src="~/Scripts/Validate/Personal/calculate-homo-clave.js"></script>
-        <script>
+@section scripts{
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/Validate/Personal/validar-personal-create.js?v=1"></script>
+    <script src="~/Scripts/Validate/Personal/validate-personal-create-regExp.js"></script>
+    <script src="~/Scripts/Validate/Personal/validate-personal-upload.js"></script>
+    <script src="~/Scripts/Validate/Personal/calculate-homo-clave.js"></script>
+    <script src="~/Scripts/Validate/Personal/generate-curp.js"></script>
+    <script>
 
-            $(document).ready(function () {
+        $(document).ready(function () {
 
-                //$('#btn').click(function () {
-                //    var dat = $("input[id='sexo']:checked").val();
+            //$('#btn').click(function () {
+            //    var dat = $("input[id='sexo']:checked").val();
 
-                //    alert(dat);
-                //})
+            //    alert(dat);
+            //})
 
 
-                $("#fotoInputFile").change(function () {
+            $("#fotoInputFile").change(function () {
 
-                    var File = this.files;
-                    if (File && File[0]) {
-                        ReadImage(File[0]);
-                    }
-                })
+                var File = this.files;
+                if (File && File[0]) {
+                    ReadImage(File[0]);
+                }
             })
-            var ReadImage = function (file) {
+        })
+        var ReadImage = function (file) {
 
-                var reader = new FileReader;
-                var image = new Image;
-                ///leemos un documento de una URL
-                reader.readAsDataURL(file);
-                reader.onload = function (_file) {
-                    image.src = _file.target.result;
-                    image.onload = function () {
+            var reader = new FileReader;
+            var image = new Image;
+            ///leemos un documento de una URL
+            reader.readAsDataURL(file);
+            reader.onload = function (_file) {
+                image.src = _file.target.result;
+                image.onload = function () {
 
-                        var height = this.height;
-                        var width = this.width;
-                        var type = file.type;
-                        var size = ~~(file.size / 1024) + "KB";
+                    var height = this.height;
+                    var width = this.width;
+                    var type = file.type;
+                    var size = ~~(file.size / 1024) + "KB";
 
-                        $("#targetImg").attr('src', _file.target.result);
-                        $("#description").text("Tamaño de la Foto: " + size);
-                        $("imgPreview").show();
-                        toastr.success("Fotografía es Cargada Correctamente").show();
-                    }
-
+                    $("#targetImg").attr('src', _file.target.result);
+                    $("#description").text("Tamaño de la Foto: " + size);
+                    $("imgPreview").show();
+                    toastr.success("Fotografía es Cargada Correctamente").show();
                 }
 
             }
-            ///esta funcion se encarga de subir una imagen hacia el servidor
-            var Uploadimage = function () {
 
-                var file = $("#targetImg").get(0).files[0];
-                var data = new FormData;
-                data.append("ImageFile", file[0]);
-                $.ajax({
-                    type: "Post",
-                    url: "/",
-                    data: data,
-                    contentType: false,
-                    processData: false,
-                    success: function (response) {
-                        toastr.success("Fotografía es Cargada Correctamente", "Digital-Cv dice", { timeOut: 1000 }).show();
-                    }
-                })
+        }
+        ///esta funcion se encarga de subir una imagen hacia el servidor
+        var Uploadimage = function () {
+
+            var file = $("#targetImg").get(0).files[0];
+            var data = new FormData;
+            data.append("ImageFile", file[0]);
+            $.ajax({
+                type: "Post",
+                url: "/Personal/GuardarImagen",
+                data: data,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    toastr.success("Fotografía es Cargada Correctamente", "Digital-Cv dice", { timeOut: 1000 }).show();
+                }
+            })
+        }
+
+        $('#fotoInputFile').change(function ()
+        {
+            let img = $('#fotoInputFile').get(0).files;
+
+
+            let data = new FormData;
+            data.append('Image', img[0]);
+            img[0].name[0] = 'perfil'
+            let urlTarget = "/Personal/GuardarImagen";
+            $.ajax({
+            url: urlTarget,
+            type: 'post',
+            data: data,
+            contentType: false,
+            processData: false,
+                success: function () {
+                    window.location.href = "/Personal/Create";
             }
+            });
+
+        });
 
 
-        </script>
+    </script>
 }
 

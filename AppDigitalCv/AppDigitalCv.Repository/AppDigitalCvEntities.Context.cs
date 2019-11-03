@@ -75,7 +75,6 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<tblPersonalAsociaciones> tblPersonalAsociaciones { get; set; }
         public virtual DbSet<tblPremiosDocente> tblPremiosDocente { get; set; }
         public virtual DbSet<tblUsuarioRol> tblUsuarioRol { get; set; }
-        public virtual DbSet<tblPersonal> tblPersonal { get; set; }
         public virtual DbSet<catCurso> catCurso { get; set; }
         public virtual DbSet<tblCursos> tblCursos { get; set; }
         public virtual DbSet<tblDocumentacionPersonal> tblDocumentacionPersonal { get; set; }
@@ -102,5 +101,33 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<catTipoProducto> catTipoProducto { get; set; }
         public virtual DbSet<tblEstadiaEmpresa> tblEstadiaEmpresa { get; set; }
         public virtual DbSet<tblTutoria> tblTutoria { get; set; }
+        public virtual DbSet<administradores> administradores { get; set; }
+        public virtual DbSet<administrar> administrar { get; set; }
+        public virtual DbSet<Organizaciones_Salud> Organizaciones_Salud { get; set; }
+        public virtual DbSet<TblDireccion> TblDireccion { get; set; }
+        public virtual DbSet<TblFavoritos> TblFavoritos { get; set; }
+        public virtual DbSet<tblPersonal> tblPersonal { get; set; }
+        public virtual DbSet<TblUsuario> TblUsuario { get; set; }
+        public virtual DbSet<CatCapacitacionesCompetenciasProfesionales> CatCapacitacionesCompetenciasProfesionales { get; set; }
+        public virtual DbSet<CatCategoriaProfesor> CatCategoriaProfesor { get; set; }
+        public virtual DbSet<CatFuentaFinaciamientoMaestria> CatFuentaFinaciamientoMaestria { get; set; }
+        public virtual DbSet<CatFuenteFinanciamientoDoctorado> CatFuenteFinanciamientoDoctorado { get; set; }
+        public virtual DbSet<CatInstitucionAcreditaBachillerato> CatInstitucionAcreditaBachillerato { get; set; }
+        public virtual DbSet<CatInstitucionAcreditaCapacitacionProfesional> CatInstitucionAcreditaCapacitacionProfesional { get; set; }
+        public virtual DbSet<CatInstitucionAcreditaDoctorado> CatInstitucionAcreditaDoctorado { get; set; }
+        public virtual DbSet<CatInstitucionAcreditaLicenciatura> CatInstitucionAcreditaLicenciatura { get; set; }
+        public virtual DbSet<CatInstitucionAcreditaMaestria> CatInstitucionAcreditaMaestria { get; set; }
+        public virtual DbSet<CatIntitucionAcreditaOtra> CatIntitucionAcreditaOtra { get; set; }
+        public virtual DbSet<CatStatusDoctorado> CatStatusDoctorado { get; set; }
+        public virtual DbSet<CatStatusLicenciatura> CatStatusLicenciatura { get; set; }
+        public virtual DbSet<CatStatusMaestria> CatStatusMaestria { get; set; }
+        public virtual DbSet<TblBachillerato> TblBachillerato { get; set; }
+        public virtual DbSet<TblCapacitacionCompetenciasProfesionales> TblCapacitacionCompetenciasProfesionales { get; set; }
+        public virtual DbSet<TblDatosLaborales> TblDatosLaborales { get; set; }
+        public virtual DbSet<TblDoctorado> TblDoctorado { get; set; }
+        public virtual DbSet<TblLicenciaturaIngenieria> TblLicenciaturaIngenieria { get; set; }
+        public virtual DbSet<TblMaetria> TblMaetria { get; set; }
+        public virtual DbSet<TblMemoriasExtenso> TblMemoriasExtenso { get; set; }
+        public virtual DbSet<TblOtraCapacitacion> TblOtraCapacitacion { get; set; }
     }
 }

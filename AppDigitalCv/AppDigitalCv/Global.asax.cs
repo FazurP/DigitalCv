@@ -19,7 +19,7 @@ namespace AppDigitalCv
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutomaperWebProfile.Run();
-            System.Web.Optimization.BundleTable.EnableOptimizations = true;
+            //System.Web.Optimization.BundleTable.EnableOptimizations = true;
         }
 
         protected void Application_Error(object sender, EventArgs e)

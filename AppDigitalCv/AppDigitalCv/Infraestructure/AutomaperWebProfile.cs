@@ -291,6 +291,19 @@ namespace AppDigitalCv.Infraestructure
             CreateMap<TutoriasVM, TutoriasDomainModel>();
             CreateMap<TutoriasDomainModel, TutoriasVM>();
 
+            //CapacitacionCompetenciasProfesionales
+
+            CreateMap<CapacitacionCompetenciasProfesionalesVM, CapacitacionCompetenciasProfesionalesDomainModel>();
+            CreateMap<CapacitacionCompetenciasProfesionalesDomainModel, CapacitacionCompetenciasProfesionalesVM>();
+
+            //InstitucionAcreditaCapacitacionProfesional
+
+            CreateMap<InstitucionAcreditaCapacitacionProfesionalVM, InstitucionAcreditaCapacitacionProfesionalDomainModel>();
+            CreateMap<InstitucionAcreditaCapacitacionProfesionalDomainModel, InstitucionAcreditaCapacitacionProfesionalVM>();
+
+            //Competencias Profesionales
+            CreateMap<CompetenciasProfesionalesVM, CompetenciasProfesionalesDomainModel>();
+            CreateMap<CompetenciasProfesionalesDomainModel, CompetenciasProfesionalesVM>();
         }
 
         public static void Run()

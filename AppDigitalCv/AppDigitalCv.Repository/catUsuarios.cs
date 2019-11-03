@@ -27,6 +27,7 @@ namespace AppDigitalCv.Repository
         public string strPassword { get; set; }
         public System.DateTime dteFechaRegistro { get; set; }
         public int idStatus { get; set; }
+        public Nullable<int> idTipoUsuario { get; set; }
     
         public virtual catStatus catStatus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

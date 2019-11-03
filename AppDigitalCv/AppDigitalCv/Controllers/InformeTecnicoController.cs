@@ -76,8 +76,7 @@ namespace AppDigitalCv.Controllers
 
         public bool GuardarArchivo(InformeTecnicoDomainModel informeTecnicoDM, string nombre)
         {
-
-            bool respuesta = false;
+            //bool respuesta = false;
             string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombre + "/"));
             if (Directory.Exists(path))
             {
@@ -85,11 +84,17 @@ namespace AppDigitalCv.Controllers
                 {
                     string pathCompleto = Path.Combine(path, Path.GetFileName(informeTecnicoDM.DocumentosDM.DocumentoFile.FileName));
                     informeTecnicoDM.DocumentosDM.DocumentoFile.SaveAs(pathCompleto);
-                    respuesta = true;
+                
                 }
+                return true;
+            }
+            else
+            {
+                Directory.CreateDirectory(path);
+                return GuardarArchivo(informeTecnicoDM, nombre);
             }
 
-            return respuesta;
+     
         }
 
         [HttpGet]

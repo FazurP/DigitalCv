@@ -24,7 +24,7 @@ namespace AppDigitalCv.Repository
         public Nullable<System.DateTime> dteFechaFinPremio { get; set; }
         public string strTipoPremio { get; set; }
     
-        public virtual tblPersonal tblPersonal { get; set; }
         public virtual catDocumentos catDocumentos { get; set; }
+        public virtual tblPersonal tblPersonal { get; set; }
     }
 }

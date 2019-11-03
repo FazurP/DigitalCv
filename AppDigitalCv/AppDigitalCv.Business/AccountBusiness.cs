@@ -17,12 +17,14 @@ namespace AppDigitalCv.Business
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly AccountRepository accountRepository;
+        private readonly PersonalRepository personalRepository;
         //puedes agregar otro repository de otra tabla  de la misma forma
 
         public AccountBusiness(IUnitOfWork _unitOfWork)
         {
             unitOfWork = _unitOfWork;
             accountRepository = new AccountRepository(unitOfWork);
+            personalRepository = new PersonalRepository(unitOfWork);
         }
 
         
@@ -100,6 +102,51 @@ namespace AppDigitalCv.Business
             #endregion
             */
             return null;
+        }
+
+        public bool ExistUsuario(AccountDomainModel _accountDomainModel)
+        {
+            bool respuesta = false;
+            catUsuarios catUsuarios = new catUsuarios();
+
+            catUsuarios = accountRepository.GetAll().FirstOrDefault(p => p.strEmailInstitucional == _accountDomainModel.Email);
+
+            if (catUsuarios != null)
+            {
+                respuesta = true;
+            }
+
+            return respuesta;
+        }
+
+        public bool AddUsuario(PersonalDomainModel personalDomainModel)
+        {
+            bool respuesta = false;
+            catUsuarios catUsuarios = new catUsuarios();
+            tblPersonal tblPersonal = new tblPersonal();
+
+            if (!accountRepository.Exists(p => p.strEmailInstitucional == personalDomainModel.AccountDomainModel.Email))
+            {
+                tblPersonal.catUsuarios = new catUsuarios
+                {
+                    dteFechaRegistro = DateTime.Now,
+                    idStatus = 1,
+                    strEmailInstitucional = personalDomainModel.AccountDomainModel.Email,
+                    strNombrUsuario = personalDomainModel.AccountDomainModel.Nombre,
+                    strPassword = personalDomainModel.AccountDomainModel.Password,
+                    
+
+                };
+
+                tblPersonal.strNombre = personalDomainModel.Nombre;
+                tblPersonal.strApellidoPaterno = personalDomainModel.ApellidoPaterno;
+                tblPersonal.strApellidoMaterno = personalDomainModel.ApellidoMaterno;
+
+                personalRepository.Insert(tblPersonal);
+                respuesta = true;
+            }
+
+            return respuesta;
         }
 
     }

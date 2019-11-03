@@ -53,6 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountRepository.cs" />
+    <Compile Include="administradores.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="administrar.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="AlergiasPersonalRepository.cs" />
     <Compile Include="AlergiasRepository.cs" />
     <Compile Include="AppDigitalCvEntities.Context.cs">
@@ -72,6 +78,7 @@
     </Compile>
     <Compile Include="AreaRepository.cs" />
     <Compile Include="AsociacionesRepository.cs" />
+    <Compile Include="CapacitacionCompetenciasProfesionalesRepository.cs" />
     <Compile Include="CapituloLibroRepository.cs" />
     <Compile Include="catAlergias.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
@@ -82,7 +89,13 @@
     <Compile Include="catAsociaciones.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="CatCapacitacionesCompetenciasProfesionales.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="catCategoria.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatCategoriaProfesor.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CatColonia.cs">
@@ -113,10 +126,43 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CategoriaRepository.cs" />
+    <Compile Include="CatFuentaFinaciamientoMaestria.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatFuenteFinanciamientoDoctorado.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatInstitucionAcreditaBachillerato.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatInstitucionAcreditaCapacitacionProfesional.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatInstitucionAcreditaDoctorado.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatInstitucionAcreditaLicenciatura.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatInstitucionAcreditaMaestria.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatIntitucionAcreditaOtra.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="catPeriodo.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="catProduccionArtistica.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatStatusDoctorado.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatStatusLicenciatura.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatStatusMaestria.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="catTipoActividad.cs">
@@ -126,6 +172,7 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CompetenciasPersonalRepository.cs" />
+    <Compile Include="CompetenciasProfesionalesRepository.cs" />
     <Compile Include="CompetenciasRepository.cs" />
     <Compile Include="CompetenciasTiPersonalRepository.cs" />
     <Compile Include="CompetenciaTiRepository.cs" />
@@ -231,11 +278,15 @@
     <Compile Include="Infraestructure\Contract\IBaseRepository.cs" />
     <Compile Include="Infraestructure\Contract\IUnitOfWork.cs" />
     <Compile Include="Infraestructure\UnitOfWork.cs" />
+    <Compile Include="InstitucionAcreditaCapacitacionProfesionalRepository.cs" />
     <Compile Include="InstitucionSuperiorRepository.cs" />
     <Compile Include="LibroRepository.cs" />
     <Compile Include="ManualOperacionRepository.cs" />
     <Compile Include="MunicipioRepository.cs" />
     <Compile Include="NivelSalarialRepository.cs" />
+    <Compile Include="Organizaciones_Salud.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="PaisRepository.cs" />
     <Compile Include="ParentescoRepository.cs" />
     <Compile Include="ParticipacionDocenteRepository.cs" />
@@ -262,6 +313,12 @@
     <Compile Include="tblAlergiasPersonal.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="TblBachillerato.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblCapacitacionCompetenciasProfesionales.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblCapituloLibro.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
@@ -277,6 +334,9 @@
     <Compile Include="tblDatosContacto.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="TblDatosLaborales.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblDatosLaboralesAdministrativos.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
@@ -286,7 +346,13 @@
     <Compile Include="tblDeportePersonal.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="TblDireccion.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblDireccionIndividualizada.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblDoctorado.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDocumentacionPersonal.cs">
@@ -307,6 +373,9 @@
     <Compile Include="tblExperienciaLaboralInterna.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="TblFavoritos.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblIdiomaDialectoPersonal.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
@@ -316,7 +385,19 @@
     <Compile Include="tblLibro.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="TblLicenciaturaIngenieria.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblMaetria.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblManualOperacion.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblMemoriasExtenso.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblOtraCapacitacion.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblParticipacionDocente.cs">
@@ -362,6 +443,9 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblTutoria.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblUsuario.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblUsuarioRol.cs">

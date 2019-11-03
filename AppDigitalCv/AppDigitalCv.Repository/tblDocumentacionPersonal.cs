@@ -21,7 +21,7 @@ namespace AppDigitalCv.Repository
         public string strIdentificador { get; set; }
         public Nullable<System.DateTime> dteExpedicion { get; set; }
     
-        public virtual tblPersonal tblPersonal { get; set; }
         public virtual catDocumentos catDocumentos { get; set; }
+        public virtual tblPersonal tblPersonal { get; set; }
     }
 }

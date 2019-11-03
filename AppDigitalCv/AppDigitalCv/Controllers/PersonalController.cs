@@ -10,6 +10,8 @@ using AppDigitalCv.ViewModels;
 using System.IO;
 //cargamos la seguridad y su persistencia
 using AppDigitalCv.Security;
+using System.Drawing;
+using System.Threading;
 
 namespace AppDigitalCv.Controllers
 {
@@ -338,6 +340,70 @@ namespace AppDigitalCv.Controllers
         }
         #endregion
 
+        public void GuardarImagen(ImageVM img)
+        {
+            if (img != null)
+            {
+                string ruta = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + SessionPersister.AccountSession.NombreCompleto + "/" + "ImagePerfil" + "/"));
+                string nombre = "perfil";
+
+                 if (Directory.Exists(ruta))
+                {
+
+                    if (Directory.GetFiles(ruta).Length == 0)
+                    {
+                        if (img.image.ContentType.Equals("image/jpeg"))
+                        {
+                            img.image.SaveAs(ruta + nombre);
+                            Bitmap bmp = new Bitmap(CambiarTamanioImagen(Image.FromFile(ruta + nombre), 128, 128));
+                            using (var stream = new MemoryStream())
+                            {
+                                bmp.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                                var image = Image.FromStream(stream);
+
+                                image.Save(ruta + nombre + ".jpeg");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        System.IO.File.Delete(ruta+nombre);
+                        System.IO.File.Delete(ruta+nombre+".jpeg");
+                        if (img.image.ContentType.Equals("image/jpeg"))
+                        {
+                            img.image.SaveAs(ruta + nombre);
+                            Bitmap bmp = new Bitmap(CambiarTamanioImagen(Image.FromFile(ruta + nombre), 128, 128));
+                            using (var stream = new MemoryStream())
+                            {
+                                bmp.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                                var image = Image.FromStream(stream);
+
+                                image.Save(ruta + nombre + ".jpeg");
+                            }
+                        }
+                    }        
+                }
+                else
+                {
+                    Directory.CreateDirectory(ruta);
+                    GuardarImagen(img);
+                }
+            }
+        }
+        public Bitmap CambiarTamanioImagen(Image imagenOriginal,int width, int height)
+        {
+            var radio = Math.Max((double)width / imagenOriginal.Width, (double)height / imagenOriginal.Height);
+            var nuevoAncho = (int)(imagenOriginal.Width * radio);
+            var nuevoAlto = (int)(imagenOriginal.Height * radio);
+
+            var ImagenRedimencionada = new Bitmap(width,height);
+            Graphics.FromImage(ImagenRedimencionada).DrawImage(imagenOriginal, 0, 0, width, height);
+            Bitmap ImagenFinal = new Bitmap(ImagenRedimencionada);
+         
+            return ImagenFinal;
+        }
 
         #region Crear Directorio de Usuario
         //string nombreCompleto ,HttpPostedFileWrapper curpFile, HttpPostedFileWrapper rfcFile, HttpPostedFileWrapper imageFile,

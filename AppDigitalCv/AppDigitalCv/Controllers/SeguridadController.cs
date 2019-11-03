@@ -15,15 +15,22 @@ namespace AppDigitalCv.Controllers
     {
         IAccountBusiness IAccountBusiness;
 
+        private Usuarios.wsusuariosSoapClient wsusuariosSoapClient = new Usuarios.wsusuariosSoapClient();
+        private Usuarios.Seguridad  seguridad= new Usuarios.Seguridad();
+        private Usuarios.Usuario usuario = new Usuarios.Usuario();
+   
 
         public SeguridadController(IAccountBusiness _IAccountBusiness)
         {
             IAccountBusiness = _IAccountBusiness;
+            seguridad.SegUsuario = Recursos.RecursosSistema.SegUsuario;
+            seguridad.SegPassword = Recursos.RecursosSistema.SegPassword;
         }
 
         // GET: Seguridad
         public ActionResult Index()
         {
+         
             return View();
         }
 
@@ -46,14 +53,17 @@ namespace AppDigitalCv.Controllers
         [HttpPost]
         public ActionResult Login(AccountViewModel accountViewModel)
         {
-           
-            AccountDomainModel accountDomainModel = new AccountDomainModel();
-            AutoMapper.Mapper.Map(accountViewModel,accountDomainModel);
+            usuario.NomUsuario = accountViewModel.Email;
+            usuario.Password = accountViewModel.Password;
 
-            if(!string.IsNullOrEmpty(accountViewModel.Email) && !string.IsNullOrEmpty(accountViewModel.Password))
+            AccountDomainModel accountDomainModel = new AccountDomainModel();
+            AutoMapper.Mapper.Map(accountViewModel, accountDomainModel);
+
+            if (IAccountBusiness.ExistUsuario(accountDomainModel))
             {
                 accountDomainModel = IAccountBusiness.ValidarLogin(accountDomainModel);
-               ///accountDomainModel = IAccountBusiness.ValidarLoginService(accountDomainModel);
+                ///accountDomainModel = IAccountBusiness.ValidarLoginService(accountDomainModel);
+
                 if (accountDomainModel != null)
                 {
                     AccountViewModel viewAccount = new AccountViewModel();
@@ -61,13 +71,34 @@ namespace AppDigitalCv.Controllers
                     SessionPersister.AccountSession = viewAccount;
                     return RedirectToAction("Create", "Personal");
                 }
-                else
+            }
+            else
+            {
+                PersonalDomainModel personalDomainModel = new PersonalDomainModel();
+
+                var res = wsusuariosSoapClient.ConsultaUsuarios(seguridad, usuario);
+
+                if (res.Correo_Electronico != null && res.Clave != null)
                 {
-                    ViewBag.Validar = Recursos.RecursosSistema.USUARIO_INEXISTENTE;
+                    personalDomainModel.Nombre = res.Nombre;
+                    personalDomainModel.ApellidoPaterno = res.ApellidoPaterno;
+                    personalDomainModel.ApellidoMaterno = res.ApellidoMaterno;
+                    personalDomainModel.AccountDomainModel = new AccountDomainModel { Email = res.Correo_Electronico, Password = usuario.Password, Nombre = usuario.NomUsuario };
+
+                    if (IAccountBusiness.AddUsuario(personalDomainModel))
+                    {
+                        
+                        AccountViewModel viewAccount = new AccountViewModel();
+                        viewAccount.NombreCompleto = res.Nombre + " " + res.ApellidoPaterno + " " + res.ApellidoMaterno;
+                        SessionPersister.AccountSession = viewAccount;
+                        return RedirectToAction("Create", "Personal");
+                    }
                 }
             }
             return View();
+
         }
+            
 
         [HttpPost]
         public void Cerrar()

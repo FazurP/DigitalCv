@@ -28,5 +28,8 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="AccountDomain">recibe una entidad del tipo accountdomain</param>
         /// <returns>una entidad accountDomainModel</returns>
         AccountDomainModel ValidarLoginService(AccountDomainModel AccountDomain);
+
+        bool ExistUsuario(AccountDomainModel _accountDomainModel);
+        bool AddUsuario(PersonalDomainModel personalDomainModel);
     }
 }

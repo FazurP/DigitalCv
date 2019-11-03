@@ -31,13 +31,41 @@
                         <li>
                             <ul class="menu">
                                 <li>
+                                    <a href="@Url.Action("Create","CapacitacionCompetenciasProfesionales")">
+                                        <span>Capacitación en Competencias Profesionales</span>
+                                        <div class="pull-left">
+                                            <img src="~/Imagenes/docente_participa.png" class="img-circle" alt="User Image">
+                                        </div>
+
+                                        <p class="text-green">Capacitaciones Recibidas</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="menu">
+                                <li>
+                                    <a href="@Url.Action("Create","OtrasCapacitaciones")">
+                                        <span>Otras Capacitaciones</span>
+                                        <div class="pull-left">
+                                            <img src="~/Imagenes/docente_participa.png" class="img-circle" alt="User Image">
+                                        </div>
+
+                                        <p class="text-green">Otras Capacitaciones Recibidas</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="menu">
+                                <li>
                                     <a href="@Url.Action("Create","Cursos")">
                                         <span>Cursos Impartidos</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
                                         </div>
 
-                                        <p class="text-green">Agregar cursos</p>
+                                        <p class="text-green">Cursos Impartidos</p>
                                     </a>
 
                                 </li>
@@ -80,12 +108,28 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","ParticipacionDocente")">
-                                        <span>Participación en conferencias,congresos</span>
+                                        <span>Participación en Conferencias, Congresos, <br >etc...</span>
+                                        <br />
                                         <div class="pull-left">
                                             <img src="~/Imagenes/docente_participa.png" class="img-circle" alt="User Image">
                                         </div>
 
-                                        <p class="text-green">Agregar Participación</p>
+                                        <p class="text-green">Participación en Conferencias, etc...</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="menu">
+                                <li>
+                                    <a href="@Url.Action("Create","#")">
+                                        <span>Presentacion de Conferencias, Congresos, <br>etc...</span>
+                                        <br />
+                                        <div class="pull-left">
+                                            <img src="~/Imagenes/docente_participa.png" class="img-circle" alt="User Image">
+                                        </div>
+
+                                        <p class="text-green">Presentacion de Conferencias, etc...</p>
                                     </a>
                                 </li>
                             </ul>
@@ -380,7 +424,9 @@
                 @* BEGIN User Account Menu *@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="~/Content/img/user.jpg" class="user-image" alt="User Image">
+                        @if (SessionPersister.AccountSession != null)
+                        {
+                        <img src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil.jpeg" class="user-image">
                         <span class="hidden-xs">
                             @if (SessionPersister.AccountSession != null)
                             {
@@ -388,11 +434,14 @@
                             }
 
                         </span>
+                        }
                     </a>
                     <ul class="dropdown-menu">
                         <li class="user-header">
-                            <img src="~/Content/img/user.jpg" class="img-circle" alt="User Image">
-
+                            @if (SessionPersister.AccountSession != null)
+                            {
+                                <img src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil.jpeg" class="img-circle">
+                            }
                             <p>
                                 @if (SessionPersister.AccountSession != null)
                                 {
