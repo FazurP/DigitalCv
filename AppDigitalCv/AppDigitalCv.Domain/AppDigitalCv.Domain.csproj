@@ -95,6 +95,7 @@
     <Compile Include="LibroDomainModel.cs" />
     <Compile Include="ManualOperacionDomainModel.cs" />
     <Compile Include="MunicipioDomainModel.cs" />
+    <Compile Include="NacionalidadDomainModel.cs" />
     <Compile Include="NivelSalarialDomainModel.cs" />
     <Compile Include="NumeroCartillaMilitarDomainModel.cs" />
     <Compile Include="NumeroLicenciaManejoDomainModel.cs" />

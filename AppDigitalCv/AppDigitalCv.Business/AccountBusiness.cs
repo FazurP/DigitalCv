@@ -41,7 +41,7 @@ namespace AppDigitalCv.Business
 
         public AccountDomainModel ValidarLogin(AccountDomainModel AccountDomain)
         {
-            Expression<Func<catUsuarios, bool>> predicado = p => p.strEmailInstitucional == AccountDomain.Email && p.strPassword == AccountDomain.Password;
+            Expression<Func<catUsuarios, bool>> predicado = p => p.strNombrUsuario == AccountDomain.Email && p.strPassword == AccountDomain.Password;
             catUsuarios catUsuarios= accountRepository.SingleOrDefault(predicado);
             if (catUsuarios != null)
             {
@@ -109,7 +109,7 @@ namespace AppDigitalCv.Business
             bool respuesta = false;
             catUsuarios catUsuarios = new catUsuarios();
 
-            catUsuarios = accountRepository.GetAll().FirstOrDefault(p => p.strEmailInstitucional == _accountDomainModel.Email);
+            catUsuarios = accountRepository.GetAll().FirstOrDefault(p => p.strNombrUsuario == _accountDomainModel.Email);
 
             if (catUsuarios != null)
             {

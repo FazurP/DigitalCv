@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace AppDigitalCv.Repository
 {
-    public class TipoEmpresaRepository : BaseRepository<catTipoEmpresa>
+    public class NacionalidadRepository : BaseRepository<CatNacionalidad>
     {
-        public TipoEmpresaRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public NacionalidadRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
 
         }

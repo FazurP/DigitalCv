@@ -18,7 +18,6 @@ namespace AppDigitalCv.Repository
         public catDocumentos()
         {
             this.tblDocumentacionPersonal = new HashSet<tblDocumentacionPersonal>();
-            this.tblPremiosDocente = new HashSet<tblPremiosDocente>();
             this.tblPortafolioPersonal = new HashSet<tblPortafolioPersonal>();
             this.tblParticipacionDocente = new HashSet<tblParticipacionDocente>();
             this.tblParticipacionInstitucionalExterna = new HashSet<tblParticipacionInstitucionalExterna>();
@@ -30,6 +29,7 @@ namespace AppDigitalCv.Repository
             this.tblPrototipo = new HashSet<tblPrototipo>();
             this.tblProyectoInvestigacionAplicadaDesarrolloTecnologico = new HashSet<tblProyectoInvestigacionAplicadaDesarrolloTecnologico>();
             this.tblEstadiaEmpresa = new HashSet<tblEstadiaEmpresa>();
+            this.tblPremiosDocente = new HashSet<tblPremiosDocente>();
         }
     
         public int idDocumento { get; set; }
@@ -39,8 +39,6 @@ namespace AppDigitalCv.Repository
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblDocumentacionPersonal> tblDocumentacionPersonal { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblPremiosDocente> tblPremiosDocente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblPortafolioPersonal> tblPortafolioPersonal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -63,5 +61,7 @@ namespace AppDigitalCv.Repository
         public virtual ICollection<tblProyectoInvestigacionAplicadaDesarrolloTecnologico> tblProyectoInvestigacionAplicadaDesarrolloTecnologico { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblEstadiaEmpresa> tblEstadiaEmpresa { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblPremiosDocente> tblPremiosDocente { get; set; }
     }
 }

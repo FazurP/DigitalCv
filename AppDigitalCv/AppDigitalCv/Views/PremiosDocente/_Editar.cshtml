@@ -1,0 +1,50 @@
+﻿@model AppDigitalCv.ViewModels.PremiosDocenteVM
+@using AppDigitalCv.Security
+
+<div>
+    <form id="myForm" enctype="multipart/form-data" >
+
+        @Html.HiddenFor(model => model.id, new { id = "id" })
+
+        <div class="bs-container">
+
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-7">
+                    @Html.Label("Datos del Premio y/o Distinción")
+                    <hr />
+                    <label>Nombre del Premios:</label>
+                    @Html.TextBoxFor(model => model.StrNombrePremio, new { @class = "form-control input-sm", id = "NombrePremio" })
+                    <label>Institución:</label>
+                    @Html.TextBoxFor(model => model.StrInstitucion, new { @class = "form-control input-sm", id = "Institucion" })
+                    <label>Actividades Desempeñadas:</label>
+                    @Html.TextAreaFor(model => model.StrActividadDesempeniada, new { @class = "form-control input-sm", id = "ActividadesDesempeñadas" })
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-lg-6 col-lg-offset-4">
+                        <a href="#" id="btnSubmit" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<script>
+    $('#btnSubmit').click(function ()
+    {
+        let url = "/PremiosDocente/UpdatePremiosDocente";
+
+        let data = $('#myForm').serialize();
+
+        $.post(url, data).done(function ()
+        {
+            window.location.href = "/PremiosDocente/Create";
+        });
+
+    });
+</script>

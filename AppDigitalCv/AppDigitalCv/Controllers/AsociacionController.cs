@@ -12,19 +12,17 @@ namespace AppDigitalCv.Controllers
     public class AsociacionController : Controller
     {
         IAsociacionesBusiness IasociacionesBusiness;
-        ITipoEmpresaBusiness ItipoEmpresaBusiness;
 
-        public AsociacionController(IAsociacionesBusiness _IasociacionesBusiness, ITipoEmpresaBusiness _ItipoEmpresaBusiness)
+        public AsociacionController(IAsociacionesBusiness _IasociacionesBusiness)
         {
             IasociacionesBusiness = _IasociacionesBusiness;
-            ItipoEmpresaBusiness = _ItipoEmpresaBusiness;
         }
 
         [HttpGet]
         
         public ActionResult Create()
         {
-            ViewBag.IdTipoEmpresa = new SelectList(ItipoEmpresaBusiness.GetEmpresas(), "IdTipoEmpresa", "StrDescripcion");
+         
             return View();
         }
 

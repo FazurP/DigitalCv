@@ -75,11 +75,9 @@ namespace AppDigitalCv.Business
             {
                 //buscamos por id y lo almacenamos en nuestra entidad de entityframework
                 tblPersonal personal = personalRepository.SingleOrDefault(p => p.idPersonal == personalDM.idPersonal);
-                if (personal != null)
+                if (personal.idPersonal > 0)
                 {
-                    personal.strNombre = personalDM.Nombre;
-                    personal.strApellidoPaterno = personalDM.ApellidoPaterno;
-                    personal.strApellidoMaterno = personalDM.ApellidoMaterno;
+                    personal.idNacionalidad = personalDM.idNacionalidad;
                     personal.idEstadoCivil = personalDM.idEstadoCivil;
                     personal.strGenero = personalDM.strGenero;
                     personal.strCurp = personalDM.Curp;
@@ -87,33 +85,36 @@ namespace AppDigitalCv.Business
                     personal.strHomoclave = personalDM.Homoclave;
                     personal.strLogros = personalDM.strLogros;
                     personal.strUrlFoto = personalDM.strUrlFoto;
+                    personal.strUrlNacionalidad = personalDM.strUrlNacionalidad;
+                    personal.strUrlCurp = personalDM.strUrlCurp;
+                    personal.strUrlRfc = personalDM.strUrlRfc;
                     //actualizamos los datos en la base de datos.
                     personalRepository.Update(personal);
                     resultado = "Se Actualizo correctamente";
 
                 }
             }
-            else
-            {
-                tblPersonal personal = new tblPersonal();
-                personal.strNombre = personalDM.Nombre;
-                personal.strApellidoPaterno = personalDM.ApellidoPaterno;
-                personal.strApellidoMaterno = personalDM.ApellidoMaterno;
-                personal.idEstadoCivil = personalDM.idEstadoCivil;
-                personal.strGenero = personalDM.strGenero;
-                personal.strCurp = personalDM.Curp;
-                personal.strRfc= personalDM.Rfc;
-                personal.strUrlRfc = personalDM.strUrlRfc;
-                personal.strUrlCurp = personalDM.strUrlCurp;
-                personal.strLogros = personalDM.strLogros;
-                personal.strUrlFoto = personalDM.strUrlFoto;
-                
-                /***********/ personal.archivoRfc = "archivo temporal"; /*********************/
+            //else
+            //{
+            //    tblPersonal personal = new tblPersonal();
+            //    personal.strNombre = personalDM.Nombre;
+            //    personal.strApellidoPaterno = personalDM.ApellidoPaterno;
+            //    personal.strApellidoMaterno = personalDM.ApellidoMaterno;
+            //    personal.idEstadoCivil = personalDM.idEstadoCivil;
+            //    personal.strGenero = personalDM.strGenero;
+            //    personal.strCurp = personalDM.Curp;
+            //    personal.strRfc= personalDM.Rfc;
+            //    personal.strUrlRfc = personalDM.strUrlRfc;
+            //    personal.strUrlCurp = personalDM.strUrlCurp;
+            //    personal.strLogros = personalDM.strLogros;
+            //    personal.strUrlFoto = personalDM.strUrlFoto;
+            //    personal.strUrlNacionalidad = personalDM.strUrlNacionalidad;
+            //    personal.idNacionalidad = personalDM.idNacionalidad;
 
-                personal.strHomoclave = personalDM.Homoclave;
-                var record = personalRepository.Insert(personal);
-                resultado = "Se insertaron correctamente los valores";
-            }
+            //    personal.strHomoclave = personalDM.Homoclave;
+            //    var record = personalRepository.Insert(personal);
+            //    resultado = "Se insertaron correctamente los valores";
+            //}
             return resultado;
         }
 

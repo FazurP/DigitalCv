@@ -20,13 +20,14 @@ namespace AppDigitalCv.Controllers
         //mandamos llamar al metodo de negocio
         IPersonalBusiness IPersonalBussines;
         IEstadoCivilBusiness estadoCivilBusiness;
+        INacionalidadBusiness NacionalidadBusiness;
 
-
-        public PersonalController(IPersonalBusiness _PersonalBussiness, IEstadoCivilBusiness _estadoCivilBusiness)
+        public PersonalController(IPersonalBusiness _PersonalBussiness, IEstadoCivilBusiness _estadoCivilBusiness,INacionalidadBusiness _nacionalidadBusiness)
         {
 
                 IPersonalBussines = _PersonalBussiness;
                 estadoCivilBusiness = _estadoCivilBusiness;
+            NacionalidadBusiness = _nacionalidadBusiness;
         }
         
         #region Crear 
@@ -35,6 +36,7 @@ namespace AppDigitalCv.Controllers
         {
             if (SessionPersister.AccountSession != null)
             {
+                ViewBag.idNacionalidad = new SelectList(NacionalidadBusiness.GetAllNacionalidades(),"id","strValor");
                 ViewBag.IdEstadoCivil = new SelectList(estadoCivilBusiness.GetEstadoCivil(), "IdEstadoCivil", "StrDescripcion");
                 return View();
             }
@@ -43,20 +45,39 @@ namespace AppDigitalCv.Controllers
             }
            
         }
-    
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Nombre,ApellidoPaterno,ApellidoMaterno,IdEstadoCivil,StrGenero,RFC,Curp,HomoClave,ArchivoRfc,ArchivoCurp,ImageFile,strLogros")] PersonalVM personalVM)
+        public ActionResult Create(PersonalVM personalVM)
         {
-          
-            if (ModelState.IsValid)
+
+            if (ModelState.IsValidField("idNacionalidad")
+                &&
+                ModelState.IsValidField("IdEstadoCivil")
+                &&
+                ModelState.IsValidField("StrGenero")
+                &&
+                ModelState.IsValidField("Curp")
+                &&
+                ModelState.IsValidField("ArchivoCurp")
+                &&
+                ModelState.IsValidField("RFC")
+                &&
+                ModelState.IsValidField("ArchivoRfc")
+                &&
+                ModelState.IsValidField("HomoClave")
+                &&
+                ModelState.IsValidField("strLogros")
+                &&
+                ModelState.IsValidField("ArchivoNacionalidad")
+                )
             {
-                if (personalVM.ArchivoCurp != null && personalVM.ArchivoRfc != null && personalVM.ImageFile != null 
+                if (personalVM.ArchivoCurp != null && personalVM.ArchivoRfc != null && personalVM.ArchivoNacionalidad != null 
                     && personalVM.ArchivoCurp.ContentType.Equals("application/pdf") 
                     && personalVM.ArchivoRfc.ContentType.Equals("application/pdf")
-                    && personalVM.ImageFile.ContentType.Equals("image/jpeg"))
+                    && personalVM.ArchivoNacionalidad.ContentType.Equals("application/pdf"))
                 {
-                      string nombreCompleto = personalVM.Nombre + " " + personalVM.ApellidoPaterno + " " + personalVM.ApellidoMaterno;
+                    personalVM.idPersonal = SessionPersister.AccountSession.IdPersonal;
                     this.CrearDirectorioUsuario(personalVM);
                                                            
                 }
@@ -409,29 +430,46 @@ namespace AppDigitalCv.Controllers
         //string nombreCompleto ,HttpPostedFileWrapper curpFile, HttpPostedFileWrapper rfcFile, HttpPostedFileWrapper imageFile,
         public void CrearDirectorioUsuario(PersonalVM personalVM)
         {
-            string nombreCompleto = personalVM.Nombre + " " + personalVM.ApellidoPaterno + " " + personalVM.ApellidoMaterno;///falta agregar el id del personal para asegurar que no se repitan las carpetas
+            string nombreCompleto = SessionPersister.AccountSession.NombreCompleto;
             string path = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/"+nombreCompleto));
             string pathRfc = string.Empty;
             string pathCurp = string.Empty;
+            string pathNacio = string.Empty;
 
             if (!Directory.Exists(path))
             {
                 //creamos el directorio
                 DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
-                path = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/"+nombreCompleto+"/"), Path.GetFileName(personalVM.ImageFile.FileName));
                 pathRfc = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + "/"), Path.GetFileName(personalVM.ArchivoRfc.FileName));
                 pathCurp = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + "/"), Path.GetFileName(personalVM.ArchivoCurp.FileName));
+                pathNacio = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + "/"), Path.GetFileName(personalVM.ArchivoNacionalidad.FileName));
 
-                personalVM.ImageFile.SaveAs(path);
                 personalVM.ArchivoRfc.SaveAs(pathRfc);
                 personalVM.ArchivoCurp.SaveAs(pathCurp);
+                personalVM.ArchivoNacionalidad.SaveAs(pathCurp);
 
-                personalVM.strUrlFoto = path;
                 personalVM.strUrlRfc = pathRfc;
                 personalVM.strUrlCurp = pathCurp;
-                
+                personalVM.strUrlNacionalidad = pathNacio;
+
                 this.AddEditPersonal(personalVM);
 
+            }
+            else
+            {
+                pathRfc = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + "/"), Path.GetFileName(personalVM.ArchivoRfc.FileName));
+                pathCurp = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + "/"), Path.GetFileName(personalVM.ArchivoCurp.FileName));
+                pathNacio = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + "/"), Path.GetFileName(personalVM.ArchivoNacionalidad.FileName));
+
+                personalVM.ArchivoRfc.SaveAs(pathRfc);
+                personalVM.ArchivoCurp.SaveAs(pathCurp);
+                personalVM.ArchivoNacionalidad.SaveAs(pathNacio);
+
+                personalVM.strUrlRfc = pathRfc;
+                personalVM.strUrlCurp = pathCurp;
+                personalVM.strUrlNacionalidad = pathNacio;
+
+                this.AddEditPersonal(personalVM);
             }
         }
         #endregion

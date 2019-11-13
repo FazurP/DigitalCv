@@ -32,7 +32,13 @@
                         <div role="form" class="form-inline">
                             <div class="form-group">
                                 <label>Padre:&nbsp;&nbsp;</label>
-                                @Html.TextBoxFor(model => model.PadreVM.StrNombre, new { @class = "form-control input-sm", placeholder = "Nombre Completo", required = "required", title = "Nombre completo de tu familiar", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$", id = "nombrepadre" })
+                                @Html.TextBoxFor(model => model.PadreVM.StrNombre, new { @class = "form-control input-sm", placeholder = "Nombre(s)", required = "required", title = "Nombre completo de tu familiar", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$", id = "nombrepadre" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.PadreVM.strApellidoPaterno, new { @class = "form-control input-sm", placeholder = "Apellido Paterno", required = "required", title = "Apellido de tu Familiar", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$", id = "ApellidoPaternoPadre" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.PadreVM.strApellidoMaterno, new { @class = "form-control input-sm", placeholder = "Apellido Materno", required = "required", title = "Apellido de tu Familiar", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$", id = "ApellidoMaternoPadre" })
                             </div>
                             <div class="form-group">
                                 <label></label>
@@ -47,8 +53,9 @@
                                 @Html.TextBoxFor(model => model.PadreVM.StrOcupacion, new { @class = "form-control input-sm", placeholder = "Ocupación", required = "required", title = "Datos de la Ocupación", size = "10", id = "ocupacionpadre", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
                             </div>
                             <div class="form-group">
-                                <label>Edad:</label>
-                                @Html.TextBoxFor(model => model.PadreVM.IntEdad, new { @class = "form-control input-sm", placeholder = "Edad", required = "required", title = "Edad del Familiar", size = "1", type = "Number", id = "edadpadre" })
+                                <br />
+                                <label>Fecha de Nacimiento:</label>
+                                @Html.TextBoxFor(model => model.PadreVM.DteFechaNacimiento, new { @class = "form-control input-sm", required = "required", title = "Fecha de Nacimiento", size = "1", type = "date", id = "FechaNacimientoPadre" })
                             </div>
                         </div>
                         <br />
@@ -56,7 +63,12 @@
                             <div class="form-group">
                                 <label>Madre:&nbsp;</label>
                                 @Html.TextBoxFor(model => model.MadreVM.StrNombre, new { @class = "form-control input-sm", placeholder = "Nombre Completo", required = "required", title = "Nombre completo de tu familiar", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$", id = "nombremadre" })
-
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.MadreVM.strApellidoPaterno, new { @class = "form-control input-sm", placeholder = "Apellido Paterno", required = "required", title = "Apellido de tu Familiar", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$", id = "ApellidoPaternoMadre" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.MadreVM.strApellidoMaterno, new { @class = "form-control input-sm", placeholder = "Apellido Materno", required = "required", title = "Apellido de tu Familiar", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$", id = "ApellidoMaternoMadre" })
                             </div>
                             <div class="form-group">
                                 <label></label>
@@ -71,15 +83,22 @@
                                 @Html.TextBoxFor(model => model.MadreVM.StrOcupacion, new { @class = "form-control input-sm", placeholder = "Ocupación", required = "required", title = "Datos de la Ocupación", size = "10", id = "ocupacionmadre", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
                             </div>
                             <div class="form-group">
-                                <label>Edad:</label>
-                                @Html.TextBoxFor(model => model.MadreVM.IntEdad, new { @class = "form-control input-sm", placeholder = "Edad", required = "required", title = "Edad del Familiar", size = "1", type = "Number", id = "edadmadre" })
+                                <br />
+                                <label>Fecha de Nacimiento:</label>
+                                @Html.TextBoxFor(model => model.MadreVM.DteFechaNacimiento, new { @class = "form-control input-sm", required = "required", title = "Fecha de Nacimiento", size = "1", type = "date", id = "FechaNacimientoMadre" })
                             </div>
                         </div>
                         <br />
                         <div class="form-inline">
                             <div class="form-group">
                                 <label>Pareja:&nbsp;</label>
-                                @Html.TextBoxFor(model => model.ParejaVM.StrNombre, new { @class = "form-control input-sm", placeholder = "Nombre de tu esposo(a)", required = "required", title = "Nombre completo de tu familiar", id = "nombrepareja", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
+                                @Html.TextBoxFor(model => model.ParejaVM.StrNombre, new { @class = "form-control input-sm", placeholder = "Nombre de tu esposo(a)", title = "Nombre completo de tu familiar", id = "nombrepareja", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.ParejaVM.strApellidoPaterno, new { @class = "form-control input-sm", placeholder = "Apellido Paterno",  title = "Apellido de tu Familiar", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$", id = "ApellidoPaternoPareja" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.ParejaVM.strApellidoMaterno, new { @class = "form-control input-sm", placeholder = "Apellido Materno", title = "Apellido de tu Familiar", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$", id = "ApellidoMaternoPareja" })
                             </div>
                             <div class="form-group">
                                 <label></label>
@@ -87,15 +106,16 @@
                                 @Html.RadioButtonFor(model => model.ParejaVM.BitVive, false, htmlAttributes: new { id = "rdbParejaFinado", name = "rdbParejaFinado" })<text>Finado</text>
                             </div>
                             <div class="form-group">
-                                @Html.TextBoxFor(model => model.ParejaVM.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio Completo", required = "required", title = "Domicilio de tu familiar", size = "35", id = "domiciliopareja", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.#/ ]+$" })
+                                @Html.TextBoxFor(model => model.ParejaVM.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio Completo", title = "Domicilio de tu familiar", size = "35", id = "domiciliopareja", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.#/ ]+$" })
                             </div>
                             <div class="form-group">
                                 <label>Ocupación:</label>
-                                @Html.TextBoxFor(model => model.ParejaVM.StrOcupacion, new { @class = "form-control input-sm", placeholder = "Ocupación", required = "required", title = "Datos de la Ocupación", size = "10", id = "ocupacionpareja", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
+                                @Html.TextBoxFor(model => model.ParejaVM.StrOcupacion, new { @class = "form-control input-sm", placeholder = "Ocupación", title = "Datos de la Ocupación", size = "10", id = "ocupacionpareja", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
                             </div>
                             <div class="form-group">
-                                <label>Edad:</label>
-                                @Html.TextBoxFor(model => model.ParejaVM.IntEdad, new { @class = "form-control input-sm", placeholder = "Edad", required = "required", title = "Edad del Familiar", size = "1", type = "Number", id = "edadpareja" })
+                                <br />
+                                <label>Fecha de Nacimiento:</label>
+                                @Html.TextBoxFor(model => model.ParejaVM.DteFechaNacimiento, new { @class = "form-control input-sm", title = "Fecha de Nacimiento", size = "1", type = "date", id = "FechaNacimientoPareja" })
                             </div>
                             <br />
                             <div class="form-group">
@@ -116,10 +136,6 @@
                                         <tr>
                                             @*<th>Familiar</th>*@
                                             <th>Nombre</th>
-                                            <th>Ocupación</th>
-                                            <th>Domicilio</th>
-                                            <th>Edad</th>
-                                            <td>Fecha Nacimiento</td>
                                             <th>Editar</th>
                                             <th>Eliminar</th>
                                         </tr>
@@ -246,10 +262,6 @@
                         "columns": [
 
                             { "data": "StrNombre" },
-                            { "data": "StrOcupacion" },
-                            { "data": "StrDomicilio" },
-                            { "data": "IntEdad" },
-                            { "data": "DteFechaNacimiento" },
                             {
                                 "data": "IdFamiliar",
                                 "render": function (IdFamiliar, type, full, meta) {

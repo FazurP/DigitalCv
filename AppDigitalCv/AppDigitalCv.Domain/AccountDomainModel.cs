@@ -23,5 +23,11 @@ namespace AppDigitalCv.Domain
         public int IdPersonal { get; set; }
 
         //falta cargar los roles del usuario
+
+        public string TipoUsuario { get;set; }
+
+        public string TipoPersonal { get; set; }
+        public string Universidad { get; set; }
+
     }
 }

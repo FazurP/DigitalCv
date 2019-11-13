@@ -56,7 +56,7 @@ namespace AppDigitalCv.Controllers
                 this.CrearDocumentoPremioDocente(premiosDocenteVM);
             }
 
-            return View();
+            return RedirectToAction("Create", "PremiosDocente");
         }
 
         #region  Crear el documento
@@ -109,8 +109,22 @@ namespace AppDigitalCv.Controllers
 
             DocumentosDomainModel documento =IdocumentosBusiness.AddDocumento(documentosDomainModel);
             premiosDocenteDM.IdDocumento = documento.IdDocumento;
-             resultado = IpremiosDocenteBusiness.AddPremiosDocente(premiosDocenteDM);
+             resultado = IpremiosDocenteBusiness.AddUpdatePremiosDocente(premiosDocenteDM);
             return resultado;
+        }
+
+        public ActionResult UpdatePremiosDocente(PremiosDocenteVM premiosDocenteVM)
+        {
+            if (premiosDocenteVM.id > 0)
+            {
+                PremiosDocenteDomainModel premiosDocenteDomainModel = new PremiosDocenteDomainModel();
+
+                AutoMapper.Mapper.Map(premiosDocenteVM,premiosDocenteDomainModel);
+
+                IpremiosDocenteBusiness.AddUpdatePremiosDocente(premiosDocenteDomainModel);
+            }
+
+            return RedirectToAction("Create","PremiosDocente");
         }
         #endregion
 
@@ -144,7 +158,6 @@ namespace AppDigitalCv.Controllers
 
         #endregion
 
-        #region  Consultar los datos del estado de salud del personal junto con el datatable se pueden ordenar de forma adecuada
 
         [HttpGet]
         public JsonResult GetDatosFamiliaresTable(DataTablesParam param)
@@ -182,7 +195,27 @@ namespace AppDigitalCv.Controllers
 
         }
 
-        #endregion
+        [HttpGet]
+        public ActionResult GetPremioUpdateByPersonal(int _idPremio)
+        {
+            PremiosDocenteVM premiosDocenteVM = new PremiosDocenteVM();
+            if (_idPremio > 0)
+            {
+                int idPersonal = SessionPersister.AccountSession.IdPersonal;
+
+                PremiosDocenteDomainModel premiosDocenteDomainModel = new PremiosDocenteDomainModel();
+
+                premiosDocenteDomainModel = IpremiosDocenteBusiness.GetPremioDocenteById(_idPremio, idPersonal);
+
+                if (premiosDocenteDomainModel != null)
+                {
+                    AutoMapper.Mapper.Map(premiosDocenteDomainModel,premiosDocenteVM);
+                }
+            }
+
+            return PartialView("_Editar", premiosDocenteVM);
+        }
+
 
         #region Consultar para Eliminar de Forma permanente el registro
         /// <summary>
@@ -190,10 +223,10 @@ namespace AppDigitalCv.Controllers
         /// </summary>
         /// <param name="idEnfermedad">recibe un identificador de premios del docente</param>
         /// <returns>regresa un premio del docente en una vista</returns>
-        public ActionResult GetPremiosByIdPersonal(int IdDocumento)
+        public ActionResult GetPremioDeleteByPersonal(int _idPremio)
         {
             int IdPersonal = SessionPersister.AccountSession.IdPersonal;
-            PremiosDocenteDomainModel premioDDM=  IpremiosDocenteBusiness.GetPremioDocenteById(IdPersonal, IdDocumento);
+            PremiosDocenteDomainModel premioDDM=  IpremiosDocenteBusiness.GetPremioDocenteById(_idPremio, IdPersonal);
             if (premioDDM != null)
             {
                 PremiosDocenteVM premiosDocenteVM = new PremiosDocenteVM();
@@ -212,22 +245,21 @@ namespace AppDigitalCv.Controllers
         /// </summary>
         /// <param name="idEnfermedad">recibe un identificador del documento</param>
         /// <returns>regresa una vista con los datos eliminados</returns>
-        public ActionResult EliminarPremiosDocente(int idDocumento)
+        public ActionResult EliminarPremiosDocente(int id)
         {
             int idPersonal = SessionPersister.AccountSession.IdPersonal;
             string nombreUsuario = SessionPersister.AccountSession.NombreCompleto;
-            PremiosDocenteDomainModel premioDDM = IpremiosDocenteBusiness.GetPremioDocenteById(idPersonal, idDocumento);
+            PremiosDocenteDomainModel premioDDM = IpremiosDocenteBusiness.GetPremioDocenteById(id, idPersonal);
             
             if (premioDDM != null)
             {
-                if (this.DeleteFileSystemDocument(nombreUsuario, idDocumento))
+                if (this.DeleteFileSystemDocument(nombreUsuario, premioDDM.IdDocumento))
                 {
-                    IpremiosDocenteBusiness.DeletePremiosDocente(premioDDM);
-                    IdocumentosBusiness.DeleteDocumento(idDocumento);
+                    IdocumentosBusiness.DeleteDocumento(premioDDM.IdDocumento);
                 }
                                 
             }
-            return View("Create");
+            return RedirectToAction("Create","PremiosDocente");
         }
         #endregion
 

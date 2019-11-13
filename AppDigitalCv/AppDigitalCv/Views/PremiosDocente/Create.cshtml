@@ -12,14 +12,13 @@
     <div class="bs-container" style="min-height:960px;">
         <section class="content-header">
             <h1>
-                Premios y Distinciones
+                Premios y Distinciones Sociales
                 <small>(Agregar)</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
                 <li> <a href="#">Agregar</a></li>
-                <li class="#">Premios y Distinciones</li>
-                <li class="active">Agregar Premios</li>
+                <li class="#">Premios y Distinciones Sociales</li>
             </ol>
         </section>
         <br />
@@ -33,6 +32,8 @@
                         <div class="form-group">
                             <div class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="form-group">
+                                    <label>Nombre del Premio:</label>
+                                    @Html.TextBoxFor(model => model.StrNombrePremio, new { @class = "form-control input-sm", required = "required", placeholder = "Nombre del Premio", title = "Escribe el Nombre del Premio", pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}", id = "Premio" })
                                     <label>Actividad Desempeñada:</label>
                                     @Html.TextBoxFor(model => model.StrActividadDesempeniada, new
                                     {
@@ -43,16 +44,10 @@
                                         title = "Ingresa la Actividad Desempeñada",
                                         id = "Actividad"
                                     })
-                                    <label>Periodo Inicial de Entrega:</label>
-                                    @Html.TextBoxFor(model => model.DteFechaInicioPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Selecciona la Fecha de Inicio", id = "fechaInicio" })
-                                    <label>Periodo Final de Entrega</label>
-                                    @Html.TextBoxFor(model => model.DteFechaFinPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Selecciona la Fecha Final de Entrega", id = "fechaFin" })
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-6">
-                                <div class="form-group">
-                                    <label>Nombre del Premio:</label>
-                                    @Html.TextBoxFor(model => model.StrNombrePremio, new { @class = "form-control input-sm", required = "required", placeholder = "Nombre del Premio", title = "Escribe el Nombre del Premio", pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}", id = "Premio" })
+                                <div class="form-group">                              
                                     <label>Nombre de la Institución:</label>
                                     @Html.TextBoxFor(model => model.StrInstitucion, new { @class = "form-control input-sm", placeholder = "Institución", title = "Escribe el Nombre de la Institución", required = "", pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}", id = "Institucion" })
                                     <label>Año de Entrega del Premio:</label>
@@ -81,13 +76,10 @@
                                 <table id="tblPremiosDocente" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
                                     <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
                                         <tr>
-
-                                            <th>Actividad Desempeñada</th>
-                                            <th>Nombre de la Institución</th>
                                             <th>Nombre del Premio</th>
                                             <th>Fecha de Obtención</th>
-                                            <th>Fecha Inicio</th>
-                                            <th>Fecha de Fin</th>
+                                            <th>Documento</th>
+                                            <th>Actualizar</th>
                                             <th>Eliminar</th>
                                         </tr>
                                     </thead>
@@ -102,6 +94,18 @@
                                                 <h5 class="modal-title"><label style="font-size:medium;">Eliminar Premio del Docente</label></h5>
                                             </div>
                                             <div class="modal-body" id="myModalBodyDiv1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="myModalUpdate">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                                                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                                                <h5 class="modal-title"><label style="font-size:medium;">Actualizar Premio del Docente</label></h5>
+                                            </div>
+                                            <div class="modal-body" id="myModalBodyUpdate">
                                             </div>
                                         </div>
                                     </div>
@@ -134,9 +138,20 @@
 
     <script>
 
-        var AddDelete = function (IdDocumento) {
+         var AddUpdate = function (id) {
 
-            var url = "/PremiosDocente/GetPremiosByIdPersonal?IdDocumento=" + IdDocumento;
+            var url = "/PremiosDocente/GetPremioUpdateByPersonal?_idPremio=" + id;
+
+            $("#myModalBodyUpdate").load(url, function () {
+                $("#myModalUpdate").modal("show");
+
+            })
+
+        };
+
+        var AddDelete = function (id) {
+
+            var url = "/PremiosDocente/GetPremioDeleteByPersonal?_idPremio=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -197,23 +212,26 @@
                         "dataSrc": "",
                         "columns": [
 
-
-                            { "data": "StrActividadDesempeniada" },
-
-                            { "data": "StrInstitucion" },
                             { "data": "StrNombrePremio" },
                             { "data": "DteFechaObtencionPremio" },
-
-
-                            { "data": "DteFechaInicioPremio" },
-                            { "data": "DteFechaFinPremio" },
-
                             {
-                                "data": "IdDocumento",
-                                "render": function (IdDocumento, type, full, meta) {
-
-                                    return '<a href="#" onclick="AddDelete(' + IdDocumento + ')"><i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i></a>'
+                            "data": "DocumentosDomainModel.StrUrl",
+                                "render": function (StrUrl) {
+                                return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'
                                 }
+                            },                                                          {
+                                "data": "id",
+                                "render": function (id, type, full, meta) {
+
+                                    return '<a href="#" onclick="AddUpdate(' + id + ')"><i class="btn btn-sm btn-success fa fa-pencil-square-o"></i></a>'
+                                  }
+                            },
+                            {
+                                "data": "id",
+                                "render": function (id, type, full, meta) {
+
+                                    return '<a href="#" onclick="AddDelete(' + id + ')"><i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i></a>'
+                                  }
                             },
                         ]
                     });

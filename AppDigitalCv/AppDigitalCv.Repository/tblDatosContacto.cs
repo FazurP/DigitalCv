@@ -14,14 +14,26 @@ namespace AppDigitalCv.Repository
     
     public partial class tblDatosContacto
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblDatosContacto()
+        {
+            this.tblTelefono = new HashSet<tblTelefono>();
+        }
+    
         public int idDatosContacto { get; set; }
         public string strEmailPersonal1 { get; set; }
-        public string strEmailPersonal2 { get; set; }
         public string strNombreFacebook { get; set; }
         public string strNombreTwitter { get; set; }
         public string strIdTelegram { get; set; }
+        public string strNombre { get; set; }
+        public string strApellidoPaterno { get; set; }
+        public string strApellidoMaterno { get; set; }
+        public string strDireccion { get; set; }
         public int idPersonal { get; set; }
+        public Nullable<bool> bitContactoEmergencia { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblTelefono> tblTelefono { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
     }
 }

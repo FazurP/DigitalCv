@@ -14,10 +14,8 @@ $(document).ready(function () {
             return false;
 
 
-        } else if (!regex2.test(correoI)) {
-            toastr.warning("Ingresa un Correo Institucional Valido", "Digital-Cv dice", { timeOut: 1000, closeButton: true  });
-            return false;
-        } else {
+        }
+         else {
 
             return true;
 

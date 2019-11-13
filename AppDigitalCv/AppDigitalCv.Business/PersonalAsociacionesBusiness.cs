@@ -72,6 +72,8 @@ namespace AppDigitalCv.Business
                tblPersonalAsociaciones.idPersonal = personalAsociacionesDM.IdPersonal;
                tblPersonalAsociaciones.dteFecha = DateTime.Parse(personalAsociacionesDM.DteFecha);
                tblPersonalAsociaciones.strTipoParticipacion = personalAsociacionesDM.StrTipoParticipacion;
+               tblPersonalAsociaciones.strOrganizacionPertenece = personalAsociacionesDM.strOrganizacionPertenece;
+               tblPersonalAsociaciones.strFuncionDesempeñada = personalAsociacionesDM.strFuncionDesempeñada;
                var record = personalAsociacionesRepository.Insert(tblPersonalAsociaciones);
                resultado = "Se insertaron correctamente los valores";
                return resultado;
@@ -98,6 +100,9 @@ namespace AppDigitalCv.Business
                 personalAsociacionesDomainModel.IdPersonal = p.idPersonal;
                 personalAsociacionesDomainModel.DteFecha = p.dteFecha.ToString();
                 personalAsociacionesDomainModel.StrTipoParticipacion = p.strTipoParticipacion;
+                personalAsociacionesDomainModel.strFuncionDesempeñada = p.strFuncionDesempeñada;
+                personalAsociacionesDomainModel.strOrganizacionPertenece = p.strOrganizacionPertenece;
+                personalAsociacionesDomainModel.AsociacionesDomainModel = new AsociacionesDomainModel { StrDescripcion = p.catAsociaciones.strDescripcion };
                 personalAsociacionDM.Add(personalAsociacionesDomainModel);
             }
 
@@ -119,6 +124,7 @@ namespace AppDigitalCv.Business
                 personalAsociacionesDomainModel.IdAsociacion = personalAsociaciones.idAsociacion;
                 personalAsociacionesDomainModel.StrTipoParticipacion = personalAsociaciones.strTipoParticipacion;
                 personalAsociacionesDomainModel.DteFecha = personalAsociaciones.dteFecha.ToString();
+            personalAsociacionesDomainModel.AsociacionesDomainModel = new AsociacionesDomainModel { StrDescripcion = personalAsociaciones.catAsociaciones.strDescripcion };
                 return personalAsociacionesDomainModel;
 
         }

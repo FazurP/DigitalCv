@@ -25,11 +25,8 @@ namespace AppDigitalCv.Repository
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tblDatosContacto> tblDatosContacto { get; set; }
-        public virtual DbSet<tblTelefono> tblTelefono { get; set; }
         public virtual DbSet<catAlergias> catAlergias { get; set; }
         public virtual DbSet<catArea> catArea { get; set; }
-        public virtual DbSet<catAsociaciones> catAsociaciones { get; set; }
         public virtual DbSet<catCategoria> catCategoria { get; set; }
         public virtual DbSet<CatColonia> CatColonia { get; set; }
         public virtual DbSet<catCompetencias> catCompetencias { get; set; }
@@ -42,21 +39,18 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<catEnfermedad> catEnfermedad { get; set; }
         public virtual DbSet<CatEstado> CatEstado { get; set; }
         public virtual DbSet<catEstadoCivil> catEstadoCivil { get; set; }
-        public virtual DbSet<catFamiliar> catFamiliar { get; set; }
         public virtual DbSet<catFrecuencia> catFrecuencia { get; set; }
         public virtual DbSet<catIdioma> catIdioma { get; set; }
         public virtual DbSet<catInstitucionSuperior> catInstitucionSuperior { get; set; }
         public virtual DbSet<CatMunicipio> CatMunicipio { get; set; }
         public virtual DbSet<catNivelSalarial> catNivelSalarial { get; set; }
         public virtual DbSet<CatPais> CatPais { get; set; }
-        public virtual DbSet<catParentesco> catParentesco { get; set; }
         public virtual DbSet<catProgramaEducativo> catProgramaEducativo { get; set; }
         public virtual DbSet<catRoles> catRoles { get; set; }
         public virtual DbSet<catSalarios> catSalarios { get; set; }
         public virtual DbSet<catStatus> catStatus { get; set; }
         public virtual DbSet<catTipoAlergias> catTipoAlergias { get; set; }
         public virtual DbSet<catTipoContrato> catTipoContrato { get; set; }
-        public virtual DbSet<catTipoEmpresa> catTipoEmpresa { get; set; }
         public virtual DbSet<catTipoEstudio> catTipoEstudio { get; set; }
         public virtual DbSet<catTipoSangre> catTipoSangre { get; set; }
         public virtual DbSet<catUnidadesAcademicas> catUnidadesAcademicas { get; set; }
@@ -73,7 +67,6 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<tblIdiomaDialectoPersonal> tblIdiomaDialectoPersonal { get; set; }
         public virtual DbSet<tblPasatiempo> tblPasatiempo { get; set; }
         public virtual DbSet<tblPersonalAsociaciones> tblPersonalAsociaciones { get; set; }
-        public virtual DbSet<tblPremiosDocente> tblPremiosDocente { get; set; }
         public virtual DbSet<tblUsuarioRol> tblUsuarioRol { get; set; }
         public virtual DbSet<catCurso> catCurso { get; set; }
         public virtual DbSet<tblCursos> tblCursos { get; set; }
@@ -106,7 +99,6 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<Organizaciones_Salud> Organizaciones_Salud { get; set; }
         public virtual DbSet<TblDireccion> TblDireccion { get; set; }
         public virtual DbSet<TblFavoritos> TblFavoritos { get; set; }
-        public virtual DbSet<tblPersonal> tblPersonal { get; set; }
         public virtual DbSet<TblUsuario> TblUsuario { get; set; }
         public virtual DbSet<CatCapacitacionesCompetenciasProfesionales> CatCapacitacionesCompetenciasProfesionales { get; set; }
         public virtual DbSet<CatCategoriaProfesor> CatCategoriaProfesor { get; set; }
@@ -129,5 +121,14 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<TblMaetria> TblMaetria { get; set; }
         public virtual DbSet<TblMemoriasExtenso> TblMemoriasExtenso { get; set; }
         public virtual DbSet<TblOtraCapacitacion> TblOtraCapacitacion { get; set; }
+        public virtual DbSet<CatTipoUsuario> CatTipoUsuario { get; set; }
+        public virtual DbSet<tblDatosContacto> tblDatosContacto { get; set; }
+        public virtual DbSet<tblTelefono> tblTelefono { get; set; }
+        public virtual DbSet<tblPremiosDocente> tblPremiosDocente { get; set; }
+        public virtual DbSet<catAsociaciones> catAsociaciones { get; set; }
+        public virtual DbSet<catFamiliar> catFamiliar { get; set; }
+        public virtual DbSet<catParentesco> catParentesco { get; set; }
+        public virtual DbSet<CatNacionalidad> CatNacionalidad { get; set; }
+        public virtual DbSet<tblPersonal> tblPersonal { get; set; }
     }
 }

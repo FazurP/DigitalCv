@@ -7,7 +7,7 @@
             @Html.HiddenFor(m => m.IdParentesco)
             @Html.HiddenFor(m => m.IdPersonal)
             @Html.HiddenFor(m => m.StrNombre)
-            <div class="form-inline">
+            <div class="">
                 <div class="form-group">
                     <div class="row">
                         <div class="col-lg-3">
@@ -17,11 +17,23 @@
                             ¿Deseas <strong>Eliminar</strong> este registro realmente?
                         </div>
                         <div class="col-lg-6">
-                            @Html.TextBoxFor(m => m.StrNombre, new { @class = "form-control input-sm", @placeholder = "Nombre del idioma", @disabled = "disabled" })
-
-                            <a href="#" id="btnSubmit">
-                                <i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i>
-                            </a>
+                            <div class="form-group">
+                                <label>Nombre(s):</label>
+                                @Html.TextBoxFor(m => m.StrNombre, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
+                            </div>
+                            <div class="form-group">
+                                <label>Apellido Paterno:</label>
+                                @Html.TextBoxFor(m => m.strApellidoPaterno, new { @class = "form-control input-sm", @placeholder = "Apellido Paterno", @disabled = "disabled" })
+                            </div>
+                            <div class="form-group">
+                                <label>Apellido Materno:</label>
+                                @Html.TextBoxFor(m => m.strApellidoPaterno, new { @class = "form-control input-sm", @placeholder = "Apellido Materno", @disabled = "disabled" })
+                            </div>
+                            <div class="form-group">
+                                <a href="#" id="btnSubmit">
+                                    <i class="btn btn-sm btn-danger">Eliminar</i>
+                                </a>
+                            </div>   
                         </div>
                     </div>
                 </div>
@@ -50,7 +62,6 @@
                 success: function () {
                     $("#loaderDiv").hide();
                     $("#myModal").modal("hide");
-                     debugger;
                     window.location.href = "/Hijos/Create";
                     
                 }

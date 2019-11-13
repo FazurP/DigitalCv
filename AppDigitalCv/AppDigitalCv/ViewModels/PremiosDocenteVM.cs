@@ -8,11 +8,12 @@ namespace AppDigitalCv.ViewModels
 {
     public class PremiosDocenteVM
     {
+        public int id { get; set; }
         public int IdPersonal { get; set; }
         public int IdDocumento { get; set; }
 
         [Required(ErrorMessage = "La Fecha es Obligatoria")]
-        public string DteFechaObtencionPremio { get; set; }
+        public DateTime DteFechaObtencionPremio { get; set; }
 
         [RegularExpression("^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$")]
         [Required(ErrorMessage = "El Nombre de la Institucion es Obligatorio")]
@@ -25,12 +26,6 @@ namespace AppDigitalCv.ViewModels
         [RegularExpression("^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9 ]+$")]
         [Required(ErrorMessage = "El Nombre de la Actividad Desempeñada es Obligatoria")]
         public string StrActividadDesempeniada { get; set; }
-
-        [Required(ErrorMessage ="La Fecha es Obligatoria")]
-        public string DteFechaInicioPremio { get; set; }
-
-        [Required(ErrorMessage = "La Fecha es Obligatoria")]
-        public string DteFechaFinPremio { get; set; }
 
         public string StrTipoPremio { get; set; }
         public virtual PersonalVM PersonalVM { get; set; }

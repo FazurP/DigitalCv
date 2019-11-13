@@ -2,7 +2,8 @@
 
 
   
-    $('#edad').attr('disabled', true);
+    $('#ApellidoPaterno').attr('disabled', true);
+    $('#ApellidoMaterno').attr('disabled', true);
     $('#fecha').prop('disabled', true);
     $('#btnGuardar').attr('disabled', true);
 
@@ -12,14 +13,56 @@
 
         if (text == "") {
           
-            $('#edad').attr('disabled', true);
+            $('#ApellidoPaterno').attr('disabled', true);
+            $('#ApellidoMaterno').attr('disabled', true);
+            $('#fecha').prop('disabled', true);
+            $('#btnGuardar').attr('disabled', true);
+
+            $('#ApellidoPaterno').val("");
+            $('#ApellidoMaterno').val("");
+            $('#fecha').val("");
+        } else
+        {
+
+            $('#ApellidoPaterno').prop('disabled', false);
+
+        }
+
+
+    })
+
+    $('#ApellidoPaterno').keyup(function () {
+
+        var text = $(this).val();
+
+        if (text == "") {
+
+            $('#ApellidoMaterno').attr('disabled', true);
+            $('#fecha').prop('disabled', true);
+            $('#btnGuardar').attr('disabled', true);
+
+            $('#ApellidoMaterno').val("");
+            $('#fecha').val("");
+        } else {
+
+            $('#ApellidoMaterno').prop('disabled', false);
+
+        }
+
+
+    })
+
+    $('#ApellidoMaterno').keyup(function () {
+
+        var text = $(this).val();
+
+        if (text == "") {
+
             $('#fecha').prop('disabled', true);
             $('#btnGuardar').attr('disabled', true);
 
             $('#fecha').val("");
-            $('#edad').val("");
-        } else
-        {
+        } else {
 
             $('#fecha').prop('disabled', false);
 
@@ -28,39 +71,21 @@
 
     })
 
+
     $('#fecha').change(function () {
 
-        var fecha = $('#fecha').val();
-
-        if (fecha == '' || fecha == null || fecha == "") {
-            $('#edad').attr('disabled', true);
-            $('#btnGuardar').attr('disabled', true);
-
-            $('#edad').val('');
-        } else {
-            $('#edad').attr('disabled', false);
-        }
-
-    })
-
-    $('#edad').keyup(function () {
-
-        var text = $('#edad').val();
+        var text = $(this).val();
 
         if (text == "") {
 
-           
             $('#btnGuardar').attr('disabled', true);
 
         } else {
 
-            $('#btnGuardar').attr('disabled', false);
+            $('#btnGuardar').prop('disabled', false);
 
         }
 
 
     })
-
-
-
 });

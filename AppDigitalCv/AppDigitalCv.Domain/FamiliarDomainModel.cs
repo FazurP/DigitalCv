@@ -10,9 +10,10 @@ namespace AppDigitalCv.Domain
     {
         public int IdFamiliar { get; set; }
         public string StrNombre { get; set; }
+        public string strApellidoPaterno { get; set; }
+        public string strApellidoMaterno { get; set; }
         public string StrOcupacion { get; set; }
         public string StrDomicilio { get; set; }
-        public int IntEdad { get; set; }
         public bool BitVive { get; set; }
         //cambie esta propiedad
         public string DteFechaNacimiento { get; set; }

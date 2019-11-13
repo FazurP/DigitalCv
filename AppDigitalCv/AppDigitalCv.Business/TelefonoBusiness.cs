@@ -33,41 +33,41 @@ namespace AppDigitalCv.Business
         /// </summary>
         /// <param name="datosContactoDM">la entidad que se va a ingresar en la base de datos</param>
         /// <returns>regresa un valor booleano</returns>
-        public bool AddUpdateTelefono(DatosContactoDomainModel datosContactoDM)
-        {
-            bool respuesta = false;
+        //public bool AddUpdateTelefono(DatosContactoDomainModel datosContactoDM)
+        //{
+        //    bool respuesta = false;
             
-            if (datosContactoDM.IdTelefono > 0)
-            {
-                //buscamos por id y lo almacenamos en nuestra entidad de entityframework
-                tblTelefono datosContacto = telefonoRepository.SingleOrDefault(p => p.idTelefono == datosContactoDM.IdTelefono);
+        //    if (datosContactoDM.IdTelefono > 0)
+        //    {
+        //        //buscamos por id y lo almacenamos en nuestra entidad de entityframework
+        //        tblTelefono datosContacto = telefonoRepository.SingleOrDefault(p => p.idTelefono == datosContactoDM.IdTelefono);
                 
-                if (datosContacto != null)
-                {
-                    datosContacto.idPersonal = datosContactoDM.IdPersonal;
-                    datosContacto.idTelefono = datosContactoDM.IdTelefono;
-                    datosContacto.strTelefonoCasa = datosContactoDM.TelefonoCasa;
-                    datosContacto.strTelefonoCelular = datosContactoDM.TelefonoCelular;
-                    datosContacto.strTelefonoRecados = datosContactoDM.TelefonoRecados;
-                    //datosContacto.tblPersonal = personal;
-                    //actualizamos los datos en la base de datos.
-                    telefonoRepository.Update(datosContacto);
-                    respuesta = true;
+        //        if (datosContacto != null)
+        //        {
+        //            datosContacto.idPersonal = datosContactoDM.IdPersonal;
+        //            datosContacto.idTelefono = datosContactoDM.IdTelefono;
+        //            datosContacto.strTelefonoCasa = datosContactoDM.TelefonoCasa;
+        //            datosContacto.strTelefonoCelular = datosContactoDM.TelefonoCelular;
+        //            datosContacto.strTelefonoRecados = datosContactoDM.TelefonoRecados;
+        //            //datosContacto.tblPersonal = personal;
+        //            //actualizamos los datos en la base de datos.
+        //            telefonoRepository.Update(datosContacto);
+        //            respuesta = true;
 
-                }
-            }
-            else
-            {
-                tblTelefono tblTelefono = new tblTelefono();
-                tblTelefono.strTelefonoCasa = datosContactoDM.TelefonoCasa;
-                tblTelefono.strTelefonoCelular = datosContactoDM.TelefonoCelular;
-                tblTelefono.strTelefonoRecados = datosContactoDM.TelefonoRecados;
-                tblTelefono.idPersonal = datosContactoDM.IdPersonal;
-                telefonoRepository.Insert(tblTelefono);
-                respuesta = true;
-            }
-            return respuesta;
-        }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        tblTelefono tblTelefono = new tblTelefono();
+        //        tblTelefono.strTelefonoCasa = datosContactoDM.TelefonoCasa;
+        //        tblTelefono.strTelefonoCelular = datosContactoDM.TelefonoCelular;
+        //        tblTelefono.strTelefonoRecados = datosContactoDM.TelefonoRecados;
+        //        tblTelefono.idPersonal = datosContactoDM.IdPersonal;
+        //        telefonoRepository.Insert(tblTelefono);
+        //        respuesta = true;
+        //    }
+        //    return respuesta;
+        //}
 
 
     }

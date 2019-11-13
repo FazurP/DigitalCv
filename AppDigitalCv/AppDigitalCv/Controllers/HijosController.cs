@@ -22,11 +22,6 @@ namespace AppDigitalCv.Controllers
             iPersonalBusiness = _IpersonalBusiness;
         }
 
-        // GET: Hijos
-        public ActionResult Index()
-        {
-            return View();
-        }
 
         //Inserción de los datos de los Hijos
         [HttpGet]
@@ -44,24 +39,30 @@ namespace AppDigitalCv.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create([Bind(Include = "StrNombre,DteFechaNacimiento,IntEdad")] ParentescoVM parentescoVM)
+        public ActionResult Create([Bind(Include = "StrNombre,strApellidoPaterno,strApellidoMaterno,DteFechaNacimiento", Exclude = "StrOcupacion,StrDomicilio,BitVive,PersonalVm")] ParentescoVM parentescoVM)
         {
             
-            if (ModelState.IsValid)
+            if (ModelState.IsValidField("StrNombre") 
+                && 
+                ModelState.IsValidField("strApellidoPaterno") 
+                && 
+                ModelState.IsValidField("strApellidoMaterno") 
+                &&
+                ModelState.IsValidField("DteFechaNacimiento"))
             {
                 FamiliarDomainModel familiarDM = new FamiliarDomainModel();
                 parentescoVM.IdPersonal = Security.SessionPersister.AccountSession.IdPersonal;
 
                 AutoMapper.Mapper.Map(parentescoVM,familiarDM);
+                familiarDM.IdParentesco = int.Parse(Recursos.RecursosSistema.FAMILIAR_HIJO);
                 iFamiliarBusiness.AddUpdateFamiliar(familiarDM);
                                
-                return View();
             }
-            return View("Create");
+            return RedirectToAction("Create","Hijos");
         }
 
 
-
+        [NonAction]
         #region Consultar Datos Familiares
         public JsonResult GetDatosFamiliaresHijosByIdPersonal(int idPersonal)
         {

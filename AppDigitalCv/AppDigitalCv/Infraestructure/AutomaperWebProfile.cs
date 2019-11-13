@@ -304,6 +304,9 @@ namespace AppDigitalCv.Infraestructure
             //Competencias Profesionales
             CreateMap<CompetenciasProfesionalesVM, CompetenciasProfesionalesDomainModel>();
             CreateMap<CompetenciasProfesionalesDomainModel, CompetenciasProfesionalesVM>();
+
+            CreateMap<NacionalidadVM, NacionalidadDomainModel>();
+            CreateMap<NacionalidadDomainModel, NacionalidadVM>();
         }
 
         public static void Run()

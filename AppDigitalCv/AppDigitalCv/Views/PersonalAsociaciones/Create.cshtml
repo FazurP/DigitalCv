@@ -12,7 +12,7 @@
     <div class="bs-container" style="min-height:960px;">
         <section class="content-header">
             <h1>
-                Asociación
+                Asociaciones y/o Colectivos
                 <small>(Agregar)</small>
             </h1>
             <ol class="breadcrumb">
@@ -29,27 +29,43 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    Pertenece a Alguna Asociación?
+                                    Pertenece a Alguna Asociación y/o Colectivo?
                                     <br />
                                     <input type="radio" id="rdbSi" name="seleccion" value="SI " class="custom-control-input"><label for="si">SI</label>
                                     <input type="radio" id="rdbNo" name="seleccion" value="NO" class="custom-control-input" checked><label for="no">NO</label>
                                     &nbsp;
                                     @*<a href="@Url.Action("Create","Asociacion")" class="social-auth-links"><i class="fa fa-plus"></i>"Agregar Nueva Asociación"</a>*@&nbsp;
                                 </div>
-                                <div class="form-group">
-                                    Seleccione su Asociación:@Html.DropDownList("IdAsociacion", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdAsociacion", title = "Selecciona una Asociación", required = "" })
-                                    Empresa a la que pertenece la asociación:@Html.DropDownList("TipoEmpresa", null, htmlAttributes: new { @class = "form-control input-sm", id = "TipoEmpresa", title = "Selecciona un Tipo de Empresa", required = "" })
-                                </div>
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    Fecha de Ingreso:@Html.TextBoxFor(model => model.DteFecha, null, htmlAttributes: new { @class = "form-control input-sm", type = "date", title = "Selecciona una Fecha", required = "", id = "fecha" })
+                                    <label>Seleccione su Asociación/Colectivo:</label>
+                                    @Html.DropDownList("IdAsociacion", null, htmlAttributes: new { @class = "form-control input-sm", id = "asociacion", title = "Selecciona una Asociación", required = "" })
+
                                 </div>
                                 <div class="form-group">
-                                    Describa el Cargo que Desempeñó:@Html.TextBoxFor(model => model.StrTipoParticipacion, null, htmlAttributes: new { @class = "form-control input-sm", title = "Escribe el tipo de Participación", placeholder = "Escribe tu Participación", id = "Participacion", required = "", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
+                                    <label>Organización a la que Pertenece:</label>
+                                  @Html.TextBoxFor(model => model.strOrganizacionPertenece, htmlAttributes: new { @class = "form-control input-sm", id = "organizacionPertenece", title = "Organización a la que Pertenece", required = "" })
                                 </div>
+                                <div class="form-group">
+                                    <label>Fecha de Ingreso:</label>
+                                   @Html.TextBoxFor(model => model.DteFecha, null, htmlAttributes: new { @class = "form-control input-sm", type = "date", title = "Selecciona una Fecha", required = "", id = "fecha" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                               
+                                <div class="form-group">
+                                    <label>Describa el Cargo que Desempeña:</label>
+                                    @Html.TextBoxFor(model => model.StrTipoParticipacion, null, htmlAttributes: new { @class = "form-control input-sm", title = "Escribe el tipo de Participación", placeholder = "Participacion", id = "participacion", required = "", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ, ]+$" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Describa su Funcion que Desempeña</label>
+                                    @Html.TextBoxFor(model => model.strFuncionDesempeñada, null, htmlAttributes: new { @class = "form-control input-sm", title = "Escribe la Función que Desempeña", placeholder = "Función que Desempeña", id = "funcion", required = "", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ, ]+$" })
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <input type="submit" value="Guardar" class="btn btn-sm btn-success" id="btnGuardar" />
 
@@ -68,8 +84,7 @@
                                     <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
                                         <tr>
 
-                                            <th>Fecha de Participación</th>
-                                            <th>Tipo de Participación</th>
+                                            <th>Asociación / Colectivo</th>                               
                                             <th>Eliminar Asociación</th>
                                         </tr>
                                     </thead>
@@ -202,8 +217,8 @@
                         "columns": [
 
 
-                            { "data": "DteFecha" },
-                            { "data": "StrTipoParticipacion" },
+                            { "data": "AsociacionesDomainModel.StrDescripcion" },
+                            //{ "data": "StrTipoParticipacion" },
                             //{ "data": "StrNombrePremio" },
                             //{ "data": "DteFechaObtencionPremio" },
 

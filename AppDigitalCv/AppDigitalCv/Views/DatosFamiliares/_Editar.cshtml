@@ -17,7 +17,19 @@
                                 <tr>
                                     <td>Nombre:</td>
                                     <td>
-                                        @Html.TextBoxFor(model => model.StrNombre, new { @class = "form-control input-sm", @placeholder = "Nombre", size = "30", title = "Nombre del Familiar",id="Nombre"})
+                                        @Html.TextBoxFor(model => model.StrNombre, new { @class = "form-control input-sm", @placeholder = "Nombre", size = "30", title = "Nombre del Familiar", id = "Nombre" })
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Apellido Paterno:</td>
+                                    <td>
+                                        @Html.TextBoxFor(model => model.strApellidoPaterno, new { @class = "form-control input-sm", @placeholder = "Apellido Paterno", size = "30", title = "Apellido Paterno del Familiar", id = "ApellidoPaterno" })
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Apellido Materno:</td>
+                                    <td>
+                                        @Html.TextBoxFor(model => model.strApellidoMaterno, new { @class = "form-control input-sm", @placeholder = "Apellido Materno", size = "30", title = "Apellido Materno del Familiar", id = "ApellidoMaterno" })
                                     </td>
                                 </tr>
                                 <tr>
@@ -30,25 +42,19 @@
                                 <tr>
                                     <td>Ocupación:</td>
                                     <td>
-                                        @Html.TextBoxFor(model => model.StrOcupacion, new { @class = "form-control input-sm", @placeholder = "Ocupación", size = "30", title = "Ocupación",id= "Ocupacion" })
+                                        @Html.TextBoxFor(model => model.StrOcupacion, new { @class = "form-control input-sm", @placeholder = "Ocupación", size = "30", title = "Ocupación", id = "Ocupacion" })
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Domicilio:</td>
                                     <td>
-                                        @Html.TextBoxFor(model => model.StrDomicilio, new { @class = "form-control input-sm", @placeholder = "Domicilio", size = "30", title = "Domicilio",id="Domicilio" })
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Edad:</td>
-                                    <td>
-                                        @Html.TextBoxFor(model => model.IntEdad, new { @class = "form-control input-sm", @placeholder = "Edad", size = "30", title = "Edad",id="Edad" ,type="Number" , min="1", max="100"})
+                                        @Html.TextBoxFor(model => model.StrDomicilio, new { @class = "form-control input-sm", @placeholder = "Domicilio", size = "30", title = "Domicilio", id = "Domicilio" })
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Fecha Nacimiento:</td>
                                     <td>
-                                        @Html.TextBoxFor(model => model.DteFechaNacimiento, new { @class = "form-control input-sm", type = "date", title = "Fecha de Nacimiento",id= "DteFechaNacimiento" })
+                                        @Html.TextBoxFor(model => model.DteFechaNacimiento, new { @class = "form-control input-sm", type = "date", title = "Fecha de Nacimiento", id = "DteFechaNacimiento" })
                                     </td>
                                 </tr>
                                 <tr>
@@ -71,40 +77,55 @@
         var valor = true;
         $("#btnSubmit").click(function () {
 
-            if ($('#rdbFamiliarVive').is(':checked')) {
-                valor = true;
-            }
-            else {
-                valor = false;
-            }
+            let nombre = $('#Nombre').val();
+            let ocupacion = $('#Ocupacion').val();
+            let domicilio = $('#Domicilio').val();
+            let fechaNacimiento = $('#DteFechaNacimiento').val();
+            let apellidoPaterno = $('#ApellidoPaterno').val();
+            let apellidoMaterno = $('#ApellidoMaterno').val();
 
-            var ParentescoVM = {}; //construimos el objeto
-            var idPersonal =  @SessionPersister.AccountSession.IdPersonal;
-            ParentescoVM.BitVive = valor;
-            ParentescoVM.idPersonal = idPersonal;
-            ParentescoVM.idFamiliar = $('#IdFamiliar').val();
-            ParentescoVM.StrNombre = $('#Nombre').val();
-            ParentescoVM.StrOcupacion = $('#Ocupacion').val();
-            ParentescoVM.StrDomicilio = $('#Domicilio').val();
-            ParentescoVM.IntEdad = $('#Edad').val();
-            ParentescoVM.DteFechaNacimiento = $('#DteFechaNacimiento').val();
-            debugger;
-            //serialización del formaulario para la edicion de los datos
-            //var myformdata = $("#myForm").serialize();
-            $.ajax({
-                type: "POST",
-                url: "/DatosFamiliares/EditarDatosFamiliar",
-                data: { parentescoVM: ParentescoVM},
-                success: function () {
-                    $("#myModal1").modal("hide");
-                    window.location.href = "/DatosFamiliares/Create";
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    alert(textStatus);
-                    console.log(textStatus);
-
+            if (nombre != null && ocupacion != null && domicilio != null && fechaNacimiento != "" && apellidoPaterno != null && apellidoMaterno != null) {
+                if ($('#rdbFamiliarVive').is(':checked')) {
+                    valor = true;
                 }
-            });
+                else {
+                    valor = false;
+                }
+
+                var ParentescoVM = {}; //construimos el objeto
+                var idPersonal =  @SessionPersister.AccountSession.IdPersonal;
+                ParentescoVM.BitVive = valor;
+                ParentescoVM.idPersonal = idPersonal;
+                ParentescoVM.idFamiliar = $('#IdFamiliar').val();
+                ParentescoVM.StrNombre = $('#Nombre').val();
+                ParentescoVM.StrOcupacion = $('#Ocupacion').val();
+                ParentescoVM.StrDomicilio = $('#Domicilio').val();
+                ParentescoVM.DteFechaNacimiento = $('#DteFechaNacimiento').val();
+                ParentescoVM.strApellidoPaterno = $('#ApellidoPaterno').val();
+                ParentescoVM.strApellidoMaterno = $('#ApellidoMaterno').val();
+                //serialización del formaulario para la edicion de los datos
+                //var myformdata = $("#myForm").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "/DatosFamiliares/EditarDatosFamiliar",
+                    data: { parentescoVM: ParentescoVM },
+                    success: function () {
+                        $("#myModal1").modal("hide");
+                        window.location.href = "/DatosFamiliares/Create";
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        alert(textStatus);
+                        console.log(textStatus);
+
+                    }
+                });
+            }
+            else
+            {
+                toastr.warning("No Puedes Dejar Campos en Blanco", "Digital-Cv dice:", { timeOut: 1000, closeButton: true })
+            }
+
+          
         });
     });
 </script>

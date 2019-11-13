@@ -2,66 +2,146 @@
 
     $('#domiciliopadre').attr('disabled', true);
     $('#ocupacionpadre').attr('disabled', true);
-    $('#edadpadre').attr('disabled', true);
+    $('#FechaNacimientoPadre').attr('disabled', true);
+    $('#ApellidoPaternoPadre').attr('disabled', true);
+    $('#ApellidoMaternoPadre').attr('disabled', true);
+
     $('#nombremadre').attr('disabled', true); 
     $('#domiciliomadre').attr('disabled', true); 
     $('#ocupacionmadre').attr('disabled', true); 
-    $('#edadmadre').attr('disabled', true); 
+    $('#FechaNacimientoMadre').attr('disabled', true);
+    $('#ApellidoPaternoMadre').attr('disabled', true);
+    $('#ApellidoMaternoMadre').attr('disabled', true);
+
     $('#nombrepareja').attr('disabled', true);
     $('#domiciliopareja').attr('disabled', true);
-    $('#domiciliopareja').attr('disabled', true);
     $('#ocupacionpareja').attr('disabled', true);
-    $('#edadpareja').attr('disabled', true);
+    $('#FechaNacimientoPareja').attr('disabled', true);
+    $('#ApellidoPaternoPareja').attr('disabled', true);
+    $('#ApellidoMaternoPareja').attr('disabled', true);
+
     $('#rdbPadreVive').attr('disabled', true);
     $('#rdbPadreFinado').attr('disabled', true);
+
     $('#rdbMadreVive').attr('disabled', true);
     $('#rdbMadreFinado').attr('disabled', true);
+
     $('#rdbParejaVive').attr('disabled', true);
     $('#rdbParejaFinado').attr('disabled', true);
+
     $('#btnGuardar').attr('disabled', true);
 
     //Eventos para la validacion de los campos de texto del padre
     $('#nombrepadre').keyup(function () {
 
-        var text = $('#nombrepadre').val();
+        var text = $(this).val();
+
+        if (text == "") {
+
+            $('#ApellidoPaternoPadre').attr('disabled', true);
+            $('#ApellidoMaternoPadre').attr('disabled', true);
+            $('#domiciliopadre').attr('disabled', true);
+            $('#ocupacionpadre').attr('disabled', true);
+            $('#FechaNacimientoPadre').attr('disabled', true);           
+            $('#nombremadre').attr('disabled', true);
+            $('#ApellidoPaternoMadre').attr('disabled', true);
+            $('#ApellidoMaternoMadre').attr('disabled', true);
+            $('#domiciliomadre').attr('disabled', true);
+            $('#ocupacionmadre').attr('disabled', true);
+            $('#FechaNacimientoMadre').attr('disabled', true);           
+            $('#nombrepareja').attr('disabled', true);
+            $('#ApellidoPaternoPareja').attr('disabled', true);
+            $('#ApellidoMaternoPareja').attr('disabled', true);
+            $('#domiciliopareja').attr('disabled', true);
+            $('#ocupacionpareja').attr('disabled', true);
+            $('#FechaNacimientoPareja').attr('disabled', true);        
+            $('#rdbPadreVive').attr('disabled', true);
+            $('#rdbPadreFinado').attr('disabled', true);
+            $('#rdbMadreVive').attr('disabled', true);
+            $('#rdbMadreFinado').attr('disabled', true);
+            $('#rdbParejaVive').attr('disabled', true);
+            $('#rdbParejaFinado').attr('disabled', true);
+            $('#btnGuardar').attr('disabled', true);
+
+        } else
+        {
+            $('#ApellidoPaternoPadre').attr('disabled', false);
+            
+        }
+
+
+    })
+
+    $('#ApellidoPaternoPadre').keyup(function () {
+
+        var text = $(this).val();
+
+        if (text == "") {
+
+            $('#ApellidoMaternoPadre').attr('disabled', true);
+            $('#domiciliopadre').attr('disabled', true);
+            $('#ocupacionpadre').attr('disabled', true);
+            $('#FechaNacimientoPadre').attr('disabled', true);
+            $('#nombremadre').attr('disabled', true);
+            $('#ApellidoPaternoMadre').attr('disabled', true);
+            $('#ApellidoMaternoMadre').attr('disabled', true);
+            $('#domiciliomadre').attr('disabled', true);
+            $('#ocupacionmadre').attr('disabled', true);
+            $('#FechaNacimientoMadre').attr('disabled', true);
+            $('#nombrepareja').attr('disabled', true);
+            $('#ApellidoPaternoPareja').attr('disabled', true);
+            $('#ApellidoMaternoPareja').attr('disabled', true);
+            $('#domiciliopareja').attr('disabled', true);
+            $('#ocupacionpareja').attr('disabled', true);
+            $('#FechaNacimientoPareja').attr('disabled', true);
+            $('#rdbPadreVive').attr('disabled', true);
+            $('#rdbPadreFinado').attr('disabled', true);
+            $('#rdbMadreVive').attr('disabled', true);
+            $('#rdbMadreFinado').attr('disabled', true);
+            $('#rdbParejaVive').attr('disabled', true);
+            $('#rdbParejaFinado').attr('disabled', true);
+            $('#btnGuardar').attr('disabled', true);
+
+        } else {
+            $('#ApellidoMaternoPadre').attr('disabled', false);
+        }
+
+
+    })
+
+    $('#ApellidoMaternoPadre').keyup(function () {
+
+        var text = $(this).val();
 
         if (text == "") {
 
             $('#domiciliopadre').attr('disabled', true);
             $('#ocupacionpadre').attr('disabled', true);
-            $('#edadpadre').attr('disabled', true);
+            $('#FechaNacimientoPadre').attr('disabled', true);
             $('#nombremadre').attr('disabled', true);
+            $('#ApellidoPaternoMadre').attr('disabled', true);
+            $('#ApellidoMaternoMadre').attr('disabled', true);
             $('#domiciliomadre').attr('disabled', true);
             $('#ocupacionmadre').attr('disabled', true);
-            $('#edadmadre').attr('disabled', true);
+            $('#FechaNacimientoMadre').attr('disabled', true);
             $('#nombrepareja').attr('disabled', true);
-            $('#domiciliopareja').attr('disabled', true);
+            $('#ApellidoPaternoPareja').attr('disabled', true);
+            $('#ApellidoMaternoPareja').attr('disabled', true);
             $('#domiciliopareja').attr('disabled', true);
             $('#ocupacionpareja').attr('disabled', true);
-            $('#edadpareja').attr('disabled', true);
+            $('#FechaNacimientoPareja').attr('disabled', true);
             $('#rdbPadreVive').attr('disabled', true);
             $('#rdbPadreFinado').attr('disabled', true);
+            $('#rdbMadreVive').attr('disabled', true);
+            $('#rdbMadreFinado').attr('disabled', true);
+            $('#rdbParejaVive').attr('disabled', true);
+            $('#rdbParejaFinado').attr('disabled', true);
             $('#btnGuardar').attr('disabled', true);
 
-            $('#domiciliopadre').val("");
-            $('#ocupacionpadre').val("");
-            $('#edadpadre').val("");
-            $('#nombremadre').val("");
-            $('#domiciliomadre').val("");
-            $('#ocupacionmadre').val("");
-            $('#edadmadre').val("");
-            $('#nombrepareja').val("");
-            $('#domiciliopareja').val("");
-            $('#ocupacionpareja').val("");
-            $('#edadpareja').val("");
-            $('#rdbPadreVive').prop('checked', false);
-            $('#rdbPadreFinado').prop('checked', false);
-
-        } else
-        {
+        } else {
             $('#rdbPadreVive').attr('disabled', false);
             $('#rdbPadreFinado').attr('disabled', false);
-            
+
         }
 
 
@@ -69,359 +149,321 @@
 
     $('#domiciliopadre').keyup(function () {
 
-
-        var text = $('#domiciliopadre').val();
+        var text = $(this).val();
 
         if (text == "") {
 
-            
             $('#ocupacionpadre').attr('disabled', true);
-            $('#edadpadre').attr('disabled', true);
+            $('#FechaNacimientoPadre').attr('disabled', true);
             $('#nombremadre').attr('disabled', true);
+            $('#ApellidoPaternoMadre').attr('disabled', true);
+            $('#ApellidoMaternoMadre').attr('disabled', true);
             $('#domiciliomadre').attr('disabled', true);
             $('#ocupacionmadre').attr('disabled', true);
-            $('#edadmadre').attr('disabled', true);
+            $('#FechaNacimientoMadre').attr('disabled', true);
             $('#nombrepareja').attr('disabled', true);
-            $('#domiciliopareja').attr('disabled', true);
+            $('#ApellidoPaternoPareja').attr('disabled', true);
+            $('#ApellidoMaternoPareja').attr('disabled', true);
             $('#domiciliopareja').attr('disabled', true);
             $('#ocupacionpareja').attr('disabled', true);
-            $('#edadpareja').attr('disabled', true);
+            $('#FechaNacimientoPareja').attr('disabled', true);
+            $('#rdbMadreVive').attr('disabled', true);
+            $('#rdbMadreFinado').attr('disabled', true);
+            $('#rdbParejaVive').attr('disabled', true);
+            $('#rdbParejaFinado').attr('disabled', true);
             $('#btnGuardar').attr('disabled', true);
-
-           
-            $('#ocupacionpadre').val("");
-            $('#edadpadre').val("");
-            $('#nombremadre').val("");
-            $('#domiciliomadre').val("");
-            $('#ocupacionmadre').val("");
-            $('#edadmadre').val("");
-            $('#nombrepareja').val("");
-            $('#domiciliopareja').val("");
-            $('#ocupacionpareja').val("");
-            $('#edadpareja').val("");
 
         } else {
             $('#ocupacionpadre').attr('disabled', false);
         }
-
-
     })
 
     $('#ocupacionpadre').keyup(function () {
 
-
-        var text = $('#ocupacionpadre').val();
+        var text = $(this).val();
 
         if (text == "") {
 
-
-           
-            $('#edadpadre').attr('disabled', true);
+            $('#FechaNacimientoPadre').attr('disabled', true);
             $('#nombremadre').attr('disabled', true);
+            $('#ApellidoPaternoMadre').attr('disabled', true);
+            $('#ApellidoMaternoMadre').attr('disabled', true);
             $('#domiciliomadre').attr('disabled', true);
             $('#ocupacionmadre').attr('disabled', true);
-            $('#edadmadre').attr('disabled', true);
+            $('#FechaNacimientoMadre').attr('disabled', true);
             $('#nombrepareja').attr('disabled', true);
-            $('#domiciliopareja').attr('disabled', true);
+            $('#ApellidoPaternoPareja').attr('disabled', true);
+            $('#ApellidoMaternoPareja').attr('disabled', true);
             $('#domiciliopareja').attr('disabled', true);
             $('#ocupacionpareja').attr('disabled', true);
-            $('#edadpareja').attr('disabled', true);
+            $('#FechaNacimientoPareja').attr('disabled', true);
+            $('#rdbMadreVive').attr('disabled', true);
+            $('#rdbMadreFinado').attr('disabled', true);
+            $('#rdbParejaVive').attr('disabled', true);
+            $('#rdbParejaFinado').attr('disabled', true);
             $('#btnGuardar').attr('disabled', true);
-
-
-           
-            $('#edadpadre').val("");
-            $('#nombremadre').val("");
-            $('#domiciliomadre').val("");
-            $('#ocupacionmadre').val("");
-            $('#edadmadre').val("");
-            $('#nombrepareja').val("");
-            $('#domiciliopareja').val("");
-            $('#ocupacionpareja').val("");
-            $('#edadpareja').val("");
 
         } else {
-            $('#edadpadre').attr('disabled', false);
+            $('#FechaNacimientoPadre').attr('disabled', false);
         }
-
-
     })
 
-    $('#edadpadre').keyup(function () {
+    $('#FechaNacimientoPadre').change(function () {
 
-
-        var text = $('#edadpadre').val();
+        var text = $(this).val();
 
         if (text == "") {
 
-
-
-           
             $('#nombremadre').attr('disabled', true);
+            $('#ApellidoPaternoMadre').attr('disabled', true);
+            $('#ApellidoMaternoMadre').attr('disabled', true);
             $('#domiciliomadre').attr('disabled', true);
             $('#ocupacionmadre').attr('disabled', true);
-            $('#edadmadre').attr('disabled', true);
+            $('#FechaNacimientoMadre').attr('disabled', true);
             $('#nombrepareja').attr('disabled', true);
-            $('#domiciliopareja').attr('disabled', true);
+            $('#ApellidoPaternoPareja').attr('disabled', true);
+            $('#ApellidoMaternoPareja').attr('disabled', true);
             $('#domiciliopareja').attr('disabled', true);
             $('#ocupacionpareja').attr('disabled', true);
-            $('#edadpareja').attr('disabled', true);
+            $('#FechaNacimientoPareja').attr('disabled', true);
+            $('#rdbMadreVive').attr('disabled', true);
+            $('#rdbMadreFinado').attr('disabled', true);
+            $('#rdbParejaVive').attr('disabled', true);
+            $('#rdbParejaFinado').attr('disabled', true);
             $('#btnGuardar').attr('disabled', true);
-
-
-
-            
-            $('#nombremadre').val("");
-            $('#domiciliomadre').val("");
-            $('#ocupacionmadre').val("");
-            $('#edadmadre').val("");
-            $('#nombrepareja').val("");
-            $('#domiciliopareja').val("");
-            $('#ocupacionpareja').val("");
-            $('#edadpareja').val("");
 
         } else {
             $('#nombremadre').attr('disabled', false);
         }
-
-
     })
-
-    $('#rdbPadreFinado').change(function () {
-
-    $('#nombremadre').attr('disabled', false);
-
-    })
-
-    $('#rdbPadreVive').change(function () {
-        $('#nombremadre').attr('disabled', true);
-    })
-
-    //Eventos para la validacion de los campos de texto de la madre
 
     $('#nombremadre').keyup(function () {
 
-
-        var text = $('#nombremadre').val();
+        var text = $(this).val();
 
         if (text == "") {
 
-          
+            $('#ApellidoPaternoMadre').attr('disabled', true);
+            $('#ApellidoMaternoMadre').attr('disabled', true);
             $('#domiciliomadre').attr('disabled', true);
             $('#ocupacionmadre').attr('disabled', true);
-            $('#edadmadre').attr('disabled', true);
+            $('#FechaNacimientoMadre').attr('disabled', true);
             $('#nombrepareja').attr('disabled', true);
-            $('#domiciliopareja').attr('disabled', true);
+            $('#ApellidoPaternoPareja').attr('disabled', true);
+            $('#ApellidoMaternoPareja').attr('disabled', true);
             $('#domiciliopareja').attr('disabled', true);
             $('#ocupacionpareja').attr('disabled', true);
-            $('#edadpareja').attr('disabled', true);
-            $('#btnGuardar').attr('disabled', true);
+            $('#FechaNacimientoPareja').attr('disabled', true);
             $('#rdbMadreVive').attr('disabled', true);
             $('#rdbMadreFinado').attr('disabled', true);
+            $('#rdbParejaVive').attr('disabled', true);
+            $('#rdbParejaFinado').attr('disabled', true);
+            $('#btnGuardar').attr('disabled', true);
 
-           
-            $('#domiciliomadre').val("");
-            $('#ocupacionmadre').val("");
-            $('#edadmadre').val("");
-            $('#nombrepareja').val("");
-            $('#domiciliopareja').val("");
-            $('#ocupacionpareja').val("");
-            $('#edadpareja').val("");
-            $('#rdbPadreVive').prop('checked', false);
-            $('#rdbPadreFinado').prop('checked', false);
+        } else {
+            $('#ApellidoPaternoMadre').attr('disabled', false);
+        }
+    })
+
+    $('#ApellidoPaternoMadre').keyup(function () {
+
+        var text = $(this).val();
+
+        if (text == "") {
+
+            $('#ApellidoMaternoMadre').attr('disabled', true);
+            $('#domiciliomadre').attr('disabled', true);
+            $('#ocupacionmadre').attr('disabled', true);
+            $('#FechaNacimientoMadre').attr('disabled', true);
+            $('#nombrepareja').attr('disabled', true);
+            $('#ApellidoPaternoPareja').attr('disabled', true);
+            $('#ApellidoMaternoPareja').attr('disabled', true);
+            $('#domiciliopareja').attr('disabled', true);
+            $('#ocupacionpareja').attr('disabled', true);
+            $('#FechaNacimientoPareja').attr('disabled', true);
+            $('#rdbMadreVive').attr('disabled', true);
+            $('#rdbMadreFinado').attr('disabled', true);
+            $('#rdbParejaVive').attr('disabled', true);
+            $('#rdbParejaFinado').attr('disabled', true);
+            $('#btnGuardar').attr('disabled', true);
+
+        } else {
+            $('#ApellidoMaternoMadre').attr('disabled', false);
+        }
+    })
+
+    $('#ApellidoMaternoMadre').keyup(function () {
+
+        var text = $(this).val();
+
+        if (text == "") {
+
+            $('#domiciliomadre').attr('disabled', true);
+            $('#ocupacionmadre').attr('disabled', true);
+            $('#FechaNacimientoMadre').attr('disabled', true);
+            $('#nombrepareja').attr('disabled', true);
+            $('#ApellidoPaternoPareja').attr('disabled', true);
+            $('#ApellidoMaternoPareja').attr('disabled', true);
+            $('#domiciliopareja').attr('disabled', true);
+            $('#ocupacionpareja').attr('disabled', true);
+            $('#FechaNacimientoPareja').attr('disabled', true);
+            $('#rdbMadreVive').attr('disabled', true);
+            $('#rdbMadreFinado').attr('disabled', true);
+            $('#rdbParejaVive').attr('disabled', true);
+            $('#rdbParejaFinado').attr('disabled', true);
+            $('#btnGuardar').attr('disabled', true);
 
         } else {
             $('#rdbMadreVive').attr('disabled', false);
             $('#rdbMadreFinado').attr('disabled', false);
         }
-
-
     })
 
     $('#domiciliomadre').keyup(function () {
 
-
-        var text = $('#domiciliomadre').val();
+        var text = $(this).val();
 
         if (text == "") {
 
             $('#ocupacionmadre').attr('disabled', true);
-            $('#edadmadre').attr('disabled', true);
+            $('#FechaNacimientoMadre').attr('disabled', true);
             $('#nombrepareja').attr('disabled', true);
-            $('#domiciliopareja').attr('disabled', true);
+            $('#ApellidoPaternoPareja').attr('disabled', true);
+            $('#ApellidoMaternoPareja').attr('disabled', true);
             $('#domiciliopareja').attr('disabled', true);
             $('#ocupacionpareja').attr('disabled', true);
-            $('#edadpareja').attr('disabled', true);
+            $('#FechaNacimientoPareja').attr('disabled', true);
+            $('#rdbParejaVive').attr('disabled', true);
+            $('#rdbParejaFinado').attr('disabled', true);
             $('#btnGuardar').attr('disabled', true);
-
-
-            $('#ocupacionmadre').val("");
-            $('#edadmadre').val("");
-            $('#nombrepareja').val("");
-            $('#domiciliopareja').val("");
-            $('#ocupacionpareja').val("");
-            $('#edadpareja').val("");
 
         } else {
             $('#ocupacionmadre').attr('disabled', false);
         }
-
-
     })
 
     $('#ocupacionmadre').keyup(function () {
 
-
-        var text = $('#ocupacionmadre').val();
+        var text = $(this).val();
 
         if (text == "") {
 
-            $('#edadmadre').attr('disabled', true);
+            $('#FechaNacimientoMadre').attr('disabled', true);
             $('#nombrepareja').attr('disabled', true);
-            $('#domiciliopareja').attr('disabled', true);
+            $('#ApellidoPaternoPareja').attr('disabled', true);
+            $('#ApellidoMaternoPareja').attr('disabled', true);
             $('#domiciliopareja').attr('disabled', true);
             $('#ocupacionpareja').attr('disabled', true);
-            $('#edadpareja').attr('disabled', true);
+            $('#FechaNacimientoPareja').attr('disabled', true);
+            $('#rdbParejaVive').attr('disabled', true);
+            $('#rdbParejaFinado').attr('disabled', true);
             $('#btnGuardar').attr('disabled', true);
-
-            $('#edadmadre').val("");
-            $('#nombrepareja').val("");
-            $('#domiciliopareja').val("");
-            $('#ocupacionpareja').val("");
-            $('#edadpareja').val("");
 
         } else {
-            $('#edadmadre').attr('disabled', false);
+            $('#FechaNacimientoMadre').attr('disabled', false);
         }
-
-
     })
 
-    $('#edadmadre').keyup(function () {
+    $('#FechaNacimientoMadre').change(function () {
 
-
-        var text = $('#edadmadre').val();
+        var text = $(this).val();
 
         if (text == "") {
 
-            
             $('#nombrepareja').attr('disabled', true);
-            $('#domiciliopareja').attr('disabled', true);
+            $('#ApellidoPaternoPareja').attr('disabled', true);
+            $('#ApellidoMaternoPareja').attr('disabled', true);
             $('#domiciliopareja').attr('disabled', true);
             $('#ocupacionpareja').attr('disabled', true);
-            $('#edadpareja').attr('disabled', true);
+            $('#FechaNacimientoPareja').attr('disabled', true);
+            $('#rdbParejaVive').attr('disabled', true);
+            $('#rdbParejaFinado').attr('disabled', true);
             $('#btnGuardar').attr('disabled', true);
-
-         
-            $('#nombrepareja').val("");
-            $('#domiciliopareja').val("");
-            $('#ocupacionpareja').val("");
-            $('#edadpareja').val("");
 
         } else {
             $('#nombrepareja').attr('disabled', false);
             $('#btnGuardar').attr('disabled', false);
         }
-
-
     })
-
-    $('#rdbMadreFinado').change(function () {
-
-        $('#nombrepareja').attr('disabled', false);
-        $('#btnGuardar').attr('disabled', false);
-    })
-
-    $('#rdbMadreVive').change(function () {
-        $('#nombrepareja').attr('disabled', true);
-    })
-
-    //Eventos para la validacion de los campos de texto de la pareja
 
     $('#nombrepareja').keyup(function () {
 
-
-        var text = $('#nombrepareja').val();
+        var text = $(this).val();
 
         if (text == "") {
-          
-            $('#domiciliopareja').attr('disabled', true);
+
+            $('#ApellidoPaternoPareja').attr('disabled', true);
+            $('#ApellidoMaternoPareja').attr('disabled', true);
             $('#domiciliopareja').attr('disabled', true);
             $('#ocupacionpareja').attr('disabled', true);
-            $('#edadpareja').attr('disabled', true);
+            $('#FechaNacimientoPareja').attr('disabled', true);
             $('#rdbParejaVive').attr('disabled', true);
             $('#rdbParejaFinado').attr('disabled', true);
-            
-
-            $('#domiciliopareja').val("");
-            $('#ocupacionpareja').val("");
-            $('#edadpareja').val("");
-            $('#rdbParejaVive').prop('checked', false);
-            $('#rdbParejaFinado').prop('checked', false);
 
         } else {
+            $('#ApellidoPaternoPareja').attr('disabled', false);
+        }
+    })
 
+    $('#ApellidoPaternoPareja').keyup(function () {
+
+        var text = $(this).val();
+
+        if (text == "") {
+
+            $('#ApellidoMaternoPareja').attr('disabled', true);
+            $('#domiciliopareja').attr('disabled', true);
+            $('#ocupacionpareja').attr('disabled', true);
+            $('#FechaNacimientoPareja').attr('disabled', true);
+            $('#rdbParejaVive').attr('disabled', true);
+            $('#rdbParejaFinado').attr('disabled', true);
+
+        } else {
+            $('#ApellidoMaternoPareja').attr('disabled', false);
+        }
+    })
+
+    $('#ApellidoMaternoPareja').keyup(function () {
+
+        var text = $(this).val();
+
+        if (text == "") {
+
+            $('#domiciliopareja').attr('disabled', true);
+            $('#ocupacionpareja').attr('disabled', true);
+            $('#FechaNacimientoPareja').attr('disabled', true);
+            $('#rdbParejaVive').attr('disabled', true);
+            $('#rdbParejaFinado').attr('disabled', true);
+
+        } else {
             $('#rdbParejaVive').attr('disabled', false);
             $('#rdbParejaFinado').attr('disabled', false);
-            $('#btnGuardar').attr('disabled', false);
         }
-
-
     })
 
     $('#domiciliopareja').keyup(function () {
 
-
-        var text = $('#domiciliopareja').val();
+        var text = $(this).val();
 
         if (text == "") {
-
-           
             $('#ocupacionpareja').attr('disabled', true);
-            $('#edadpareja').attr('disabled', true);
-
-            $('#ocupacionpareja').val("");
-            $('#edadpareja').val("");
-
+            $('#FechaNacimientoPareja').attr('disabled', true);
         } else {
             $('#ocupacionpareja').attr('disabled', false);
-            $('#btnGuardar').attr('disabled', false);
         }
-
-
     })
 
     $('#ocupacionpareja').keyup(function () {
 
-
-        var text = $('#ocupacionpareja').val();
-
-        if (text == "") {
-
-            $('#edadpareja').attr('disabled', true);
-
-            $('#edadpareja').val("");
-
-        } else {
-            $('#edadpareja').attr('disabled', false);
-            $('#btnGuardar').attr('disabled', false);
-        }
-
-
-    })
-
-    $('#edadpareja').keyup(function () {
-
-
-        var text = $('#edadpareja').val();
+        var text = $(this).val();
 
         if (text == "") {
 
+            $('#FechaNacimientoPareja').attr('disabled', true);
+
         } else {
-            $('#btnGuardar').attr('disabled', false);
+            $('#FechaNacimientoPareja').attr('disabled', false);
         }
-
-
     })
 
 })

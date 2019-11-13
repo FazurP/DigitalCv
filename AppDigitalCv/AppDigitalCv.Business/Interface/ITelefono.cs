@@ -14,6 +14,6 @@ namespace AppDigitalCv.Business.Interface
         /// </summary>
         /// <param name="datosContactoDM">recibe la entidad a insertar en la base de datos</param>
         /// <returns>regresa un valor booleano</returns>
-        bool AddUpdateTelefono(DatosContactoDomainModel datosContactoDM);
+        //bool AddUpdateTelefono(DatosContactoDomainModel datosContactoDM);
     }
 }

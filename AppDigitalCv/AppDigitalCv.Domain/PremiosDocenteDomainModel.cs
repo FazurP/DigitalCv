@@ -8,14 +8,13 @@ namespace AppDigitalCv.Domain
 {
     public class PremiosDocenteDomainModel
     {
+        public int id { get; set; }
         public int IdPersonal { get; set; }
         public int IdDocumento { get; set; }
         public string DteFechaObtencionPremio { get; set; }
         public string StrInstitucion { get; set; }
         public string StrNombrePremio { get; set; }
         public string StrActividadDesempeniada { get; set; }
-        public string DteFechaInicioPremio { get; set; }
-        public string DteFechaFinPremio { get; set; }
         public string StrTipoPremio { get; set; }
 
         //aqui va el catalogo de documentos pero desde el domain model

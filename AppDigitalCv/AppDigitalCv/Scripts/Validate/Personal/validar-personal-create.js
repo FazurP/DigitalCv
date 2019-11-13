@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
 
-    $('#Paterno').attr('disabled', true);
-    $('#Materno').attr('disabled', true);
+    
     $('#Curp').attr('disabled', true);
     $('#Rfc').attr('disabled', true);
     $('#Semblanza').attr('disabled', true);
@@ -10,100 +9,33 @@
     $('input[id=sexo]').attr('disabled', true);
     $('#Homoclave').attr('readonly', true);
 
-    //Evento para el campo de texto Nombre
-    $('#Nombre').keyup(function () {
 
-        var texto = $('#Nombre').val();
+    $('#idNacionalidad').change(function ()
+    {
+        let data = $(this).val();
 
-        if (texto == "") {
-            $('#Paterno').attr('disabled', true);
-            $('#Materno').attr('disabled', true);
+        if (data == 0 || data == '0' || data == "0" || data == null) {
+
             $('#Curp').attr('disabled', true);
             $('#Rfc').attr('disabled', true);
-            //$('#Homoclave').attr('disabled', true);
             $('#Semblanza').attr('disabled', true);
             $('#Enviar').attr('disabled', true);
             $('#IdEstadoCivil').attr('disabled', true);
             $('input[id=sexo]').attr('disabled', true);
 
-            $('#Paterno').val("");
-            $('#Materno').val("");
+            $('#IdEstadoCivil').val("");
             $('#Curp').val("");
             $('#Rfc').val("");
             $('#Homoclave').val("");
             $('#Semblanza').val("");
-            $('#IdEstadoCivil').val(0);
             $('input[id=sexo]').prop('checked', false);
 
-        } else {
-
-            $('#Paterno').attr('disabled', false);
-
-        }
-
-    })
-    //Evento para el campo de texto ApellidoPaterno
-    $('#Paterno').keyup(function () {
-
-        var texto = $('#Paterno').val();
-
-        if (texto == "") {
-
-            $('#Materno').attr('disabled', true);
-            $('#Curp').attr('disabled', true);
-            $('#Rfc').attr('disabled', true);
-            //$('#Homoclave').attr('disabled', true);
-            $('#Semblanza').attr('disabled', true);
-            $('#Enviar').attr('disabled', true);
-            $('#IdEstadoCivil').attr('disabled', true);
-            $('input[id=sexo]').attr('disabled', true);
-
-
-            $('#Materno').val("");
-            $('#Curp').val("");
-            $('#Rfc').val("");
-            $('#Homoclave').val("");
-            $('#Semblanza').val("");
-            $('#IdEstadoCivil').val(0);
-            $('input[id=sexo]').prop('checked', false);
-        } else {
-
-            $('#Materno').attr('disabled', false);
-
-        }
-
-    })
-    //Evento para el campo de texto ApellidoMaterno
-    $('#Materno').keyup(function () {
-
-        var texto = $('#Materno').val();
-
-        if (texto == "") {
-
-
-            $('#Curp').attr('disabled', true);
-            $('#Rfc').attr('disabled', true);
-            //$('#Homoclave').attr('disabled', true);
-            $('#Semblanza').attr('disabled', true);
-            $('#Enviar').attr('disabled', true);
-            $('#IdEstadoCivil').attr('disabled', true);
-            $('input[id=sexo]').attr('disabled', true);
-
-
-            $('#Curp').val("");
-            $('#Rfc').val("");
-            $('#Homoclave').val("");
-            $('#Semblanza').val("");
-            $('#IdEstadoCivil').val(0);
-            $('input[id=sexo]').prop('checked', false);
-
-        } else {
-
+        } else
+        {
             $('#IdEstadoCivil').attr('disabled', false);
-
+            toastr.success('Nacionalidad Seleccionada', 'Digital-Cv dice:', { timeOut: 1000, closeButton: true });
         }
-
-    })
+    });
     //Evento para el campo de Estado Civil
     $('#IdEstadoCivil').change(function () {
         var estadoCivil = $('#IdEstadoCivil').val();

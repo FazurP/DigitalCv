@@ -43,9 +43,10 @@ namespace AppDigitalCv.Business
                     catFamiliar.idFamiliar = familiarDM.IdFamiliar;
                     catFamiliar.idPersonal = familiarDM.IdPersonal;
                     //catFamiliar.idParentesco = familiarDM.IdParentesco;
-                    catFamiliar.intEdad = familiarDM.IntEdad;
                     catFamiliar.strDomicilio = familiarDM.StrDomicilio;
                     catFamiliar.strNombre = familiarDM.StrNombre;
+                    catFamiliar.strApellidoPaterno = familiarDM.strApellidoPaterno;
+                    catFamiliar.strApellidoMaterno = familiarDM.strApellidoMaterno;
                     catFamiliar.strOcupacion = familiarDM.StrOcupacion;
                     catFamiliar.dteFechaNacimiento = DateTime.Parse(familiarDM.DteFechaNacimiento);
                     
@@ -60,9 +61,10 @@ namespace AppDigitalCv.Business
             {
                 catFamiliar catFamiliar = new catFamiliar();
                 catFamiliar.idParentesco = (int)EnumFamiliares.Hijo;
-                catFamiliar.intEdad = familiarDM.IntEdad;
                 catFamiliar.strDomicilio = familiarDM.StrDomicilio;
                 catFamiliar.strNombre = familiarDM.StrNombre;
+                catFamiliar.strApellidoPaterno = familiarDM.strApellidoPaterno;
+                catFamiliar.strApellidoMaterno = familiarDM.strApellidoMaterno;
                 catFamiliar.strOcupacion = familiarDM.StrOcupacion;
                 catFamiliar.dteFechaNacimiento = DateTime.Parse(familiarDM.DteFechaNacimiento);
                 catFamiliar.bitVive = familiarDM.BitVive;
@@ -90,51 +92,53 @@ namespace AppDigitalCv.Business
             catFamiliarPadre.idParentesco = familiaresDM.PadreDomainModel.IdParentesco;
             catFamiliarPadre.idPersonal = familiaresDM.PadreDomainModel.IdPersonal;
             catFamiliarPadre.strNombre = familiaresDM.PadreDomainModel.StrNombre;
+            catFamiliarPadre.strApellidoPaterno = familiaresDM.PadreDomainModel.strApellidoPaterno;
+            catFamiliarPadre.strApellidoMaterno = familiaresDM.PadreDomainModel.strApellidoMaterno;
             catFamiliarPadre.strOcupacion = familiaresDM.PadreDomainModel.StrOcupacion;
             catFamiliarPadre.strDomicilio = familiaresDM.PadreDomainModel.StrDomicilio;
-            catFamiliarPadre.intEdad = familiaresDM.PadreDomainModel.IntEdad;
             catFamiliarPadre.bitVive = familiaresDM.PadreDomainModel.BitVive;
+            catFamiliarPadre.dteFechaNacimiento = DateTime.Parse(familiaresDM.PadreDomainModel.DteFechaNacimiento);
             familiares.Add(catFamiliarPadre);
 
             catFamiliar catFamiliarMadre = new catFamiliar();
             catFamiliarMadre.idPersonal = familiaresDM.MadreDomainModel.IdPersonal;
             catFamiliarMadre.idParentesco = familiaresDM.MadreDomainModel.IdParentesco;
             catFamiliarMadre.strNombre = familiaresDM.MadreDomainModel.StrNombre;
+            catFamiliarMadre.strApellidoPaterno = familiaresDM.MadreDomainModel.strApellidoPaterno;
+            catFamiliarMadre.strApellidoMaterno = familiaresDM.MadreDomainModel.strApellidoMaterno;
             catFamiliarMadre.strOcupacion = familiaresDM.MadreDomainModel.StrOcupacion;
             catFamiliarMadre.strDomicilio = familiaresDM.MadreDomainModel.StrDomicilio;
-            catFamiliarMadre.intEdad = familiaresDM.MadreDomainModel.IntEdad;
             catFamiliarMadre.bitVive = familiaresDM.MadreDomainModel.BitVive;
+            catFamiliarMadre.dteFechaNacimiento = DateTime.Parse(familiaresDM.MadreDomainModel.DteFechaNacimiento);
             familiares.Add(catFamiliarMadre);
 
-            catFamiliar catFamiliarPareja = new catFamiliar();
-            catFamiliarPareja.idPersonal = familiaresDM.ParejaDomainModel.IdPersonal;
-            catFamiliarPareja.idParentesco = familiaresDM.ParejaDomainModel.IdParentesco;
-            catFamiliarPareja.strNombre = familiaresDM.ParejaDomainModel.StrNombre;
-            catFamiliarPareja.strOcupacion = familiaresDM.ParejaDomainModel.StrOcupacion;
-            catFamiliarPareja.strDomicilio = familiaresDM.ParejaDomainModel.StrDomicilio;
-            catFamiliarPareja.intEdad = familiaresDM.ParejaDomainModel.IntEdad;
-            catFamiliarPareja.bitVive = familiaresDM.ParejaDomainModel.BitVive;
-            familiares.Add(catFamiliarPareja);
-          
-                                             
+            if (!String.IsNullOrEmpty(familiaresDM.ParejaDomainModel.StrNombre) && !String.IsNullOrWhiteSpace(familiaresDM.ParejaDomainModel.StrNombre))
+            {
+                catFamiliar catFamiliarPareja = new catFamiliar();
+                catFamiliarPareja.idPersonal = familiaresDM.ParejaDomainModel.IdPersonal;
+                catFamiliarPareja.idParentesco = familiaresDM.ParejaDomainModel.IdParentesco;
+                catFamiliarPareja.strNombre = familiaresDM.ParejaDomainModel.StrNombre;
+                catFamiliarPareja.strApellidoPaterno = familiaresDM.ParejaDomainModel.strApellidoPaterno;
+                catFamiliarPareja.strApellidoMaterno = familiaresDM.ParejaDomainModel.strApellidoMaterno;
+                catFamiliarPareja.strOcupacion = familiaresDM.ParejaDomainModel.StrOcupacion;
+                catFamiliarPareja.strDomicilio = familiaresDM.ParejaDomainModel.StrDomicilio;
+                catFamiliarPareja.bitVive = familiaresDM.ParejaDomainModel.BitVive;
+                catFamiliarPareja.dteFechaNacimiento = DateTime.Parse(familiaresDM.ParejaDomainModel.DteFechaNacimiento);
+                familiares.Add(catFamiliarPareja);
+
+            }
+
             foreach (catFamiliar familiar in familiares)
             {
-                Expression<Func<catFamiliar, bool>> predicado = p => p.idParentesco == familiar.idParentesco || p.idParentesco== familiar.idParentesco || p.idParentesco == familiar.idParentesco;
-                if (familiarRepository.SingleOrDefault(predicado) == null)
+                if (!familiarRepository.Exists(p => p.idParentesco == familiar.idParentesco && p.idPersonal == familiar.idPersonal))
                 {
-                    if (familiar.idParentesco > 1)
-                    {
-                        familiarRepository.Insert(familiar);
-                    }
-                    
-                }
-                
+                    familiarRepository.Insert(familiar);
+                }         
             }
             resultado = "Se insertaron correctamente los valores";
             respuesta = true;
             return respuesta;
         }
-
 
         /// <summary>
         /// Este metodo se encarga de obtener el famlair y su identificador a traves del nombre
@@ -148,11 +152,11 @@ namespace AppDigitalCv.Business
             FamiliarDomainModel familiarDomanM = new FamiliarDomainModel();
             familiarDomanM.IdFamiliar = familiar.idFamiliar;
             familiarDomanM.StrNombre = familiar.strNombre;
-            familiarDomanM.IntEdad = familiar.intEdad;
-            familiarDomanM.IdParentesco = familiar.idParentesco;
+            familiarDomanM.strApellidoPaterno = familiar.strApellidoPaterno;
+            familiarDomanM.strApellidoMaterno = familiar.strApellidoPaterno;
+            familiarDomanM.IdParentesco = familiar.idParentesco.Value;
             return familiarDomanM;
         }
-
 
         /// <summary>
         /// Este metodo se encarga de consultar los hijos o familaires de una persona
@@ -172,10 +176,11 @@ namespace AppDigitalCv.Business
                 familiarDM.StrNombre = catFamiliars.strNombre;
                 familiarDM.StrOcupacion = catFamiliars.strOcupacion;
                 familiarDM.StrDomicilio = catFamiliars.strDomicilio;
-                familiarDM.IntEdad = catFamiliars.intEdad;
-                familiarDM.BitVive = catFamiliars.bitVive;
+                familiarDM.strApellidoPaterno = catFamiliars.strApellidoPaterno;
+                familiarDM.strApellidoMaterno = catFamiliars.strApellidoMaterno;
+                familiarDM.BitVive = catFamiliars.bitVive.Value;
                 familiarDM.DteFechaNacimiento = catFamiliars.dteFechaNacimiento.ToString();
-                familiarDM.IdParentesco = catFamiliars.idParentesco;
+                familiarDM.IdParentesco = catFamiliars.idParentesco.Value;
                 familiarDM.IdPersonal = catFamiliars.idPersonal.Value;
                 ///no mandamos los padres, madre ni pareja
                 if(familiarDM.IdParentesco <2)
@@ -189,9 +194,6 @@ namespace AppDigitalCv.Business
             return familiares;
             
         }
-
-
-
 
         /// <summary>
         /// Este metodo se encarga de consultar los hijos o familaires de una persona
@@ -211,10 +213,11 @@ namespace AppDigitalCv.Business
                 familiarDM.StrNombre = catFamiliars.strNombre;
                 familiarDM.StrOcupacion = catFamiliars.strOcupacion;
                 familiarDM.StrDomicilio = catFamiliars.strDomicilio;
-                familiarDM.IntEdad = catFamiliars.intEdad;
-                familiarDM.BitVive = catFamiliars.bitVive;
+                familiarDM.strApellidoPaterno = catFamiliars.strApellidoPaterno;
+                familiarDM.strApellidoMaterno = catFamiliars.strApellidoMaterno;
+                familiarDM.BitVive = catFamiliars.bitVive.Value;
                 familiarDM.DteFechaNacimiento = catFamiliars.dteFechaNacimiento.ToString();
-                familiarDM.IdParentesco = catFamiliars.idParentesco;
+                familiarDM.IdParentesco = catFamiliars.idParentesco.Value;
                 familiarDM.IdPersonal = catFamiliars.idPersonal.Value;
                 if(familiarDM.IdParentesco > 1) { 
                     familiares.Add(familiarDM);
@@ -224,11 +227,6 @@ namespace AppDigitalCv.Business
             return familiares;
 
         }
-
-
-
-
-
 
         /// <summary>
         /// Este metodo se encarga de buscar un familiar por el identificador del familiar
@@ -241,14 +239,15 @@ namespace AppDigitalCv.Business
             catFamiliar familiar = familiarRepository.SingleOrDefault(predicado);
             FamiliarDomainModel familiarDM = new FamiliarDomainModel();
             familiarDM.IdFamiliar = familiar.idFamiliar;
-            familiarDM.IdParentesco = familiar.idParentesco;
+            familiarDM.IdParentesco = familiar.idParentesco.Value;
             familiarDM.IdPersonal = familiar.idPersonal.Value;
-            familiarDM.IntEdad = familiar.intEdad;
+            familiarDM.strApellidoPaterno = familiar.strApellidoPaterno;
+            familiarDM.strApellidoMaterno = familiar.strApellidoMaterno;
             familiarDM.StrDomicilio = familiar.strDomicilio;
             familiarDM.StrNombre = familiar.strNombre;
             familiarDM.StrOcupacion = familiar.strOcupacion;
             familiarDM.DteFechaNacimiento = familiar.dteFechaNacimiento.ToString();
-            familiarDM.BitVive = familiar.bitVive;
+            familiarDM.BitVive = familiar.bitVive.Value;
             return familiarDM;
         }
 

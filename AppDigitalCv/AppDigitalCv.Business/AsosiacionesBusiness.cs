@@ -39,7 +39,6 @@ namespace AppDigitalCv.Business
                     catAsociaciones.idAsociacion = asociacionesDM.IdAsociacion;
                     catAsociaciones.strDescripcion = asociacionesDM.StrDescripcion;
                     catAsociaciones.strObservacion = asociacionesDM.StrObservacion;
-                    catAsociaciones.idTipoEmpresa = asociacionesDM.IdTipoEmpresa;
                     //actualizamos los datos en la base de datos.
                     asociacionesRepository.Update(catAsociaciones);
                     resultado = "Se Actualizo correctamente";
@@ -52,7 +51,6 @@ namespace AppDigitalCv.Business
                 catAsociaciones.idAsociacion = asociacionesDM.IdAsociacion;
                 catAsociaciones.strDescripcion = asociacionesDM.StrDescripcion;
                 catAsociaciones.strObservacion = asociacionesDM.StrObservacion;
-                catAsociaciones.idTipoEmpresa = asociacionesDM.IdTipoEmpresa;
                 var record = asociacionesRepository.Insert(catAsociaciones);
                 resultado = "Se insertaron correctamente los valores";
             }
@@ -66,7 +64,7 @@ namespace AppDigitalCv.Business
         public List<AsociacionesDomainModel> GetAsociaciones()
         {
             List<AsociacionesDomainModel> asociaciones = null;
-            asociaciones = asociacionesRepository.GetAll().Select(p => new AsociacionesDomainModel { IdAsociacion = p.idAsociacion, IdTipoEmpresa = p.idTipoEmpresa, StrDescripcion = p.strDescripcion, StrObservacion = p.strObservacion }).ToList();
+            asociaciones = asociacionesRepository.GetAll().Select(p => new AsociacionesDomainModel { IdAsociacion = p.idAsociacion, StrDescripcion = p.strDescripcion, StrObservacion = p.strObservacion }).ToList();
             AsociacionesDomainModel asociacionesDomainModel = new AsociacionesDomainModel();
             asociacionesDomainModel.IdAsociacion = 0;
             asociacionesDomainModel.StrDescripcion = "--Seleccionar--";

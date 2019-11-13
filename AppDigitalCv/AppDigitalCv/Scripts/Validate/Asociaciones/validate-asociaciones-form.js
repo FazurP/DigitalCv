@@ -1,89 +1,121 @@
 ﻿$(document).ready(function () {
 
-    $('#TipoEmpresa').attr('disabled', true);
-    $('#fecha').attr('disabled', true);
-    $('#Participacion').attr('disabled', true);
-    $('#IdAsociacion').attr('disabled', true);
-    $('#btnGuardar').attr('disabled', true);
-
+    $('#asociacion').attr('disabled', true);
+    $('#organizacionPertenece').prop('disabled', true);
+    $('#fecha').prop('disabled', true);
+    $('#participacion').prop('disabled', true);
+    $('#funcion').prop('disabled', true);
+    $('#btnGuardar').prop('disabled', true);
 
     $('#rdbSi').change(function () {
         toastr.info("Selecciona tu(s) Asociacion(es)", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
-        $('#IdAsociacion').attr('disabled', false);
-    })
+        $('#asociacion').attr('disabled', false);
+    });
 
     $('#rdbNo').change(function () {
-        $('#TipoEmpresa').attr('disabled', true);
-        $('#fecha').attr('disabled', true);
-        $('#Participacion').attr('disabled', true);
-        $('#IdAsociacion').attr('disabled', true);
-        $('#btnGuardar').attr('disabled', true);
 
-        $('#IdAsociacion').val('0');
-        $('#TipoEmpresa').val('0');
+        $('#asociacion').attr('disabled', true);
+        $('#organizacionPertenece').prop('disabled', true);
+        $('#fecha').prop('disabled', true);
+        $('#participacion').prop('disabled', true);
+        $('#funcion').prop('disabled', true);
+        $('#btnGuardar').prop('disabled', true);
+
+        $('#asociacion').val(0);
+        $('#organizacionPertenece').val('');
         $('#fecha').val('');
-        $('#Participacion').val('');
-    })
+        $('#participacion').val('');
+        $('#funcion').val('');
 
+    });
 
-    $('#IdAsociacion').change(function () {
-        var asociacion = $('#IdAsociacion').val();
+    $('#asociacion').change(function ()
+    {
+        let data = $(this).val();
 
-        if (asociacion == 0 || asociacion == "0" || asociacion == '0') {
-            $('#TipoEmpresa').attr('disabled', true);
-            $('#fecha').attr('disabled', true);
-            $('#Participacion').attr('disabled', true);
-            $('#btnGuardar').attr('disabled', true);
+        if (data == 0 || data == '0' || data == "0" || data == null) {
 
-            $('#TipoEmpresa').val('0');
+            $('#organizacionPertenece').prop('disabled', true);
+            $('#fecha').prop('disabled', true);
+            $('#participacion').prop('disabled', true);
+            $('#funcion').prop('disabled', true);
+            $('#btnGuardar').prop('disabled', true);
+
+            $('#organizacionPertenece').val('');
             $('#fecha').val('');
-            $('#Participacion').val('');
+            $('#participacion').val('');
+            $('#funcion').val('');
+
+        } else
+        {
+            $('#organizacionPertenece').prop('disabled', false);
+        }
+    });
+
+    $('#organizacionPertenece').keyup(function () {
+
+        let data = $(this).val();
+
+        if (data == "") {
+
+            $('#fecha').prop('disabled', true);
+            $('#participacion').prop('disabled', true);
+            $('#funcion').prop('disabled', true);
+            $('#btnGuardar').prop('disabled', true);
+
+            $('#fecha').val('');
+            $('#participacion').val('');
+            $('#funcion').val('');
 
         } else {
-            $('#TipoEmpresa').attr('disabled', false);
-            toastr.success("Asociacion Seleccionada", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+            $('#fecha').prop('disabled', false);
         }
-    })
-
-    $('#TipoEmpresa').change(function () {
-        var empresa = $('#TipoEmpresa').val();
-
-        if (empresa == 0 || empresa == "0" || empresa == '0') {
-            $('#fecha').attr('disabled', true);
-            $('#Participacion').attr('disabled', true);
-            $('#btnGuardar').attr('disabled', true);
-
-            $('#fecha').val('');
-            $('#Participacion').val('');
-        } else {
-            $('#fecha').attr('disabled', false);
-            toastr.success("Empresa Seleccionada", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
-        }
-    })
+    });
 
     $('#fecha').change(function () {
-        var fecha = $('#fecha').val();
 
-        if (fecha == null || fecha == '') {
-            $('#Participacion').attr('disabled', true);
-            $('#btnGuardar').attr('disabled', true);
+        let data = $(this).val();
 
-            $('#Participacion').val('');
+        if (data == "") {
+
+            $('#participacion').prop('disabled', true);
+            $('#funcion').prop('disabled', true);
+            $('#btnGuardar').prop('disabled', true);
+
+            $('#participacion').val('');
+            $('#funcion').val('');
+
         } else {
-            $('#Participacion').attr('disabled', false);
-            toastr.success("Fecha Seleccionada", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+            $('#participacion').prop('disabled', false);
         }
-    })
+    });
 
-    $('#Participacion').keyup(function () {
-        var participacion = $('#Participacion').val();
+    $('#participacion').keyup(function () {
 
-        if (participacion == "") {
-            $('#btnGuardar').attr('disabled', true);
+        let data = $(this).val();
+
+        if (data == "") {
+
+            $('#funcion').prop('disabled', true);
+            $('#btnGuardar').prop('disabled', true);
+
+            $('#funcion').val('');
+
         } else {
-            $('#btnGuardar').attr('disabled', false);
+            $('#funcion').prop('disabled', false);
         }
+    });
 
-    })
+    $('#funcion').keyup(function () {
 
+        let data = $(this).val();
+
+        if (data == "") {
+
+            $('#btnGuardar').prop('disabled', true);
+
+        } else {
+            $('#btnGuardar').prop('disabled', false);
+        }
+    });
 });

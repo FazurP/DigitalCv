@@ -48,20 +48,22 @@ namespace AppDigitalCv.ViewModels
         //[DataType(DataType.Upload)]
         public HttpPostedFileWrapper ArchivoCurp { get; set; }
 
+        [Required]
+        public HttpPostedFileWrapper ArchivoNacionalidad { get; set; }
+
         [Required(ErrorMessage = "La Semblanza es requerida")]
         public string strLogros { get; set; }
-
-
 
         public HttpPostedFileWrapper ImageFile { get; set; }    
 
         public string strUrlFoto { get; set; }
         public string strUrlCurp { get; set; }
         public string strUrlRfc { get; set; }
+        public string strUrlNacionalidad { get; set; }
         public string StrGenero { get; set; }
         public int IdEstadoCivil { get; set; }
-
         public int idTipoSangre { get; set; }
+        public int idNacionalidad { get; set; }
         public TipoSangreVM TipoSangreVM { get; set; }
 
     }

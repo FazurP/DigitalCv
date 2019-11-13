@@ -56,6 +56,8 @@ namespace AppDigitalCv.Controllers
             usuario.NomUsuario = accountViewModel.Email;
             usuario.Password = accountViewModel.Password;
 
+            var res = wsusuariosSoapClient.ConsultaUsuarios(seguridad, usuario);
+
             AccountDomainModel accountDomainModel = new AccountDomainModel();
             AutoMapper.Mapper.Map(accountViewModel, accountDomainModel);
 
@@ -66,6 +68,10 @@ namespace AppDigitalCv.Controllers
 
                 if (accountDomainModel != null)
                 {
+                    accountDomainModel.TipoPersonal = res.TipoPersonal.ToString();
+                    accountDomainModel.Universidad = res.Universidad;
+                    accountDomainModel.TipoUsuario = res.TipoUsuario.ToString();
+
                     AccountViewModel viewAccount = new AccountViewModel();
                     AutoMapper.Mapper.Map(accountDomainModel, viewAccount);
                     SessionPersister.AccountSession = viewAccount;
@@ -74,17 +80,16 @@ namespace AppDigitalCv.Controllers
             }
             else
             {
-                PersonalDomainModel personalDomainModel = new PersonalDomainModel();
+          
+                PersonalDomainModel personalDomainModel = new PersonalDomainModel();        
 
-                var res = wsusuariosSoapClient.ConsultaUsuarios(seguridad, usuario);
-
-                if (res.Correo_Electronico != null && res.Clave != null)
+                if (res.Nombre_usuario != null && res.Clave != null)
                 {
                     personalDomainModel.Nombre = res.Nombre;
                     personalDomainModel.ApellidoPaterno = res.ApellidoPaterno;
                     personalDomainModel.ApellidoMaterno = res.ApellidoMaterno;
                     personalDomainModel.AccountDomainModel = new AccountDomainModel { Email = res.Correo_Electronico, Password = usuario.Password, Nombre = usuario.NomUsuario };
-
+                    
                     if (IAccountBusiness.AddUsuario(personalDomainModel))
                     {
                         

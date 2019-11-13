@@ -18,6 +18,8 @@ namespace AppDigitalCv.Repository
         public int idAsociacion { get; set; }
         public Nullable<System.DateTime> dteFecha { get; set; }
         public string strTipoParticipacion { get; set; }
+        public string strOrganizacionPertenece { get; set; }
+        public string strFuncionDesempeñada { get; set; }
     
         public virtual catAsociaciones catAsociaciones { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }

@@ -12,19 +12,19 @@ namespace AppDigitalCv.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class catAsociaciones
+    public partial class CatTipoUsuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public catAsociaciones()
+        public CatTipoUsuario()
         {
-            this.tblPersonalAsociaciones = new HashSet<tblPersonalAsociaciones>();
+            this.catUsuarios = new HashSet<catUsuarios>();
         }
     
-        public int idAsociacion { get; set; }
+        public int id { get; set; }
+        public string strValor { get; set; }
         public string strDescripcion { get; set; }
-        public string strObservacion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblPersonalAsociaciones> tblPersonalAsociaciones { get; set; }
+        public virtual ICollection<catUsuarios> catUsuarios { get; set; }
     }
 }

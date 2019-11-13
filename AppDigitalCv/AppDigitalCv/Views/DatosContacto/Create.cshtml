@@ -34,26 +34,34 @@
                         <div role="form">
                             <div class="form-group">
                                 <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label>Nombre(s): </label>
+                                        @Html.TextBoxFor(model => model.strNombre, new { @class = "form-control input-sm", placeholder = "Nombre", required = "", id = "Nombre",pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Apellido Paterno:</label>
+                                        @Html.TextBoxFor(model => model.strApellidoPaterno, new { @class = "form-control input-sm", placeholder = "Apellido Paterno", required = "", id = "ApellidoPaterno",pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Apellido Materno: </label>
+                                        @Html.TextBoxFor(model => model.strApellidoMaterno, new { @class = "form-control input-sm", placeholder = "Apellido Materno", required = "", id = "ApellidoMaterno",pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
+                                    </div>
                                     <div class="form-group ">
                                         <label>Telefono Celular:</label>
-                                        @Html.TextBoxFor(model => model.TelefonoCelular, new { @class = "form-control input-sm", placeholder = "Tu Número Celular", required = "", pattern = "^[0-9]+$", id = "TelefonoCelular" })
+                                        @Html.TextBoxFor(model => model.TelefonoCelular, new { @class = "form-control input-sm",type="tel", placeholder = "Tu Número Celular", required = "", pattern = "^[0-9]+$", id = "TelefonoCelular"})
                                         @Html.ValidationMessageFor(model => model.TelefonoCelular, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="form-group ">
                                         <label>Telefono Casa:</label>
-                                        @Html.TextBoxFor(model => model.TelefonoCasa, new { @class = "form-control input-sm", placeholder = "Tu Número Casa", required = "", pattern = "^[0-9]+$", id = "TelefonoCasa" })
+                                        @Html.TextBoxFor(model => model.TelefonoCasa, new { @class = "form-control input-sm",type="tel", placeholder = "Tu Número Casa", required = "", pattern = "^[0-9]+$", id = "TelefonoCasa" })
                                         @Html.ValidationMessageFor(model => model.TelefonoCasa, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="form-group ">
                                         <label>Telefono de Recados:</label>
-                                        @Html.TextBoxFor(model => model.TelefonoRecados, new { @class = "form-control input-sm", placeholder = "Tu Número para Recados", required = "", pattern = "^[0-9]+$", id = "TelefonoRecados" })
+                                        @Html.TextBoxFor(model => model.TelefonoRecados, new { @class = "form-control input-sm",type="tel", placeholder = "Tu Número para Recados", required = "", pattern = "^[0-9]+$", id = "TelefonoRecados" })
                                         @Html.ValidationMessageFor(model => model.TelefonoRecados, "", new { @class = "text-danger" })
                                     </div>
-                                    <div class="form-group ">
-                                        <label>E-mail Institucional:</label>
-                                        @Html.TextBoxFor(model => model.MailInstitucional, new { @class = "form-control input-sm", placeholder = "Tu email institucional", required = "", pattern = "[a-zA-Z0-9._-]{3,25}[@]{1}(uttt){1}[.]{1}(edu){1}[.]{1}(mx){1}", id = "EmailInstitucional" })
-                                        @Html.ValidationMessageFor(model => model.MailInstitucional, "", new { @class = "text-danger" })
-                                    </div>
+                                   
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <div class="form-group ">
@@ -62,17 +70,28 @@
                                         @Html.ValidationMessageFor(model => model.MailPersonal, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="form-group ">
+                                        <label>Dirección</label>
+                                        @Html.TextBoxFor(model => model.strDireccion, new { @class = "form-control input-sm", placeholder = "Dirección", required = "", id = "Direccion",pattern="^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9, ]+$" })
+                                        @Html.ValidationMessageFor(model => model.MailPersonal, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group ">
                                         <label>Nombre de Usuario en Facebook:</label>
-                                        @Html.TextBoxFor(model => model.NombreFacebook, new { @class = "form-control input-sm", placeholder = "Tu usuario en Facebook", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$", required = "", id = "Facebook" })
+                                        @Html.TextBoxFor(model => model.NombreFacebook, new { @class = "form-control input-sm", placeholder = "Tu usuario en Facebook", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$", id = "Facebook" })
                                         @Html.ValidationMessageFor(model => model.NombreFacebook, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="form-group ">
                                         <label>Nombre de Usuario en Twitter:</label>
-                                        @Html.TextBoxFor(model => model.NombreTwitter, new { @class = "form-control input-sm", placeholder = "Tu usuario en Twitter", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$", required = "", id = "Twitter" })
+                                        @Html.TextBoxFor(model => model.NombreTwitter, new { @class = "form-control input-sm", placeholder = "Tu usuario en Twitter", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$", id = "Twitter" })
                                         @Html.ValidationMessageFor(model => model.NombreTwitter, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="form-group">
+                                        <label>Asignar Como Contacto de Emergencia?</label>
                                         <br />
+                                        Si @Html.RadioButtonFor(model => model.bitContactoEmergencia, true)
+                                        No @Html.RadioButtonFor(model => model.bitContactoEmergencia, false)
+                                    </div>
+
+                                    <div class="form-group">
                                         <input type="submit" value="Guardar" class="btn btn-success" id="btnGuardar" />
                                     </div>
                                 </div>
@@ -81,9 +100,8 @@
                                     <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
 
                                         <tr>
-                                            <th><i class="fa fa-user"></i>&nbsp;Email</th>
-                                            <th><i class="fa fa-tag"></i>&nbsp;Institucional</th>
-                                            <th><i class="fa fa-check-square-o"></i>&nbsp;Tel. Celular</th>
+                                            <th><i class="fa fa-user"></i>&nbsp;Nombre</th>
+                                        
                                             <th><i class="glyphicon glyphicon-pencil"></i>&nbsp; Editar</th>
                                             <th><i class="glyphicon glyphicon-trash"></i>&nbsp; Eliminar</th>
 
@@ -96,7 +114,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header" style="background-color:#3C8DBC;color:white;">
                                                 <a href="#" class="close" data-dismiss="modal">&times;</a>
-                                                <h5 class="modal-title"><label style="font-size:medium;">Datos de Contacto</label></h5>
+                                                <h5 class="modal-title"><label style="font-size:medium;">Datos del Contacto</label></h5>
                                             </div>
                                             <div class="modal-body" id="myModalBodyDiv1" style="background-color:#FDFDFE;">
                                             </div>
@@ -138,8 +156,8 @@
     <script src="~/Scripts/Validate/DatosContacto/validate-datos-contacto-regExp.js"></script>
     <script>
 
-        var AddEditDatosContacto = function (idPersonal) {
-            var url = "/DatosContacto/AddEditDatosContactoId?idPersonal=" + idPersonal;
+        var AddEditDatosContacto = function (IdPersonal) {
+            var url = "/DatosContacto/AddEditDatosContactoId?idPersonal=" + IdPersonal;
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
             })
@@ -187,14 +205,13 @@
                 },
                 "columns": [
 
-                    { "data": "MailPersonal" },
-                    { "data": "MailInstitucional" },
-                    { "data": "TelefonoCelular" },
+                    { "data": "strNombre" },
+                 
                     {
                         "data": "IdPersonal",
-                        "render": function (idPersonal, type, full, meta) {
+                        "render": function (IdPersonal, type, full, meta) {
 
-                            return '<a href="#" onclick="AddEditDatosContacto(' + idPersonal + ')"><i class="btn btn-sm btn-success fa fa-pencil-square-o"></i></a>'
+                            return '<a href="#" onclick="AddEditDatosContacto(' + IdPersonal + ')"><i class="btn btn-sm btn-success fa fa-pencil-square-o"></i></a>'
                         }
                     }
                     ,

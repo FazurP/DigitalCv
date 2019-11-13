@@ -446,8 +446,10 @@
                                 @if (SessionPersister.AccountSession != null)
                                 {
                                     @SessionPersister.AccountSession.NombreCompleto
-                                }-Web Developer
+                                    <br />
+                                @SessionPersister.AccountSession.TipoPersonal
                                 <small>Member since @DateTime.Now</small>
+                                }
                             </p>
                         </li>
                         <li class="user-body">

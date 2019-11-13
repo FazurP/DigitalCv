@@ -32,6 +32,7 @@ namespace AppDigitalCv.Repository
         public virtual catStatus catStatus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblUsuarioRol> tblUsuarioRol { get; set; }
+        public virtual CatTipoUsuario CatTipoUsuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblPersonal> tblPersonal { get; set; }
     }

@@ -1,4 +1,5 @@
 ﻿@model AppDigitalCv.ViewModels.PersonalVM
+@using AppDigitalCv.Security
 
 @{
     ViewBag.Title = "";
@@ -85,7 +86,7 @@
                         <img class="attachment-img" src="~/Imagenes/escudo_uttt.jpg" alt="Attachment Image">
 
                         <div class="attachment-pushed">
-                            <h4 class="attachment-heading"><a href="http://www.uttt.edu.mx/">La Universidad Tecnológica de Tula-Tepeji</a></h4>
+                            <h4 class="attachment-heading"><a href="http://www.uttt.edu.mx/">@SessionPersister.AccountSession.Universidad</a></h4>
 
                             <div class="attachment-text text-justify">
                                 @Html.DisplayFor(model => model.strLogros, new { @class = "text-muted text-justify" })

@@ -49,7 +49,7 @@ namespace AppDigitalCv.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include= "MailPersonal,MailInstitucional,NombreFacebook,NombreTwitter,TelefonoCasa,TelefonoCelular,TelefonoRecados")]DatosContactoVM datosContactoVM)
+        public ActionResult Create(DatosContactoVM datosContactoVM)
         {
             if (ModelState.IsValid)
             {
@@ -88,14 +88,14 @@ namespace AppDigitalCv.Controllers
         }
 
         //voy allamar a esta vista cuando el usuario de click en la tabla
-        public ActionResult AddEditDatosContactoId(int idPersonal) 
+        public ActionResult AddEditDatosContactoId(int idPersonal)
         {
             DatosContactoVM datosContactoVM = new DatosContactoVM();
             //creamos el objeto del dominio
             DatosContactoDomainModel datosContactoDM = new DatosContactoDomainModel();
             if (idPersonal > 0)
             {
-                datosContactoDM = IdatosContacto.GetDatosContacto(1);
+                datosContactoDM = IdatosContacto.GetDatosContacto(SessionPersister.AccountSession.IdPersonal);
 
             }
             AutoMapper.Mapper.Map(datosContactoDM, datosContactoVM);
@@ -132,11 +132,11 @@ namespace AppDigitalCv.Controllers
             AutoMapper.Mapper.Map(datosContactoVM, datosContactoDM);///hacemos el mapeado de la entidad
             //inserción de datos del contacto
             respuesta = IdatosContacto.AddUpdateDatosContacto(datosContactoDM);
-            if (respuesta)
-            {
-                //insercion del telefono en el mismo proceso.
-                respuesta = Itelefono.AddUpdateTelefono(datosContactoDM);
-            }
+            //if (respuesta)
+            //{
+            //    //insercion del telefono en el mismo proceso.
+            //    respuesta = Itelefono.AddUpdateTelefono(datosContactoDM);
+            //}
 
             return respuesta;
         }
@@ -144,10 +144,10 @@ namespace AppDigitalCv.Controllers
 
         #region Consultar Datos de Contacto
 
-       
+
         public JsonResult ConsultarDatosContacto()
         {
-            var datosContacto = IdatosContacto.GetDatosDeContacto(1);////////////////////////modificacion temporal
+            var datosContacto = IdatosContacto.GetDatosDeContacto(SessionPersister.AccountSession.IdPersonal);////////////////////////modificacion temporal
             return Json(datosContacto, JsonRequestBehavior.AllowGet);
         }
         #endregion
@@ -164,7 +164,7 @@ namespace AppDigitalCv.Controllers
             int _idPersonal = SessionPersister.AccountSession.IdPersonal;
             string nombreUsuario = SessionPersister.AccountSession.NombreCompleto;
             DatosContactoDomainModel DatosContactoDM = IdatosContacto.GetDatosContacto(idPersonal);
-                
+
 
             if (DatosContactoDM != null)
             {

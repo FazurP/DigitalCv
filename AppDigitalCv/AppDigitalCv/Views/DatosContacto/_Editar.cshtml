@@ -12,34 +12,51 @@
                 <div class="col-md-7 col-xs-11 col-sm-5 col-lg-7">
                     @Html.HiddenFor(model => model.IdPersonal)
                     @Html.HiddenFor(model => model.IdDatosContacto)
-                    <div class="form-horizontal">
-                        <div class="form-group">
-                            @Html.TextBoxFor(model => model.MailInstitucional, new { @class = "form-control input-sm", @placeholder = "email institucional" })
-                        </div>
+                    <div class="form-group">
+                        <label>Nombre(s):</label>
+                        @Html.TextBoxFor(model => model.strNombre, new { @class = "form-control input-sm",id="nombre" })
+                    </div>
+                    <div class="form-group">
+                        <label>Apellido Paterno:</label>
+                        @Html.TextBoxFor(model => model.strApellidoPaterno, new { @class = "form-control input-sm" ,id="apellidoPaterno"})
+                    </div>
+                    <div class="form-group">
+                        <label>Apellido Materno:</label>
+                        @Html.TextBoxFor(model => model.strApellidoMaterno, new { @class = "form-control input-sm",id="apellidoMaterno" })
+                    </div>
+                    <div class="form-group">
+                        <label>Telefono Celular</label>
+                        @Html.TextBoxFor(model => model.TelefonoCelular, new { @class = "form-control input-sm",id="telefonoCelular" })
+                    </div>
+                    <div class="form-group">
+                        <label>Telefono de Casa</label>
+                        @Html.TextBoxFor(model => model.TelefonoCasa, new { @class = "form-control input-sm",id="telefonoCasa" })
+                    </div>
+                    <div class="form-group">
+                        <label>Telefono de Recados</label>
+                        @Html.TextBoxFor(model => model.TelefonoRecados, new { @class = "form-control input-sm",id="telefonoRecados" })
+                    </div>
+                    <div class="form-group">
+                        <label>Email Personal</label>
+                        @Html.TextBoxFor(model => model.MailPersonal, new { @class = "form-control input-sm",id="emailPersonal" })
+                    </div>
+                    <div class="form-group">
+                        <label>Dirección</label>
+                        @Html.TextBoxFor(model => model.strDireccion, new { @class = "form-control input-sm",id="direccion" })
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre de Usuario en Facebook</label>
+                        @Html.TextBoxFor(model => model.NombreFacebook, new { @class = "form-control input-sm" })
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre de Usuario en Twitter</label>
+                        @Html.TextBoxFor(model => model.NombreTwitter, new { @class = "form-control input-sm" })
+                    </div>
+                    <div class="form-group">
+                        <label>Asignar Como Contacto de Emergencia?</label>
                         <br />
-                        <div class="form-group">
-                            @Html.TextBoxFor(model => model.MailPersonal, new { @class = "form-control input-sm", @placeholder = "email personal", required = "required" })
-                        </div>
-                        <br />
-                        <div class="form-group">
-                            @Html.TextBoxFor(model => model.NombreFacebook, new { @class = "form-control input-sm", @placeholder = "usuario en facebook" })
-                        </div>
-                        <br />
-                        <div class="form-group">
-                            @Html.TextBoxFor(model => model.NombreTwitter, new { @class = "form-control input-sm", @placeholder = "usuario en twitter" })
-                        </div>
-                        <br />
-                        <div class="form-group">
-                            @Html.TextBoxFor(model => model.TelefonoCasa, new { @class = "form-control input-sm", @placeholder = "Telefono de Casa" })
-                        </div>
-                        <br />
-                        <div class="form-group">
-                            @Html.TextBoxFor(model => model.TelefonoCelular, new { @class = "form-control input-sm", @placeholder = "Telefono Celular" })
-                        </div>
-                        <br />
-                        <div class="form-group">
-                            @Html.TextBoxFor(model => model.TelefonoRecados, new { @class = "form-control input-sm", @placeholder = "Telefono de Recados" })
-                        </div>
+                        Si @Html.RadioButtonFor(model => model.bitContactoEmergencia,true)
+                        No @Html.RadioButtonFor(model => model.bitContactoEmergencia,false)
                     </div>
                 </div>
             </div>
@@ -65,17 +82,34 @@
     $(document).ready(function () {
         $("#btnSubmit").click(function () {
 
-            //serialización del formaulario
-            var myformdata = $("#myForm").serialize();
-            $.ajax({
-                type: "POST",
-                url: "/DatosContacto/AddEditDatosContacto",
-                data: myformdata,
-                success: function () {
-                    $("#myModal1").modal("hide");
-                    window.location.href = "/DatosContacto/EditarDatosContacto";
-                }
-            })
+            let nombre = $('#nombre').val();
+            let apellidoPaterno = $('#apellidoPaterno').val();
+            let apellidoMaterno = $('#apellidoMaterno').val();
+            let telefonoCelular = $('#telefonoCelular').val();
+            let telefonoCasa = $('#telefonoCasa').val();
+            let telefonoRecados = $('#telefonoRecados').val();
+            let mailPersonal = $('#emailPersonal').val();
+            let direccion = $('#direccion').val();
+
+            if (nombre != "" && apellidoPaterno != "" && apellidoMaterno != "" && telefonoCelular != "" && telefonoCasa != ""
+                && telefonoRecados != "" && mailPersonal != "" && direccion != "") {
+
+                //serialización del formaulario
+                var myformdata = $("#myForm").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "/DatosContacto/AddEditDatosContacto",
+                    data: myformdata,
+                    success: function () {
+                        $("#myModal1").modal("hide");
+                        window.location.href = "/DatosContacto/Create";
+                    }
+                })
+            } else
+            {
+                toastr.warning('No Puedes Dejar Campos Vacios', 'Digital-Cv dice:', { closeButton: true, timeOut:1000 });
+            }
+
         });
     });
 </script>

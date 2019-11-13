@@ -42,12 +42,24 @@ namespace AppDigitalCv.Business
                
                 if (datosContacto != null)
                 {
+                    tblTelefono tblTelefono = new tblTelefono();
+
+                    tblTelefono.strTelefonoCasa = datosContactoDM.TelefonoCasa;
+                    tblTelefono.strTelefonoCelular = datosContactoDM.TelefonoCelular;
+                    tblTelefono.strTelefonoRecados = datosContactoDM.TelefonoRecados;
+
+                    datosContacto.tblTelefono.Add(tblTelefono);
+
                     datosContacto.idDatosContacto = datosContactoDM.IdDatosContacto;
                     datosContacto.idPersonal = datosContactoDM.IdPersonal;
                     datosContacto.strEmailPersonal1 = datosContactoDM.MailPersonal;
-                    datosContacto.strEmailPersonal2 = datosContactoDM.MailInstitucional;
                     datosContacto.strNombreFacebook = datosContactoDM.NombreFacebook;
                     datosContacto.strNombreTwitter = datosContactoDM.NombreTwitter;
+                    datosContacto.strNombre = datosContactoDM.strNombre;
+                    datosContacto.strApellidoPaterno = datosContactoDM.strApellidoPaterno;
+                    datosContacto.strApellidoMaterno = datosContactoDM.strApellidoMaterno;
+                    datosContacto.strDireccion = datosContactoDM.strDireccion;
+                    datosContacto.bitContactoEmergencia = datosContactoDM.bitContactoEmergencia;
                     //asociasion de la tabla principal
                     datosContacto.tblPersonal = personal;
                     //actualizamos los datos en la base de datos.
@@ -61,11 +73,24 @@ namespace AppDigitalCv.Business
             {
                
                 tblDatosContacto datosContacto = new tblDatosContacto();
+                tblTelefono tblTelefono = new tblTelefono();
+
+                tblTelefono.strTelefonoCasa = datosContactoDM.TelefonoCasa;
+                tblTelefono.strTelefonoCelular = datosContactoDM.TelefonoCelular;
+                tblTelefono.strTelefonoRecados = datosContactoDM.TelefonoRecados;
+
+                datosContacto.tblTelefono.Add(tblTelefono);
+
                 datosContacto.idPersonal = datosContactoDM.IdPersonal;
                 datosContacto.strEmailPersonal1 = datosContactoDM.MailPersonal;
-                datosContacto.strEmailPersonal2 = datosContactoDM.MailInstitucional;
                 datosContacto.strNombreFacebook = datosContactoDM.NombreFacebook;
                 datosContacto.strNombreTwitter = datosContactoDM.NombreTwitter;
+                datosContacto.strNombre = datosContactoDM.strNombre;
+                datosContacto.strApellidoPaterno = datosContactoDM.strApellidoPaterno;
+                datosContacto.strApellidoMaterno = datosContactoDM.strApellidoMaterno;
+                datosContacto.strDireccion = datosContactoDM.strDireccion;
+                datosContacto.bitContactoEmergencia = datosContactoDM.bitContactoEmergencia;
+
                 ///insertamos en la entidad
                 datosContactoRepository.Insert(datosContacto);
                 respuesta = true;
@@ -83,26 +108,30 @@ namespace AppDigitalCv.Business
             Expression<Func<tblDatosContacto, bool>> predicado = p => p.idPersonal.Equals(idPersonal);
             List<DatosContactoDomainModel> listaDatosContacto = new List<DatosContactoDomainModel>();
             /////////tblDatosContacto TblDatosContacto = datosContactoRepository.SingleOrDefault(predicado);
-            List<tblDatosContacto> TblDatosContacto =   datosContactoRepository.GetAll(predicado).ToList();
-            foreach(tblDatosContacto  lista in TblDatosContacto)
+            List<tblDatosContacto> TblDatosContacto = datosContactoRepository.GetAll(predicado).ToList();
+            foreach (tblDatosContacto lista in TblDatosContacto)
             {
                 DatosContactoDomainModel datosContactoDM = new DatosContactoDomainModel();
                 datosContactoDM.IdDatosContacto = lista.idDatosContacto;
                 datosContactoDM.IdPersonal = lista.idPersonal;
-                datosContactoDM.MailInstitucional = lista.strEmailPersonal2;
                 datosContactoDM.MailPersonal = lista.strEmailPersonal1;
                 datosContactoDM.NombreFacebook = lista.strNombreFacebook;
                 datosContactoDM.NombreTwitter = lista.strNombreTwitter;
-                foreach (tblTelefono t in lista.tblPersonal.tblTelefono)
-                {
-                    datosContactoDM.TelefonoCelular = t.strTelefonoCelular;
-                    datosContactoDM.TelefonoCasa = t.strTelefonoCasa;
-                    datosContactoDM.TelefonoRecados = t.strTelefonoRecados;
-                    datosContactoDM.IdTelefono = t.idTelefono;
-                }
+                datosContactoDM.strNombre = lista.strNombre;
+                datosContactoDM.strApellidoPaterno = lista.strApellidoPaterno;
+                datosContactoDM.strApellidoMaterno = lista.strApellidoMaterno;
+                datosContactoDM.strDireccion = lista.strDireccion;
+                datosContactoDM.bitContactoEmergencia = lista.bitContactoEmergencia.Value;
+                //foreach (tblTelefono t in lista.tblPersonal.tblTelefono)
+                //{
+                //    datosContactoDM.TelefonoCelular = t.strTelefonoCelular;
+                //    datosContactoDM.TelefonoCasa = t.strTelefonoCasa;
+                //    datosContactoDM.TelefonoRecados = t.strTelefonoRecados;
+                //    datosContactoDM.IdTelefono = t.idTelefono;
+                //}
                 listaDatosContacto.Add(datosContactoDM);
             }
-          return listaDatosContacto;
+            return listaDatosContacto;
         }
 
         /// <summary>
@@ -117,11 +146,15 @@ namespace AppDigitalCv.Business
             DatosContactoDomainModel datosContactoDM = new DatosContactoDomainModel();
             datosContactoDM.IdDatosContacto = tblDatosContacto.idDatosContacto;
             datosContactoDM.IdPersonal = tblDatosContacto.idPersonal;
-            datosContactoDM.MailInstitucional = tblDatosContacto.strEmailPersonal2;
             datosContactoDM.MailPersonal = tblDatosContacto.strEmailPersonal1;
             datosContactoDM.NombreFacebook = tblDatosContacto.strNombreFacebook;
             datosContactoDM.NombreTwitter = tblDatosContacto.strNombreTwitter;
-            foreach (tblTelefono t in tblDatosContacto.tblPersonal.tblTelefono)
+            datosContactoDM.strNombre = tblDatosContacto.strNombre;
+            datosContactoDM.strApellidoPaterno = tblDatosContacto.strApellidoPaterno;
+            datosContactoDM.strApellidoMaterno = tblDatosContacto.strApellidoMaterno;
+            datosContactoDM.strDireccion = tblDatosContacto.strDireccion;
+            datosContactoDM.bitContactoEmergencia = tblDatosContacto.bitContactoEmergencia.Value;
+            foreach (tblTelefono t in tblDatosContacto.tblTelefono)
             {
                 datosContactoDM.TelefonoCasa = t.strTelefonoCasa;
                 datosContactoDM.TelefonoCelular = t.strTelefonoCelular;

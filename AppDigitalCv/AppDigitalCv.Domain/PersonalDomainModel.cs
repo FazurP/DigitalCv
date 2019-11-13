@@ -20,12 +20,14 @@ namespace AppDigitalCv.Domain
         public string strUrlFoto { get; set; }
         public string strUrlCurp { get; set; }
         public string strUrlRfc { get; set; }
+        public string strUrlNacionalidad { get; set; }
         public string strGenero { get; set; }
         public int idEstadoCivil { get; set; }
         public int idUsuario { get; set; }
         public int idTipoSangre { get; set; }
         public int idDireccion { get; set; }
         public int idFamiliar { get; set; }
+        public int idNacionalidad { get; set; }
         public TipoSangreDomainModel TipoSangreDomainModel { get; set; }
 
 

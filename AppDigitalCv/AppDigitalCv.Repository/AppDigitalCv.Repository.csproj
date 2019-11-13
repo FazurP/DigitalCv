@@ -150,6 +150,9 @@
     <Compile Include="CatIntitucionAcreditaOtra.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="CatNacionalidad.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="catPeriodo.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
@@ -169,6 +172,9 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="catTipoProducto.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatTipoUsuario.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CompetenciasPersonalRepository.cs" />
@@ -242,9 +248,6 @@
     <Compile Include="catTipoContrato.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="catTipoEmpresa.cs">
-      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="catTipoEstudio.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
@@ -283,6 +286,7 @@
     <Compile Include="LibroRepository.cs" />
     <Compile Include="ManualOperacionRepository.cs" />
     <Compile Include="MunicipioRepository.cs" />
+    <Compile Include="NacionalidadRepository.cs" />
     <Compile Include="NivelSalarialRepository.cs" />
     <Compile Include="Organizaciones_Salud.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
@@ -454,7 +458,6 @@
     <Compile Include="TelefonoRepository.cs" />
     <Compile Include="TipoActividadRepository.cs" />
     <Compile Include="TipoContratoRepository.cs" />
-    <Compile Include="TipoEmpresaRepository.cs" />
     <Compile Include="TipoEstudioRepository.cs" />
     <Compile Include="TipoProductoRepository.cs" />
     <Compile Include="TipoSangreRepository.cs" />

@@ -46,7 +46,7 @@ namespace AppDigitalCv.Controllers
                
                 ifamiliarBusiness.AddFamiliares( this.MapperObject(familiaresVM)  );
             
-            return View("Create");
+            return RedirectToAction("Create","DatosFamiliares");
         }
 
         #region Mappeo de la Entidad de Familiares
@@ -64,8 +64,10 @@ namespace AppDigitalCv.Controllers
             familiaresDomainModel.PadreDomainModel.StrNombre = familiaresVM.PadreVM.StrNombre;
             familiaresDomainModel.PadreDomainModel.StrOcupacion = familiaresVM.PadreVM.StrOcupacion;
             familiaresDomainModel.PadreDomainModel.StrDomicilio = familiaresVM.PadreVM.StrDomicilio;
-            familiaresDomainModel.PadreDomainModel.IntEdad = familiaresVM.PadreVM.IntEdad;
+            familiaresDomainModel.PadreDomainModel.strApellidoPaterno = familiaresVM.PadreVM.strApellidoPaterno;
+            familiaresDomainModel.PadreDomainModel.strApellidoMaterno = familiaresVM.PadreVM.strApellidoMaterno;
             familiaresDomainModel.PadreDomainModel.BitVive = familiaresVM.PadreVM.BitVive;
+            familiaresDomainModel.PadreDomainModel.DteFechaNacimiento = familiaresVM.PadreVM.DteFechaNacimiento;
 
             familiaresDomainModel.MadreDomainModel = new FamiliarDomainModel();       
             familiaresDomainModel.MadreDomainModel.IdPersonal = familiaresVM.MadreVM.IdPersonal;
@@ -73,8 +75,10 @@ namespace AppDigitalCv.Controllers
             familiaresDomainModel.MadreDomainModel.StrNombre = familiaresVM.MadreVM.StrNombre;
             familiaresDomainModel.MadreDomainModel.StrOcupacion = familiaresVM.MadreVM.StrOcupacion;
             familiaresDomainModel.MadreDomainModel.StrDomicilio = familiaresVM.MadreVM.StrDomicilio;
-            familiaresDomainModel.MadreDomainModel.IntEdad = familiaresVM.MadreVM.IntEdad;
+            familiaresDomainModel.MadreDomainModel.strApellidoPaterno = familiaresVM.MadreVM.strApellidoPaterno;
+            familiaresDomainModel.MadreDomainModel.strApellidoMaterno = familiaresVM.MadreVM.strApellidoMaterno;
             familiaresDomainModel.MadreDomainModel.BitVive = familiaresVM.MadreVM.BitVive;
+            familiaresDomainModel.MadreDomainModel.DteFechaNacimiento = familiaresVM.MadreVM.DteFechaNacimiento;
 
             familiaresDomainModel.ParejaDomainModel = new FamiliarDomainModel();
             familiaresDomainModel.ParejaDomainModel.IdPersonal = familiaresVM.ParejaVM.IdPersonal;
@@ -82,8 +86,10 @@ namespace AppDigitalCv.Controllers
             familiaresDomainModel.ParejaDomainModel.StrNombre = familiaresVM.ParejaVM.StrNombre;
             familiaresDomainModel.ParejaDomainModel.StrOcupacion = familiaresVM.ParejaVM.StrOcupacion;
             familiaresDomainModel.ParejaDomainModel.StrDomicilio = familiaresVM.ParejaVM.StrDomicilio;
-            familiaresDomainModel.ParejaDomainModel.IntEdad = familiaresVM.ParejaVM.IntEdad;
+            familiaresDomainModel.ParejaDomainModel.strApellidoPaterno = familiaresVM.ParejaVM.strApellidoPaterno;
+            familiaresDomainModel.ParejaDomainModel.strApellidoMaterno = familiaresVM.ParejaVM.strApellidoMaterno;
             familiaresDomainModel.ParejaDomainModel.BitVive = familiaresVM.ParejaVM.BitVive;
+            familiaresDomainModel.ParejaDomainModel.DteFechaNacimiento = familiaresVM.ParejaVM.DteFechaNacimiento;
             return familiaresDomainModel;
         }
         #endregion

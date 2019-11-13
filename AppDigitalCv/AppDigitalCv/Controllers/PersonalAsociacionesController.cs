@@ -15,12 +15,10 @@ namespace AppDigitalCv.Controllers
     public class PersonalAsociacionesController : Controller
     {
         IAsociacionesBusiness IasociacionesBusiness;
-        ITipoEmpresaBusiness ItipoEmpresaBusiness;
         IPersonalAsociacionesBusiness IpersonalAsociacionesBusiness;
-        public PersonalAsociacionesController(IAsociacionesBusiness _IasociacionesBusiness, ITipoEmpresaBusiness _ItipoEmpresaBusiness, IPersonalAsociacionesBusiness _IpersonalAsociacionesBusiness)
+        public PersonalAsociacionesController(IAsociacionesBusiness _IasociacionesBusiness, IPersonalAsociacionesBusiness _IpersonalAsociacionesBusiness)
         {
             IasociacionesBusiness = _IasociacionesBusiness;
-            ItipoEmpresaBusiness = _ItipoEmpresaBusiness;
             IpersonalAsociacionesBusiness = _IpersonalAsociacionesBusiness;
         }
 
@@ -36,7 +34,7 @@ namespace AppDigitalCv.Controllers
             if (SessionPersister.AccountSession != null)
             {
                 ViewBag.IdAsociacion = new SelectList(IasociacionesBusiness.GetAsociaciones(), "IdAsociacion", "StrDescripcion");
-                ViewBag.TipoEmpresa = new SelectList("");
+                //ViewBag.TipoEmpresa = new SelectList("");
                 return View();
             }
             else
@@ -47,7 +45,7 @@ namespace AppDigitalCv.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create([Bind(Include = "IdPersonal,IdAsociacion,DteFecha,StrTipoParticipacion")]PersonalAsociacionesVM personalAsociacionesVM)
+        public ActionResult Create(PersonalAsociacionesVM personalAsociacionesVM)
         {
             if (ModelState.IsValid)
             {
@@ -56,13 +54,12 @@ namespace AppDigitalCv.Controllers
                 AutoMapper.Mapper.Map(personalAsociacionesVM, personalAsociacionesDM);
                 IpersonalAsociacionesBusiness.AddPersonalAsociaciones(personalAsociacionesDM);
                 ViewBag.IdAsociacion = new SelectList(IasociacionesBusiness.GetAsociaciones(), "IdAsociacion", "StrDescripcion");
-                ViewBag.TipoEmpresa = new SelectList("");
-                return View();
+
             }
 
             ViewBag.IdAsociacion = new SelectList(IasociacionesBusiness.GetAsociaciones(), "IdAsociacion", "StrDescripcion");
-            ViewBag.TipoEmpresa = new SelectList("");
-            return View("Create");
+      
+            return RedirectToAction("Create","PersonalAsociaciones");
 
         }
 
@@ -73,17 +70,17 @@ namespace AppDigitalCv.Controllers
         /// </summary>
         /// <param name="idPais"> pide el id de pais para asi realizar la consulta </param>
         /// <returns> Regresa una vista parecial que contiene una lista de estados dependiendo del pais seleccionado </returns>
-        [HttpPost]
-        public ActionResult ConsultarTipoEmpresaByIdAsociacion(int idAsociacion)
-        {
+        //[HttpPost]
+        //public ActionResult ConsultarTipoEmpresaByIdAsociacion(int idAsociacion)
+        //{
 
-            List<TipoEmpresaDomainModel> tipoEmpresas = ItipoEmpresaBusiness.GetTipoEmpresaByIdAsociacion(idAsociacion);
-            List<TipoEmpresaVM> tiposEmpresaVM = new List<TipoEmpresaVM>();
-            AutoMapper.Mapper.Map(tipoEmpresas, tiposEmpresaVM);
+        //    List<TipoEmpresaDomainModel> tipoEmpresas = ItipoEmpresaBusiness.GetTipoEmpresaByIdAsociacion(idAsociacion);
+        //    List<TipoEmpresaVM> tiposEmpresaVM = new List<TipoEmpresaVM>();
+        //    AutoMapper.Mapper.Map(tipoEmpresas, tiposEmpresaVM);
 
-            ViewBag.TipoEmpresa = new SelectList(tiposEmpresaVM, "IdTipoEmpresa", "StrDescripcion");
-            return PartialView("_TipoEmpresa");
-        }
+        //    ViewBag.TipoEmpresa = new SelectList(tiposEmpresaVM, "IdTipoEmpresa", "StrDescripcion");
+        //    return PartialView("_TipoEmpresa");
+        //}
 
         #region  Consultar los datos del estado de salud del personal junto con el datatable se pueden ordenar de forma adecuada
 
@@ -166,6 +163,7 @@ namespace AppDigitalCv.Controllers
             {
                 PersonalAsociacionesVM personalAsociacionesVM = new PersonalAsociacionesVM();
                 AutoMapper.Mapper.Map(personalAsociacionDM, personalAsociacionesVM);
+                personalAsociacionesVM.AsociacionesVM = new AsociacionesVM { StrDescripcion = personalAsociacionDM.AsociacionesDomainModel.StrDescripcion};
                 return PartialView("_Eliminar", personalAsociacionesVM);
                 
             }

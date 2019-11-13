@@ -15,13 +15,27 @@
                         ¿Deseas <strong>Eliminar</strong> este registro realmente?
                     </div>
                     <div class="col-lg-6">
-                        <label>Fecha de la Incorporacion</label>
-                        @Html.TextBoxFor(m => m.DteFecha, new { @class = "form-control input-sm", @placeholder = "Fecha", @disabled = "disabled" })
-                        <label>Participacion Desempeñada</label>
-                        @Html.TextBoxFor(m => m.StrTipoParticipacion, new { @class = "form-control input-sm", @placeholder = "Fecha", @disabled = "disabled" })
-                        <a href="#" id="btnSubmit">
-                            <i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i>
-                        </a>
+                        <div class="form-group">
+                            <label>Asociación / Colectivo</label>
+                            @Html.TextBoxFor(m => m.AsociacionesVM.StrDescripcion, new { @class = "form-control input-sm", @placeholder = "Fecha", @disabled = "disabled" })
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha de la Incorporacion</label>
+                            @Html.TextBoxFor(m => m.DteFecha, new { @class = "form-control input-sm", @placeholder = "Fecha", @disabled = "disabled" })
+                        </div>
+                        <div class="form-group">
+                            <label>Participacion Desempeñada</label>
+                            @Html.TextBoxFor(m => m.StrTipoParticipacion, new { @class = "form-control input-sm", @placeholder = "Fecha", @disabled = "disabled" })
+
+                        </div>
+
+                        <div class="form-group">
+                            <br />
+                            <a href="#" id="btnSubmit">
+                                <i class="btn btn-sm btn-google">Eliminar</i>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
             </div>

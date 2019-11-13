@@ -534,7 +534,6 @@
     <Content Include="Views\Shared\_Colonias.cshtml" />
     <Content Include="Views\Shared\_Estados.cshtml" />
     <Content Include="Views\Shared\_Municipios.cshtml" />
-    <Content Include="Views\DatosContacto\EditarDatosContacto.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Views\Direccion\EditarDatosDireccion.cshtml" />
@@ -641,6 +640,7 @@
     <Content Include="Views\ProyectoInvestigacion\_Editar.cshtml" />
     <Content Include="Views\CapacitacionCompetenciasProfesionales\Create.cshtml" />
     <Content Include="Views\OtrasCapacitaciones\Create.cshtml" />
+    <Content Include="Views\PremiosDocente\_Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -768,6 +768,7 @@
     <Compile Include="ViewModels\LibroVM.cs" />
     <Compile Include="ViewModels\ManualOperacionVM.cs" />
     <Compile Include="ViewModels\MunicipioVM.cs" />
+    <Compile Include="ViewModels\NacionalidadVM.cs" />
     <Compile Include="ViewModels\NivelSalarialVM.cs" />
     <Compile Include="ViewModels\NumeroCartillaMilitarVM.cs" />
     <Compile Include="ViewModels\NumeroLicenciaManejoVM.cs" />

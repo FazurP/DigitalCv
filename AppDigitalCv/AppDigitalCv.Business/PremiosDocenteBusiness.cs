@@ -15,12 +15,14 @@ namespace AppDigitalCv.Business
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly PremiosDocenteRepository premiosDocenteRepository;
+        private readonly DocumentosRepository documentosRepository;
         
 
         public PremiosDocenteBusiness(IUnitOfWork _unitOfWork)
         {
             unitOfWork = _unitOfWork;
             premiosDocenteRepository = new PremiosDocenteRepository(unitOfWork);
+            documentosRepository = new DocumentosRepository(unitOfWork);
         }
 
         /// <summary>
@@ -32,20 +34,15 @@ namespace AppDigitalCv.Business
         {
             bool respuesta = false;
             string resultado = string.Empty;
-            if (premiosDocenteDM.IdPersonal > 0)
+            if (premiosDocenteDM.id > 0)
             {
                 //buscamos por id y lo almacenamos en nuestra entidad de entityframework
-                tblPremiosDocente  tblPremios= premiosDocenteRepository.SingleOrDefault(p => p.idPersonal.Equals(premiosDocenteDM.IdPersonal));
+                tblPremiosDocente  tblPremios= premiosDocenteRepository.SingleOrDefault(p => p.id.Equals(premiosDocenteDM.id));
                 if (tblPremios != null)
                 {
-                    tblPremios.dteFechaObtencionPremio = DateTime.Parse( premiosDocenteDM.DteFechaObtencionPremio);
                     tblPremios.strInstitucion = premiosDocenteDM.StrInstitucion;
                     tblPremios.strNombrePremio = premiosDocenteDM.StrNombrePremio;
                     tblPremios.strActividadDesempeniada = premiosDocenteDM.StrActividadDesempeniada;
-                    tblPremios.dteFechaInicioPremio = DateTime.Parse(premiosDocenteDM.DteFechaInicioPremio);
-                    tblPremios.dteFechaFinPremio = DateTime.Parse(premiosDocenteDM.DteFechaFinPremio);
-                    tblPremios.strTipoPremio = premiosDocenteDM.StrTipoPremio;
-                    tblPremios.catDocumentos.strUrl = premiosDocenteDM.DocumentosDomainModel.StrUrl;
                     premiosDocenteRepository.Update(tblPremios);
                     respuesta = true;
                 }
@@ -53,16 +50,21 @@ namespace AppDigitalCv.Business
             else
             {
                 tblPremiosDocente tblPremios = new tblPremiosDocente();
+                catDocumentos catDocumentos = new catDocumentos();
+
                 tblPremios.idDocumento = premiosDocenteDM.IdDocumento;
                 tblPremios.idPersonal = premiosDocenteDM.IdPersonal;
                 tblPremios.dteFechaObtencionPremio = DateTime.Parse(premiosDocenteDM.DteFechaObtencionPremio);
                 tblPremios.strInstitucion = premiosDocenteDM.StrInstitucion;
                 tblPremios.strNombrePremio = premiosDocenteDM.StrNombrePremio;
                 tblPremios.strActividadDesempeniada = premiosDocenteDM.StrActividadDesempeniada;
-                tblPremios.dteFechaInicioPremio = DateTime.Parse(premiosDocenteDM.DteFechaInicioPremio);
-                tblPremios.dteFechaFinPremio = DateTime.Parse(premiosDocenteDM.DteFechaFinPremio);
                 tblPremios.strTipoPremio = premiosDocenteDM.StrTipoPremio;
-                premiosDocenteRepository.Insert(tblPremios);
+
+                catDocumentos.strUrl = premiosDocenteDM.DocumentosDomainModel.StrUrl;
+
+                catDocumentos.tblPremiosDocente.Add(tblPremios);
+
+                documentosRepository.Insert(catDocumentos);
                 respuesta = true;
             }
             return respuesta;
@@ -85,8 +87,6 @@ namespace AppDigitalCv.Business
             tblPremios.strInstitucion = premiosDocenteDM.StrInstitucion;
             tblPremios.strNombrePremio = premiosDocenteDM.StrNombrePremio;
             tblPremios.strActividadDesempeniada = premiosDocenteDM.StrActividadDesempeniada;
-            tblPremios.dteFechaInicioPremio = DateTime.Parse(premiosDocenteDM.DteFechaInicioPremio);
-            tblPremios.dteFechaFinPremio = DateTime.Parse(premiosDocenteDM.DteFechaFinPremio);
             tblPremios.strTipoPremio = premiosDocenteDM.StrTipoPremio;
             premiosDocenteRepository.Insert(tblPremios);
             respuesta = true;
@@ -107,15 +107,15 @@ namespace AppDigitalCv.Business
             foreach (tblPremiosDocente p in premios)
             {
                 PremiosDocenteDomainModel premioDocenteDM = new PremiosDocenteDomainModel();
-                premioDocenteDM.IdPersonal = p.idPersonal;
-                premioDocenteDM.IdDocumento = p.idDocumento;
+                premioDocenteDM.id = p.id;
+                premioDocenteDM.IdPersonal = p.idPersonal.Value;
+                premioDocenteDM.IdDocumento = p.idDocumento.Value;
                 premioDocenteDM.DteFechaObtencionPremio = p.dteFechaObtencionPremio.ToString();
                 premioDocenteDM.StrInstitucion = p.strInstitucion;
                 premioDocenteDM.StrNombrePremio = p.strNombrePremio;
                 premioDocenteDM.StrTipoPremio = p.strTipoPremio;
-                premioDocenteDM.DteFechaInicioPremio = p.dteFechaInicioPremio.ToString();
-                premioDocenteDM.DteFechaFinPremio = p.dteFechaFinPremio.ToString();
                 premioDocenteDM.StrActividadDesempeniada = p.strActividadDesempeniada;
+                premioDocenteDM.DocumentosDomainModel = new DocumentosDomainModel { StrUrl = p.catDocumentos.strUrl };
 
                 premiosDM.Add(premioDocenteDM);
             }
@@ -125,25 +125,19 @@ namespace AppDigitalCv.Business
         }
 
 
-        /// <summary>
-        /// este metodo se encarga de consultar un premio del docente por idPersonal y por idDocumento
-        /// </summary>
-        /// <param name="idPersonal">identificador del personal</param>
-        /// <param name="idDocumento">identificador del documento</param>
-        /// <returns>entidad del premio del docente</returns>
-        public PremiosDocenteDomainModel GetPremioDocenteById(int idPersonal,int idDocumento)
+
+        public PremiosDocenteDomainModel GetPremioDocenteById(int id,int idPersonal)
         {
-            Expression<Func<tblPremiosDocente, bool>> predicado = p => p.idPersonal.Equals(idPersonal) && p.idDocumento.Equals(idDocumento);
+            Expression<Func<tblPremiosDocente, bool>> predicado = p => p.id == id && p.idPersonal == idPersonal;
             tblPremiosDocente  premio= premiosDocenteRepository.SingleOrDefault(predicado);
             PremiosDocenteDomainModel premiosDDM = new PremiosDocenteDomainModel();
-            premiosDDM.IdPersonal = premio.idPersonal;
-            premiosDDM.IdDocumento = premio.idDocumento;
+            premiosDDM.id = premio.id;
+            premiosDDM.IdPersonal = premio.idPersonal.Value;
+            premiosDDM.IdDocumento = premio.idDocumento.Value;
             premiosDDM.DteFechaObtencionPremio = premio.dteFechaObtencionPremio.ToString();
             premiosDDM.StrInstitucion = premio.strInstitucion;
             premiosDDM.StrNombrePremio = premio.strNombrePremio;
             premiosDDM.StrActividadDesempeniada = premio.strActividadDesempeniada;
-            premiosDDM.DteFechaInicioPremio = premio.dteFechaInicioPremio.ToString();
-            premiosDDM.DteFechaFinPremio = premio.dteFechaFinPremio.ToString();
             premiosDDM.StrTipoPremio = premio.strTipoPremio;
             return premiosDDM;
         }

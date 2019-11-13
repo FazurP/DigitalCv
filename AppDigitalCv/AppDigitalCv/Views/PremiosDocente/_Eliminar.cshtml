@@ -5,8 +5,7 @@
     <form id="myForm">
         @Html.HiddenFor(m => m.IdPersonal, new { @class = "form-control input-sm", id = "IdPersonal" })
         @Html.HiddenFor(m => m.IdDocumento, new { @class = "form-control input-sm", id = "IdDocumento" })
-        @Html.HiddenFor(m => m.DteFechaInicioPremio)
-        @Html.HiddenFor(m => m.DteFechaFinPremio)
+        @Html.HiddenFor(m => m.id, new { @class = "form-control input-sm", id = "idPremio" })
         <div class="form-inline">
             <div class="form-group">
                 <div class="row">
@@ -26,7 +25,7 @@
                     <br />
                     <br />
                         <a href="#" id="btnSubmit">
-                            <i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i>
+                            <i class="btn btn-danger">Eliminar</i>
                         </a>
                     </div>
                 </div>

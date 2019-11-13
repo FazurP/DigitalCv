@@ -14,14 +14,13 @@ namespace AppDigitalCv.Repository
     
     public partial class tblPremiosDocente
     {
-        public int idPersonal { get; set; }
-        public int idDocumento { get; set; }
+        public int id { get; set; }
+        public Nullable<int> idPersonal { get; set; }
+        public Nullable<int> idDocumento { get; set; }
         public Nullable<System.DateTime> dteFechaObtencionPremio { get; set; }
         public string strInstitucion { get; set; }
         public string strNombrePremio { get; set; }
         public string strActividadDesempeniada { get; set; }
-        public Nullable<System.DateTime> dteFechaInicioPremio { get; set; }
-        public Nullable<System.DateTime> dteFechaFinPremio { get; set; }
         public string strTipoPremio { get; set; }
     
         public virtual catDocumentos catDocumentos { get; set; }

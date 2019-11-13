@@ -16,12 +16,13 @@ namespace AppDigitalCv.Repository
     {
         public int idFamiliar { get; set; }
         public string strNombre { get; set; }
+        public string strApellidoPaterno { get; set; }
+        public string strApellidoMaterno { get; set; }
         public string strOcupacion { get; set; }
         public string strDomicilio { get; set; }
-        public int intEdad { get; set; }
-        public bool bitVive { get; set; }
+        public Nullable<bool> bitVive { get; set; }
         public Nullable<System.DateTime> dteFechaNacimiento { get; set; }
-        public int idParentesco { get; set; }
+        public Nullable<int> idParentesco { get; set; }
         public Nullable<int> idPersonal { get; set; }
     
         public virtual catParentesco catParentesco { get; set; }

@@ -18,8 +18,8 @@ namespace AppDigitalCv.Repository
         public string strTelefonoCelular { get; set; }
         public string strTelefonoCasa { get; set; }
         public string strTelefonoRecados { get; set; }
-        public int idPersonal { get; set; }
+        public Nullable<int> idDatoContacto { get; set; }
     
-        public virtual tblPersonal tblPersonal { get; set; }
+        public virtual tblDatosContacto tblDatosContacto { get; set; }
     }
 }
