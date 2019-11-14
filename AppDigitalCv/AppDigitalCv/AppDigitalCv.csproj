@@ -459,6 +459,8 @@
     <Content Include="Scripts\Validate\HabitosPersonales\validate-habitos-personales-regExp.js" />
     <Content Include="Scripts\Validate\Hijos\validate-hijos-form.js" />
     <Content Include="Scripts\Validate\Hijos\validate-hijos-regExp.js" />
+    <Content Include="Scripts\Validate\Hobbie\validate-hobbie-form.js" />
+    <Content Include="Scripts\Validate\Hobbie\validate-hobbie-regExp.js" />
     <Content Include="Scripts\Validate\IdiomasDialectos\validate-idiomas-dialectos-form.js" />
     <Content Include="Scripts\Validate\InformeTecnico\validate-informe-tecnico-form.js" />
     <Content Include="Scripts\Validate\InformeTecnico\validate-informe-tecnico-regExp.js" />
@@ -640,6 +642,9 @@
     <Content Include="Views\CapacitacionCompetenciasProfesionales\Create.cshtml" />
     <Content Include="Views\OtrasCapacitaciones\Create.cshtml" />
     <Content Include="Views\PremiosDocente\_Editar.cshtml" />
+    <Content Include="Views\Hobbie\Create.cshtml" />
+    <Content Include="Views\Hobbie\_Editar.cshtml" />
+    <Content Include="Views\Hobbie\_Eliminar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -678,6 +683,7 @@
     <Compile Include="Controllers\ExperienciaLaboralInternaController.cs" />
     <Compile Include="Controllers\HabitosPersonalesController.cs" />
     <Compile Include="Controllers\HijosController.cs" />
+    <Compile Include="Controllers\HobbieController.cs" />
     <Compile Include="Controllers\IdiomaDialectoController.cs" />
     <Compile Include="Controllers\InformeTecnicoController.cs" />
     <Compile Include="Controllers\InstitucionSuperiorController.cs" />
@@ -757,6 +763,8 @@
     <Compile Include="ViewModels\ExperienciaLaboralInternaVM.cs" />
     <Compile Include="ViewModels\FamiliaresVM.cs" />
     <Compile Include="ViewModels\FrecuenciaVM.cs" />
+    <Compile Include="ViewModels\HobbiesVM.cs" />
+    <Compile Include="ViewModels\HobbieVM.cs" />
     <Compile Include="ViewModels\IdiomaDialectoVM.cs" />
     <Compile Include="ViewModels\IdiomaVM.cs" />
     <Compile Include="ViewModels\IfeVM.cs" />

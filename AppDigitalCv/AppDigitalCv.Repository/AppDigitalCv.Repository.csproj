@@ -278,6 +278,8 @@
     <Compile Include="ExperienciaLaboralInternaRepository.cs" />
     <Compile Include="FamiliarRepository.cs" />
     <Compile Include="FrecuenciaRepository.cs" />
+    <Compile Include="HobbieRepository.cs" />
+    <Compile Include="HobbiesRepository.cs" />
     <Compile Include="IdiomaDialectoRepository.cs" />
     <Compile Include="IdiomasRepository.cs" />
     <Compile Include="Infraestructure\BaseRepository.cs" />

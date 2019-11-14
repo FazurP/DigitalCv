@@ -86,6 +86,8 @@
     <Compile Include="FamiliarDomainModel.cs" />
     <Compile Include="FamiliaresDomainModel.cs" />
     <Compile Include="FrecuenciaDomainModel.cs" />
+    <Compile Include="HobbieDomainModel.cs" />
+    <Compile Include="HobbiesDomainModel.cs" />
     <Compile Include="IdiomaDialectoDomainModel.cs" />
     <Compile Include="IdiomaDomainModel.cs" />
     <Compile Include="IfeDomainModel.cs" />

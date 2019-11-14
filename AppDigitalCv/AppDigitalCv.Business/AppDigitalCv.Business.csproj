@@ -84,6 +84,8 @@
     <Compile Include="ExperienciaLaboralInternaBusiness.cs" />
     <Compile Include="FamiliarBusiness.cs" />
     <Compile Include="FrecuenciaBusiness.cs" />
+    <Compile Include="HobbieBusiness.cs" />
+    <Compile Include="HobbiesBusiness.cs" />
     <Compile Include="IdiomaDialectoBusiness.cs" />
     <Compile Include="IdiomasBusiness.cs" />
     <Compile Include="InformeTecnicoBusiness.cs" />
@@ -118,6 +120,8 @@
     <Compile Include="Interface\IExperienciaLaboralExterna.cs" />
     <Compile Include="Interface\IFamiliarBusiness.cs" />
     <Compile Include="Interface\IFrecuenciaBusiness.cs" />
+    <Compile Include="Interface\IHobbieBusiness.cs" />
+    <Compile Include="Interface\IHobbiesBusiness.cs" />
     <Compile Include="Interface\IIdiomaBusiness.cs" />
     <Compile Include="Interface\IIdiomaDialectoBusiness.cs" />
     <Compile Include="Interface\IDireccionBusiness.cs" />

@@ -307,6 +307,14 @@ namespace AppDigitalCv.Infraestructure
 
             CreateMap<NacionalidadVM, NacionalidadDomainModel>();
             CreateMap<NacionalidadDomainModel, NacionalidadVM>();
+
+            //Hobbies Y Hobbie
+
+            CreateMap<HobbieVM, HobbieDomainModel>();
+            CreateMap<HobbieDomainModel, HobbieVM>();
+
+            CreateMap<HobbiesVM, HobbiesDomainModel>();
+            CreateMap<HobbiesDomainModel, HobbiesVM>();
         }
 
         public static void Run()

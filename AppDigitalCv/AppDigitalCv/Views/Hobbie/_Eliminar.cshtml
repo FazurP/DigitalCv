@@ -1,0 +1,55 @@
+﻿
+
+
+@model AppDigitalCv.ViewModels.HobbieVM
+@using AppDigitalCv.Security
+
+<div>
+    <form id="myForm" enctype="multipart/form-data">
+
+        @Html.HiddenFor(model => model.id, new { id = "id" })
+
+        <div class="bs-container">
+
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+            </div>
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="form-group">
+                        <label>Seleccione el Hobbie y/o Afición:</label>
+                        @Html.DropDownListFor(model => model.idHobbie, null, new { @class = "form-control input-sm", id = "hobbie",disabled="" })
+                    </div>
+                    <div class="form-group">
+                        <label>Frecuencia con la que lo Practica:</label>
+                        @Html.DropDownListFor(model => model.idFrecuencia, null, new { @class = "form-control input-sm", id = "frecuencia",disabled="" })
+                    </div>
+                    <div class="form-group">
+                        <label>Tiempo en Horas que lo Practica:</label>
+                        @Html.TextBoxFor(model => model.strTiempoPractica, null, new { @class = "form-control input-sm", id = "tiempoPractica",disabled="" })
+                    </div>
+                    <div class="form-group">
+                        <a id="btnSubmit" class="btn btn-sm btn-danger"><span><i class=""></i>Eliminar</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<script>
+    $(document).ready(function ()
+    {
+        $('#btnSubmit').click(function ()
+        {
+            let id = $('#id').val();
+            let url = "/Hobbie/DeleteHobbie?_id=" + id;
+
+            $.get(url).done(function ()
+            {
+                window.location.href = "/Hobbie/Create";
+            });
+        });
+    });
+</script>
