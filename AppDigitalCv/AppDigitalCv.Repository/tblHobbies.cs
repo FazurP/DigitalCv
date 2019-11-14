@@ -12,13 +12,16 @@ namespace AppDigitalCv.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class tblPasatiempo
+    public partial class tblHobbies
     {
-        public int idPasatiempo { get; set; }
-        public string strDescripcion { get; set; }
-        public string strObservacion { get; set; }
+        public int id { get; set; }
+        public Nullable<int> idHobbie { get; set; }
+        public Nullable<int> idFruencia { get; set; }
         public Nullable<int> idPersonal { get; set; }
+        public string strTiempoPractica { get; set; }
     
+        public virtual catFrecuencia catFrecuencia { get; set; }
+        public virtual CatHobbies CatHobbies { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
     }
 }

@@ -12,17 +12,18 @@ namespace AppDigitalCv.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class tblDeportePersonal
+    public partial class CatHobbies
     {
-        public int idDeporte { get; set; }
-        public int idPersonal { get; set; }
-        public Nullable<System.DateTime> dteFechaRegistro { get; set; }
-        public int idFrecuencia { get; set; }
-        public int idDeportePersonal { get; set; }
-        public string strHorasPractica { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CatHobbies()
+        {
+            this.tblHobbies = new HashSet<tblHobbies>();
+        }
     
-        public virtual catDeporte catDeporte { get; set; }
-        public virtual catFrecuencia catFrecuencia { get; set; }
-        public virtual tblPersonal tblPersonal { get; set; }
+        public int id { get; set; }
+        public string strValor { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblHobbies> tblHobbies { get; set; }
     }
 }

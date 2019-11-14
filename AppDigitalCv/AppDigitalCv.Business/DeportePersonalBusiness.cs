@@ -15,13 +15,13 @@ namespace AppDigitalCv.Business
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly DeportePersonalRepository deportePersonalRepository;
-        private readonly PasatiempoRepository pasatiempoRepository;
+      
 
         public DeportePersonalBusiness(IUnitOfWork _unitOfWork)
         {
             unitOfWork = _unitOfWork;
             deportePersonalRepository = new DeportePersonalRepository(unitOfWork);
-            pasatiempoRepository = new PasatiempoRepository(unitOfWork);
+          
         }
 
         /// <summary>
@@ -85,13 +85,13 @@ namespace AppDigitalCv.Business
 
                 if (tblDeportePersonal != null)
                 {
-                    tblDeportePersonal.idDeportePersonal = deportePersonalDM.IdDeportePersonal;
+                    tblDeportePersonal.idDeporte = deportePersonalDM.IdDeporte;
                     tblDeportePersonal.idPersonal = deportePersonalDM.IdPersonal;
                     tblDeportePersonal.dteFechaRegistro = DateTime.Now;
                     tblDeportePersonal.idFrecuencia = deportePersonalDM.IdFrecuencia;
-                    //actualizamos los datos en la base de datos.
-                     deportePersonalRepository.Update(tblDeportePersonal);
-                     respuesta = true;
+                    tblDeportePersonal.strHorasPractica = deportePersonalDM.strHorasPractica;
+                    deportePersonalRepository.Update(tblDeportePersonal);
+                    respuesta = true;
 
                 }
             }
@@ -103,14 +103,7 @@ namespace AppDigitalCv.Business
                 tblDeportePersonal.idPersonal = deportePersonalDM.IdPersonal;
                 tblDeportePersonal.dteFechaRegistro = DateTime.Parse(deportePersonalDM.FechaRegistro);
                 tblDeportePersonal.idFrecuencia = deportePersonalDM.IdFrecuencia;
-
-                tblPasatiempo tblPasatiempo = new tblPasatiempo();
-                tblPasatiempo.strDescripcion = deportePersonalDM.PasatiempoDM.StrDescripcion;
-                tblPasatiempo.idPersonal = deportePersonalDM.IdPersonal;
-                //Insertamos el pasatiempo
-                pasatiempoRepository.Insert(tblPasatiempo);
-
-                ///insertamos en la entidad
+                tblDeportePersonal.strHorasPractica = deportePersonalDM.strHorasPractica;
                 deportePersonalRepository.Insert(tblDeportePersonal);
                 respuesta = true;
             }
@@ -188,6 +181,8 @@ namespace AppDigitalCv.Business
             deportePersonal.IdFrecuencia = tblDeporte.idFrecuencia;
             deportePersonal.IdDeportePersonal = tblDeporte.idDeportePersonal;
             deportePersonal.FechaRegistro = tblDeporte.dteFechaRegistro.Value.ToShortDateString();
+            deportePersonal.strHorasPractica = tblDeporte.strHorasPractica;
+            deportePersonal.FrecuenciaDM = new FrecuenciaDomainModel { StrDescripcion = tblDeporte.catFrecuencia.strDescripcion };
 
             catDeporte catDeporte = new catDeporte();
             catDeporte.idDeporte = tblDeporte.idDeporte;
@@ -196,6 +191,7 @@ namespace AppDigitalCv.Business
             DeporteDomainModel deporteDM = new DeporteDomainModel();
             deporteDM.IdDeporte = catDeporte.idDeporte;
             deporteDM.StrDescripcion = catDeporte.strDescripcion;
+
 
             
             deportePersonal.DeporteDM = deporteDM;

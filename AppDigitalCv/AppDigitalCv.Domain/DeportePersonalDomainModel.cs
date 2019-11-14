@@ -14,6 +14,7 @@ namespace AppDigitalCv.Domain
         public int IdPersonal { get; set; }
         public int IdDeporte { get; set; }
         public int IdFrecuencia { get; set; }
+        public string strHorasPractica { get; set; }
         public DeporteDomainModel DeporteDM { get; set; }
         public PasatiempoDomainModel PasatiempoDM { get; set; }
     }

@@ -18,6 +18,7 @@ namespace AppDigitalCv.Repository
         public catFrecuencia()
         {
             this.tblDeportePersonal = new HashSet<tblDeportePersonal>();
+            this.tblHobbies = new HashSet<tblHobbies>();
         }
     
         public int idFrecuencia { get; set; }
@@ -26,5 +27,7 @@ namespace AppDigitalCv.Repository
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblDeportePersonal> tblDeportePersonal { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblHobbies> tblHobbies { get; set; }
     }
 }

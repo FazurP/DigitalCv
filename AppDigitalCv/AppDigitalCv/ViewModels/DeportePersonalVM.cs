@@ -13,6 +13,7 @@ namespace AppDigitalCv.ViewModels
         public int IdPersonal { get; set; }
         public int IdDeporte { get; set; }
         public int IdFrecuencia { get; set; }
+        public string strHorasPractica { get; set; }
         public DeporteVM DeporteVM { get; set; }
         public PasatiempoVM PasatiempoVM { get; set; }
 

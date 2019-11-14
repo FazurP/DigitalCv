@@ -45,7 +45,6 @@
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblEmergencia" Width="1.5" PointX="10.5" PointY="27.375" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblEnfermedadPersonal" Width="1.5" PointX="13.5" PointY="19.625" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblIdiomaDialectoPersonal" Width="1.5" PointX="7.5" PointY="28" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.tblPasatiempo" Width="1.5" PointX="5.625" PointY="45.75" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblPersonalAsociaciones" Width="1.5" PointX="13.5" PointY="30.625" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblUsuarioRol" Width="1.5" PointX="11.25" PointY="35.125" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_alegia_alergiaPersonal" />
@@ -253,7 +252,6 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionDocente_tblPersonal1" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_tblPersonal" />
-        <AssociationConnector Association="bdGestionDocenteModel.fk_personal_pasatiempo" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_personal_personalAsociaciones" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_personal_premiosDocente" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblPortafolioPersonal_tblPersonal" />
@@ -263,6 +261,11 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblPrototipo_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblTutoria_tblPersonal" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.CatHobbies" Width="1.5" PointX="26.25" PointY="27.25" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblHobbies" Width="1.5" PointX="28.5" PointY="26.75" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblHobbies_catFrecuencia" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblHobbies_CatHobbies" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblHobbies_tblPersonal" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

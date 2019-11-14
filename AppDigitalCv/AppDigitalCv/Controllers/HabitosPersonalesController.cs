@@ -44,33 +44,19 @@ namespace AppDigitalCv.Controllers
             int  identityPersonal = SessionPersister.AccountSession.IdPersonal;
             if (ModelState.IsValid)
             {
+               
                 DeportePersonalDomainModel deporteDM = new DeportePersonalDomainModel();
-                PasatiempoDomainModel pasatiempoDM = new PasatiempoDomainModel();
-
-                PasatiempoVM pasatiempoVM = new PasatiempoVM();
-                pasatiempoVM.StrDescripcion = deportePersonalVM.PasatiempoVM.StrDescripcion;
-                pasatiempoVM.IdPersonal = identityPersonal;
 
                 deportePersonalVM.IdPersonal = identityPersonal;
                 deportePersonalVM.FechaRegistro = DateTime.Now.ToShortDateString();
-                deportePersonalVM.PasatiempoVM = pasatiempoVM;
 
-                AutoMapper.Mapper.Map(pasatiempoVM, pasatiempoDM);
-                AutoMapper.Mapper.Map(deportePersonalVM, deporteDM);
-                deporteDM.PasatiempoDM = pasatiempoDM;
+                AutoMapper.Mapper.Map(deportePersonalVM,deporteDM);      
 
                 IdeportePersonalBusiness.AddUpdateHabitosPersonales(deporteDM);
-                ViewBag.IdDeporte = new SelectList(deporteBusiness.GetDeportes(), "IdDeporte", "StrDescripcion");
-                ViewBag.IdFrecuencia = new SelectList(frecuenciaBusiness.GetFrecuencia(), "IdFrecuencia", "StrDescripcion");
-
-                return RedirectToAction("Create","HabitosPersonales");
+                
             }
-
-            ViewBag.IdDeporte = new SelectList(deporteBusiness.GetDeportes(), "IdDeporte", "StrDescripcion");
-            ViewBag.IdFrecuencia = new SelectList(frecuenciaBusiness.GetFrecuencia(), "IdFrecuencia", "StrDescripcion");
-            return View("Create");
+            return RedirectToAction("Create", "HabitosPersonales");
         }
-
 
 
         #region  Consultar los datos del estado de los habitos personales
@@ -137,15 +123,16 @@ namespace AppDigitalCv.Controllers
             DeportePersonalDomainModel deportePersonalDM = new DeportePersonalDomainModel();
             if (idDeportePersonal > 0)
             {
-                deportePersonalDM  = IdeportePersonalBusiness.GetDeportesPersonalByIdDeportePersonal(idDeportePersonal);
-                
+                deportePersonalDM  = IdeportePersonalBusiness.GetDeportesPersonalByIdDeportePersonal(idDeportePersonal);          
 
             }
             AutoMapper.Mapper.Map(deportePersonalDM.DeporteDM, deporteVM);
             AutoMapper.Mapper.Map(deportePersonalDM, deportePersonalVM);
             deportePersonalVM.DeporteVM = deporteVM;
 
+            ViewBag.IdDeporte = new SelectList(deporteBusiness.GetDeportes(), "IdDeporte", "StrDescripcion");
             ViewBag.IdFrecuencia = new SelectList(frecuenciaBusiness.GetFrecuencia(), "IdFrecuencia", "StrDescripcion");
+
             return PartialView("_Editar", deportePersonalVM);
         }
 
@@ -182,9 +169,11 @@ namespace AppDigitalCv.Controllers
             DeporteVM deporteVM = new DeporteVM();
             AutoMapper.Mapper.Map(deporteDM, deporteVM);
             AutoMapper.Mapper.Map(deportePersonalDM, deportePersonalVM);
+            
 
             ViewBag.IdFrecuencia = new SelectList(frecuenciaBusiness.GetFrecuencia(), "IdFrecuencia", "StrDescripcion");
             deportePersonalVM.DeporteVM = deporteVM;
+            deportePersonalVM.FrecuenciaVM = new FrecuenciaVM { StrDescripcion = deportePersonalDM.FrecuenciaDM.StrDescripcion };
             return PartialView("_Eliminar", deportePersonalVM);
         }
 
@@ -208,14 +197,6 @@ namespace AppDigitalCv.Controllers
         #endregion
 
 
-        #region Este metodo se encarga de agregar una actividad deportiva adicional 
-        [HttpGet]
-        public ActionResult Registrar()
-        {
-            return View();
-        }
-
-        #endregion
     }
 }
 

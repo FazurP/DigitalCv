@@ -221,6 +221,13 @@
           <Property Name="strValor" Type="varchar" MaxLength="250" />
           <Property Name="strDescripcion" Type="varchar" MaxLength="250" />
         </EntityType>
+        <EntityType Name="CatHobbies">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strValor" Type="varchar" MaxLength="250" />
+        </EntityType>
         <EntityType Name="catIdioma">
           <Key>
             <PropertyRef Name="idIdioma" />
@@ -637,6 +644,7 @@
           <Property Name="idPersonal" Type="int" Nullable="false" />
           <Property Name="dteFechaRegistro" Type="datetime" />
           <Property Name="idFrecuencia" Type="int" Nullable="false" />
+          <Property Name="strHorasPractica" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="TblDireccion">
           <Key>
@@ -767,6 +775,16 @@
           <Property Name="IdFavoritos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdUsuario" Type="int" />
           <Property Name="IdOrganizacion" Type="int" />
+        </EntityType>
+        <EntityType Name="tblHobbies">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idHobbie" Type="int" />
+          <Property Name="idFruencia" Type="int" />
+          <Property Name="idPersonal" Type="int" />
+          <Property Name="strTiempoPractica" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="tblIdiomaDialectoPersonal">
           <Key>
@@ -926,15 +944,6 @@
           <Property Name="strActividad" Type="varchar" MaxLength="250" />
           <Property Name="fechaInicio" Type="date" />
           <Property Name="fechaTermino" Type="date" />
-        </EntityType>
-        <EntityType Name="tblPasatiempo">
-          <Key>
-            <PropertyRef Name="idPasatiempo" />
-          </Key>
-          <Property Name="idPasatiempo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="strDescripcion" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="strObservacion" Type="varchar(max)" />
-          <Property Name="idPersonal" Type="int" />
         </EntityType>
         <EntityType Name="tblPersonal">
           <Key>
@@ -1639,18 +1648,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_personal_pasatiempo">
-          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="0..1" />
-          <End Role="tblPasatiempo" Type="Self.tblPasatiempo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblPasatiempo">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_personal_personalAsociaciones">
           <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="1" />
           <End Role="tblPersonalAsociaciones" Type="Self.tblPersonalAsociaciones" Multiplicity="*" />
@@ -2153,6 +2150,44 @@
               <PropertyRef Name="idPersonal" />
             </Principal>
             <Dependent Role="tblExperienciaLaboralInterna">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblHobbies_catFrecuencia">
+          <End Role="catFrecuencia" Type="Self.catFrecuencia" Multiplicity="0..1" />
+          <End Role="tblHobbies" Type="Self.tblHobbies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catFrecuencia">
+              <PropertyRef Name="idFrecuencia" />
+            </Principal>
+            <Dependent Role="tblHobbies">
+              <PropertyRef Name="idFruencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblHobbies_CatHobbies">
+          <End Role="CatHobbies" Type="Self.CatHobbies" Multiplicity="0..1" />
+          <End Role="tblHobbies" Type="Self.tblHobbies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatHobbies">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblHobbies">
+              <PropertyRef Name="idHobbie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblHobbies_tblPersonal">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblHobbies" Type="Self.tblHobbies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblHobbies">
               <PropertyRef Name="idPersonal" />
             </Dependent>
           </ReferentialConstraint>
@@ -3141,6 +3176,7 @@
           <EntitySet Name="catFrecuencia" EntityType="Self.catFrecuencia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CatFuentaFinaciamientoMaestria" EntityType="Self.CatFuentaFinaciamientoMaestria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CatFuenteFinanciamientoDoctorado" EntityType="Self.CatFuenteFinanciamientoDoctorado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatHobbies" EntityType="Self.CatHobbies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catIdioma" EntityType="Self.catIdioma" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CatInstitucionAcreditaBachillerato" EntityType="Self.CatInstitucionAcreditaBachillerato" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CatInstitucionAcreditaCapacitacionProfesional" EntityType="Self.CatInstitucionAcreditaCapacitacionProfesional" Schema="dbo" store:Type="Tables" />
@@ -3196,6 +3232,7 @@
           <EntitySet Name="tblExperienciaLaboralExterna" EntityType="Self.tblExperienciaLaboralExterna" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblExperienciaLaboralInterna" EntityType="Self.tblExperienciaLaboralInterna" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblFavoritos" EntityType="Self.TblFavoritos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblHobbies" EntityType="Self.tblHobbies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblIdiomaDialectoPersonal" EntityType="Self.tblIdiomaDialectoPersonal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblInformeTecnico" EntityType="Self.tblInformeTecnico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblLibro" EntityType="Self.tblLibro" Schema="dbo" store:Type="Tables" />
@@ -3207,7 +3244,6 @@
           <EntitySet Name="tblParticipacionDocente" EntityType="Self.tblParticipacionDocente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblParticipacionInstitucionalExterna" EntityType="Self.tblParticipacionInstitucionalExterna" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblParticipacionInstitucionalInterna" EntityType="Self.tblParticipacionInstitucionalInterna" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblPasatiempo" EntityType="Self.tblPasatiempo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPersonal" EntityType="Self.tblPersonal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPersonalAsociaciones" EntityType="Self.tblPersonalAsociaciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPortafolioPersonal" EntityType="Self.tblPortafolioPersonal" Schema="dbo" store:Type="Tables" />
@@ -3385,10 +3421,6 @@
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblEnfermedadPersonal" EntitySet="tblEnfermedadPersonal" />
           </AssociationSet>
-          <AssociationSet Name="fk_personal_pasatiempo" Association="Self.fk_personal_pasatiempo">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblPasatiempo" EntitySet="tblPasatiempo" />
-          </AssociationSet>
           <AssociationSet Name="fk_personal_personalAsociaciones" Association="Self.fk_personal_personalAsociaciones">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblPersonalAsociaciones" EntitySet="tblPersonalAsociaciones" />
@@ -3544,6 +3576,18 @@
           <AssociationSet Name="FK_tblExperienciaLaboralInterna_tblPersonal" Association="Self.FK_tblExperienciaLaboralInterna_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblExperienciaLaboralInterna" EntitySet="tblExperienciaLaboralInterna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblHobbies_catFrecuencia" Association="Self.FK_tblHobbies_catFrecuencia">
+            <End Role="catFrecuencia" EntitySet="catFrecuencia" />
+            <End Role="tblHobbies" EntitySet="tblHobbies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblHobbies_CatHobbies" Association="Self.FK_tblHobbies_CatHobbies">
+            <End Role="CatHobbies" EntitySet="CatHobbies" />
+            <End Role="tblHobbies" EntitySet="tblHobbies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblHobbies_tblPersonal" Association="Self.FK_tblHobbies_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblHobbies" EntitySet="tblHobbies" />
           </AssociationSet>
           <AssociationSet Name="FK_tblInformeTecnico_catDocumentos" Association="Self.FK_tblInformeTecnico_catDocumentos">
             <End Role="catDocumentos" EntitySet="catDocumentos" />
@@ -3879,7 +3923,6 @@
           <EntitySet Name="tblEmergencia" EntityType="bdGestionDocenteModel.tblEmergencia" />
           <EntitySet Name="tblEnfermedadPersonal" EntityType="bdGestionDocenteModel.tblEnfermedadPersonal" />
           <EntitySet Name="tblIdiomaDialectoPersonal" EntityType="bdGestionDocenteModel.tblIdiomaDialectoPersonal" />
-          <EntitySet Name="tblPasatiempo" EntityType="bdGestionDocenteModel.tblPasatiempo" />
           <EntitySet Name="tblPersonalAsociaciones" EntityType="bdGestionDocenteModel.tblPersonalAsociaciones" />
           <EntitySet Name="tblUsuarioRol" EntityType="bdGestionDocenteModel.tblUsuarioRol" />
           <AssociationSet Name="fk_alegia_alergiaPersonal" Association="bdGestionDocenteModel.fk_alegia_alergiaPersonal">
@@ -4516,10 +4559,6 @@
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblParticipacionInstitucionalInterna" EntitySet="tblParticipacionInstitucionalInterna" />
           </AssociationSet>
-          <AssociationSet Name="fk_personal_pasatiempo" Association="bdGestionDocenteModel.fk_personal_pasatiempo">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblPasatiempo" EntitySet="tblPasatiempo" />
-          </AssociationSet>
           <AssociationSet Name="fk_personal_personalAsociaciones" Association="bdGestionDocenteModel.fk_personal_personalAsociaciones">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblPersonalAsociaciones" EntitySet="tblPersonalAsociaciones" />
@@ -4555,6 +4594,20 @@
           <AssociationSet Name="FK_tblTutoria_tblPersonal" Association="bdGestionDocenteModel.FK_tblTutoria_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblTutoria" EntitySet="tblTutoria" />
+          </AssociationSet>
+          <EntitySet Name="CatHobbies" EntityType="bdGestionDocenteModel.CatHobbies" />
+          <EntitySet Name="tblHobbies" EntityType="bdGestionDocenteModel.tblHobbies" />
+          <AssociationSet Name="FK_tblHobbies_catFrecuencia" Association="bdGestionDocenteModel.FK_tblHobbies_catFrecuencia">
+            <End Role="catFrecuencia" EntitySet="catFrecuencia" />
+            <End Role="tblHobbies" EntitySet="tblHobbies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblHobbies_CatHobbies" Association="bdGestionDocenteModel.FK_tblHobbies_CatHobbies">
+            <End Role="CatHobbies" EntitySet="CatHobbies" />
+            <End Role="tblHobbies" EntitySet="tblHobbies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblHobbies_tblPersonal" Association="bdGestionDocenteModel.FK_tblHobbies_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblHobbies" EntitySet="tblHobbies" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="catAlergias">
@@ -4705,6 +4758,7 @@
           <Property Name="strDescripcion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblDeportePersonal" Relationship="bdGestionDocenteModel.fk_frecuencia_deportePersonal" FromRole="catFrecuencia" ToRole="tblDeportePersonal" />
+          <NavigationProperty Name="tblHobbies" Relationship="bdGestionDocenteModel.FK_tblHobbies_catFrecuencia" FromRole="catFrecuencia" ToRole="tblHobbies" />
         </EntityType>
         <EntityType Name="catIdioma">
           <Key>
@@ -4981,6 +5035,7 @@
           <NavigationProperty Name="catFrecuencia" Relationship="bdGestionDocenteModel.fk_frecuencia_deportePersonal" FromRole="tblDeportePersonal" ToRole="catFrecuencia" />
           <Property Name="idDeportePersonal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.fk_personal_deportePersonal" FromRole="tblDeportePersonal" ToRole="tblPersonal" />
+          <Property Name="strHorasPractica" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblEmergencia">
           <Key>
@@ -5022,16 +5077,6 @@
           <NavigationProperty Name="catDialecto" Relationship="bdGestionDocenteModel.fk_dialecto_personalIdiomaDialecto" FromRole="tblIdiomaDialectoPersonal" ToRole="catDialecto" />
           <NavigationProperty Name="catIdioma" Relationship="bdGestionDocenteModel.fk_idioma_personalIdiomaDialecto" FromRole="tblIdiomaDialectoPersonal" ToRole="catIdioma" />
           <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.fk_personal_PersonalIdiomaDialecto" FromRole="tblIdiomaDialectoPersonal" ToRole="tblPersonal" />
-        </EntityType>
-        <EntityType Name="tblPasatiempo">
-          <Key>
-            <PropertyRef Name="idPasatiempo" />
-          </Key>
-          <Property Name="idPasatiempo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="strDescripcion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="idPersonal" Type="Int32" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.fk_personal_pasatiempo" FromRole="tblPasatiempo" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="tblPersonalAsociaciones">
           <Key>
@@ -7356,7 +7401,6 @@
           <NavigationProperty Name="tblParticipacionDocente" Relationship="bdGestionDocenteModel.FK_tblParticipacionDocente_tblPersonal1" FromRole="tblPersonal" ToRole="tblParticipacionDocente" />
           <NavigationProperty Name="tblParticipacionInstitucionalExterna" Relationship="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_tblPersonal" FromRole="tblPersonal" ToRole="tblParticipacionInstitucionalExterna" />
           <NavigationProperty Name="tblParticipacionInstitucionalInterna" Relationship="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_tblPersonal" FromRole="tblPersonal" ToRole="tblParticipacionInstitucionalInterna" />
-          <NavigationProperty Name="tblPasatiempo" Relationship="bdGestionDocenteModel.fk_personal_pasatiempo" FromRole="tblPersonal" ToRole="tblPasatiempo" />
           <NavigationProperty Name="tblPersonalAsociaciones" Relationship="bdGestionDocenteModel.fk_personal_personalAsociaciones" FromRole="tblPersonal" ToRole="tblPersonalAsociaciones" />
           <NavigationProperty Name="tblPremiosDocente" Relationship="bdGestionDocenteModel.fk_personal_premiosDocente" FromRole="tblPersonal" ToRole="tblPremiosDocente" />
           <NavigationProperty Name="tblPortafolioPersonal" Relationship="bdGestionDocenteModel.FK_tblPortafolioPersonal_tblPersonal" FromRole="tblPersonal" ToRole="tblPortafolioPersonal" />
@@ -7366,6 +7410,7 @@
           <NavigationProperty Name="tblPrototipo" Relationship="bdGestionDocenteModel.FK_tblPrototipo_tblPersonal" FromRole="tblPersonal" ToRole="tblPrototipo" />
           <NavigationProperty Name="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" Relationship="bdGestionDocenteModel.FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_tblPersonal" FromRole="tblPersonal" ToRole="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" />
           <NavigationProperty Name="tblTutoria" Relationship="bdGestionDocenteModel.FK_tblTutoria_tblPersonal" FromRole="tblPersonal" ToRole="tblTutoria" />
+          <NavigationProperty Name="tblHobbies" Relationship="bdGestionDocenteModel.FK_tblHobbies_tblPersonal" FromRole="tblPersonal" ToRole="tblHobbies" />
         </EntityType>
         <Association Name="fk_direccion_personal">
           <End Type="bdGestionDocenteModel.catDireccion" Role="catDireccion" Multiplicity="0..1" />
@@ -7835,18 +7880,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_personal_pasatiempo">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.tblPasatiempo" Role="tblPasatiempo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblPasatiempo">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_personal_personalAsociaciones">
           <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
           <End Type="bdGestionDocenteModel.tblPersonalAsociaciones" Role="tblPersonalAsociaciones" Multiplicity="*" />
@@ -7965,6 +7998,65 @@
               <PropertyRef Name="idPersonal" />
             </Principal>
             <Dependent Role="tblTutoria">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CatHobbies">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strValor" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblHobbies" Relationship="bdGestionDocenteModel.FK_tblHobbies_CatHobbies" FromRole="CatHobbies" ToRole="tblHobbies" />
+        </EntityType>
+        <EntityType Name="tblHobbies">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idHobbie" Type="Int32" />
+          <Property Name="idFruencia" Type="Int32" />
+          <Property Name="idPersonal" Type="Int32" />
+          <Property Name="strTiempoPractica" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="catFrecuencia" Relationship="bdGestionDocenteModel.FK_tblHobbies_catFrecuencia" FromRole="tblHobbies" ToRole="catFrecuencia" />
+          <NavigationProperty Name="CatHobbies" Relationship="bdGestionDocenteModel.FK_tblHobbies_CatHobbies" FromRole="tblHobbies" ToRole="CatHobbies" />
+          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_tblHobbies_tblPersonal" FromRole="tblHobbies" ToRole="tblPersonal" />
+        </EntityType>
+        <Association Name="FK_tblHobbies_catFrecuencia">
+          <End Type="bdGestionDocenteModel.catFrecuencia" Role="catFrecuencia" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.tblHobbies" Role="tblHobbies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catFrecuencia">
+              <PropertyRef Name="idFrecuencia" />
+            </Principal>
+            <Dependent Role="tblHobbies">
+              <PropertyRef Name="idFruencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblHobbies_CatHobbies">
+          <End Type="bdGestionDocenteModel.CatHobbies" Role="CatHobbies" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.tblHobbies" Role="tblHobbies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatHobbies">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblHobbies">
+              <PropertyRef Name="idHobbie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblHobbies_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblHobbies" Role="tblHobbies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblHobbies">
               <PropertyRef Name="idPersonal" />
             </Dependent>
           </ReferentialConstraint>
@@ -8334,6 +8426,7 @@
           <EntitySetMapping Name="tblDeportePersonal">
             <EntityTypeMapping TypeName="bdGestionDocenteModel.tblDeportePersonal">
               <MappingFragment StoreEntitySet="tblDeportePersonal">
+                <ScalarProperty Name="strHorasPractica" ColumnName="strHorasPractica" />
                 <ScalarProperty Name="idDeportePersonal" ColumnName="idDeportePersonal" />
                 <ScalarProperty Name="idFrecuencia" ColumnName="idFrecuencia" />
                 <ScalarProperty Name="dteFechaRegistro" ColumnName="dteFechaRegistro" />
@@ -8376,16 +8469,6 @@
                 <ScalarProperty Name="idDialecto" ColumnName="idDialecto" />
                 <ScalarProperty Name="idIdioma" ColumnName="idIdioma" />
                 <ScalarProperty Name="idIdiomaDialectoPersonal" ColumnName="idIdiomaDialectoPersonal" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblPasatiempo">
-            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblPasatiempo">
-              <MappingFragment StoreEntitySet="tblPasatiempo">
-                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
-                <ScalarProperty Name="strObservacion" ColumnName="strObservacion" />
-                <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
-                <ScalarProperty Name="idPasatiempo" ColumnName="idPasatiempo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -9209,6 +9292,25 @@
                 <ScalarProperty Name="strApellidoPaterno" ColumnName="strApellidoPaterno" />
                 <ScalarProperty Name="strNombre" ColumnName="strNombre" />
                 <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatHobbies">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.CatHobbies">
+              <MappingFragment StoreEntitySet="CatHobbies">
+                <ScalarProperty Name="strValor" ColumnName="strValor" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHobbies">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblHobbies">
+              <MappingFragment StoreEntitySet="tblHobbies">
+                <ScalarProperty Name="strTiempoPractica" ColumnName="strTiempoPractica" />
+                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
+                <ScalarProperty Name="idFruencia" ColumnName="idFruencia" />
+                <ScalarProperty Name="idHobbie" ColumnName="idHobbie" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
