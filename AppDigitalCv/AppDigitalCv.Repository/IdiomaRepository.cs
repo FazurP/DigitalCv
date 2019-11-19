@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace AppDigitalCv.Repository
 {
-    class DialectoIdiomaRepository : BaseRepository<tblIdiomaDialectoPersonal>
+    public class IdiomaRepository : BaseRepository<TblIdioma>
     {
-        public DialectoIdiomaRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public IdiomaRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-
+        
         }
     }
 }

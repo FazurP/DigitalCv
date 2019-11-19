@@ -14,36 +14,50 @@ namespace AppDigitalCv.Business
     public class IdiomasBusiness : IIdiomaBusiness
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly IdiomaDialectoRepository idiomaDialectoRepository;
+        private readonly IdiomasRepository idiomasRepository;
 
         public IdiomasBusiness(IUnitOfWork _unitOfWork)
         {
 
             unitOfWork = _unitOfWork;
-
-            idiomaDialectoRepository = new IdiomaDialectoRepository(_unitOfWork);
+            idiomasRepository = new IdiomasRepository(_unitOfWork);
 
         }
 
+        public List<IdiomaDomainModel> GetAllIdiomas() 
+        {
+
+            List<IdiomaDomainModel> idiomaDomainModels = new List<IdiomaDomainModel>();
+            List<catIdioma> idiomas = new List<catIdioma>();
+
+            idiomas = idiomasRepository.GetAll().ToList();
+
+            foreach (catIdioma item in idiomas)
+            {
+                IdiomaDomainModel idiomaDomainModel = new IdiomaDomainModel();
+
+                idiomaDomainModel.idIdioma = item.idIdioma;
+                idiomaDomainModel.strDescripcion = item.strDescripcion;
+                idiomaDomainModel.strObservacion = item.strObservacion;
+
+                idiomaDomainModels.Add(idiomaDomainModel);
+            }
+
+            IdiomaDomainModel idiomaDomainModel1 = new IdiomaDomainModel();
+
+            idiomaDomainModel1.idIdioma = 0;
+            idiomaDomainModel1.strDescripcion = "Seleccionar";
+
+            idiomaDomainModels.Insert(0, idiomaDomainModel1);
+
+            return idiomaDomainModels;
+
+        }
+
+
         public List<IdiomaDomainModel> GetIdiomasByIdPersonal(int _idPersonal) {
             List<IdiomaDomainModel> idiomasDM = new List<IdiomaDomainModel>();
-            Expression<Func<tblIdiomaDialectoPersonal, bool>> predicado = p => p.idPersonal.Equals(_idPersonal) && p.idIdioma != null;
-            List<tblIdiomaDialectoPersonal> tblIdiomas = idiomaDialectoRepository.GetAll(predicado).ToList<tblIdiomaDialectoPersonal>();
-
-            
-            foreach (tblIdiomaDialectoPersonal idioma in tblIdiomas)
-            {
-                IdiomaDomainModel idiomas = new IdiomaDomainModel();
-            
-            
-                    idiomas.idIdioma = idioma.catIdioma.idIdioma;
-                    idiomas.strDescripcion = idioma.catIdioma.strDescripcion;
-                    idiomas.strObservacion = idioma.catIdioma.strObservacion;
-                    idiomasDM.Add(idiomas);
-                
-            
-               
-            }
+           
 
             return idiomasDM;
         }
@@ -53,12 +67,7 @@ namespace AppDigitalCv.Business
 
             IdiomaDomainModel idiomaDM = new IdiomaDomainModel();
 
-            Expression<Func<tblIdiomaDialectoPersonal, bool>> predicado = p => p.idPersonal.Equals(idPersona) && p.idIdioma.Equals(idIdioma);
-            tblIdiomaDialectoPersonal tblIdioma = idiomaDialectoRepository.GetAll(predicado).FirstOrDefault<tblIdiomaDialectoPersonal>();
-
-            idiomaDM.idIdioma = tblIdioma.catIdioma.idIdioma;
-            idiomaDM.strDescripcion = tblIdioma.catIdioma.strDescripcion;
-            idiomaDM.strObservacion = tblIdioma.catIdioma.strObservacion;
+          
 
             return idiomaDM;
 

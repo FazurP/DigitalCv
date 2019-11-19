@@ -315,6 +315,16 @@ namespace AppDigitalCv.Infraestructure
 
             CreateMap<HobbiesVM, HobbiesDomainModel>();
             CreateMap<HobbiesDomainModel, HobbiesVM>();
+
+            //New Idiomas
+
+            CreateMap<IdiomasVM, IdiomasDomainModel>();
+            CreateMap<IdiomasDomainModel, IdiomasVM>();
+
+            //Nivel Conocimiento
+
+            CreateMap<NivelConocimientoVM,NivelConocimientoDomainModel>();
+            CreateMap<NivelConocimientoDomainModel, NivelConocimientoVM>();
         }
 
         public static void Run()

@@ -123,14 +123,6 @@
           <Property Name="strDescripcion" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="strObservacion" Type="varchar(max)" />
         </EntityType>
-        <EntityType Name="catDialecto">
-          <Key>
-            <PropertyRef Name="idDialecto" />
-          </Key>
-          <Property Name="idDialecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="strDescripcion" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="strObservacion" Type="varchar(max)" />
-        </EntityType>
         <EntityType Name="catDireccion">
           <Key>
             <PropertyRef Name="idDireccion" />
@@ -292,6 +284,14 @@
           <Property Name="strValor" Type="varchar" MaxLength="250" />
           <Property Name="strDescripcion" Type="varchar" MaxLength="250" />
         </EntityType>
+        <EntityType Name="CatLenguas">
+          <Key>
+            <PropertyRef Name="idDialecto" />
+          </Key>
+          <Property Name="idDialecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strDescripcion" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="strObservacion" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="CatMunicipio">
           <Key>
             <PropertyRef Name="id" />
@@ -306,6 +306,13 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="strValor" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="CatNivelConocimiento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strValor" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="catNivelSalarial">
           <Key>
@@ -786,19 +793,15 @@
           <Property Name="idPersonal" Type="int" />
           <Property Name="strTiempoPractica" Type="varchar" MaxLength="250" />
         </EntityType>
-        <EntityType Name="tblIdiomaDialectoPersonal">
+        <EntityType Name="TblIdioma">
           <Key>
-            <PropertyRef Name="idIdiomaDialectoPersonal" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="idIdiomaDialectoPersonal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idIdioma" Type="int" />
-          <Property Name="idDialecto" Type="int" />
-          <Property Name="idPersonal" Type="int" Nullable="false" />
-          <Property Name="strComunicacionPorcentaje" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="strEscrituraProcentaje" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="strEntendimientoPorcentaje" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="strLecturaPorcentaje" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="dteFechaRegistro" Type="datetime" />
+          <Property Name="idNivelConocimiento" Type="int" />
+          <Property Name="idDocumento" Type="int" />
+          <Property Name="idPersonal" Type="int" />
         </EntityType>
         <EntityType Name="tblInformeTecnico">
           <Key>
@@ -819,6 +822,18 @@
           <Property Name="idPais" Type="int" />
           <Property Name="enumProposito" Type="varchar" MaxLength="250" />
           <Property Name="bitLigarCurriculum" Type="bit" />
+        </EntityType>
+        <EntityType Name="TblLenguas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idLengua" Type="int" />
+          <Property Name="idPersonal" Type="int" />
+          <Property Name="strEscritura" Type="varchar" MaxLength="250" />
+          <Property Name="strLectura" Type="varchar" MaxLength="250" />
+          <Property Name="strEntendimiento" Type="varchar" MaxLength="250" />
+          <Property Name="strComunicacion" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="tblLibro">
           <Key>
@@ -1356,18 +1371,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_dialecto_personalIdiomaDialecto">
-          <End Role="catDialecto" Type="Self.catDialecto" Multiplicity="0..1" />
-          <End Role="tblIdiomaDialectoPersonal" Type="Self.tblIdiomaDialectoPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catDialecto">
-              <PropertyRef Name="idDialecto" />
-            </Principal>
-            <Dependent Role="tblIdiomaDialectoPersonal">
-              <PropertyRef Name="idDialecto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_direccion_personal">
           <End Role="catDireccion" Type="Self.catDireccion" Multiplicity="0..1" />
           <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="*" />
@@ -1451,18 +1454,6 @@
             </Principal>
             <Dependent Role="tblDeportePersonal">
               <PropertyRef Name="idFrecuencia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_idioma_personalIdiomaDialecto">
-          <End Role="catIdioma" Type="Self.catIdioma" Multiplicity="0..1" />
-          <End Role="tblIdiomaDialectoPersonal" Type="Self.tblIdiomaDialectoPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catIdioma">
-              <PropertyRef Name="idIdioma" />
-            </Principal>
-            <Dependent Role="tblIdiomaDialectoPersonal">
-              <PropertyRef Name="idIdioma" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1656,18 +1647,6 @@
               <PropertyRef Name="idPersonal" />
             </Principal>
             <Dependent Role="tblPersonalAsociaciones">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_PersonalIdiomaDialecto">
-          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="1" />
-          <End Role="tblIdiomaDialectoPersonal" Type="Self.tblIdiomaDialectoPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblIdiomaDialectoPersonal">
               <PropertyRef Name="idPersonal" />
             </Dependent>
           </ReferentialConstraint>
@@ -2192,6 +2171,56 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TblIdioma_catDocumentos">
+          <End Role="catDocumentos" Type="Self.catDocumentos" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TblIdioma" Type="Self.TblIdioma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catDocumentos">
+              <PropertyRef Name="idDocumento" />
+            </Principal>
+            <Dependent Role="TblIdioma">
+              <PropertyRef Name="idDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblIdioma_catIdioma">
+          <End Role="catIdioma" Type="Self.catIdioma" Multiplicity="0..1" />
+          <End Role="TblIdioma" Type="Self.TblIdioma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catIdioma">
+              <PropertyRef Name="idIdioma" />
+            </Principal>
+            <Dependent Role="TblIdioma">
+              <PropertyRef Name="idIdioma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblIdioma_CatNivelConocimiento">
+          <End Role="CatNivelConocimiento" Type="Self.CatNivelConocimiento" Multiplicity="0..1" />
+          <End Role="TblIdioma" Type="Self.TblIdioma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatNivelConocimiento">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblIdioma">
+              <PropertyRef Name="idNivelConocimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblIdioma_tblPersonal">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="0..1" />
+          <End Role="TblIdioma" Type="Self.TblIdioma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="TblIdioma">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblInformeTecnico_catDocumentos">
           <End Role="catDocumentos" Type="Self.catDocumentos" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -2230,6 +2259,30 @@
               <PropertyRef Name="idPersonal" />
             </Principal>
             <Dependent Role="tblInformeTecnico">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblLenguas_CatLenguas">
+          <End Role="CatLenguas" Type="Self.CatLenguas" Multiplicity="0..1" />
+          <End Role="TblLenguas" Type="Self.TblLenguas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatLenguas">
+              <PropertyRef Name="idDialecto" />
+            </Principal>
+            <Dependent Role="TblLenguas">
+              <PropertyRef Name="idLengua" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblLenguas_tblPersonal">
+          <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="0..1" />
+          <End Role="TblLenguas" Type="Self.TblLenguas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="TblLenguas">
               <PropertyRef Name="idPersonal" />
             </Dependent>
           </ReferentialConstraint>
@@ -3165,7 +3218,6 @@
           <EntitySet Name="catCuerpoAcademico" EntityType="Self.catCuerpoAcademico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catCurso" EntityType="Self.catCurso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catDeporte" EntityType="Self.catDeporte" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="catDialecto" EntityType="Self.catDialecto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catDireccion" EntityType="Self.catDireccion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catDocumentos" EntityType="Self.catDocumentos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catEdificio" EntityType="Self.catEdificio" Schema="dbo" store:Type="Tables" />
@@ -3185,8 +3237,10 @@
           <EntitySet Name="CatInstitucionAcreditaMaestria" EntityType="Self.CatInstitucionAcreditaMaestria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catInstitucionSuperior" EntityType="Self.catInstitucionSuperior" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CatIntitucionAcreditaOtra" EntityType="Self.CatIntitucionAcreditaOtra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatLenguas" EntityType="Self.CatLenguas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CatMunicipio" EntityType="Self.CatMunicipio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CatNacionalidad" EntityType="Self.CatNacionalidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatNivelConocimiento" EntityType="Self.CatNivelConocimiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catNivelSalarial" EntityType="Self.catNivelSalarial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CatPais" EntityType="Self.CatPais" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catParentesco" EntityType="Self.catParentesco" Schema="dbo" store:Type="Tables" />
@@ -3233,8 +3287,9 @@
           <EntitySet Name="tblExperienciaLaboralInterna" EntityType="Self.tblExperienciaLaboralInterna" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblFavoritos" EntityType="Self.TblFavoritos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblHobbies" EntityType="Self.tblHobbies" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblIdiomaDialectoPersonal" EntityType="Self.tblIdiomaDialectoPersonal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblIdioma" EntityType="Self.TblIdioma" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblInformeTecnico" EntityType="Self.tblInformeTecnico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblLenguas" EntityType="Self.TblLenguas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblLibro" EntityType="Self.tblLibro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblLicenciaturaIngenieria" EntityType="Self.TblLicenciaturaIngenieria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblMaetria" EntityType="Self.TblMaetria" Schema="dbo" store:Type="Tables" />
@@ -3325,10 +3380,6 @@
             <End Role="catDeporte" EntitySet="catDeporte" />
             <End Role="tblDeportePersonal" EntitySet="tblDeportePersonal" />
           </AssociationSet>
-          <AssociationSet Name="fk_dialecto_personalIdiomaDialecto" Association="Self.fk_dialecto_personalIdiomaDialecto">
-            <End Role="catDialecto" EntitySet="catDialecto" />
-            <End Role="tblIdiomaDialectoPersonal" EntitySet="tblIdiomaDialectoPersonal" />
-          </AssociationSet>
           <AssociationSet Name="fk_direccion_personal" Association="Self.fk_direccion_personal">
             <End Role="catDireccion" EntitySet="catDireccion" />
             <End Role="tblPersonal" EntitySet="tblPersonal" />
@@ -3356,10 +3407,6 @@
           <AssociationSet Name="fk_frecuencia_deportePersonal" Association="Self.fk_frecuencia_deportePersonal">
             <End Role="catFrecuencia" EntitySet="catFrecuencia" />
             <End Role="tblDeportePersonal" EntitySet="tblDeportePersonal" />
-          </AssociationSet>
-          <AssociationSet Name="fk_idioma_personalIdiomaDialecto" Association="Self.fk_idioma_personalIdiomaDialecto">
-            <End Role="catIdioma" EntitySet="catIdioma" />
-            <End Role="tblIdiomaDialectoPersonal" EntitySet="tblIdiomaDialectoPersonal" />
           </AssociationSet>
           <AssociationSet Name="fk_institucionSuperior_programaEducativo" Association="Self.fk_institucionSuperior_programaEducativo">
             <End Role="catInstitucionSuperior" EntitySet="catInstitucionSuperior" />
@@ -3424,10 +3471,6 @@
           <AssociationSet Name="fk_personal_personalAsociaciones" Association="Self.fk_personal_personalAsociaciones">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblPersonalAsociaciones" EntitySet="tblPersonalAsociaciones" />
-          </AssociationSet>
-          <AssociationSet Name="fk_personal_PersonalIdiomaDialecto" Association="Self.fk_personal_PersonalIdiomaDialecto">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblIdiomaDialectoPersonal" EntitySet="tblIdiomaDialectoPersonal" />
           </AssociationSet>
           <AssociationSet Name="fk_personal_premiosDocente" Association="Self.fk_personal_premiosDocente">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
@@ -3589,6 +3632,22 @@
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblHobbies" EntitySet="tblHobbies" />
           </AssociationSet>
+          <AssociationSet Name="FK_TblIdioma_catDocumentos" Association="Self.FK_TblIdioma_catDocumentos">
+            <End Role="catDocumentos" EntitySet="catDocumentos" />
+            <End Role="TblIdioma" EntitySet="TblIdioma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblIdioma_catIdioma" Association="Self.FK_TblIdioma_catIdioma">
+            <End Role="catIdioma" EntitySet="catIdioma" />
+            <End Role="TblIdioma" EntitySet="TblIdioma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblIdioma_CatNivelConocimiento" Association="Self.FK_TblIdioma_CatNivelConocimiento">
+            <End Role="CatNivelConocimiento" EntitySet="CatNivelConocimiento" />
+            <End Role="TblIdioma" EntitySet="TblIdioma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblIdioma_tblPersonal" Association="Self.FK_TblIdioma_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="TblIdioma" EntitySet="TblIdioma" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblInformeTecnico_catDocumentos" Association="Self.FK_tblInformeTecnico_catDocumentos">
             <End Role="catDocumentos" EntitySet="catDocumentos" />
             <End Role="tblInformeTecnico" EntitySet="tblInformeTecnico" />
@@ -3600,6 +3659,14 @@
           <AssociationSet Name="FK_tblInformeTecnico_tblPersonal" Association="Self.FK_tblInformeTecnico_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblInformeTecnico" EntitySet="tblInformeTecnico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblLenguas_CatLenguas" Association="Self.FK_TblLenguas_CatLenguas">
+            <End Role="CatLenguas" EntitySet="CatLenguas" />
+            <End Role="TblLenguas" EntitySet="TblLenguas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblLenguas_tblPersonal" Association="Self.FK_TblLenguas_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="TblLenguas" EntitySet="TblLenguas" />
           </AssociationSet>
           <AssociationSet Name="FK_tblLibro_CatPais" Association="Self.FK_tblLibro_CatPais">
             <End Role="CatPais" EntitySet="CatPais" />
@@ -3891,7 +3958,6 @@
           <EntitySet Name="catCompetenciaTI" EntityType="bdGestionDocenteModel.catCompetenciaTI" />
           <EntitySet Name="catCuerpoAcademico" EntityType="bdGestionDocenteModel.catCuerpoAcademico" />
           <EntitySet Name="catDeporte" EntityType="bdGestionDocenteModel.catDeporte" />
-          <EntitySet Name="catDialecto" EntityType="bdGestionDocenteModel.catDialecto" />
           <EntitySet Name="catDireccion" EntityType="bdGestionDocenteModel.catDireccion" />
           <EntitySet Name="catEdificio" EntityType="bdGestionDocenteModel.catEdificio" />
           <EntitySet Name="catEnfermedad" EntityType="bdGestionDocenteModel.catEnfermedad" />
@@ -3922,7 +3988,6 @@
           <EntitySet Name="tblDeportePersonal" EntityType="bdGestionDocenteModel.tblDeportePersonal" />
           <EntitySet Name="tblEmergencia" EntityType="bdGestionDocenteModel.tblEmergencia" />
           <EntitySet Name="tblEnfermedadPersonal" EntityType="bdGestionDocenteModel.tblEnfermedadPersonal" />
-          <EntitySet Name="tblIdiomaDialectoPersonal" EntityType="bdGestionDocenteModel.tblIdiomaDialectoPersonal" />
           <EntitySet Name="tblPersonalAsociaciones" EntityType="bdGestionDocenteModel.tblPersonalAsociaciones" />
           <EntitySet Name="tblUsuarioRol" EntityType="bdGestionDocenteModel.tblUsuarioRol" />
           <AssociationSet Name="fk_alegia_alergiaPersonal" Association="bdGestionDocenteModel.fk_alegia_alergiaPersonal">
@@ -3965,10 +4030,6 @@
             <End Role="catDeporte" EntitySet="catDeporte" />
             <End Role="tblDeportePersonal" EntitySet="tblDeportePersonal" />
           </AssociationSet>
-          <AssociationSet Name="fk_dialecto_personalIdiomaDialecto" Association="bdGestionDocenteModel.fk_dialecto_personalIdiomaDialecto">
-            <End Role="catDialecto" EntitySet="catDialecto" />
-            <End Role="tblIdiomaDialectoPersonal" EntitySet="tblIdiomaDialectoPersonal" />
-          </AssociationSet>
           <AssociationSet Name="fk_edificio_datosLaboralesDocente" Association="bdGestionDocenteModel.fk_edificio_datosLaboralesDocente">
             <End Role="catEdificio" EntitySet="catEdificio" />
             <End Role="tblDatosLaboralesDocente" EntitySet="tblDatosLaboralesDocente" />
@@ -3988,10 +4049,6 @@
           <AssociationSet Name="fk_frecuencia_deportePersonal" Association="bdGestionDocenteModel.fk_frecuencia_deportePersonal">
             <End Role="catFrecuencia" EntitySet="catFrecuencia" />
             <End Role="tblDeportePersonal" EntitySet="tblDeportePersonal" />
-          </AssociationSet>
-          <AssociationSet Name="fk_idioma_personalIdiomaDialecto" Association="bdGestionDocenteModel.fk_idioma_personalIdiomaDialecto">
-            <End Role="catIdioma" EntitySet="catIdioma" />
-            <End Role="tblIdiomaDialectoPersonal" EntitySet="tblIdiomaDialectoPersonal" />
           </AssociationSet>
           <AssociationSet Name="fk_institucionSuperior_programaEducativo" Association="bdGestionDocenteModel.fk_institucionSuperior_programaEducativo">
             <End Role="catInstitucionSuperior" EntitySet="catInstitucionSuperior" />
@@ -4515,10 +4572,6 @@
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblExperienciaLaboralInterna" EntitySet="tblExperienciaLaboralInterna" />
           </AssociationSet>
-          <AssociationSet Name="fk_personal_PersonalIdiomaDialecto" Association="bdGestionDocenteModel.fk_personal_PersonalIdiomaDialecto">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblIdiomaDialectoPersonal" EntitySet="tblIdiomaDialectoPersonal" />
-          </AssociationSet>
           <AssociationSet Name="FK_tblInformeTecnico_tblPersonal" Association="bdGestionDocenteModel.FK_tblInformeTecnico_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblInformeTecnico" EntitySet="tblInformeTecnico" />
@@ -4609,6 +4662,34 @@
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblHobbies" EntitySet="tblHobbies" />
           </AssociationSet>
+          <EntitySet Name="CatNivelConocimiento" EntityType="bdGestionDocenteModel.CatNivelConocimiento" />
+          <EntitySet Name="TblIdioma" EntityType="bdGestionDocenteModel.TblIdioma" />
+          <AssociationSet Name="FK_TblIdioma_catDocumentos" Association="bdGestionDocenteModel.FK_TblIdioma_catDocumentos">
+            <End Role="catDocumentos" EntitySet="catDocumentos" />
+            <End Role="TblIdioma" EntitySet="TblIdioma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblIdioma_catIdioma" Association="bdGestionDocenteModel.FK_TblIdioma_catIdioma">
+            <End Role="catIdioma" EntitySet="catIdioma" />
+            <End Role="TblIdioma" EntitySet="TblIdioma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblIdioma_CatNivelConocimiento" Association="bdGestionDocenteModel.FK_TblIdioma_CatNivelConocimiento">
+            <End Role="CatNivelConocimiento" EntitySet="CatNivelConocimiento" />
+            <End Role="TblIdioma" EntitySet="TblIdioma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblIdioma_tblPersonal" Association="bdGestionDocenteModel.FK_TblIdioma_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="TblIdioma" EntitySet="TblIdioma" />
+          </AssociationSet>
+          <EntitySet Name="CatLenguas" EntityType="bdGestionDocenteModel.CatLenguas" />
+          <EntitySet Name="TblLenguas" EntityType="bdGestionDocenteModel.TblLenguas" />
+          <AssociationSet Name="FK_TblLenguas_CatLenguas" Association="bdGestionDocenteModel.FK_TblLenguas_CatLenguas">
+            <End Role="CatLenguas" EntitySet="CatLenguas" />
+            <End Role="TblLenguas" EntitySet="TblLenguas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblLenguas_tblPersonal" Association="bdGestionDocenteModel.FK_TblLenguas_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="TblLenguas" EntitySet="TblLenguas" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="catAlergias">
           <Key>
@@ -4691,15 +4772,6 @@
           <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblDeportePersonal" Relationship="bdGestionDocenteModel.fk_deporte_deportePersonal" FromRole="catDeporte" ToRole="tblDeportePersonal" />
         </EntityType>
-        <EntityType Name="catDialecto">
-          <Key>
-            <PropertyRef Name="idDialecto" />
-          </Key>
-          <Property Name="idDialecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="strDescripcion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblIdiomaDialectoPersonal" Relationship="bdGestionDocenteModel.fk_dialecto_personalIdiomaDialecto" FromRole="catDialecto" ToRole="tblIdiomaDialectoPersonal" />
-        </EntityType>
         <EntityType Name="catDireccion">
           <Key>
             <PropertyRef Name="idDireccion" />
@@ -4767,7 +4839,7 @@
           <Property Name="idIdioma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="strDescripcion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblIdiomaDialectoPersonal" Relationship="bdGestionDocenteModel.fk_idioma_personalIdiomaDialecto" FromRole="catIdioma" ToRole="tblIdiomaDialectoPersonal" />
+          <NavigationProperty Name="TblIdioma" Relationship="bdGestionDocenteModel.FK_TblIdioma_catIdioma" FromRole="catIdioma" ToRole="TblIdioma" />
         </EntityType>
         <EntityType Name="catInstitucionSuperior">
           <Key>
@@ -5061,23 +5133,6 @@
           <NavigationProperty Name="catEnfermedad" Relationship="bdGestionDocenteModel.fk_enfermedad_enfermedadPersonal" FromRole="tblEnfermedadPersonal" ToRole="catEnfermedad" />
           <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.fk_personal_enfermedadPersonal" FromRole="tblEnfermedadPersonal" ToRole="tblPersonal" />
         </EntityType>
-        <EntityType Name="tblIdiomaDialectoPersonal">
-          <Key>
-            <PropertyRef Name="idIdiomaDialectoPersonal" />
-          </Key>
-          <Property Name="idIdiomaDialectoPersonal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idIdioma" Type="Int32" />
-          <Property Name="idDialecto" Type="Int32" />
-          <Property Name="idPersonal" Type="Int32" Nullable="false" />
-          <Property Name="strComunicacionPorcentaje" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strEscrituraProcentaje" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strEntendimientoPorcentaje" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strLecturaPorcentaje" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="dteFechaRegistro" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="catDialecto" Relationship="bdGestionDocenteModel.fk_dialecto_personalIdiomaDialecto" FromRole="tblIdiomaDialectoPersonal" ToRole="catDialecto" />
-          <NavigationProperty Name="catIdioma" Relationship="bdGestionDocenteModel.fk_idioma_personalIdiomaDialecto" FromRole="tblIdiomaDialectoPersonal" ToRole="catIdioma" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.fk_personal_PersonalIdiomaDialecto" FromRole="tblIdiomaDialectoPersonal" ToRole="tblPersonal" />
-        </EntityType>
         <EntityType Name="tblPersonalAsociaciones">
           <Key>
             <PropertyRef Name="idPersonal" />
@@ -5223,18 +5278,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_dialecto_personalIdiomaDialecto">
-          <End Type="bdGestionDocenteModel.catDialecto" Role="catDialecto" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.tblIdiomaDialectoPersonal" Role="tblIdiomaDialectoPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catDialecto">
-              <PropertyRef Name="idDialecto" />
-            </Principal>
-            <Dependent Role="tblIdiomaDialectoPersonal">
-              <PropertyRef Name="idDialecto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_edificio_datosLaboralesDocente">
           <End Type="bdGestionDocenteModel.catEdificio" Role="catEdificio" Multiplicity="1" />
           <End Type="bdGestionDocenteModel.tblDatosLaboralesDocente" Role="tblDatosLaboralesDocente" Multiplicity="*" />
@@ -5292,18 +5335,6 @@
             </Principal>
             <Dependent Role="tblDeportePersonal">
               <PropertyRef Name="idFrecuencia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_idioma_personalIdiomaDialecto">
-          <End Type="bdGestionDocenteModel.catIdioma" Role="catIdioma" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.tblIdiomaDialectoPersonal" Role="tblIdiomaDialectoPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catIdioma">
-              <PropertyRef Name="idIdioma" />
-            </Principal>
-            <Dependent Role="tblIdiomaDialectoPersonal">
-              <PropertyRef Name="idIdioma" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5533,6 +5564,7 @@
           <NavigationProperty Name="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" Relationship="bdGestionDocenteModel.FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_catDocumentos" FromRole="catDocumentos" ToRole="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" />
           <NavigationProperty Name="tblEstadiaEmpresa" Relationship="bdGestionDocenteModel.FK_tblEstadiaEmpresa_catDocumentos" FromRole="catDocumentos" ToRole="tblEstadiaEmpresa" />
           <NavigationProperty Name="tblPremiosDocente" Relationship="bdGestionDocenteModel.fk_documento_premiosDocente" FromRole="catDocumentos" ToRole="tblPremiosDocente" />
+          <NavigationProperty Name="TblIdioma" Relationship="bdGestionDocenteModel.FK_TblIdioma_catDocumentos" FromRole="catDocumentos" ToRole="TblIdioma" />
         </EntityType>
         <Association Name="fk_documento_documentacionPersonal">
           <End Type="bdGestionDocenteModel.catDocumentos" Role="catDocumentos" Multiplicity="1" />
@@ -7390,7 +7422,6 @@
           <NavigationProperty Name="tblEstadiaEmpresa" Relationship="bdGestionDocenteModel.FK_tblEstadiaEmpresa_tblPersonal" FromRole="tblPersonal" ToRole="tblEstadiaEmpresa" />
           <NavigationProperty Name="tblExperienciaLaboralExterna" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralExterna_tblPersonal" FromRole="tblPersonal" ToRole="tblExperienciaLaboralExterna" />
           <NavigationProperty Name="tblExperienciaLaboralInterna" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_tblPersonal" FromRole="tblPersonal" ToRole="tblExperienciaLaboralInterna" />
-          <NavigationProperty Name="tblIdiomaDialectoPersonal" Relationship="bdGestionDocenteModel.fk_personal_PersonalIdiomaDialecto" FromRole="tblPersonal" ToRole="tblIdiomaDialectoPersonal" />
           <NavigationProperty Name="tblInformeTecnico" Relationship="bdGestionDocenteModel.FK_tblInformeTecnico_tblPersonal" FromRole="tblPersonal" ToRole="tblInformeTecnico" />
           <NavigationProperty Name="tblLibro" Relationship="bdGestionDocenteModel.FK_tblLibro_tblPersonal" FromRole="tblPersonal" ToRole="tblLibro" />
           <NavigationProperty Name="TblLicenciaturaIngenieria" Relationship="bdGestionDocenteModel.FK_TblLicenciaturaIngenieria_tblPersonal" FromRole="tblPersonal" ToRole="TblLicenciaturaIngenieria" />
@@ -7411,6 +7442,8 @@
           <NavigationProperty Name="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" Relationship="bdGestionDocenteModel.FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_tblPersonal" FromRole="tblPersonal" ToRole="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" />
           <NavigationProperty Name="tblTutoria" Relationship="bdGestionDocenteModel.FK_tblTutoria_tblPersonal" FromRole="tblPersonal" ToRole="tblTutoria" />
           <NavigationProperty Name="tblHobbies" Relationship="bdGestionDocenteModel.FK_tblHobbies_tblPersonal" FromRole="tblPersonal" ToRole="tblHobbies" />
+          <NavigationProperty Name="TblIdioma" Relationship="bdGestionDocenteModel.FK_TblIdioma_tblPersonal" FromRole="tblPersonal" ToRole="TblIdioma" />
+          <NavigationProperty Name="TblLenguas" Relationship="bdGestionDocenteModel.FK_TblLenguas_tblPersonal" FromRole="tblPersonal" ToRole="TblLenguas" />
         </EntityType>
         <Association Name="fk_direccion_personal">
           <End Type="bdGestionDocenteModel.catDireccion" Role="catDireccion" Multiplicity="0..1" />
@@ -7736,18 +7769,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_personal_PersonalIdiomaDialecto">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocenteModel.tblIdiomaDialectoPersonal" Role="tblIdiomaDialectoPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblIdiomaDialectoPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tblInformeTecnico_tblPersonal">
           <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -8061,6 +8082,125 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="CatNivelConocimiento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strValor" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="TblIdioma" Relationship="bdGestionDocenteModel.FK_TblIdioma_CatNivelConocimiento" FromRole="CatNivelConocimiento" ToRole="TblIdioma" />
+        </EntityType>
+        <EntityType Name="TblIdioma">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idIdioma" Type="Int32" />
+          <Property Name="idNivelConocimiento" Type="Int32" />
+          <Property Name="idDocumento" Type="Int32" />
+          <Property Name="idPersonal" Type="Int32" />
+          <NavigationProperty Name="catDocumentos" Relationship="bdGestionDocenteModel.FK_TblIdioma_catDocumentos" FromRole="TblIdioma" ToRole="catDocumentos" />
+          <NavigationProperty Name="catIdioma" Relationship="bdGestionDocenteModel.FK_TblIdioma_catIdioma" FromRole="TblIdioma" ToRole="catIdioma" />
+          <NavigationProperty Name="CatNivelConocimiento" Relationship="bdGestionDocenteModel.FK_TblIdioma_CatNivelConocimiento" FromRole="TblIdioma" ToRole="CatNivelConocimiento" />
+          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_TblIdioma_tblPersonal" FromRole="TblIdioma" ToRole="tblPersonal" />
+        </EntityType>
+        <Association Name="FK_TblIdioma_catDocumentos">
+          <End Type="bdGestionDocenteModel.catDocumentos" Role="catDocumentos" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.TblIdioma" Role="TblIdioma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catDocumentos">
+              <PropertyRef Name="idDocumento" />
+            </Principal>
+            <Dependent Role="TblIdioma">
+              <PropertyRef Name="idDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblIdioma_catIdioma">
+          <End Type="bdGestionDocenteModel.catIdioma" Role="catIdioma" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblIdioma" Role="TblIdioma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catIdioma">
+              <PropertyRef Name="idIdioma" />
+            </Principal>
+            <Dependent Role="TblIdioma">
+              <PropertyRef Name="idIdioma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblIdioma_CatNivelConocimiento">
+          <End Type="bdGestionDocenteModel.CatNivelConocimiento" Role="CatNivelConocimiento" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblIdioma" Role="TblIdioma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatNivelConocimiento">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblIdioma">
+              <PropertyRef Name="idNivelConocimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblIdioma_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblIdioma" Role="TblIdioma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="TblIdioma">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CatLenguas">
+          <Key>
+            <PropertyRef Name="idDialecto" />
+          </Key>
+          <Property Name="idDialecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strDescripcion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="strObservacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TblLenguas" Relationship="bdGestionDocenteModel.FK_TblLenguas_CatLenguas" FromRole="CatLenguas" ToRole="TblLenguas" />
+        </EntityType>
+        <EntityType Name="TblLenguas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idLengua" Type="Int32" />
+          <Property Name="idPersonal" Type="Int32" />
+          <Property Name="strEscritura" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="strLectura" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="strEntendimiento" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="strComunicacion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CatLenguas" Relationship="bdGestionDocenteModel.FK_TblLenguas_CatLenguas" FromRole="TblLenguas" ToRole="CatLenguas" />
+          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_TblLenguas_tblPersonal" FromRole="TblLenguas" ToRole="tblPersonal" />
+        </EntityType>
+        <Association Name="FK_TblLenguas_CatLenguas">
+          <End Type="bdGestionDocenteModel.CatLenguas" Role="CatLenguas" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblLenguas" Role="TblLenguas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatLenguas">
+              <PropertyRef Name="idDialecto" />
+            </Principal>
+            <Dependent Role="TblLenguas">
+              <PropertyRef Name="idLengua" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblLenguas_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblLenguas" Role="TblLenguas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="TblLenguas">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -8140,15 +8280,6 @@
                 <ScalarProperty Name="strObservacion" ColumnName="strObservacion" />
                 <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
                 <ScalarProperty Name="idDeporte" ColumnName="idDeporte" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="catDialecto">
-            <EntityTypeMapping TypeName="bdGestionDocenteModel.catDialecto">
-              <MappingFragment StoreEntitySet="catDialecto">
-                <ScalarProperty Name="strObservacion" ColumnName="strObservacion" />
-                <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
-                <ScalarProperty Name="idDialecto" ColumnName="idDialecto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -8454,21 +8585,6 @@
                 <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
                 <ScalarProperty Name="idEnfermedad" ColumnName="idEnfermedad" />
                 <ScalarProperty Name="idEnfermedadPersonal" ColumnName="idEnfermedadPersonal" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblIdiomaDialectoPersonal">
-            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblIdiomaDialectoPersonal">
-              <MappingFragment StoreEntitySet="tblIdiomaDialectoPersonal">
-                <ScalarProperty Name="dteFechaRegistro" ColumnName="dteFechaRegistro" />
-                <ScalarProperty Name="strLecturaPorcentaje" ColumnName="strLecturaPorcentaje" />
-                <ScalarProperty Name="strEntendimientoPorcentaje" ColumnName="strEntendimientoPorcentaje" />
-                <ScalarProperty Name="strEscrituraProcentaje" ColumnName="strEscrituraProcentaje" />
-                <ScalarProperty Name="strComunicacionPorcentaje" ColumnName="strComunicacionPorcentaje" />
-                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
-                <ScalarProperty Name="idDialecto" ColumnName="idDialecto" />
-                <ScalarProperty Name="idIdioma" ColumnName="idIdioma" />
-                <ScalarProperty Name="idIdiomaDialectoPersonal" ColumnName="idIdiomaDialectoPersonal" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -9310,6 +9426,47 @@
                 <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
                 <ScalarProperty Name="idFruencia" ColumnName="idFruencia" />
                 <ScalarProperty Name="idHobbie" ColumnName="idHobbie" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatNivelConocimiento">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.CatNivelConocimiento">
+              <MappingFragment StoreEntitySet="CatNivelConocimiento">
+                <ScalarProperty Name="strValor" ColumnName="strValor" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblIdioma">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.TblIdioma">
+              <MappingFragment StoreEntitySet="TblIdioma">
+                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
+                <ScalarProperty Name="idDocumento" ColumnName="idDocumento" />
+                <ScalarProperty Name="idNivelConocimiento" ColumnName="idNivelConocimiento" />
+                <ScalarProperty Name="idIdioma" ColumnName="idIdioma" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatLenguas">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.CatLenguas">
+              <MappingFragment StoreEntitySet="CatLenguas">
+                <ScalarProperty Name="strObservacion" ColumnName="strObservacion" />
+                <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
+                <ScalarProperty Name="idDialecto" ColumnName="idDialecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblLenguas">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.TblLenguas">
+              <MappingFragment StoreEntitySet="TblLenguas">
+                <ScalarProperty Name="strComunicacion" ColumnName="strComunicacion" />
+                <ScalarProperty Name="strEntendimiento" ColumnName="strEntendimiento" />
+                <ScalarProperty Name="strLectura" ColumnName="strLectura" />
+                <ScalarProperty Name="strEscritura" ColumnName="strEscritura" />
+                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
+                <ScalarProperty Name="idLengua" ColumnName="idLengua" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

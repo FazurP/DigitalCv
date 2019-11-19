@@ -33,7 +33,6 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<catCompetenciaTI> catCompetenciaTI { get; set; }
         public virtual DbSet<catCuerpoAcademico> catCuerpoAcademico { get; set; }
         public virtual DbSet<catDeporte> catDeporte { get; set; }
-        public virtual DbSet<catDialecto> catDialecto { get; set; }
         public virtual DbSet<catDireccion> catDireccion { get; set; }
         public virtual DbSet<catEdificio> catEdificio { get; set; }
         public virtual DbSet<catEnfermedad> catEnfermedad { get; set; }
@@ -64,7 +63,6 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<tblDeportePersonal> tblDeportePersonal { get; set; }
         public virtual DbSet<tblEmergencia> tblEmergencia { get; set; }
         public virtual DbSet<tblEnfermedadPersonal> tblEnfermedadPersonal { get; set; }
-        public virtual DbSet<tblIdiomaDialectoPersonal> tblIdiomaDialectoPersonal { get; set; }
         public virtual DbSet<tblPersonalAsociaciones> tblPersonalAsociaciones { get; set; }
         public virtual DbSet<tblUsuarioRol> tblUsuarioRol { get; set; }
         public virtual DbSet<catCurso> catCurso { get; set; }
@@ -131,5 +129,9 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<tblPersonal> tblPersonal { get; set; }
         public virtual DbSet<CatHobbies> CatHobbies { get; set; }
         public virtual DbSet<tblHobbies> tblHobbies { get; set; }
+        public virtual DbSet<CatNivelConocimiento> CatNivelConocimiento { get; set; }
+        public virtual DbSet<TblIdioma> TblIdioma { get; set; }
+        public virtual DbSet<CatLenguas> CatLenguas { get; set; }
+        public virtual DbSet<TblLenguas> TblLenguas { get; set; }
     }
 }

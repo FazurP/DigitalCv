@@ -1,102 +1,61 @@
 ﻿$(document).ready(function () {
-   
+
 
     $('#btnSubmit').prop('disabled', true);
-    $('#StrEscrituraProcentaje').prop('disabled', true);
-    $('#StrLecturaPorcentaje').prop('disabled', true);
-    $('#StrEntendimientoPorcentaje').prop('disabled', true);
-    $('#StrComunicacionPorcentaje').prop('disabled', true);
+    $('#idNivelConocimiento').prop('disabled', true);
+    $('#fUpload').prop('disabled', true);
+
 
 
     $('#IdIdioma').change(function () {
 
         var idioma = $('#IdIdioma').val();
-       
-        if (idioma == null || idioma == 0 || idioma == '0' || idioma == "0") {
-            $('#StrEscrituraProcentaje').prop('disabled', true);
-            $('#StrLecturaPorcentaje').prop('disabled', true);
-            $('#StrEntendimientoPorcentaje').prop('disabled', true);
-            $('#StrComunicacionPorcentaje').prop('disabled', true);
-            $('#btnSubmit').prop('disabled', true);
 
-            $('#StrEscrituraProcentaje').get(0).selectedIndex = 0;
-            $('#StrLecturaPorcentaje').get(0).selectedIndex = 0;
-            $('#StrEntendimientoPorcentaje').get(0).selectedIndex = 0;
-            $('#StrComunicacionPorcentaje').get(0).selectedIndex = 0;
+        if (idioma == null || idioma == 0 || idioma == '0' || idioma == "0") {
+
+            $('#btnSubmit').prop('disabled', true);
+            $('#idNivelConocimiento').prop('disabled', true);
+            $('#fUpload').prop('disabled', true);
+
+            $('#idNivelConocimiento').val(0);
+            $('#fUpload').val('');
+
         } else {
 
             toastr.success("Idioma Seleccionado.", "Digital-Cv dice:", { timeOut: 1000, closeButton: true });
-            $('#StrEscrituraProcentaje').prop('disabled', false);
+            $('#idNivelConocimiento').prop('disabled', false);
         }
 
-    })
+    });
 
-    $('#StrEscrituraProcentaje').change(function () {
+    $('#idNivelConocimiento').change(function () {
 
-        var escritura = $('#StrEscrituraProcentaje').val();
-        
-        if (escritura == "--Seleccionar") {
-            $('#StrLecturaPorcentaje').prop('disabled', true);
-            $('#StrEntendimientoPorcentaje').prop('disabled', true);
-            $('#StrComunicacionPorcentaje').prop('disabled', true);
+        var data = $(this).val();
+
+        if (data == 0 || data == "0" || data == '0' || data == null) {
+
+            $('#fUpload').prop('disabled', true);
             $('#btnSubmit').prop('disabled', true);
 
-            $('#StrLecturaPorcentaje').get(0).selectedIndex = 0;
-            $('#StrEntendimientoPorcentaje').get(0).selectedIndex = 0;
-            $('#StrComunicacionPorcentaje').get(0).selectedIndex = 0;
+            $('#fUpload').val('');
         } else {
-            toastr.success("Porcentaje de Escritura Seleccionado.", "Digital-Cv dice:", { timeOut: 1000, closeButton: true });
-            $('#StrLecturaPorcentaje').prop('disabled', false);
+            toastr.success("Nivel Seleccionado.", "Digital-Cv dice:", { timeOut: 1000, closeButton: true });
+            $('#fUpload').prop('disabled', false);
         }
 
-    })
+    });
 
-    $('#StrLecturaPorcentaje').change(function () {
+    $('#fUpload').change(function () {
 
-        var lectura = $('#StrLecturaPorcentaje').val();
+        let data = $(this).val();
 
-        if (lectura == "--Seleccionar") {
-            $('#StrEntendimientoPorcentaje').prop('disabled', true);
-            $('#StrComunicacionPorcentaje').prop('disabled', true);
+        if (data == "") {
             $('#btnSubmit').prop('disabled', true);
-
-            $('#StrEntendimientoPorcentaje').get(0).selectedIndex = 0;
-            $('#StrComunicacionPorcentaje').get(0).selectedIndex = 0;
         } else {
-            toastr.success("Porcentaje de Lectura Seleccionado.", "Digital-Cv dice:", { timeOut: 1000, closeButton: true });
-            $('#StrEntendimientoPorcentaje').prop('disabled', false);
-        }
-    })
-
-    $('#StrEntendimientoPorcentaje').change(function () {
-
-        var entendimiento = $('#StrEntendimientoPorcentaje').val();
-
-        if (entendimiento == "--Seleccionar") {
-          
-            $('#StrComunicacionPorcentaje').prop('disabled', true);
-            $('#btnSubmit').prop('disabled', true);
-
-            $('#StrComunicacionPorcentaje').get(0).selectedIndex = 0;
-        } else {
-            toastr.success("Porcentaje de Entendimiento Seleccionado.", "Digital-Cv dice:", { timeOut: 1000, closeButton: true });
-            $('#StrComunicacionPorcentaje').prop('disabled', false);
-        }
-    })
-
-    $('#StrComunicacionPorcentaje').change(function () {
-
-        var comunicacion = $('#StrComunicacionPorcentaje').val();
-
-        if (comunicacion == "--Seleccionar") {
-
-            $('#btnSubmit').prop('disabled', true);
-
-        } else {
-            toastr.success("Porcentaje de Comunicación Seleccionado.", "Digital-Cv dice:", { timeOut: 1000, closeButton: true });
+            toastr.success("Evidencia Cargada.", "Digital-Cv dice:", { timeOut: 1000, closeButton: true });
             $('#btnSubmit').prop('disabled', false);
         }
-    })
+    });
 
-    })
+});
     

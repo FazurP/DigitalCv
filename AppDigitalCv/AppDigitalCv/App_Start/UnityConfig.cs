@@ -29,7 +29,6 @@ namespace AppDigitalCv
             container.RegisterType<IDatosContacto, DatosContactoBusiness>();
             container.RegisterType<ITelefono, TelefonoBusiness>();
             container.RegisterType<IEstadoCivilBusiness, EstadoCivilBusiness>();
-            container.RegisterType<IIdiomaDialectoBusiness, IdiomaDialectoBusiness>();
             container.RegisterType<IDialectoIdiomaBusiness, DialectoIdiomaBusiness>();
             container.RegisterType<IUnitOfWork, UnitOfWork>();
             container.RegisterType<IEnfermedadBusiness, EnfermedadBusiness>();
@@ -93,6 +92,8 @@ namespace AppDigitalCv
             container.RegisterType<INacionalidadBusiness,NacionalidadBusiness>();
             container.RegisterType<IHobbiesBusiness, HobbiesBusiness>();
             container.RegisterType<IHobbieBusiness, HobbieBusiness>();
+            container.RegisterType<IIdiomasBusiness, IdiomaBusiness>();
+            container.RegisterType<INivelConocimientoBusiness, NivelConocimientoBusiness>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

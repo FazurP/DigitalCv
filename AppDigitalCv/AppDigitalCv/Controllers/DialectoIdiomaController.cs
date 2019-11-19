@@ -45,7 +45,7 @@ namespace AppDigitalCv.Controllers
         /// <param name="dialectoIdiomaVM"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Create([Bind(Include = "StrComunicacionPorcentaje, StrEscrituraProcentaje, StrEntendimientoPorcentaje, StrLecturaPorcentaje, IdIdioma, IdDialecto, IdPersonal")] IdiomaDialectoVM dialectoIdiomaVM)
+        public ActionResult Create(IdiomaDialectoVM dialectoIdiomaVM)
         {
             int idPersonal = SessionPersister.AccountSession.IdPersonal;
             dialectoIdiomaVM.IdPersonal = idPersonal;

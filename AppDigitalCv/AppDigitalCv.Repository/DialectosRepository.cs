@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AppDigitalCv.Repository.Infraestructure.Contract;
-using AppDigitalCv.Domain;
 
 namespace AppDigitalCv.Repository
 {
-    public class DialectosRepository : BaseRepository<catDialecto>
+    public class DialectosRepository : BaseRepository<CatLenguas>
     {
         public DialectosRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {

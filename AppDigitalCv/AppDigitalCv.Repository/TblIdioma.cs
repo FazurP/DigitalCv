@@ -12,20 +12,17 @@ namespace AppDigitalCv.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class tblIdiomaDialectoPersonal
+    public partial class TblIdioma
     {
-        public int idIdiomaDialectoPersonal { get; set; }
+        public int id { get; set; }
         public Nullable<int> idIdioma { get; set; }
-        public Nullable<int> idDialecto { get; set; }
-        public int idPersonal { get; set; }
-        public string strComunicacionPorcentaje { get; set; }
-        public string strEscrituraProcentaje { get; set; }
-        public string strEntendimientoPorcentaje { get; set; }
-        public string strLecturaPorcentaje { get; set; }
-        public Nullable<System.DateTime> dteFechaRegistro { get; set; }
+        public Nullable<int> idNivelConocimiento { get; set; }
+        public Nullable<int> idDocumento { get; set; }
+        public Nullable<int> idPersonal { get; set; }
     
-        public virtual catDialecto catDialecto { get; set; }
+        public virtual catDocumentos catDocumentos { get; set; }
         public virtual catIdioma catIdioma { get; set; }
+        public virtual CatNivelConocimiento CatNivelConocimiento { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
     }
 }

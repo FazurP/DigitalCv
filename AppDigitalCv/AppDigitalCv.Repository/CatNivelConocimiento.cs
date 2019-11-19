@@ -12,19 +12,18 @@ namespace AppDigitalCv.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class catDialecto
+    public partial class CatNivelConocimiento
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public catDialecto()
+        public CatNivelConocimiento()
         {
-            this.tblIdiomaDialectoPersonal = new HashSet<tblIdiomaDialectoPersonal>();
+            this.TblIdioma = new HashSet<TblIdioma>();
         }
     
-        public int idDialecto { get; set; }
-        public string strDescripcion { get; set; }
-        public string strObservacion { get; set; }
+        public int id { get; set; }
+        public string strValor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblIdiomaDialectoPersonal> tblIdiomaDialectoPersonal { get; set; }
+        public virtual ICollection<TblIdioma> TblIdioma { get; set; }
     }
 }

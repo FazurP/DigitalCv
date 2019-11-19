@@ -14,14 +14,12 @@ namespace AppDigitalCv.Business
     public class DialectoBusiness : IDialectoBusiness
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly IdiomaDialectoRepository idiomaDialectoRepository;
 
         public DialectoBusiness(IUnitOfWork _unitOfWork)
         {
 
             unitOfWork = _unitOfWork;
 
-            idiomaDialectoRepository = new IdiomaDialectoRepository(_unitOfWork);
 
         }
         /// <summary>
@@ -32,23 +30,7 @@ namespace AppDigitalCv.Business
         public List<DialectoDomainModel> GetDialectosByIdPersonal(int _idPersonal)
         {
             List<DialectoDomainModel> dialectoDM = new List<DialectoDomainModel>();
-            Expression<Func<tblIdiomaDialectoPersonal, bool>> predicado = p => p.idPersonal.Equals(_idPersonal) && p.idDialecto != null;
-            List<tblIdiomaDialectoPersonal> tblIdiomas = idiomaDialectoRepository.GetAll(predicado).ToList<tblIdiomaDialectoPersonal>();
-
-
-            foreach (tblIdiomaDialectoPersonal idioma in tblIdiomas)
-            {
-                DialectoDomainModel dialecto = new DialectoDomainModel();
-
-
-                dialecto.idDialecto = idioma.catDialecto.idDialecto;
-                dialecto.strDescripcion = idioma.catDialecto.strDescripcion;
-                dialecto.strObservacion = idioma.catDialecto.strObservacion;
-                dialectoDM.Add(dialecto);
-
-
-
-            }
+          
 
             return dialectoDM;
         }
@@ -64,12 +46,7 @@ namespace AppDigitalCv.Business
 
             DialectoDomainModel idiomaDM = new DialectoDomainModel();
 
-            Expression<Func<tblIdiomaDialectoPersonal, bool>> predicado = p => p.idPersonal.Equals(idPersona) && p.idDialecto.Equals(idDielecto);
-            tblIdiomaDialectoPersonal tblIdioma = idiomaDialectoRepository.GetAll(predicado).FirstOrDefault<tblIdiomaDialectoPersonal>();
-
-            idiomaDM.idDialecto = tblIdioma.catDialecto.idDialecto;
-            idiomaDM.strDescripcion = tblIdioma.catDialecto.strDescripcion;
-            idiomaDM.strObservacion = tblIdioma.catDialecto.strObservacion;
+         
 
             return idiomaDM;
 

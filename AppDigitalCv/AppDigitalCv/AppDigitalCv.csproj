@@ -542,7 +542,7 @@
     <Content Include="Views\EstadoCivil\Create.cshtml" />
     <Content Include="Views\DatosContacto\_Editar.cshtml" />
     <Content Include="Views\EstadoSalud\Create.cshtml" />
-    <Content Include="Views\IdiomaDialecto\Create.cshtml" />
+    <Content Include="Views\Idioma\Create.cshtml" />
     <Content Include="Views\DialectoIdioma\Create.cshtml" />
     <Content Include="Views\EstadoSalud\_Eliminar.cshtml" />
     <Content Include="Views\Hijos\Create.cshtml" />
@@ -572,8 +572,8 @@
     <Content Include="Views\Alergias\Create.cshtml" />
     <Content Include="Views\Direccion\_Eliminar.cshtml" />
     <Content Include="Views\Alergias\_Eliminar.cshtml" />
-    <Content Include="Views\IdiomaDialecto\_Eliminar.cshtml" />
-    <Content Include="Views\IdiomaDialecto\_Editar.cshtml" />
+    <Content Include="Views\Idioma\_Eliminar.cshtml" />
+    <Content Include="Views\Idioma\_Editar.cshtml" />
     <Content Include="Views\DialectoIdioma\_Editar.cshtml" />
     <Content Include="Views\DialectoIdioma\_Eliminar.cshtml" />
     <Content Include="Views\Competencias\Create.cshtml" />
@@ -684,7 +684,7 @@
     <Compile Include="Controllers\HabitosPersonalesController.cs" />
     <Compile Include="Controllers\HijosController.cs" />
     <Compile Include="Controllers\HobbieController.cs" />
-    <Compile Include="Controllers\IdiomaDialectoController.cs" />
+    <Compile Include="Controllers\IdiomaController.cs" />
     <Compile Include="Controllers\InformeTecnicoController.cs" />
     <Compile Include="Controllers\InstitucionSuperiorController.cs" />
     <Compile Include="Controllers\LibroController.cs" />
@@ -766,6 +766,7 @@
     <Compile Include="ViewModels\HobbiesVM.cs" />
     <Compile Include="ViewModels\HobbieVM.cs" />
     <Compile Include="ViewModels\IdiomaDialectoVM.cs" />
+    <Compile Include="ViewModels\IdiomasVM.cs" />
     <Compile Include="ViewModels\IdiomaVM.cs" />
     <Compile Include="ViewModels\IfeVM.cs" />
     <Compile Include="ViewModels\ImageVM.cs" />
@@ -776,6 +777,7 @@
     <Compile Include="ViewModels\ManualOperacionVM.cs" />
     <Compile Include="ViewModels\MunicipioVM.cs" />
     <Compile Include="ViewModels\NacionalidadVM.cs" />
+    <Compile Include="ViewModels\NivelConocimientoVM.cs" />
     <Compile Include="ViewModels\NivelSalarialVM.cs" />
     <Compile Include="ViewModels\NumeroCartillaMilitarVM.cs" />
     <Compile Include="ViewModels\NumeroLicenciaManejoVM.cs" />

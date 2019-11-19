@@ -37,7 +37,6 @@ namespace AppDigitalCv.Repository
             this.tblEstadiaEmpresa = new HashSet<tblEstadiaEmpresa>();
             this.tblExperienciaLaboralExterna = new HashSet<tblExperienciaLaboralExterna>();
             this.tblExperienciaLaboralInterna = new HashSet<tblExperienciaLaboralInterna>();
-            this.tblIdiomaDialectoPersonal = new HashSet<tblIdiomaDialectoPersonal>();
             this.tblInformeTecnico = new HashSet<tblInformeTecnico>();
             this.tblLibro = new HashSet<tblLibro>();
             this.TblLicenciaturaIngenieria = new HashSet<TblLicenciaturaIngenieria>();
@@ -58,6 +57,8 @@ namespace AppDigitalCv.Repository
             this.tblProyectoInvestigacionAplicadaDesarrolloTecnologico = new HashSet<tblProyectoInvestigacionAplicadaDesarrolloTecnologico>();
             this.tblTutoria = new HashSet<tblTutoria>();
             this.tblHobbies = new HashSet<tblHobbies>();
+            this.TblIdioma = new HashSet<TblIdioma>();
+            this.TblLenguas = new HashSet<TblLenguas>();
         }
     
         public int idPersonal { get; set; }
@@ -128,8 +129,6 @@ namespace AppDigitalCv.Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblExperienciaLaboralInterna> tblExperienciaLaboralInterna { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblIdiomaDialectoPersonal> tblIdiomaDialectoPersonal { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblInformeTecnico> tblInformeTecnico { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblLibro> tblLibro { get; set; }
@@ -169,5 +168,9 @@ namespace AppDigitalCv.Repository
         public virtual ICollection<tblTutoria> tblTutoria { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblHobbies> tblHobbies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblIdioma> TblIdioma { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblLenguas> TblLenguas { get; set; }
     }
 }
