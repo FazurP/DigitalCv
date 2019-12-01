@@ -12,6 +12,7 @@ using System.IO;
 using AppDigitalCv.Security;
 using System.Drawing;
 using System.Threading;
+using AppDigitalCv.Models;
 
 namespace AppDigitalCv.Controllers
 {
@@ -22,28 +23,33 @@ namespace AppDigitalCv.Controllers
         IEstadoCivilBusiness estadoCivilBusiness;
         INacionalidadBusiness NacionalidadBusiness;
 
-        public PersonalController(IPersonalBusiness _PersonalBussiness, IEstadoCivilBusiness _estadoCivilBusiness,INacionalidadBusiness _nacionalidadBusiness)
+        public PersonalController(IPersonalBusiness _PersonalBussiness, IEstadoCivilBusiness _estadoCivilBusiness, INacionalidadBusiness _nacionalidadBusiness)
         {
 
-                IPersonalBussines = _PersonalBussiness;
-                estadoCivilBusiness = _estadoCivilBusiness;
+            IPersonalBussines = _PersonalBussiness;
+            estadoCivilBusiness = _estadoCivilBusiness;
             NacionalidadBusiness = _nacionalidadBusiness;
         }
-        
-        #region Crear 
         [HttpGet]
         public ActionResult Create()
         {
             if (SessionPersister.AccountSession != null)
             {
-                ViewBag.idNacionalidad = new SelectList(NacionalidadBusiness.GetAllNacionalidades(),"id","strValor");
+                PersonalVM personalVM = new PersonalVM();
+                PersonalDomainModel personalDomainModel = new PersonalDomainModel();
+
+                personalDomainModel = IPersonalBussines.GetPersonalById(SessionPersister.AccountSession.IdPersonal);
+
+                AutoMapper.Mapper.Map(personalDomainModel, personalVM);
+
+                ViewBag.idNacionalidad = new SelectList(NacionalidadBusiness.GetAllNacionalidades(), "id", "strValor");
                 ViewBag.IdEstadoCivil = new SelectList(estadoCivilBusiness.GetEstadoCivil(), "IdEstadoCivil", "StrDescripcion");
-                return View();
+                return View(personalVM);
             }
             else {
                 return View("~/Views/Seguridad/Login.cshtml");
             }
-           
+
         }
 
         [HttpPost]
@@ -72,207 +78,21 @@ namespace AppDigitalCv.Controllers
                 ModelState.IsValidField("ArchivoNacionalidad")
                 )
             {
-                if (personalVM.ArchivoCurp != null && personalVM.ArchivoRfc != null && personalVM.ArchivoNacionalidad != null 
-                    && personalVM.ArchivoCurp.ContentType.Equals("application/pdf") 
+                if (personalVM.ArchivoCurp != null && personalVM.ArchivoRfc != null && personalVM.ArchivoNacionalidad != null
+                    && personalVM.ArchivoCurp.ContentType.Equals("application/pdf")
                     && personalVM.ArchivoRfc.ContentType.Equals("application/pdf")
                     && personalVM.ArchivoNacionalidad.ContentType.Equals("application/pdf"))
                 {
                     personalVM.idPersonal = SessionPersister.AccountSession.IdPersonal;
                     this.CrearDirectorioUsuario(personalVM);
-                                                           
+
                 }
                 return RedirectToAction("Create", "Personal");
             }
             else {
-                return RedirectToAction("Create","Personal");
+                return RedirectToAction("Create", "Personal");
             }
         }
-
-        [HttpPost]
-        public ActionResult AgregarTipoSangre([Bind(Include = "idPersonal,idTipoSangre")]PersonalVM personalVM)
-        {
-            //construimos una lista de personalvm para poder mostrar como un json
-            List<TipoSangreVM> tipoSangreVMs = new List<TipoSangreVM>();
-            
-                this.AddEditTipoSangre(personalVM);
-                if (Request.IsAjaxRequest())
-                {
-                    TipoSangreVM tipoSangreVM = new TipoSangreVM();
-                    PersonalDomainModel personalDM= IPersonalBussines.GetPersonalById(personalVM.idPersonal);
-                    AutoMapper.Mapper.Map(personalDM.TipoSangreDomainModel, tipoSangreVM);
-                    tipoSangreVMs.Add(tipoSangreVM);
-                    return Json(tipoSangreVMs, JsonRequestBehavior.AllowGet);
-                }
-            
-            return View();
-        }
-
-        [HttpGet]
-        public JsonResult ConsultaTipoSangre()
-        {
-            List<TipoSangreVM> tipoSangreVMs = new List<TipoSangreVM>();
-            //PersonalVM personaVM = new PersonalVM();
-            PersonalDomainModel personalDM = IPersonalBussines.GetPersonalById(1);
-            TipoSangreVM tipoSangreVM = new TipoSangreVM();
-
-            //AutoMapper.Mapper.Map(personalDM, personaVM);
-            AutoMapper.Mapper.Map(personalDM.TipoSangreDomainModel, tipoSangreVM);
-            tipoSangreVMs.Add(tipoSangreVM);
-            return Json(tipoSangreVMs, JsonRequestBehavior.AllowGet);
-
-        }
-
-        #endregion
-
-        #region Detalles de la Informacion en Vista
-        /// <summary>
-        /// Este metodo se encarga de mostrar la información previamente guardada por el usuario
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public ActionResult InfoPersonal()
-        {
-            if (SessionPersister.AccountSession != null)
-            {
-                ///este es el id del personal
-                int idPersonal = SessionPersister.AccountSession.IdPersonal;
-                //creamos el objeto que representara los datos en la vista
-                PersonalVM personalVM = new PersonalVM();
-                //obtenemos el objeto del modelo de dominio
-                PersonalDomainModel personaDominio = IPersonalBussines.GetPersonalById(idPersonal);
-                ///mapaeamos el objeto con los valores del modelo de dominio
-                AutoMapper.Mapper.Map(personaDominio, personalVM);
-                ViewBag.NombreCompleto = personalVM.Nombre + " " + personalVM.ApellidoPaterno + " " + personalVM.ApellidoMaterno;
-                //consultamos la fecha desde el servidor
-                ViewBag.FechaServidor = this.ConsultarHorarioServidor();
-                return View(personalVM);
-            }
-            else
-            {
-                return View("~/Views/Seguridad/Login.cshtml");
-            }
-            
-        }
-        #endregion
-
-        // GET: Personal
-        public ActionResult Index()
-        {
-            List<PersonalDomainModel> personalDM = IPersonalBussines.GetEmpleado();
-            //aqui cambaimos al modeldomain al viewmodel
-            List<PersonalVM> personalVM = new List<PersonalVM>();
-            //cambiamos el objeto
-            AutoMapper.Mapper.Map(personalDM,personalVM);
-            return View();
-        }
-        [HttpGet]
-        public ActionResult GetPersonalDelete(int _idPersonal)
-        {
-            PersonalVM personalVM = new PersonalVM();
-            PersonalDomainModel personalDM = new PersonalDomainModel();
-
-            personalDM = IPersonalBussines.GetPersonalById(_idPersonal);
-
-            if (personalDM != null)
-            {
-                AutoMapper.Mapper.Map(personalDM,personalVM);
-                return PartialView("_Eliminar", personalVM);
-            }
-
-            return PartialView("_Eliminar");
-        }
-
-        [HttpPost]
-        public ActionResult DeletePersonal(PersonalVM personalVM)
-        {
-            PersonalDomainModel personalDM = new PersonalDomainModel();
-
-            personalDM = IPersonalBussines.GetPersonalById(personalVM.IdEstadoCivil);
-            if (personalDM != null)
-            {
-                IPersonalBussines.DeletePersonal(personalDM.idPersonal);
-            }
-            return RedirectToAction("Create","Personal");
-        }
-
-        [HttpGet]
-        public ActionResult GetPersonalUpdate(int _idPersonal)
-        {
-            PersonalVM personalVM = new PersonalVM();
-            PersonalDomainModel personalDM = new PersonalDomainModel();
-
-            personalDM = IPersonalBussines.GetPersonalById(_idPersonal);
-
-            if (personalDM != null)
-            {
-                ViewBag.IdEstadoCivil = new SelectList(estadoCivilBusiness.GetEstadoCivil(), "IdEstadoCivil", "StrDescripcion");
-                AutoMapper.Mapper.Map(personalDM,personalVM);
-                return PartialView("_Editar",personalVM);
-            }
-            return PartialView("_Editar");
-        }
-
-        [HttpPost]
-        public ActionResult UpdatePersonal(PersonalVM personalVM)
-        {
-            if (personalVM.idPersonal > 0)
-            {
-                PersonalDomainModel personalDM = new PersonalDomainModel();
-                AutoMapper.Mapper.Map(personalVM, personalDM);
-                IPersonalBussines.AddUpdatePersonal(personalDM);
-            }
-            return RedirectToAction("Editar","Personal");
-        }
-
-        #region Estos metodos y vista seran borrados
-
-        [HttpGet]
-        public ActionResult DatosPersonales()
-        {
-            ViewBag.PersonalList =IPersonalBussines.GetEmpleado();
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult DatosPersonales(PersonalVM personalVM)
-        {
-            //mando los datos ya editados del personal.
-            this.AddEditPersonal(personalVM);
-            return PartialView("_Editar", personalVM);
-            
-        }
-
-        [HttpGet]
-        public ActionResult Editar()
-        {
-
-            if (SessionPersister.AccountSession != null)
-            {
-
-                int idPersonal = SessionPersister.AccountSession.IdPersonal;
-                PersonalDomainModel personalDM = IPersonalBussines.GetPersonalById(idPersonal);
-                PersonalVM personalVM = new PersonalVM();
-                AutoMapper.Mapper.Map(personalDM, personalVM);///hacemos el mapeado de la entidad
-
-                var personalDocumentos = ConsultarDcocumentosPersonal(); ///mandamos llamar los documentos del personal
-                ViewBag.Identificador = personalDocumentos.IdPersonal;
-                ViewBag.Curp = personalDocumentos.UrlCurp;
-                ViewBag.Rfc = personalDocumentos.UrlRfc;
-
-                return View("Editar"); ///"_Editar",personalVM
-            }
-            else
-            {
-                return View("~/Views/Seguridad/Login.cshtml");
-            }
-
-        }
-
-       
-       
-        #endregion
-
-        #region Agregar o Editar una entidad
 
         public string AddEditPersonal(PersonalVM personalVM)
         {
@@ -284,83 +104,6 @@ namespace AppDigitalCv.Controllers
             return resultado;
         }
 
-
-        public string AddEditTipoSangre(PersonalVM personalVM)
-        {
-            string resultado = string.Empty;
-            PersonalDomainModel personalDM = new PersonalDomainModel();
-            AutoMapper.Mapper.Map(personalVM, personalDM);///hacemos el mapeado de la entidad
-
-            resultado = IPersonalBussines.AddUpdateTipoSangre(personalDM);
-            return resultado;
-        }
-
-
-        #endregion
-          
-        #region Eliminar Documentos del Personal
-
-        public JsonResult EliminarCurp(int idPersonal)
-        {
-            bool resultado= IPersonalBussines.DeleteFileCurp(idPersonal);
-            return Json(resultado,JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult EliminarRfc(int idPersonal)
-        {
-            bool resultado = IPersonalBussines.DeleteFileRfc(idPersonal);
-            return Json(resultado, JsonRequestBehavior.AllowGet);
-        }
-        #endregion
-
-        #region Consultar Datos del Personal
-
-        public JsonResult ConsultarDatosPersonal()
-        {
-            var personal = IPersonalBussines.GetEmpleadoDocumentos(SessionPersister.AccountSession.IdPersonal);////////////////////////modificacion temporal
-            return Json(personal, JsonRequestBehavior.AllowGet);
-        }
-        #endregion
-
-        #region Consultar Documentos del Personal
-        /// <summary>
-        /// Este metodo se encarga de consultar los documentos del personal
-        /// </summary>
-        /// <returns>un json como resultado de la consulta</returns>
-        public DocumentoPersonalVM ConsultarDcocumentosPersonal()
-        {
-            DocumentoPersonalDomainModel documentosDM = IPersonalBussines.GetDocumentoPersonal(SessionPersister.AccountSession.IdPersonal);
-            DocumentoPersonalVM documentosVM = new DocumentoPersonalVM();
-            AutoMapper.Mapper.Map(documentosDM, documentosVM);
-            return documentosVM;
-        }
-        #endregion
-
-
-        public ActionResult borrarPersonal(int _idPersonal)
-        {
-            // bool resultado = IPersonalBussines.DeletePersonal(_idPersonal);
-            // return Json(resultado,JsonRequestBehavior.AllowGet);
-            return View();
-        }
-
-        #region Subir Imagen
-        public JsonResult ImageUpload(PersonalVM modelo)
-        {
-            var file = modelo.ImageFile;
-            if (file != null)
-            {
-                //obtenemos el nombre del archivo
-                var fileName = Path.GetFileName(file.FileName);
-                var extension = Path.GetExtension(file.FileName);
-                var fileNameSinExtension = Path.GetFileNameWithoutExtension(file.FileName);
-                file.SaveAs(Server.MapPath("/Imagenes/" + file.FileName));
-                
-            }
-            return Json(file.FileName,JsonRequestBehavior.AllowGet);
-        }
-        #endregion
-
         public void GuardarImagen(ImageVM img)
         {
             if (img != null)
@@ -368,7 +111,7 @@ namespace AppDigitalCv.Controllers
                 string ruta = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + SessionPersister.AccountSession.NombreCompleto + "/" + "ImagePerfil" + "/"));
                 string nombre = "perfil";
 
-                 if (Directory.Exists(ruta))
+                if (Directory.Exists(ruta))
                 {
 
                     if (Directory.GetFiles(ruta).Length == 0)
@@ -389,8 +132,8 @@ namespace AppDigitalCv.Controllers
                     }
                     else
                     {
-                        System.IO.File.Delete(ruta+nombre);
-                        System.IO.File.Delete(ruta+nombre+".jpeg");
+                        System.IO.File.Delete(ruta + nombre);
+                        System.IO.File.Delete(ruta + nombre + ".jpeg");
                         if (img.image.ContentType.Equals("image/jpeg"))
                         {
                             img.image.SaveAs(ruta + nombre);
@@ -404,7 +147,7 @@ namespace AppDigitalCv.Controllers
                                 image.Save(ruta + nombre + ".jpeg");
                             }
                         }
-                    }        
+                    }
                 }
                 else
                 {
@@ -413,16 +156,16 @@ namespace AppDigitalCv.Controllers
                 }
             }
         }
-        public Bitmap CambiarTamanioImagen(Image imagenOriginal,int width, int height)
+        public Bitmap CambiarTamanioImagen(Image imagenOriginal, int width, int height)
         {
             var radio = Math.Max((double)width / imagenOriginal.Width, (double)height / imagenOriginal.Height);
             var nuevoAncho = (int)(imagenOriginal.Width * radio);
             var nuevoAlto = (int)(imagenOriginal.Height * radio);
 
-            var ImagenRedimencionada = new Bitmap(width,height);
+            var ImagenRedimencionada = new Bitmap(width, height);
             Graphics.FromImage(ImagenRedimencionada).DrawImage(imagenOriginal, 0, 0, width, height);
             Bitmap ImagenFinal = new Bitmap(ImagenRedimencionada);
-         
+
             return ImagenFinal;
         }
 
@@ -431,57 +174,71 @@ namespace AppDigitalCv.Controllers
         public void CrearDirectorioUsuario(PersonalVM personalVM)
         {
             string nombreCompleto = SessionPersister.AccountSession.NombreCompleto;
-            string path = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/"+nombreCompleto));
+            string path = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto));
             string pathRfc = string.Empty;
             string pathCurp = string.Empty;
             string pathNacio = string.Empty;
 
-            if (!Directory.Exists(path))
+            if (Directory.Exists(path))
             {
-                //creamos el directorio
-                DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
-                pathRfc = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + "/"), Path.GetFileName(personalVM.ArchivoRfc.FileName));
-                pathCurp = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + "/"), Path.GetFileName(personalVM.ArchivoCurp.FileName));
-                pathNacio = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + "/"), Path.GetFileName(personalVM.ArchivoNacionalidad.FileName));
 
-                personalVM.ArchivoRfc.SaveAs(pathRfc);
-                personalVM.ArchivoCurp.SaveAs(pathCurp);
-                personalVM.ArchivoNacionalidad.SaveAs(pathCurp);
+                pathRfc = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + Recursos.RecursosSistema.URL_DOC_PERSONAL_RFC), Path.GetFileName(personalVM.ArchivoRfc.FileName));
+                pathCurp = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + Recursos.RecursosSistema.URL_DOC_PERSONAL_CURP), Path.GetFileName(personalVM.ArchivoCurp.FileName));
+                pathNacio = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + Recursos.RecursosSistema.URL_DOC_PERSONAL_NACIONALIDAD), Path.GetFileName(personalVM.ArchivoNacionalidad.FileName));
 
-                personalVM.strUrlRfc = pathRfc;
-                personalVM.strUrlCurp = pathCurp;
-                personalVM.strUrlNacionalidad = pathNacio;
+                if (!Directory.Exists(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + Recursos.RecursosSistema.URL_DOC_PERSONAL_RFC))
+                    &&
+                    !Directory.Exists(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + Recursos.RecursosSistema.URL_DOC_PERSONAL_CURP))
+                     &&
+                    !Directory.Exists(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + Recursos.RecursosSistema.URL_DOC_PERSONAL_NACIONALIDAD))
+                    )
+                {
+                    Directory.CreateDirectory(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + Recursos.RecursosSistema.URL_DOC_PERSONAL_RFC));
+                    Directory.CreateDirectory(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + Recursos.RecursosSistema.URL_DOC_PERSONAL_CURP));
+                    Directory.CreateDirectory(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + Recursos.RecursosSistema.URL_DOC_PERSONAL_NACIONALIDAD));
 
-                this.AddEditPersonal(personalVM);
+                    CrearDirectorioUsuario(personalVM);
+                }
+                else 
+                {
+                   string[] searchRfc = Directory.GetFiles(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + Recursos.RecursosSistema.URL_DOC_PERSONAL_RFC));
+                   string[] searchCurp = Directory.GetFiles(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + Recursos.RecursosSistema.URL_DOC_PERSONAL_CURP));
+                   string[] searchNacionalidad = Directory.GetFiles(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + Recursos.RecursosSistema.URL_DOC_PERSONAL_NACIONALIDAD));
 
+                    if (searchRfc.Length > 0 && searchCurp.Length > 0 && searchNacionalidad.Length > 0)
+                    {
+                        if (System.IO.File.Exists(searchRfc[0]) && System.IO.File.Exists(searchCurp[0]) && System.IO.File.Exists(searchNacionalidad[0]))
+                        {
+                            System.IO.File.Delete(searchRfc[0]);
+                            System.IO.File.Delete(searchCurp[0]);
+                            System.IO.File.Delete(searchNacionalidad[0]);
+
+                            CrearDirectorioUsuario(personalVM);
+                        }
+                    }
+                    else
+                    {
+                        personalVM.ArchivoRfc.SaveAs(pathRfc);
+                        personalVM.ArchivoCurp.SaveAs(pathCurp);
+                        personalVM.ArchivoNacionalidad.SaveAs(pathNacio);
+
+                        personalVM.strUrlRfc = personalVM.ArchivoRfc.FileName;
+                        personalVM.strUrlCurp = personalVM.ArchivoCurp.FileName;
+                        personalVM.strUrlNacionalidad = personalVM.ArchivoNacionalidad.FileName;
+
+                        this.AddEditPersonal(personalVM);
+                    }             
+                }             
             }
             else
             {
-                pathRfc = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + "/"), Path.GetFileName(personalVM.ArchivoRfc.FileName));
-                pathCurp = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + "/"), Path.GetFileName(personalVM.ArchivoCurp.FileName));
-                pathNacio = Path.Combine(Server.MapPath("~/Imagenes/Usuarios/" + nombreCompleto + "/"), Path.GetFileName(personalVM.ArchivoNacionalidad.FileName));
-
-                personalVM.ArchivoRfc.SaveAs(pathRfc);
-                personalVM.ArchivoCurp.SaveAs(pathCurp);
-                personalVM.ArchivoNacionalidad.SaveAs(pathNacio);
-
-                personalVM.strUrlRfc = pathRfc;
-                personalVM.strUrlCurp = pathCurp;
-                personalVM.strUrlNacionalidad = pathNacio;
-
-                this.AddEditPersonal(personalVM);
+                DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
+                CrearDirectorioUsuario(personalVM);
             }
         }
         #endregion
 
 
-        #region Consultar Horario del Servidor
-        private string ConsultarHorarioServidor()
-        {
-            return DateTime.Now.ToString("dd MMMM, yyyy");
-        }
-        #endregion
 
-
-    }
+    } 
 }

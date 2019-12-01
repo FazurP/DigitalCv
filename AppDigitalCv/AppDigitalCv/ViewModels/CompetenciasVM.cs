@@ -12,5 +12,6 @@ namespace AppDigitalCv.ViewModels
         public string strObservacion { get; set; }
         public string strTipo { get; set; }
         public bool isChecked { get; set; }
+        public HttpPostedFileWrapper file { get; set; }
     }
 }

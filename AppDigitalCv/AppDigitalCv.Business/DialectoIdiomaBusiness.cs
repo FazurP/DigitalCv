@@ -15,11 +15,13 @@ namespace AppDigitalCv.Business
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly DialectosRepository dialectoRepository;
+        private readonly LenguasRepository lenguasRepository;
 
         public DialectoIdiomaBusiness(IUnitOfWork _unitOfWork)
         {
             unitOfWork = _unitOfWork;
             dialectoRepository = new DialectosRepository(unitOfWork);
+            lenguasRepository = new LenguasRepository(unitOfWork);
         }
         /// <summary>
         /// Este metodo se encarga de obtener todos los dialecto para cargarlos en la lista.
@@ -40,10 +42,28 @@ namespace AppDigitalCv.Business
         /// </summary>
         /// <param name="idiomaDialectoDM"></param>
         /// <returns></returns>
-        public bool AddUpdateDialecto(IdiomaDialectoDomainModel idiomaDialectoDM)
+        public bool AddUpdateDialecto(LenguasDomainModel lenguas)
         {
             bool respuesta = false;
 
+            if (lenguas.id > 0)
+            {
+
+            }
+            else 
+            {
+                TblLenguas tblLenguas = new TblLenguas();
+
+                tblLenguas.idLengua = lenguas.idLengua;
+                tblLenguas.idPersonal = lenguas.idPersonal;
+                tblLenguas.strComunicacion = lenguas.strComunicacion;
+                tblLenguas.strEntendimiento = lenguas.strEntendimiento;
+                tblLenguas.strEscritura = lenguas.strEscritura;
+                tblLenguas.strLectura = lenguas.strLectura;
+
+                lenguasRepository.Insert(tblLenguas);
+                respuesta = true;
+            }
            
             return respuesta;
         }

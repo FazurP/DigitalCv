@@ -94,6 +94,7 @@ namespace AppDigitalCv
             container.RegisterType<IHobbieBusiness, HobbieBusiness>();
             container.RegisterType<IIdiomasBusiness, IdiomaBusiness>();
             container.RegisterType<INivelConocimientoBusiness, NivelConocimientoBusiness>();
+            container.RegisterType<ITipoDocumentoBusiness, TipoDocumentoBusiness>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

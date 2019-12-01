@@ -15,10 +15,12 @@ namespace AppDigitalCv.Business
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly DocumentacionPersonalV2Repository documentacionPersonalRepository;
+        private readonly DocumentosRepository documentosRepository;
         public DocumentacionPersonalV2Business(IUnitOfWork _unitOfWork)
         {
             unitOfWork = _unitOfWork;
             documentacionPersonalRepository = new DocumentacionPersonalV2Repository(unitOfWork);
+            documentosRepository = new DocumentosRepository(unitOfWork);
         }
         /// <summary>
         /// Este metodo se encarga de insertar o actualizar un objeto de documentacionPersonal, en la base de datos.
@@ -28,16 +30,20 @@ namespace AppDigitalCv.Business
         public bool AddDocumentacionPersonal(DocumentacionPersonalV2DomainModel documentacionPersonalDM)
         {
             bool respuesta = false;
-            string resultado = string.Empty;
-            tblPremiosDocente tblPremios = new tblPremiosDocente();
+
             tblDocumentacionPersonal tblDocumentacionPersonal = new tblDocumentacionPersonal();
+            catDocumentos catDocumentos = new catDocumentos();
+
             tblDocumentacionPersonal.idDocumento = documentacionPersonalDM.idDocumento;
             tblDocumentacionPersonal.idPersonal = documentacionPersonalDM.idPesonal;
-            tblDocumentacionPersonal.strIdentificador = documentacionPersonalDM.strIdentificador;
-            tblDocumentacionPersonal.strNumeroDocumento = documentacionPersonalDM.strNumeroDocumento;
+            tblDocumentacionPersonal.idTipoDocumento = documentacionPersonalDM.idTipoDocumento;
             tblDocumentacionPersonal.dteVigenciaDocumento = documentacionPersonalDM.dteVigenciaDocumento;
 
-            documentacionPersonalRepository.Insert(tblDocumentacionPersonal);
+            catDocumentos.tblDocumentacionPersonal.Add(tblDocumentacionPersonal);
+
+            catDocumentos.strUrl = documentacionPersonalDM.DocumentosDomainModel.StrUrl;
+
+            documentosRepository.Insert(catDocumentos);
             respuesta = true;
             return respuesta;
         }

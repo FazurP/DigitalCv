@@ -183,6 +183,15 @@
   <data name="SegUsuario" xml:space="preserve">
     <value>Pando</value>
   </data>
+  <data name="URL_DOC_PERSONAL_CURP" xml:space="preserve">
+    <value>/DocPersonal/DocCurp/</value>
+  </data>
+  <data name="URL_DOC_PERSONAL_NACIONALIDAD" xml:space="preserve">
+    <value>/DocPersonal/DocNacionalidad/</value>
+  </data>
+  <data name="URL_DOC_PERSONAL_RFC" xml:space="preserve">
+    <value>/DocPersonal/DocRFC/</value>
+  </data>
   <data name="URL_PERFIL" xml:space="preserve">
     <value>Imagenes/Usuarios/</value>
   </data>

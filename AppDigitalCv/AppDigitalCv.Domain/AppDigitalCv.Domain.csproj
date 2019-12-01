@@ -95,6 +95,7 @@
     <Compile Include="InformeTecnicoDomainModel.cs" />
     <Compile Include="InstitucionAcreditaCapacitacionProfesionalDomainModel.cs" />
     <Compile Include="InstitucionSuperiorDomainModel.cs" />
+    <Compile Include="LenguasDomainModel.cs" />
     <Compile Include="LibroDomainModel.cs" />
     <Compile Include="ManualOperacionDomainModel.cs" />
     <Compile Include="MunicipioDomainModel.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="SolicitudEmpleoDomainModel.cs" />
     <Compile Include="TipoActividadDomainModel.cs" />
     <Compile Include="TipoContratoDomainModel.cs" />
+    <Compile Include="TipoDocumentoDomainModel.cs" />
     <Compile Include="TipoEmpresaDomainModel.cs" />
     <Compile Include="TipoEstudioDomainModel.cs" />
     <Compile Include="TipoProductoDomainModel.cs" />

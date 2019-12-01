@@ -34,5 +34,7 @@ namespace AppDigitalCv.Domain
         //Objetos de las relaciones
 
         public AccountDomainModel AccountDomainModel { get; set; }
+        public DocumentosDomainModel documentoRfc { get; set; }
+        public DocumentosDomainModel documentoCurp { get; set; }
     }
 }

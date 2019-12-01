@@ -259,6 +259,33 @@ namespace AppDigitalCv.Recursos {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a /DocPersonal/DocCurp/.
+        /// </summary>
+        internal static string URL_DOC_PERSONAL_CURP {
+            get {
+                return ResourceManager.GetString("URL_DOC_PERSONAL_CURP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a /DocPersonal/DocNacionalidad/.
+        /// </summary>
+        internal static string URL_DOC_PERSONAL_NACIONALIDAD {
+            get {
+                return ResourceManager.GetString("URL_DOC_PERSONAL_NACIONALIDAD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a /DocPersonal/DocRFC/.
+        /// </summary>
+        internal static string URL_DOC_PERSONAL_RFC {
+            get {
+                return ResourceManager.GetString("URL_DOC_PERSONAL_RFC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Imagenes/Usuarios/.
         /// </summary>
         internal static string URL_PERFIL {

@@ -55,6 +55,9 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -209,6 +212,7 @@
     <Content Include="Content\css\cardview.css" />
     <Content Include="Content\css\Ionicons.css" />
     <Content Include="Content\css\media-queries\media-queries.css" />
+    <Content Include="Content\css\position-top.css" />
     <Content Include="Content\estilo.css" />
     <Content Include="Content\js\plugins\jquery\jquery.min.js" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -425,6 +429,7 @@
     <Content Include="Scripts\Validate\CapituloLibro\validate-capitulo-libro-regExp.js" />
     <Content Include="Scripts\Validate\CompetenciasTi\validate-competencias-ti-checked.js" />
     <Content Include="Scripts\Validate\Competencias\validate-competencias-form.js" />
+    <Content Include="Scripts\Validate\Competencias\validate-competencias-upload.js" />
     <Content Include="Scripts\Validate\ContactoEmergencia\valida-contacto-emergencia-regExp.js" />
     <Content Include="Scripts\Validate\ContactoEmergencia\validate-contacto-emergencia-form.js" />
     <Content Include="Scripts\Validate\Cursos\validate-cursos-form.js" />
@@ -443,6 +448,7 @@
     <Content Include="Scripts\Validate\Direccion\validate-direccion-regExp.js" />
     <Content Include="Scripts\Validate\DocumentacionPersonal\validate-documentacion-personal-v1-form.js" />
     <Content Include="Scripts\Validate\DocumentacionPersonal\validate-documentacion-personal-v2-form.js" />
+    <Content Include="Scripts\Validate\DocumentacionPersonal\validate-documentacion-personal-v2-upload.js" />
     <Content Include="Scripts\Validate\Documentos\validate-documentos-upload.js" />
     <Content Include="Scripts\Validate\EstadiaEmpresa\validate-estadia-empresa-date.js" />
     <Content Include="Scripts\Validate\EstadiaEmpresa\validate-estadia-empresa-form.js" />
@@ -645,6 +651,7 @@
     <Content Include="Views\Hobbie\Create.cshtml" />
     <Content Include="Views\Hobbie\_Editar.cshtml" />
     <Content Include="Views\Hobbie\_Eliminar.cshtml" />
+    <Content Include="Views\DocumentacionPersonalV2\_Eliminar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -703,6 +710,7 @@
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Controllers\TipoContratacionController.cs" />
     <Compile Include="Controllers\TutoriasController.cs" />
+    <Compile Include="FileManager\FileManager.cs" />
     <Compile Include="Infraestructure\AutomaperWebProfile.cs" />
     <Compile Include="Models\DataTablesParam.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -773,6 +781,7 @@
     <Compile Include="ViewModels\InformeTecnicoVM.cs" />
     <Compile Include="ViewModels\InstitucionAcreditaCapacitacionProfesionalVM.cs" />
     <Compile Include="ViewModels\InstitucionSuperiorVM.cs" />
+    <Compile Include="ViewModels\LenguasVM.cs" />
     <Compile Include="ViewModels\LibroVM.cs" />
     <Compile Include="ViewModels\ManualOperacionVM.cs" />
     <Compile Include="ViewModels\MunicipioVM.cs" />
@@ -809,6 +818,7 @@
     <Compile Include="ViewModels\SolicitudEmpleoVM.cs" />
     <Compile Include="ViewModels\TipoActividadVM.cs" />
     <Compile Include="ViewModels\TipoContratoVM.cs" />
+    <Compile Include="ViewModels\TipoDocumentoVM.cs" />
     <Compile Include="ViewModels\TipoEmpresaVM.cs" />
     <Compile Include="ViewModels\TipoEstudioVM.cs" />
     <Compile Include="ViewModels\TipoProductoVM.cs" />

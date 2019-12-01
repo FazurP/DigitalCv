@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace AppDigitalCv.Business.Interface
 {
-    public interface ICompetenciasBusiness
+    public interface ITipoDocumentoBusiness
     {
-
+        List<TipoDocumentoDomainModel> GetAllTiposDocumentoPendientes(int _idPersonal);
     }
 }

@@ -15,11 +15,11 @@ namespace AppDigitalCv.Repository
     public partial class tblCompetenciasConocimientosPersonal
     {
         public int idCompetenciasConocimientosPersonal { get; set; }
-        public int idCompetencia { get; set; }
         public int idPersonal { get; set; }
+        public Nullable<int> idDocumento { get; set; }
         public Nullable<System.DateTime> dteFechaRegistro { get; set; }
     
-        public virtual catCompetencias catCompetencias { get; set; }
+        public virtual catDocumentos catDocumentos { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
     }
 }

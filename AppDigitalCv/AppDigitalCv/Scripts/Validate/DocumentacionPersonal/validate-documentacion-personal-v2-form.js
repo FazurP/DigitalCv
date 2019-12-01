@@ -1,70 +1,54 @@
 ﻿$(document).ready(function () {
 
-    $('#Numero').prop('disabled', true);
-    $('#Vigencia').prop('disabled', true);
-    $('#Evidencia').prop('disabled', true);
+
+
+    $('#vigencia').prop('disabled', true);
+    $('#fUpload').prop('disabled', true);
     $('#btnGuardar').prop('disabled', true);
 
-    $('#Documentos').change(function () {
-        var documento = $('#Documentos').val();
+    $('#tipoDocumento').change(function ()
+    {
+        let data = $(this).val();
 
-        if (documento == '--Seleccionar--') {
+        if (data == 0 || data == '0' || data == "0") {
 
-            $('#Numero').prop('disabled', true);
-            $('#Vigencia').prop('disabled', true);
-            $('#Evidencia').prop('disabled', true);
+            $('#vigencia').prop('disabled', true);
+            $('#fUpload').prop('disabled', true);
             $('#btnGuardar').prop('disabled', true);
 
-            $('#Numero').val('');
-            $('#Vigencia').val('');
-            $('#Evidencia').val('');
-
-        } else {
-            $('#Numero').prop('disabled', false);
-            toastr.success("Tipo de Documento Seleccionado", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+            $('#vigencia').val(0);
+            $('#fUpload').val('');
+        } else
+        {
+            toastr.success('Documento Seleccionado.', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            $('#vigencia').prop('disabled', false);
         }
 
-    })
+    });
 
-    $('#Numero').keyup(function () {
-        var numero = $('#Numero').val();
+    $('#vigencia').change(function () {
+        let data = $(this).val();
 
-        if (numero == null || numero == "" || numero == '') {
-            $('#Vigencia').prop('disabled', true);
-            $('#Evidencia').prop('disabled', true);
+        if (data == '') {
+
+            $('#fUpload').prop('disabled', true);
             $('#btnGuardar').prop('disabled', true);
 
-            $('#Vigencia').val('');
-            $('#Evidencia').val('');
+            $('#fUpload').val('');
         } else {
-            $('#Vigencia').prop('disabled', false);
+            toastr.success('Vigencia Seleccionada.', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            $('#fUpload').prop('disabled', false);
         }
-    })
 
-    $('#Vigencia').change(function () {
-        var vigencia = $('#Vigencia').val();
+    });
 
-        if (vigencia == null || vigencia == "" || vigencia == '') {
+    $('#fUpload').change(function () {
+        let data = $(this).val();
 
-            $('#Evidencia').prop('disabled', true);
+        if (data == '') {
             $('#btnGuardar').prop('disabled', true);
-
-            $('#Evidencia').val('');
-        } else {
-            $('#Evidencia').prop('disabled', false);
         }
-    })
 
-    $('#Evidencia').change(function () {
-        var evidencia = $('#Evidencia').val();
-
-        if (evidencia == "") {
-            $('#btnGuardar').prop('disabled', true);
-        } else {
-            $('#btnGuardar').prop('disabled', false);
-        }
-    })
-
-
+    });
 
 })

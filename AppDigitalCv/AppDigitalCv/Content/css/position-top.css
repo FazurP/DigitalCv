@@ -1,0 +1,14 @@
+﻿
+
+@media only screen and (max-width: 960px) {
+
+    .fix-position {
+        display:flex;
+        flex-direction:column-reverse;
+    }
+
+    .fix-text {
+      font-size:0;
+    }
+
+}

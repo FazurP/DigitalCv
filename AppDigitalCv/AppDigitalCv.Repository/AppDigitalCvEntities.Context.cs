@@ -29,7 +29,6 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<catArea> catArea { get; set; }
         public virtual DbSet<catCategoria> catCategoria { get; set; }
         public virtual DbSet<CatColonia> CatColonia { get; set; }
-        public virtual DbSet<catCompetencias> catCompetencias { get; set; }
         public virtual DbSet<catCompetenciaTI> catCompetenciaTI { get; set; }
         public virtual DbSet<catCuerpoAcademico> catCuerpoAcademico { get; set; }
         public virtual DbSet<catDeporte> catDeporte { get; set; }
@@ -56,7 +55,6 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<catUsuarios> catUsuarios { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tblAlergiasPersonal> tblAlergiasPersonal { get; set; }
-        public virtual DbSet<tblCompetenciasConocimientosPersonal> tblCompetenciasConocimientosPersonal { get; set; }
         public virtual DbSet<tblCompetenciasTIPersonal> tblCompetenciasTIPersonal { get; set; }
         public virtual DbSet<tblDatosLaboralesAdministrativos> tblDatosLaboralesAdministrativos { get; set; }
         public virtual DbSet<tblDatosLaboralesDocente> tblDatosLaboralesDocente { get; set; }
@@ -67,7 +65,6 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<tblUsuarioRol> tblUsuarioRol { get; set; }
         public virtual DbSet<catCurso> catCurso { get; set; }
         public virtual DbSet<tblCursos> tblCursos { get; set; }
-        public virtual DbSet<tblDocumentacionPersonal> tblDocumentacionPersonal { get; set; }
         public virtual DbSet<catDocumentos> catDocumentos { get; set; }
         public virtual DbSet<tblPortafolioPersonal> tblPortafolioPersonal { get; set; }
         public virtual DbSet<catPeriodo> catPeriodo { get; set; }
@@ -133,5 +130,8 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<TblIdioma> TblIdioma { get; set; }
         public virtual DbSet<CatLenguas> CatLenguas { get; set; }
         public virtual DbSet<TblLenguas> TblLenguas { get; set; }
+        public virtual DbSet<CatTipoDocumento> CatTipoDocumento { get; set; }
+        public virtual DbSet<tblDocumentacionPersonal> tblDocumentacionPersonal { get; set; }
+        public virtual DbSet<tblCompetenciasConocimientosPersonal> tblCompetenciasConocimientosPersonal { get; set; }
     }
 }

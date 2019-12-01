@@ -1,14 +1,11 @@
-﻿
-@model AppDigitalCv.ViewModels.CompetenciasPersonalVM
+﻿@model AppDigitalCv.ViewModels.DocumentosVM
 @using AppDigitalCv.Security
 
 <div>
 
     <form id="myFormulario">
-        @Html.HiddenFor(model => model.idCompetenciasConocimientosPersonal)
-        @Html.HiddenFor(model => model.idDocumento)
-        @Html.HiddenFor(model => model.idPersonal)
-        @Html.HiddenFor(model => model.file.StrUrl)
+        @Html.HiddenFor(m => m.IdDocumento, new { @class = "form-control input-sm", id = "IdDocumento" })
+        @Html.HiddenFor(m => m.StrUrl, new { @class = "form-control input-sm" })
         <div class="">
             <div class="form-group">
                 <div class="row">
@@ -20,39 +17,37 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label>Documento</label>
-                            @Html.TextBoxFor(m => m.file.StrUrl, new { @class = "form-control input-sm", @placeholder = "Nombre de la Alergia", @disabled = "disabled" })
+                            @Html.TextBoxFor(model => model.StrUrl, null, new { @class = "form-control input-sm", @disabled = "disabled" })
                         </div>
                         <div class="form-group">
-                            <a href="#" id="btnSubmit">
-                                <i class="btn btn-danger">Eliminar</i>
-                            </a>
-                        </div>                     
+                            <button class="btn btn-danger" id="btnEnviar">Eliminar</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </form>
 </div>
 
 <script>
         $(document).ready(function () {
 
-            $("#btnSubmit").click(function () {
+            $("#btnEnviar").click(function () {
 
             $("#loaderDiv").show();
 
                  var myformdat = $("#myFormulario").serialize();
-      
+
             $.ajax({
 
                 type: "POST",
-                url: "/Competencias/DeleteCompetenciaById",
+                url: "/DocumentacionPersonalV2/DeleteDocumento",
                 data: myformdat,
                 success: function () {
                     $("#loaderDiv").hide();
                     $("#myModal").modal("hide");
-                    window.location.href = "/Competencias/Create";
+                    window.location.href = "/DocumentacionPersonalV2/Create";
 
                 }
 
@@ -61,5 +56,6 @@
 
         })
 </script>
+
 
 

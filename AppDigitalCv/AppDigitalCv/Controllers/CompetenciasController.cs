@@ -5,6 +5,7 @@ using AppDigitalCv.Security;
 using AppDigitalCv.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -29,9 +30,6 @@ namespace AppDigitalCv.Controllers
         {
             if (SessionPersister.AccountSession != null)
             {
-                ViewBag.Habilidad = icompetenciasBusiness.GetCompetenciasHabilidad();
-                ViewBag.Destreza = icompetenciasBusiness.GetCompetenciasDestreza();
-                ViewBag.Valor = icompetenciasBusiness.GetCompetenciasValor();
                 return View("Create");
             }
             else {
@@ -39,39 +37,53 @@ namespace AppDigitalCv.Controllers
             }
 
         }
-        /// <summary>
-        /// Este metodo se encarga de recibir y registrar los checkbox seleccionados por el usuario.
-        /// </summary>
-        /// <param name="ItemList"></param>
+
         [HttpPost]
-        public void CreateList(string ItemList)
+        public ActionResult Create(CompetenciasPersonalVM competenciasPersonalVM) 
         {
-            int IdPersonal = SessionPersister.AccountSession.IdPersonal;
 
-            if (ItemList != null)
+            if (ModelState.IsValidField("file"))
             {
-                string[] checkArreglo = ItemList.Split(',');
-                if (checkArreglo != null)
+                competenciasPersonalVM.idPersonal = SessionPersister.AccountSession.IdPersonal;
+                Object[] obj = SaveDocuments(competenciasPersonalVM);
+
+                if (obj[0].Equals(true))
                 {
-                    foreach (var id in checkArreglo)
-                    {
-                        var IdCompetencia = id;
+                    CompetenciasPersonalDomainModel competenciasPersonalDomainModel = new CompetenciasPersonalDomainModel();
+                    AutoMapper.Mapper.Map(competenciasPersonalVM,competenciasPersonalDomainModel);
+                    competenciasPersonalDomainModel.file = new DocumentosDomainModel { StrUrl=obj[1].ToString()};
 
-                        icompetenciaPersonalBusiness.AddUpdateCompetencias(IdPersonal, int.Parse(IdCompetencia));
-                    }
+                    icompetenciaPersonalBusiness.AddUpdateCompetencias(competenciasPersonalDomainModel);
                 }
-                else
-                {
-
-                    RedirectToAction("Create","Competencias");
-                }
-
-            }
-            else {
-                RedirectToAction("Create","Competencias");
             }
 
+            return RedirectToAction("Create","Competencias");
         }
+
+        private object[] SaveDocuments(CompetenciasPersonalVM competenciasVM)
+        {
+            Object[] respuesta = new Object[2];
+
+            competenciasVM.idPersonal = SessionPersister.AccountSession.IdPersonal;
+            string nombreCompleto = SessionPersister.AccountSession.NombreCompleto;
+            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO+nombreCompleto));
+
+            if (Directory.Exists(path))
+            {
+                if (competenciasVM.file.DocumentoFile != null)
+                {
+                    respuesta = FileManager.FileManager.CheckFileIfExist(path,competenciasVM.file);
+                }
+            }
+            else 
+            {
+                Directory.CreateDirectory(path);
+                SaveDocuments(competenciasVM);
+            }
+
+            return respuesta;
+        }
+
         /// <summary>
         /// Este metodo se encarga de mostrar las competencias del personal en la tabla.
         /// </summary>
@@ -81,7 +93,7 @@ namespace AppDigitalCv.Controllers
         public JsonResult GetCompetencias(DataTablesParam param)
         {
             int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
-            List<CompetenciasDomainModel> competenciaDM = new List<CompetenciasDomainModel>();
+            List<CompetenciasPersonalDomainModel> competenciaDM = new List<CompetenciasPersonalDomainModel>();
 
             int pageNo = 1;
             if (param.iDisplayStart >= param.iDisplayLength)
@@ -92,18 +104,14 @@ namespace AppDigitalCv.Controllers
             int totalCount = 0;
             if (param.sSearch != null)
             {
-                competenciaDM = icompetenciaPersonalBusiness.GetCompetenciasByIdPersonal(IdentityPersonal).Where(p => p.strDescripcion.Contains(param.sSearch)).ToList();
-
-
+                competenciaDM = icompetenciaPersonalBusiness.GetAllCompetenciasPersonal(IdentityPersonal).Where(p => p.dteFechaRegistro.ToString().Contains(param.sSearch)).ToList();
             }
             else
             {
-                totalCount = icompetenciaPersonalBusiness.GetCompetenciasByIdPersonal(IdentityPersonal).Count();
+                totalCount = icompetenciaPersonalBusiness.GetAllCompetenciasPersonal(IdentityPersonal).Count();
 
-
-                competenciaDM = icompetenciaPersonalBusiness.GetCompetenciasByIdPersonal(IdentityPersonal).OrderBy(p => p.strDescripcion)
+                competenciaDM = icompetenciaPersonalBusiness.GetAllCompetenciasPersonal(IdentityPersonal).OrderBy(p => p.dteFechaRegistro)
                     .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
-
             }
             return Json(new
             {
@@ -113,45 +121,50 @@ namespace AppDigitalCv.Controllers
                 iTotalRecords = competenciaDM.Count()
 
             }, JsonRequestBehavior.AllowGet);
-
         }
-        /// <summary>
-        /// Este metodo se encarga de obtener un objeto de la competencia mediante su ID, para su eliminacion
-        /// </summary>
-        /// <param name="idCompetencia"></param>
-        /// <returns>una vista parcial con el objeto</returns>
+
+        ///// <summary>
+        ///// Este metodo se encarga de obtener un objeto de la competencia mediante su ID, para su eliminacion
+        ///// </summary>
+        ///// <param name="idCompetencia"></param>
+        ///// <returns>una vista parcial con el objeto</returns>
         [HttpGet]
-        public ActionResult GetCompetenciaByIdPersonal(int idCompetencia) {
+        public ActionResult GetCompetenciaByIdPersonal(int idCompetencia)
+        {
 
             int idPersonal = SessionPersister.AccountSession.IdPersonal;
-            CompetenciasDomainModel competenciaDM = icompetenciasBusiness.GetCompetencia(idCompetencia, idPersonal);
+            CompetenciasPersonalDomainModel competenciaDM = icompetenciaPersonalBusiness.GetCompetenciaPersonal(idCompetencia);
 
             if (competenciaDM != null)
             {
-                CompetenciasVM competenciaVM = new CompetenciasVM();
+                CompetenciasPersonalVM competenciaVM = new CompetenciasPersonalVM();
                 AutoMapper.Mapper.Map(competenciaDM, competenciaVM);
+                competenciaVM.file = new DocumentosVM { StrUrl = competenciaDM.file.StrUrl };
                 return PartialView("_Eliminar", competenciaVM);
             }
 
             return View();
         }
-        /// <summary>
-        /// Este metodo se encarga de eliminar el objeto obtenido de la competencia
-        /// </summary>
-        /// <param name="competenciasVM"></param>
-        /// <returns>una vista</returns>
+        ///// <summary>
+        ///// Este metodo se encarga de eliminar el objeto obtenido de la competencia
+        ///// </summary>
+        ///// <param name="competenciasVM"></param>
+        ///// <returns>una vista</returns>
         [HttpPost]
-        public ActionResult DeleteCompetenciaById(CompetenciasVM competenciasVM)
+        public ActionResult DeleteCompetenciaById(CompetenciasPersonalVM competenciasVM)
         {
             int idPersonal = SessionPersister.AccountSession.IdPersonal;
-            CompetenciasPersonalDomainModel competenciaPersonalDM = icompetenciaPersonalBusiness.GetCompetenciaPersonal(competenciasVM.idCompetencia, idPersonal);
 
-            if (competenciaPersonalDM != null)
+            string url = Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + SessionPersister.AccountSession.NombreCompleto + "/" + competenciasVM.file.StrUrl);
+
+            if (FileManager.FileManager.DeleteFileFromServer(url))
             {
-                icompetenciaPersonalBusiness.DeleteCompetencia(competenciaPersonalDM);
+                CompetenciasPersonalDomainModel competenciasPersonalDomainModel = new CompetenciasPersonalDomainModel();
+                AutoMapper.Mapper.Map(competenciasVM, competenciasPersonalDomainModel);
+                icompetenciaPersonalBusiness.DeleteCompetenciaPersonal(competenciasPersonalDomainModel);
             }
 
-            return View(Create());
+            return RedirectToAction("Create","Competencias");
         }
     }
 

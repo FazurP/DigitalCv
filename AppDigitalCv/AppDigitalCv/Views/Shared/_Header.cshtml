@@ -1,5 +1,5 @@
 ﻿@using AppDigitalCv.Security
-
+<link href="~/Content/css/position-top.css" rel="stylesheet" />
 <header class="main-header">
 
     @* BEGIN Logo *@
@@ -21,18 +21,15 @@
 
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        Formación Docente &nbsp;<i class="fa  fa-graduation-cap"></i>
-                        <span class="label label-success"></span>
+                        <span class="fix-text" title="Formación Docente"> Formación Docente </span> &nbsp;<i class="fa fa-graduation-cap"></i>                        
                     </a>
-
-
                     <ul class="dropdown-menu">
                         <li class="header">Formación Docente</li>
                         <li>
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","CapacitacionCompetenciasProfesionales")">
-                                        <span>Capacitación en Competencias Profesionales</span>
+                                        <span class="text-blue">Capacitación en Competencias Profesionales</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/docente_participa.png" class="img-circle" alt="User Image">
                                         </div>
@@ -46,7 +43,7 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","OtrasCapacitaciones")">
-                                        <span>Otras Capacitaciones</span>
+                                        <span class="text-blue">Otras Capacitaciones</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/docente_participa.png" class="img-circle" alt="User Image">
                                         </div>
@@ -60,7 +57,7 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","Cursos")">
-                                        <span>Cursos Impartidos</span>
+                                        <span class="text-blue">Cursos Impartidos</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
                                         </div>
@@ -76,7 +73,7 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","ExperienciaLaboralExterna")">
-                                        <span>Experiencia Laboral Externa</span>
+                                        <span class="text-blue">Experiencia Laboral Externa</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
                                         </div>
@@ -92,7 +89,7 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","ExperienciaLaboralInterna")">
-                                        <span>Experiencia Laboral Interna</span>
+                                        <span class="text-blue">Experiencia Laboral Interna</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
                                         </div>
@@ -108,7 +105,7 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","ParticipacionDocente")">
-                                        <span>Participación en Conferencias, Congresos, <br >etc...</span>
+                                        <span class="text-blue">Participación en Conferencias, Congresos, <br>etc...</span>
                                         <br />
                                         <div class="pull-left">
                                             <img src="~/Imagenes/docente_participa.png" class="img-circle" alt="User Image">
@@ -123,7 +120,7 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","#")">
-                                        <span>Presentacion de Conferencias, Congresos, <br>etc...</span>
+                                        <span class="text-blue">Presentacion de Conferencias, Congresos, <br>etc...</span>
                                         <br />
                                         <div class="pull-left">
                                             <img src="~/Imagenes/docente_participa.png" class="img-circle" alt="User Image">
@@ -140,8 +137,7 @@
 
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        Participación Institucional &nbsp;<i class="fa  fa-star"></i>
-                        <span class="label label-success"></span>
+                        <span class="fix-text" title="Participación Institucional">Participación Institucional</span> &nbsp;<i class="fa  fa-star"></i>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="header">Participación Institucional</li>
@@ -149,7 +145,7 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","ParticipacionInstitucionalExterna")">
-                                        <span>Participacion Institucional Externa</span>
+                                        <span class="text-blue">Participacion Institucional Externa</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
                                         </div>
@@ -160,7 +156,7 @@
                                 </li>
                                 <li>
                                     <a href="@Url.Action("Create","ParticipacionInstitucionalInterna")">
-                                        <span>Participacion Institucional Interna</span>
+                                        <span class="text-blue">Participacion Institucional Interna</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
                                         </div>
@@ -178,8 +174,7 @@
 
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        PRODEP &nbsp;<i class="fas fa-book"></i>
-                        <span class="label label-success"></span>
+                        <span class="fix-text" title="PRODEP"> PRODEP </span>&nbsp;<i class="fas fa-book"></i>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="header">Producción Academica</li>
@@ -187,7 +182,7 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","Libro")">
-                                        <span>Libro(s)</span>
+                                        <span class="text-blue">Libro(s)</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
                                         </div>
@@ -201,7 +196,7 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","CapituloLibro")">
-                                        <span>Capitulos del Libro</span>
+                                        <span class="text-blue">Capitulos del Libro</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
                                         </div>
@@ -215,7 +210,7 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","InformeTecnico")">
-                                        <span>Informes Técnicos</span>
+                                        <span class="text-blue">Informes Técnicos</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
                                         </div>
@@ -229,7 +224,7 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","ManualOperacion")">
-                                        <span>Manuales de Operación</span>
+                                        <span class="text-blue">Manuales de Operación</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
                                         </div>
@@ -243,7 +238,7 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","ProductividadInnovadora")">
-                                        <span>Producción Innovadora</span>
+                                        <span class="text-blue">Producción Innovadora</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
                                         </div>
@@ -257,7 +252,7 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","ProduccionesArtisticas")">
-                                        <span>Producciones Artisticas</span>
+                                        <span class="text-blue">Producciones Artisticas</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
                                         </div>
@@ -271,7 +266,7 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","Prototipo")">
-                                        <span>Prototipo</span>
+                                        <span class="text-blue">Prototipo</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
                                         </div>
@@ -285,7 +280,7 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","ProyectoInvestigacion")">
-                                        <span>Proyecto de Investigación Aplicada y Desarrollo Tecnológico</span>
+                                        <span class="text-blue">Proyecto de Investigación Aplicada y Desarrollo Tecnológico</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
                                         </div>
@@ -299,7 +294,7 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","DireccionIndividualizada")">
-                                        <span>Dirección Individualizada</span>
+                                        <span class="text-blue">Dirección Individualizada</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
                                         </div>
@@ -313,7 +308,7 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","EstadiaEmpresa")">
-                                        <span>Estadia en Empresa</span>
+                                        <span class="text-blue">Estadia en Empresa</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
                                         </div>
@@ -325,7 +320,7 @@
                             <ul class="menu">
                                 <li>
                                     <a href="@Url.Action("Create","Tutorias")">
-                                        <span>Tutorias</span>
+                                        <span class="text-blue">Tutorias</span>
                                         <div class="pull-left">
                                             <img src="~/Imagenes/cursos.jpg" class="img-circle" alt="User Image">
                                         </div>
@@ -339,101 +334,101 @@
                     </ul>
                 </li>
                 <!--
-    @*@* BEGIN Messages *@
-    <li class="dropdown messages-menu">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-envelope-o"></i>
-            <span class="label label-success">4</span>
-        </a>
-        <ul class="dropdown-menu">
-            <li class="header">You have 4 messages</li>
-            <li>
-                <ul class="menu">
-                    <li>
-                        <a href="#">
-                            <div class="pull-left">
-                                <img src="~/Content/img/user.jpg" class="img-circle" alt="User Image">
-                            </div>
-                            <h4>
-                                Support Team
-                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                            </h4>
-                            <p>Why not buy a new awesome theme?</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="footer"><a href="#">See All Messages</a></li>
-        </ul>
-    </li>
-    @* END Messages *@
-    @* BEGIN Notifications *@
-    <li class="dropdown notifications-menu">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-bell-o"></i>
-            <span class="label label-warning">10</span>
-        </a>
-        <ul class="dropdown-menu">
-            <li class="header">You have 10 notifications</li>
-            <li>
-                <ul class="menu">
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="footer"><a href="#">View all</a></li>
-        </ul>
-    </li>
-    @* END Notifications *@
-    @* BEGIN Tasks *@
-    <li class="dropdown tasks-menu">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-flag-o"></i>
-            <span class="label label-danger">9</span>
-        </a>
-        <ul class="dropdown-menu">
-            <li class="header">You have 9 tasks</li>
-            <li>
-                <ul class="menu">
-                    <li>
-                        <a href="#">
-                            <h3>
-                                Design some buttons
-                                <small class="pull-right">20%</small>
-                            </h3>
-                            <div class="progress xs">
-                                @* Change the css width attribute to simulate progress *@
-                                <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                    <span class="sr-only">20% Complete</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="footer">
-                <a href="#">View all tasks</a>
-            </li>
-        </ul>
-    </li>
-    @* END Tasks *@
-        -->
+                @*@* BEGIN Messages *@
+                <li class="dropdown messages-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="label label-success">4</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">You have 4 messages</li>
+                        <li>
+                            <ul class="menu">
+                                <li>
+                                    <a href="#">
+                                        <div class="pull-left">
+                                            <img src="~/Content/img/user.jpg" class="img-circle" alt="User Image">
+                                        </div>
+                                        <h4>
+                                            Support Team
+                                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                        </h4>
+                                        <p>Why not buy a new awesome theme?</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="footer"><a href="#">See All Messages</a></li>
+                    </ul>
+                </li>
+                @* END Messages *@
+                @* BEGIN Notifications *@
+                <li class="dropdown notifications-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="label label-warning">10</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">You have 10 notifications</li>
+                        <li>
+                            <ul class="menu">
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="footer"><a href="#">View all</a></li>
+                    </ul>
+                </li>
+                @* END Notifications *@
+                @* BEGIN Tasks *@
+                <li class="dropdown tasks-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-flag-o"></i>
+                        <span class="label label-danger">9</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">You have 9 tasks</li>
+                        <li>
+                            <ul class="menu">
+                                <li>
+                                    <a href="#">
+                                        <h3>
+                                            Design some buttons
+                                            <small class="pull-right">20%</small>
+                                        </h3>
+                                        <div class="progress xs">
+                                            @* Change the css width attribute to simulate progress *@
+                                            <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="sr-only">20% Complete</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="footer">
+                            <a href="#">View all tasks</a>
+                        </li>
+                    </ul>
+                </li>
+                @* END Tasks *@
+                    -->
                 @* BEGIN User Account Menu *@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         @if (SessionPersister.AccountSession != null)
                         {
-                        <img src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil.jpeg" class="user-image">
-                        <span class="hidden-xs">
-                            @if (SessionPersister.AccountSession != null)
-                            {
-                                @SessionPersister.AccountSession.NombreCompleto
-                            }
+                            <img src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil.jpeg" class="user-image">
+                            <span class="hidden-xs">
+                                @if (SessionPersister.AccountSession != null)
+                                {
+                                    @SessionPersister.AccountSession.NombreCompleto
+                                }
 
-                        </span>
+                            </span>
                         }
                     </a>
                     <ul class="dropdown-menu">
@@ -447,8 +442,8 @@
                                 {
                                     @SessionPersister.AccountSession.NombreCompleto
                                     <br />
-                                @SessionPersister.AccountSession.TipoPersonal
-                                <small>Member since @DateTime.Now</small>
+                                    @SessionPersister.AccountSession.TipoPersonal
+                                    <small>Member since @DateTime.Now</small>
                                 }
                             </p>
                         </li>

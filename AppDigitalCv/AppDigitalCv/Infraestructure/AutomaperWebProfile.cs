@@ -325,6 +325,16 @@ namespace AppDigitalCv.Infraestructure
 
             CreateMap<NivelConocimientoVM,NivelConocimientoDomainModel>();
             CreateMap<NivelConocimientoDomainModel, NivelConocimientoVM>();
+
+            //Lenguas
+
+            CreateMap<LenguasVM, LenguasDomainModel>();
+            CreateMap<LenguasDomainModel, LenguasVM>();
+
+            //Tipo de Documento
+
+            CreateMap<TipoDocumentoVM, TipoDocumentoDomainModel>();
+            CreateMap<TipoDocumentoDomainModel, TipoDocumentoVM>();
         }
 
         public static void Run()

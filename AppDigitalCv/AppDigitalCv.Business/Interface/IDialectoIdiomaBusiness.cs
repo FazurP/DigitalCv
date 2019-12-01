@@ -10,7 +10,7 @@ namespace AppDigitalCv.Business.Interface
     public interface IDialectoIdiomaBusiness
     {
         List<DialectoDomainModel> GetDialecto();
-        bool AddUpdateDialecto(IdiomaDialectoDomainModel dialectoIdiomaDM);
+        bool AddUpdateDialecto(LenguasDomainModel lenguas);
 
         IdiomaDialectoDomainModel GetDialectoPersonales(int _idDialecto, int _idPersonal);
 

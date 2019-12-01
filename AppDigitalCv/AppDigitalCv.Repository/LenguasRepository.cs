@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace AppDigitalCv.Repository
 {
-    public class CompetenciasRepository : BaseRepository<catCompetencias>
+    public class LenguasRepository : BaseRepository<TblLenguas>
     {
-        public CompetenciasRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public LenguasRepository(IUnitOfWork unitOfWork) : base(unitOfWork) 
         {
-
+        
         }
     }
 }

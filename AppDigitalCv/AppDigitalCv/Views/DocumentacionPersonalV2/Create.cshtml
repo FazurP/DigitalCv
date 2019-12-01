@@ -11,13 +11,13 @@
     <div class="bs-container" style="min-height:960px;">
         <section class="content-header">
             <h1>
-                Informacion Adicional
+                Documentación Oficial
                 <small>(Agregar)</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
                 <li> <a href="#">Agregar</a></li>
-                <li class="active">Informacion</li>
+                <li class="active">Documentación</li>
             </ol>
         </section>
         <br />
@@ -27,25 +27,31 @@
                     <div class="box-header with-border">
                     </div>
                     <div class="box-body">
-                        <div class="form-group">
-                            <div class="form-group col-lg-3">
-                                <label>Tipo de Documento</label>
-                                @Html.DropDownList("strIdentificador",null,htmlAttributes: new { @class="form-control input-sm",@id="Documentos"})
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+                                <div class="form-group">
+                                    <label>Tipo de Documento:</label>
+                                    @Html.DropDownList("idTipoDocumento", null, new { @class = "form-control input-sm", id = "tipoDocumento" })
+                                </div>
                             </div>
-                            <div class="form-group col-lg-3">
-                                <label>Numero de Documento</label>
-                                @Html.TextBoxFor(model => model.strNumeroDocumento,new { @class="form-control input-sm ", @id="Numero"})
+                            <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+                                <div class="form-group">
+                                    <label>Vigencia:</label>
+                                    @Html.TextBoxFor(model => model.dteVigenciaDocumento, new { @class = "form-control input-sm", id = "vigencia", type = "date" })
+                                </div>
                             </div>
-                            <div class="form-group col-lg-3">
-                                <label>Vigencia</label>
-                                @Html.TextBoxFor(model => model.dteVigenciaDocumento, new { @class = "form-control input-sm", @type="date", @id="Vigencia" })
+                            <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+                                <div class="form-group">
+                                    <label>Envidencia del Documento en PDF:</label>
+                                    @Html.TextBoxFor(model => model.DocumentosVM.DocumentoFile, new { @class = "form-control input-sm", id = "fUpload", type = "file" })
+                                </div>
                             </div>
-                            <div class="form-group col-lg-3">
-                                <label>Evidencia</label>
-                                @Html.TextBoxFor(model => model.DocumentosVM.DocumentoFile, new { @class = "form-control input-sm", @type = "file", @id="Evidencia" })
-                            </div>
-                            <div class="form-group col-lg-3">
-                                <input type="submit" value="Guadar" id="btnGuardar" class="btn btn-success"/>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <input type="submit" value="Guardar" id="btnGuardar" class="btn btn-success" />
+                                </div>
                             </div>
                         </div>
                         <div class="form-group-sm">
@@ -56,8 +62,8 @@
                                     <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
                                         <tr>
                                             <th>Nombre</th>
+                                            <th>Documento</th>
                                             <th>Eliminar</th>
-
                                         </tr>
                                     </thead>
                                     <tbody id="tblBody"></tbody>
@@ -97,13 +103,14 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/Scripts/Validate/DocumentacionPersonal/validate-documentacion-personal-v2-form.js"></script>
+    <script src="~/Scripts/Validate/DocumentacionPersonal/validate-documentacion-personal-v2-upload.js"></script>
 
 
     <script>
 
         var AddEliminar = function (IdDocumento) {
 
-            var url = "/DocumentacionPersonal/GetDocumentoById?IdDocumento=" + IdDocumento;
+            var url = "/DocumentacionPersonalV2/GetDocumentoDelete?IdDocumento=" + IdDocumento;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -167,6 +174,14 @@
                         "columns": [
 
                             { "data": "StrUrl" },
+
+                            {
+                            "data": "documentosDomain.StrUrl",
+                                "render": function (StrUrl) {
+                                    return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'
+                         
+                            }
+                            },
 
                             {
                                 "data": "IdDocumento",

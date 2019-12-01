@@ -3,14 +3,9 @@
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("","",FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-
-    
-
     <div class="bs-container" style="min-height: 960px;">
         <section class="content-header">
             <h1>
@@ -35,7 +30,7 @@
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <table id="myDataTablePersonal" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover table-responsive">
+                                    <table id="myDataTablePersonal" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
                                         <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
                                             <tr>
                                                 <th><i class="fa fa-user"></i>&nbsp;Nombre</th>
@@ -60,93 +55,25 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="box-footer">
-                        </div>
                     </div>
                 </div>
             </div>
-            @*<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <p class="box-title text-blue comment-text"><i class="text-blue fa fa-folder-open"></i>Documentos</p>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <ul class="products-list product-list-in-box" id="ListaDocumentos">
-                            <li class="item" id="tagCurp">
-                                <div class="product-img">
-                                    <img src="~/Imagenes/pdf_descargar.jpg" alt="Curp document">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">
-                                        Documento del Curp
-                                        <span class="label  label-danger pull-right" id="bEliminarCurp">Curp.PDF</span>
-                                    </a>
-                                    <span class="product-description">
-                                        @ViewBag.Curp
-                                    </span>
-                                </div>
-                            </li>
-                            <li class="item" id="tagRfc">
-                                <div class="product-img">
-                                    <img src="~/Imagenes/pdf_descargar.jpg" alt="Rfc document">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">
-                                        Documento del Rfc
-                                        <span class="label  label-danger pull-right" id="btnEliminarRfc">Rfc.PDF</span>
-                                    </a>
-                                    <span class="product-description">
-                                        @ViewBag.Rfc
-                                    </span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>*@
-            <!--Cargamos los elementos de link para subir archivos nuevamente-->
-            @*<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3  offset-md-9">
-                <div class="info-box" id="tagAddDocumentos">
-                    <span class="info-box-icon bg-green"><i class="fa fa-files-o"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">
-                            Agregar
-                        </span>
-                        <span class="info-box-number">Documentos</span>
-                        <a href=@Url.Action("AgregarDocumentos","Documentos") class="btn btn-sm btn-primary btn-flat"><i class="fa  fa-paperclip"></i>&nbsp; Agregar</a>
-                    </div>
-
-                </div>
-            </div>*@
         </div>
-
     </div>
 
-
 }
-<link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
-<link href="~/Scripts/jtable/themes/basic/jtable_basic.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<link href="~/Content/toastr.min.css" rel="stylesheet" />
 
 @section scripts{
-    <link href="~/Content/toastr.min.css" rel="stylesheet" />
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-
-    <script src="~/Scripts/jquery.dataTables.min.js"></script>
-    <script src="~/Scripts/boostrap.dataTables.min.js"></script>
     <script>
 
         var AddUpdate = function (idPersonal) {
+      
             var url = "/Personal/GetPersonalUpdate?_idPersonal=" + idPersonal;
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -157,108 +84,69 @@
 
         $(document).ready(function () {
 
-            $('#tagAddDocumentos').hide();
-            if ('@ViewBag.Curp' == "")
-            {
-                $('#tagCurp').remove();
-                $('#tagAddDocumentos').show();
+            BindDataTable();
+
+             function BindDataTable() {
+
+                if ($.fn.DataTable.isDataTable('#myDataTablePersonal')) {
+                    oTable.Draw();
+                }
+                else {
+                    oTable = $('#myDataTablePersonal').DataTable({
+                        "bServerSide": true,
+                        "sAjaxSource": '/Personal/ConsultarDatosPersonal',
+                        "fnServerData": function (sSource, aoData, fnCallback) {
+                            $.ajax({
+                                type: "Get",
+                                data: aoData,
+                                url: sSource,
+                                success: fnCallback
+                            })
+                        },
+                        "pageLength": 5,
+                        "paging": true,
+                        "language": {
+
+                            "sProcessing": "Procesando...",
+                            "sLengthMenu": "Mostrar _MENU_ registros",
+                            "sZeroRecords": "No se encontraron resultados",
+                            "sEmptyTable": "Ningún dato disponible en esta tabla",
+                            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                            "sInfoPostFix": "",
+                            "sSearch": "Buscar:",
+                            "sUrl": "",
+                            "sInfoThousands": ",",
+                            "sLoadingRecords": "Cargando...",
+                            "oPaginate": {
+                                "sFirst": "Primero",
+                                "sLast": "Último",
+                                "sNext": "Siguiente",
+                                "sPrevious": "Anterior"
+                            },
+                            "oAria": {
+                                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                            }
+                        },
+                        "dataSrc": "",
+                        "columns": [
+
+                            { "data": "Nombre" },
+                            { "data": "ApellidoPaterno" },
+                            { "data": "ApellidoMaterno" },
+                            {
+                                "data": "idPersonal",
+                                "render": function (idPersonal, type, full, meta) {
+
+                                    return '<a href="#" onclick="AddUpdate(' + idPersonal + ')"><i class="btn btn-sm btn-success fa fa-pencil-square-o"></i></a>'
+                                }
+                            },
+                        ]
+                    });
+                }
             }
-            if ('@ViewBag.Rfc' == "")
-            {
-                $('#tagAddDocumentos').show();
-                $('#tagRfc').remove();
-            }
-
-            $('#myDataTablePersonal').DataTable({
-                "language": {
-
-                    "sProcessing": "Procesando...",
-                    "sLengthMenu": "Mostrar _MENU_ registros",
-                    "sZeroRecords": "No se encontraron resultados",
-                    "sEmptyTable": "Ningún dato disponible en esta tabla",
-                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                    "sInfoPostFix": "",
-                    "sSearch": "Buscar:",
-                    "sUrl": "",
-                    "sInfoThousands": ",",
-                    "sLoadingRecords": "Cargando...",
-                    "oPaginate": {
-                        "sFirst": "Primero",
-                        "sLast": "Último",
-                        "sNext": "Siguiente",
-                        "sPrevious": "Anterior"
-                    },
-                    "oAria": {
-                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                    }
-                },
-                "ajax": {
-                    "url": '/Personal/ConsultarDatosPersonal/',
-                    "type": "GET",
-                    "datatype": "json", "dataSrc": ""
-                },
-                "columns": [
-                    { "data": "Nombre" },
-                    { "data": "ApellidoPaterno" },
-                    { "data": "ApellidoMaterno" },
-                    {
-                        "data": "idPersonal",
-                        "render": function (idPersonal, type, full, meta) {
-
-                            return '<a href="#" onclick="AddUpdate(' + idPersonal + ')"><i class="btn btn-sm btn-success fa fa-pencil-square-o"></i></a>'
-                        }
-                    }
-
-
-                ]
-            });
-
-          
-
-            $('#bEliminarCurp').click(function () {
-
-                event.preventDefault();
-                var idPersonal = @ViewBag.Identificador;
-                $.ajax({
-                    async: true,
-                    url: '/Personal/EliminarCurp',
-                    contentType: 'application/json;charset=utf-8',
-                    data: '{idPersonal:' + JSON.stringify(idPersonal) + '}',
-                    method: 'post',
-                    dataType: 'json',
-                    success: function (data) {
-                        toastr.success("La información fue Eliminada Correctamente");
-                        $('#tagCurp').remove();
-                        $('#tagAddDocumentos').show();
-                    },
-                    error: function (err) {
-                        toastr.error('Error No se pudo eliminar el archivo correctamente');
-                    }
-                });
-            });
-            $('#btnEliminarRfc').click(function () {
-                event.preventDefault();
-                var idPersonal = @ViewBag.Identificador;
-                $.ajax({
-                    async: true,
-                    url: '/Personal/EliminarRfc',
-                    contentType: 'application/json;charset=utf-8',
-                    data: '{idPersonal:' + JSON.stringify(idPersonal) + '}',
-                    method: 'post',
-                    dataType: 'json',
-                    success: function (data) {
-                        toastr.success("La información fue Eliminada Correctamente");
-                        $('#tagRfc').remove();
-                        $('#tagAddDocumentos').show();
-                    },
-                    error: function (err) {
-                        toastr.error('Error No se pudo eliminar el archivo correctamente');
-                    }
-                });
-            });
 
 
 

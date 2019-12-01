@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace AppDigitalCv.Domain
 {
@@ -13,5 +14,6 @@ namespace AppDigitalCv.Domain
         public string strObservacion { get; set; }
         public string strTipo { get; set; }
         public bool isChecked { get; set; }
+        public HttpPostedFileWrapper file { get; set; }
     }
 }

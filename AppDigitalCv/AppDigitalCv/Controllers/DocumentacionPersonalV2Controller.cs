@@ -19,12 +19,14 @@ namespace AppDigitalCv.Controllers
         IPersonalBusiness IpersonalBusiness;
         IDocumentosBusiness IdocumentosBusiness;
         IDocumentacionPersonalV2Business IdocumentacionPersonalBusiness;
+        ITipoDocumentoBusiness tipoDocumentoBusiness;
         public DocumentacionPersonalV2Controller(IPersonalBusiness _IpersonalBusiness, IDocumentosBusiness _IdocumentosBusiness
-            , IDocumentacionPersonalV2Business _IdocumentacionPersonalBusiness)
+            , IDocumentacionPersonalV2Business _IdocumentacionPersonalBusiness,ITipoDocumentoBusiness _tipoDocumentoBusiness)
         {
             IpersonalBusiness = _IpersonalBusiness;
             IdocumentosBusiness = _IdocumentosBusiness;
             IdocumentacionPersonalBusiness = _IdocumentacionPersonalBusiness;
+            tipoDocumentoBusiness = _tipoDocumentoBusiness;
         }
         /// <summary>
         /// Este metodo se encarga de cargar la pantalla principal
@@ -35,7 +37,7 @@ namespace AppDigitalCv.Controllers
         {
             if (SessionPersister.AccountSession != null)
             {
-                ViewBag.strIdentificador = new SelectList(documentos.fillDocuments());
+                ViewBag.idTipoDocumento = new SelectList(tipoDocumentoBusiness.GetAllTiposDocumentoPendientes(SessionPersister.AccountSession.IdPersonal),"id","strValor");
                 return View();
             }
             else {
@@ -55,7 +57,16 @@ namespace AppDigitalCv.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    this.CrearDocumentoPersonales(documentacionPersonalVM);
+                    Object[] obj = CrearDocumentoPersonales(documentacionPersonalVM);
+
+                    if (obj[0].Equals(true))
+                    {                     
+                        DocumentacionPersonalV2DomainModel documentacionPersonalV2DomainModel = new DocumentacionPersonalV2DomainModel();
+                        AutoMapper.Mapper.Map(documentacionPersonalVM, documentacionPersonalV2DomainModel);
+                        documentacionPersonalV2DomainModel.DocumentosDomainModel = new DocumentosDomainModel { StrUrl = obj[1].ToString() };
+
+                        IdocumentacionPersonalBusiness.AddDocumentacionPersonal(documentacionPersonalV2DomainModel);
+                    }
                    
                 }
                 return RedirectToAction("Create", "DocumentacionPersonalV2");
@@ -73,63 +84,55 @@ namespace AppDigitalCv.Controllers
         /// Este metodo se encarga de guardar los documentos en el servidor
         /// </summary>
         /// <param name="documentacionPersonalVM"></param>
-        public void CrearDocumentoPersonales(DocumentacionPersonalV2VM documentacionPersonalVM)
+        public Object[] CrearDocumentoPersonales(DocumentacionPersonalV2VM documentacionPersonalVM)
         {
-            
+            Object[] respuesta = new Object[2];
             documentacionPersonalVM.idPesonal = SessionPersister.AccountSession.IdPersonal;
             string nombrecompleto = SessionPersister.AccountSession.NombreCompleto;
             string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombrecompleto));
 
-            if (!Directory.Exists(path))
+            if (Directory.Exists(path))
             {
-                DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
-
                 if (documentacionPersonalVM.DocumentosVM.DocumentoFile != null)
                 {
-                    path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombrecompleto + "/"), Path.GetFileName(documentacionPersonalVM.DocumentosVM.DocumentoFile.FileName));
-                    string sfpath = documentacionPersonalVM.DocumentosVM.DocumentoFile.FileName;
-                    documentacionPersonalVM.DocumentosVM.DocumentoFile.SaveAs(path);
-                    DocumentosVM documentoVM = new DocumentosVM();
-                    documentoVM.StrUrl = sfpath;
-                    documentacionPersonalVM.DocumentosVM = documentoVM;
+                    respuesta = FileManager.FileManager.CheckFileIfExist(path, documentacionPersonalVM.DocumentosVM);
                 }
-
-
-                this.AddEditDocumentosPersonales(documentacionPersonalVM);
             }
             else
             {
-                if (documentacionPersonalVM.DocumentosVM.DocumentoFile != null)
-                {
-                    path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombrecompleto + "/"), Path.GetFileName(documentacionPersonalVM.DocumentosVM.DocumentoFile.FileName));
-                    string sfpath = documentacionPersonalVM.DocumentosVM.DocumentoFile.FileName;
-                    documentacionPersonalVM.DocumentosVM.DocumentoFile.SaveAs(path);
-                    DocumentosVM documentoVM = new DocumentosVM();
-                    documentoVM.StrUrl = sfpath;
-                    documentacionPersonalVM.DocumentosVM = documentoVM;
-                }
-
-                this.AddEditDocumentosPersonales(documentacionPersonalVM);
+                DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
+                CrearDocumentoPersonales(documentacionPersonalVM);          
             }
-        }
-        /// <summary>
-        /// Este metodo se encarga insertar el objeto en la base de datos.
-        /// </summary>
-        /// <param name="documentacionPersonalVM"></param>
-        /// <returns>true o false</returns>
-        public bool AddEditDocumentosPersonales(DocumentacionPersonalV2VM documentacionPersonalVM)
-        {
-            bool resultado = false;
-            DocumentacionPersonalV2DomainModel documentacionPersonalDM = new DocumentacionPersonalV2DomainModel();
-            DocumentosDomainModel documentosDomainModel = new DocumentosDomainModel();
-            AutoMapper.Mapper.Map(documentacionPersonalVM, documentacionPersonalDM);///hacemos el mapeado de la entidad
-            AutoMapper.Mapper.Map(documentacionPersonalVM.DocumentosVM, documentosDomainModel);
-            documentacionPersonalDM.DocumentosDomainModel = documentosDomainModel;
 
-            DocumentosDomainModel documento = IdocumentosBusiness.AddDocumento(documentosDomainModel);
-            documentacionPersonalDM.idDocumento = documento.IdDocumento;
-            resultado = IdocumentacionPersonalBusiness.AddDocumentacionPersonal(documentacionPersonalDM);
-            return resultado;
+            return respuesta;
+        }
+
+        public ActionResult GetDocumentoDelete(int IdDocumento) 
+        {
+            DocumentosDomainModel documentosDomainModel = new DocumentosDomainModel();
+
+            documentosDomainModel = IdocumentosBusiness.GetDocumentoByIdDocumento(IdDocumento);
+
+            DocumentosVM documentosVM = new DocumentosVM();
+
+            AutoMapper.Mapper.Map(documentosDomainModel, documentosVM);
+
+            return PartialView("_Eliminar", documentosVM);
+        }
+
+        public ActionResult DeleteDocumento(DocumentosDomainModel documentosDomainModel) 
+        {
+            if (documentosDomainModel.IdDocumento > 0)
+            {
+                string url = Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + SessionPersister.AccountSession.NombreCompleto +"/"+ documentosDomainModel.StrUrl);
+
+                if (FileManager.FileManager.DeleteFileFromServer(url))
+                {
+                    IdocumentosBusiness.DeleteDocumento(documentosDomainModel.IdDocumento);
+                }
+            }
+
+            return RedirectToAction("Create","DocumentacionPersonalV2");
         }
     }
 }

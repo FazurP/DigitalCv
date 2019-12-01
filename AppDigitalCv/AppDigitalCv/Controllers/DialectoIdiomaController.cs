@@ -31,11 +31,11 @@ namespace AppDigitalCv.Controllers
                 return RedirectToAction("Login", "Seguridad");
             }
             else { 
-            ViewBag.IdDialecto = new SelectList(IdialectoIdiomaBusiness.GetDialecto(), "IdDialecto", "StrDescripcion");
-            ViewBag.StrEscrituraProcentaje = new SelectList(p.GetPorcentajes());
-            ViewBag.StrLecturaPorcentaje = new SelectList(p.GetPorcentajes());
-            ViewBag.StrEntendimientoPorcentaje = new SelectList(p.GetPorcentajes());
-            ViewBag.StrComunicacionPorcentaje = new SelectList(p.GetPorcentajes());
+            ViewBag.idLengua = new SelectList(IdialectoIdiomaBusiness.GetDialecto(), "IdDialecto", "StrDescripcion");
+            ViewBag.strEscritura = new SelectList(p.GetPorcentajes());
+            ViewBag.strLectura = new SelectList(p.GetPorcentajes());
+            ViewBag.strEntendimiento = new SelectList(p.GetPorcentajes());
+            ViewBag.strComunicacion = new SelectList(p.GetPorcentajes());
             return View();
             }
         }
@@ -45,20 +45,15 @@ namespace AppDigitalCv.Controllers
         /// <param name="dialectoIdiomaVM"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Create(IdiomaDialectoVM dialectoIdiomaVM)
+        public ActionResult Create(LenguasVM lenguasVM)
         {
             int idPersonal = SessionPersister.AccountSession.IdPersonal;
-            dialectoIdiomaVM.IdPersonal = idPersonal;
-            if (ModelState.IsValid && dialectoIdiomaVM.IdDialecto > 0)
+            lenguasVM.idPersonal = idPersonal;
+            if (ModelState.IsValid)
             {
-                //Informacion para insertar
-                AddEditDialecto(dialectoIdiomaVM);
-                // AddEditDialecto(idiomaDialectoVM);
-                return RedirectToAction("Create", "DialectoIdioma");
+                AddEditDialecto(lenguasVM);
             }
-          
-                return RedirectToAction("Create","DialectoIdioma");
-            
+                return RedirectToAction("Create","DialectoIdioma");   
         }
 
         /// <summary>
@@ -66,11 +61,11 @@ namespace AppDigitalCv.Controllers
         /// </summary>
         /// <param name="dialectoIdiomaVM"></param>
         /// <returns></returns>
-        public bool AddEditDialecto(IdiomaDialectoVM dialectoIdiomaVM)
+        public bool AddEditDialecto(LenguasVM lenguasVM)
         {
-            IdiomaDialectoDomainModel dialectoIdiomaDM = new IdiomaDialectoDomainModel();
-            AutoMapper.Mapper.Map(dialectoIdiomaVM, dialectoIdiomaDM);
-            return IdialectoIdiomaBusiness.AddUpdateDialecto(dialectoIdiomaDM);
+            LenguasDomainModel lenguasDomainModel = new LenguasDomainModel();
+            AutoMapper.Mapper.Map(lenguasVM, lenguasDomainModel);
+            return IdialectoIdiomaBusiness.AddUpdateDialecto(lenguasDomainModel);
         }
         /// <summary>
         /// Este metodo se encarga de cargar los datos en la tabla desde la base de datos
@@ -188,20 +183,20 @@ namespace AppDigitalCv.Controllers
         /// para su actualizacion
         /// </summary>
         /// <param name="idiomaDialectoVM"></param>
-        [HttpPost]
-        public void EditarDialectosPersonales(IdiomaDialectoVM idiomaDialectoVM)
-        {
+        //[HttpPost]
+        //public void EditarDialectosPersonales(IdiomaDialectoVM idiomaDialectoVM)
+        //{
 
-            IdiomaDialectoDomainModel idiomaDialectoDM = new IdiomaDialectoDomainModel();
+        //    IdiomaDialectoDomainModel idiomaDialectoDM = new IdiomaDialectoDomainModel();
 
-            AutoMapper.Mapper.Map(idiomaDialectoVM, idiomaDialectoDM);
+        //    AutoMapper.Mapper.Map(idiomaDialectoVM, idiomaDialectoDM);
 
-            if (idiomaDialectoVM.IdIdiomaDialectoPersonal > 0)
-            {
-                IdialectoIdiomaBusiness.AddUpdateDialecto(idiomaDialectoDM);
-            }
+        //    if (idiomaDialectoVM.IdIdiomaDialectoPersonal > 0)
+        //    {
+        //        IdialectoIdiomaBusiness.AddUpdateDialecto(idiomaDialectoDM);
+        //    }
 
-        }
+        //}
 
     }
 }

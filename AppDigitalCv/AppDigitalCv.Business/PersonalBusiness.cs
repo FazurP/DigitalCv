@@ -94,27 +94,6 @@ namespace AppDigitalCv.Business
 
                 }
             }
-            //else
-            //{
-            //    tblPersonal personal = new tblPersonal();
-            //    personal.strNombre = personalDM.Nombre;
-            //    personal.strApellidoPaterno = personalDM.ApellidoPaterno;
-            //    personal.strApellidoMaterno = personalDM.ApellidoMaterno;
-            //    personal.idEstadoCivil = personalDM.idEstadoCivil;
-            //    personal.strGenero = personalDM.strGenero;
-            //    personal.strCurp = personalDM.Curp;
-            //    personal.strRfc= personalDM.Rfc;
-            //    personal.strUrlRfc = personalDM.strUrlRfc;
-            //    personal.strUrlCurp = personalDM.strUrlCurp;
-            //    personal.strLogros = personalDM.strLogros;
-            //    personal.strUrlFoto = personalDM.strUrlFoto;
-            //    personal.strUrlNacionalidad = personalDM.strUrlNacionalidad;
-            //    personal.idNacionalidad = personalDM.idNacionalidad;
-
-            //    personal.strHomoclave = personalDM.Homoclave;
-            //    var record = personalRepository.Insert(personal);
-            //    resultado = "Se insertaron correctamente los valores";
-            //}
             return resultado;
         }
 
@@ -188,15 +167,12 @@ namespace AppDigitalCv.Business
             personalDM.Rfc = TblPersonal.strRfc;
             personalDM.Homoclave = TblPersonal.strHomoclave;
             personalDM.strLogros = TblPersonal.strLogros;
-            //validamos que contenga el tipo de sangre
-            if (TblPersonal.idTipoSangre > 0)
-            {
-                ///construimos el objeto del tipo de sangre
-                TipoSangreDomainModel tipoSangreDomainModel = new TipoSangreDomainModel();
-                tipoSangreDomainModel.IdTipoSangre = TblPersonal.catTipoSangre.idTipoSangre;
-                tipoSangreDomainModel.StrDescripcion = TblPersonal.catTipoSangre.strDescripcion;
-                personalDM.TipoSangreDomainModel = tipoSangreDomainModel; ///asocio el objeto.
-            }
+            personalDM.idNacionalidad = TblPersonal.idNacionalidad.Value;
+            personalDM.idEstadoCivil = TblPersonal.idEstadoCivil.Value;
+            personalDM.strUrlCurp = TblPersonal.strNombre;
+            personalDM.strUrlRfc = TblPersonal.strUrlRfc;
+            personalDM.strGenero = TblPersonal.strGenero;
+
             return personalDM;
         }
 

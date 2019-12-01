@@ -16,97 +16,89 @@ namespace AppDigitalCv.Business
 
         private readonly IUnitOfWork unitOfWork;
         private readonly CompetenciasPersonalRepository competenciasRepository;
+        private readonly DocumentosRepository documentosRepository;
 
         public CompetenciasPersonalBusiness(IUnitOfWork _unitOfWork)
         {
             unitOfWork = _unitOfWork;
             competenciasRepository = new CompetenciasPersonalRepository(unitOfWork);
+            documentosRepository = new DocumentosRepository(unitOfWork);
         }
-        /// <summary>
-        /// Este metodo se encarga de insertar una competencia personal
-        /// </summary>
-        /// <param name="idPersonal"></param>
-        /// <param name="idCompetencia"></param>
-        /// <returns></returns>
-        public bool AddUpdateCompetencias(int _idPersonal, int _idCompetencia)
+
+        public bool AddUpdateCompetencias(CompetenciasPersonalDomainModel competenciasPersonalDomainModel)
         {
             bool respuesta = false;
-            string resultado = string.Empty;
-            if (competenciasRepository.Exists(p => p.idCompetencia == _idCompetencia && p.idPersonal == _idPersonal))
-            {
-                return false;
-            }
-            else { 
-            tblCompetenciasConocimientosPersonal tblCompetenciasPersonal = new tblCompetenciasConocimientosPersonal();
-            tblCompetenciasPersonal.idPersonal = _idPersonal;
-            tblCompetenciasPersonal.idCompetencia = _idCompetencia;
-            tblCompetenciasPersonal.dteFechaRegistro = DateTime.Now;
-            competenciasRepository.Insert(tblCompetenciasPersonal);
-            respuesta = true;
+
+                catDocumentos catDocumentos = new catDocumentos();
+                tblCompetenciasConocimientosPersonal tblCompetenciasConocimientosPersonal = new tblCompetenciasConocimientosPersonal();
+
+                tblCompetenciasConocimientosPersonal.dteFechaRegistro = DateTime.Now;
+                tblCompetenciasConocimientosPersonal.idPersonal = competenciasPersonalDomainModel.idPersonal;
+
+                catDocumentos.tblCompetenciasConocimientosPersonal.Add(tblCompetenciasConocimientosPersonal);
+                catDocumentos.strUrl = competenciasPersonalDomainModel.file.StrUrl;
+              
+
+                documentosRepository.Insert(catDocumentos);
+                respuesta = true;
+            
             return respuesta;
-            }
         }
-        /// <summary>
-        /// Este metodo se encarga de obtener las competencias del personal mediante su ID
-        /// </summary>
-        /// <param name="_idPersonal"></param>
-        /// <returns>una lista con las competencias</returns>
-        public List<CompetenciasDomainModel> GetCompetenciasByIdPersonal(int _idPersonal) {
 
-            List<CompetenciasDomainModel> competenciasDM = new List<CompetenciasDomainModel>();
+        public List<CompetenciasPersonalDomainModel> GetAllCompetenciasPersonal(int _idPersonal) 
+        {
+            List<CompetenciasPersonalDomainModel> competenciasPersonalDomainModels = new List<CompetenciasPersonalDomainModel>();
 
-            Expression<Func<tblCompetenciasConocimientosPersonal, bool>> predicado = p => p.idPersonal.Equals(_idPersonal);
-            List<tblCompetenciasConocimientosPersonal> tblCompetencia = competenciasRepository.GetAll(predicado).ToList<tblCompetenciasConocimientosPersonal>();
+            List<tblCompetenciasConocimientosPersonal> tblCompetencias = new List<tblCompetenciasConocimientosPersonal>();
 
+            tblCompetencias = competenciasRepository.GetAll().Where(p => p.idPersonal == _idPersonal).ToList();
 
-            foreach (tblCompetenciasConocimientosPersonal competencia in tblCompetencia)
+            foreach (tblCompetenciasConocimientosPersonal item in tblCompetencias)
             {
-                CompetenciasDomainModel competenciaDM = new CompetenciasDomainModel();
-                competenciaDM.idCompetencia = competencia.catCompetencias.idCompetencia;
-                competenciaDM.strDescripcion = competencia.catCompetencias.strDescripcion;
-                competenciaDM.strObservacion = competencia.catCompetencias.strObservacion;
-                competenciaDM.strTipo = competencia.catCompetencias.strTipo;
-                competenciasDM.Add(competenciaDM);
+                CompetenciasPersonalDomainModel competenciasPersonalDomainModel = new CompetenciasPersonalDomainModel();
+
+                competenciasPersonalDomainModel.dteFechaRegistroString = item.dteFechaRegistro.Value.ToShortDateString();
+                competenciasPersonalDomainModel.idCompetenciasConocimientosPersonal = item.idCompetenciasConocimientosPersonal;
+                competenciasPersonalDomainModel.idDocumento = item.idDocumento.Value;
+                competenciasPersonalDomainModel.idPersonal = item.idPersonal;
+                competenciasPersonalDomainModel.file = new DocumentosDomainModel { StrUrl = item.catDocumentos.strUrl};
+
+                competenciasPersonalDomainModels.Add(competenciasPersonalDomainModel);
             }
 
-            return competenciasDM;
+            return competenciasPersonalDomainModels;
         }
-        /// <summary>
-        /// Este metodo se encarga de obtener una competencia personal mediante el ID de la competencia y el ID del personal
-        /// </summary>
-        /// <param name="_idCompetencia"></param>
-        /// <param name="_idPersonal"></param>
-        /// <returns>un objeto de competencia personal</returns>
-        public CompetenciasPersonalDomainModel GetCompetenciaPersonal(int _idCompetencia, int _idPersonal)
+
+        public CompetenciasPersonalDomainModel GetCompetenciaPersonal(int _id) 
         {
+            CompetenciasPersonalDomainModel competenciasPersonalDomainModel = new CompetenciasPersonalDomainModel();
 
-            CompetenciasPersonalDomainModel competenciasPersonalDM = new CompetenciasPersonalDomainModel();
-            Expression<Func<tblCompetenciasConocimientosPersonal, bool>> predicado = p => p.idCompetencia.Equals(_idCompetencia) && p.idPersonal.Equals(_idPersonal);
-            tblCompetenciasConocimientosPersonal tblCompetencias = competenciasRepository.GetAll(predicado).FirstOrDefault<tblCompetenciasConocimientosPersonal>();
+            tblCompetenciasConocimientosPersonal tblCompetenciasConocimientosPersonal = new tblCompetenciasConocimientosPersonal();
 
-            competenciasPersonalDM.idCompetenciasConocimientosPersonal = tblCompetencias.idCompetenciasConocimientosPersonal;
-            competenciasPersonalDM.idCompetencia = tblCompetencias.idCompetencia;
-            competenciasPersonalDM.idPersonal = tblCompetencias.idPersonal;
-            competenciasPersonalDM.dteFechaRegistro = tblCompetencias.dteFechaRegistro.Value;
+            tblCompetenciasConocimientosPersonal = competenciasRepository.GetAll().FirstOrDefault(p => p.idCompetenciasConocimientosPersonal==_id);
 
-            return competenciasPersonalDM;
+            competenciasPersonalDomainModel.idPersonal = tblCompetenciasConocimientosPersonal.idPersonal;
+            competenciasPersonalDomainModel.idDocumento = tblCompetenciasConocimientosPersonal.idDocumento.Value;
+            competenciasPersonalDomainModel.idCompetenciasConocimientosPersonal = tblCompetenciasConocimientosPersonal.idCompetenciasConocimientosPersonal;
+            competenciasPersonalDomainModel.dteFechaRegistro = tblCompetenciasConocimientosPersonal.dteFechaRegistro.Value;
+            competenciasPersonalDomainModel.file = new DocumentosDomainModel { StrUrl = tblCompetenciasConocimientosPersonal.catDocumentos.strUrl };
 
+            return competenciasPersonalDomainModel;
         }
-        /// <summary>
-        /// Este metodo se encarga de eliminar una competencia personal mediante el objeto recibido
-        /// </summary>
-        /// <param name="competenciasPersonalDM"></param>
-        /// <returns>true o false</returns>
-        public bool DeleteCompetencia(CompetenciasPersonalDomainModel competenciasPersonalDM)
-        {
 
+        public bool DeleteCompetenciaPersonal(CompetenciasPersonalDomainModel competenciasPersonalDomainModel) 
+        {
             bool respuesta = false;
-            Expression<Func<tblCompetenciasConocimientosPersonal, bool>> predicado = p => p.idCompetencia.Equals(competenciasPersonalDM.idCompetencia)
-             && p.idPersonal.Equals(competenciasPersonalDM.idPersonal);
-            competenciasRepository.Delete(predicado);
-            respuesta = true;
-            return respuesta;
 
+            if (competenciasPersonalDomainModel.idCompetenciasConocimientosPersonal > 0)
+            {
+                documentosRepository.Delete(p => p.idDocumento == competenciasPersonalDomainModel.idDocumento);
+                respuesta = true;
+            }
+
+            return respuesta;
         }
     }
+
 }
+

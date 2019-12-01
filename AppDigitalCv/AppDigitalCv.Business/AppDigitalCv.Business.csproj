@@ -40,6 +40,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -154,6 +155,7 @@
     <Compile Include="Interface\ITelefono.cs" />
     <Compile Include="Interface\ITipoActividad.cs" />
     <Compile Include="Interface\ITipoContratoBusiness.cs" />
+    <Compile Include="Interface\ITipoDocumentoBusiness.cs" />
     <Compile Include="Interface\ITipoEstudioBusiness.cs" />
     <Compile Include="Interface\ITipoProductoBusiness.cs" />
     <Compile Include="Interface\ITipoSangreBusiness.cs" />
@@ -188,6 +190,7 @@
     <Compile Include="TelefonoBusiness.cs" />
     <Compile Include="TipoActividadBusiness.cs" />
     <Compile Include="TipoContratoBusiness.cs" />
+    <Compile Include="TipoDocumentoBusiness.cs" />
     <Compile Include="TipoEstudioBusiness.cs" />
     <Compile Include="TipoProductoBusiness.cs" />
     <Compile Include="TipoSangreBusiness.cs" />
