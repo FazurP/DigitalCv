@@ -133,5 +133,37 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<CatTipoDocumento> CatTipoDocumento { get; set; }
         public virtual DbSet<tblDocumentacionPersonal> tblDocumentacionPersonal { get; set; }
         public virtual DbSet<tblCompetenciasConocimientosPersonal> tblCompetenciasConocimientosPersonal { get; set; }
+        public virtual DbSet<CatActividadesFisicas> CatActividadesFisicas { get; set; }
+        public virtual DbSet<CatAlergiaAlimento> CatAlergiaAlimento { get; set; }
+        public virtual DbSet<CatAlergiaMedicamento> CatAlergiaMedicamento { get; set; }
+        public virtual DbSet<CatAlergiaSustancia> CatAlergiaSustancia { get; set; }
+        public virtual DbSet<CatEnfermades> CatEnfermades { get; set; }
+        public virtual DbSet<CatEnfermedadesExantemática> CatEnfermedadesExantemática { get; set; }
+        public virtual DbSet<CatFumador> CatFumador { get; set; }
+        public virtual DbSet<CatGrupoSanguineo> CatGrupoSanguineo { get; set; }
+        public virtual DbSet<CatLesionArticulaciones> CatLesionArticulaciones { get; set; }
+        public virtual DbSet<CatLesionHuesos> CatLesionHuesos { get; set; }
+        public virtual DbSet<CatLesionLigamentos> CatLesionLigamentos { get; set; }
+        public virtual DbSet<CatOpcionesRespuesta04> CatOpcionesRespuesta04 { get; set; }
+        public virtual DbSet<CatRespuestas01> CatRespuestas01 { get; set; }
+        public virtual DbSet<CatRespuestas02> CatRespuestas02 { get; set; }
+        public virtual DbSet<CatRespuestas03> CatRespuestas03 { get; set; }
+        public virtual DbSet<CatRespuestas04> CatRespuestas04 { get; set; }
+        public virtual DbSet<CatRespuestas05> CatRespuestas05 { get; set; }
+        public virtual DbSet<CatRespuestas06> CatRespuestas06 { get; set; }
+        public virtual DbSet<CatRespuestas07> CatRespuestas07 { get; set; }
+        public virtual DbSet<CatRespuestas08> CatRespuestas08 { get; set; }
+        public virtual DbSet<CatRespuestas09> CatRespuestas09 { get; set; }
+        public virtual DbSet<CatRespuestas10> CatRespuestas10 { get; set; }
+        public virtual DbSet<CatRespuestas11> CatRespuestas11 { get; set; }
+        public virtual DbSet<CatRespuestas12> CatRespuestas12 { get; set; }
+        public virtual DbSet<CatRespuestas13> CatRespuestas13 { get; set; }
+        public virtual DbSet<CatRespuestas14> CatRespuestas14 { get; set; }
+        public virtual DbSet<CatRespuestas15> CatRespuestas15 { get; set; }
+        public virtual DbSet<CatRespuestas16> CatRespuestas16 { get; set; }
+        public virtual DbSet<CatRespuestas17> CatRespuestas17 { get; set; }
+        public virtual DbSet<CatRH> CatRH { get; set; }
+        public virtual DbSet<CatTratamiento> CatTratamiento { get; set; }
+        public virtual DbSet<TblEncuesta> TblEncuesta { get; set; }
     }
 }

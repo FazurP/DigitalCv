@@ -81,6 +81,8 @@ namespace AppDigitalCv.Repository
         public Nullable<int> idDireccion { get; set; }
         public Nullable<int> idNacionalidad { get; set; }
         public Nullable<int> idBachillerato { get; set; }
+        public Nullable<int> idEncuesta { get; set; }
+        public Nullable<bool> bitPermisoEncuesta { get; set; }
     
         public virtual catDireccion catDireccion { get; set; }
         public virtual catEstadoCivil catEstadoCivil { get; set; }
@@ -172,5 +174,6 @@ namespace AppDigitalCv.Repository
         public virtual ICollection<tblDocumentacionPersonal> tblDocumentacionPersonal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCompetenciasConocimientosPersonal> tblCompetenciasConocimientosPersonal { get; set; }
+        public virtual TblEncuesta TblEncuesta { get; set; }
     }
 }

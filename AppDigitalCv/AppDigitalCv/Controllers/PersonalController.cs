@@ -44,6 +44,7 @@ namespace AppDigitalCv.Controllers
 
                 ViewBag.idNacionalidad = new SelectList(NacionalidadBusiness.GetAllNacionalidades(), "id", "strValor");
                 ViewBag.IdEstadoCivil = new SelectList(estadoCivilBusiness.GetEstadoCivil(), "IdEstadoCivil", "StrDescripcion");
+
                 return View(personalVM);
             }
             else {

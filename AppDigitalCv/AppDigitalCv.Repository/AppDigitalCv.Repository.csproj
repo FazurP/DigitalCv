@@ -80,7 +80,19 @@
     <Compile Include="AsociacionesRepository.cs" />
     <Compile Include="CapacitacionCompetenciasProfesionalesRepository.cs" />
     <Compile Include="CapituloLibroRepository.cs" />
+    <Compile Include="CatActividadesFisicas.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatAlergiaAlimento.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatAlergiaMedicamento.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="catAlergias.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatAlergiaSustancia.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="catArea.cs">
@@ -120,10 +132,22 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CategoriaRepository.cs" />
+    <Compile Include="CatEnfermades.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatEnfermedadesExantemática.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="CatFuentaFinaciamientoMaestria.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CatFuenteFinanciamientoDoctorado.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatFumador.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatGrupoSanguineo.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CatHobbies.cs">
@@ -150,16 +174,82 @@
     <Compile Include="CatLenguas.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="CatLesionArticulaciones.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatLesionHuesos.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatLesionLigamentos.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="CatNacionalidad.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CatNivelConocimiento.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="CatOpcionesRespuesta04.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="catPeriodo.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="catProduccionArtistica.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatRespuestas01.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatRespuestas02.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatRespuestas03.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatRespuestas04.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatRespuestas05.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatRespuestas06.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatRespuestas07.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatRespuestas08.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatRespuestas09.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatRespuestas10.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatRespuestas11.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatRespuestas12.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatRespuestas13.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatRespuestas14.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatRespuestas15.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatRespuestas16.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatRespuestas17.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatRH.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CatStatusDoctorado.cs">
@@ -181,6 +271,9 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CatTipoUsuario.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatTratamiento.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CompetenciasPersonalRepository.cs" />
@@ -370,6 +463,9 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblEmergencia.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblEncuesta.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblEnfermedadPersonal.cs">
