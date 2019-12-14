@@ -44,8 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountDomainModel.cs" />
+    <Compile Include="ActividadesFisicasDomainModel.cs" />
+    <Compile Include="AlergiaAlimentoDomainModel.cs" />
+    <Compile Include="AlergiaMedicamentoDomainModel.cs" />
     <Compile Include="AlergiasDomainModel.cs" />
     <Compile Include="AlergiasPersonalDomainModel.cs" />
+    <Compile Include="AlergiaSustanciaDomainModel.cs" />
     <Compile Include="AreaDomainModel.cs" />
     <Compile Include="AsociacionesDomainModel.cs" />
     <Compile Include="CapacitacionCompetenciasProfesionalesDomainModel.cs" />
@@ -76,7 +80,10 @@
     <Compile Include="DocumentosDomainModel.cs" />
     <Compile Include="EdificioDomainModel.cs" />
     <Compile Include="EmergenciaDomianModel.cs" />
+    <Compile Include="EncuestaDomainModel.cs" />
     <Compile Include="EnfermedadDomainModel.cs" />
+    <Compile Include="EnfermedadesDomainModel.cs" />
+    <Compile Include="EnfermedadesExantematicaDomainModel.cs" />
     <Compile Include="EstadiaEmpresaDomainModel.cs" />
     <Compile Include="EstadoCivilDomainModel.cs" />
     <Compile Include="EstadoDomainModel.cs" />
@@ -86,6 +93,8 @@
     <Compile Include="FamiliarDomainModel.cs" />
     <Compile Include="FamiliaresDomainModel.cs" />
     <Compile Include="FrecuenciaDomainModel.cs" />
+    <Compile Include="FumadorDomainModel.cs" />
+    <Compile Include="GrupoSanguineoDomainModel.cs" />
     <Compile Include="HobbieDomainModel.cs" />
     <Compile Include="HobbiesDomainModel.cs" />
     <Compile Include="IdiomasDomainModel.cs" />
@@ -96,6 +105,9 @@
     <Compile Include="InstitucionAcreditaCapacitacionProfesionalDomainModel.cs" />
     <Compile Include="InstitucionSuperiorDomainModel.cs" />
     <Compile Include="LenguasDomainModel.cs" />
+    <Compile Include="LesionArticulacionesDomainModel.cs" />
+    <Compile Include="LesionHuesosDomainModel.cs" />
+    <Compile Include="LesionLigamentosDomainModel.cs" />
     <Compile Include="LibroDomainModel.cs" />
     <Compile Include="ManualOperacionDomainModel.cs" />
     <Compile Include="MunicipioDomainModel.cs" />
@@ -108,6 +120,7 @@
     <Compile Include="NumeroSeguridadSocialDomainModel.cs" />
     <Compile Include="NumeroVisaCanadaDomainModel.cs" />
     <Compile Include="NumeroVisaUsaDomainModel.cs" />
+    <Compile Include="OpcionesRespuesta04DomainModel.cs" />
     <Compile Include="PaisDomainModel.cs" />
     <Compile Include="ParentescoDomainModel.cs" />
     <Compile Include="ParticipacionDocenteDomainModel.cs" />
@@ -127,6 +140,24 @@
     <Compile Include="PrototipoDomainModel.cs" />
     <Compile Include="ProyectoInvestigacionDomainModel.cs" />
     <Compile Include="RegistroProfEstatalDomainModel.cs" />
+    <Compile Include="Respuestas01DomainModel.cs" />
+    <Compile Include="Respuestas02DomainModel.cs" />
+    <Compile Include="Respuestas03DomainModel.cs" />
+    <Compile Include="Respuestas04DomainModel.cs" />
+    <Compile Include="Respuestas05DomainModel.cs" />
+    <Compile Include="Respuestas06DomainModel.cs" />
+    <Compile Include="Respuestas07DomainModel.cs" />
+    <Compile Include="Respuestas08DomainModel.cs" />
+    <Compile Include="Respuestas09DomainModel.cs" />
+    <Compile Include="Respuestas10DomainModel.cs" />
+    <Compile Include="Respuestas11DomainModel.cs" />
+    <Compile Include="Respuestas12DomainModel.cs" />
+    <Compile Include="Respuestas13DomainModel.cs" />
+    <Compile Include="Respuestas14DomainModel.cs" />
+    <Compile Include="Respuestas15DomainModel.cs" />
+    <Compile Include="Respuestas16DomainModel.cs" />
+    <Compile Include="Respuestas17DomainModel.cs" />
+    <Compile Include="RhDomainModel.cs" />
     <Compile Include="SalariosDomainModel.cs" />
     <Compile Include="SessionManagerDomainModel.cs" />
     <Compile Include="SolicitudEmpleoDomainModel.cs" />
@@ -137,6 +168,7 @@
     <Compile Include="TipoEstudioDomainModel.cs" />
     <Compile Include="TipoProductoDomainModel.cs" />
     <Compile Include="TipoSangreDomainModel.cs" />
+    <Compile Include="TratamientoDomainModel.cs" />
     <Compile Include="TutoriasDomainModel.cs" />
     <Compile Include="UnidadesAcademicasDomainModel.cs" />
   </ItemGroup>

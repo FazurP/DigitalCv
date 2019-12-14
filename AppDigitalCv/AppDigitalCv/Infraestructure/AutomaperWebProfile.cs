@@ -335,6 +335,106 @@ namespace AppDigitalCv.Infraestructure
 
             CreateMap<TipoDocumentoVM, TipoDocumentoDomainModel>();
             CreateMap<TipoDocumentoDomainModel, TipoDocumentoVM>();
+
+            //Encuesta de Salud
+
+            CreateMap<EncuestaVM, EncuestaDomainModel>();
+            CreateMap<EncuestaDomainModel, EncuestaVM>();
+
+            CreateMap<Respuestas01VM, Respuestas01DomainModel>();
+            CreateMap<Respuestas01DomainModel, Respuestas01VM>();
+
+            CreateMap<Respuestas02VM, Respuestas02DomainModel>();
+            CreateMap<Respuestas02DomainModel, Respuestas02VM>();
+
+            CreateMap<Respuestas03VM, Respuestas03DomainModel>();
+            CreateMap<Respuestas03DomainModel, Respuestas03VM>();
+
+            CreateMap<Respuestas04VM, Respuestas04DomainModel>();
+            CreateMap<Respuestas04DomainModel, Respuestas04VM>();
+
+            CreateMap<Respuestas05VM, Respuestas05DomainModel>();
+            CreateMap<Respuestas05DomainModel, Respuestas05VM>();
+
+            CreateMap<Respuestas06VM, Respuestas06DomainModel>();
+            CreateMap<Respuestas06DomainModel, Respuestas06VM>();
+
+            CreateMap<Respuestas07VM, Respuestas07DomainModel>();
+            CreateMap<Respuestas07DomainModel, Respuestas07VM>();
+
+            CreateMap<Respuestas08VM, Respuestas08DomainModel>();
+            CreateMap<Respuestas08DomainModel, Respuestas08VM>();
+
+            CreateMap<Respuestas09VM, Respuestas09DomainModel>();
+            CreateMap<Respuestas09DomainModel, Respuestas09VM>();
+
+            CreateMap<Respuestas10VM, Respuestas10DomainModel>();
+            CreateMap<Respuestas10DomainModel, Respuestas10VM>();
+
+            CreateMap<Respuestas11VM, Respuestas11DomainModel>();
+            CreateMap<Respuestas11DomainModel, Respuestas11VM>();
+
+            CreateMap<Respuestas12VM, Respuestas12DomainModel>();
+            CreateMap<Respuestas12DomainModel, Respuestas12VM>();
+
+            CreateMap<Respuestas13VM, Respuestas13DomainModel>();
+            CreateMap<Respuestas13DomainModel, Respuestas13VM>();
+
+            CreateMap<Respuestas14VM, Respuestas14DomainModel>();
+            CreateMap<Respuestas14DomainModel, Respuestas14VM>();
+
+            CreateMap<Respuestas15VM, Respuestas15DomainModel>();
+            CreateMap<Respuestas15DomainModel, Respuestas15VM>();
+
+            CreateMap<Respuestas16VM, Respuestas16DomainModel>();
+            CreateMap<Respuestas16DomainModel, Respuestas16VM>();
+
+            CreateMap<Respuestas17VM, Respuestas17DomainModel>();
+            CreateMap<Respuestas17DomainModel, Respuestas17VM>();
+
+            CreateMap<FumadorVM, FumadorDomainModel>();
+            CreateMap<FumadorDomainModel, FumadorVM>();
+
+            CreateMap<OpcionesRespuesta04VM, OpcionesRespuesta04DomainModel>();
+            CreateMap<OpcionesRespuesta04DomainModel, OpcionesRespuesta04VM>();
+
+            CreateMap<RhVM, RhDomainModel>();
+            CreateMap<RhDomainModel, RhVM>();
+
+            CreateMap<GrupoSanguineoVM, GrupoSanguineoDomainModel>();
+            CreateMap<GrupoSanguineoDomainModel, GrupoSanguineoVM>();
+
+            CreateMap<AlergiaMedicamentoVM, AlergiaMedicamentoDomainModel>();
+            CreateMap<AlergiaMedicamentoDomainModel, AlergiaMedicamentoVM>();
+
+            CreateMap<AlergiaSustanciaVM, AlergiaSustanciaDomainModel>();
+            CreateMap<AlergiaSustanciaDomainModel, AlergiaSustanciaVM>();
+
+            CreateMap<AlergiaAlimentoVM, AlergiaAlimentoDomainModel>();
+            CreateMap<AlergiaAlimentoDomainModel, AlergiaAlimentoVM>();
+
+            CreateMap<EnfermedadesExantematicaVM, EnfermedadesExantematicaDomainModel>();
+            CreateMap<EnfermedadesExantematicaDomainModel, EnfermedadesExantematicaVM>();
+
+            CreateMap<LesionHuesosVM, LesionHuesosDomainModel>();
+            CreateMap<LesionHuesosDomainModel, LesionHuesosVM>();
+
+            CreateMap<LesionArticulacionesVM, LesionArticulacionesDomainModel>();
+            CreateMap<LesionArticulacionesDomainModel, LesionArticulacionesVM>();
+
+            CreateMap<LesionLigamentosVM, LesionLigamentosDomainModel>();
+            CreateMap<LesionLigamentosDomainModel, LesionLigamentosVM>();
+
+            CreateMap<ActividadesFisicasVM, ActividadesFisicasDomainModel>();
+            CreateMap<ActividadesFisicasDomainModel, ActividadesFisicasVM>();
+
+            CreateMap<EnfermedadesVM, EnfermedadesDomainModel>();
+            CreateMap<EnfermedadesDomainModel, EnfermedadesVM>();
+
+            CreateMap<TratamientoVM, TratamientoDomainModel>();
+            CreateMap<TratamientoDomainModel, TratamientoVM>();
+
+            //
         }
 
         public static void Run()

@@ -1,0 +1,210 @@
+﻿@model AppDigitalCv.ViewModels.ManualOperacionVM
+@using AppDigitalCv.Security
+
+@using (Html.BeginForm("", "", FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="bs-container" style="min-height:960px;">
+        <section class="content-header">
+            <h1>
+                Producción Academica
+                <small>(Agregar)</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
+                <li> <a href="#">Agregar</a></li>
+                <li class="active">Libro</li>
+            </ol>
+        </section>
+        <br />
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="box box-success">
+                    <div class="box-header">
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <div class="form-group">
+                                        <label>1.	¿Cuántas comidas realiza al día?</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>2.	¿Cuántas horas duerme al día?</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>3.	Si es fumador. Responda las siguientes preguntas. ¿Cuántos cigarrillos fuma al día?               ¿Desde qué edad es fumador?</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            4.	Marque la opción que más se ajuste a su hábito de consumo de alcohol.
+                                            a)	Bebo socialmente     b) Bebo en las comidas      c) bebo diariamente       d) No bebo alcohol
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>5.	¿Cuál es su grupo y RH sanguíneo?</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>6.	¿Es alérgico a algún medicamento, sustancia o alimento?</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <div class="form-group">
+                                        <label>
+                                            7.	¿Alguna vez ha presentado alguna enfermedad exantemática? Marque la(s) que corresponda(n).
+                                            a)varicela  b) rubeola  c)sarampión  d)escarlatina  e)exantema súbito  f)enfermedad mano pie boca
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>8.	Especifique a que intervenciones quirúrgicas ha sido sometido</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>9.	¿Ha sufrido de alguna lesión en huesos, ligamentos o articulaciones? Especifique</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>10.	¿Ha sido hospitalizado alguna vez? Especifique la causa</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>11.	¿Realiza alguna actividad física o deporte? Especifique tipo y frecuencia</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>12.	¿Padece de alguna enfermedad actualmente? (Por ejemplo: diabetes, hipertensión, obesidad, cáncer, cardiopatía, artritis, LUPUS, glaucoma, hipo-hipertiroidismo, bronquitis crónica, enfisema pulmonar, insuficiencia renal, epilepsia, depresión, etc…)</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <div class="form-group">
+                                        <label>13.	Toma algún tratamiento actualmente. Especifique nombre y dosis</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>14.	¿Hace cuánto tiempo se realizó su último Papanicolaou? Solo sexo femenino</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>15.	¿Cada cuando se realiza autoexploración mamaria? Solo sexo femenino </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>16.	Número de embarazos. Solo sexo femenino</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>17.	¿Hace cuánto tiempo se realizó la prueba de antígeno prostático? Solo sexo masculino, mayor de 40 años</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/toastr.min.css" rel="stylesheet" />
+
+@section scripts{
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/Validate/ManualOperacion/validate-manual-operacion-form.js"></script>
+    <script>
+
+        var AddEditar = function (id) {
+
+            var url = "/ManualOperacion/GetManualOperacionUpdate?_idManualOperacion=" + id;
+
+            $("#myModalBodyDiv1").load(url, function () {
+                $("#myModal1").modal("show");
+
+            })
+
+        };
+
+        var AddEliminar = function (id) {
+
+            var url = "/ManualOperacion/GetManualOperacionDelete?_idManualOperacion=" + id;
+
+            $("#myModalBodyDiv1").load(url, function () {
+                $("#myModal1").modal("show");
+
+            })
+
+        };
+
+        $(document).ready(function () {
+            var oTable;
+
+            BindDataTable();
+
+            function BindDataTable() {
+
+                if ($.fn.DataTable.isDataTable('#tblManuales')) {
+                    oTable.Draw();
+                }
+                else {
+                    oTable = $('#tblManuales').DataTable({
+
+                        "bServerSide": true,
+                        "sAjaxSource": '/ManualOperacion/GetManuales',
+                        "fnServerData": function (sSource, aoData, fnCallback) {
+                            $.ajax({
+                                type: "Get",
+                                data: aoData,
+                                url: sSource,
+                                success: fnCallback
+                            })
+                        },
+                        "pageLength": 5,
+                        "paging": true,
+                        "language": {
+
+                            "sProcessing": "Procesando...",
+                            "sLengthMenu": "Mostrar _MENU_ registros",
+                            "sZeroRecords": "No se encontraron resultados",
+                            "sEmptyTable": "Ningún dato disponible en esta tabla",
+                            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                            "sInfoPostFix": "",
+                            "sSearch": "Buscar:",
+                            "sUrl": "",
+                            "sInfoThousands": ",",
+                            "sLoadingRecords": "Cargando...",
+                            "oPaginate": {
+                                "sFirst": "Primero",
+                                "sLast": "Último",
+                                "sNext": "Siguiente",
+                                "sPrevious": "Anterior"
+                            },
+                            "oAria": {
+                                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                            }
+                        },
+                        "dataSrc": "",
+                        "columns": [
+
+                            { "data": "strNombre" },
+
+                            {
+                                "data": "id",
+                                "render": function (id, type, full, meta) {
+
+                                    return '<a href="#" onclick="AddEditar(' + id + ')"><i class="btn btn-sm btn-success fa fa-pencil-square-o"></i></a>'
+                                }
+                            },
+                            {
+                                "data": "id",
+                                "render": function (id, type, full, meta) {
+
+                                    return '<a href="#" onclick="AddEliminar(' + id + ')"><i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i></a>'
+                                }
+                            },
+                        ]
+                    });
+                }
+            }
+
+        })
+
+    </script>
+}

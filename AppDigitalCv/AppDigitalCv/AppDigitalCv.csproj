@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -60,7 +60,6 @@
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -652,6 +651,8 @@
     <Content Include="Views\Hobbie\_Editar.cshtml" />
     <Content Include="Views\Hobbie\_Eliminar.cshtml" />
     <Content Include="Views\DocumentacionPersonalV2\_Eliminar.cshtml" />
+    <Content Include="Views\EncuestaSalud\Create.cshtml" />
+    <Content Include="Views\Manager\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -683,6 +684,7 @@
     <Compile Include="Controllers\DocumentacionPersonalController.cs" />
     <Compile Include="Controllers\DocumentacionPersonalV2Controller.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />
+    <Compile Include="Controllers\EncuestaSaludController.cs" />
     <Compile Include="Controllers\EstadiaEmpresaController.cs" />
     <Compile Include="Controllers\EstadoCivilController.cs" />
     <Compile Include="Controllers\EstadoSaludController.cs" />
@@ -727,11 +729,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecursosSistema.resx</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\ManagerController.cs" />
     <Compile Include="Security\CustomAuthorizeAttribute.cs" />
     <Compile Include="Security\CustomPrincipal.cs" />
     <Compile Include="Security\SessionPersister.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\ActividadesFisicasVM.cs" />
+    <Compile Include="ViewModels\AlergiaAlimentoVM.cs" />
+    <Compile Include="ViewModels\AlergiaMedicamentoVM.cs" />
     <Compile Include="ViewModels\AlergiasPersonalVM.cs" />
+    <Compile Include="ViewModels\AlergiaSustanciaVM.cs" />
     <Compile Include="ViewModels\AlergiasVM.cs" />
     <Compile Include="ViewModels\AreaVM.cs" />
     <Compile Include="ViewModels\AsociacionesVM.cs" />
@@ -762,6 +769,8 @@
     <Compile Include="ViewModels\DocumentosVM.cs" />
     <Compile Include="ViewModels\EdificioVM.cs" />
     <Compile Include="ViewModels\EmergenciaViewModel.cs" />
+    <Compile Include="ViewModels\EnfermedadesExantematicaVM.cs" />
+    <Compile Include="ViewModels\EnfermedadesVM.cs" />
     <Compile Include="ViewModels\EnfermedadVM.cs" />
     <Compile Include="ViewModels\EstadiaEmpresaVM.cs" />
     <Compile Include="ViewModels\EstadoCivilVM.cs" />
@@ -771,6 +780,8 @@
     <Compile Include="ViewModels\ExperienciaLaboralInternaVM.cs" />
     <Compile Include="ViewModels\FamiliaresVM.cs" />
     <Compile Include="ViewModels\FrecuenciaVM.cs" />
+    <Compile Include="ViewModels\FumadorVM.cs" />
+    <Compile Include="ViewModels\GrupoSanguineoVM.cs" />
     <Compile Include="ViewModels\HobbiesVM.cs" />
     <Compile Include="ViewModels\HobbieVM.cs" />
     <Compile Include="ViewModels\IdiomaDialectoVM.cs" />
@@ -782,6 +793,9 @@
     <Compile Include="ViewModels\InstitucionAcreditaCapacitacionProfesionalVM.cs" />
     <Compile Include="ViewModels\InstitucionSuperiorVM.cs" />
     <Compile Include="ViewModels\LenguasVM.cs" />
+    <Compile Include="ViewModels\LesionArticulacionesVM.cs" />
+    <Compile Include="ViewModels\LesionHuesosVM.cs" />
+    <Compile Include="ViewModels\LesionLigamentosVM.cs" />
     <Compile Include="ViewModels\LibroVM.cs" />
     <Compile Include="ViewModels\ManualOperacionVM.cs" />
     <Compile Include="ViewModels\MunicipioVM.cs" />
@@ -794,6 +808,7 @@
     <Compile Include="ViewModels\NumeroSeguridadSocialVM.cs" />
     <Compile Include="ViewModels\NumeroVisaCanadaVM.cs" />
     <Compile Include="ViewModels\NumeroVisaUsaVM.cs" />
+    <Compile Include="ViewModels\OpcionesRespuesta04VM.cs" />
     <Compile Include="ViewModels\PaisVM.cs" />
     <Compile Include="ViewModels\ParentescoVM.cs" />
     <Compile Include="ViewModels\ParticipacionDocenteVM.cs" />
@@ -813,6 +828,24 @@
     <Compile Include="ViewModels\PrototipoVM.cs" />
     <Compile Include="ViewModels\ProyectoInvestigacionVM.cs" />
     <Compile Include="ViewModels\RegistroProfEstatalVM.cs" />
+    <Compile Include="ViewModels\Respuestas01VM.cs" />
+    <Compile Include="ViewModels\Respuestas02VM.cs" />
+    <Compile Include="ViewModels\Respuestas03VM.cs" />
+    <Compile Include="ViewModels\Respuestas04VM.cs" />
+    <Compile Include="ViewModels\Respuestas05VM.cs" />
+    <Compile Include="ViewModels\Respuestas06VM.cs" />
+    <Compile Include="ViewModels\Respuestas07VM.cs" />
+    <Compile Include="ViewModels\Respuestas08VM.cs" />
+    <Compile Include="ViewModels\Respuestas09VM.cs" />
+    <Compile Include="ViewModels\Respuestas10VM.cs" />
+    <Compile Include="ViewModels\Respuestas11VM.cs" />
+    <Compile Include="ViewModels\Respuestas12VM.cs" />
+    <Compile Include="ViewModels\Respuestas13VM.cs" />
+    <Compile Include="ViewModels\Respuestas14VM.cs" />
+    <Compile Include="ViewModels\Respuestas15VM.cs" />
+    <Compile Include="ViewModels\Respuestas16VM.cs" />
+    <Compile Include="ViewModels\Respuestas17VM.cs" />
+    <Compile Include="ViewModels\RhVM.cs" />
     <Compile Include="ViewModels\SalariosVM.cs" />
     <Compile Include="ViewModels\SessionManagerVM.cs" />
     <Compile Include="ViewModels\SolicitudEmpleoVM.cs" />
@@ -823,8 +856,10 @@
     <Compile Include="ViewModels\TipoEstudioVM.cs" />
     <Compile Include="ViewModels\TipoProductoVM.cs" />
     <Compile Include="ViewModels\TipoSangreVM.cs" />
+    <Compile Include="ViewModels\TratamientoVM.cs" />
     <Compile Include="ViewModels\TutoriasVM.cs" />
     <Compile Include="ViewModels\UnidadesAcademicasVM.cs" />
+    <Compile Include="ViewModels\EncuestaVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -1002,7 +1037,7 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
 </Project>

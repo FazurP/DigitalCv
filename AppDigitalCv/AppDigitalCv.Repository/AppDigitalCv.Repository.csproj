@@ -363,6 +363,7 @@
     <Compile Include="DireccionRepository.cs" />
     <Compile Include="EdificioRepository.cs" />
     <Compile Include="EmergenciaRepository.cs" />
+    <Compile Include="EncuestaSaludRepository.cs" />
     <Compile Include="EnfermedadesRepository.cs" />
     <Compile Include="EstadiaEmpresaRepository.cs" />
     <Compile Include="EstadoCivilRepository.cs" />

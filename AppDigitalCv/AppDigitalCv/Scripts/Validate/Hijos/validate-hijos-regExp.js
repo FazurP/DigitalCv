@@ -5,7 +5,7 @@
         if (!regex.test(key)) {
             toastr.warning("Solo se Admiten Cadenas de Texto.", "Digital-Cv dice", { timeOut: 1000, closeButton: true});
             e.preventDefault();
-            return false;
+            return false; 
         }
     });
 
