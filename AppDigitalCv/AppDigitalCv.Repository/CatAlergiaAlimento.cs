@@ -21,7 +21,7 @@ namespace AppDigitalCv.Repository
         }
     
         public int id { get; set; }
-        public Nullable<int> strAlimento { get; set; }
+        public string strAlimento { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CatRespuestas06> CatRespuestas06 { get; set; }

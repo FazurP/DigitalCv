@@ -37,7 +37,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="strAlimento" Type="int" />
+          <Property Name="strAlimento" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="CatAlergiaMedicamento">
           <Key>
@@ -256,7 +256,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="strEdadComienzo" Type="varchar" MaxLength="250" />
           <Property Name="strCigarrillosDia" Type="varchar" MaxLength="250" />
         </EntityType>
@@ -511,7 +511,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="bitLesion" Type="int" />
+          <Property Name="bitLesion" Type="bit" />
           <Property Name="idHuesos" Type="int" />
           <Property Name="idLigamentos" Type="int" />
           <Property Name="idArticulaciones" Type="int" />
@@ -5522,7 +5522,6 @@
             <End Role="tblCompetenciasConocimientosPersonal" EntitySet="tblCompetenciasConocimientosPersonal" />
           </AssociationSet>
           <EntitySet Name="CatActividadesFisicas" EntityType="bdGestionDocenteModel.CatActividadesFisicas" />
-          <EntitySet Name="CatAlergiaAlimento" EntityType="bdGestionDocenteModel.CatAlergiaAlimento" />
           <EntitySet Name="CatAlergiaMedicamento" EntityType="bdGestionDocenteModel.CatAlergiaMedicamento" />
           <EntitySet Name="CatAlergiaSustancia" EntityType="bdGestionDocenteModel.CatAlergiaSustancia" />
           <EntitySet Name="CatEnfermades" EntityType="bdGestionDocenteModel.CatEnfermades" />
@@ -5541,7 +5540,6 @@
           <EntitySet Name="CatRespuestas06" EntityType="bdGestionDocenteModel.CatRespuestas06" />
           <EntitySet Name="CatRespuestas07" EntityType="bdGestionDocenteModel.CatRespuestas07" />
           <EntitySet Name="CatRespuestas08" EntityType="bdGestionDocenteModel.CatRespuestas08" />
-          <EntitySet Name="CatRespuestas09" EntityType="bdGestionDocenteModel.CatRespuestas09" />
           <EntitySet Name="CatRespuestas10" EntityType="bdGestionDocenteModel.CatRespuestas10" />
           <EntitySet Name="CatRespuestas11" EntityType="bdGestionDocenteModel.CatRespuestas11" />
           <EntitySet Name="CatRespuestas12" EntityType="bdGestionDocenteModel.CatRespuestas12" />
@@ -5556,10 +5554,6 @@
           <AssociationSet Name="FK_CatRespuestas11_CatActividadesFisicas" Association="bdGestionDocenteModel.FK_CatRespuestas11_CatActividadesFisicas">
             <End Role="CatActividadesFisicas" EntitySet="CatActividadesFisicas" />
             <End Role="CatRespuestas11" EntitySet="CatRespuestas11" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CatRespuestas06_CatAlergiaAlimento" Association="bdGestionDocenteModel.FK_CatRespuestas06_CatAlergiaAlimento">
-            <End Role="CatAlergiaAlimento" EntitySet="CatAlergiaAlimento" />
-            <End Role="CatRespuestas06" EntitySet="CatRespuestas06" />
           </AssociationSet>
           <AssociationSet Name="FK_CatRespuestas06_CatAlergiaMedicamento" Association="bdGestionDocenteModel.FK_CatRespuestas06_CatAlergiaMedicamento">
             <End Role="CatAlergiaMedicamento" EntitySet="CatAlergiaMedicamento" />
@@ -5584,18 +5578,6 @@
           <AssociationSet Name="FK_CatRespuestas05_CatGrupoSanguineo" Association="bdGestionDocenteModel.FK_CatRespuestas05_CatGrupoSanguineo">
             <End Role="CatGrupoSanguineo" EntitySet="CatGrupoSanguineo" />
             <End Role="CatRespuestas05" EntitySet="CatRespuestas05" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CatRespuestas09_CatLesionArticulaciones" Association="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionArticulaciones">
-            <End Role="CatLesionArticulaciones" EntitySet="CatLesionArticulaciones" />
-            <End Role="CatRespuestas09" EntitySet="CatRespuestas09" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CatRespuestas09_CatLesionHuesos" Association="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionHuesos">
-            <End Role="CatLesionHuesos" EntitySet="CatLesionHuesos" />
-            <End Role="CatRespuestas09" EntitySet="CatRespuestas09" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CatRespuestas09_CatLesionLigamentos" Association="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionLigamentos">
-            <End Role="CatLesionLigamentos" EntitySet="CatLesionLigamentos" />
-            <End Role="CatRespuestas09" EntitySet="CatRespuestas09" />
           </AssociationSet>
           <AssociationSet Name="FK_CatRespuestas04_CatOpcionesRespuesta04" Association="bdGestionDocenteModel.FK_CatRespuestas04_CatOpcionesRespuesta04">
             <End Role="CatOpcionesRespuesta04" EntitySet="CatOpcionesRespuesta04" />
@@ -5637,10 +5619,6 @@
             <End Role="CatRespuestas08" EntitySet="CatRespuestas08" />
             <End Role="TblEncuesta" EntitySet="TblEncuesta" />
           </AssociationSet>
-          <AssociationSet Name="FK_TblEncuesta_CatRespuestas09" Association="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas09">
-            <End Role="CatRespuestas09" EntitySet="CatRespuestas09" />
-            <End Role="TblEncuesta" EntitySet="TblEncuesta" />
-          </AssociationSet>
           <AssociationSet Name="FK_TblEncuesta_CatRespuestas10" Association="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas10">
             <End Role="CatRespuestas10" EntitySet="CatRespuestas10" />
             <End Role="TblEncuesta" EntitySet="TblEncuesta" />
@@ -5680,6 +5658,28 @@
           <AssociationSet Name="FK_tblPersonal_TblEncuesta" Association="bdGestionDocenteModel.FK_tblPersonal_TblEncuesta">
             <End Role="TblEncuesta" EntitySet="TblEncuesta" />
             <End Role="tblPersonal" EntitySet="tblPersonal" />
+          </AssociationSet>
+          <EntitySet Name="CatAlergiaAlimento" EntityType="bdGestionDocenteModel.CatAlergiaAlimento" />
+          <AssociationSet Name="FK_CatRespuestas06_CatAlergiaAlimento" Association="bdGestionDocenteModel.FK_CatRespuestas06_CatAlergiaAlimento">
+            <End Role="CatAlergiaAlimento" EntitySet="CatAlergiaAlimento" />
+            <End Role="CatRespuestas06" EntitySet="CatRespuestas06" />
+          </AssociationSet>
+          <EntitySet Name="CatRespuestas09" EntityType="bdGestionDocenteModel.CatRespuestas09" />
+          <AssociationSet Name="FK_CatRespuestas09_CatLesionArticulaciones" Association="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionArticulaciones">
+            <End Role="CatLesionArticulaciones" EntitySet="CatLesionArticulaciones" />
+            <End Role="CatRespuestas09" EntitySet="CatRespuestas09" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CatRespuestas09_CatLesionHuesos" Association="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionHuesos">
+            <End Role="CatLesionHuesos" EntitySet="CatLesionHuesos" />
+            <End Role="CatRespuestas09" EntitySet="CatRespuestas09" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CatRespuestas09_CatLesionLigamentos" Association="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionLigamentos">
+            <End Role="CatLesionLigamentos" EntitySet="CatLesionLigamentos" />
+            <End Role="CatRespuestas09" EntitySet="CatRespuestas09" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblEncuesta_CatRespuestas09" Association="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas09">
+            <End Role="CatRespuestas09" EntitySet="CatRespuestas09" />
+            <End Role="TblEncuesta" EntitySet="TblEncuesta" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="catAlergias">
@@ -9217,14 +9217,6 @@
           <Property Name="strFrecuencia" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CatRespuestas11" Relationship="bdGestionDocenteModel.FK_CatRespuestas11_CatActividadesFisicas" FromRole="CatActividadesFisicas" ToRole="CatRespuestas11" />
         </EntityType>
-        <EntityType Name="CatAlergiaAlimento">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="strAlimento" Type="Int32" />
-          <NavigationProperty Name="CatRespuestas06" Relationship="bdGestionDocenteModel.FK_CatRespuestas06_CatAlergiaAlimento" FromRole="CatAlergiaAlimento" ToRole="CatRespuestas06" />
-        </EntityType>
         <EntityType Name="CatAlergiaMedicamento">
           <Key>
             <PropertyRef Name="id" />
@@ -9366,10 +9358,10 @@
           <Property Name="idMedicamento" Type="Int32" />
           <Property Name="idSustancia" Type="Int32" />
           <Property Name="idAlimento" Type="Int32" />
-          <NavigationProperty Name="CatAlergiaAlimento" Relationship="bdGestionDocenteModel.FK_CatRespuestas06_CatAlergiaAlimento" FromRole="CatRespuestas06" ToRole="CatAlergiaAlimento" />
           <NavigationProperty Name="CatAlergiaMedicamento" Relationship="bdGestionDocenteModel.FK_CatRespuestas06_CatAlergiaMedicamento" FromRole="CatRespuestas06" ToRole="CatAlergiaMedicamento" />
           <NavigationProperty Name="CatAlergiaSustancia" Relationship="bdGestionDocenteModel.FK_CatRespuestas06_CatAlergiaSustancia" FromRole="CatRespuestas06" ToRole="CatAlergiaSustancia" />
           <NavigationProperty Name="TblEncuesta" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas06" FromRole="CatRespuestas06" ToRole="TblEncuesta" />
+          <NavigationProperty Name="CatAlergiaAlimento" Relationship="bdGestionDocenteModel.FK_CatRespuestas06_CatAlergiaAlimento" FromRole="CatRespuestas06" ToRole="CatAlergiaAlimento" />
         </EntityType>
         <EntityType Name="CatRespuestas07">
           <Key>
@@ -9389,20 +9381,6 @@
           <Property Name="bitIntervencion" Type="Boolean" />
           <Property Name="strIntervencion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TblEncuesta" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas08" FromRole="CatRespuestas08" ToRole="TblEncuesta" />
-        </EntityType>
-        <EntityType Name="CatRespuestas09">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="bitLesion" Type="Int32" />
-          <Property Name="idHuesos" Type="Int32" />
-          <Property Name="idLigamentos" Type="Int32" />
-          <Property Name="idArticulaciones" Type="Int32" />
-          <NavigationProperty Name="CatLesionArticulaciones" Relationship="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionArticulaciones" FromRole="CatRespuestas09" ToRole="CatLesionArticulaciones" />
-          <NavigationProperty Name="CatLesionHuesos" Relationship="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionHuesos" FromRole="CatRespuestas09" ToRole="CatLesionHuesos" />
-          <NavigationProperty Name="CatLesionLigamentos" Relationship="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionLigamentos" FromRole="CatRespuestas09" ToRole="CatLesionLigamentos" />
-          <NavigationProperty Name="TblEncuesta" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas09" FromRole="CatRespuestas09" ToRole="TblEncuesta" />
         </EntityType>
         <EntityType Name="CatRespuestas10">
           <Key>
@@ -9522,7 +9500,6 @@
           <NavigationProperty Name="CatRespuestas06" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas06" FromRole="TblEncuesta" ToRole="CatRespuestas06" />
           <NavigationProperty Name="CatRespuestas07" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas07" FromRole="TblEncuesta" ToRole="CatRespuestas07" />
           <NavigationProperty Name="CatRespuestas08" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas08" FromRole="TblEncuesta" ToRole="CatRespuestas08" />
-          <NavigationProperty Name="CatRespuestas09" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas09" FromRole="TblEncuesta" ToRole="CatRespuestas09" />
           <NavigationProperty Name="CatRespuestas10" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas10" FromRole="TblEncuesta" ToRole="CatRespuestas10" />
           <NavigationProperty Name="CatRespuestas11" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas11" FromRole="TblEncuesta" ToRole="CatRespuestas11" />
           <NavigationProperty Name="CatRespuestas12" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas12" FromRole="TblEncuesta" ToRole="CatRespuestas12" />
@@ -9532,6 +9509,7 @@
           <NavigationProperty Name="CatRespuestas16" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas16" FromRole="TblEncuesta" ToRole="CatRespuestas16" />
           <NavigationProperty Name="CatRespuestas17" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas17" FromRole="TblEncuesta" ToRole="CatRespuestas17" />
           <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_tblPersonal_TblEncuesta" FromRole="TblEncuesta" ToRole="tblPersonal" />
+          <NavigationProperty Name="CatRespuestas09" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas09" FromRole="TblEncuesta" ToRole="CatRespuestas09" />
         </EntityType>
         <Association Name="FK_CatRespuestas11_CatActividadesFisicas">
           <End Type="bdGestionDocenteModel.CatActividadesFisicas" Role="CatActividadesFisicas" Multiplicity="0..1" />
@@ -9542,18 +9520,6 @@
             </Principal>
             <Dependent Role="CatRespuestas11">
               <PropertyRef Name="idActividades" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CatRespuestas06_CatAlergiaAlimento">
-          <End Type="bdGestionDocenteModel.CatAlergiaAlimento" Role="CatAlergiaAlimento" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.CatRespuestas06" Role="CatRespuestas06" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CatAlergiaAlimento">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CatRespuestas06">
-              <PropertyRef Name="idAlimento" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9626,42 +9592,6 @@
             </Principal>
             <Dependent Role="CatRespuestas05">
               <PropertyRef Name="idGrupoSanguineo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CatRespuestas09_CatLesionArticulaciones">
-          <End Type="bdGestionDocenteModel.CatLesionArticulaciones" Role="CatLesionArticulaciones" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.CatRespuestas09" Role="CatRespuestas09" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CatLesionArticulaciones">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CatRespuestas09">
-              <PropertyRef Name="idArticulaciones" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CatRespuestas09_CatLesionHuesos">
-          <End Type="bdGestionDocenteModel.CatLesionHuesos" Role="CatLesionHuesos" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.CatRespuestas09" Role="CatRespuestas09" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CatLesionHuesos">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CatRespuestas09">
-              <PropertyRef Name="idHuesos" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CatRespuestas09_CatLesionLigamentos">
-          <End Type="bdGestionDocenteModel.CatLesionLigamentos" Role="CatLesionLigamentos" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.CatRespuestas09" Role="CatRespuestas09" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CatLesionLigamentos">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CatRespuestas09">
-              <PropertyRef Name="idLigamentos" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9785,18 +9715,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TblEncuesta_CatRespuestas09">
-          <End Type="bdGestionDocenteModel.CatRespuestas09" Role="CatRespuestas09" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblEncuesta" Role="TblEncuesta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CatRespuestas09">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TblEncuesta">
-              <PropertyRef Name="idRespuesta09" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TblEncuesta_CatRespuestas10">
           <End Type="bdGestionDocenteModel.CatRespuestas10" Role="CatRespuestas10" Multiplicity="0..1" />
           <End Type="bdGestionDocenteModel.TblEncuesta" Role="TblEncuesta" Multiplicity="*" />
@@ -9916,6 +9834,88 @@
             </Principal>
             <Dependent Role="tblPersonal">
               <PropertyRef Name="idEncuesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CatAlergiaAlimento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strAlimento" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CatRespuestas06" Relationship="bdGestionDocenteModel.FK_CatRespuestas06_CatAlergiaAlimento" FromRole="CatAlergiaAlimento" ToRole="CatRespuestas06" />
+        </EntityType>
+        <Association Name="FK_CatRespuestas06_CatAlergiaAlimento">
+          <End Type="bdGestionDocenteModel.CatAlergiaAlimento" Role="CatAlergiaAlimento" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.CatRespuestas06" Role="CatRespuestas06" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatAlergiaAlimento">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CatRespuestas06">
+              <PropertyRef Name="idAlimento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CatRespuestas09">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bitLesion" Type="Boolean" />
+          <Property Name="idHuesos" Type="Int32" />
+          <Property Name="idLigamentos" Type="Int32" />
+          <Property Name="idArticulaciones" Type="Int32" />
+          <NavigationProperty Name="CatLesionArticulaciones" Relationship="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionArticulaciones" FromRole="CatRespuestas09" ToRole="CatLesionArticulaciones" />
+          <NavigationProperty Name="CatLesionHuesos" Relationship="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionHuesos" FromRole="CatRespuestas09" ToRole="CatLesionHuesos" />
+          <NavigationProperty Name="CatLesionLigamentos" Relationship="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionLigamentos" FromRole="CatRespuestas09" ToRole="CatLesionLigamentos" />
+          <NavigationProperty Name="TblEncuesta" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas09" FromRole="CatRespuestas09" ToRole="TblEncuesta" />
+        </EntityType>
+        <Association Name="FK_CatRespuestas09_CatLesionArticulaciones">
+          <End Type="bdGestionDocenteModel.CatLesionArticulaciones" Role="CatLesionArticulaciones" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.CatRespuestas09" Role="CatRespuestas09" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatLesionArticulaciones">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CatRespuestas09">
+              <PropertyRef Name="idArticulaciones" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CatRespuestas09_CatLesionHuesos">
+          <End Type="bdGestionDocenteModel.CatLesionHuesos" Role="CatLesionHuesos" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.CatRespuestas09" Role="CatRespuestas09" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatLesionHuesos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CatRespuestas09">
+              <PropertyRef Name="idHuesos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CatRespuestas09_CatLesionLigamentos">
+          <End Type="bdGestionDocenteModel.CatLesionLigamentos" Role="CatLesionLigamentos" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.CatRespuestas09" Role="CatRespuestas09" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatLesionLigamentos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CatRespuestas09">
+              <PropertyRef Name="idLigamentos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblEncuesta_CatRespuestas09">
+          <End Type="bdGestionDocenteModel.CatRespuestas09" Role="CatRespuestas09" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblEncuesta" Role="TblEncuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatRespuestas09">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblEncuesta">
+              <PropertyRef Name="idRespuesta09" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -11197,14 +11197,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CatAlergiaAlimento">
-            <EntityTypeMapping TypeName="bdGestionDocenteModel.CatAlergiaAlimento">
-              <MappingFragment StoreEntitySet="CatAlergiaAlimento">
-                <ScalarProperty Name="strAlimento" ColumnName="strAlimento" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CatAlergiaMedicamento">
             <EntityTypeMapping TypeName="bdGestionDocenteModel.CatAlergiaMedicamento">
               <MappingFragment StoreEntitySet="CatAlergiaMedicamento">
@@ -11362,17 +11354,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CatRespuestas09">
-            <EntityTypeMapping TypeName="bdGestionDocenteModel.CatRespuestas09">
-              <MappingFragment StoreEntitySet="CatRespuestas09">
-                <ScalarProperty Name="idArticulaciones" ColumnName="idArticulaciones" />
-                <ScalarProperty Name="idLigamentos" ColumnName="idLigamentos" />
-                <ScalarProperty Name="idHuesos" ColumnName="idHuesos" />
-                <ScalarProperty Name="bitLesion" ColumnName="bitLesion" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CatRespuestas10">
             <EntityTypeMapping TypeName="bdGestionDocenteModel.CatRespuestas10">
               <MappingFragment StoreEntitySet="CatRespuestas10">
@@ -11478,6 +11459,25 @@
                 <ScalarProperty Name="idRespuesta03" ColumnName="idRespuesta03" />
                 <ScalarProperty Name="idRespuesta02" ColumnName="idRespuesta02" />
                 <ScalarProperty Name="idRespuesta01" ColumnName="idRespuesta01" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatAlergiaAlimento">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.CatAlergiaAlimento">
+              <MappingFragment StoreEntitySet="CatAlergiaAlimento">
+                <ScalarProperty Name="strAlimento" ColumnName="strAlimento" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatRespuestas09">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.CatRespuestas09">
+              <MappingFragment StoreEntitySet="CatRespuestas09">
+                <ScalarProperty Name="idArticulaciones" ColumnName="idArticulaciones" />
+                <ScalarProperty Name="idLigamentos" ColumnName="idLigamentos" />
+                <ScalarProperty Name="idHuesos" ColumnName="idHuesos" />
+                <ScalarProperty Name="bitLesion" ColumnName="bitLesion" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

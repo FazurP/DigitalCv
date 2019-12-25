@@ -74,6 +74,7 @@
     <Compile Include="DocumentosBusiness.cs" />
     <Compile Include="EdificioBusiness.cs" />
     <Compile Include="EmergenciaBusiness.cs" />
+    <Compile Include="EncuestaSaludBusiness.cs" />
     <Compile Include="EnfermedadBusiness.cs" />
     <Compile Include="Enum\EnumFamiliares.cs" />
     <Compile Include="Enum\List.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Interface\IDocumentosBusiness.cs" />
     <Compile Include="Interface\IEdificioBusiness.cs" />
     <Compile Include="Interface\IEmergenciaBusiness.cs" />
+    <Compile Include="Interface\IEncuestaSaludBusiness.cs" />
     <Compile Include="Interface\IEstadiaEmpresaBusiness.cs" />
     <Compile Include="Interface\IEstadoSaludBusiness.cs" />
     <Compile Include="Interface\IExperienciaLaboralInternaBusiness.cs" />

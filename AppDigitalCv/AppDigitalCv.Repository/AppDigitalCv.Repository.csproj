@@ -373,6 +373,7 @@
     <Compile Include="ExperienciaLaboralInternaRepository.cs" />
     <Compile Include="FamiliarRepository.cs" />
     <Compile Include="FrecuenciaRepository.cs" />
+    <Compile Include="GrupoSanguineoRepository.cs" />
     <Compile Include="HobbieRepository.cs" />
     <Compile Include="HobbiesRepository.cs" />
     <Compile Include="IdiomaRepository.cs" />
@@ -390,6 +391,7 @@
     <Compile Include="NacionalidadRepository.cs" />
     <Compile Include="NivelConocimientoRepository.cs" />
     <Compile Include="NivelSalarialRepository.cs" />
+    <Compile Include="OpcionesRespuesta04Repository.cs" />
     <Compile Include="Organizaciones_Salud.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
@@ -411,6 +413,7 @@
     <Compile Include="InformeTecnicoRepository.cs" />
     <Compile Include="PrototipoRepository.cs" />
     <Compile Include="ProyectoInvestigacionRepository.cs" />
+    <Compile Include="RhRepository.cs" />
     <Compile Include="SalariosRepository.cs" />
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>

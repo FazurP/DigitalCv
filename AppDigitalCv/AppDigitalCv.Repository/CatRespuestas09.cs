@@ -21,7 +21,7 @@ namespace AppDigitalCv.Repository
         }
     
         public int id { get; set; }
-        public Nullable<int> bitLesion { get; set; }
+        public Nullable<bool> bitLesion { get; set; }
         public Nullable<int> idHuesos { get; set; }
         public Nullable<int> idLigamentos { get; set; }
         public Nullable<int> idArticulaciones { get; set; }

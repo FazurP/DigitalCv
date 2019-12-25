@@ -9,6 +9,6 @@ namespace AppDigitalCv.Domain
     public class Respuestas01DomainModel
     {
         public int id {get;set;}
-        public string strComidasDia { get; set; }
+        public string strComidasDias { get; set; }
     }
 }

@@ -273,7 +273,6 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblCompetenciasConocimientosPersonal_catDocumentos" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_personal_competenciaConocimietosPersonal" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatActividadesFisicas" Width="1.5" PointX="25.375" PointY="68" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.CatAlergiaAlimento" Width="1.5" PointX="25.375" PointY="15.375" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatAlergiaMedicamento" Width="1.5" PointX="25.375" PointY="13" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatAlergiaSustancia" Width="1.5" PointX="25.375" PointY="10.625" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatEnfermades" Width="1.5" PointX="25.375" PointY="60.75" />
@@ -292,7 +291,6 @@
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatRespuestas06" Width="1.5" PointX="27.625" PointY="12.375" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatRespuestas07" Width="1.5" PointX="27.625" PointY="71" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatRespuestas08" Width="1.5" PointX="27.625" PointY="46.25" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.CatRespuestas09" Width="1.5" PointX="27.625" PointY="55.25" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatRespuestas10" Width="1.5" PointX="27.625" PointY="16.75" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatRespuestas11" Width="1.5" PointX="27.625" PointY="68" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatRespuestas12" Width="1.5" PointX="27.625" PointY="60.5" />
@@ -305,16 +303,12 @@
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatTratamiento" Width="1.5" PointX="25.375" PointY="8" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.TblEncuesta" Width="1.5" PointX="29.875" PointY="1.25" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas11_CatActividadesFisicas" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas06_CatAlergiaAlimento" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas06_CatAlergiaMedicamento" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas06_CatAlergiaSustancia" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas12_CatEnfermades" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas07_CatEnfermedadesExantemática" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas03_CatFumador" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas05_CatGrupoSanguineo" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionArticulaciones" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionHuesos" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionLigamentos" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas04_CatOpcionesRespuesta04" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas01" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas02" />
@@ -325,7 +319,6 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas06" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas07" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas08" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas09" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas10" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas11" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas12" />
@@ -336,6 +329,13 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas16" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas17" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblPersonal_TblEncuesta" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.CatAlergiaAlimento" Width="1.5" PointX="14.375" PointY="0.875" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas06_CatAlergiaAlimento" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.CatRespuestas09" Width="1.5" PointX="27.625" PointY="55.25" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionArticulaciones" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionHuesos" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionLigamentos" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas09" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
