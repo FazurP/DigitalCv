@@ -276,7 +276,6 @@
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatAlergiaMedicamento" Width="1.5" PointX="25.375" PointY="13" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatAlergiaSustancia" Width="1.5" PointX="25.375" PointY="10.625" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatEnfermades" Width="1.5" PointX="25.375" PointY="60.75" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.CatEnfermedadesExantemática" Width="1.5" PointX="25.375" PointY="70.625" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatFumador" Width="1.5" PointX="25.375" PointY="4.25" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatGrupoSanguineo" Width="1.5" PointX="25.375" PointY="65.625" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatLesionArticulaciones" Width="1.5" PointX="25.375" PointY="58.125" />
@@ -306,7 +305,6 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas06_CatAlergiaMedicamento" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas06_CatAlergiaSustancia" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas12_CatEnfermades" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas07_CatEnfermedadesExantemática" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas03_CatFumador" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas05_CatGrupoSanguineo" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas04_CatOpcionesRespuesta04" />
@@ -336,6 +334,8 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionHuesos" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas09_CatLesionLigamentos" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas09" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.CatEnfermedadesExantemática" Width="1.5" PointX="25.375" PointY="70.75" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas07_CatEnfermedadesExantemática" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -194,8 +194,8 @@
           <Property Name="Rubeola" Type="bit" />
           <Property Name="Sarampión" Type="bit" />
           <Property Name="Escarlatina" Type="bit" />
-          <Property Name="Exantema Súbito" Type="bit" />
-          <Property Name="Enfermedad de Manos, Pies, Boca" Type="bit" />
+          <Property Name="Exantema_Súbito" Type="bit" />
+          <Property Name="Enfermedad_de_Manos__Pies__Boca" Type="bit" />
         </EntityType>
         <EntityType Name="CatEstado">
           <Key>
@@ -224,7 +224,7 @@
           <Property Name="strOcupacion" Type="varchar" MaxLength="150" />
           <Property Name="strDomicilio" Type="varchar" MaxLength="150" />
           <Property Name="bitVive" Type="bit" />
-          <Property Name="dteFechaNacimiento" Type="date" />
+          <Property Name="dteFechaNacimiento" Type="datetime" />
           <Property Name="idParentesco" Type="int" />
           <Property Name="idPersonal" Type="int" />
         </EntityType>
@@ -256,7 +256,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
           <Property Name="strEdadComienzo" Type="varchar" MaxLength="250" />
           <Property Name="strCigarrillosDia" Type="varchar" MaxLength="250" />
         </EntityType>
@@ -785,7 +785,7 @@
           <Property Name="idPais" Type="int" />
           <Property Name="strEditorial" Type="varchar" MaxLength="250" />
           <Property Name="strEdicion" Type="varchar" MaxLength="250" />
-          <Property Name="dteFechaPublicacion" Type="date" />
+          <Property Name="dteFechaPublicacion" Type="datetime" />
           <Property Name="strTiraje" Type="varchar" MaxLength="250" />
           <Property Name="strISBN" Type="varchar" MaxLength="250" />
           <Property Name="enumProposito" Type="varchar" MaxLength="250" />
@@ -820,8 +820,8 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idCurso" Type="int" />
           <Property Name="idInstitucion" Type="int" />
-          <Property Name="dteFechaInicio" Type="date" />
-          <Property Name="dteFechaTermino" Type="date" />
+          <Property Name="dteFechaInicio" Type="datetime" />
+          <Property Name="dteFechaTermino" Type="datetime" />
           <Property Name="idPersonal" Type="int" />
           <Property Name="strUrlDocumento" Type="varchar(max)" />
         </EntityType>
@@ -846,7 +846,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="dteFechaIngresoUTTT" Type="date" />
+          <Property Name="dteFechaIngresoUTTT" Type="datetime" />
           <Property Name="idCategoriaOcupa" Type="int" />
           <Property Name="idPersonal" Type="int" />
         </EntityType>
@@ -883,11 +883,11 @@
           <Key>
             <PropertyRef Name="idDeportePersonal" />
           </Key>
-          <Property Name="idDeportePersonal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idDeporte" Type="int" Nullable="false" />
           <Property Name="idPersonal" Type="int" Nullable="false" />
           <Property Name="dteFechaRegistro" Type="datetime" />
           <Property Name="idFrecuencia" Type="int" Nullable="false" />
+          <Property Name="idDeportePersonal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="strHorasPractica" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="TblDireccion">
@@ -908,8 +908,8 @@
           <Property Name="idTipoEstudio" Type="int" />
           <Property Name="idInstitucionSuperior" Type="int" />
           <Property Name="strTituloTesis" Type="varchar" MaxLength="250" />
-          <Property Name="dteFechaInicio" Type="date" />
-          <Property Name="dteFechaTermino" Type="date" />
+          <Property Name="dteFechaInicio" Type="datetime" />
+          <Property Name="dteFechaTermino" Type="datetime" />
           <Property Name="strNumeroAlumnos" Type="varchar" MaxLength="250" />
           <Property Name="strEstadoDireccionIndividualizada" Type="varchar" MaxLength="250" />
           <Property Name="bitConsideraCurriculum" Type="bit" />
@@ -935,7 +935,7 @@
           <Property Name="idPersonal" Type="int" Nullable="false" />
           <Property Name="idDocumento" Type="int" Nullable="false" />
           <Property Name="idTipoDocumento" Type="int" />
-          <Property Name="dteExpedicion" Type="date" />
+          <Property Name="dteExpedicion" Type="datetime" />
           <Property Name="dteVigenciaDocumento" Type="datetime" />
         </EntityType>
         <EntityType Name="tblEmergencia">
@@ -971,6 +971,7 @@
           <Property Name="idRespuesta15" Type="int" />
           <Property Name="idRespuesta16" Type="int" />
           <Property Name="idRespuesta17" Type="int" />
+          <Property Name="dteFechaRealizo" Type="date" />
         </EntityType>
         <EntityType Name="tblEnfermedadPersonal">
           <Key>
@@ -994,8 +995,8 @@
           <Property Name="strNombreEstadia" Type="varchar" MaxLength="250" />
           <Property Name="strResumenProyecto" Type="varchar" MaxLength="8000" />
           <Property Name="strObjetivo" Type="varchar" MaxLength="8000" />
-          <Property Name="dteFechaInicio" Type="date" />
-          <Property Name="dteFechaTermino" Type="date" />
+          <Property Name="dteFechaInicio" Type="datetime" />
+          <Property Name="dteFechaTermino" Type="datetime" />
           <Property Name="strNumeroAlumnos" Type="varchar" MaxLength="250" />
           <Property Name="strNumeroHoras" Type="varchar" MaxLength="250" />
           <Property Name="strNombreEmpresaInstitucion" Type="varchar" MaxLength="250" />
@@ -1014,8 +1015,8 @@
           <Property Name="idTipoPersonal" Type="int" />
           <Property Name="idPeriodo" Type="int" />
           <Property Name="strInstitucionEmpresa" Type="varchar" MaxLength="150" />
-          <Property Name="dteFechaInicio" Type="date" />
-          <Property Name="dteFechaFinal" Type="date" />
+          <Property Name="dteFechaInicio" Type="datetime" />
+          <Property Name="dteFechaFinal" Type="datetime" />
           <Property Name="strActividades" Type="varchar" MaxLength="8000" />
           <Property Name="strMotivoConclucion" Type="varchar" MaxLength="200" />
           <Property Name="strPuestoDesempeñado" Type="varchar" MaxLength="150" />
@@ -1030,8 +1031,8 @@
           <Property Name="idArea" Type="int" />
           <Property Name="idProgramaEduactivo" Type="int" />
           <Property Name="idPeriodo" Type="int" />
-          <Property Name="dteFechaInicio" Type="date" />
-          <Property Name="dteFechaFin" Type="date" />
+          <Property Name="dteFechaInicio" Type="datetime" />
+          <Property Name="dteFechaFin" Type="datetime" />
           <Property Name="strActividadDesempenada" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="TblFavoritos">
@@ -1074,9 +1075,9 @@
           <Property Name="strNombreProyecto" Type="varchar" MaxLength="250" />
           <Property Name="strAlcance" Type="varchar" MaxLength="250" />
           <Property Name="strInstitucionBeneficiaria" Type="varchar" MaxLength="250" />
-          <Property Name="dteFechaInicio" Type="date" />
+          <Property Name="dteFechaInicio" Type="datetime" />
           <Property Name="enumEstadoActual" Type="varchar" MaxLength="250" />
-          <Property Name="dteElaboracionInforme" Type="date" />
+          <Property Name="dteElaboracionInforme" Type="datetime" />
           <Property Name="numeroPaginas" Type="int" />
           <Property Name="idPais" Type="int" />
           <Property Name="enumProposito" Type="varchar" MaxLength="250" />
@@ -1111,7 +1112,7 @@
           <Property Name="strEdicion" Type="varchar" MaxLength="250" />
           <Property Name="strTiraje" Type="varchar" MaxLength="250" />
           <Property Name="strISBN" Type="varchar" MaxLength="250" />
-          <Property Name="FechaPublicacion" Type="date" />
+          <Property Name="FechaPublicacion" Type="datetime" />
           <Property Name="strProposito" Type="varchar" MaxLength="250" />
           <Property Name="bitConsideraCurriculum" Type="bit" />
         </EntityType>
@@ -1151,7 +1152,7 @@
           <Property Name="strNombre" Type="varchar" MaxLength="250" />
           <Property Name="strDescripcion" Type="varchar" MaxLength="8000" />
           <Property Name="strInstitucionBeneficiaria" Type="varchar" MaxLength="250" />
-          <Property Name="dteFechaPublicacion" Type="date" />
+          <Property Name="dteFechaPublicacion" Type="datetime" />
         </EntityType>
         <EntityType Name="TblMemoriasExtenso">
           <Key>
@@ -1161,7 +1162,7 @@
           <Property Name="strTituloPresentacion" Type="varchar" MaxLength="250" />
           <Property Name="strNombreCongresoPresento" Type="varchar" MaxLength="250" />
           <Property Name="idEstado" Type="int" />
-          <Property Name="dteFechaPublicacion" Type="date" />
+          <Property Name="dteFechaPublicacion" Type="datetime" />
           <Property Name="idPersonal" Type="int" />
         </EntityType>
         <EntityType Name="TblOtraCapacitacion">
@@ -1190,7 +1191,7 @@
           <Property Name="strNombrePonencia" Type="varchar" MaxLength="200" />
           <Property Name="strNombreInstitucionEmpresa" Type="varchar" MaxLength="200" />
           <Property Name="strLugar" Type="varchar" MaxLength="150" />
-          <Property Name="dteFecha" Type="date" />
+          <Property Name="dteFecha" Type="datetime" />
         </EntityType>
         <EntityType Name="tblParticipacionInstitucionalExterna">
           <Key>
@@ -1202,8 +1203,8 @@
           <Property Name="idCatDocumento" Type="int" />
           <Property Name="idPersonal" Type="int" />
           <Property Name="strActividad" Type="varchar" MaxLength="200" />
-          <Property Name="dteFechaInicio" Type="date" />
-          <Property Name="dteFechaTermino" Type="date" />
+          <Property Name="dteFechaInicio" Type="datetime" />
+          <Property Name="dteFechaTermino" Type="datetime" />
         </EntityType>
         <EntityType Name="tblParticipacionInstitucionalInterna">
           <Key>
@@ -1216,8 +1217,8 @@
           <Property Name="idCatTipoActividad" Type="int" />
           <Property Name="idCatPeriodo" Type="int" />
           <Property Name="strActividad" Type="varchar" MaxLength="250" />
-          <Property Name="fechaInicio" Type="date" />
-          <Property Name="fechaTermino" Type="date" />
+          <Property Name="fechaInicio" Type="datetime" />
+          <Property Name="fechaTermino" Type="datetime" />
         </EntityType>
         <EntityType Name="tblPersonal">
           <Key>
@@ -1277,7 +1278,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idPersonal" Type="int" />
           <Property Name="idDocumento" Type="int" />
-          <Property Name="dteFechaObtencionPremio" Type="date" />
+          <Property Name="dteFechaObtencionPremio" Type="datetime" />
           <Property Name="strInstitucion" Type="varchar" MaxLength="150" />
           <Property Name="strNombrePremio" Type="varchar" MaxLength="150" />
           <Property Name="strActividadDesempeniada" Type="varchar" MaxLength="150" />
@@ -1300,7 +1301,7 @@
           <Property Name="strImpactoMetodologia" Type="varchar" MaxLength="8000" />
           <Property Name="strImpactoDiseño" Type="varchar" MaxLength="8000" />
           <Property Name="strImpactoInnovacion" Type="varchar" MaxLength="8000" />
-          <Property Name="dteFechaPublicacion" Type="date" />
+          <Property Name="dteFechaPublicacion" Type="datetime" />
           <Property Name="strLugarPresento" Type="varchar" MaxLength="8000" />
           <Property Name="strProposito" Type="varchar" MaxLength="250" />
           <Property Name="bitConsideraCurriculum" Type="bit" />
@@ -1313,7 +1314,6 @@
           <Property Name="idPais" Type="int" />
           <Property Name="idDocumento" Type="int" />
           <Property Name="idPersonal" Type="int" />
-          <Property Name="idStatus" Type="int" />
           <Property Name="strAutor" Type="varchar" MaxLength="250" />
           <Property Name="strTipoProductividadInnovadora" Type="varchar" MaxLength="250" />
           <Property Name="strTitulo" Type="varchar" MaxLength="250" />
@@ -1323,9 +1323,10 @@
           <Property Name="strEstadoActual" Type="varchar" MaxLength="250" />
           <Property Name="strNumeroRegistro" Type="varchar" MaxLength="250" />
           <Property Name="strUsuario" Type="varchar" MaxLength="250" />
-          <Property Name="dteFechaRegistro" Type="date" />
+          <Property Name="dteFechaRegistro" Type="datetime" />
           <Property Name="strProposito" Type="varchar" MaxLength="250" />
           <Property Name="bitConsideraCurriculum" Type="bit" />
+          <Property Name="idStatus" Type="int" />
         </EntityType>
         <EntityType Name="tblProgresoProdep">
           <Key>
@@ -1350,7 +1351,7 @@
           <Property Name="strObjetivos" Type="varchar" MaxLength="8000" />
           <Property Name="strCaracteristicas" Type="varchar" MaxLength="8000" />
           <Property Name="strInstitucionDestinada" Type="varchar" MaxLength="250" />
-          <Property Name="dteFechaPublicacion" Type="date" />
+          <Property Name="dteFechaPublicacion" Type="datetime" />
           <Property Name="strEstadoActual" Type="varchar" MaxLength="250" />
           <Property Name="strProposito" Type="varchar" MaxLength="250" />
           <Property Name="bitConsideraCurriculum" Type="bit" />
@@ -1365,8 +1366,8 @@
           <Property Name="idPersonal" Type="int" />
           <Property Name="strTituloProyecto" Type="varchar" MaxLength="250" />
           <Property Name="strNombrePatrocinador" Type="varchar" MaxLength="250" />
-          <Property Name="dteFechaInicio" Type="date" />
-          <Property Name="dteFechaTermino" Type="date" />
+          <Property Name="dteFechaInicio" Type="datetime" />
+          <Property Name="dteFechaTermino" Type="datetime" />
           <Property Name="strTipoPatrocinador" Type="varchar" MaxLength="250" />
           <Property Name="strInvestigadoresParticipantes" Type="varchar" MaxLength="2500" />
           <Property Name="strAlumnosParticipantes" Type="varchar" MaxLength="2500" />
@@ -1397,8 +1398,8 @@
           <Property Name="strTutoria" Type="varchar" MaxLength="250" />
           <Property Name="strNumeroEstudiantes" Type="varchar" MaxLength="250" />
           <Property Name="strNombreEstudiante" Type="varchar" MaxLength="2500" />
-          <Property Name="dteFechaInicio" Type="date" />
-          <Property Name="dteFechaTermino" Type="date" />
+          <Property Name="dteFechaInicio" Type="datetime" />
+          <Property Name="dteFechaTermino" Type="datetime" />
           <Property Name="strTipo" Type="varchar" MaxLength="250" />
           <Property Name="strEstadoTutoria" Type="varchar" MaxLength="250" />
         </EntityType>
@@ -1811,6 +1812,30 @@
             </Principal>
             <Dependent Role="Organizaciones_Salud">
               <PropertyRef Name="IdDireccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_documento_documentacionPersonal">
+          <End Role="catDocumentos" Type="Self.catDocumentos" Multiplicity="1" />
+          <End Role="tblDocumentacionPersonal" Type="Self.tblDocumentacionPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catDocumentos">
+              <PropertyRef Name="idDocumento" />
+            </Principal>
+            <Dependent Role="tblDocumentacionPersonal">
+              <PropertyRef Name="idDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_documento_premiosDocente">
+          <End Role="catDocumentos" Type="Self.catDocumentos" Multiplicity="0..1" />
+          <End Role="tblPremiosDocente" Type="Self.tblPremiosDocente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catDocumentos">
+              <PropertyRef Name="idDocumento" />
+            </Principal>
+            <Dependent Role="tblPremiosDocente">
+              <PropertyRef Name="idDocumento" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2367,20 +2392,6 @@
             </Principal>
             <Dependent Role="TblDoctorado">
               <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblDocumentacionPersonal_catDocumentos">
-          <End Role="catDocumentos" Type="Self.catDocumentos" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="tblDocumentacionPersonal" Type="Self.tblDocumentacionPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catDocumentos">
-              <PropertyRef Name="idDocumento" />
-            </Principal>
-            <Dependent Role="tblDocumentacionPersonal">
-              <PropertyRef Name="idDocumento" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3164,7 +3175,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblParticipacionDocente_catDocumentos1">
+        <Association Name="FK_tblParticipacionDocente_catDocumentos">
           <End Role="catDocumentos" Type="Self.catDocumentos" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -3381,20 +3392,6 @@
             </Principal>
             <Dependent Role="tblPortafolioPersonal">
               <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblPremiosDocente_catDocumentos">
-          <End Role="catDocumentos" Type="Self.catDocumentos" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="tblPremiosDocente" Type="Self.tblPremiosDocente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catDocumentos">
-              <PropertyRef Name="idDocumento" />
-            </Principal>
-            <Dependent Role="tblPremiosDocente">
-              <PropertyRef Name="idDocumento" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3650,10 +3647,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblTelefono_tblDatosContacto1">
-          <End Role="tblDatosContacto" Type="Self.tblDatosContacto" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK_tblTelefono_tblDatosContacto">
+          <End Role="tblDatosContacto" Type="Self.tblDatosContacto" Multiplicity="0..1" />
           <End Role="tblTelefono" Type="Self.tblTelefono" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblDatosContacto">
@@ -4135,6 +4130,14 @@
             <End Role="TblDireccion" EntitySet="TblDireccion" />
             <End Role="Organizaciones_Salud" EntitySet="Organizaciones_Salud" />
           </AssociationSet>
+          <AssociationSet Name="fk_documento_documentacionPersonal" Association="Self.fk_documento_documentacionPersonal">
+            <End Role="catDocumentos" EntitySet="catDocumentos" />
+            <End Role="tblDocumentacionPersonal" EntitySet="tblDocumentacionPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_documento_premiosDocente" Association="Self.fk_documento_premiosDocente">
+            <End Role="catDocumentos" EntitySet="catDocumentos" />
+            <End Role="tblPremiosDocente" EntitySet="tblPremiosDocente" />
+          </AssociationSet>
           <AssociationSet Name="fk_edificio_datosLaboralesDocente" Association="Self.fk_edificio_datosLaboralesDocente">
             <End Role="catEdificio" EntitySet="catEdificio" />
             <End Role="tblDatosLaboralesDocente" EntitySet="tblDatosLaboralesDocente" />
@@ -4314,10 +4317,6 @@
           <AssociationSet Name="FK_TblDoctorado_tblPersonal" Association="Self.FK_TblDoctorado_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="TblDoctorado" EntitySet="TblDoctorado" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblDocumentacionPersonal_catDocumentos" Association="Self.FK_tblDocumentacionPersonal_catDocumentos">
-            <End Role="catDocumentos" EntitySet="catDocumentos" />
-            <End Role="tblDocumentacionPersonal" EntitySet="tblDocumentacionPersonal" />
           </AssociationSet>
           <AssociationSet Name="FK_tblDocumentacionPersonal_CatTipoDocumento" Association="Self.FK_tblDocumentacionPersonal_CatTipoDocumento">
             <End Role="CatTipoDocumento" EntitySet="CatTipoDocumento" />
@@ -4563,7 +4562,7 @@
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="TblOtraCapacitacion" EntitySet="TblOtraCapacitacion" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblParticipacionDocente_catDocumentos1" Association="Self.FK_tblParticipacionDocente_catDocumentos1">
+          <AssociationSet Name="FK_tblParticipacionDocente_catDocumentos" Association="Self.FK_tblParticipacionDocente_catDocumentos">
             <End Role="catDocumentos" EntitySet="catDocumentos" />
             <End Role="tblParticipacionDocente" EntitySet="tblParticipacionDocente" />
           </AssociationSet>
@@ -4626,10 +4625,6 @@
           <AssociationSet Name="FK_tblPortafolioPersonal_tblPersonal" Association="Self.FK_tblPortafolioPersonal_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblPortafolioPersonal" EntitySet="tblPortafolioPersonal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblPremiosDocente_catDocumentos" Association="Self.FK_tblPremiosDocente_catDocumentos">
-            <End Role="catDocumentos" EntitySet="catDocumentos" />
-            <End Role="tblPremiosDocente" EntitySet="tblPremiosDocente" />
           </AssociationSet>
           <AssociationSet Name="FK_tblProduccionArtistica_catDocumentos" Association="Self.FK_tblProduccionArtistica_catDocumentos">
             <End Role="catDocumentos" EntitySet="catDocumentos" />
@@ -4703,7 +4698,7 @@
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" EntitySet="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblTelefono_tblDatosContacto1" Association="Self.FK_tblTelefono_tblDatosContacto1">
+          <AssociationSet Name="FK_tblTelefono_tblDatosContacto" Association="Self.FK_tblTelefono_tblDatosContacto">
             <End Role="tblDatosContacto" EntitySet="tblDatosContacto" />
             <End Role="tblTelefono" EntitySet="tblTelefono" />
           </AssociationSet>
@@ -5525,7 +5520,6 @@
           <EntitySet Name="CatAlergiaMedicamento" EntityType="bdGestionDocenteModel.CatAlergiaMedicamento" />
           <EntitySet Name="CatAlergiaSustancia" EntityType="bdGestionDocenteModel.CatAlergiaSustancia" />
           <EntitySet Name="CatEnfermades" EntityType="bdGestionDocenteModel.CatEnfermades" />
-          <EntitySet Name="CatEnfermedadesExantemática" EntityType="bdGestionDocenteModel.CatEnfermedadesExantemática" />
           <EntitySet Name="CatFumador" EntityType="bdGestionDocenteModel.CatFumador" />
           <EntitySet Name="CatGrupoSanguineo" EntityType="bdGestionDocenteModel.CatGrupoSanguineo" />
           <EntitySet Name="CatLesionArticulaciones" EntityType="bdGestionDocenteModel.CatLesionArticulaciones" />
@@ -5566,10 +5560,6 @@
           <AssociationSet Name="FK_CatRespuestas12_CatEnfermades" Association="bdGestionDocenteModel.FK_CatRespuestas12_CatEnfermades">
             <End Role="CatEnfermades" EntitySet="CatEnfermades" />
             <End Role="CatRespuestas12" EntitySet="CatRespuestas12" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CatRespuestas07_CatEnfermedadesExantemática" Association="bdGestionDocenteModel.FK_CatRespuestas07_CatEnfermedadesExantemática">
-            <End Role="CatEnfermedadesExantemática" EntitySet="CatEnfermedadesExantemática" />
-            <End Role="CatRespuestas07" EntitySet="CatRespuestas07" />
           </AssociationSet>
           <AssociationSet Name="FK_CatRespuestas03_CatFumador" Association="bdGestionDocenteModel.FK_CatRespuestas03_CatFumador">
             <End Role="CatFumador" EntitySet="CatFumador" />
@@ -5680,6 +5670,11 @@
           <AssociationSet Name="FK_TblEncuesta_CatRespuestas09" Association="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas09">
             <End Role="CatRespuestas09" EntitySet="CatRespuestas09" />
             <End Role="TblEncuesta" EntitySet="TblEncuesta" />
+          </AssociationSet>
+          <EntitySet Name="CatEnfermedadesExantemática" EntityType="bdGestionDocenteModel.CatEnfermedadesExantemática" />
+          <AssociationSet Name="FK_CatRespuestas07_CatEnfermedadesExantemática" Association="bdGestionDocenteModel.FK_CatRespuestas07_CatEnfermedadesExantemática">
+            <End Role="CatEnfermedadesExantemática" EntitySet="CatEnfermedadesExantemática" />
+            <End Role="CatRespuestas07" EntitySet="CatRespuestas07" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="catAlergias">
@@ -6455,8 +6450,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idCurso" Type="Int32" />
           <Property Name="idInstitucion" Type="Int32" />
-          <Property Name="dteFechaInicio" Type="DateTime" Precision="0" />
-          <Property Name="dteFechaTermino" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaInicio" Type="DateTime" Precision="3" />
+          <Property Name="dteFechaTermino" Type="DateTime" Precision="3" />
           <Property Name="idPersonal" Type="Int32" />
           <NavigationProperty Name="catCurso" Relationship="bdGestionDocenteModel.FK_tblCursos_catCurso" FromRole="tblCursos" ToRole="catCurso" />
           <NavigationProperty Name="catInstitucionSuperior" Relationship="bdGestionDocenteModel.FK_tblCursos_catInstitucionSuperior" FromRole="tblCursos" ToRole="catInstitucionSuperior" />
@@ -6573,7 +6568,7 @@
           <Property Name="strNombrePonencia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="strNombreInstitucionEmpresa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="strLugar" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="dteFecha" Type="DateTime" Precision="0" />
+          <Property Name="dteFecha" Type="DateTime" Precision="3" />
           <NavigationProperty Name="catDocumentos" Relationship="bdGestionDocenteModel.FK_tblParticipacionDocente_catDocumentos" FromRole="tblParticipacionDocente" ToRole="catDocumentos" />
           <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_tblParticipacionDocente_tblPersonal1" FromRole="tblParticipacionDocente" ToRole="tblPersonal" />
         </EntityType>
@@ -6587,8 +6582,8 @@
           <Property Name="idCatDocumento" Type="Int32" />
           <Property Name="idPersonal" Type="Int32" />
           <Property Name="strActividad" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="dteFechaInicio" Type="DateTime" Precision="0" />
-          <Property Name="dteFechaTermino" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaInicio" Type="DateTime" Precision="3" />
+          <Property Name="dteFechaTermino" Type="DateTime" Precision="3" />
           <NavigationProperty Name="catDocumentos" Relationship="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_catDocumentos" FromRole="tblParticipacionInstitucionalExterna" ToRole="catDocumentos" />
           <NavigationProperty Name="catInstitucionSuperior" Relationship="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_catInstitucionSuperior" FromRole="tblParticipacionInstitucionalExterna" ToRole="catInstitucionSuperior" />
           <NavigationProperty Name="catPeriodo" Relationship="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_catPeriodo" FromRole="tblParticipacionInstitucionalExterna" ToRole="catPeriodo" />
@@ -6605,8 +6600,8 @@
           <Property Name="idCatTipoActividad" Type="Int32" />
           <Property Name="idCatPeriodo" Type="Int32" />
           <Property Name="strActividad" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="fechaInicio" Type="DateTime" Precision="0" />
-          <Property Name="fechaTermino" Type="DateTime" Precision="0" />
+          <Property Name="fechaInicio" Type="DateTime" Precision="3" />
+          <Property Name="fechaTermino" Type="DateTime" Precision="3" />
           <NavigationProperty Name="catDocumentos" Relationship="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_catDocumentos" FromRole="tblParticipacionInstitucionalInterna" ToRole="catDocumentos" />
           <NavigationProperty Name="catPeriodo" Relationship="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_catPeriodo" FromRole="tblParticipacionInstitucionalInterna" ToRole="catPeriodo" />
           <NavigationProperty Name="catProgramaEducativo" Relationship="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_catProgramaEducativo" FromRole="tblParticipacionInstitucionalInterna" ToRole="catProgramaEducativo" />
@@ -6735,8 +6730,8 @@
           <Property Name="idTipoPersonal" Type="Int32" />
           <Property Name="idPeriodo" Type="Int32" />
           <Property Name="strInstitucionEmpresa" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="dteFechaInicio" Type="DateTime" Precision="0" />
-          <Property Name="dteFechaFinal" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaInicio" Type="DateTime" Precision="3" />
+          <Property Name="dteFechaFinal" Type="DateTime" Precision="3" />
           <Property Name="strActividades" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
           <Property Name="strMotivoConclucion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="strPuestoDesempeñado" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
@@ -6782,8 +6777,8 @@
           <Property Name="idArea" Type="Int32" />
           <Property Name="idProgramaEduactivo" Type="Int32" />
           <Property Name="idPeriodo" Type="Int32" />
-          <Property Name="dteFechaInicio" Type="DateTime" Precision="0" />
-          <Property Name="dteFechaFin" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaInicio" Type="DateTime" Precision="3" />
+          <Property Name="dteFechaFin" Type="DateTime" Precision="3" />
           <Property Name="strActividadDesempenada" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="catArea" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catArea" FromRole="tblExperienciaLaboralInterna" ToRole="catArea" />
           <NavigationProperty Name="catPeriodo" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catPeriodo" FromRole="tblExperienciaLaboralInterna" ToRole="catPeriodo" />
@@ -6860,7 +6855,7 @@
           <Property Name="idPais" Type="Int32" />
           <Property Name="strEditorial" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strEdicion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="dteFechaPublicacion" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaPublicacion" Type="DateTime" Precision="3" />
           <Property Name="strTiraje" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strISBN" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="enumProposito" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
@@ -6922,9 +6917,9 @@
           <Property Name="strNombreProyecto" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strAlcance" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strInstitucionBeneficiaria" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="dteFechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaInicio" Type="DateTime" Precision="3" />
           <Property Name="enumEstadoActual" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="dteElaboracionInforme" Type="DateTime" Precision="0" />
+          <Property Name="dteElaboracionInforme" Type="DateTime" Precision="3" />
           <Property Name="numeroPaginas" Type="Int32" />
           <Property Name="idPais" Type="Int32" />
           <Property Name="enumProposito" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
@@ -6978,7 +6973,7 @@
           <Property Name="strEdicion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strTiraje" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strISBN" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="FechaPublicacion" Type="DateTime" Precision="0" />
+          <Property Name="FechaPublicacion" Type="DateTime" Precision="3" />
           <Property Name="strProposito" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="bitConsideraCurriculum" Type="Boolean" />
           <NavigationProperty Name="CatPais" Relationship="bdGestionDocenteModel.FK_tblLibro_CatPais" FromRole="tblLibro" ToRole="CatPais" />
@@ -7025,7 +7020,7 @@
           <Property Name="strNombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strDescripcion" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
           <Property Name="strInstitucionBeneficiaria" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="dteFechaPublicacion" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaPublicacion" Type="DateTime" Precision="3" />
           <NavigationProperty Name="CatPais" Relationship="bdGestionDocenteModel.FK_tblManualOperacion_CatPais" FromRole="tblManualOperacion" ToRole="CatPais" />
           <NavigationProperty Name="catStatus" Relationship="bdGestionDocenteModel.FK_tblManualOperacion_catStatus" FromRole="tblManualOperacion" ToRole="catStatus" />
           <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_tblManualOperacion_tblPersonal" FromRole="tblManualOperacion" ToRole="tblPersonal" />
@@ -7075,7 +7070,7 @@
           <Property Name="strEstadoActual" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strNumeroRegistro" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strUsuario" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="dteFechaRegistro" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaRegistro" Type="DateTime" Precision="3" />
           <Property Name="strProposito" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="bitConsideraCurriculum" Type="Boolean" />
           <NavigationProperty Name="catDocumentos" Relationship="bdGestionDocenteModel.FK_tblProductividadInnovadora_catDocumentos" FromRole="tblProductividadInnovadora" ToRole="catDocumentos" />
@@ -7151,7 +7146,7 @@
           <Property Name="strImpactoMetodologia" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
           <Property Name="strImpactoDiseño" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
           <Property Name="strImpactoInnovacion" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
-          <Property Name="dteFechaPublicacion" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaPublicacion" Type="DateTime" Precision="3" />
           <Property Name="strLugarPresento" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
           <Property Name="strProposito" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="bitConsideraCurriculum" Type="Boolean" />
@@ -7232,7 +7227,7 @@
           <Property Name="strObjetivos" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
           <Property Name="strCaracteristicas" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
           <Property Name="strInstitucionDestinada" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="dteFechaPublicacion" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaPublicacion" Type="DateTime" Precision="3" />
           <Property Name="strEstadoActual" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strProposito" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="bitConsideraCurriculum" Type="Boolean" />
@@ -7293,8 +7288,8 @@
           <Property Name="idPersonal" Type="Int32" />
           <Property Name="strTituloProyecto" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strNombrePatrocinador" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="dteFechaInicio" Type="DateTime" Precision="0" />
-          <Property Name="dteFechaTermino" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaInicio" Type="DateTime" Precision="3" />
+          <Property Name="dteFechaTermino" Type="DateTime" Precision="3" />
           <Property Name="strTipoPatrocinador" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strInvestigadoresParticipantes" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
           <Property Name="strAlumnosParticipantes" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
@@ -7344,8 +7339,8 @@
           <Property Name="idTipoEstudio" Type="Int32" />
           <Property Name="idInstitucionSuperior" Type="Int32" />
           <Property Name="strTituloTesis" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="dteFechaInicio" Type="DateTime" Precision="0" />
-          <Property Name="dteFechaTermino" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaInicio" Type="DateTime" Precision="3" />
+          <Property Name="dteFechaTermino" Type="DateTime" Precision="3" />
           <Property Name="strNumeroAlumnos" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strEstadoDireccionIndividualizada" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="bitConsideraCurriculum" Type="Boolean" />
@@ -7417,8 +7412,8 @@
           <Property Name="strNombreEstadia" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strResumenProyecto" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
           <Property Name="strObjetivo" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
-          <Property Name="dteFechaInicio" Type="DateTime" Precision="0" />
-          <Property Name="dteFechaTermino" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaInicio" Type="DateTime" Precision="3" />
+          <Property Name="dteFechaTermino" Type="DateTime" Precision="3" />
           <Property Name="strNumeroAlumnos" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strNumeroHoras" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strNombreEmpresaInstitucion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
@@ -7500,8 +7495,8 @@
           <Property Name="strTutoria" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strNumeroEstudiantes" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strNombreEstudiante" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
-          <Property Name="dteFechaInicio" Type="DateTime" Precision="0" />
-          <Property Name="dteFechaTermino" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaInicio" Type="DateTime" Precision="3" />
+          <Property Name="dteFechaTermino" Type="DateTime" Precision="3" />
           <Property Name="strTipo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strEstadoTutoria" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="catProgramaEducativo" Relationship="bdGestionDocenteModel.FK_tblTutoria_catProgramaEducativo" FromRole="tblTutoria" ToRole="catProgramaEducativo" />
@@ -7875,7 +7870,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dteFechaIngresoUTTT" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaIngresoUTTT" Type="DateTime" Precision="3" />
           <Property Name="idCategoriaOcupa" Type="Int32" />
           <Property Name="idPersonal" Type="Int32" />
           <NavigationProperty Name="CatCategoriaProfesor" Relationship="bdGestionDocenteModel.FK_TblDatosLaborales_CatCategoriaProfesor" FromRole="TblDatosLaborales" ToRole="CatCategoriaProfesor" />
@@ -7937,7 +7932,7 @@
           <Property Name="strTituloPresentacion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="strNombreCongresoPresento" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="idEstado" Type="Int32" />
-          <Property Name="dteFechaPublicacion" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaPublicacion" Type="DateTime" Precision="3" />
           <Property Name="idPersonal" Type="Int32" />
           <NavigationProperty Name="CatEstado" Relationship="bdGestionDocenteModel.FK_TblMemoriasExtenso_CatEstado" FromRole="TblMemoriasExtenso" ToRole="CatEstado" />
           <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_TblMemoriasExtenso_tblPersonal" FromRole="TblMemoriasExtenso" ToRole="tblPersonal" />
@@ -8205,7 +8200,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idPersonal" Type="Int32" />
           <Property Name="idDocumento" Type="Int32" />
-          <Property Name="dteFechaObtencionPremio" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaObtencionPremio" Type="DateTime" Precision="3" />
           <Property Name="strInstitucion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="strNombrePremio" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="strActividadDesempeniada" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
@@ -8257,7 +8252,7 @@
           <Property Name="strOcupacion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="strDomicilio" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="bitVive" Type="Boolean" />
-          <Property Name="dteFechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="dteFechaNacimiento" Type="DateTime" Precision="3" />
           <Property Name="idParentesco" Type="Int32" />
           <Property Name="idPersonal" Type="Int32" />
           <NavigationProperty Name="catParentesco" Relationship="bdGestionDocenteModel.FK_catFamiliar_catParentesco" FromRole="catFamiliar" ToRole="catParentesco" />
@@ -9129,7 +9124,7 @@
           <Property Name="idPersonal" Type="Int32" Nullable="false" />
           <Property Name="idDocumento" Type="Int32" Nullable="false" />
           <Property Name="idTipoDocumento" Type="Int32" />
-          <Property Name="dteExpedicion" Type="DateTime" Precision="0" />
+          <Property Name="dteExpedicion" Type="DateTime" Precision="3" />
           <Property Name="dteVigenciaDocumento" Type="DateTime" Precision="3" />
           <NavigationProperty Name="catDocumentos" Relationship="bdGestionDocenteModel.fk_documento_documentacionPersonal" FromRole="tblDocumentacionPersonal" ToRole="catDocumentos" />
           <NavigationProperty Name="CatTipoDocumento" Relationship="bdGestionDocenteModel.FK_tblDocumentacionPersonal_CatTipoDocumento" FromRole="tblDocumentacionPersonal" ToRole="CatTipoDocumento" />
@@ -9240,19 +9235,6 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="strEnfermedad" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CatRespuestas12" Relationship="bdGestionDocenteModel.FK_CatRespuestas12_CatEnfermades" FromRole="CatEnfermades" ToRole="CatRespuestas12" />
-        </EntityType>
-        <EntityType Name="CatEnfermedadesExantemática">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Varicela" Type="Boolean" />
-          <Property Name="Rubeola" Type="Boolean" />
-          <Property Name="Sarampión" Type="Boolean" />
-          <Property Name="Escarlatina" Type="Boolean" />
-          <Property Name="Exantema_Súbito" Type="Boolean" />
-          <Property Name="Enfermedad_de_Manos__Pies__Boca" Type="Boolean" />
-          <NavigationProperty Name="CatRespuestas07" Relationship="bdGestionDocenteModel.FK_CatRespuestas07_CatEnfermedadesExantemática" FromRole="CatEnfermedadesExantemática" ToRole="CatRespuestas07" />
         </EntityType>
         <EntityType Name="CatFumador">
           <Key>
@@ -9370,8 +9352,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="bitPadecido" Type="Boolean" />
           <Property Name="idEnfermedadesExantemática" Type="Int32" />
-          <NavigationProperty Name="CatEnfermedadesExantemática" Relationship="bdGestionDocenteModel.FK_CatRespuestas07_CatEnfermedadesExantemática" FromRole="CatRespuestas07" ToRole="CatEnfermedadesExantemática" />
           <NavigationProperty Name="TblEncuesta" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas07" FromRole="CatRespuestas07" ToRole="TblEncuesta" />
+          <NavigationProperty Name="CatEnfermedadesExantemática" Relationship="bdGestionDocenteModel.FK_CatRespuestas07_CatEnfermedadesExantemática" FromRole="CatRespuestas07" ToRole="CatEnfermedadesExantemática" />
         </EntityType>
         <EntityType Name="CatRespuestas08">
           <Key>
@@ -9510,6 +9492,7 @@
           <NavigationProperty Name="CatRespuestas17" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas17" FromRole="TblEncuesta" ToRole="CatRespuestas17" />
           <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_tblPersonal_TblEncuesta" FromRole="TblEncuesta" ToRole="tblPersonal" />
           <NavigationProperty Name="CatRespuestas09" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas09" FromRole="TblEncuesta" ToRole="CatRespuestas09" />
+          <Property Name="dteFechaRealizo" Type="DateTime" Precision="0" />
         </EntityType>
         <Association Name="FK_CatRespuestas11_CatActividadesFisicas">
           <End Type="bdGestionDocenteModel.CatActividadesFisicas" Role="CatActividadesFisicas" Multiplicity="0..1" />
@@ -9556,18 +9539,6 @@
             </Principal>
             <Dependent Role="CatRespuestas12">
               <PropertyRef Name="idEnfermedades" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CatRespuestas07_CatEnfermedadesExantemática">
-          <End Type="bdGestionDocenteModel.CatEnfermedadesExantemática" Role="CatEnfermedadesExantemática" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.CatRespuestas07" Role="CatRespuestas07" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CatEnfermedadesExantemática">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CatRespuestas07">
-              <PropertyRef Name="idEnfermedadesExantemática" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9916,6 +9887,31 @@
             </Principal>
             <Dependent Role="TblEncuesta">
               <PropertyRef Name="idRespuesta09" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CatEnfermedadesExantemática">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Varicela" Type="Boolean" />
+          <Property Name="Rubeola" Type="Boolean" />
+          <Property Name="Sarampión" Type="Boolean" />
+          <Property Name="Escarlatina" Type="Boolean" />
+          <Property Name="Exantema_Súbito" Type="Boolean" />
+          <Property Name="Enfermedad_de_Manos__Pies__Boca" Type="Boolean" />
+          <NavigationProperty Name="CatRespuestas07" Relationship="bdGestionDocenteModel.FK_CatRespuestas07_CatEnfermedadesExantemática" FromRole="CatEnfermedadesExantemática" ToRole="CatRespuestas07" />
+        </EntityType>
+        <Association Name="FK_CatRespuestas07_CatEnfermedadesExantemática">
+          <End Type="bdGestionDocenteModel.CatEnfermedadesExantemática" Role="CatEnfermedadesExantemática" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.CatRespuestas07" Role="CatRespuestas07" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatEnfermedadesExantemática">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CatRespuestas07">
+              <PropertyRef Name="idEnfermedadesExantemática" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -11221,19 +11217,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CatEnfermedadesExantemática">
-            <EntityTypeMapping TypeName="bdGestionDocenteModel.CatEnfermedadesExantemática">
-              <MappingFragment StoreEntitySet="CatEnfermedadesExantemática">
-                <ScalarProperty Name="Enfermedad_de_Manos__Pies__Boca" ColumnName="Enfermedad de Manos, Pies, Boca" />
-                <ScalarProperty Name="Exantema_Súbito" ColumnName="Exantema Súbito" />
-                <ScalarProperty Name="Escarlatina" ColumnName="Escarlatina" />
-                <ScalarProperty Name="Sarampión" ColumnName="Sarampión" />
-                <ScalarProperty Name="Rubeola" ColumnName="Rubeola" />
-                <ScalarProperty Name="Varicela" ColumnName="Varicela" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CatFumador">
             <EntityTypeMapping TypeName="bdGestionDocenteModel.CatFumador">
               <MappingFragment StoreEntitySet="CatFumador">
@@ -11442,6 +11425,7 @@
           <EntitySetMapping Name="TblEncuesta">
             <EntityTypeMapping TypeName="bdGestionDocenteModel.TblEncuesta">
               <MappingFragment StoreEntitySet="TblEncuesta">
+                <ScalarProperty Name="dteFechaRealizo" ColumnName="dteFechaRealizo" />
                 <ScalarProperty Name="idRespuesta17" ColumnName="idRespuesta17" />
                 <ScalarProperty Name="idRespuesta16" ColumnName="idRespuesta16" />
                 <ScalarProperty Name="idRespuesta15" ColumnName="idRespuesta15" />
@@ -11478,6 +11462,19 @@
                 <ScalarProperty Name="idLigamentos" ColumnName="idLigamentos" />
                 <ScalarProperty Name="idHuesos" ColumnName="idHuesos" />
                 <ScalarProperty Name="bitLesion" ColumnName="bitLesion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatEnfermedadesExantemática">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.CatEnfermedadesExantemática">
+              <MappingFragment StoreEntitySet="CatEnfermedadesExantemática">
+                <ScalarProperty Name="Enfermedad_de_Manos__Pies__Boca" ColumnName="Enfermedad_de_Manos__Pies__Boca" />
+                <ScalarProperty Name="Exantema_Súbito" ColumnName="Exantema_Súbito" />
+                <ScalarProperty Name="Escarlatina" ColumnName="Escarlatina" />
+                <ScalarProperty Name="Sarampión" ColumnName="Sarampión" />
+                <ScalarProperty Name="Rubeola" ColumnName="Rubeola" />
+                <ScalarProperty Name="Varicela" ColumnName="Varicela" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -13,5 +13,8 @@ namespace AppDigitalCv.Business.Interface
         List<RhDomainModel> GetAllRhs();
         List<GrupoSanguineoDomainModel> GetAllGruposSanguineos();
         bool AddEncuesta(EncuestaDomainModel encuestaDomainModel);
+        List<EncuestaDomainModel> GetEncuesta(int _idPersonal);
+        EncuestaDomainModel GetEncuestaById(int _id);
+        bool DeleteEncuesta(int _idEncuesta);
     }
 }

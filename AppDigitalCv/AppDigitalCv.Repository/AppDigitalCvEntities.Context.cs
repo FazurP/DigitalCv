@@ -137,7 +137,6 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<CatAlergiaMedicamento> CatAlergiaMedicamento { get; set; }
         public virtual DbSet<CatAlergiaSustancia> CatAlergiaSustancia { get; set; }
         public virtual DbSet<CatEnfermades> CatEnfermades { get; set; }
-        public virtual DbSet<CatEnfermedadesExantemática> CatEnfermedadesExantemática { get; set; }
         public virtual DbSet<CatFumador> CatFumador { get; set; }
         public virtual DbSet<CatGrupoSanguineo> CatGrupoSanguineo { get; set; }
         public virtual DbSet<CatLesionArticulaciones> CatLesionArticulaciones { get; set; }
@@ -165,5 +164,6 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<TblEncuesta> TblEncuesta { get; set; }
         public virtual DbSet<CatAlergiaAlimento> CatAlergiaAlimento { get; set; }
         public virtual DbSet<CatRespuestas09> CatRespuestas09 { get; set; }
+        public virtual DbSet<CatEnfermedadesExantemática> CatEnfermedadesExantemática { get; set; }
     }
 }

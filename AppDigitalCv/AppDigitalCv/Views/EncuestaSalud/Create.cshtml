@@ -1,7 +1,7 @@
 ﻿@model AppDigitalCv.ViewModels.EncuestaVM
 @using AppDigitalCv.Security
 
-@using (Html.BeginForm("Create", "EncuestaSalud", FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "EncuestaSalud", FormMethod.Post, new { name = "myForm", id = "myForm" }))
 {
     @Html.AntiForgeryToken()
     <div class="bs-container" style="min-height:960px;">
@@ -29,17 +29,17 @@
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
                                         <label>1.	¿Cuántas comidas realiza al día?</label>
-                                        @Html.TextBoxFor(model => model.Respuestas01.strComidasDias,new { @class="form-control input-sm"})
+                                        @Html.TextBoxFor(model => model.Respuestas01.strComidasDias, new { @class = "form-control input-sm" })
                                     </div>
                                     <div class="form-group">
                                         <label>2.	¿Cuántas horas duerme al día?</label>
-                                        @Html.TextBoxFor(model => model.Respuestas02.strHorasDuermeDia,new { @class="form-control input-sm"})
+                                        @Html.TextBoxFor(model => model.Respuestas02.strHorasDuermeDia, new { @class = "form-control input-sm" })
                                     </div>
                                     <div class="form-group">
                                         <label>
                                             3.	Si es fumador. Responda las siguientes preguntas.
                                         </label>
-                                        Si @Html.RadioButtonFor(model => model.Respuestas03.bitFumador, true, new { @checked = false })
+                                        Si @Html.RadioButtonFor(model => model.Respuestas03.bitFumador, true, new { @checked = false});
                                         No @Html.RadioButtonFor(model => model.Respuestas03.bitFumador, false, new { @checked = true })
                                         <br />
                                         ¿Cuántos cigarrillos fuma al día?
@@ -52,7 +52,7 @@
                                         <label>
                                             4.	Seleccione la opción que más se ajuste a su hábito de consumo de alcohol.
                                         </label>
-                                        @Html.DropDownList("Respuestas04.idOpcion",null,new { @class="form-control input-sm"})
+                                        @Html.DropDownList("Respuestas04.idOpcion", null, new { @class = "form-control input-sm" })
                                     </div>
                                     <div class="form-group">
                                         <label>5.	¿Cuál es su grupo y RH sanguíneo?</label>
@@ -62,18 +62,18 @@
                                         RH Sanguineo
                                         @Html.DropDownList("Respuestas05.idGrupoSanguineo", null, new { @class = "form-control input-sm" })
                                     </div>
-                                   
+
                                     <div class="form-group">
                                         <label>6.	¿Es alérgico a algún medicamento, sustancia o alimento?</label>
-                                        Si @Html.RadioButtonFor(model => model.Respuestas06.bitAlergico,true)
-                                        No @Html.RadioButtonFor(model => model.Respuestas06.bitAlergico,false,new { @checked=""})
-                                    <br />
+                                        Si @Html.RadioButtonFor(model => model.Respuestas06.bitAlergico, true)
+                                        No @Html.RadioButtonFor(model => model.Respuestas06.bitAlergico, false, new { @checked = "" })
+                                        <br />
                                         Medicamento
-                                        @Html.TextBoxFor(model => model.Respuestas06.AlergiaMedicamento.strMedicamento,new { @class="form-control input-sm"})
+                                        @Html.TextBoxFor(model => model.Respuestas06.AlergiaMedicamento.strMedicamento, new { @class = "form-control input-sm" })
                                         Sustancia
-                                        @Html.TextBoxFor(model => model.Respuestas06.AlergiaSustancia.strSustancia,new { @class="form-control input-sm"})
+                                        @Html.TextBoxFor(model => model.Respuestas06.AlergiaSustancia.strSustancia, new { @class = "form-control input-sm" })
                                         Alimento
-                                        @Html.TextBoxFor(model => model.Respuestas06.AlergiaAlimento.strAlimento,new { @class="form-control input-sm"})
+                                        @Html.TextBoxFor(model => model.Respuestas06.AlergiaAlimento.strAlimento, new { @class = "form-control input-sm" })
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -83,7 +83,7 @@
 
                                         </label>
                                         Si @Html.RadioButtonFor(model => model.Respuestas07.bitPadecido, true)
-                                        No @Html.RadioButtonFor(model => model.Respuestas07.bitPadecido, false,new { @checked=""})
+                                        No @Html.RadioButtonFor(model => model.Respuestas07.bitPadecido, false, new { @checked = "" })
 
                                         <br />
 
@@ -95,13 +95,13 @@
                                             <li class="list-group-item">Exantema Subito @Html.CheckBoxFor(model => model.Respuestas07.EnfermedadesExantematica.ExantemaSubito)</li>
                                             <li class="list-group-item">Enfermedades de Manos,Pies o Boca @Html.CheckBoxFor(model => model.Respuestas07.EnfermedadesExantematica.EnfermedadManosPiesBoca)</li>
                                         </ul>
-                                        
+
                                     </div>
                                     <div class="form-group">
                                         <label>8.	Especifique a que intervenciones quirúrgicas ha sido sometido</label>
-                                        Si @Html.RadioButtonFor(model => model.Respuestas08.bitIntervencion,true)
-                                        No @Html.RadioButtonFor(model => model.Respuestas08.bitIntervencion,false, new { @checked=""})
-                                        @Html.TextBoxFor(model => model.Respuestas08.strIntervencion, new { @class="form-control input-sm"})
+                                        Si @Html.RadioButtonFor(model => model.Respuestas08.bitIntervencion, true)
+                                        No @Html.RadioButtonFor(model => model.Respuestas08.bitIntervencion, false, new { @checked = "" })
+                                        @Html.TextBoxFor(model => model.Respuestas08.strIntervencion, new { @class = "form-control input-sm" })
                                     </div>
                                     <div class="form-group">
                                         <label>9.	¿Ha sufrido de alguna lesión en huesos, ligamentos o articulaciones? Especifique</label>
@@ -117,56 +117,56 @@
                                     </div>
                                     <div class="form-group">
                                         <label>10.	¿Ha sido hospitalizado alguna vez? Especifique la causa</label>
-                                        Si @Html.RadioButtonFor(model => model.Respuestas10.bitHospotalizado,true)
-                                        No @Html.RadioButtonFor(model => model.Respuestas10.bitHospotalizado,false)
-                                    <br />
-                                        Causa @Html.TextBoxFor(model => model.Respuestas10.strCausa,new  { @class="form-control input-sm"})
+                                        Si @Html.RadioButtonFor(model => model.Respuestas10.bitHospotalizado, true)
+                                        No @Html.RadioButtonFor(model => model.Respuestas10.bitHospotalizado, false)
+                                        <br />
+                                        Causa @Html.TextBoxFor(model => model.Respuestas10.strCausa, new { @class = "form-control input-sm" })
 
                                     </div>
                                     <div class="form-group">
                                         <label>11.	¿Realiza alguna actividad física o deporte? Especifique tipo y frecuencia</label>
-                                        Si @Html.RadioButtonFor(model => model.Respuestas11.bitRealizaActividadFisica,true)
-                                        No @Html.RadioButtonFor(model => model.Respuestas11.bitRealizaActividadFisica,false)
-                                    <br />
+                                        Si @Html.RadioButtonFor(model => model.Respuestas11.bitRealizaActividadFisica, true)
+                                        No @Html.RadioButtonFor(model => model.Respuestas11.bitRealizaActividadFisica, false)
+                                        <br />
                                         Tipo
-                                        @Html.TextBoxFor(model => model.Respuestas11.ActividadesFisicas.strTipo,new { @class="form-control input-sm"})
+                                        @Html.TextBoxFor(model => model.Respuestas11.ActividadesFisicas.strTipo, new { @class = "form-control input-sm" })
                                         Frecuencia
-                                        @Html.TextBoxFor(model => model.Respuestas11.ActividadesFisicas.strFrecuencia,new { @class="form-control input-sm"})
+                                        @Html.TextBoxFor(model => model.Respuestas11.ActividadesFisicas.strFrecuencia, new { @class = "form-control input-sm" })
 
                                     </div>
                                     <div class="form-group">
                                         <label>12.	¿Padece de alguna enfermedad actualmente? (Por ejemplo: diabetes, hipertensión, obesidad, cáncer, cardiopatía, artritis, LUPUS, glaucoma, hipo-hipertiroidismo, bronquitis crónica, enfisema pulmonar, insuficiencia renal, epilepsia, depresión, etc…)</label>
-                                        Si @Html.RadioButtonFor(model => model.Respuestas12.bitPadece,true)
-                                        No @Html.RadioButtonFor(model => model.Respuestas12.bitPadece,false)
-                                    <br />
+                                        Si @Html.RadioButtonFor(model => model.Respuestas12.bitPadece, true)
+                                        No @Html.RadioButtonFor(model => model.Respuestas12.bitPadece, false)
+                                        <br />
                                         Enfermedad(es)
-                                        @Html.TextBoxFor(model => model.Respuestas12.Enfermedades.strEnfermedad,new { @class="form-control input-sm"})
+                                        @Html.TextBoxFor(model => model.Respuestas12.Enfermedades.strEnfermedad, new { @class = "form-control input-sm" })
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
                                         <label>13.	Toma algún tratamiento actualmente. Especifique nombre y dosis</label>
-                                        Si @Html.RadioButtonFor(model => model.Respuestas13.bitTratamiento,true)
-                                        No @Html.RadioButtonFor(model => model.Respuestas13.bitTratamiento,false)
-                                    <br />
-                                        Tratamiento @Html.TextBoxFor(model => model.Respuestas13.Tratamiento.strTratamiento,new { @class="form-control input-sm"})
-                                        Dosis @Html.TextBoxFor(model => model.Respuestas13.Tratamiento.strDosis,new { @class="form-control input-sm"})
+                                        Si @Html.RadioButtonFor(model => model.Respuestas13.bitTratamiento, true)
+                                        No @Html.RadioButtonFor(model => model.Respuestas13.bitTratamiento, false)
+                                        <br />
+                                        Tratamiento @Html.TextBoxFor(model => model.Respuestas13.Tratamiento.strTratamiento, new { @class = "form-control input-sm" })
+                                        Dosis @Html.TextBoxFor(model => model.Respuestas13.Tratamiento.strDosis, new { @class = "form-control input-sm" })
                                     </div>
                                     <div class="form-group">
                                         <label>14.	¿Hace cuánto tiempo se realizó su último Papanicolaou?</label>
-                                        @Html.TextBoxFor(model => model.Respuestas14.strUltimoPapanicolaou,new { @class="form-control input-sm"})
+                                        @Html.TextBoxFor(model => model.Respuestas14.strUltimoPapanicolaou, new { @class = "form-control input-sm" })
                                     </div>
                                     <div class="form-group">
                                         <label>15.	¿Cada cuando se realiza autoexploración mamaria?</label>
-                                        @Html.TextBoxFor(model => model.Respuestas15.strFrecuenciaExploracionMamaria,new { @class="form-control input-sm"})
+                                        @Html.TextBoxFor(model => model.Respuestas15.strFrecuenciaExploracionMamaria, new { @class = "form-control input-sm" })
                                     </div>
                                     <div class="form-group">
                                         <label>16.	Número de embarazos.</label>
-                                        @Html.TextBoxFor(model => model.Respuestas16.strNumeroEmbarazos,new { @class="form-control input-sm"})
+                                        @Html.TextBoxFor(model => model.Respuestas16.strNumeroEmbarazos, new { @class = "form-control input-sm" })
                                     </div>
                                     <div class="form-group">
                                         <label>17.	¿Hace cuánto tiempo se realizó la prueba de antígeno prostático?</label>
-                                        @Html.TextBoxFor(model => model.Respuestas17.strUltimoPruebaAntigenoProstatico,new { @class="form-control input-sm"})
+                                        @Html.TextBoxFor(model => model.Respuestas17.strUltimoPruebaAntigenoProstatico, new { @class = "form-control input-sm" })
                                     </div>
 
                                 </div>
@@ -176,10 +176,10 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        <input type="submit" class="btn btn-success" value="Guardar Información"/>
+                                        <input type="submit" class="btn btn-success" value="Guardar Información" />
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -187,7 +187,41 @@
             </div>
         </div>
     </div>
+    <div class="">
+        <div class="form-group-sm">
+            <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
+            <div class="form-group" id="addTable">
+                <br />
+                <table id="tblEncuesta" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
+                    <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
+                        <tr>
+                            <th>Fecha de Realización</th>
+                            <th>Eliminar</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="tblBody"></tbody>
+                </table>
+                <!-- Establecemos el Modal que se va a presentar cuando demos click en la edicion de los datos-->
+                <div class="modal fade" id="myModal1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                                <h5 class="modal-title"><label style="font-size:medium;">Encuesta</label></h5>
+                            </div>
+                            <div class="modal-body" id="myModalBodyDiv1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" id="hiddenAlergiaId" />
+                <!--Terminamos el modal de eliminacion-->
+            </div>
+        </div>
+    </div>
 }
+
 
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="~/Content/toastr.min.css" rel="stylesheet" />
@@ -196,29 +230,16 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-    <script src="~/Scripts/Validate/ManualOperacion/validate-manual-operacion-form.js"></script>
     <script>
-
-        var AddEditar = function (id) {
-
-            var url = "/ManualOperacion/GetManualOperacionUpdate?_idManualOperacion=" + id;
-
-            $("#myModalBodyDiv1").load(url, function () {
-                $("#myModal1").modal("show");
-
-            })
-
-        };
 
         var AddEliminar = function (id) {
 
-            var url = "/ManualOperacion/GetManualOperacionDelete?_idManualOperacion=" + id;
+            var url = "/EncuestaSalud/GetEncuestaSaludDelete?_idEncuestaSalud=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
 
             })
-
         };
 
         $(document).ready(function () {
@@ -228,14 +249,14 @@
 
             function BindDataTable() {
 
-                if ($.fn.DataTable.isDataTable('#tblManuales')) {
+                if ($.fn.DataTable.isDataTable('#tblEncuesta')) {
                     oTable.Draw();
                 }
                 else {
-                    oTable = $('#tblManuales').DataTable({
+                    oTable = $('#tblEncuesta').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/ManualOperacion/GetManuales',
+                        "sAjaxSource": '/EncuestaSalud/GetEncuestas',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -274,15 +295,7 @@
                         "dataSrc": "",
                         "columns": [
 
-                            { "data": "strNombre" },
-
-                            {
-                                "data": "id",
-                                "render": function (id, type, full, meta) {
-
-                                    return '<a href="#" onclick="AddEditar(' + id + ')"><i class="btn btn-sm btn-success fa fa-pencil-square-o"></i></a>'
-                                }
-                            },
+                            { "data": "dteFechaRealizo" },
                             {
                                 "data": "id",
                                 "render": function (id, type, full, meta) {
@@ -299,3 +312,4 @@
 
     </script>
 }
+

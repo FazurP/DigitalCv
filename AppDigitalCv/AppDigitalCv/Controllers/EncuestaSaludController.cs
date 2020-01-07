@@ -1,5 +1,6 @@
 ﻿using AppDigitalCv.Business.Interface;
 using AppDigitalCv.Domain;
+using AppDigitalCv.Models;
 using AppDigitalCv.Security;
 using AppDigitalCv.ViewModels;
 using System;
@@ -43,6 +44,67 @@ namespace AppDigitalCv.Controllers
             AutoMapper.Mapper.Map(encuestaVM, encuestaDomainModel);
 
             encuestaSaludBusiness.AddEncuesta(encuestaDomainModel);
+
+            return RedirectToAction("Create","EncuestaSalud");
+        }
+
+        [HttpGet]
+        public JsonResult GetEncuestas(DataTablesParam param)
+        {
+            int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
+            List<EncuestaDomainModel> competenciaDM = new List<EncuestaDomainModel>();
+
+            int pageNo = 1;
+            if (param.iDisplayStart >= param.iDisplayLength)
+            {
+                pageNo = (param.iDisplayStart / param.iDisplayLength) + 1;
+            }
+
+            int totalCount = 0;
+            if (param.sSearch != null)
+            {
+                competenciaDM = encuestaSaludBusiness.GetEncuesta(IdentityPersonal).Where(p => p.dteFechaRealizo.ToString().Contains(param.sSearch)).ToList();
+            }
+            else
+            {
+                totalCount = encuestaSaludBusiness.GetEncuesta(IdentityPersonal).Count();
+
+                competenciaDM = encuestaSaludBusiness.GetEncuesta(IdentityPersonal).OrderBy(p => p.dteFechaRealizo)
+                    .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
+            }
+            return Json(new
+            {
+                aaData = competenciaDM,
+                sEcho = param.sEcho,
+                iTotalDisplayRecords = competenciaDM.Count(),
+                iTotalRecords = competenciaDM.Count()
+
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult GetEncuestaSaludDelete(int _idEncuestaSalud)
+        {
+           
+            if (_idEncuestaSalud > 0)
+            {
+                EncuestaDomainModel encuestaDomainModel = encuestaSaludBusiness.GetEncuestaById(_idEncuestaSalud);
+                EncuestaVM encuestaVM = new EncuestaVM();
+
+                AutoMapper.Mapper.Map(encuestaDomainModel, encuestaVM);
+
+                return PartialView("_Eliminar", encuestaVM);
+            }
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteEncuesta(EncuestaVM encuestaVM)
+        {
+            if (encuestaVM.id > 0)
+            {
+                encuestaSaludBusiness.DeleteEncuesta(encuestaVM.id);
+            }
 
             return RedirectToAction("Create","EncuestaSalud");
         }

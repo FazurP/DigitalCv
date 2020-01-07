@@ -26,6 +26,7 @@ namespace AppDigitalCv.ViewModels
         public int idRespuesta15 { get; set; }
         public int idRespuesta16 { get; set; }
         public int idRespuesta17 { get; set; }
+        public string dteFechaRealizo { get; set; }
         public int idPersonal { get; set; }
 
         //Objetos de las relaciones

@@ -248,6 +248,7 @@ namespace AppDigitalCv.Business
                     {
                         strUltimoPruebaAntigenoProstatico = encuestaDomainModel.Respuestas17.strUltimoPruebaAntigenoProstatico
                     };
+                    tblEncuesta.dteFechaRealizo = DateTime.Now;
 
                     encuestaSaludRepository.Insert(tblEncuesta);
 
@@ -265,6 +266,56 @@ namespace AppDigitalCv.Business
             {
                 respuesta = false;
                 string e = ex.Message;
+            }
+
+            return respuesta;
+        }
+
+        public List<EncuestaDomainModel> GetEncuesta(int _idPersonal)
+        {
+            List<EncuestaDomainModel> encuestaDomainModels = new List<EncuestaDomainModel>();
+            tblPersonal tblPersonals = new tblPersonal();
+
+            tblPersonals = personalRepository.GetAll().Where(p => p.idPersonal == _idPersonal).FirstOrDefault();
+            if (tblPersonals.TblEncuesta != null)
+            {
+                EncuestaDomainModel encuestaDomainModel = new EncuestaDomainModel();
+
+                encuestaDomainModel.id = tblPersonals.TblEncuesta.id;
+                encuestaDomainModel.dteFechaRealizo = tblPersonals.TblEncuesta.dteFechaRealizo.ToString();
+
+                encuestaDomainModels.Add(encuestaDomainModel);
+            }
+
+            return encuestaDomainModels;
+        }
+
+        public EncuestaDomainModel GetEncuestaById(int _id)
+        {
+            tblPersonal tblPersonals = new tblPersonal();
+            EncuestaDomainModel encuestaDomainModel = new EncuestaDomainModel();
+
+            tblPersonals = personalRepository.GetAll().Where(p => p.idEncuesta == _id).FirstOrDefault();
+            if (tblPersonals.TblEncuesta != null)
+            {           
+
+                encuestaDomainModel.id = tblPersonals.TblEncuesta.id;
+                encuestaDomainModel.dteFechaRealizo = tblPersonals.TblEncuesta.dteFechaRealizo.ToString();
+
+            }
+
+            return encuestaDomainModel;
+        }
+
+        public bool DeleteEncuesta(int _idEncuesta)
+        {
+
+            bool respuesta = false;
+
+            if (_idEncuesta > 0)
+            {
+                encuestaSaludRepository.Delete(p => p.id == _idEncuesta);
+                respuesta = true;
             }
 
             return respuesta;

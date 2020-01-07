@@ -38,6 +38,7 @@ namespace AppDigitalCv.Repository
         public Nullable<int> idRespuesta15 { get; set; }
         public Nullable<int> idRespuesta16 { get; set; }
         public Nullable<int> idRespuesta17 { get; set; }
+        public Nullable<System.DateTime> dteFechaRealizo { get; set; }
     
         public virtual CatRespuestas01 CatRespuestas01 { get; set; }
         public virtual CatRespuestas02 CatRespuestas02 { get; set; }
