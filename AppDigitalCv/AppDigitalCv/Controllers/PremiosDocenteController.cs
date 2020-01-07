@@ -62,9 +62,9 @@ namespace AppDigitalCv.Controllers
         #region  Crear el documento
         public void CrearDocumentoPremioDocente(PremiosDocenteVM premiosDocenteVM)
         {
-            PersonalDomainModel personalDM= this.GetPersonalVM(premiosDocenteVM.IdPersonal);
+            //PersonalDomainModel personalDM= this.GetPersonalVM(premiosDocenteVM.IdPersonal);
             premiosDocenteVM.IdPersonal = SessionPersister.AccountSession.IdPersonal;
-            string nombreCompleto = personalDM.Nombre + " " + personalDM.ApellidoPaterno + " " + personalDM.ApellidoMaterno;
+            string nombreCompleto = SessionPersister.AccountSession.NombreCompleto;
             string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO+ nombreCompleto));
 
             if (!Directory.Exists(path))

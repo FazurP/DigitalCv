@@ -76,7 +76,7 @@ namespace AppDigitalCv.Controllers
         public JsonResult GetDialecto(DataTablesParam param)
         {
             int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
-            List<DialectoDomainModel> dialectoDM = new List<DialectoDomainModel>();
+            List<LenguasDomainModel> dialectoDM = new List<LenguasDomainModel>();
 
             int pageNo = 1;
             if (param.iDisplayStart >= param.iDisplayLength)
@@ -87,7 +87,7 @@ namespace AppDigitalCv.Controllers
             int totalCount = 0;
             if (param.sSearch != null)
             {
-                dialectoDM = dialectoBusiness.GetDialectosByIdPersonal(IdentityPersonal).Where(p => p.strDescripcion.Contains(param.sSearch)).ToList();
+                dialectoDM = dialectoBusiness.GetDialectosByIdPersonal(IdentityPersonal).Where(p => p.strComunicacion.Contains(param.sSearch)).ToList();
 
 
             }
@@ -96,7 +96,7 @@ namespace AppDigitalCv.Controllers
                 totalCount = dialectoBusiness.GetDialectosByIdPersonal(IdentityPersonal).Count();
 
 
-                dialectoDM = dialectoBusiness.GetDialectosByIdPersonal(IdentityPersonal).OrderBy(p => p.strDescripcion)
+                dialectoDM = dialectoBusiness.GetDialectosByIdPersonal(IdentityPersonal).OrderBy(p => p.strComunicacion)
                     .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
 
             }
@@ -117,19 +117,23 @@ namespace AppDigitalCv.Controllers
         /// <returns>una vista parcial con los datos</returns>
         [HttpGet]
         public ActionResult GetDialectoById(int idDialecto)
-        {
+        { 
             int idPersonal = SessionPersister.AccountSession.IdPersonal;
+            LenguasVM lenguas = new LenguasVM();
+            LenguasDomainModel lenguasDomainModel = new LenguasDomainModel();
 
-            DialectoDomainModel dialectoDM = dialectoBusiness.GetDialecto(idDialecto, idPersonal);
+            
 
-            if (dialectoDM != null)
+            if (idDialecto > 0)
             {
-                DialectoVM dialectoVM = new DialectoVM();
-                AutoMapper.Mapper.Map(dialectoDM, dialectoVM);
-                return PartialView("_Eliminar", dialectoVM);
-            }
+                lenguasDomainModel = IdialectoIdiomaBusiness.GetDialectoPersonales(idDialecto, idPersonal);
 
-            return View();
+                AutoMapper.Mapper.Map(lenguasDomainModel, lenguas);
+
+                return PartialView("_Eliminar", lenguas);
+            }
+            
+            return PartialView();
         }
         /// <summary>
         /// Este metodo se encarga de obtener los datos de un dialecto para su actualizacion y mostrar 
@@ -141,19 +145,16 @@ namespace AppDigitalCv.Controllers
         public ActionResult GetDialectoByIdEdit(int idDialecto)
         {
             int idPersonal = SessionPersister.AccountSession.IdPersonal;
-            IdiomaDialectoVM idiomaDialectoVM = new IdiomaDialectoVM();
-            IdiomaDialectoDomainModel idiomaDialectoDM = new IdiomaDialectoDomainModel();
+            LenguasVM idiomaDialectoVM = new LenguasVM();
+            LenguasDomainModel idiomaDialectoDM = new LenguasDomainModel();
 
             if (idDialecto > 0)
             {
-
-                ViewBag.StrEscrituraProcentaje = new SelectList(p.GetPorcentajes());
-                ViewBag.StrLecturaPorcentaje = new SelectList(p.GetPorcentajes());
-                ViewBag.StrEntendimientoPorcentaje = new SelectList(p.GetPorcentajes());
-                ViewBag.StrComunicacionPorcentaje = new SelectList(p.GetPorcentajes());
+                ViewBag.strEscritura = new SelectList(p.GetPorcentajes());
+                ViewBag.strLectura = new SelectList(p.GetPorcentajes());
+                ViewBag.strEntendimiento = new SelectList(p.GetPorcentajes());
+                ViewBag.strComunicacion = new SelectList(p.GetPorcentajes());
                 idiomaDialectoDM = IdialectoIdiomaBusiness.GetDialectoPersonales(idDialecto, idPersonal);
-
-
             }
 
             AutoMapper.Mapper.Map(idiomaDialectoDM, idiomaDialectoVM);
@@ -166,37 +167,37 @@ namespace AppDigitalCv.Controllers
         /// <param name="dialectoVM"></param>
         /// <returns>una vista</returns>
         [HttpPost]
-        public ActionResult DeleteDialectoById(DialectoVM dialectoVM)
+        public ActionResult DeleteDialectoById(LenguasVM lenguasVM)
         {
             int idPersonal = SessionPersister.AccountSession.IdPersonal;
-            IdiomaDialectoDomainModel idiomaDialectoDM = IdialectoIdiomaBusiness.GetDialectoPersonales(dialectoVM.IdDialecto, idPersonal);
+            LenguasDomainModel lenguasDomainModel = IdialectoIdiomaBusiness.GetDialectoPersonales(lenguasVM.id, idPersonal);
 
-            if (idiomaDialectoDM != null)
+            if (lenguasDomainModel != null)
             {
-                IdialectoIdiomaBusiness.DeleteDialectoDialectos(idiomaDialectoDM);
+                IdialectoIdiomaBusiness.DeleteDialectoDialectos(lenguasDomainModel);
             }
 
-            return View(Create());
+            return RedirectToAction("Create","DialectoIdioma");
         }
         /// <summary>
         /// Este metodo recibe un objeto con los nuevos datos que se ingresaron en la vista parcial de _Editar
         /// para su actualizacion
         /// </summary>
         /// <param name="idiomaDialectoVM"></param>
-        //[HttpPost]
-        //public void EditarDialectosPersonales(IdiomaDialectoVM idiomaDialectoVM)
-        //{
+        [HttpPost]
+        public void EditarDialectosPersonales(LenguasVM lenguasVM)
+        {
 
-        //    IdiomaDialectoDomainModel idiomaDialectoDM = new IdiomaDialectoDomainModel();
+            LenguasDomainModel LenguasDomainModel = new LenguasDomainModel();
 
-        //    AutoMapper.Mapper.Map(idiomaDialectoVM, idiomaDialectoDM);
+            AutoMapper.Mapper.Map(lenguasVM, LenguasDomainModel);
 
-        //    if (idiomaDialectoVM.IdIdiomaDialectoPersonal > 0)
-        //    {
-        //        IdialectoIdiomaBusiness.AddUpdateDialecto(idiomaDialectoDM);
-        //    }
+            if (lenguasVM.id > 0)
+            {
+                IdialectoIdiomaBusiness.AddUpdateDialecto(LenguasDomainModel);
+            }
 
-        //}
+        }
 
     }
 }

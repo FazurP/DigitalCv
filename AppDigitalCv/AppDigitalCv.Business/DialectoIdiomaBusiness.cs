@@ -48,7 +48,18 @@ namespace AppDigitalCv.Business
 
             if (lenguas.id > 0)
             {
+                TblLenguas tblLenguas = lenguasRepository.GetAll().Where(p => p.id == lenguas.id).FirstOrDefault();
 
+                if (tblLenguas != null)
+                {
+                    tblLenguas.strComunicacion = lenguas.strComunicacion;
+                    tblLenguas.strEntendimiento = lenguas.strEntendimiento;
+                    tblLenguas.strEscritura = lenguas.strEscritura;
+                    tblLenguas.strLectura = lenguas.strLectura;
+
+                    lenguasRepository.Update(tblLenguas);
+                    respuesta = true;
+                }
             }
             else 
             {
@@ -73,13 +84,24 @@ namespace AppDigitalCv.Business
         /// <param name="_idDialecto"></param>
         /// <param name="_idPersonal"></param>
         /// <returns>true o false</returns>
-        public IdiomaDialectoDomainModel GetDialectoPersonales(int _idDialecto, int _idPersonal)
+        public LenguasDomainModel GetDialectoPersonales(int _idDialecto, int _idPersonal)
         {
 
-            IdiomaDialectoDomainModel idiomaDialectoDM = new IdiomaDialectoDomainModel();
-          
+            LenguasDomainModel lenguasDM = new LenguasDomainModel();
+            TblLenguas lenguas = new TblLenguas();
 
-            return idiomaDialectoDM;
+            lenguas = lenguasRepository.GetAll().Where(p => p.idLengua == _idDialecto && p.idPersonal == _idPersonal).FirstOrDefault();
+
+            lenguasDM.id = lenguas.id;
+            lenguasDM.idLengua = lenguas.idLengua.Value;
+            lenguasDM.idPersonal = lenguas.idPersonal.Value;
+            lenguasDM.strComunicacion = lenguas.strComunicacion;
+            lenguasDM.strEntendimiento = lenguas.strEntendimiento;
+            lenguasDM.strEscritura = lenguas.strEscritura;
+            lenguasDM.strLectura = lenguas.strLectura;
+            lenguasDM.Dialecto = new DialectoDomainModel { strDescripcion=lenguas.CatLenguas.strDescripcion};
+
+            return lenguasDM;
 
         }
         /// <summary>
@@ -87,12 +109,19 @@ namespace AppDigitalCv.Business
         /// </summary>
         /// <param name="idiomaDialectoDM"></param>
         /// <returns>true o false</returns>
-        public bool DeleteDialectoDialectos(IdiomaDialectoDomainModel idiomaDialectoDM)
+        public bool DeleteDialectoDialectos(LenguasDomainModel lenguasDomainModel)
         {
 
             bool respuesta = false;
-            
-            respuesta = true;
+
+            TblLenguas lenguas = lenguasRepository.GetAll().Where(p => p.id == lenguasDomainModel.id).FirstOrDefault();
+
+            if (lenguas != null)
+            {
+                lenguasRepository.Delete(p => p.id == lenguasDomainModel.id);
+                respuesta = true;
+            }
+           
             return respuesta;
 
         }

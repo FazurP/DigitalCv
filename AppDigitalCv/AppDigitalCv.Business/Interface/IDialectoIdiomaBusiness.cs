@@ -12,9 +12,9 @@ namespace AppDigitalCv.Business.Interface
         List<DialectoDomainModel> GetDialecto();
         bool AddUpdateDialecto(LenguasDomainModel lenguas);
 
-        IdiomaDialectoDomainModel GetDialectoPersonales(int _idDialecto, int _idPersonal);
+        LenguasDomainModel GetDialectoPersonales(int _idDialecto, int _idPersonal);
 
-        bool DeleteDialectoDialectos(IdiomaDialectoDomainModel idiomaDialectoDM);
+        bool DeleteDialectoDialectos(LenguasDomainModel lenguasDomainModel);
 
     }
 }

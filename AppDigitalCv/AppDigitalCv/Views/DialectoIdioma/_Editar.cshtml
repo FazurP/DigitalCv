@@ -1,91 +1,54 @@
 ﻿
-@model AppDigitalCv.ViewModels.IdiomaDialectoVM
+@model AppDigitalCv.ViewModels.LenguasVM
 @using AppDigitalCv.Security
 
 <div>
     <form id="myForm">
-
-        @Html.HiddenFor(model => model.IdDialecto, new { id = "id" })
-        @Html.HiddenFor(model => model.IdPersonal)
-        @Html.HiddenFor(model => model.IdIdiomaDialectoPersonal, new { id = "idDialecto" })
+        @Html.HiddenFor(model => model.id, new { id = "id" })
+        @Html.HiddenFor(model => model.idPersonal)
         <div class="bs-container">
-
-            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
-                <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
-            </div>
             <div class="row">
-                <div class="form-group col-lg-2">
+                <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
                     <div class="form-group">
-                        <label>Escritura</label>
-                        @Html.TextBoxFor(model => model.StrEscrituraProcentaje, htmlAttributes: new { @class = "form-control input-sm", disabled = "" })
+                        <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+                    </div>       
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Porcentaje de Escritura</label>
+                        @Html.DropDownListFor(model => model.strEscritura, null, new { @class = "form-control input-sm" })
                     </div>
                 </div>
-                <div class="col-lg-2">
-                    <label>Lectura</label>
-                    @Html.TextBoxFor(model => model.StrLecturaPorcentaje, htmlAttributes: new { @class = "form-control input-sm", disabled = "" })
+                <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Porcentaje de Lectura</label>
+                        @Html.DropDownListFor(model => model.strLectura, null, new { @class = "form-control input-sm" })
+                    </div>
                 </div>
-                <div class="col-lg-2">
-                    <label>Entendimiento</label>
-                    @Html.TextBoxFor(model => model.StrEntendimientoPorcentaje, htmlAttributes: new { @class = "form-control input-sm", disabled = "" })
+                <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-6">
+                    <div class="form-group">
+                        <label>Porcentaje de Entendimiento</label>
+                        @Html.DropDownListFor(model => model.strEntendimiento, null, new { @class = "form-control input-sm" })
+                    </div>
                 </div>
-
+                <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-6">
+                    <div class="form-group">
+                        <label>Porcentaje de Comunicación</label>
+                        @Html.DropDownListFor(model => model.strComunicacion, null, new { @class = "form-control input-sm" })
+                    </div>
+                </div>
             </div>
             <div class="row">
-                <div class="col-lg-2 col-lg-offset-4">
-                    <label>Comunicacion</label>
-                    @Html.TextBoxFor(model => model.StrComunicacionPorcentaje, htmlAttributes: new { @class = "form-control input-sm", disabled = "" })
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <input type="button" id="btnEnviar" class="btn btn-success" value="Actualizar Información" />
+                    </div>
                 </div>
             </div>
 
-            <br />
-
-            <div class="row">
-
-                <div class="form-group col-lg-3 col-lg-offset-4">
-                    <div class="form-group ">
-                        <label>Escritura</label>
-                        @Html.DropDownList("StrEscrituraProcentaje", null, htmlAttributes: new { @class = "form-control input-sm", id = "EscrituraProcentaje" })
-
-                    </div>
-                </div>
-
-                <div class="form-group col-lg-3">
-                    <div class="form-group ">
-                        <label>Lectura</label>
-                        @Html.DropDownList("StrLecturaPorcentaje", null, htmlAttributes: new { @class = "form-control input-sm", id = "LecturaPorcentaje" })
-
-                    </div>
-                </div>
-
-                <!-- Aqui se llena el dropdownloist de porcentaje de entendimiento -->
-                <div class="form-group col-lg-3 col-lg-offset-4">
-                    <div class="form-group ">
-                        <label>Entendimiento</label>
-                        @Html.DropDownList("StrEntendimientoPorcentaje", null, htmlAttributes: new { @class = "form-control input-sm", id = "EntendimientoPorcentaje" })
-
-                    </div>
-                </div>
-
-                <!-- Aqui se llena el dropdownList de porcentaje de comunicacion -->
-                <div class="form-group col-lg-3">
-                    <div class="form-group ">
-                        <label>Comunicación</label>
-                        @Html.DropDownList("StrComunicacionPorcentaje", null, htmlAttributes: new { @class = "form-control input-sm", id = "ComunicacionPorcentaje" })
-
-                    </div>
-                </div>
-
-
-                <div class="form-group col-lg-6 col-lg-offset-4">
-                    <a href="#" id="btnEnviar" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
-                </div>
-            </div>
         </div>
     </form>
 </div>
-
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
 
 
 <script>
@@ -94,23 +57,31 @@
 
         $("#btnEnviar").click(function () {
 
-            var IdiomaDialectoVM = {};
-            var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+            let escritura = $('#strEscritura').get(0).selectedIndex;
+            let lectura = $('#strLectura').get(0).selectedIndex;
+            let entendimiento = $('#strEntendimiento').get(0).selectedIndex;
+            let comunicacion = $('#strComunicacion').get(0).selectedIndex;
 
-            IdiomaDialectoVM.IdPersonal = IdPersonal;
-            IdiomaDialectoVM.IdDialecto = $('#id').val();
-            IdiomaDialectoVM.IdIdiomaDialectoPersonal = $('#idDialecto').val();
-            IdiomaDialectoVM.StrComunicacionPorcentaje = $('#ComunicacionPorcentaje').val();
-            IdiomaDialectoVM.StrEscrituraProcentaje = $('#EscrituraProcentaje').val();
-            IdiomaDialectoVM.StrEntendimientoPorcentaje = $('#EntendimientoPorcentaje').val();
-            IdiomaDialectoVM.StrLecturaPorcentaje = $('#LecturaPorcentaje').val();
-            debugger;
+            if (escritura == 0 || lectura == 0 || entendimiento == 0 || comunicacion == 0)
+            {
+                toastr.warning("No Puedes Dejar Campos Vacios.", "Digital-Cv dice:", { closeButton: true, timeOut:1000 });
+            } else
+            {
+
+                let LenguasVM = {};
+
+                LenguasVM.id = $('#id').val();
+                LenguasVM.idPersonal = $('#idPersonal').val();
+                LenguasVM.strEscritura = $('#strEscritura').val();
+                LenguasVM.strLectura = $('#strLectura').val();
+                LenguasVM.strEntendimiento = $('#strEntendimiento').val();
+                LenguasVM.strComunicacion = $('#strComunicacion').val();
+                debugger;
             $.ajax({
                 type: "POST",
                 url: "/DialectoIdioma/EditarDialectosPersonales",
-                data: { idiomaDialectoVM: IdiomaDialectoVM},
+                data: { lenguasVM: LenguasVM},
                 success: function () {
-                    $("#myModal1").modal("hide");
                     window.location.href = "/DialectoIdioma/Create";
                 },
                 error: function (xhr, textStatus, errorThrown) {
@@ -119,6 +90,7 @@
 
                 }
             })
+            }
         });
     });
 </script>

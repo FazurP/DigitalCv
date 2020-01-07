@@ -21,6 +21,6 @@ namespace AppDigitalCv.ViewModels
         [Required]
         public string strComunicacion { get; set; }
 
-        public DialectoVM dialectoVM{ get; set; }
+        public DialectoVM Dialecto { get; set; }
     }
 }

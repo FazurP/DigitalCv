@@ -16,6 +16,6 @@ namespace AppDigitalCv.Domain
         public string strEntendimiento { get; set; }
         public string strComunicacion { get; set; }
 
-        public DialectoDomainModel DialectoDomainModel { get; set; }
+        public DialectoDomainModel Dialecto { get; set; }
     }
 }

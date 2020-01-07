@@ -14,11 +14,13 @@ namespace AppDigitalCv.Business
     public class DialectoBusiness : IDialectoBusiness
     {
         private readonly IUnitOfWork unitOfWork;
+        private readonly LenguasRepository lenguasRepository;
 
         public DialectoBusiness(IUnitOfWork _unitOfWork)
         {
 
             unitOfWork = _unitOfWork;
+            lenguasRepository = new LenguasRepository(unitOfWork);
 
 
         }
@@ -27,12 +29,32 @@ namespace AppDigitalCv.Business
         /// </summary>
         /// <param name="_idPersonal"></param>
         /// <returns>una lista con los dialectos</returns>
-        public List<DialectoDomainModel> GetDialectosByIdPersonal(int _idPersonal)
+        public List<LenguasDomainModel> GetDialectosByIdPersonal(int _idPersonal)
         {
-            List<DialectoDomainModel> dialectoDM = new List<DialectoDomainModel>();
-          
+            List<LenguasDomainModel> lenguasDM = new List<LenguasDomainModel>();
+            List<TblLenguas> lenguas = new List<TblLenguas>();
 
-            return dialectoDM;
+
+            lenguas = lenguasRepository.GetAll().Where(p => p.idPersonal == _idPersonal).ToList();
+
+            foreach (TblLenguas item in lenguas)
+            {
+                LenguasDomainModel lenguaDM = new LenguasDomainModel();
+
+                lenguaDM.id = item.id;
+                lenguaDM.idLengua = item.idLengua.Value;
+                lenguaDM.idPersonal = item.idPersonal.Value;
+                lenguaDM.strComunicacion = item.strComunicacion;
+                lenguaDM.strEntendimiento = item.strEntendimiento;
+                lenguaDM.strEscritura = item.strEscritura;
+                lenguaDM.strLectura = item.strLectura;
+                lenguaDM.Dialecto = new DialectoDomainModel { strDescripcion = item.CatLenguas.strDescripcion};
+
+                lenguasDM.Add(lenguaDM);
+            }
+
+
+            return lenguasDM;
         }
 
         /// <summary>

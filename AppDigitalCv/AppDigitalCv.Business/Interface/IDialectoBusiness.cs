@@ -9,7 +9,7 @@ namespace AppDigitalCv.Business.Interface
 {
     public interface IDialectoBusiness
     {
-        List<DialectoDomainModel> GetDialectosByIdPersonal(int _idPersonal);
+        List<LenguasDomainModel> GetDialectosByIdPersonal(int _idPersonal);
 
         DialectoDomainModel GetDialecto(int idDielecto, int idPersona);
     }
