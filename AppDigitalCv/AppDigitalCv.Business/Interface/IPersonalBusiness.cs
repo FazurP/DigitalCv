@@ -82,5 +82,7 @@ namespace AppDigitalCv.Business.Interface
         bool AddUpdatePersonalDireccion(DireccionDomainModel direccionDomainM, int idPersonal);
 
         bool DeletePersonal(int _idPersonal);
+
+        bool UpdateSemblanza(PersonalDomainModel personalDomainModel);
     }
 }

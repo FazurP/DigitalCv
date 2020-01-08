@@ -54,34 +54,9 @@
                         <div class="form-group">
                             <label for="etSexo">Sexo:</label>
                             <br />
-                            @if (Model.StrGenero != null)
-                            {
-                                if (Model.StrGenero.Equals("Femenino"))
-                                {
-                                    <span>Femenino: </span> @Html.RadioButtonFor(model => model.StrGenero, "Femenino", new { id = "sexo", required = "",@checked=true });
-                                    <span>Masculino: </span> @Html.RadioButtonFor(model => model.StrGenero, "Masculino", new { id = "sexo", required = "" });
-                                    <span>Otro: </span> Html.RadioButtonFor(model => model.StrGenero, "Otro", new { id = "sexo", required = "" });
-                                }
-                                else if (Model.StrGenero.Equals("Masculino"))
-                                {
-                                    <span>Femenino: </span> @Html.RadioButtonFor(model => model.StrGenero, "Femenino", new { id = "sexo", required = "" });
-                                    <span>Masculino: </span> @Html.RadioButtonFor(model => model.StrGenero, "Masculino", new { id = "sexo", required = "",@checked=true });
-                                    <span>Otro: </span> @Html.RadioButtonFor(model => model.StrGenero,  "Otro", new { id = "sexo", required = "" });
-                                }
-                                else if (Model.StrGenero.Equals("Otro"))
-                                {
-                                    <span>Femenino: </span> @Html.RadioButtonFor(model => model.StrGenero, "Femenino", new { id = "sexo", required = "" });
-                                    <span>Masculino: </span> @Html.RadioButtonFor(model => model.StrGenero, "Masculino", new { id = "sexo", required = "" });
-                                    <span>Otro: </span> @Html.RadioButtonFor(model => model.StrGenero, "Otro", new { id = "sexo", required = "",@checked=true });
-                                }
-                            }
-                            else
-                            {
-                                <span>Femenino: </span> @Html.RadioButtonFor(model => model.StrGenero, "Femenino", new { id = "sexo", required = "" });
-                                <span>Masculino: </span> @Html.RadioButtonFor(model => model.StrGenero, "Maculino", new { id = "sexo", required = "" });
-                                <span>Otro: </span> @Html.RadioButtonFor(model => model.StrGenero, "Otro", new { id = "sexo", required = ""});
-                            }
-
+                                <span>Femenino: </span> @Html.RadioButtonFor(model => model.StrGenero, "Femenino", new { id = "sexo", required = "" })
+                                <span>Masculino: </span> @Html.RadioButtonFor(model => model.StrGenero, "Maculino", new { id = "sexo", required = "" })
+                                <span>Otro: </span> @Html.RadioButtonFor(model => model.StrGenero, "Otro", new { id = "sexo", required = ""})
                         </div>
                         <div class="form-group">
                             <div class="row">

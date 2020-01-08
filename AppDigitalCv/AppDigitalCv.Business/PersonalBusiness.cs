@@ -167,8 +167,8 @@ namespace AppDigitalCv.Business
             personalDM.Rfc = TblPersonal.strRfc;
             personalDM.Homoclave = TblPersonal.strHomoclave;
             personalDM.strLogros = TblPersonal.strLogros;
-            personalDM.idNacionalidad = TblPersonal.idNacionalidad.Value;
-            personalDM.idEstadoCivil = TblPersonal.idEstadoCivil.Value;
+            personalDM.idNacionalidad = Convert.ToInt32(TblPersonal.idNacionalidad);
+            personalDM.idEstadoCivil = Convert.ToInt32(TblPersonal.idEstadoCivil);
             personalDM.strUrlCurp = TblPersonal.strNombre;
             personalDM.strUrlRfc = TblPersonal.strUrlRfc;
             personalDM.strGenero = TblPersonal.strGenero;
@@ -258,7 +258,21 @@ namespace AppDigitalCv.Business
 
             return respuesta;
         }
-       
 
+        public bool UpdateSemblanza(PersonalDomainModel personalDomainModel)
+        {
+            bool respuesta = false;
+
+            if (!string.IsNullOrEmpty(personalDomainModel.strLogros) && !string.IsNullOrWhiteSpace(personalDomainModel.strLogros))
+            {
+                tblPersonal tblPersonal = personalRepository.GetAll().Where(p => p.idPersonal == personalDomainModel.idPersonal).FirstOrDefault();
+
+                tblPersonal.strLogros = personalDomainModel.strLogros;
+                personalRepository.Update(tblPersonal);
+                respuesta = true;
+            }
+
+            return respuesta;
+        }
     }
 }

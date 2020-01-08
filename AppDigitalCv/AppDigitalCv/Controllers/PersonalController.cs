@@ -35,17 +35,10 @@ namespace AppDigitalCv.Controllers
         {
             if (SessionPersister.AccountSession != null)
             {
-                PersonalVM personalVM = new PersonalVM();
-                PersonalDomainModel personalDomainModel = new PersonalDomainModel();
-
-                personalDomainModel = IPersonalBussines.GetPersonalById(SessionPersister.AccountSession.IdPersonal);
-
-                AutoMapper.Mapper.Map(personalDomainModel, personalVM);
-
                 ViewBag.idNacionalidad = new SelectList(NacionalidadBusiness.GetAllNacionalidades(), "id", "strValor");
                 ViewBag.IdEstadoCivil = new SelectList(estadoCivilBusiness.GetEstadoCivil(), "IdEstadoCivil", "StrDescripcion");
 
-                return View(personalVM);
+                return View();
             }
             else {
                 return View("~/Views/Seguridad/Login.cshtml");
@@ -171,7 +164,6 @@ namespace AppDigitalCv.Controllers
         }
 
         #region Crear Directorio de Usuario
-        //string nombreCompleto ,HttpPostedFileWrapper curpFile, HttpPostedFileWrapper rfcFile, HttpPostedFileWrapper imageFile,
         public void CrearDirectorioUsuario(PersonalVM personalVM)
         {
             string nombreCompleto = SessionPersister.AccountSession.NombreCompleto;
@@ -239,7 +231,58 @@ namespace AppDigitalCv.Controllers
         }
         #endregion
 
+        [HttpGet]
+        public ActionResult InfoPersonal() 
+        {
+            PersonalVM personalVM = new PersonalVM();
+            PersonalDomainModel personalDomainModel;
 
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
 
+            personalDomainModel = IPersonalBussines.GetPersonalById(idPersonal);
+
+            //if (personalDomainModel != null)
+            //{
+                AutoMapper.Mapper.Map(personalDomainModel,personalVM);
+                return View(personalVM);
+            //}
+            //else
+            //{
+            //    return View();
+            //}      
+        }
+
+        [HttpGet]
+        public ActionResult GetSemblanzaEdit(int _idPersonal) 
+        {
+            int idPersonal = SessionPersister.AccountSession.IdPersonal;
+            PersonalDomainModel personalDomainModel = IPersonalBussines.GetPersonalById(_idPersonal);
+
+            if (personalDomainModel != null)
+            {
+
+                PersonalVM personalVM = new PersonalVM();
+
+                AutoMapper.Mapper.Map(personalDomainModel,personalVM);
+
+                return PartialView("_EditarSemblanza", personalVM);
+            }
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult UpdateSemblanza(PersonalVM personalVM) 
+        {
+            if (personalVM.idPersonal > 0)
+            {
+                PersonalDomainModel personalDomainModel = new PersonalDomainModel();
+
+                AutoMapper.Mapper.Map(personalVM,personalDomainModel);
+
+                IPersonalBussines.UpdateSemblanza(personalDomainModel);
+            }
+
+            return RedirectToAction("Create","Personal");
+        }
     } 
 }
