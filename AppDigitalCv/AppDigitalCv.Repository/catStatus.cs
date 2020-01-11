@@ -17,7 +17,6 @@ namespace AppDigitalCv.Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public catStatus()
         {
-            this.catUsuarios = new HashSet<catUsuarios>();
             this.tblCapituloLibro = new HashSet<tblCapituloLibro>();
             this.tblProgresoProdep = new HashSet<tblProgresoProdep>();
             this.tblInformeTecnico = new HashSet<tblInformeTecnico>();
@@ -30,14 +29,13 @@ namespace AppDigitalCv.Repository
             this.tblDireccionIndividualizada = new HashSet<tblDireccionIndividualizada>();
             this.tblEstadiaEmpresa = new HashSet<tblEstadiaEmpresa>();
             this.tblTutoria = new HashSet<tblTutoria>();
+            this.catUsuarios = new HashSet<catUsuarios>();
         }
     
         public int idStatus { get; set; }
         public string strDescripcion { get; set; }
         public string strObservacion { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<catUsuarios> catUsuarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCapituloLibro> tblCapituloLibro { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -62,5 +60,7 @@ namespace AppDigitalCv.Repository
         public virtual ICollection<tblEstadiaEmpresa> tblEstadiaEmpresa { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblTutoria> tblTutoria { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<catUsuarios> catUsuarios { get; set; }
     }
 }

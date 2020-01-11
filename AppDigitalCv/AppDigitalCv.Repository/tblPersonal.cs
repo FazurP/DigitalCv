@@ -83,6 +83,8 @@ namespace AppDigitalCv.Repository
         public Nullable<int> idBachillerato { get; set; }
         public Nullable<int> idEncuesta { get; set; }
         public Nullable<bool> bitPermisoEncuesta { get; set; }
+        public string strTipoPersonal { get; set; }
+        public string strUniversidad { get; set; }
     
         public virtual catDireccion catDireccion { get; set; }
         public virtual catEstadoCivil catEstadoCivil { get; set; }
@@ -90,7 +92,6 @@ namespace AppDigitalCv.Repository
         public virtual ICollection<catFamiliar> catFamiliar { get; set; }
         public virtual CatNacionalidad CatNacionalidad { get; set; }
         public virtual catTipoSangre catTipoSangre { get; set; }
-        public virtual catUsuarios catUsuarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblAlergiasPersonal> tblAlergiasPersonal { get; set; }
         public virtual TblBachillerato TblBachillerato { get; set; }
@@ -175,5 +176,6 @@ namespace AppDigitalCv.Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCompetenciasConocimientosPersonal> tblCompetenciasConocimientosPersonal { get; set; }
         public virtual TblEncuesta TblEncuesta { get; set; }
+        public virtual catUsuarios catUsuarios { get; set; }
     }
 }

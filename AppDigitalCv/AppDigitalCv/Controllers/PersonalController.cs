@@ -234,22 +234,24 @@ namespace AppDigitalCv.Controllers
         [HttpGet]
         public ActionResult InfoPersonal() 
         {
-            PersonalVM personalVM = new PersonalVM();
-            PersonalDomainModel personalDomainModel;
 
-            int idPersonal = SessionPersister.AccountSession.IdPersonal;
+            if (SessionPersister.AccountSession != null)
+            {
+                PersonalVM personalVM = new PersonalVM();
+                PersonalDomainModel personalDomainModel;
 
-            personalDomainModel = IPersonalBussines.GetPersonalById(idPersonal);
+                int idPersonal = SessionPersister.AccountSession.IdPersonal;
 
-            //if (personalDomainModel != null)
-            //{
-                AutoMapper.Mapper.Map(personalDomainModel,personalVM);
+                personalDomainModel = IPersonalBussines.GetPersonalById(idPersonal);
+
+                AutoMapper.Mapper.Map(personalDomainModel, personalVM);
                 return View(personalVM);
-            //}
-            //else
-            //{
-            //    return View();
-            //}      
+            }
+            else 
+            {
+                return RedirectToAction("Login","Seguridad");
+            }
+           
         }
 
         [HttpGet]
@@ -283,6 +285,28 @@ namespace AppDigitalCv.Controllers
             }
 
             return RedirectToAction("Create","Personal");
+        }
+
+        [HttpGet]
+        public ActionResult Perfil() 
+        {
+            if (SessionPersister.AccountSession != null)
+            {
+                PersonalVM personalVM = new PersonalVM();
+
+                PersonalDomainModel personalDomainModel = IPersonalBussines.GetPerfil(SessionPersister.AccountSession.IdPersonal);
+
+                if (personalDomainModel != null)
+                {
+                    AutoMapper.Mapper.Map(personalDomainModel, personalVM);
+                }
+                return View(personalVM);
+            }
+            else 
+            {
+                return RedirectToAction("Login","Seguridad");
+            }
+           
         }
     } 
 }

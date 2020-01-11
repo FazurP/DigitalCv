@@ -270,10 +270,10 @@
     <Compile Include="catTipoProducto.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="CatTipoUsuario.cs">
+    <Compile Include="CatTratamiento.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="CatTratamiento.cs">
+    <Compile Include="catUsuarioEspeciales.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CompetenciasPersonalRepository.cs" />

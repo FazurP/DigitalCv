@@ -655,6 +655,7 @@
     <Content Include="Views\Manager\Index.cshtml" />
     <Content Include="Views\EncuestaSalud\_Eliminar.cshtml" />
     <Content Include="Views\Personal\_EditarSemblanza.cshtml" />
+    <Content Include="Views\Personal\Perfil.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

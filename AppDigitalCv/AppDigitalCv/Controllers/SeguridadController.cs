@@ -56,22 +56,16 @@ namespace AppDigitalCv.Controllers
             usuario.NomUsuario = accountViewModel.Email;
             usuario.Password = accountViewModel.Password;
 
-            var res = wsusuariosSoapClient.ConsultaUsuarios(seguridad, usuario);
-
             AccountDomainModel accountDomainModel = new AccountDomainModel();
             AutoMapper.Mapper.Map(accountViewModel, accountDomainModel);
 
             if (IAccountBusiness.ExistUsuario(accountDomainModel))
             {
                 accountDomainModel = IAccountBusiness.ValidarLogin(accountDomainModel);
-                ///accountDomainModel = IAccountBusiness.ValidarLoginService(accountDomainModel);
+
 
                 if (accountDomainModel != null)
                 {
-                    accountDomainModel.TipoPersonal = res.TipoPersonal.ToString();
-                    accountDomainModel.Universidad = res.Universidad;
-                    accountDomainModel.TipoUsuario = res.TipoUsuario.ToString();
-
                     AccountViewModel viewAccount = new AccountViewModel();
                     AutoMapper.Mapper.Map(accountDomainModel, viewAccount);
                     SessionPersister.AccountSession = viewAccount;
@@ -80,19 +74,19 @@ namespace AppDigitalCv.Controllers
             }
             else
             {
-          
+                var res = wsusuariosSoapClient.ConsultaUsuarios(seguridad, usuario);
                 PersonalDomainModel personalDomainModel = new PersonalDomainModel();        
-
                 if (res.Nombre_usuario != null && res.Clave != null)
                 {
                     personalDomainModel.Nombre = res.Nombre;
                     personalDomainModel.ApellidoPaterno = res.ApellidoPaterno;
                     personalDomainModel.ApellidoMaterno = res.ApellidoMaterno;
-                    personalDomainModel.AccountDomainModel = new AccountDomainModel { Email = res.Correo_Electronico, Password = usuario.Password, Nombre = usuario.NomUsuario };
-                    
+                    personalDomainModel.AccountDomainModel = new AccountDomainModel { Email = res.Correo_Electronico, Password = usuario.Password, Nombre = usuario.NomUsuario,TipoUsuario = res.TipoUsuario.ToString() };
+                    personalDomainModel.strTipoPersonal = res.TipoPersonal.ToString();
+                    personalDomainModel.strUniversidad = res.Universidad;
+
                     if (IAccountBusiness.AddUsuario(personalDomainModel))
                     {
-                        
                         AccountViewModel viewAccount = new AccountViewModel();
                         viewAccount.NombreCompleto = res.Nombre + " " + res.ApellidoPaterno + " " + res.ApellidoMaterno;
                         SessionPersister.AccountSession = viewAccount;
@@ -101,10 +95,8 @@ namespace AppDigitalCv.Controllers
                 }
             }
             return View();
-
         }
             
-
         [HttpPost]
         public void Cerrar()
         {

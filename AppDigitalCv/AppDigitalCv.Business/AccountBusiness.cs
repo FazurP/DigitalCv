@@ -51,12 +51,14 @@ namespace AppDigitalCv.Business
                     account.IdPersonal = t.idPersonal;
                     account.NombreCompleto = t.strNombre + " " + t.strApellidoPaterno + " "+t.strApellidoMaterno;
                     account.ImgUserUrl = t.strUrlFoto; //establecemos la  foto del usuario
+                    account.Universidad = t.strUniversidad;
+                    account.TipoPersonal = t.strTipoPersonal;
                 }
                 account.IdUsuario = catUsuarios.idUsuario;
                 account.Email = catUsuarios.strEmailInstitucional;
                 account.Password = catUsuarios.strPassword;
                 account.Nombre = catUsuarios.strNombrUsuario; ///representara el nombre del usuario
-              
+                account.TipoUsuario = catUsuarios.strTipoUsuario;
                 
                 return account;
             }
@@ -130,17 +132,18 @@ namespace AppDigitalCv.Business
                 tblPersonal.catUsuarios = new catUsuarios
                 {
                     dteFechaRegistro = DateTime.Now,
-                    idStatus = 1,
+                    idStatus = 1,//Por defecto es alta
                     strEmailInstitucional = personalDomainModel.AccountDomainModel.Email,
                     strNombrUsuario = personalDomainModel.AccountDomainModel.Nombre,
                     strPassword = personalDomainModel.AccountDomainModel.Password,
-                    
-
+                    strTipoUsuario = personalDomainModel.AccountDomainModel.TipoUsuario
                 };
 
                 tblPersonal.strNombre = personalDomainModel.Nombre;
                 tblPersonal.strApellidoPaterno = personalDomainModel.ApellidoPaterno;
                 tblPersonal.strApellidoMaterno = personalDomainModel.ApellidoMaterno;
+                tblPersonal.strUniversidad = personalDomainModel.strUniversidad;
+                tblPersonal.strTipoPersonal = personalDomainModel.strTipoPersonal;
 
                 personalRepository.Insert(tblPersonal);
                 respuesta = true;

@@ -84,5 +84,6 @@ namespace AppDigitalCv.Business.Interface
         bool DeletePersonal(int _idPersonal);
 
         bool UpdateSemblanza(PersonalDomainModel personalDomainModel);
+        PersonalDomainModel GetPerfil(int _idPersonal);
     }
 }

@@ -52,7 +52,6 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<catTipoEstudio> catTipoEstudio { get; set; }
         public virtual DbSet<catTipoSangre> catTipoSangre { get; set; }
         public virtual DbSet<catUnidadesAcademicas> catUnidadesAcademicas { get; set; }
-        public virtual DbSet<catUsuarios> catUsuarios { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tblAlergiasPersonal> tblAlergiasPersonal { get; set; }
         public virtual DbSet<tblCompetenciasTIPersonal> tblCompetenciasTIPersonal { get; set; }
@@ -115,7 +114,6 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<TblMaetria> TblMaetria { get; set; }
         public virtual DbSet<TblMemoriasExtenso> TblMemoriasExtenso { get; set; }
         public virtual DbSet<TblOtraCapacitacion> TblOtraCapacitacion { get; set; }
-        public virtual DbSet<CatTipoUsuario> CatTipoUsuario { get; set; }
         public virtual DbSet<tblDatosContacto> tblDatosContacto { get; set; }
         public virtual DbSet<tblTelefono> tblTelefono { get; set; }
         public virtual DbSet<tblPremiosDocente> tblPremiosDocente { get; set; }
@@ -165,5 +163,7 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<CatAlergiaAlimento> CatAlergiaAlimento { get; set; }
         public virtual DbSet<CatRespuestas09> CatRespuestas09 { get; set; }
         public virtual DbSet<CatEnfermedadesExantemática> CatEnfermedadesExantemática { get; set; }
+        public virtual DbSet<catUsuarioEspeciales> catUsuarioEspeciales { get; set; }
+        public virtual DbSet<catUsuarios> catUsuarios { get; set; }
     }
 }

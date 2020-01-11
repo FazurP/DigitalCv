@@ -64,7 +64,16 @@ namespace AppDigitalCv.ViewModels
         public int IdEstadoCivil { get; set; }
         public int idTipoSangre { get; set; }
         public int idNacionalidad { get; set; }
+        public string strTipoPersonal { get; set; }
+        public string strUniversidad { get; set; }
         public TipoSangreVM TipoSangreVM { get; set; }
+
+        //Objetos de las relaciones
+
+        public NacionalidadVM Nacionalidad { get; set; }
+        public EstadoCivilVM EstadoCivil { get; set; }
+        public FamiliaresVM Familiar { get; set; }
+        public DireccionVM Direccion { get; set; }
 
     }
 

@@ -274,5 +274,27 @@ namespace AppDigitalCv.Business
 
             return respuesta;
         }
+
+        public PersonalDomainModel GetPerfil(int _idPersonal) 
+        {
+            PersonalDomainModel personalDomainModel = new PersonalDomainModel();
+            tblPersonal tblPersonal = new tblPersonal();
+
+            tblPersonal = personalRepository.GetAll().Where(p => p.idPersonal == _idPersonal).FirstOrDefault();
+
+            if (tblPersonal != null)
+            {
+                personalDomainModel.Nombre = tblPersonal.strNombre;
+                personalDomainModel.ApellidoPaterno = tblPersonal.strApellidoPaterno;
+                personalDomainModel.ApellidoMaterno = tblPersonal.strApellidoMaterno;
+                _ = tblPersonal.CatNacionalidad == null ? new NacionalidadDomainModel() : personalDomainModel.Nacionalidad = new NacionalidadDomainModel { strValor = tblPersonal.CatNacionalidad.strValor };
+                _ = tblPersonal.catEstadoCivil == null ? new EstadoCivilDomainModel() : personalDomainModel.EstadoCivil = new EstadoCivilDomainModel { StrDescripcion = tblPersonal.catEstadoCivil.strDescripcion };
+                personalDomainModel.strGenero = tblPersonal.strGenero;
+                personalDomainModel.Curp = tblPersonal.strCurp;
+                personalDomainModel.Rfc = tblPersonal.strRfc;
+                personalDomainModel.Homoclave = tblPersonal.strHomoclave;
+            }
+            return personalDomainModel;
+        }
     }
 }

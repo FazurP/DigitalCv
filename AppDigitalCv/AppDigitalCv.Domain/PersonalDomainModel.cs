@@ -28,6 +28,8 @@ namespace AppDigitalCv.Domain
         public int idDireccion { get; set; }
         public int idFamiliar { get; set; }
         public int idNacionalidad { get; set; }
+        public string strTipoPersonal { get; set; }
+        public string strUniversidad { get; set; }
         public TipoSangreDomainModel TipoSangreDomainModel { get; set; }
 
 
@@ -36,5 +38,9 @@ namespace AppDigitalCv.Domain
         public AccountDomainModel AccountDomainModel { get; set; }
         public DocumentosDomainModel documentoRfc { get; set; }
         public DocumentosDomainModel documentoCurp { get; set; }
+        public EstadoCivilDomainModel EstadoCivil { get; set; }
+        public DireccionDomainModel Direccion { get; set; }
+        public FamiliarDomainModel Familiar { get; set; }
+        public NacionalidadDomainModel Nacionalidad { get; set; }
     }
 }
