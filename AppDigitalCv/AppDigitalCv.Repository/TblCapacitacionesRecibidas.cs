@@ -12,21 +12,21 @@ namespace AppDigitalCv.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class tblExperienciaLaboralInterna
+    public partial class TblCapacitacionesRecibidas
     {
         public int id { get; set; }
+        public Nullable<int> idDocumento { get; set; }
         public Nullable<int> idPersonal { get; set; }
-        public Nullable<int> idTipoContrato { get; set; }
-        public Nullable<int> idArea { get; set; }
-        public Nullable<int> idProgramaEduactivo { get; set; }
-        public Nullable<int> idPeriodo { get; set; }
-        public Nullable<System.DateTime> dteFechaInicio { get; set; }
-        public Nullable<System.DateTime> dteFechaFin { get; set; }
-        public string strActividadDesempenada { get; set; }
+        public Nullable<int> idCapacitaciones { get; set; }
+        public Nullable<int> idTipoCapacitacion { get; set; }
+        public string strNombre { get; set; }
+        public string strTotalHoras { get; set; }
+        public string strInstitucionAcredita { get; set; }
+        public Nullable<System.DateTime> dteFecha { get; set; }
     
-        public virtual catArea catArea { get; set; }
-        public virtual catPeriodo catPeriodo { get; set; }
-        public virtual catProgramaEducativo catProgramaEducativo { get; set; }
+        public virtual CatCapaciones CatCapaciones { get; set; }
+        public virtual catDocumentos catDocumentos { get; set; }
+        public virtual CatTiposCapacitacion CatTiposCapacitacion { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
     }
 }

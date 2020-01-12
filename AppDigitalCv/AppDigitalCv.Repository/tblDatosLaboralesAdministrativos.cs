@@ -24,7 +24,6 @@ namespace AppDigitalCv.Repository
         public Nullable<System.DateTime> dteFechaRegistro { get; set; }
     
         public virtual catArea catArea { get; set; }
-        public virtual catTipoContrato catTipoContrato { get; set; }
         public virtual catUnidadesAcademicas catUnidadesAcademicas { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
     }

@@ -17,7 +17,6 @@ namespace AppDigitalCv.Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public catCategoria()
         {
-            this.catTipoContrato = new HashSet<catTipoContrato>();
             this.Organizaciones_Salud = new HashSet<Organizaciones_Salud>();
             this.TblUsuario = new HashSet<TblUsuario>();
         }
@@ -26,8 +25,6 @@ namespace AppDigitalCv.Repository
         public string strDescripcion { get; set; }
         public string strObservacion { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<catTipoContrato> catTipoContrato { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Organizaciones_Salud> Organizaciones_Salud { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

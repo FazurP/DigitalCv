@@ -32,6 +32,8 @@ namespace AppDigitalCv.Repository
             this.TblIdioma = new HashSet<TblIdioma>();
             this.tblDocumentacionPersonal = new HashSet<tblDocumentacionPersonal>();
             this.tblCompetenciasConocimientosPersonal = new HashSet<tblCompetenciasConocimientosPersonal>();
+            this.TblCapacitacionesImpartidas = new HashSet<TblCapacitacionesImpartidas>();
+            this.TblCapacitacionesRecibidas = new HashSet<TblCapacitacionesRecibidas>();
         }
     
         public int idDocumento { get; set; }
@@ -69,5 +71,9 @@ namespace AppDigitalCv.Repository
         public virtual ICollection<tblDocumentacionPersonal> tblDocumentacionPersonal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCompetenciasConocimientosPersonal> tblCompetenciasConocimientosPersonal { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblCapacitacionesImpartidas> TblCapacitacionesImpartidas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblCapacitacionesRecibidas> TblCapacitacionesRecibidas { get; set; }
     }
 }

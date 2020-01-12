@@ -12,18 +12,21 @@ namespace AppDigitalCv.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class catCurso
+    public partial class CatCapaciones
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public catCurso()
+        public CatCapaciones()
         {
-            this.tblCursos = new HashSet<tblCursos>();
+            this.TblCapacitacionesImpartidas = new HashSet<TblCapacitacionesImpartidas>();
+            this.TblCapacitacionesRecibidas = new HashSet<TblCapacitacionesRecibidas>();
         }
     
         public int id { get; set; }
-        public string strDescripcion { get; set; }
+        public string strValor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblCursos> tblCursos { get; set; }
+        public virtual ICollection<TblCapacitacionesImpartidas> TblCapacitacionesImpartidas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblCapacitacionesRecibidas> TblCapacitacionesRecibidas { get; set; }
     }
 }

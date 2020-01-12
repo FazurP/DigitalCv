@@ -101,6 +101,9 @@
     <Compile Include="catAsociaciones.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="CatCapaciones.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="CatCapacitacionesCompetenciasProfesionales.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
@@ -111,15 +114,6 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CatColonia.cs">
-      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="catCompetenciaTI.cs">
-      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="catCuerpoAcademico.cs">
-      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="catCurso.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="catDeporte.cs">
@@ -270,21 +264,17 @@
     <Compile Include="catTipoProducto.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="CatTratamiento.cs">
+    <Compile Include="CatTiposCapacitacion.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="catUsuarioEspeciales.cs">
+    <Compile Include="CatTratamiento.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CompetenciasPersonalRepository.cs" />
     <Compile Include="CompetenciasProfesionalesRepository.cs" />
     <Compile Include="CompetenciasTiPersonalRepository.cs" />
-    <Compile Include="CompetenciaTiRepository.cs" />
-    <Compile Include="CuerpoAcademicoRepository.cs" />
     <Compile Include="DatosLaboralesAdministrativosRepository.cs" />
     <Compile Include="DatosLaboralesDocenteRepository.cs" />
-    <Compile Include="CursoRepository.cs" />
-    <Compile Include="CursosRepository.cs" />
     <Compile Include="DeportePersonalRepository.cs" />
     <Compile Include="DeporteRepository.cs" />
     <Compile Include="DireccionIndividualizadaRepository.cs" />
@@ -318,9 +308,6 @@
     <Compile Include="CatMunicipio.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="catNivelSalarial.cs">
-      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="CatPais.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
@@ -333,22 +320,13 @@
     <Compile Include="catRoles.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="catSalarios.cs">
-      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="catStatus.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="catTipoAlergias.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="catTipoContrato.cs">
-      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="catTipoEstudio.cs">
-      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="catTipoSangre.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="catUnidadesAcademicas.cs">
@@ -390,7 +368,6 @@
     <Compile Include="MunicipioRepository.cs" />
     <Compile Include="NacionalidadRepository.cs" />
     <Compile Include="NivelConocimientoRepository.cs" />
-    <Compile Include="NivelSalarialRepository.cs" />
     <Compile Include="OpcionesRespuesta04Repository.cs" />
     <Compile Include="Organizaciones_Salud.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
@@ -414,7 +391,6 @@
     <Compile Include="PrototipoRepository.cs" />
     <Compile Include="ProyectoInvestigacionRepository.cs" />
     <Compile Include="RhRepository.cs" />
-    <Compile Include="SalariosRepository.cs" />
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
@@ -427,6 +403,12 @@
     <Compile Include="TblCapacitacionCompetenciasProfesionales.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="TblCapacitacionesImpartidas.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblCapacitacionesRecibidas.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblCapituloLibro.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
@@ -434,9 +416,6 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblCompetenciasTIPersonal.cs">
-      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblCursos.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDatosContacto.cs">
@@ -567,11 +546,9 @@
     </Compile>
     <Compile Include="TelefonoRepository.cs" />
     <Compile Include="TipoActividadRepository.cs" />
-    <Compile Include="TipoContratoRepository.cs" />
     <Compile Include="TipoDocumentoRepository.cs" />
     <Compile Include="TipoEstudioRepository.cs" />
     <Compile Include="TipoProductoRepository.cs" />
-    <Compile Include="TipoSangreRepository.cs" />
     <Compile Include="TutoriasRepository.cs" />
     <Compile Include="UnidadesAcademicasRepository.cs" />
   </ItemGroup>

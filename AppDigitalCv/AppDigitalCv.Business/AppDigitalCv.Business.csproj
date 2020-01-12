@@ -56,12 +56,8 @@
     <Compile Include="AsosiacionesBusiness.cs" />
     <Compile Include="CapituloLibroBusiness.cs" />
     <Compile Include="CategoriaBusiness.cs" />
-    <Compile Include="CompetenciaBusiness.cs" />
     <Compile Include="CompetenciasBusiness.cs" />
     <Compile Include="CompetenciasPersonalBusiness.cs" />
-    <Compile Include="CompetenciasTiBusiness.cs" />
-    <Compile Include="CursoBusiness.cs" />
-    <Compile Include="CursosBusiness.cs" />
     <Compile Include="DatosContactoBusiness.cs" />
     <Compile Include="DeporteBusiness.cs" />
     <Compile Include="DeportePersonalBusiness.cs" />
@@ -191,11 +187,9 @@
     </Compile>
     <Compile Include="TelefonoBusiness.cs" />
     <Compile Include="TipoActividadBusiness.cs" />
-    <Compile Include="TipoContratoBusiness.cs" />
     <Compile Include="TipoDocumentoBusiness.cs" />
     <Compile Include="TipoEstudioBusiness.cs" />
     <Compile Include="TipoProductoBusiness.cs" />
-    <Compile Include="TipoSangreBusiness.cs" />
     <Compile Include="TutoriasBusiness.cs" />
     <Compile Include="UnidadesAcademicasBusiness.cs" />
   </ItemGroup>

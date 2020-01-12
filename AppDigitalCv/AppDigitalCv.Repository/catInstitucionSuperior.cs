@@ -18,7 +18,6 @@ namespace AppDigitalCv.Repository
         public catInstitucionSuperior()
         {
             this.catProgramaEducativo = new HashSet<catProgramaEducativo>();
-            this.tblCursos = new HashSet<tblCursos>();
             this.tblParticipacionInstitucionalExterna = new HashSet<tblParticipacionInstitucionalExterna>();
             this.tblDireccionIndividualizada = new HashSet<tblDireccionIndividualizada>();
         }
@@ -29,8 +28,6 @@ namespace AppDigitalCv.Repository
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<catProgramaEducativo> catProgramaEducativo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblCursos> tblCursos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblParticipacionInstitucionalExterna> tblParticipacionInstitucionalExterna { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -19,7 +19,6 @@ namespace AppDigitalCv.Repository
         public int idPersonal { get; set; }
         public Nullable<System.DateTime> dteFechaRegistro { get; set; }
     
-        public virtual catCompetenciaTI catCompetenciaTI { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
     }
 }

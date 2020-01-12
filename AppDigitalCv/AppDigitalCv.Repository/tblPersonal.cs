@@ -22,7 +22,6 @@ namespace AppDigitalCv.Repository
             this.TblCapacitacionCompetenciasProfesionales = new HashSet<TblCapacitacionCompetenciasProfesionales>();
             this.tblCapituloLibro = new HashSet<tblCapituloLibro>();
             this.tblCompetenciasTIPersonal = new HashSet<tblCompetenciasTIPersonal>();
-            this.tblCursos = new HashSet<tblCursos>();
             this.tblDatosContacto = new HashSet<tblDatosContacto>();
             this.TblDatosLaborales = new HashSet<TblDatosLaborales>();
             this.tblDatosLaboralesAdministrativos = new HashSet<tblDatosLaboralesAdministrativos>();
@@ -59,6 +58,8 @@ namespace AppDigitalCv.Repository
             this.TblLenguas = new HashSet<TblLenguas>();
             this.tblDocumentacionPersonal = new HashSet<tblDocumentacionPersonal>();
             this.tblCompetenciasConocimientosPersonal = new HashSet<tblCompetenciasConocimientosPersonal>();
+            this.TblCapacitacionesImpartidas = new HashSet<TblCapacitacionesImpartidas>();
+            this.TblCapacitacionesRecibidas = new HashSet<TblCapacitacionesRecibidas>();
         }
     
         public int idPersonal { get; set; }
@@ -91,7 +92,6 @@ namespace AppDigitalCv.Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<catFamiliar> catFamiliar { get; set; }
         public virtual CatNacionalidad CatNacionalidad { get; set; }
-        public virtual catTipoSangre catTipoSangre { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblAlergiasPersonal> tblAlergiasPersonal { get; set; }
         public virtual TblBachillerato TblBachillerato { get; set; }
@@ -101,8 +101,6 @@ namespace AppDigitalCv.Repository
         public virtual ICollection<tblCapituloLibro> tblCapituloLibro { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCompetenciasTIPersonal> tblCompetenciasTIPersonal { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblCursos> tblCursos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblDatosContacto> tblDatosContacto { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -177,5 +175,9 @@ namespace AppDigitalCv.Repository
         public virtual ICollection<tblCompetenciasConocimientosPersonal> tblCompetenciasConocimientosPersonal { get; set; }
         public virtual TblEncuesta TblEncuesta { get; set; }
         public virtual catUsuarios catUsuarios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblCapacitacionesImpartidas> TblCapacitacionesImpartidas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblCapacitacionesRecibidas> TblCapacitacionesRecibidas { get; set; }
     }
 }

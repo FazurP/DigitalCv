@@ -6,9 +6,8 @@ using System.Web.Mvc;
 
 namespace AppDigitalCv.Controllers
 {
-    public class CapacitacionCompetenciasProfesionalesController : Controller
+    public class CapacitacionesRecibidasController : Controller
     {
-        // GET: CapacitacionCompetenciasProfesionales
         public ActionResult Create()
         {
             return View();

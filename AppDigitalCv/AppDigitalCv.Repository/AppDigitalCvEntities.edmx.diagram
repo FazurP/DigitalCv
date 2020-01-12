@@ -9,8 +9,6 @@
         <EntityTypeShape EntityType="bdGestionDocenteModel.catArea" Width="1.5" PointX="8.25" PointY="32.125" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catCategoria" Width="1.5" PointX="6" PointY="39.625" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatColonia" Width="1.5" PointX="0.75" PointY="19.375" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.catCompetenciaTI" Width="1.5" PointX="5.25" PointY="16.75" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.catCuerpoAcademico" Width="1.5" PointX="5.25" PointY="32.5" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catDeporte" Width="1.5" PointX="8.25" PointY="13.5" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catDireccion" Width="1.5" PointX="4.375" PointY="19.75" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catEdificio" Width="1.5" PointX="5.25" PointY="30" />
@@ -21,16 +19,12 @@
         <EntityTypeShape EntityType="bdGestionDocenteModel.catIdioma" Width="1.5" PointX="5.25" PointY="43.125" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catInstitucionSuperior" Width="1.5" PointX="3" PointY="1.875" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatMunicipio" Width="1.5" PointX="1.5" PointY="16.375" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.catNivelSalarial" Width="1.5" PointX="3.75" PointY="36.875" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatPais" Width="1.5" PointX="1.5" PointY="10.625" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catProgramaEducativo" Width="1.5" PointX="5.25" PointY="2.75" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catRoles" Width="1.5" PointX="9" PointY="44.375" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.catSalarios" Width="1.5" PointX="6" PointY="36.75" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catStatus" Width="1.5" PointX="0.75" PointY="30.375" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catTipoAlergias" Width="1.5" PointX="3" PointY="7.75" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.catTipoContrato" Width="1.5" PointX="8.25" PointY="37.625" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catTipoEstudio" Width="1.5" PointX="3" PointY="4.375" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.catTipoSangre" Width="1.5" PointX="3" PointY="27.375" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catUnidadesAcademicas" Width="1.5" PointX="8.25" PointY="34.75" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblAlergiasPersonal" Width="1.5" PointX="7.5" PointY="19.625" />
@@ -45,11 +39,8 @@
         <AssociationConnector Association="bdGestionDocenteModel.fk_alegia_alergiaPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_tipoAlergias_alergias" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_area_datosLaboralesAdministrativos" />
-        <AssociationConnector Association="bdGestionDocenteModel.fk_tipoestudio_tipoContrato" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_CatColonia_CatMunicipio" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_catDireccion_catColonia" />
-        <AssociationConnector Association="bdGestionDocenteModel.fk_competenciaTI_competenciaTIPersonall" />
-        <AssociationConnector Association="bdGestionDocenteModel.fk_cuerpoAcademico_datosLaboralesDocente" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_deporte_deportePersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_edificio_datosLaboralesDocente" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_enfermedad_enfermedadPersonal" />
@@ -57,19 +48,11 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_CatMunicipio_CatEstado" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_frecuencia_deportePersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_institucionSuperior_programaEducativo" />
-        <AssociationConnector Association="bdGestionDocenteModel.fk_nivelSalarial_salarios" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_programaEducativo_datosLaboralesDocente" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_tipoestudio_programaEducativo" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_Roles_usuariosRol" />
-        <AssociationConnector Association="bdGestionDocenteModel.fk_salarios_tipoContrato" />
-        <AssociationConnector Association="bdGestionDocenteModel.fk_tipocontrato_datosLaboralesAdministrativos" />
-        <AssociationConnector Association="bdGestionDocenteModel.fk_tipoContrato_datosLaboralesDocente" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_unidadesAcademicas_datosLaboralesAdministrativos" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_unidadesAcademicas_datosLaboralesDocente" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.catCurso" Width="1.5" PointX="8.25" PointY="7.375" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.tblCursos" Width="1.5" PointX="10.5" PointY="8.875" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblCursos_catCurso" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblCursos_catInstitucionSuperior" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catDocumentos" Width="1.5" PointX="11.25" PointY="16" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblPortafolioPersonal" Width="1.5" PointX="16.5" PointY="23.125" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblPortafolioPersonal_catDocumentos" />
@@ -93,7 +76,6 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catArea" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catPeriodo" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catProgramaEducativo" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catTipoContrato" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblCapituloLibro" Width="1.5" PointX="16.5" PointY="31.875" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblCapituloLibro_catStatus" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblProgresoProdep" Width="1.5" PointX="7.375" PointY="3.75" />
@@ -205,13 +187,11 @@
         <AssociationConnector Association="bdGestionDocenteModel.fk_estadoCivil_personal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_catFamiliar_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblPersonal_CatNacionalidad" />
-        <AssociationConnector Association="bdGestionDocenteModel.fk_tipoSangre_personal" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_personal_alergiaPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblPersonal_TblBachillerato" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblCapacitacionCompetenciasProfesionales_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblCapituloLibro_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_personal_competenciaTIPersonal" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblCursos_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_personal_datosContacto" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblDatosLaborales_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_personal_datosLaboralesAdministrativos" />
@@ -330,11 +310,22 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas09" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatEnfermedadesExantemática" Width="1.5" PointX="25.375" PointY="70.75" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_CatRespuestas07_CatEnfermedadesExantemática" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.catUsuarioEspeciales" Width="1.5" PointX="16.375" PointY="0.75" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catUsuarios" Width="1.5" PointX="3" PointY="23" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_Status_usuario" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_usuario_personal" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_usuario_usuariosRol" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.CatCapaciones" Width="1.5" PointX="29.25" PointY="23.625" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.CatTiposCapacitacion" Width="1.5" PointX="29.25" PointY="20.125" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.TblCapacitacionesImpartidas" Width="1.5" PointX="30.5" PointY="38" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.TblCapacitacionesRecibidas" Width="1.5" PointX="31.5" PointY="33" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_CatCapaciones" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_CatCapaciones" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_catDocumentos" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_catDocumentos" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_CatTiposCapacitacion" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_CatTiposCapacitacion" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_tblPersonal" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_tblPersonal" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

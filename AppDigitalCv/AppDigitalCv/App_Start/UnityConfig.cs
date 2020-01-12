@@ -32,15 +32,12 @@ namespace AppDigitalCv
             container.RegisterType<IDialectoIdiomaBusiness, DialectoIdiomaBusiness>();
             container.RegisterType<IUnitOfWork, UnitOfWork>();
             container.RegisterType<IEnfermedadBusiness, EnfermedadBusiness>();
-            container.RegisterType<ITipoSangreBusiness, TipoSangreBusiness>();
             container.RegisterType<IEstadoSaludBusiness, EstadoSaludBusiness>();
             container.RegisterType<IFamiliarBusiness, FamiliarBusiness>();
             container.RegisterType<IPremiosDocenteBusiness, PremiosDocenteBusiness>();
             container.RegisterType<IDocumentosBusiness, DocumentosBusiness>();
             container.RegisterType<IAsociacionesBusiness, AsosiacionesBusiness>();
             container.RegisterType<IPersonalAsociacionesBusiness, PersonalAsociacionesBusiness>();
-            container.RegisterType<ICompetenciaBusiness, CompetenciaBusiness>();
-            container.RegisterType<ICompetenciasTiBusiness, CompetenciasTiBusiness>();
             container.RegisterType<IParentescoBusiness, ParentescoBusiness>();
             container.RegisterType<IEmergenciaBusiness, EmergenciaBusiness>();
             container.RegisterType<IDeporteBusiness, DeporteBusiness>();
@@ -58,12 +55,7 @@ namespace AppDigitalCv
             container.RegisterType<IEdificioBusiness, EdificioBusiness>();
             container.RegisterType<IProgramaEducativoBusiness,ProgramaEducativoBusiness>();
             container.RegisterType<IAreaBusiness, AreaBusiness>();
-            container.RegisterType<ITipoContratoBusiness, TipoContratoBusiness>();
-
             container.RegisterType<IInstitucionSuperiorBusiness, InstitucionSuperiorBusiness>();
-            container.RegisterType<ICursoBusiness, CursoBusiness>();
-
-            container.RegisterType<ICursosBusiness, CursosBusiness>();
             container.RegisterType<IDocumentacionPersonalBusiness, DocumentacionPersonalBusiness>();
             container.RegisterType<IDocumentacionPersonalV2Business, DocumentacionPersonalV2Business>();
             container.RegisterType<IPeriodoBusiness,PeriodoBusiness>();

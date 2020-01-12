@@ -562,14 +562,8 @@
     <Content Include="Views\Asociacion\Create.cshtml" />
     <Content Include="Views\DatosContacto\_Eliminar.cshtml" />
     <Content Include="Views\DatosFamiliares\Create.cshtml" />
-    <Content Include="Views\CompetenciaTi\Create.cshtml" />
-    <Content Include="Views\CompetenciaTi\CompetenciasTI.cshtml" />
     <Content Include="Views\DatosFamiliares\_Editar.cshtml" />
     <Content Include="Views\DatosFamiliares\_Eliminar.cshtml" />
-    <Content Include="Views\CompetenciaTi\_Eliminar.cshtml" />
-    <Content Include="Views\ContactoEmergencia\Create.cshtml" />
-    <Content Include="Views\ContactoEmergencia\_Editar.cshtml" />
-    <Content Include="Views\ContactoEmergencia\_Eliminar.cshtml" />
     <Content Include="Views\HabitosPersonales\Create.cshtml" />
     <Content Include="Views\HabitosPersonales\_Deportes.cshtml" />
     <Content Include="Views\HabitosPersonales\_Editar.cshtml" />
@@ -583,17 +577,11 @@
     <Content Include="Views\DialectoIdioma\_Eliminar.cshtml" />
     <Content Include="Views\Competencias\Create.cshtml" />
     <Content Include="Views\Competencias\_Eliminar.cshtml" />
-    <Content Include="Views\TipoContratacion\Create.cshtml" />
-    <Content Include="Views\TipoContratacion\_TipoContrato.cshtml" />
-    <Content Include="Views\Cursos\Create.cshtml" />
     <Content Include="Views\DocumentacionPersonal\Create.cshtml" />
     <Content Include="Views\DocumentacionPersonal\_Eliminar.cshtml" />
     <Content Include="Views\DocumentacionPersonalV2\Create.cshtml" />
     <Content Include="Views\Error\NoScript.cshtml" />
-    <Content Include="Views\Curso\Create.cshtml" />
     <Content Include="Views\InstitucionSuperior\Create.cshtml" />
-    <Content Include="Views\Cursos\_Editar.cshtml" />
-    <Content Include="Views\Cursos\_Eliminar.cshtml" />
     <Content Include="Views\ParticipacionInstitucionalExterna\Create.cshtml" />
     <Content Include="Views\ParticipacionInstitucionalExterna\_Editar.cshtml" />
     <Content Include="Views\ParticipacionInstitucionalExterna\_Eliminar.cshtml" />
@@ -644,8 +632,6 @@
     <Content Include="Views\Tutorias\_Editar.cshtml" />
     <Content Include="Views\ProyectoInvestigacion\_Eliminar.cshtml" />
     <Content Include="Views\ProyectoInvestigacion\_Editar.cshtml" />
-    <Content Include="Views\CapacitacionCompetenciasProfesionales\Create.cshtml" />
-    <Content Include="Views\OtrasCapacitaciones\Create.cshtml" />
     <Content Include="Views\PremiosDocente\_Editar.cshtml" />
     <Content Include="Views\Hobbie\Create.cshtml" />
     <Content Include="Views\Hobbie\_Editar.cshtml" />
@@ -656,6 +642,11 @@
     <Content Include="Views\EncuestaSalud\_Eliminar.cshtml" />
     <Content Include="Views\Personal\_EditarSemblanza.cshtml" />
     <Content Include="Views\Personal\Perfil.cshtml" />
+    <Content Include="Views\CapacitacionesRecibidas\Create.cshtml" />
+    <Content Include="Views\CapacitacionesImpartidas\Create.cshtml" />
+    <Content Include="Views\HistorialAcademico\Create.cshtml" />
+    <Content Include="Views\ParticipacionConferencias\Create.cshtml" />
+    <Content Include="Views\PresentacionConferencias\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -672,13 +663,10 @@
     </Compile>
     <Compile Include="Controllers\AlergiasController.cs" />
     <Compile Include="Controllers\AsociacionController.cs" />
-    <Compile Include="Controllers\CapacitacionCompetenciasProfesionalesController.cs" />
+    <Compile Include="Controllers\CapacitacionesImpartidasController.cs" />
+    <Compile Include="Controllers\CapacitacionesRecibidasController.cs" />
     <Compile Include="Controllers\CapituloLibroController.cs" />
     <Compile Include="Controllers\CompetenciasController.cs" />
-    <Compile Include="Controllers\CompetenciaTiController.cs" />
-    <Compile Include="Controllers\ContactoEmergenciaController.cs" />
-    <Compile Include="Controllers\CursoController.cs" />
-    <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\DatosContactoController.cs" />
     <Compile Include="Controllers\DatosFamiliaresController.cs" />
     <Compile Include="Controllers\DialectoIdiomaController.cs" />
@@ -688,6 +676,7 @@
     <Compile Include="Controllers\DocumentacionPersonalV2Controller.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />
     <Compile Include="Controllers\EncuestaSaludController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\EstadiaEmpresaController.cs" />
     <Compile Include="Controllers\EstadoCivilController.cs" />
     <Compile Include="Controllers\EstadoSaludController.cs" />
@@ -695,19 +684,21 @@
     <Compile Include="Controllers\ExperienciaLaboralInternaController.cs" />
     <Compile Include="Controllers\HabitosPersonalesController.cs" />
     <Compile Include="Controllers\HijosController.cs" />
+    <Compile Include="Controllers\HistorialAcademicoController.cs" />
     <Compile Include="Controllers\HobbieController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IdiomaController.cs" />
     <Compile Include="Controllers\InformeTecnicoController.cs" />
     <Compile Include="Controllers\InstitucionSuperiorController.cs" />
     <Compile Include="Controllers\LibroController.cs" />
     <Compile Include="Controllers\ManualOperacionController.cs" />
-    <Compile Include="Controllers\OtrasCapacitacionesController.cs" />
-    <Compile Include="Controllers\ParticipacionDocenteController.cs" />
+    <Compile Include="Controllers\ParticipacionConferenciasController.cs" />
     <Compile Include="Controllers\ParticipacionInstitucionalExternaController.cs" />
     <Compile Include="Controllers\ParticipacionInstitucionalInternaController.cs" />
     <Compile Include="Controllers\PersonalAsociacionesController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Controllers\PremiosDocenteController.cs" />
+    <Compile Include="Controllers\PresentacionConferenciasController.cs" />
     <Compile Include="Controllers\ProduccionesArtisticasController.cs" />
     <Compile Include="Controllers\ProductividadInnovadoraController.cs" />
     <Compile Include="Controllers\PrototipoController.cs" />
@@ -986,8 +977,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ErrorController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
