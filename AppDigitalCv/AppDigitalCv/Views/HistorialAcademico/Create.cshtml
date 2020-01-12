@@ -21,10 +21,52 @@
                         <!-- /.box-tools -->
                     </div>
                     <div class="box-body">
-
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Grado de Estudio:</label>
+                                    @Html.DropDownList("NivelEstudio", new SelectList(""), new { @class = "form-control input-sm", id = "NivelEstudio" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Nombre:</label>
+                                    @Html.DropDownList("NombreEstudio", new SelectList(""), new { @class = "form-control input-sm", id = "NombreEstudio" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Institución que lo Acredita:</label>
+                                    @Html.TextBox("InstitucionAcredita", null, new { @class = "form-control input-sm", id = "InstitucionAcredita" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Estatus Academico:</label>
+                                    @Html.TextBox("Status", null, new { @class = "form-control input-sm", id = "Status" })
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Fuente de Financiamiento:</label>
+                                    @Html.DropDownList("FuenteFinanciamiento", new SelectList(""), new { @class = "form-control input-sm", id = "FuenteFinanciamiento" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Reconocido Dentro de PNPC:</label>
+                                    <br />
+                                    Si @Html.RadioButton("PNPC", true, false, new { id = "PNPC" })
+                                    No @Html.RadioButton("PNPC", false, true, new { id = "PNPC" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Documento que Acredita:</label>
+                                    @Html.TextBox("Documento", null, new { @class = "form-control input-sm", id = "Documento", type = "file" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                           
+                        </div>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <input type="submit" class="btn btn-success" value="Guardar" onclick="GuardarList()" id="Enviar" />
+                                <input type="submit" class="btn btn-sm btn-success" value="Registrar Información"  id="Enviar" />
                             </div>
                         </div>
                     </div>

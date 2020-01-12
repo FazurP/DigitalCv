@@ -278,6 +278,7 @@
     <Compile Include="DeportePersonalRepository.cs" />
     <Compile Include="DeporteRepository.cs" />
     <Compile Include="DireccionIndividualizadaRepository.cs" />
+    <Compile Include="DoctoradoRepository.cs" />
     <Compile Include="DocumentacionPersonalRepository.cs" />
     <Compile Include="DocumentacionPersonalV2Repository.cs" />
     <Compile Include="DocumentosRepository.cs" />
