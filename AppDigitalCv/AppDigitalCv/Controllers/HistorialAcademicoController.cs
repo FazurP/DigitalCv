@@ -8,7 +8,6 @@ namespace AppDigitalCv.Controllers
 {
     public class HistorialAcademicoController : Controller
     {
-        // GET: HistorialAcademico
         [HttpGet]
         public ActionResult Create()
         {

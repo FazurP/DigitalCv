@@ -74,6 +74,7 @@
     <Compile Include="DialectoIdiomaDomainModel.cs" />
     <Compile Include="DireccionDomainModel.cs" />
     <Compile Include="DireccionIndividualizadaDomainModel.cs" />
+    <Compile Include="DoctoradoDomainModel.cs" />
     <Compile Include="DocumentacionPersonalDomainModel.cs" />
     <Compile Include="DocumentacionPersonalV2DomainModel.cs" />
     <Compile Include="DocumentoPersonalDomainModel.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="FamiliarDomainModel.cs" />
     <Compile Include="FamiliaresDomainModel.cs" />
     <Compile Include="FrecuenciaDomainModel.cs" />
+    <Compile Include="FuenteFinanciamientoDoctoradoDomainModel.cs" />
     <Compile Include="FumadorDomainModel.cs" />
     <Compile Include="GrupoSanguineoDomainModel.cs" />
     <Compile Include="HobbieDomainModel.cs" />
@@ -103,6 +105,7 @@
     <Compile Include="IfeDomainModel.cs" />
     <Compile Include="InformeTecnicoDomainModel.cs" />
     <Compile Include="InstitucionAcreditaCapacitacionProfesionalDomainModel.cs" />
+    <Compile Include="InstitucionAcreditaDoctoradoDomainModel.cs" />
     <Compile Include="InstitucionSuperiorDomainModel.cs" />
     <Compile Include="LenguasDomainModel.cs" />
     <Compile Include="LesionArticulacionesDomainModel.cs" />
@@ -161,6 +164,7 @@
     <Compile Include="SalariosDomainModel.cs" />
     <Compile Include="SessionManagerDomainModel.cs" />
     <Compile Include="SolicitudEmpleoDomainModel.cs" />
+    <Compile Include="StatusDoctoradoDomainModel.cs" />
     <Compile Include="TipoActividadDomainModel.cs" />
     <Compile Include="TipoContratoDomainModel.cs" />
     <Compile Include="TipoDocumentoDomainModel.cs" />

@@ -464,6 +464,7 @@
     <Content Include="Scripts\Validate\HabitosPersonales\validate-habitos-personales-regExp.js" />
     <Content Include="Scripts\Validate\Hijos\validate-hijos-form.js" />
     <Content Include="Scripts\Validate\Hijos\validate-hijos-regExp.js" />
+    <Content Include="Scripts\Validate\HistorialAcademico\setdata-historial-academico.js" />
     <Content Include="Scripts\Validate\Hobbie\validate-hobbie-form.js" />
     <Content Include="Scripts\Validate\Hobbie\validate-hobbie-regExp.js" />
     <Content Include="Scripts\Validate\IdiomasDialectos\validate-idiomas-dialectos-form.js" />
@@ -757,6 +758,7 @@
     <Compile Include="ViewModels\DialectoVM.cs" />
     <Compile Include="ViewModels\DireccionIndividualizadaVM.cs" />
     <Compile Include="ViewModels\DireccionVM.cs" />
+    <Compile Include="ViewModels\DoctoradoVM.cs" />
     <Compile Include="ViewModels\DocumentacionPersonalV2VM.cs" />
     <Compile Include="ViewModels\DocumentacionPersonalVM.cs" />
     <Compile Include="ViewModels\DocumentoPersonalVM.cs" />
@@ -774,6 +776,7 @@
     <Compile Include="ViewModels\ExperienciaLaboralInternaVM.cs" />
     <Compile Include="ViewModels\FamiliaresVM.cs" />
     <Compile Include="ViewModels\FrecuenciaVM.cs" />
+    <Compile Include="ViewModels\FuenteFinanciamientoDoctoradoVM.cs" />
     <Compile Include="ViewModels\FumadorVM.cs" />
     <Compile Include="ViewModels\GrupoSanguineoVM.cs" />
     <Compile Include="ViewModels\HobbiesVM.cs" />
@@ -785,6 +788,7 @@
     <Compile Include="ViewModels\ImageVM.cs" />
     <Compile Include="ViewModels\InformeTecnicoVM.cs" />
     <Compile Include="ViewModels\InstitucionAcreditaCapacitacionProfesionalVM.cs" />
+    <Compile Include="ViewModels\InstitucionAcreditaDoctoradoVM.cs" />
     <Compile Include="ViewModels\InstitucionSuperiorVM.cs" />
     <Compile Include="ViewModels\LenguasVM.cs" />
     <Compile Include="ViewModels\LesionArticulacionesVM.cs" />
@@ -843,6 +847,7 @@
     <Compile Include="ViewModels\SalariosVM.cs" />
     <Compile Include="ViewModels\SessionManagerVM.cs" />
     <Compile Include="ViewModels\SolicitudEmpleoVM.cs" />
+    <Compile Include="ViewModels\StatusDoctoradoVM.cs" />
     <Compile Include="ViewModels\TipoActividadVM.cs" />
     <Compile Include="ViewModels\TipoContratoVM.cs" />
     <Compile Include="ViewModels\TipoDocumentoVM.cs" />

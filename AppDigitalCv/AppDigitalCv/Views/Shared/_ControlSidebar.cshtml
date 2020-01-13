@@ -6,8 +6,13 @@
     @* BEGIN Tabs *@
     <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
         <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-hourglass"></i></a></li>
-     
-        <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+        @if (SessionPersister.AccountSession != null)
+        {
+            if (SessionPersister.AccountSession.Nombre.Equals("alilia"))
+            {
+                <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+            }
+        }
     </ul>
     @* END Tabs *@
     <div class="tab-content">
@@ -560,22 +565,25 @@
         @* END Home Tab *@
         <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
         @* BEGIN Settings Tab *@
-        <div class="tab-pane" id="control-sidebar-settings-tab">
-            <form method="post">
-                <h3 class="control-sidebar-heading">General Settings</h3>
-
-                <div class="form-group">
-                    <label class="control-sidebar-subheading">
-                        Report panel usage
-                        <input type="checkbox" class="pull-right" checked>
-                    </label>
-
-                    <p>
-                        Some information about this general settings option
-                    </p>
-                </div>
-            </form>
-        </div>
+    <div class="tab-pane" id="control-sidebar-settings-tab">
+        <h3 class="control-sidebar-heading">Herramientas de Administrador</h3>
+        <ul class="control-sidebar-menu">
+            <li>
+                <a href="javascript::;">
+                    <h4 class="control-sidebar-subheading">
+                        Generar Reportes
+                    </h4>
+                </a>
+            </li>
+            <li>
+                <a href="javascript::;">
+                    <h4 class="control-sidebar-subheading">
+                        Monitoreo de Usuarios
+                    </h4>
+                </a>
+            </li>
+        </ul>
+    </div>
         @* END Settings Tab *@
     </div>
 </aside>

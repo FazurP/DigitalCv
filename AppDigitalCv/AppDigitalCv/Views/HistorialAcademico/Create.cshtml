@@ -1,4 +1,6 @@
-﻿@using (Html.BeginForm("Create", "HistorialAcademico", FormMethod.Post, new { enctype = "multipart/form-data" }))
+﻿@model AppDigitalCv.ViewModels.DoctoradoVM
+
+@using (Html.BeginForm("Create", "HistorialAcademico", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="bs-container" style="min-height:;">
@@ -33,11 +35,11 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Nombre:</label>
-                                    @Html.DropDownList("NombreEstudio", new SelectList(""), new { @class = "form-control input-sm", id = "NombreEstudio" })
+                                    @Html.TextBoxFor(model => model.strNombre, new { @class = "form-control input-sm", id = "NombreEstudio" })
                                 </div>
                                 <div class="form-group">
                                     <label>Institución que lo Acredita:</label>
-                                    @Html.TextBox("InstitucionAcredita", null, new { @class = "form-control input-sm", id = "InstitucionAcredita" })
+                                    @Html.DropDownList("InstitucionAcredita", null, new { @class = "form-control input-sm", id = "InstitucionAcredita" })
                                 </div>
                                 <div class="form-group">
                                     <label>Estatus Academico:</label>
@@ -52,8 +54,8 @@
                                 <div class="form-group">
                                     <label>Reconocido Dentro de PNPC:</label>
                                     <br />
-                                    Si @Html.RadioButton("PNPC", true, false, new { id = "PNPC" })
-                                    No @Html.RadioButton("PNPC", false, true, new { id = "PNPC" })
+                                    Si @Html.RadioButton("PNPC", true, false, new { id = "PNPCSi" })
+                                    No @Html.RadioButton("PNPC", false, true, new { id = "PNPCNo" })
                                 </div>
                                 <div class="form-group">
                                     <label>Documento que Acredita:</label>
@@ -62,11 +64,11 @@
                             </div>
                         </div>
                         <div class="row">
-                           
+
                         </div>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <input type="submit" class="btn btn-sm btn-success" value="Registrar Información"  id="Enviar" />
+                                <input type="submit" class="btn btn-sm btn-success" value="Registrar Información" id="Enviar" />
                             </div>
                         </div>
                     </div>
@@ -108,4 +110,10 @@
             </div>
         </div>
     </div>
+}
+
+@section scripts
+    {
+
+    <script src="~/Scripts/Validate/HistorialAcademico/setdata-historial-academico.js"></script>
 }

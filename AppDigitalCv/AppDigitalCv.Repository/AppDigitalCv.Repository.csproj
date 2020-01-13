@@ -78,6 +78,7 @@
     </Compile>
     <Compile Include="AreaRepository.cs" />
     <Compile Include="AsociacionesRepository.cs" />
+    <Compile Include="BachilleratoRepository.cs" />
     <Compile Include="CapacitacionCompetenciasProfesionalesRepository.cs" />
     <Compile Include="CapituloLibroRepository.cs" />
     <Compile Include="CatActividadesFisicas.cs">
@@ -352,6 +353,8 @@
     <Compile Include="ExperienciaLaboralInternaRepository.cs" />
     <Compile Include="FamiliarRepository.cs" />
     <Compile Include="FrecuenciaRepository.cs" />
+    <Compile Include="FuentaFinaciamientoMaestriaRepository.cs" />
+    <Compile Include="FuenteFinaciamientoDoctoradoRepository.cs" />
     <Compile Include="GrupoSanguineoRepository.cs" />
     <Compile Include="HobbieRepository.cs" />
     <Compile Include="HobbiesRepository.cs" />
@@ -361,10 +364,16 @@
     <Compile Include="Infraestructure\Contract\IBaseRepository.cs" />
     <Compile Include="Infraestructure\Contract\IUnitOfWork.cs" />
     <Compile Include="Infraestructure\UnitOfWork.cs" />
+    <Compile Include="InstitucionAcreditaBachillerato.cs" />
     <Compile Include="InstitucionAcreditaCapacitacionProfesionalRepository.cs" />
+    <Compile Include="InstitucionAcreditaDoctoradoRepository.cs" />
+    <Compile Include="InstitucionAcreditaLicenciaturaRepository.cs" />
+    <Compile Include="InstitucionAcreditaMaestriaRepository.cs" />
     <Compile Include="InstitucionSuperiorRepository.cs" />
+    <Compile Include="LecenciaturaIngenieriaRepository.cs" />
     <Compile Include="LenguasRepository.cs" />
     <Compile Include="LibroRepository.cs" />
+    <Compile Include="MaestriaRepository.cs" />
     <Compile Include="ManualOperacionRepository.cs" />
     <Compile Include="MunicipioRepository.cs" />
     <Compile Include="NacionalidadRepository.cs" />
@@ -392,6 +401,9 @@
     <Compile Include="PrototipoRepository.cs" />
     <Compile Include="ProyectoInvestigacionRepository.cs" />
     <Compile Include="RhRepository.cs" />
+    <Compile Include="StatusDoctoradoRepository.cs" />
+    <Compile Include="StatusLicenciaturaRepository.cs" />
+    <Compile Include="StatusMaestriaRepository.cs" />
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
