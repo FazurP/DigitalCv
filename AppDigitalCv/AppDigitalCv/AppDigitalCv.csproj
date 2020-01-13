@@ -648,6 +648,7 @@
     <Content Include="Views\HistorialAcademico\Create.cshtml" />
     <Content Include="Views\ParticipacionConferencias\Create.cshtml" />
     <Content Include="Views\PresentacionConferencias\Create.cshtml" />
+    <Content Include="Views\HistorialAcademico\_InstitucionesAcreditan.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

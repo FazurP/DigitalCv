@@ -65,6 +65,7 @@
     <Compile Include="DialectoIdiomaBusiness.cs" />
     <Compile Include="DireccionBusiness.cs" />
     <Compile Include="DireccionIndividualizadaBusiness.cs" />
+    <Compile Include="DoctoradoBusiness.cs" />
     <Compile Include="DocumentacionPersonalBusiness.cs" />
     <Compile Include="DocumentacionPersonalV2Business.cs" />
     <Compile Include="DocumentosBusiness.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="IdiomaBusiness.cs" />
     <Compile Include="IdiomasBusiness.cs" />
     <Compile Include="InformeTecnicoBusiness.cs" />
+    <Compile Include="InstitucionAcreditaDoctoradoBusiness.cs" />
     <Compile Include="InstitucionSuperiorBusiness.cs" />
     <Compile Include="Interface\IAccountBusiness.cs" />
     <Compile Include="Interface\IAlergiasBusiness.cs" />
@@ -129,6 +131,7 @@
     <Compile Include="Interface\IEstadoCivilBusiness.cs" />
     <Compile Include="Interface\IIdiomasBusiness.cs" />
     <Compile Include="Interface\IInformeTecnicoBusiness.cs" />
+    <Compile Include="Interface\IInstitucionAcreditaDoctoradoBusiness.cs" />
     <Compile Include="Interface\IInstitucionSuperiorBusiness.cs" />
     <Compile Include="Interface\ILibroBusiness.cs" />
     <Compile Include="Interface\IManualOperacionBusiness.cs" />

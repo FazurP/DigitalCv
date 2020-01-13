@@ -1,0 +1,10 @@
+﻿
+@if (ViewBag.InstitucionAcredita != null)
+{
+    foreach (var item in ViewBag.InstitucionAcredita)
+    {
+        <option value = "@item.Value" > @item.Text</option>
+    }
+}
+
+
