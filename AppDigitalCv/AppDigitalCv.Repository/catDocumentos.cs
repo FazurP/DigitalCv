@@ -34,6 +34,10 @@ namespace AppDigitalCv.Repository
             this.tblCompetenciasConocimientosPersonal = new HashSet<tblCompetenciasConocimientosPersonal>();
             this.TblCapacitacionesImpartidas = new HashSet<TblCapacitacionesImpartidas>();
             this.TblCapacitacionesRecibidas = new HashSet<TblCapacitacionesRecibidas>();
+            this.TblBachillerato = new HashSet<TblBachillerato>();
+            this.TblDoctorado = new HashSet<TblDoctorado>();
+            this.TblLicenciaturaIngenieria = new HashSet<TblLicenciaturaIngenieria>();
+            this.TblMaetria = new HashSet<TblMaetria>();
         }
     
         public int idDocumento { get; set; }
@@ -75,5 +79,13 @@ namespace AppDigitalCv.Repository
         public virtual ICollection<TblCapacitacionesImpartidas> TblCapacitacionesImpartidas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblCapacitacionesRecibidas> TblCapacitacionesRecibidas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblBachillerato> TblBachillerato { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblDoctorado> TblDoctorado { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblLicenciaturaIngenieria> TblLicenciaturaIngenieria { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblMaetria> TblMaetria { get; set; }
     }
 }

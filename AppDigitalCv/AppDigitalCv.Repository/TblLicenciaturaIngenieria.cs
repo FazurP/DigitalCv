@@ -18,9 +18,10 @@ namespace AppDigitalCv.Repository
         public string strNombre { get; set; }
         public Nullable<int> idIstitucionAcreditaLicenciatura { get; set; }
         public Nullable<int> idStatusLicenciatura { get; set; }
-        public string strUrlDocumentoAcredita { get; set; }
+        public Nullable<int> idDocumento { get; set; }
         public Nullable<int> idPersonal { get; set; }
     
+        public virtual catDocumentos catDocumentos { get; set; }
         public virtual CatInstitucionAcreditaLicenciatura CatInstitucionAcreditaLicenciatura { get; set; }
         public virtual CatStatusLicenciatura CatStatusLicenciatura { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }

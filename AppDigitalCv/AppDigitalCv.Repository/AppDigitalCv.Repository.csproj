@@ -148,9 +148,6 @@
     <Compile Include="CatHobbies.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="CatInstitucionAcreditaBachillerato.cs">
-      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="CatInstitucionAcreditaCapacitacionProfesional.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
@@ -364,7 +361,6 @@
     <Compile Include="Infraestructure\Contract\IBaseRepository.cs" />
     <Compile Include="Infraestructure\Contract\IUnitOfWork.cs" />
     <Compile Include="Infraestructure\UnitOfWork.cs" />
-    <Compile Include="InstitucionAcreditaBachillerato.cs" />
     <Compile Include="InstitucionAcreditaCapacitacionProfesionalRepository.cs" />
     <Compile Include="InstitucionAcreditaDoctoradoRepository.cs" />
     <Compile Include="InstitucionAcreditaLicenciaturaRepository.cs" />

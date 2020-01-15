@@ -89,6 +89,9 @@ namespace AppDigitalCv
             container.RegisterType<ITipoDocumentoBusiness, TipoDocumentoBusiness>();
             container.RegisterType<IEncuestaSaludBusiness, EncuestaSaludBusiness>();
             container.RegisterType<IInstitucionAcreditaDoctoradoBusiness,InstitucionAcreditaDoctoradoBusiness>();
+            container.RegisterType<IInstitucionAcreditaLicenciaturaBusiness, InstitucionAcreditaLicenciaturaBusiness>();
+            container.RegisterType<IStatusDoctoradoBusiness, StatusDoctoradoBusiness>();
+            container.RegisterType<IFuenteFinaciamientoDoctoradoBusiness, FuenteFinaciamientoDoctoradoBusiness>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

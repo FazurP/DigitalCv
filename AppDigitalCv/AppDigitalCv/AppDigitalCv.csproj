@@ -649,6 +649,9 @@
     <Content Include="Views\ParticipacionConferencias\Create.cshtml" />
     <Content Include="Views\PresentacionConferencias\Create.cshtml" />
     <Content Include="Views\HistorialAcademico\_InstitucionesAcreditan.cshtml" />
+    <Content Include="Views\HistorialAcademico\_InstitucionesAcreditanLicenciatura.cshtml" />
+    <Content Include="Views\HistorialAcademico\_StatusDoctorados.cshtml" />
+    <Content Include="Views\HistorialAcademico\_FuenteFinaciamientoDoctorado.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -738,6 +741,7 @@
     <Compile Include="ViewModels\AlergiasVM.cs" />
     <Compile Include="ViewModels\AreaVM.cs" />
     <Compile Include="ViewModels\AsociacionesVM.cs" />
+    <Compile Include="ViewModels\BachilleratoVM.cs" />
     <Compile Include="ViewModels\CapacitacionCompetenciasProfesionalesVM.cs" />
     <Compile Include="ViewModels\CapituloLibroVM.cs" />
     <Compile Include="ViewModels\CategoriaVM.cs" />
@@ -777,9 +781,11 @@
     <Compile Include="ViewModels\ExperienciaLaboralInternaVM.cs" />
     <Compile Include="ViewModels\FamiliaresVM.cs" />
     <Compile Include="ViewModels\FrecuenciaVM.cs" />
+    <Compile Include="ViewModels\FuenteFinaciamientoMaestriaVM.cs" />
     <Compile Include="ViewModels\FuenteFinanciamientoDoctoradoVM.cs" />
     <Compile Include="ViewModels\FumadorVM.cs" />
     <Compile Include="ViewModels\GrupoSanguineoVM.cs" />
+    <Compile Include="ViewModels\HistorialAcademicoVM.cs" />
     <Compile Include="ViewModels\HobbiesVM.cs" />
     <Compile Include="ViewModels\HobbieVM.cs" />
     <Compile Include="ViewModels\IdiomaDialectoVM.cs" />
@@ -788,14 +794,19 @@
     <Compile Include="ViewModels\IfeVM.cs" />
     <Compile Include="ViewModels\ImageVM.cs" />
     <Compile Include="ViewModels\InformeTecnicoVM.cs" />
+    <Compile Include="ViewModels\InstitucionAcreditaBachilleratoVM.cs" />
     <Compile Include="ViewModels\InstitucionAcreditaCapacitacionProfesionalVM.cs" />
     <Compile Include="ViewModels\InstitucionAcreditaDoctoradoVM.cs" />
+    <Compile Include="ViewModels\InstitucionAcreditaLicenciaturaVM.cs" />
+    <Compile Include="ViewModels\InstitucionAcreditaMaestriaVM.cs" />
     <Compile Include="ViewModels\InstitucionSuperiorVM.cs" />
     <Compile Include="ViewModels\LenguasVM.cs" />
     <Compile Include="ViewModels\LesionArticulacionesVM.cs" />
     <Compile Include="ViewModels\LesionHuesosVM.cs" />
     <Compile Include="ViewModels\LesionLigamentosVM.cs" />
     <Compile Include="ViewModels\LibroVM.cs" />
+    <Compile Include="ViewModels\LicenciaturaIngenieriaVM.cs" />
+    <Compile Include="ViewModels\MaestriaVM.cs" />
     <Compile Include="ViewModels\ManualOperacionVM.cs" />
     <Compile Include="ViewModels\MunicipioVM.cs" />
     <Compile Include="ViewModels\NacionalidadVM.cs" />
@@ -849,6 +860,8 @@
     <Compile Include="ViewModels\SessionManagerVM.cs" />
     <Compile Include="ViewModels\SolicitudEmpleoVM.cs" />
     <Compile Include="ViewModels\StatusDoctoradoVM.cs" />
+    <Compile Include="ViewModels\StatusLicenciaturaVM.cs" />
+    <Compile Include="ViewModels\StatusMaestriaVM.cs" />
     <Compile Include="ViewModels\TipoActividadVM.cs" />
     <Compile Include="ViewModels\TipoContratoVM.cs" />
     <Compile Include="ViewModels\TipoDocumentoVM.cs" />

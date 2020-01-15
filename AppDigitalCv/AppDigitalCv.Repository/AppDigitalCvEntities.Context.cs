@@ -89,7 +89,6 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<CatCategoriaProfesor> CatCategoriaProfesor { get; set; }
         public virtual DbSet<CatFuentaFinaciamientoMaestria> CatFuentaFinaciamientoMaestria { get; set; }
         public virtual DbSet<CatFuenteFinanciamientoDoctorado> CatFuenteFinanciamientoDoctorado { get; set; }
-        public virtual DbSet<CatInstitucionAcreditaBachillerato> CatInstitucionAcreditaBachillerato { get; set; }
         public virtual DbSet<CatInstitucionAcreditaCapacitacionProfesional> CatInstitucionAcreditaCapacitacionProfesional { get; set; }
         public virtual DbSet<CatInstitucionAcreditaDoctorado> CatInstitucionAcreditaDoctorado { get; set; }
         public virtual DbSet<CatInstitucionAcreditaLicenciatura> CatInstitucionAcreditaLicenciatura { get; set; }
@@ -98,12 +97,8 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<CatStatusDoctorado> CatStatusDoctorado { get; set; }
         public virtual DbSet<CatStatusLicenciatura> CatStatusLicenciatura { get; set; }
         public virtual DbSet<CatStatusMaestria> CatStatusMaestria { get; set; }
-        public virtual DbSet<TblBachillerato> TblBachillerato { get; set; }
         public virtual DbSet<TblCapacitacionCompetenciasProfesionales> TblCapacitacionCompetenciasProfesionales { get; set; }
         public virtual DbSet<TblDatosLaborales> TblDatosLaborales { get; set; }
-        public virtual DbSet<TblDoctorado> TblDoctorado { get; set; }
-        public virtual DbSet<TblLicenciaturaIngenieria> TblLicenciaturaIngenieria { get; set; }
-        public virtual DbSet<TblMaetria> TblMaetria { get; set; }
         public virtual DbSet<TblMemoriasExtenso> TblMemoriasExtenso { get; set; }
         public virtual DbSet<TblOtraCapacitacion> TblOtraCapacitacion { get; set; }
         public virtual DbSet<tblDatosContacto> tblDatosContacto { get; set; }
@@ -160,5 +155,9 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<CatTiposCapacitacion> CatTiposCapacitacion { get; set; }
         public virtual DbSet<TblCapacitacionesImpartidas> TblCapacitacionesImpartidas { get; set; }
         public virtual DbSet<TblCapacitacionesRecibidas> TblCapacitacionesRecibidas { get; set; }
+        public virtual DbSet<TblBachillerato> TblBachillerato { get; set; }
+        public virtual DbSet<TblDoctorado> TblDoctorado { get; set; }
+        public virtual DbSet<TblLicenciaturaIngenieria> TblLicenciaturaIngenieria { get; set; }
+        public virtual DbSet<TblMaetria> TblMaetria { get; set; }
     }
 }

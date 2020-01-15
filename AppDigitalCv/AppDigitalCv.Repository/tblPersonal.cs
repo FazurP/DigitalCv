@@ -28,7 +28,6 @@ namespace AppDigitalCv.Repository
             this.tblDatosLaboralesDocente = new HashSet<tblDatosLaboralesDocente>();
             this.tblDeportePersonal = new HashSet<tblDeportePersonal>();
             this.tblDireccionIndividualizada = new HashSet<tblDireccionIndividualizada>();
-            this.TblDoctorado = new HashSet<TblDoctorado>();
             this.tblEmergencia = new HashSet<tblEmergencia>();
             this.tblEnfermedadPersonal = new HashSet<tblEnfermedadPersonal>();
             this.tblEstadiaEmpresa = new HashSet<tblEstadiaEmpresa>();
@@ -36,8 +35,6 @@ namespace AppDigitalCv.Repository
             this.tblExperienciaLaboralInterna = new HashSet<tblExperienciaLaboralInterna>();
             this.tblInformeTecnico = new HashSet<tblInformeTecnico>();
             this.tblLibro = new HashSet<tblLibro>();
-            this.TblLicenciaturaIngenieria = new HashSet<TblLicenciaturaIngenieria>();
-            this.TblMaetria = new HashSet<TblMaetria>();
             this.tblManualOperacion = new HashSet<tblManualOperacion>();
             this.TblMemoriasExtenso = new HashSet<TblMemoriasExtenso>();
             this.TblOtraCapacitacion = new HashSet<TblOtraCapacitacion>();
@@ -60,6 +57,9 @@ namespace AppDigitalCv.Repository
             this.tblCompetenciasConocimientosPersonal = new HashSet<tblCompetenciasConocimientosPersonal>();
             this.TblCapacitacionesImpartidas = new HashSet<TblCapacitacionesImpartidas>();
             this.TblCapacitacionesRecibidas = new HashSet<TblCapacitacionesRecibidas>();
+            this.TblDoctorado = new HashSet<TblDoctorado>();
+            this.TblLicenciaturaIngenieria = new HashSet<TblLicenciaturaIngenieria>();
+            this.TblMaetria = new HashSet<TblMaetria>();
         }
     
         public int idPersonal { get; set; }
@@ -94,7 +94,6 @@ namespace AppDigitalCv.Repository
         public virtual CatNacionalidad CatNacionalidad { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblAlergiasPersonal> tblAlergiasPersonal { get; set; }
-        public virtual TblBachillerato TblBachillerato { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblCapacitacionCompetenciasProfesionales> TblCapacitacionCompetenciasProfesionales { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -114,8 +113,6 @@ namespace AppDigitalCv.Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblDireccionIndividualizada> tblDireccionIndividualizada { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblDoctorado> TblDoctorado { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblEmergencia> tblEmergencia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblEnfermedadPersonal> tblEnfermedadPersonal { get; set; }
@@ -129,10 +126,6 @@ namespace AppDigitalCv.Repository
         public virtual ICollection<tblInformeTecnico> tblInformeTecnico { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblLibro> tblLibro { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblLicenciaturaIngenieria> TblLicenciaturaIngenieria { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblMaetria> TblMaetria { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblManualOperacion> tblManualOperacion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -179,5 +172,12 @@ namespace AppDigitalCv.Repository
         public virtual ICollection<TblCapacitacionesImpartidas> TblCapacitacionesImpartidas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblCapacitacionesRecibidas> TblCapacitacionesRecibidas { get; set; }
+        public virtual TblBachillerato TblBachillerato { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblDoctorado> TblDoctorado { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblLicenciaturaIngenieria> TblLicenciaturaIngenieria { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblMaetria> TblMaetria { get; set; }
     }
 }

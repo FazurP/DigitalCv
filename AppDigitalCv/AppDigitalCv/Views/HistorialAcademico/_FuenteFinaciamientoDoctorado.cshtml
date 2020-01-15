@@ -1,0 +1,11 @@
+﻿
+@if (ViewBag.FuenteFinaciamiento != null)
+{
+    foreach (var item in ViewBag.FuenteFinaciamiento)
+    {
+        <option value="@item.Value"> @item.Text</option>
+    }
+}
+
+
+

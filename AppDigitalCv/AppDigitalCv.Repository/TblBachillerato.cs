@@ -22,9 +22,10 @@ namespace AppDigitalCv.Repository
     
         public int id { get; set; }
         public string strNombre { get; set; }
-        public Nullable<int> idInstitucionAcreditaBachillerato { get; set; }
+        public string strInstitucionAcreditaBachillerato { get; set; }
+        public Nullable<int> idDocumento { get; set; }
     
-        public virtual CatInstitucionAcreditaBachillerato CatInstitucionAcreditaBachillerato { get; set; }
+        public virtual catDocumentos catDocumentos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblPersonal> tblPersonal { get; set; }
     }

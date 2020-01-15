@@ -160,8 +160,8 @@ namespace AppDigitalCv.Infraestructure
             //Datos Laborales Administrativos
             CreateMap<DatosLaboralesAdministrativosVM, DatosLaboralesAdministrativosDomainModel>();
             CreateMap<DatosLaboralesAdministrativosDomainModel, DatosLaboralesAdministrativosVM>();
-         
-            
+
+
             //Curso
             CreateMap<CursoDomainModel, CursoVM>();
             CreateMap<CursoVM, CursoDomainModel>();
@@ -286,7 +286,7 @@ namespace AppDigitalCv.Infraestructure
             //TipoProducto
             CreateMap<TipoProductoVM, TipoProductoDomainModel>();
             CreateMap<TipoProductoDomainModel, TipoProductoDomainModel>();
-            
+
             //Tutorias
             CreateMap<TutoriasVM, TutoriasDomainModel>();
             CreateMap<TutoriasDomainModel, TutoriasVM>();
@@ -323,7 +323,7 @@ namespace AppDigitalCv.Infraestructure
 
             //Nivel Conocimiento
 
-            CreateMap<NivelConocimientoVM,NivelConocimientoDomainModel>();
+            CreateMap<NivelConocimientoVM, NivelConocimientoDomainModel>();
             CreateMap<NivelConocimientoDomainModel, NivelConocimientoVM>();
 
             //Lenguas
@@ -434,7 +434,44 @@ namespace AppDigitalCv.Infraestructure
             CreateMap<TratamientoVM, TratamientoDomainModel>();
             CreateMap<TratamientoDomainModel, TratamientoVM>();
 
-            //
+            CreateMap<StatusDoctoradoVM, StatusDoctoradoDomainModel>();
+            CreateMap<StatusDoctoradoDomainModel, StatusDoctoradoVM>();
+
+            CreateMap<DoctoradoVM, DoctoradoDomainModel>();
+            CreateMap<DoctoradoDomainModel, DoctoradoVM>();
+
+            CreateMap<InstitucionAcreditaDoctoradoVM, InstitucionAcreditaDoctoradoDomainModel>();
+            CreateMap<InstitucionAcreditaDoctoradoDomainModel, InstitucionAcreditaDoctoradoVM>();
+
+            CreateMap<InstitucionAcreditaLicenciaturaVM, InstitucionAcreditaLicenciaturaDomainModel>();
+            CreateMap<InstitucionAcreditaLicenciaturaDomainModel, InstitucionAcreditaLicenciaturaVM>();
+
+            CreateMap<StatusLicenciaturaVM, StatusLicenciaturaDomainModel>();
+            CreateMap<StatusLicenciaturaDomainModel, StatusLicenciaturaVM>();
+
+            CreateMap<LicenciaturaIngenieriaVM, LicenciaturaIngenieriaDomainModel>();
+            CreateMap<LicenciaturaIngenieriaDomainModel, LicenciaturaIngenieriaVM>();
+
+            CreateMap<HistorialAcademicoVM, HistorialAcademicoDomainModel>();
+            CreateMap<HistorialAcademicoDomainModel, HistorialAcademicoVM>();
+
+            CreateMap<MaestriaVM, MaestriaDomainModel>();
+            CreateMap<MaestriaDomainModel, MaestriaVM>();
+
+            CreateMap<InstitucionAcreditaMaestriaVM,InstitucionAcreditaMaestriaDomainModel>();
+            CreateMap<InstitucionAcreditaMaestriaDomainModel,InstitucionAcreditaMaestriaVM>();
+
+            CreateMap<StatusMaestriaVM,StatusMaestriaDomainModel>();
+            CreateMap<StatusMaestriaDomainModel,StatusMaestriaVM>();
+
+            CreateMap<FuenteFinaciamientoMaestriaVM,FuenteFinaciamientoMaestriaDomainModel>();
+            CreateMap<FuenteFinaciamientoMaestriaDomainModel,FuenteFinaciamientoMaestriaVM>();
+
+            CreateMap<BachilleratoVM, BachilleratoDomainModel>();
+            CreateMap<BachilleratoDomainModel, BachilleratoVM>();
+
+            CreateMap<InstitucionAcreditaBachilleratoVM, InstitucionAcreditaBachilleratoDomainModel>();
+            CreateMap<InstitucionAcreditaBachilleratoDomainModel, InstitucionAcreditaBachilleratoVM>();
         }
 
         public static void Run()

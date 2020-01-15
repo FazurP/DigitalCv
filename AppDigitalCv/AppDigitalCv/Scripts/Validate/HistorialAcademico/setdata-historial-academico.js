@@ -18,12 +18,31 @@
                 break;
 
             case 1:
-                 url = "/HistorialAcademico/GetInstitucionAcreditanDoctorados";
-
+                url = "/HistorialAcademico/GetInstitucionAcreditanDoctorados";
+                urlStatus = "/HistorialAcademico/GetStatusDoctorados";
+                urlFuenteFinaciamiento = "/HistorialAcademico/GetFuentesFinanciamientoDoctorados"
+                ///
                 $.get(url).done(function (response) {
-               
+
+                    $('#InstitucionAcredita').empty();
                     $('#InstitucionAcredita').append(response);
 
+                }).fail(function () {
+                    console.log("Service not available");
+                });
+                ///
+                $.get(urlStatus).done(function (response)
+                {
+                    $('#Status').empty();
+                    $('#Status').append(response);
+                }).fail(function ()
+                {
+                    console.log("Service not available");
+                });
+                ///
+                $.get(urlFuenteFinaciamiento).done(function (response) {
+                    $('#FuenteFinanciamiento').empty();
+                    $('#FuenteFinanciamiento').append(response);
                 }).fail(function () {
                     console.log("Service not available");
                 });
@@ -37,6 +56,7 @@
 
                 $.get(url).done(function (response) {
 
+                    $('#InstitucionAcredita').empty();
                     $('#InstitucionAcredita').append(response);
 
                 }).fail(function () {
@@ -51,6 +71,7 @@
 
                 $.get(url).done(function (response) {
 
+                    $('#InstitucionAcredita').empty();
                     $('#InstitucionAcredita').append(response);
 
                 }).fail(function () {
@@ -65,6 +86,7 @@
 
                 $.get(url).done(function (response) {
 
+                    $('#InstitucionAcredita').empty();
                     $('#InstitucionAcredita').append(response);
 
                 }).fail(function () {
@@ -76,9 +98,10 @@
 
             case 5:
 
+                $('#InstitucionAcredita').empty();
                 $('#NombreEstudio').prop("disabled", true);
                 $('#InstitucionAcredita').remove();
-                $('#txt').append("<input type=" + 'text' + " class=" +'form-control input-smform-control input-sm'+"/>")
+                $('#txt').append("@Html.TextBoxFor(model => model.strInstitucionAcredita, new { @class = "+'form-control input-sm", id = "NombreEstudio'+" })")
                 $('#FuenteFinanciamiento').prop("disabled", true);
                 $('#PNPCSi').prop("disabled", true);
                 $('#PNPCNo').prop("disabled", true);
