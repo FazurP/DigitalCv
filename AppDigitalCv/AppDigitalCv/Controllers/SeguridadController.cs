@@ -75,10 +75,12 @@ namespace AppDigitalCv.Controllers
             else
             {
                 var res = wsusuariosSoapClient.ConsultaUsuarios(seguridad, usuario);
+
                 PersonalDomainModel personalDomainModel = new PersonalDomainModel();        
                 if (res.Nombre_usuario != null && res.Clave != null)
                 {
-                    personalDomainModel.Nombre = res.Nombre;
+                    //personalDomainModel.Nombre = res.Nombre;
+                    _ = res.Nombre == null ? res.Nombre = "..." : res.Nombre = res.Nombre;                        
                     personalDomainModel.ApellidoPaterno = res.ApellidoPaterno;
                     personalDomainModel.ApellidoMaterno = res.ApellidoMaterno;
                     personalDomainModel.AccountDomainModel = new AccountDomainModel { Email = res.Correo_Electronico, Password = usuario.Password, Nombre = usuario.NomUsuario,TipoUsuario = res.TipoUsuario.ToString() };
@@ -102,7 +104,7 @@ namespace AppDigitalCv.Controllers
         {
             try
             {
-                SessionPersister.AccountSession = null;
+                SessionPersister.LogOutSession();
                
             }
             catch (Exception ex)
