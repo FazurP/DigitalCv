@@ -551,8 +551,6 @@
     <Content Include="Views\Idioma\Create.cshtml" />
     <Content Include="Views\DialectoIdioma\Create.cshtml" />
     <Content Include="Views\EstadoSalud\_Eliminar.cshtml" />
-    <Content Include="Views\Hijos\Create.cshtml" />
-    <Content Include="Views\Hijos\_Eliminar.cshtml" />
     <Content Include="Views\PremiosDocente\Create.cshtml" />
     <Content Include="Views\PremiosDocente\_Eliminar.cshtml" />
     <Content Include="Views\EstadoSalud\Manager.cshtml" />
@@ -688,7 +686,6 @@
     <Compile Include="Controllers\ExperienciaLaboralExternaController.cs" />
     <Compile Include="Controllers\ExperienciaLaboralInternaController.cs" />
     <Compile Include="Controllers\HabitosPersonalesController.cs" />
-    <Compile Include="Controllers\HijosController.cs" />
     <Compile Include="Controllers\HistorialAcademicoController.cs" />
     <Compile Include="Controllers\HobbieController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
