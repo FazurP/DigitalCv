@@ -14,10 +14,12 @@ namespace AppDigitalCv.Controllers
     public class DatosFamiliaresController : Controller
     {
         IFamiliarBusiness ifamiliarBusiness;
+        IParentescoBusiness parentescoBusiness;
 
-        public DatosFamiliaresController(IFamiliarBusiness _familiarBusiness)
+        public DatosFamiliaresController(IFamiliarBusiness _familiarBusiness,IParentescoBusiness _parentescoBusiness)
         {
             ifamiliarBusiness = _familiarBusiness;
+            parentescoBusiness = _parentescoBusiness;
         }
 
         [HttpGet]
@@ -25,6 +27,7 @@ namespace AppDigitalCv.Controllers
         {
             if (SessionPersister.AccountSession != null)
             {
+                ViewBag.idParentesco = new SelectList(parentescoBusiness.GetParentescos(), "idParentesco", "StrDescripcion");
                 return View();
             }
             else
@@ -36,75 +39,14 @@ namespace AppDigitalCv.Controllers
         [HttpPost]
         public ActionResult Create(FamiliaresVM familiaresVM)
         {
-            
-                familiaresVM.MadreVM.IdPersonal = SessionPersister.AccountSession.IdPersonal;
-                familiaresVM.MadreVM.IdParentesco = int.Parse(Recursos.RecursosSistema.FAMILIAR_MADRE);
-                familiaresVM.PadreVM.IdPersonal = SessionPersister.AccountSession.IdPersonal;
-                familiaresVM.PadreVM.IdParentesco = int.Parse(Recursos.RecursosSistema.FAMILIAR_PADRE);
-                familiaresVM.ParejaVM.IdPersonal = SessionPersister.AccountSession.IdPersonal;
-                familiaresVM.ParejaVM.IdParentesco = int.Parse(Recursos.RecursosSistema.FAMILIAR_PAREJA);
-               
-                ifamiliarBusiness.AddFamiliares( this.MapperObject(familiaresVM)  );
-            
-            return RedirectToAction("Create","DatosFamiliares");
-        }
 
-        #region Mappeo de la Entidad de Familiares
-        /// <summary>
-        /// Este metodo se encarga de mapear manualmente losd atos entre objetos del dominio y objetos de la viewmodel
-        /// </summary>
-        /// <param name="familiaresVM">recibe una entidad del tipo viewmodel</param>
-        /// <returns>regresa una entidad del tipo familiaresdomainmodel</returns>
-        private FamiliaresDomainModel MapperObject(FamiliaresVM familiaresVM)
-        {
-            FamiliaresDomainModel familiaresDomainModel = new FamiliaresDomainModel();
-            familiaresDomainModel.PadreDomainModel = new FamiliarDomainModel();
-            familiaresDomainModel.PadreDomainModel.IdPersonal = familiaresVM.PadreVM.IdPersonal;
-            familiaresDomainModel.PadreDomainModel.IdParentesco = familiaresVM.PadreVM.IdParentesco;
-            familiaresDomainModel.PadreDomainModel.StrNombre = familiaresVM.PadreVM.StrNombre;
-            familiaresDomainModel.PadreDomainModel.StrOcupacion = familiaresVM.PadreVM.StrOcupacion;
-            familiaresDomainModel.PadreDomainModel.StrDomicilio = familiaresVM.PadreVM.StrDomicilio;
-            familiaresDomainModel.PadreDomainModel.strApellidoPaterno = familiaresVM.PadreVM.strApellidoPaterno;
-            familiaresDomainModel.PadreDomainModel.strApellidoMaterno = familiaresVM.PadreVM.strApellidoMaterno;
-            familiaresDomainModel.PadreDomainModel.BitVive = familiaresVM.PadreVM.BitVive;
-            familiaresDomainModel.PadreDomainModel.DteFechaNacimiento = familiaresVM.PadreVM.DteFechaNacimiento;
+            FamiliarDomainModel familiarDomainModel = new FamiliarDomainModel();
 
-            familiaresDomainModel.MadreDomainModel = new FamiliarDomainModel();       
-            familiaresDomainModel.MadreDomainModel.IdPersonal = familiaresVM.MadreVM.IdPersonal;
-            familiaresDomainModel.MadreDomainModel.IdParentesco = familiaresVM.MadreVM.IdParentesco;
-            familiaresDomainModel.MadreDomainModel.StrNombre = familiaresVM.MadreVM.StrNombre;
-            familiaresDomainModel.MadreDomainModel.StrOcupacion = familiaresVM.MadreVM.StrOcupacion;
-            familiaresDomainModel.MadreDomainModel.StrDomicilio = familiaresVM.MadreVM.StrDomicilio;
-            familiaresDomainModel.MadreDomainModel.strApellidoPaterno = familiaresVM.MadreVM.strApellidoPaterno;
-            familiaresDomainModel.MadreDomainModel.strApellidoMaterno = familiaresVM.MadreVM.strApellidoMaterno;
-            familiaresDomainModel.MadreDomainModel.BitVive = familiaresVM.MadreVM.BitVive;
-            familiaresDomainModel.MadreDomainModel.DteFechaNacimiento = familiaresVM.MadreVM.DteFechaNacimiento;
+            AutoMapper.Mapper.Map(familiaresVM, familiarDomainModel);
 
-            familiaresDomainModel.ParejaDomainModel = new FamiliarDomainModel();
-            familiaresDomainModel.ParejaDomainModel.IdPersonal = familiaresVM.ParejaVM.IdPersonal;
-            familiaresDomainModel.ParejaDomainModel.IdParentesco = familiaresVM.ParejaVM.IdParentesco;
-            familiaresDomainModel.ParejaDomainModel.StrNombre = familiaresVM.ParejaVM.StrNombre;
-            familiaresDomainModel.ParejaDomainModel.StrOcupacion = familiaresVM.ParejaVM.StrOcupacion;
-            familiaresDomainModel.ParejaDomainModel.StrDomicilio = familiaresVM.ParejaVM.StrDomicilio;
-            familiaresDomainModel.ParejaDomainModel.strApellidoPaterno = familiaresVM.ParejaVM.strApellidoPaterno;
-            familiaresDomainModel.ParejaDomainModel.strApellidoMaterno = familiaresVM.ParejaVM.strApellidoMaterno;
-            familiaresDomainModel.ParejaDomainModel.BitVive = familiaresVM.ParejaVM.BitVive;
-            familiaresDomainModel.ParejaDomainModel.DteFechaNacimiento = familiaresVM.ParejaVM.DteFechaNacimiento;
-            return familiaresDomainModel;
-        }
-        #endregion
+            ifamiliarBusiness.AddUpdateFamiliar(familiarDomainModel);
 
-        /// <summary>
-        /// Este metodo se encarga de consultar todos los familiares del personal por su identificador
-        /// </summary>
-        /// <returns>regresa un objeto json con el resultado de la consulta</returns>
-        //[HttpGet]
-        public JsonResult GetFamiliaresPersonal()
-        {
-            int idPersonal = SessionPersister.AccountSession.IdPersonal;
-            var familiares = ifamiliarBusiness.GetFamiliaresHijosById(idPersonal);//ifamiliarBusiness.GetFamiliaresById(idPersonal);
-                                                                 //.GetFamiliaresHijosById(idPersonal);
-            return Json(familiares, JsonRequestBehavior.AllowGet);
+            return RedirectToAction("Create", "DatosFamiliares");
         }
 
         #region  Consultar los datos de las competencias en ti junto con el datatable se pueden ordenar de forma adecuada
@@ -130,7 +72,7 @@ namespace AppDigitalCv.Controllers
             }
             else
             {
-                totalCount = ifamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).Count();
+                totalCount = ifamiliarBusiness.GetFamiliaresById(IdentityPersonal).Count();
                 familiares = ifamiliarBusiness.GetFamiliaresById(IdentityPersonal).OrderBy(p => p.IdPersonal)
                              .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
                 //ifamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).OrderBy(p => p.IdPersonal)

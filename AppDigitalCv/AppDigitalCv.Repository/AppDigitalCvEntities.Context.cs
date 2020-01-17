@@ -105,7 +105,6 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<tblTelefono> tblTelefono { get; set; }
         public virtual DbSet<tblPremiosDocente> tblPremiosDocente { get; set; }
         public virtual DbSet<catAsociaciones> catAsociaciones { get; set; }
-        public virtual DbSet<catFamiliar> catFamiliar { get; set; }
         public virtual DbSet<catParentesco> catParentesco { get; set; }
         public virtual DbSet<CatNacionalidad> CatNacionalidad { get; set; }
         public virtual DbSet<tblPersonal> tblPersonal { get; set; }
@@ -159,5 +158,8 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<TblDoctorado> TblDoctorado { get; set; }
         public virtual DbSet<TblLicenciaturaIngenieria> TblLicenciaturaIngenieria { get; set; }
         public virtual DbSet<TblMaetria> TblMaetria { get; set; }
+        public virtual DbSet<CatInstitucionesSalud> CatInstitucionesSalud { get; set; }
+        public virtual DbSet<TblSeguridadSocial> TblSeguridadSocial { get; set; }
+        public virtual DbSet<catFamiliar> catFamiliar { get; set; }
     }
 }

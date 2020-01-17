@@ -20,7 +20,6 @@ namespace AppDigitalCv.Repository
         public string strApellidoMaterno { get; set; }
         public string strOcupacion { get; set; }
         public string strDomicilio { get; set; }
-        public Nullable<bool> bitVive { get; set; }
         public Nullable<System.DateTime> dteFechaNacimiento { get; set; }
         public Nullable<int> idParentesco { get; set; }
         public Nullable<int> idPersonal { get; set; }

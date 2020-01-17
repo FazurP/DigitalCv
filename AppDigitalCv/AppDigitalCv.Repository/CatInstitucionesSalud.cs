@@ -12,22 +12,18 @@ namespace AppDigitalCv.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class catParentesco
+    public partial class CatInstitucionesSalud
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public catParentesco()
+        public CatInstitucionesSalud()
         {
-            this.tblEmergencia = new HashSet<tblEmergencia>();
-            this.catFamiliar = new HashSet<catFamiliar>();
+            this.TblSeguridadSocial = new HashSet<TblSeguridadSocial>();
         }
     
-        public int idParentesco { get; set; }
-        public string strDescripcion { get; set; }
-        public string strObservacion { get; set; }
+        public int id { get; set; }
+        public string strValor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblEmergencia> tblEmergencia { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<catFamiliar> catFamiliar { get; set; }
+        public virtual ICollection<TblSeguridadSocial> TblSeguridadSocial { get; set; }
     }
 }

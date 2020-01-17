@@ -23,6 +23,7 @@ namespace AppDigitalCv.Repository
         public int IdDireccion { get; set; }
         public Nullable<int> IdColonia { get; set; }
         public string strCalle { get; set; }
+        public Nullable<bool> bitActual { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Organizaciones_Salud> Organizaciones_Salud { get; set; }

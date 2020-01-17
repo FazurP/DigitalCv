@@ -16,10 +16,12 @@ namespace AppDigitalCv.Controllers
 
         IFamiliarBusiness iFamiliarBusiness;
         IPersonalBusiness iPersonalBusiness;
-        public HijosController(IFamiliarBusiness _IfamiliarBusiness,IPersonalBusiness _IpersonalBusiness)
+        IParentescoBusiness parentescoBusiness;
+        public HijosController(IFamiliarBusiness _IfamiliarBusiness,IPersonalBusiness _IpersonalBusiness,IParentescoBusiness _parentescoBusiness)
         {
             iFamiliarBusiness = _IfamiliarBusiness;
             iPersonalBusiness = _IpersonalBusiness;
+            parentescoBusiness = _parentescoBusiness;
         }
 
 
@@ -29,6 +31,7 @@ namespace AppDigitalCv.Controllers
         {
             if (SessionPersister.AccountSession != null)
             {
+                
                 return View();
             }
             else
@@ -62,56 +65,43 @@ namespace AppDigitalCv.Controllers
         }
 
 
-        [NonAction]
-        #region Consultar Datos Familiares
-        public JsonResult GetDatosFamiliaresHijosByIdPersonal(int idPersonal)
-        {
-            
-            List<ParentescoVM> familiar = new List<ParentescoVM>();
-            List<FamiliarDomainModel> familiares =iFamiliarBusiness.GetFamiliaresHijosById(idPersonal);
-            AutoMapper.Mapper.Map(familiares, familiar);
-            return Json(familiar, JsonRequestBehavior.AllowGet);
-        }
-        #endregion
-
-
         #region  Consultar los datos del estado de salud del personal junto con el datatable se pueden ordenar de forma adecuada
 
-        [HttpGet]
-        public JsonResult GetDatosFamiliaresTable(DataTablesParam param)
-        {
-            int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
-            List<FamiliarDomainModel> familiares = new List<FamiliarDomainModel>();
+        //[HttpGet]
+        //public JsonResult GetDatosFamiliaresTable(DataTablesParam param)
+        //{
+        //    int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
+        //    List<FamiliarDomainModel> familiares = new List<FamiliarDomainModel>();
 
-            int pageNo = 1;
-            if (param.iDisplayStart >= param.iDisplayLength)
-            {
-                pageNo = (param.iDisplayStart / param.iDisplayLength) + 1;
-            }
+        //    int pageNo = 1;
+        //    if (param.iDisplayStart >= param.iDisplayLength)
+        //    {
+        //        pageNo = (param.iDisplayStart / param.iDisplayLength) + 1;
+        //    }
 
-            int totalCount = 0;
-            if (param.sSearch != null)
-            {
-                familiares = iFamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).Where(p=> p.StrNombre.Contains(param.sSearch)&& p.IdParentesco <2 ).ToList();
+        //    int totalCount = 0;
+        //    if (param.sSearch != null)
+        //    {
+        //        familiares = iFamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).Where(p=> p.StrNombre.Contains(param.sSearch)&& p.IdParentesco <2 ).ToList();
                 
-            }
-            else
-            {
-                totalCount = iFamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).Count();
-                familiares = iFamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).OrderBy(p=> p.IdPersonal)
-                             .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
+        //    }
+        //    else
+        //    {
+        //        totalCount = iFamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).Count();
+        //        familiares = iFamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).OrderBy(p=> p.IdPersonal)
+        //                     .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
               
-            }
-            return Json(new
-            {
-                aaData = familiares,
-                sEcho = param.sEcho,
-                iTotalDisplayRecords = familiares.Count(),
-                iTotalRecords = familiares.Count()
+        //    }
+        //    return Json(new
+        //    {
+        //        aaData = familiares,
+        //        sEcho = param.sEcho,
+        //        iTotalDisplayRecords = familiares.Count(),
+        //        iTotalRecords = familiares.Count()
 
-            }, JsonRequestBehavior.AllowGet);
+        //    }, JsonRequestBehavior.AllowGet);
 
-        }
+        //}
 
         #endregion
 
