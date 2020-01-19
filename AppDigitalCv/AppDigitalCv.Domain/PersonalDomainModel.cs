@@ -20,7 +20,6 @@ namespace AppDigitalCv.Domain
         public string strUrlFoto { get; set; }
         public string strUrlCurp { get; set; }
         public string strUrlRfc { get; set; }
-        public string strUrlNacionalidad { get; set; }
         public string strGenero { get; set; }
         public int idEstadoCivil { get; set; }
         public int idUsuario { get; set; }
@@ -31,7 +30,8 @@ namespace AppDigitalCv.Domain
         public string strTipoPersonal { get; set; }
         public string strUniversidad { get; set; }
         public TipoSangreDomainModel TipoSangreDomainModel { get; set; }
-
+        public int idSeguridadSocial { get; set; }
+        public string strNumeroEmpleado { get; set; }
 
         //Objetos de las relaciones
 
@@ -42,5 +42,6 @@ namespace AppDigitalCv.Domain
         public DireccionDomainModel Direccion { get; set; }
         public FamiliarDomainModel Familiar { get; set; }
         public NacionalidadDomainModel Nacionalidad { get; set; }
+        public SeguridadSocialDomainModel SeguridadSocial { get; set; }
     }
 }

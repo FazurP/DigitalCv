@@ -472,6 +472,12 @@ namespace AppDigitalCv.Infraestructure
 
             CreateMap<InstitucionAcreditaBachilleratoVM, InstitucionAcreditaBachilleratoDomainModel>();
             CreateMap<InstitucionAcreditaBachilleratoDomainModel, InstitucionAcreditaBachilleratoVM>();
+
+            CreateMap<InstitucionesSaludVM, InstitucionesSaludDomainModel>();
+            CreateMap<InstitucionesSaludDomainModel, InstitucionesSaludVM>();
+
+            CreateMap<SeguridadSocialVM, SeguridadSocialDomainModel>();
+            CreateMap<SeguridadSocialDomainModel, SeguridadSocialVM>();
         }
 
         public static void Run()

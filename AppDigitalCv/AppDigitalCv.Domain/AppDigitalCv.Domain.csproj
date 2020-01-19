@@ -112,6 +112,7 @@
     <Compile Include="InstitucionAcreditaDoctoradoDomainModel.cs" />
     <Compile Include="InstitucionAcreditaLicenciaturaDomainModel.cs" />
     <Compile Include="InstitucionAcreditaMaestriaDomainModel.cs" />
+    <Compile Include="InstitucionesSaludDomainModel.cs" />
     <Compile Include="InstitucionSuperiorDomainModel.cs" />
     <Compile Include="LenguasDomainModel.cs" />
     <Compile Include="LesionArticulacionesDomainModel.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="Respuestas17DomainModel.cs" />
     <Compile Include="RhDomainModel.cs" />
     <Compile Include="SalariosDomainModel.cs" />
+    <Compile Include="SeguridadSocialDomainModel.cs" />
     <Compile Include="SessionManagerDomainModel.cs" />
     <Compile Include="SolicitudEmpleoDomainModel.cs" />
     <Compile Include="StatusDoctoradoDomainModel.cs" />

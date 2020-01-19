@@ -66,14 +66,12 @@ namespace AppDigitalCv.Business
         }
 
 
-
-        //este metodo sirve para agregar o editar un registro de el contexto seleccionado
         public string AddUpdatePersonal(PersonalDomainModel personalDM)
         {
             string resultado =string.Empty;
             if (personalDM.idPersonal > 0)
             {
-                //buscamos por id y lo almacenamos en nuestra entidad de entityframework
+                
                 tblPersonal personal = personalRepository.SingleOrDefault(p => p.idPersonal == personalDM.idPersonal);
                 if (personal.idPersonal > 0)
                 {
@@ -85,10 +83,18 @@ namespace AppDigitalCv.Business
                     personal.strHomoclave = personalDM.Homoclave;
                     personal.strLogros = personalDM.strLogros;
                     personal.strUrlFoto = personalDM.strUrlFoto;
-                    personal.strUrlNacionalidad = personalDM.strUrlNacionalidad;
                     personal.strUrlCurp = personalDM.strUrlCurp;
                     personal.strUrlRfc = personalDM.strUrlRfc;
-                    //actualizamos los datos en la base de datos.
+                    personal.strNumeroEmpleado = personalDM.strNumeroEmpleado;
+                    if (personal.TblSeguridadSocial == null)
+                    {
+                        personal.TblSeguridadSocial = new TblSeguridadSocial { idInstitucion = personalDM.SeguridadSocial.idInstitucion, strNumero = personalDM.SeguridadSocial.strNumero };
+                    }
+                    else 
+                    {
+                        personal.TblSeguridadSocial.idInstitucion = personalDM.SeguridadSocial.idInstitucion;
+                        personal.TblSeguridadSocial.strNumero = personalDM.SeguridadSocial.strNumero;
+                    }
                     personalRepository.Update(personal);
                     resultado = "Se Actualizo correctamente";
 

@@ -91,6 +91,7 @@
     <Compile Include="InformeTecnicoBusiness.cs" />
     <Compile Include="InstitucionAcreditaDoctoradoBusiness.cs" />
     <Compile Include="InstitucionAcreditaLicenciaturaBusiness.cs" />
+    <Compile Include="InstitucionesSaludBusiness.cs" />
     <Compile Include="InstitucionSuperiorBusiness.cs" />
     <Compile Include="Interface\IAccountBusiness.cs" />
     <Compile Include="Interface\IAlergiasBusiness.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Interface\IInformeTecnicoBusiness.cs" />
     <Compile Include="Interface\IInstitucionAcreditaDoctoradoBusiness.cs" />
     <Compile Include="Interface\IInstitucionAcreditaLicenciaturaBusiness.cs" />
+    <Compile Include="Interface\IInstitucionesSaludRepository.cs" />
     <Compile Include="Interface\IInstitucionSuperiorBusiness.cs" />
     <Compile Include="Interface\ILibroBusiness.cs" />
     <Compile Include="Interface\IManualOperacionBusiness.cs" />

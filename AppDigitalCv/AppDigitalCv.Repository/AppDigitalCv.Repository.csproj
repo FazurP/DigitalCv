@@ -368,6 +368,7 @@
     <Compile Include="InstitucionAcreditaDoctoradoRepository.cs" />
     <Compile Include="InstitucionAcreditaLicenciaturaRepository.cs" />
     <Compile Include="InstitucionAcreditaMaestriaRepository.cs" />
+    <Compile Include="InstitucionesSaludRepository.cs" />
     <Compile Include="InstitucionSuperiorRepository.cs" />
     <Compile Include="LecenciaturaIngenieriaRepository.cs" />
     <Compile Include="LenguasRepository.cs" />
@@ -400,6 +401,7 @@
     <Compile Include="PrototipoRepository.cs" />
     <Compile Include="ProyectoInvestigacionRepository.cs" />
     <Compile Include="RhRepository.cs" />
+    <Compile Include="SeguridadSocialRepository.cs" />
     <Compile Include="StatusDoctoradoRepository.cs" />
     <Compile Include="StatusLicenciaturaRepository.cs" />
     <Compile Include="StatusMaestriaRepository.cs" />

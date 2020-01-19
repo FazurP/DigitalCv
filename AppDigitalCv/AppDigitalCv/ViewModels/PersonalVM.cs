@@ -59,7 +59,6 @@ namespace AppDigitalCv.ViewModels
         public string strUrlFoto { get; set; }
         public string strUrlCurp { get; set; }
         public string strUrlRfc { get; set; }
-        public string strUrlNacionalidad { get; set; }
         public string StrGenero { get; set; }
         public int IdEstadoCivil { get; set; }
         public int idTipoSangre { get; set; }
@@ -67,6 +66,8 @@ namespace AppDigitalCv.ViewModels
         public string strTipoPersonal { get; set; }
         public string strUniversidad { get; set; }
         public TipoSangreVM TipoSangreVM { get; set; }
+        public int idSeguridadSocial { get; set; }
+        public string strNumeroEmpleado { get; set; }
 
         //Objetos de las relaciones
 
@@ -74,6 +75,7 @@ namespace AppDigitalCv.ViewModels
         public EstadoCivilVM EstadoCivil { get; set; }
         public FamiliaresVM Familiar { get; set; }
         public DireccionVM Direccion { get; set; }
+        public SeguridadSocialVM SeguridadSocial { get; set; }
 
     }
 

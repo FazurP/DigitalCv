@@ -2,7 +2,6 @@
 @using AppDigitalCv.Security
 
 
-
 <link href="~/Content/css/position-top.css" rel="stylesheet" />
 @using (Html.BeginForm("Create", "Personal", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -90,15 +89,19 @@
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                     <label for="etrfc">Institución de Salud:</label>
-                                    @Html.DropDownList("idInstitucionSalud",new SelectList(""), new { @class = "form-control input-sm", id = "InstitucionSalud", required = "" })
-                                    @Html.ValidationMessageFor(model => model.RFC, "", new { @class = "text-danger" })
+                                    @Html.DropDownList("SeguridadSocial.idInstitucion", null, new { @class = "form-control input-sm", id = "InstitucionSalud", required = "" })
+                                    
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                     <label for="ethomoclave">Numero de Seguro Social:</label>
-                                    @Html.TextBoxFor(model => model.HomoClave, new { @class = "form-control input-sm", placeholder = "NSS", id = "NumeroSeguroSocial", required = "" })
-                                    @Html.ValidationMessageFor(model => model.HomoClave, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.SeguridadSocial.strNumero, new { @class = "form-control input-sm", placeholder = "NSS", id = "NumeroSeguroSocial", required = "" })
+                                    
                                 </div>
-                               
+                                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                    <label for="ethomoclave">Numero de Empleado:</label>
+                                    @Html.TextBoxFor(model => model.strNumeroEmpleado, new { @class = "form-control input-sm", placeholder = "Numero de Empleado", id = "NumeroEmpleado", required = "" })
+                                   
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -108,9 +111,6 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <div>
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        </div>
                         <input type="submit" value="Actualizar Datos" class="btn btn-success" id="Enviar" />
                     </div>
                 </div>

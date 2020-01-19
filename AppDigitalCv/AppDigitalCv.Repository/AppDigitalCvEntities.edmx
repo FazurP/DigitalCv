@@ -1200,7 +1200,6 @@
           <Property Name="strUrlCurp" Type="varchar(max)" />
           <Property Name="strUrlRfc" Type="varchar(max)" />
           <Property Name="strGenero" Type="varchar" MaxLength="150" />
-          <Property Name="strUrlNacionalidad" Type="varchar" MaxLength="250" />
           <Property Name="idEstadoCivil" Type="int" />
           <Property Name="idUsuario" Type="int" />
           <Property Name="idTipoSangre" Type="int" />
@@ -1212,6 +1211,7 @@
           <Property Name="strTipoPersonal" Type="varchar" MaxLength="50" />
           <Property Name="strUniversidad" Type="varchar" MaxLength="150" />
           <Property Name="idSeguridadSocial" Type="int" />
+          <Property Name="strNumeroEmpleado" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tblPersonalAsociaciones">
           <Key>
@@ -5152,147 +5152,6 @@
             <End Role="tblEmergencia" EntitySet="tblEmergencia" />
           </AssociationSet>
           <EntitySet Name="CatNacionalidad" EntityType="bdGestionDocenteModel.CatNacionalidad" />
-          <EntitySet Name="tblPersonal" EntityType="bdGestionDocenteModel.tblPersonal" />
-          <AssociationSet Name="fk_direccion_personal" Association="bdGestionDocenteModel.fk_direccion_personal">
-            <End Role="catDireccion" EntitySet="catDireccion" />
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-          </AssociationSet>
-          <AssociationSet Name="fk_estadoCivil_personal" Association="bdGestionDocenteModel.fk_estadoCivil_personal">
-            <End Role="catEstadoCivil" EntitySet="catEstadoCivil" />
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblPersonal_CatNacionalidad" Association="bdGestionDocenteModel.FK_tblPersonal_CatNacionalidad">
-            <End Role="CatNacionalidad" EntitySet="CatNacionalidad" />
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-          </AssociationSet>
-          <AssociationSet Name="fk_personal_alergiaPersonal" Association="bdGestionDocenteModel.fk_personal_alergiaPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblAlergiasPersonal" EntitySet="tblAlergiasPersonal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblCapacitacionCompetenciasProfesionales_tblPersonal" Association="bdGestionDocenteModel.FK_TblCapacitacionCompetenciasProfesionales_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="TblCapacitacionCompetenciasProfesionales" EntitySet="TblCapacitacionCompetenciasProfesionales" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblCapituloLibro_tblPersonal" Association="bdGestionDocenteModel.FK_tblCapituloLibro_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblCapituloLibro" EntitySet="tblCapituloLibro" />
-          </AssociationSet>
-          <AssociationSet Name="fk_personal_competenciaTIPersonal" Association="bdGestionDocenteModel.fk_personal_competenciaTIPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblCompetenciasTIPersonal" EntitySet="tblCompetenciasTIPersonal" />
-          </AssociationSet>
-          <AssociationSet Name="fk_personal_datosContacto" Association="bdGestionDocenteModel.fk_personal_datosContacto">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblDatosContacto" EntitySet="tblDatosContacto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblDatosLaborales_tblPersonal" Association="bdGestionDocenteModel.FK_TblDatosLaborales_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="TblDatosLaborales" EntitySet="TblDatosLaborales" />
-          </AssociationSet>
-          <AssociationSet Name="fk_personal_datosLaboralesAdministrativos" Association="bdGestionDocenteModel.fk_personal_datosLaboralesAdministrativos">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblDatosLaboralesAdministrativos" EntitySet="tblDatosLaboralesAdministrativos" />
-          </AssociationSet>
-          <AssociationSet Name="fk_personal_datosLaboralesDocente" Association="bdGestionDocenteModel.fk_personal_datosLaboralesDocente">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblDatosLaboralesDocente" EntitySet="tblDatosLaboralesDocente" />
-          </AssociationSet>
-          <AssociationSet Name="fk_personal_deportePersonal" Association="bdGestionDocenteModel.fk_personal_deportePersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblDeportePersonal" EntitySet="tblDeportePersonal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblDireccionIndividualizada_tblPersonal" Association="bdGestionDocenteModel.FK_tblDireccionIndividualizada_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblDireccionIndividualizada" EntitySet="tblDireccionIndividualizada" />
-          </AssociationSet>
-          <AssociationSet Name="fk_personal_emergencia" Association="bdGestionDocenteModel.fk_personal_emergencia">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblEmergencia" EntitySet="tblEmergencia" />
-          </AssociationSet>
-          <AssociationSet Name="fk_personal_enfermedadPersonal" Association="bdGestionDocenteModel.fk_personal_enfermedadPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblEnfermedadPersonal" EntitySet="tblEnfermedadPersonal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblEstadiaEmpresa_tblPersonal" Association="bdGestionDocenteModel.FK_tblEstadiaEmpresa_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblEstadiaEmpresa" EntitySet="tblEstadiaEmpresa" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblExperienciaLaboralExterna_tblPersonal" Association="bdGestionDocenteModel.FK_tblExperienciaLaboralExterna_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblExperienciaLaboralExterna" EntitySet="tblExperienciaLaboralExterna" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblExperienciaLaboralInterna_tblPersonal" Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblExperienciaLaboralInterna" EntitySet="tblExperienciaLaboralInterna" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblInformeTecnico_tblPersonal" Association="bdGestionDocenteModel.FK_tblInformeTecnico_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblInformeTecnico" EntitySet="tblInformeTecnico" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblLibro_tblPersonal" Association="bdGestionDocenteModel.FK_tblLibro_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblLibro" EntitySet="tblLibro" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblManualOperacion_tblPersonal" Association="bdGestionDocenteModel.FK_tblManualOperacion_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblManualOperacion" EntitySet="tblManualOperacion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblMemoriasExtenso_tblPersonal" Association="bdGestionDocenteModel.FK_TblMemoriasExtenso_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="TblMemoriasExtenso" EntitySet="TblMemoriasExtenso" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblOtraCapacitacion_tblPersonal" Association="bdGestionDocenteModel.FK_TblOtraCapacitacion_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="TblOtraCapacitacion" EntitySet="TblOtraCapacitacion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblParticipacionDocente_tblPersonal1" Association="bdGestionDocenteModel.FK_tblParticipacionDocente_tblPersonal1">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblParticipacionDocente" EntitySet="tblParticipacionDocente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblParticipacionInstitucionalExterna_tblPersonal" Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblParticipacionInstitucionalExterna" EntitySet="tblParticipacionInstitucionalExterna" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblParticipacionInstitucionalInterna_tblPersonal" Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblParticipacionInstitucionalInterna" EntitySet="tblParticipacionInstitucionalInterna" />
-          </AssociationSet>
-          <AssociationSet Name="fk_personal_personalAsociaciones" Association="bdGestionDocenteModel.fk_personal_personalAsociaciones">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblPersonalAsociaciones" EntitySet="tblPersonalAsociaciones" />
-          </AssociationSet>
-          <AssociationSet Name="fk_personal_premiosDocente" Association="bdGestionDocenteModel.fk_personal_premiosDocente">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblPremiosDocente" EntitySet="tblPremiosDocente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblPortafolioPersonal_tblPersonal" Association="bdGestionDocenteModel.FK_tblPortafolioPersonal_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblPortafolioPersonal" EntitySet="tblPortafolioPersonal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblProduccionArtistica_tblPersonal" Association="bdGestionDocenteModel.FK_tblProduccionArtistica_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblProduccionArtistica" EntitySet="tblProduccionArtistica" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblProductividadInnovadora_tblPersonal" Association="bdGestionDocenteModel.FK_tblProductividadInnovadora_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblProductividadInnovadora" EntitySet="tblProductividadInnovadora" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblProgresoProdep_tblPersonal" Association="bdGestionDocenteModel.FK_tblProgresoProdep_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblProgresoProdep" EntitySet="tblProgresoProdep" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblPrototipo_tblPersonal" Association="bdGestionDocenteModel.FK_tblPrototipo_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblPrototipo" EntitySet="tblPrototipo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_tblPersonal" Association="bdGestionDocenteModel.FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" EntitySet="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblTutoria_tblPersonal" Association="bdGestionDocenteModel.FK_tblTutoria_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblTutoria" EntitySet="tblTutoria" />
-          </AssociationSet>
           <EntitySet Name="CatHobbies" EntityType="bdGestionDocenteModel.CatHobbies" />
           <EntitySet Name="tblHobbies" EntityType="bdGestionDocenteModel.tblHobbies" />
           <AssociationSet Name="FK_tblHobbies_catFrecuencia" Association="bdGestionDocenteModel.FK_tblHobbies_catFrecuencia">
@@ -5301,10 +5160,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_tblHobbies_CatHobbies" Association="bdGestionDocenteModel.FK_tblHobbies_CatHobbies">
             <End Role="CatHobbies" EntitySet="CatHobbies" />
-            <End Role="tblHobbies" EntitySet="tblHobbies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblHobbies_tblPersonal" Association="bdGestionDocenteModel.FK_tblHobbies_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblHobbies" EntitySet="tblHobbies" />
           </AssociationSet>
           <EntitySet Name="CatNivelConocimiento" EntityType="bdGestionDocenteModel.CatNivelConocimiento" />
@@ -5321,18 +5176,10 @@
             <End Role="CatNivelConocimiento" EntitySet="CatNivelConocimiento" />
             <End Role="TblIdioma" EntitySet="TblIdioma" />
           </AssociationSet>
-          <AssociationSet Name="FK_TblIdioma_tblPersonal" Association="bdGestionDocenteModel.FK_TblIdioma_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="TblIdioma" EntitySet="TblIdioma" />
-          </AssociationSet>
           <EntitySet Name="CatLenguas" EntityType="bdGestionDocenteModel.CatLenguas" />
           <EntitySet Name="TblLenguas" EntityType="bdGestionDocenteModel.TblLenguas" />
           <AssociationSet Name="FK_TblLenguas_CatLenguas" Association="bdGestionDocenteModel.FK_TblLenguas_CatLenguas">
             <End Role="CatLenguas" EntitySet="CatLenguas" />
-            <End Role="TblLenguas" EntitySet="TblLenguas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblLenguas_tblPersonal" Association="bdGestionDocenteModel.FK_TblLenguas_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="TblLenguas" EntitySet="TblLenguas" />
           </AssociationSet>
           <EntitySet Name="CatTipoDocumento" EntityType="bdGestionDocenteModel.CatTipoDocumento" />
@@ -5345,17 +5192,9 @@
             <End Role="CatTipoDocumento" EntitySet="CatTipoDocumento" />
             <End Role="tblDocumentacionPersonal" EntitySet="tblDocumentacionPersonal" />
           </AssociationSet>
-          <AssociationSet Name="fk_personal_documentacionPersonal" Association="bdGestionDocenteModel.fk_personal_documentacionPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="tblDocumentacionPersonal" EntitySet="tblDocumentacionPersonal" />
-          </AssociationSet>
           <EntitySet Name="tblCompetenciasConocimientosPersonal" EntityType="bdGestionDocenteModel.tblCompetenciasConocimientosPersonal" />
           <AssociationSet Name="FK_tblCompetenciasConocimientosPersonal_catDocumentos" Association="bdGestionDocenteModel.FK_tblCompetenciasConocimientosPersonal_catDocumentos">
             <End Role="catDocumentos" EntitySet="catDocumentos" />
-            <End Role="tblCompetenciasConocimientosPersonal" EntitySet="tblCompetenciasConocimientosPersonal" />
-          </AssociationSet>
-          <AssociationSet Name="fk_personal_competenciaConocimietosPersonal" Association="bdGestionDocenteModel.fk_personal_competenciaConocimietosPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblCompetenciasConocimientosPersonal" EntitySet="tblCompetenciasConocimientosPersonal" />
           </AssociationSet>
           <EntitySet Name="CatActividadesFisicas" EntityType="bdGestionDocenteModel.CatActividadesFisicas" />
@@ -5487,10 +5326,6 @@
             <End Role="CatRespuestas17" EntitySet="CatRespuestas17" />
             <End Role="TblEncuesta" EntitySet="TblEncuesta" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblPersonal_TblEncuesta" Association="bdGestionDocenteModel.FK_tblPersonal_TblEncuesta">
-            <End Role="TblEncuesta" EntitySet="TblEncuesta" />
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-          </AssociationSet>
           <EntitySet Name="CatAlergiaAlimento" EntityType="bdGestionDocenteModel.CatAlergiaAlimento" />
           <AssociationSet Name="FK_CatRespuestas06_CatAlergiaAlimento" Association="bdGestionDocenteModel.FK_CatRespuestas06_CatAlergiaAlimento">
             <End Role="CatAlergiaAlimento" EntitySet="CatAlergiaAlimento" />
@@ -5522,10 +5357,6 @@
           <AssociationSet Name="fk_Status_usuario" Association="bdGestionDocenteModel.fk_Status_usuario">
             <End Role="catStatus" EntitySet="catStatus" />
             <End Role="catUsuarios" EntitySet="catUsuarios" />
-          </AssociationSet>
-          <AssociationSet Name="fk_usuario_personal" Association="bdGestionDocenteModel.fk_usuario_personal">
-            <End Role="catUsuarios" EntitySet="catUsuarios" />
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
           </AssociationSet>
           <AssociationSet Name="fk_usuario_usuariosRol" Association="bdGestionDocenteModel.fk_usuario_usuariosRol">
             <End Role="catUsuarios" EntitySet="catUsuarios" />
@@ -5559,22 +5390,10 @@
             <End Role="CatTiposCapacitacion" EntitySet="CatTiposCapacitacion" />
             <End Role="TblCapacitacionesRecibidas" EntitySet="TblCapacitacionesRecibidas" />
           </AssociationSet>
-          <AssociationSet Name="FK_TblCapacitacionesImpartidas_tblPersonal" Association="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="TblCapacitacionesImpartidas" EntitySet="TblCapacitacionesImpartidas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblCapacitacionesRecibidas_tblPersonal" Association="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="TblCapacitacionesRecibidas" EntitySet="TblCapacitacionesRecibidas" />
-          </AssociationSet>
           <EntitySet Name="TblBachillerato" EntityType="bdGestionDocenteModel.TblBachillerato" />
           <AssociationSet Name="FK_TblBachillerato_catDocumentos" Association="bdGestionDocenteModel.FK_TblBachillerato_catDocumentos">
             <End Role="catDocumentos" EntitySet="catDocumentos" />
             <End Role="TblBachillerato" EntitySet="TblBachillerato" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblPersonal_TblBachillerato" Association="bdGestionDocenteModel.FK_tblPersonal_TblBachillerato">
-            <End Role="TblBachillerato" EntitySet="TblBachillerato" />
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
           </AssociationSet>
           <EntitySet Name="TblDoctorado" EntityType="bdGestionDocenteModel.TblDoctorado" />
           <EntitySet Name="TblLicenciaturaIngenieria" EntityType="bdGestionDocenteModel.TblLicenciaturaIngenieria" />
@@ -5623,9 +5442,145 @@
             <End Role="CatStatusMaestria" EntitySet="CatStatusMaestria" />
             <End Role="TblMaetria" EntitySet="TblMaetria" />
           </AssociationSet>
+          <EntitySet Name="CatInstitucionesSalud" EntityType="bdGestionDocenteModel.CatInstitucionesSalud" />
+          <EntitySet Name="TblSeguridadSocial" EntityType="bdGestionDocenteModel.TblSeguridadSocial" />
+          <AssociationSet Name="FK_TblSeguridadSocial_CatInstitucionesSalud" Association="bdGestionDocenteModel.FK_TblSeguridadSocial_CatInstitucionesSalud">
+            <End Role="CatInstitucionesSalud" EntitySet="CatInstitucionesSalud" />
+            <End Role="TblSeguridadSocial" EntitySet="TblSeguridadSocial" />
+          </AssociationSet>
+          <EntitySet Name="catFamiliar" EntityType="bdGestionDocenteModel.catFamiliar" />
+          <AssociationSet Name="FK_catFamiliar_catParentesco" Association="bdGestionDocenteModel.FK_catFamiliar_catParentesco">
+            <End Role="catParentesco" EntitySet="catParentesco" />
+            <End Role="catFamiliar" EntitySet="catFamiliar" />
+          </AssociationSet>
+          <EntitySet Name="tblPersonal" EntityType="bdGestionDocenteModel.tblPersonal" />
+          <AssociationSet Name="fk_direccion_personal" Association="bdGestionDocenteModel.fk_direccion_personal">
+            <End Role="catDireccion" EntitySet="catDireccion" />
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estadoCivil_personal" Association="bdGestionDocenteModel.fk_estadoCivil_personal">
+            <End Role="catEstadoCivil" EntitySet="catEstadoCivil" />
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_catFamiliar_tblPersonal" Association="bdGestionDocenteModel.FK_catFamiliar_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="catFamiliar" EntitySet="catFamiliar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPersonal_CatNacionalidad" Association="bdGestionDocenteModel.FK_tblPersonal_CatNacionalidad">
+            <End Role="CatNacionalidad" EntitySet="CatNacionalidad" />
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_usuario_personal" Association="bdGestionDocenteModel.fk_usuario_personal">
+            <End Role="catUsuarios" EntitySet="catUsuarios" />
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personal_alergiaPersonal" Association="bdGestionDocenteModel.fk_personal_alergiaPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblAlergiasPersonal" EntitySet="tblAlergiasPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPersonal_TblBachillerato" Association="bdGestionDocenteModel.FK_tblPersonal_TblBachillerato">
+            <End Role="TblBachillerato" EntitySet="TblBachillerato" />
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblCapacitacionCompetenciasProfesionales_tblPersonal" Association="bdGestionDocenteModel.FK_TblCapacitacionCompetenciasProfesionales_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="TblCapacitacionCompetenciasProfesionales" EntitySet="TblCapacitacionCompetenciasProfesionales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblCapacitacionesImpartidas_tblPersonal" Association="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="TblCapacitacionesImpartidas" EntitySet="TblCapacitacionesImpartidas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblCapacitacionesRecibidas_tblPersonal" Association="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="TblCapacitacionesRecibidas" EntitySet="TblCapacitacionesRecibidas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCapituloLibro_tblPersonal" Association="bdGestionDocenteModel.FK_tblCapituloLibro_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblCapituloLibro" EntitySet="tblCapituloLibro" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personal_competenciaConocimietosPersonal" Association="bdGestionDocenteModel.fk_personal_competenciaConocimietosPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblCompetenciasConocimientosPersonal" EntitySet="tblCompetenciasConocimientosPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personal_competenciaTIPersonal" Association="bdGestionDocenteModel.fk_personal_competenciaTIPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblCompetenciasTIPersonal" EntitySet="tblCompetenciasTIPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personal_datosContacto" Association="bdGestionDocenteModel.fk_personal_datosContacto">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblDatosContacto" EntitySet="tblDatosContacto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblDatosLaborales_tblPersonal" Association="bdGestionDocenteModel.FK_TblDatosLaborales_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="TblDatosLaborales" EntitySet="TblDatosLaborales" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personal_datosLaboralesAdministrativos" Association="bdGestionDocenteModel.fk_personal_datosLaboralesAdministrativos">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblDatosLaboralesAdministrativos" EntitySet="tblDatosLaboralesAdministrativos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personal_datosLaboralesDocente" Association="bdGestionDocenteModel.fk_personal_datosLaboralesDocente">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblDatosLaboralesDocente" EntitySet="tblDatosLaboralesDocente" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personal_deportePersonal" Association="bdGestionDocenteModel.fk_personal_deportePersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblDeportePersonal" EntitySet="tblDeportePersonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDireccionIndividualizada_tblPersonal" Association="bdGestionDocenteModel.FK_tblDireccionIndividualizada_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblDireccionIndividualizada" EntitySet="tblDireccionIndividualizada" />
+          </AssociationSet>
           <AssociationSet Name="FK_TblDoctorado_tblPersonal" Association="bdGestionDocenteModel.FK_TblDoctorado_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="TblDoctorado" EntitySet="TblDoctorado" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personal_documentacionPersonal" Association="bdGestionDocenteModel.fk_personal_documentacionPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblDocumentacionPersonal" EntitySet="tblDocumentacionPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personal_emergencia" Association="bdGestionDocenteModel.fk_personal_emergencia">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblEmergencia" EntitySet="tblEmergencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPersonal_TblEncuesta1" Association="bdGestionDocenteModel.FK_tblPersonal_TblEncuesta1">
+            <End Role="TblEncuesta" EntitySet="TblEncuesta" />
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personal_enfermedadPersonal" Association="bdGestionDocenteModel.fk_personal_enfermedadPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblEnfermedadPersonal" EntitySet="tblEnfermedadPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEstadiaEmpresa_tblPersonal" Association="bdGestionDocenteModel.FK_tblEstadiaEmpresa_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblEstadiaEmpresa" EntitySet="tblEstadiaEmpresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExperienciaLaboralExterna_tblPersonal" Association="bdGestionDocenteModel.FK_tblExperienciaLaboralExterna_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblExperienciaLaboralExterna" EntitySet="tblExperienciaLaboralExterna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExperienciaLaboralInterna_tblPersonal" Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblExperienciaLaboralInterna" EntitySet="tblExperienciaLaboralInterna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblHobbies_tblPersonal" Association="bdGestionDocenteModel.FK_tblHobbies_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblHobbies" EntitySet="tblHobbies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblIdioma_tblPersonal" Association="bdGestionDocenteModel.FK_TblIdioma_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="TblIdioma" EntitySet="TblIdioma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblInformeTecnico_tblPersonal" Association="bdGestionDocenteModel.FK_tblInformeTecnico_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblInformeTecnico" EntitySet="tblInformeTecnico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblLenguas_tblPersonal" Association="bdGestionDocenteModel.FK_TblLenguas_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="TblLenguas" EntitySet="TblLenguas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLibro_tblPersonal" Association="bdGestionDocenteModel.FK_tblLibro_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblLibro" EntitySet="tblLibro" />
           </AssociationSet>
           <AssociationSet Name="FK_TblLicenciaturaIngenieria_tblPersonal" Association="bdGestionDocenteModel.FK_TblLicenciaturaIngenieria_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
@@ -5635,24 +5590,69 @@
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="TblMaetria" EntitySet="TblMaetria" />
           </AssociationSet>
-          <EntitySet Name="CatInstitucionesSalud" EntityType="bdGestionDocenteModel.CatInstitucionesSalud" />
-          <EntitySet Name="TblSeguridadSocial" EntityType="bdGestionDocenteModel.TblSeguridadSocial" />
-          <AssociationSet Name="FK_TblSeguridadSocial_CatInstitucionesSalud" Association="bdGestionDocenteModel.FK_TblSeguridadSocial_CatInstitucionesSalud">
-            <End Role="CatInstitucionesSalud" EntitySet="CatInstitucionesSalud" />
-            <End Role="TblSeguridadSocial" EntitySet="TblSeguridadSocial" />
+          <AssociationSet Name="FK_tblManualOperacion_tblPersonal" Association="bdGestionDocenteModel.FK_tblManualOperacion_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblManualOperacion" EntitySet="tblManualOperacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMemoriasExtenso_tblPersonal" Association="bdGestionDocenteModel.FK_TblMemoriasExtenso_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="TblMemoriasExtenso" EntitySet="TblMemoriasExtenso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblOtraCapacitacion_tblPersonal" Association="bdGestionDocenteModel.FK_TblOtraCapacitacion_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="TblOtraCapacitacion" EntitySet="TblOtraCapacitacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblParticipacionDocente_tblPersonal1" Association="bdGestionDocenteModel.FK_tblParticipacionDocente_tblPersonal1">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblParticipacionDocente" EntitySet="tblParticipacionDocente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblParticipacionInstitucionalExterna_tblPersonal" Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblParticipacionInstitucionalExterna" EntitySet="tblParticipacionInstitucionalExterna" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblParticipacionInstitucionalInterna_tblPersonal" Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblParticipacionInstitucionalInterna" EntitySet="tblParticipacionInstitucionalInterna" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personal_personalAsociaciones" Association="bdGestionDocenteModel.fk_personal_personalAsociaciones">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblPersonalAsociaciones" EntitySet="tblPersonalAsociaciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personal_premiosDocente" Association="bdGestionDocenteModel.fk_personal_premiosDocente">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblPremiosDocente" EntitySet="tblPremiosDocente" />
           </AssociationSet>
           <AssociationSet Name="FK_tblPersonal_TblSeguridadSocial" Association="bdGestionDocenteModel.FK_tblPersonal_TblSeguridadSocial">
             <End Role="TblSeguridadSocial" EntitySet="TblSeguridadSocial" />
             <End Role="tblPersonal" EntitySet="tblPersonal" />
           </AssociationSet>
-          <EntitySet Name="catFamiliar" EntityType="bdGestionDocenteModel.catFamiliar" />
-          <AssociationSet Name="FK_catFamiliar_catParentesco" Association="bdGestionDocenteModel.FK_catFamiliar_catParentesco">
-            <End Role="catParentesco" EntitySet="catParentesco" />
-            <End Role="catFamiliar" EntitySet="catFamiliar" />
-          </AssociationSet>
-          <AssociationSet Name="FK_catFamiliar_tblPersonal" Association="bdGestionDocenteModel.FK_catFamiliar_tblPersonal">
+          <AssociationSet Name="FK_tblPortafolioPersonal_tblPersonal" Association="bdGestionDocenteModel.FK_tblPortafolioPersonal_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="catFamiliar" EntitySet="catFamiliar" />
+            <End Role="tblPortafolioPersonal" EntitySet="tblPortafolioPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduccionArtistica_tblPersonal" Association="bdGestionDocenteModel.FK_tblProduccionArtistica_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblProduccionArtistica" EntitySet="tblProduccionArtistica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductividadInnovadora_tblPersonal" Association="bdGestionDocenteModel.FK_tblProductividadInnovadora_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblProductividadInnovadora" EntitySet="tblProductividadInnovadora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProgresoProdep_tblPersonal" Association="bdGestionDocenteModel.FK_tblProgresoProdep_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblProgresoProdep" EntitySet="tblProgresoProdep" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPrototipo_tblPersonal" Association="bdGestionDocenteModel.FK_tblPrototipo_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblPrototipo" EntitySet="tblPrototipo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_tblPersonal" Association="bdGestionDocenteModel.FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" EntitySet="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTutoria_tblPersonal" Association="bdGestionDocenteModel.FK_tblTutoria_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="tblTutoria" EntitySet="tblTutoria" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="catAlergias">
@@ -5964,8 +5964,8 @@
           <NavigationProperty Name="catDeporte" Relationship="bdGestionDocenteModel.fk_deporte_deportePersonal" FromRole="tblDeportePersonal" ToRole="catDeporte" />
           <NavigationProperty Name="catFrecuencia" Relationship="bdGestionDocenteModel.fk_frecuencia_deportePersonal" FromRole="tblDeportePersonal" ToRole="catFrecuencia" />
           <Property Name="idDeportePersonal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.fk_personal_deportePersonal" FromRole="tblDeportePersonal" ToRole="tblPersonal" />
           <Property Name="strHorasPractica" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.fk_personal_deportePersonal" FromRole="tblDeportePersonal" ToRole="tblPersonal" />
         </EntityType>
         <EntityType Name="tblEmergencia">
           <Key>
@@ -7805,544 +7805,6 @@
           <Property Name="strValor" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_tblPersonal_CatNacionalidad" FromRole="CatNacionalidad" ToRole="tblPersonal" />
         </EntityType>
-        <EntityType Name="tblPersonal">
-          <Key>
-            <PropertyRef Name="idPersonal" />
-          </Key>
-          <Property Name="idPersonal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="strNombre" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strApellidoPaterno" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strApellidoMaterno" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strCurp" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strRfc" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strHomoclave" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="dteFechaNacimiento" Type="DateTime" Precision="3" />
-          <Property Name="strLogros" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="strUrlFoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="strUrlCurp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="strUrlRfc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="strGenero" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strUrlNacionalidad" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="idEstadoCivil" Type="Int32" />
-          <Property Name="idUsuario" Type="Int32" />
-          <Property Name="idTipoSangre" Type="Int32" />
-          <Property Name="idDireccion" Type="Int32" />
-          <Property Name="idNacionalidad" Type="Int32" />
-          <Property Name="idBachillerato" Type="Int32" />
-          <NavigationProperty Name="catDireccion" Relationship="bdGestionDocenteModel.fk_direccion_personal" FromRole="tblPersonal" ToRole="catDireccion" />
-          <NavigationProperty Name="catEstadoCivil" Relationship="bdGestionDocenteModel.fk_estadoCivil_personal" FromRole="tblPersonal" ToRole="catEstadoCivil" />
-          <NavigationProperty Name="CatNacionalidad" Relationship="bdGestionDocenteModel.FK_tblPersonal_CatNacionalidad" FromRole="tblPersonal" ToRole="CatNacionalidad" />
-          <NavigationProperty Name="tblAlergiasPersonal" Relationship="bdGestionDocenteModel.fk_personal_alergiaPersonal" FromRole="tblPersonal" ToRole="tblAlergiasPersonal" />
-          <NavigationProperty Name="TblCapacitacionCompetenciasProfesionales" Relationship="bdGestionDocenteModel.FK_TblCapacitacionCompetenciasProfesionales_tblPersonal" FromRole="tblPersonal" ToRole="TblCapacitacionCompetenciasProfesionales" />
-          <NavigationProperty Name="tblCapituloLibro" Relationship="bdGestionDocenteModel.FK_tblCapituloLibro_tblPersonal" FromRole="tblPersonal" ToRole="tblCapituloLibro" />
-          <NavigationProperty Name="tblCompetenciasTIPersonal" Relationship="bdGestionDocenteModel.fk_personal_competenciaTIPersonal" FromRole="tblPersonal" ToRole="tblCompetenciasTIPersonal" />
-          <NavigationProperty Name="tblDatosContacto" Relationship="bdGestionDocenteModel.fk_personal_datosContacto" FromRole="tblPersonal" ToRole="tblDatosContacto" />
-          <NavigationProperty Name="TblDatosLaborales" Relationship="bdGestionDocenteModel.FK_TblDatosLaborales_tblPersonal" FromRole="tblPersonal" ToRole="TblDatosLaborales" />
-          <NavigationProperty Name="tblDatosLaboralesAdministrativos" Relationship="bdGestionDocenteModel.fk_personal_datosLaboralesAdministrativos" FromRole="tblPersonal" ToRole="tblDatosLaboralesAdministrativos" />
-          <NavigationProperty Name="tblDatosLaboralesDocente" Relationship="bdGestionDocenteModel.fk_personal_datosLaboralesDocente" FromRole="tblPersonal" ToRole="tblDatosLaboralesDocente" />
-          <NavigationProperty Name="tblDeportePersonal" Relationship="bdGestionDocenteModel.fk_personal_deportePersonal" FromRole="tblPersonal" ToRole="tblDeportePersonal" />
-          <NavigationProperty Name="tblDireccionIndividualizada" Relationship="bdGestionDocenteModel.FK_tblDireccionIndividualizada_tblPersonal" FromRole="tblPersonal" ToRole="tblDireccionIndividualizada" />
-          <NavigationProperty Name="tblEmergencia" Relationship="bdGestionDocenteModel.fk_personal_emergencia" FromRole="tblPersonal" ToRole="tblEmergencia" />
-          <NavigationProperty Name="tblEnfermedadPersonal" Relationship="bdGestionDocenteModel.fk_personal_enfermedadPersonal" FromRole="tblPersonal" ToRole="tblEnfermedadPersonal" />
-          <NavigationProperty Name="tblEstadiaEmpresa" Relationship="bdGestionDocenteModel.FK_tblEstadiaEmpresa_tblPersonal" FromRole="tblPersonal" ToRole="tblEstadiaEmpresa" />
-          <NavigationProperty Name="tblExperienciaLaboralExterna" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralExterna_tblPersonal" FromRole="tblPersonal" ToRole="tblExperienciaLaboralExterna" />
-          <NavigationProperty Name="tblExperienciaLaboralInterna" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_tblPersonal" FromRole="tblPersonal" ToRole="tblExperienciaLaboralInterna" />
-          <NavigationProperty Name="tblInformeTecnico" Relationship="bdGestionDocenteModel.FK_tblInformeTecnico_tblPersonal" FromRole="tblPersonal" ToRole="tblInformeTecnico" />
-          <NavigationProperty Name="tblLibro" Relationship="bdGestionDocenteModel.FK_tblLibro_tblPersonal" FromRole="tblPersonal" ToRole="tblLibro" />
-          <NavigationProperty Name="tblManualOperacion" Relationship="bdGestionDocenteModel.FK_tblManualOperacion_tblPersonal" FromRole="tblPersonal" ToRole="tblManualOperacion" />
-          <NavigationProperty Name="TblMemoriasExtenso" Relationship="bdGestionDocenteModel.FK_TblMemoriasExtenso_tblPersonal" FromRole="tblPersonal" ToRole="TblMemoriasExtenso" />
-          <NavigationProperty Name="TblOtraCapacitacion" Relationship="bdGestionDocenteModel.FK_TblOtraCapacitacion_tblPersonal" FromRole="tblPersonal" ToRole="TblOtraCapacitacion" />
-          <NavigationProperty Name="tblParticipacionDocente" Relationship="bdGestionDocenteModel.FK_tblParticipacionDocente_tblPersonal1" FromRole="tblPersonal" ToRole="tblParticipacionDocente" />
-          <NavigationProperty Name="tblParticipacionInstitucionalExterna" Relationship="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_tblPersonal" FromRole="tblPersonal" ToRole="tblParticipacionInstitucionalExterna" />
-          <NavigationProperty Name="tblParticipacionInstitucionalInterna" Relationship="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_tblPersonal" FromRole="tblPersonal" ToRole="tblParticipacionInstitucionalInterna" />
-          <NavigationProperty Name="tblPersonalAsociaciones" Relationship="bdGestionDocenteModel.fk_personal_personalAsociaciones" FromRole="tblPersonal" ToRole="tblPersonalAsociaciones" />
-          <NavigationProperty Name="tblPremiosDocente" Relationship="bdGestionDocenteModel.fk_personal_premiosDocente" FromRole="tblPersonal" ToRole="tblPremiosDocente" />
-          <NavigationProperty Name="tblPortafolioPersonal" Relationship="bdGestionDocenteModel.FK_tblPortafolioPersonal_tblPersonal" FromRole="tblPersonal" ToRole="tblPortafolioPersonal" />
-          <NavigationProperty Name="tblProduccionArtistica" Relationship="bdGestionDocenteModel.FK_tblProduccionArtistica_tblPersonal" FromRole="tblPersonal" ToRole="tblProduccionArtistica" />
-          <NavigationProperty Name="tblProductividadInnovadora" Relationship="bdGestionDocenteModel.FK_tblProductividadInnovadora_tblPersonal" FromRole="tblPersonal" ToRole="tblProductividadInnovadora" />
-          <NavigationProperty Name="tblProgresoProdep" Relationship="bdGestionDocenteModel.FK_tblProgresoProdep_tblPersonal" FromRole="tblPersonal" ToRole="tblProgresoProdep" />
-          <NavigationProperty Name="tblPrototipo" Relationship="bdGestionDocenteModel.FK_tblPrototipo_tblPersonal" FromRole="tblPersonal" ToRole="tblPrototipo" />
-          <NavigationProperty Name="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" Relationship="bdGestionDocenteModel.FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_tblPersonal" FromRole="tblPersonal" ToRole="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" />
-          <NavigationProperty Name="tblTutoria" Relationship="bdGestionDocenteModel.FK_tblTutoria_tblPersonal" FromRole="tblPersonal" ToRole="tblTutoria" />
-          <NavigationProperty Name="tblHobbies" Relationship="bdGestionDocenteModel.FK_tblHobbies_tblPersonal" FromRole="tblPersonal" ToRole="tblHobbies" />
-          <NavigationProperty Name="TblIdioma" Relationship="bdGestionDocenteModel.FK_TblIdioma_tblPersonal" FromRole="tblPersonal" ToRole="TblIdioma" />
-          <NavigationProperty Name="TblLenguas" Relationship="bdGestionDocenteModel.FK_TblLenguas_tblPersonal" FromRole="tblPersonal" ToRole="TblLenguas" />
-          <NavigationProperty Name="tblDocumentacionPersonal" Relationship="bdGestionDocenteModel.fk_personal_documentacionPersonal" FromRole="tblPersonal" ToRole="tblDocumentacionPersonal" />
-          <NavigationProperty Name="tblCompetenciasConocimientosPersonal" Relationship="bdGestionDocenteModel.fk_personal_competenciaConocimietosPersonal" FromRole="tblPersonal" ToRole="tblCompetenciasConocimientosPersonal" />
-          <Property Name="idEncuesta" Type="Int32" />
-          <Property Name="bitPermisoEncuesta" Type="Boolean" />
-          <NavigationProperty Name="TblEncuesta" Relationship="bdGestionDocenteModel.FK_tblPersonal_TblEncuesta" FromRole="tblPersonal" ToRole="TblEncuesta" />
-          <Property Name="strTipoPersonal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="strUniversidad" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="catUsuarios" Relationship="bdGestionDocenteModel.fk_usuario_personal" FromRole="tblPersonal" ToRole="catUsuarios" />
-          <NavigationProperty Name="TblCapacitacionesImpartidas" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_tblPersonal" FromRole="tblPersonal" ToRole="TblCapacitacionesImpartidas" />
-          <NavigationProperty Name="TblCapacitacionesRecibidas" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_tblPersonal" FromRole="tblPersonal" ToRole="TblCapacitacionesRecibidas" />
-          <NavigationProperty Name="TblBachillerato" Relationship="bdGestionDocenteModel.FK_tblPersonal_TblBachillerato" FromRole="tblPersonal" ToRole="TblBachillerato" />
-          <NavigationProperty Name="TblDoctorado" Relationship="bdGestionDocenteModel.FK_TblDoctorado_tblPersonal" FromRole="tblPersonal" ToRole="TblDoctorado" />
-          <NavigationProperty Name="TblLicenciaturaIngenieria" Relationship="bdGestionDocenteModel.FK_TblLicenciaturaIngenieria_tblPersonal" FromRole="tblPersonal" ToRole="TblLicenciaturaIngenieria" />
-          <NavigationProperty Name="TblMaetria" Relationship="bdGestionDocenteModel.FK_TblMaetria_tblPersonal" FromRole="tblPersonal" ToRole="TblMaetria" />
-          <Property Name="idSeguridadSocial" Type="Int32" />
-          <NavigationProperty Name="TblSeguridadSocial" Relationship="bdGestionDocenteModel.FK_tblPersonal_TblSeguridadSocial" FromRole="tblPersonal" ToRole="TblSeguridadSocial" />
-          <NavigationProperty Name="catFamiliar" Relationship="bdGestionDocenteModel.FK_catFamiliar_tblPersonal" FromRole="tblPersonal" ToRole="catFamiliar" />
-        </EntityType>
-        <Association Name="fk_direccion_personal">
-          <End Type="bdGestionDocenteModel.catDireccion" Role="catDireccion" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catDireccion">
-              <PropertyRef Name="idDireccion" />
-            </Principal>
-            <Dependent Role="tblPersonal">
-              <PropertyRef Name="idDireccion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_estadoCivil_personal">
-          <End Type="bdGestionDocenteModel.catEstadoCivil" Role="catEstadoCivil" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catEstadoCivil">
-              <PropertyRef Name="idEstadoCivil" />
-            </Principal>
-            <Dependent Role="tblPersonal">
-              <PropertyRef Name="idEstadoCivil" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblPersonal_CatNacionalidad">
-          <End Type="bdGestionDocenteModel.CatNacionalidad" Role="CatNacionalidad" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CatNacionalidad">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="tblPersonal">
-              <PropertyRef Name="idNacionalidad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_alergiaPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocenteModel.tblAlergiasPersonal" Role="tblAlergiasPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblAlergiasPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblCapacitacionCompetenciasProfesionales_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblCapacitacionCompetenciasProfesionales" Role="TblCapacitacionCompetenciasProfesionales" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="TblCapacitacionCompetenciasProfesionales">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblCapituloLibro_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblCapituloLibro" Role="tblCapituloLibro" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblCapituloLibro">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_competenciaTIPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocenteModel.tblCompetenciasTIPersonal" Role="tblCompetenciasTIPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblCompetenciasTIPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_datosContacto">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblDatosContacto" Role="tblDatosContacto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblDatosContacto">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblDatosLaborales_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblDatosLaborales" Role="TblDatosLaborales" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="TblDatosLaborales">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_datosLaboralesAdministrativos">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocenteModel.tblDatosLaboralesAdministrativos" Role="tblDatosLaboralesAdministrativos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblDatosLaboralesAdministrativos">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_datosLaboralesDocente">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocenteModel.tblDatosLaboralesDocente" Role="tblDatosLaboralesDocente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblDatosLaboralesDocente">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_deportePersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocenteModel.tblDeportePersonal" Role="tblDeportePersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblDeportePersonal">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblDireccionIndividualizada_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblDireccionIndividualizada" Role="tblDireccionIndividualizada" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblDireccionIndividualizada">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_emergencia">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocenteModel.tblEmergencia" Role="tblEmergencia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblEmergencia">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_enfermedadPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocenteModel.tblEnfermedadPersonal" Role="tblEnfermedadPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblEnfermedadPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblEstadiaEmpresa_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblEstadiaEmpresa" Role="tblEstadiaEmpresa" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblEstadiaEmpresa">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblExperienciaLaboralExterna_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblExperienciaLaboralExterna" Role="tblExperienciaLaboralExterna" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblExperienciaLaboralExterna">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblExperienciaLaboralInterna_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblExperienciaLaboralInterna" Role="tblExperienciaLaboralInterna" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblExperienciaLaboralInterna">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblInformeTecnico_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblInformeTecnico" Role="tblInformeTecnico" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblInformeTecnico">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblLibro_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblLibro" Role="tblLibro" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblLibro">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblManualOperacion_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblManualOperacion" Role="tblManualOperacion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblManualOperacion">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblMemoriasExtenso_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblMemoriasExtenso" Role="TblMemoriasExtenso" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="TblMemoriasExtenso">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblOtraCapacitacion_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblOtraCapacitacion" Role="TblOtraCapacitacion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="TblOtraCapacitacion">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblParticipacionDocente_tblPersonal1">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblParticipacionDocente" Role="tblParticipacionDocente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblParticipacionDocente">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblParticipacionInstitucionalExterna_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblParticipacionInstitucionalExterna" Role="tblParticipacionInstitucionalExterna" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblParticipacionInstitucionalExterna">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblParticipacionInstitucionalInterna_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblParticipacionInstitucionalInterna" Role="tblParticipacionInstitucionalInterna" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblParticipacionInstitucionalInterna">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_personalAsociaciones">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocenteModel.tblPersonalAsociaciones" Role="tblPersonalAsociaciones" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblPersonalAsociaciones">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_premiosDocente">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.tblPremiosDocente" Role="tblPremiosDocente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblPremiosDocente">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblPortafolioPersonal_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblPortafolioPersonal" Role="tblPortafolioPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblPortafolioPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblProduccionArtistica_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblProduccionArtistica" Role="tblProduccionArtistica" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblProduccionArtistica">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblProductividadInnovadora_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblProductividadInnovadora" Role="tblProductividadInnovadora" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblProductividadInnovadora">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblProgresoProdep_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblProgresoProdep" Role="tblProgresoProdep" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblProgresoProdep">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblPrototipo_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblPrototipo" Role="tblPrototipo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblPrototipo">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblProyectoInvestigacionAplicadaDesarrolloTecnologico" Role="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblProyectoInvestigacionAplicadaDesarrolloTecnologico">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblTutoria_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblTutoria" Role="tblTutoria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblTutoria">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="CatHobbies">
           <Key>
             <PropertyRef Name="id" />
@@ -8385,20 +7847,6 @@
             </Principal>
             <Dependent Role="tblHobbies">
               <PropertyRef Name="idHobbie" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblHobbies_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblHobbies" Role="tblHobbies" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblHobbies">
-              <PropertyRef Name="idPersonal" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -8462,18 +7910,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TblIdioma_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblIdioma" Role="TblIdioma" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="TblIdioma">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="CatLenguas">
           <Key>
             <PropertyRef Name="idDialecto" />
@@ -8506,18 +7942,6 @@
             </Principal>
             <Dependent Role="TblLenguas">
               <PropertyRef Name="idLengua" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblLenguas_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblLenguas" Role="TblLenguas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="TblLenguas">
-              <PropertyRef Name="idPersonal" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -8567,18 +7991,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_personal_documentacionPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocenteModel.tblDocumentacionPersonal" Role="tblDocumentacionPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblDocumentacionPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="tblCompetenciasConocimientosPersonal">
           <Key>
             <PropertyRef Name="idCompetenciasConocimientosPersonal" />
@@ -8601,18 +8013,6 @@
             </Principal>
             <Dependent Role="tblCompetenciasConocimientosPersonal">
               <PropertyRef Name="idDocumento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_personal_competenciaConocimietosPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
-          <End Type="bdGestionDocenteModel.tblCompetenciasConocimientosPersonal" Role="tblCompetenciasConocimientosPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="tblCompetenciasConocimientosPersonal">
-              <PropertyRef Name="idPersonal" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -8903,9 +8303,9 @@
           <NavigationProperty Name="CatRespuestas15" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas15" FromRole="TblEncuesta" ToRole="CatRespuestas15" />
           <NavigationProperty Name="CatRespuestas16" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas16" FromRole="TblEncuesta" ToRole="CatRespuestas16" />
           <NavigationProperty Name="CatRespuestas17" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas17" FromRole="TblEncuesta" ToRole="CatRespuestas17" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_tblPersonal_TblEncuesta" FromRole="TblEncuesta" ToRole="tblPersonal" />
           <NavigationProperty Name="CatRespuestas09" Relationship="bdGestionDocenteModel.FK_TblEncuesta_CatRespuestas09" FromRole="TblEncuesta" ToRole="CatRespuestas09" />
           <Property Name="dteFechaRealizo" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_tblPersonal_TblEncuesta1" FromRole="TblEncuesta" ToRole="tblPersonal" />
         </EntityType>
         <Association Name="FK_CatRespuestas11_CatActividadesFisicas">
           <End Type="bdGestionDocenteModel.CatActividadesFisicas" Role="CatActividadesFisicas" Multiplicity="0..1" />
@@ -9207,20 +8607,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblPersonal_TblEncuesta">
-          <End Type="bdGestionDocenteModel.TblEncuesta" Role="TblEncuesta" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblEncuesta">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="tblPersonal">
-              <PropertyRef Name="idEncuesta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="CatAlergiaAlimento">
           <Key>
             <PropertyRef Name="id" />
@@ -9340,8 +8726,8 @@
           <Property Name="idStatus" Type="Int32" Nullable="false" />
           <Property Name="strTipoUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="catStatus" Relationship="bdGestionDocenteModel.fk_Status_usuario" FromRole="catUsuarios" ToRole="catStatus" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.fk_usuario_personal" FromRole="catUsuarios" ToRole="tblPersonal" />
           <NavigationProperty Name="tblUsuarioRol" Relationship="bdGestionDocenteModel.fk_usuario_usuariosRol" FromRole="catUsuarios" ToRole="tblUsuarioRol" />
+          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.fk_usuario_personal" FromRole="catUsuarios" ToRole="tblPersonal" />
         </EntityType>
         <Association Name="fk_Status_usuario">
           <End Type="bdGestionDocenteModel.catStatus" Role="catStatus" Multiplicity="1" />
@@ -9352,18 +8738,6 @@
             </Principal>
             <Dependent Role="catUsuarios">
               <PropertyRef Name="idStatus" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_usuario_personal">
-          <End Type="bdGestionDocenteModel.catUsuarios" Role="catUsuarios" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catUsuarios">
-              <PropertyRef Name="idUsuario" />
-            </Principal>
-            <Dependent Role="tblPersonal">
-              <PropertyRef Name="idUsuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9509,34 +8883,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TblCapacitacionesImpartidas_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.TblCapacitacionesImpartidas" Role="TblCapacitacionesImpartidas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="TblCapacitacionesImpartidas">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblCapacitacionesRecibidas_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.TblCapacitacionesRecibidas" Role="TblCapacitacionesRecibidas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="TblCapacitacionesRecibidas">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="TblBachillerato">
           <Key>
             <PropertyRef Name="id" />
@@ -9559,18 +8905,6 @@
             </Principal>
             <Dependent Role="TblBachillerato">
               <PropertyRef Name="idDocumento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblPersonal_TblBachillerato">
-          <End Type="bdGestionDocenteModel.TblBachillerato" Role="TblBachillerato" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblBachillerato">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="tblPersonal">
-              <PropertyRef Name="idBachillerato" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9763,42 +9097,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TblDoctorado_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblDoctorado" Role="TblDoctorado" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="TblDoctorado">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblLicenciaturaIngenieria_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblLicenciaturaIngenieria" Role="TblLicenciaturaIngenieria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="TblLicenciaturaIngenieria">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblMaetria_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblMaetria" Role="TblMaetria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="TblMaetria">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="CatInstitucionesSalud">
           <Key>
             <PropertyRef Name="id" />
@@ -9826,18 +9124,6 @@
             </Principal>
             <Dependent Role="TblSeguridadSocial">
               <PropertyRef Name="idInstitucion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblPersonal_TblSeguridadSocial">
-          <End Type="bdGestionDocenteModel.TblSeguridadSocial" Role="TblSeguridadSocial" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblSeguridadSocial">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="tblPersonal">
-              <PropertyRef Name="idSeguridadSocial" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9869,6 +9155,110 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tblPersonal">
+          <Key>
+            <PropertyRef Name="idPersonal" />
+          </Key>
+          <Property Name="idPersonal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strNombre" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="strApellidoPaterno" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="strApellidoMaterno" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="strCurp" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="strRfc" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="strHomoclave" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="dteFechaNacimiento" Type="DateTime" Precision="3" />
+          <Property Name="strLogros" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="strUrlFoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="strUrlCurp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="strUrlRfc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="strGenero" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="idEstadoCivil" Type="Int32" />
+          <Property Name="idUsuario" Type="Int32" />
+          <Property Name="idTipoSangre" Type="Int32" />
+          <Property Name="idDireccion" Type="Int32" />
+          <Property Name="idNacionalidad" Type="Int32" />
+          <Property Name="idBachillerato" Type="Int32" />
+          <Property Name="idEncuesta" Type="Int32" />
+          <Property Name="bitPermisoEncuesta" Type="Boolean" />
+          <Property Name="strTipoPersonal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="strUniversidad" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="idSeguridadSocial" Type="Int32" />
+          <Property Name="strNumeroEmpleado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="catDireccion" Relationship="bdGestionDocenteModel.fk_direccion_personal" FromRole="tblPersonal" ToRole="catDireccion" />
+          <NavigationProperty Name="catEstadoCivil" Relationship="bdGestionDocenteModel.fk_estadoCivil_personal" FromRole="tblPersonal" ToRole="catEstadoCivil" />
+          <NavigationProperty Name="catFamiliar" Relationship="bdGestionDocenteModel.FK_catFamiliar_tblPersonal" FromRole="tblPersonal" ToRole="catFamiliar" />
+          <NavigationProperty Name="CatNacionalidad" Relationship="bdGestionDocenteModel.FK_tblPersonal_CatNacionalidad" FromRole="tblPersonal" ToRole="CatNacionalidad" />
+          <NavigationProperty Name="catUsuarios" Relationship="bdGestionDocenteModel.fk_usuario_personal" FromRole="tblPersonal" ToRole="catUsuarios" />
+          <NavigationProperty Name="tblAlergiasPersonal" Relationship="bdGestionDocenteModel.fk_personal_alergiaPersonal" FromRole="tblPersonal" ToRole="tblAlergiasPersonal" />
+          <NavigationProperty Name="TblBachillerato" Relationship="bdGestionDocenteModel.FK_tblPersonal_TblBachillerato" FromRole="tblPersonal" ToRole="TblBachillerato" />
+          <NavigationProperty Name="TblCapacitacionCompetenciasProfesionales" Relationship="bdGestionDocenteModel.FK_TblCapacitacionCompetenciasProfesionales_tblPersonal" FromRole="tblPersonal" ToRole="TblCapacitacionCompetenciasProfesionales" />
+          <NavigationProperty Name="TblCapacitacionesImpartidas" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_tblPersonal" FromRole="tblPersonal" ToRole="TblCapacitacionesImpartidas" />
+          <NavigationProperty Name="TblCapacitacionesRecibidas" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_tblPersonal" FromRole="tblPersonal" ToRole="TblCapacitacionesRecibidas" />
+          <NavigationProperty Name="tblCapituloLibro" Relationship="bdGestionDocenteModel.FK_tblCapituloLibro_tblPersonal" FromRole="tblPersonal" ToRole="tblCapituloLibro" />
+          <NavigationProperty Name="tblCompetenciasConocimientosPersonal" Relationship="bdGestionDocenteModel.fk_personal_competenciaConocimietosPersonal" FromRole="tblPersonal" ToRole="tblCompetenciasConocimientosPersonal" />
+          <NavigationProperty Name="tblCompetenciasTIPersonal" Relationship="bdGestionDocenteModel.fk_personal_competenciaTIPersonal" FromRole="tblPersonal" ToRole="tblCompetenciasTIPersonal" />
+          <NavigationProperty Name="tblDatosContacto" Relationship="bdGestionDocenteModel.fk_personal_datosContacto" FromRole="tblPersonal" ToRole="tblDatosContacto" />
+          <NavigationProperty Name="TblDatosLaborales" Relationship="bdGestionDocenteModel.FK_TblDatosLaborales_tblPersonal" FromRole="tblPersonal" ToRole="TblDatosLaborales" />
+          <NavigationProperty Name="tblDatosLaboralesAdministrativos" Relationship="bdGestionDocenteModel.fk_personal_datosLaboralesAdministrativos" FromRole="tblPersonal" ToRole="tblDatosLaboralesAdministrativos" />
+          <NavigationProperty Name="tblDatosLaboralesDocente" Relationship="bdGestionDocenteModel.fk_personal_datosLaboralesDocente" FromRole="tblPersonal" ToRole="tblDatosLaboralesDocente" />
+          <NavigationProperty Name="tblDeportePersonal" Relationship="bdGestionDocenteModel.fk_personal_deportePersonal" FromRole="tblPersonal" ToRole="tblDeportePersonal" />
+          <NavigationProperty Name="tblDireccionIndividualizada" Relationship="bdGestionDocenteModel.FK_tblDireccionIndividualizada_tblPersonal" FromRole="tblPersonal" ToRole="tblDireccionIndividualizada" />
+          <NavigationProperty Name="TblDoctorado" Relationship="bdGestionDocenteModel.FK_TblDoctorado_tblPersonal" FromRole="tblPersonal" ToRole="TblDoctorado" />
+          <NavigationProperty Name="tblDocumentacionPersonal" Relationship="bdGestionDocenteModel.fk_personal_documentacionPersonal" FromRole="tblPersonal" ToRole="tblDocumentacionPersonal" />
+          <NavigationProperty Name="tblEmergencia" Relationship="bdGestionDocenteModel.fk_personal_emergencia" FromRole="tblPersonal" ToRole="tblEmergencia" />
+          <NavigationProperty Name="TblEncuesta" Relationship="bdGestionDocenteModel.FK_tblPersonal_TblEncuesta1" FromRole="tblPersonal" ToRole="TblEncuesta" />
+          <NavigationProperty Name="tblEnfermedadPersonal" Relationship="bdGestionDocenteModel.fk_personal_enfermedadPersonal" FromRole="tblPersonal" ToRole="tblEnfermedadPersonal" />
+          <NavigationProperty Name="tblEstadiaEmpresa" Relationship="bdGestionDocenteModel.FK_tblEstadiaEmpresa_tblPersonal" FromRole="tblPersonal" ToRole="tblEstadiaEmpresa" />
+          <NavigationProperty Name="tblExperienciaLaboralExterna" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralExterna_tblPersonal" FromRole="tblPersonal" ToRole="tblExperienciaLaboralExterna" />
+          <NavigationProperty Name="tblExperienciaLaboralInterna" Relationship="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_tblPersonal" FromRole="tblPersonal" ToRole="tblExperienciaLaboralInterna" />
+          <NavigationProperty Name="tblHobbies" Relationship="bdGestionDocenteModel.FK_tblHobbies_tblPersonal" FromRole="tblPersonal" ToRole="tblHobbies" />
+          <NavigationProperty Name="TblIdioma" Relationship="bdGestionDocenteModel.FK_TblIdioma_tblPersonal" FromRole="tblPersonal" ToRole="TblIdioma" />
+          <NavigationProperty Name="tblInformeTecnico" Relationship="bdGestionDocenteModel.FK_tblInformeTecnico_tblPersonal" FromRole="tblPersonal" ToRole="tblInformeTecnico" />
+          <NavigationProperty Name="TblLenguas" Relationship="bdGestionDocenteModel.FK_TblLenguas_tblPersonal" FromRole="tblPersonal" ToRole="TblLenguas" />
+          <NavigationProperty Name="tblLibro" Relationship="bdGestionDocenteModel.FK_tblLibro_tblPersonal" FromRole="tblPersonal" ToRole="tblLibro" />
+          <NavigationProperty Name="TblLicenciaturaIngenieria" Relationship="bdGestionDocenteModel.FK_TblLicenciaturaIngenieria_tblPersonal" FromRole="tblPersonal" ToRole="TblLicenciaturaIngenieria" />
+          <NavigationProperty Name="TblMaetria" Relationship="bdGestionDocenteModel.FK_TblMaetria_tblPersonal" FromRole="tblPersonal" ToRole="TblMaetria" />
+          <NavigationProperty Name="tblManualOperacion" Relationship="bdGestionDocenteModel.FK_tblManualOperacion_tblPersonal" FromRole="tblPersonal" ToRole="tblManualOperacion" />
+          <NavigationProperty Name="TblMemoriasExtenso" Relationship="bdGestionDocenteModel.FK_TblMemoriasExtenso_tblPersonal" FromRole="tblPersonal" ToRole="TblMemoriasExtenso" />
+          <NavigationProperty Name="TblOtraCapacitacion" Relationship="bdGestionDocenteModel.FK_TblOtraCapacitacion_tblPersonal" FromRole="tblPersonal" ToRole="TblOtraCapacitacion" />
+          <NavigationProperty Name="tblParticipacionDocente" Relationship="bdGestionDocenteModel.FK_tblParticipacionDocente_tblPersonal1" FromRole="tblPersonal" ToRole="tblParticipacionDocente" />
+          <NavigationProperty Name="tblParticipacionInstitucionalExterna" Relationship="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_tblPersonal" FromRole="tblPersonal" ToRole="tblParticipacionInstitucionalExterna" />
+          <NavigationProperty Name="tblParticipacionInstitucionalInterna" Relationship="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_tblPersonal" FromRole="tblPersonal" ToRole="tblParticipacionInstitucionalInterna" />
+          <NavigationProperty Name="tblPersonalAsociaciones" Relationship="bdGestionDocenteModel.fk_personal_personalAsociaciones" FromRole="tblPersonal" ToRole="tblPersonalAsociaciones" />
+          <NavigationProperty Name="tblPremiosDocente" Relationship="bdGestionDocenteModel.fk_personal_premiosDocente" FromRole="tblPersonal" ToRole="tblPremiosDocente" />
+          <NavigationProperty Name="TblSeguridadSocial" Relationship="bdGestionDocenteModel.FK_tblPersonal_TblSeguridadSocial" FromRole="tblPersonal" ToRole="TblSeguridadSocial" />
+          <NavigationProperty Name="tblPortafolioPersonal" Relationship="bdGestionDocenteModel.FK_tblPortafolioPersonal_tblPersonal" FromRole="tblPersonal" ToRole="tblPortafolioPersonal" />
+          <NavigationProperty Name="tblProduccionArtistica" Relationship="bdGestionDocenteModel.FK_tblProduccionArtistica_tblPersonal" FromRole="tblPersonal" ToRole="tblProduccionArtistica" />
+          <NavigationProperty Name="tblProductividadInnovadora" Relationship="bdGestionDocenteModel.FK_tblProductividadInnovadora_tblPersonal" FromRole="tblPersonal" ToRole="tblProductividadInnovadora" />
+          <NavigationProperty Name="tblProgresoProdep" Relationship="bdGestionDocenteModel.FK_tblProgresoProdep_tblPersonal" FromRole="tblPersonal" ToRole="tblProgresoProdep" />
+          <NavigationProperty Name="tblPrototipo" Relationship="bdGestionDocenteModel.FK_tblPrototipo_tblPersonal" FromRole="tblPersonal" ToRole="tblPrototipo" />
+          <NavigationProperty Name="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" Relationship="bdGestionDocenteModel.FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_tblPersonal" FromRole="tblPersonal" ToRole="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" />
+          <NavigationProperty Name="tblTutoria" Relationship="bdGestionDocenteModel.FK_tblTutoria_tblPersonal" FromRole="tblPersonal" ToRole="tblTutoria" />
+        </EntityType>
+        <Association Name="fk_direccion_personal">
+          <End Type="bdGestionDocenteModel.catDireccion" Role="catDireccion" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catDireccion">
+              <PropertyRef Name="idDireccion" />
+            </Principal>
+            <Dependent Role="tblPersonal">
+              <PropertyRef Name="idDireccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estadoCivil_personal">
+          <End Type="bdGestionDocenteModel.catEstadoCivil" Role="catEstadoCivil" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catEstadoCivil">
+              <PropertyRef Name="idEstadoCivil" />
+            </Principal>
+            <Dependent Role="tblPersonal">
+              <PropertyRef Name="idEstadoCivil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_catFamiliar_tblPersonal">
           <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
           <End Type="bdGestionDocenteModel.catFamiliar" Role="catFamiliar" Multiplicity="*" />
@@ -9877,6 +9267,614 @@
               <PropertyRef Name="idPersonal" />
             </Principal>
             <Dependent Role="catFamiliar">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPersonal_CatNacionalidad">
+          <End Type="bdGestionDocenteModel.CatNacionalidad" Role="CatNacionalidad" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatNacionalidad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblPersonal">
+              <PropertyRef Name="idNacionalidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_usuario_personal">
+          <End Type="bdGestionDocenteModel.catUsuarios" Role="catUsuarios" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catUsuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="tblPersonal">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_alergiaPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
+          <End Type="bdGestionDocenteModel.tblAlergiasPersonal" Role="tblAlergiasPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblAlergiasPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPersonal_TblBachillerato">
+          <End Type="bdGestionDocenteModel.TblBachillerato" Role="TblBachillerato" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblBachillerato">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblPersonal">
+              <PropertyRef Name="idBachillerato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblCapacitacionCompetenciasProfesionales_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblCapacitacionCompetenciasProfesionales" Role="TblCapacitacionCompetenciasProfesionales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="TblCapacitacionCompetenciasProfesionales">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblCapacitacionesImpartidas_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.TblCapacitacionesImpartidas" Role="TblCapacitacionesImpartidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="TblCapacitacionesImpartidas">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblCapacitacionesRecibidas_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.TblCapacitacionesRecibidas" Role="TblCapacitacionesRecibidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="TblCapacitacionesRecibidas">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCapituloLibro_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblCapituloLibro" Role="tblCapituloLibro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblCapituloLibro">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_competenciaConocimietosPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
+          <End Type="bdGestionDocenteModel.tblCompetenciasConocimientosPersonal" Role="tblCompetenciasConocimientosPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblCompetenciasConocimientosPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_competenciaTIPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
+          <End Type="bdGestionDocenteModel.tblCompetenciasTIPersonal" Role="tblCompetenciasTIPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblCompetenciasTIPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_datosContacto">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblDatosContacto" Role="tblDatosContacto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblDatosContacto">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblDatosLaborales_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblDatosLaborales" Role="TblDatosLaborales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="TblDatosLaborales">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_datosLaboralesAdministrativos">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
+          <End Type="bdGestionDocenteModel.tblDatosLaboralesAdministrativos" Role="tblDatosLaboralesAdministrativos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblDatosLaboralesAdministrativos">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_datosLaboralesDocente">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
+          <End Type="bdGestionDocenteModel.tblDatosLaboralesDocente" Role="tblDatosLaboralesDocente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblDatosLaboralesDocente">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_deportePersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
+          <End Type="bdGestionDocenteModel.tblDeportePersonal" Role="tblDeportePersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblDeportePersonal">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDireccionIndividualizada_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblDireccionIndividualizada" Role="tblDireccionIndividualizada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblDireccionIndividualizada">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblDoctorado_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblDoctorado" Role="TblDoctorado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="TblDoctorado">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_documentacionPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
+          <End Type="bdGestionDocenteModel.tblDocumentacionPersonal" Role="tblDocumentacionPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblDocumentacionPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_emergencia">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
+          <End Type="bdGestionDocenteModel.tblEmergencia" Role="tblEmergencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblEmergencia">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPersonal_TblEncuesta1">
+          <End Type="bdGestionDocenteModel.TblEncuesta" Role="TblEncuesta" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblEncuesta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblPersonal">
+              <PropertyRef Name="idEncuesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_enfermedadPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
+          <End Type="bdGestionDocenteModel.tblEnfermedadPersonal" Role="tblEnfermedadPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblEnfermedadPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEstadiaEmpresa_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblEstadiaEmpresa" Role="tblEstadiaEmpresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblEstadiaEmpresa">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExperienciaLaboralExterna_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblExperienciaLaboralExterna" Role="tblExperienciaLaboralExterna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblExperienciaLaboralExterna">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExperienciaLaboralInterna_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblExperienciaLaboralInterna" Role="tblExperienciaLaboralInterna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblExperienciaLaboralInterna">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblHobbies_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblHobbies" Role="tblHobbies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblHobbies">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblIdioma_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblIdioma" Role="TblIdioma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="TblIdioma">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblInformeTecnico_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblInformeTecnico" Role="tblInformeTecnico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblInformeTecnico">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblLenguas_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblLenguas" Role="TblLenguas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="TblLenguas">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLibro_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblLibro" Role="tblLibro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblLibro">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblLicenciaturaIngenieria_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblLicenciaturaIngenieria" Role="TblLicenciaturaIngenieria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="TblLicenciaturaIngenieria">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMaetria_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblMaetria" Role="TblMaetria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="TblMaetria">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblManualOperacion_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblManualOperacion" Role="tblManualOperacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblManualOperacion">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMemoriasExtenso_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblMemoriasExtenso" Role="TblMemoriasExtenso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="TblMemoriasExtenso">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblOtraCapacitacion_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblOtraCapacitacion" Role="TblOtraCapacitacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="TblOtraCapacitacion">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblParticipacionDocente_tblPersonal1">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblParticipacionDocente" Role="tblParticipacionDocente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblParticipacionDocente">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblParticipacionInstitucionalExterna_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblParticipacionInstitucionalExterna" Role="tblParticipacionInstitucionalExterna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblParticipacionInstitucionalExterna">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblParticipacionInstitucionalInterna_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblParticipacionInstitucionalInterna" Role="tblParticipacionInstitucionalInterna" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblParticipacionInstitucionalInterna">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_personalAsociaciones">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
+          <End Type="bdGestionDocenteModel.tblPersonalAsociaciones" Role="tblPersonalAsociaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblPersonalAsociaciones">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personal_premiosDocente">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.tblPremiosDocente" Role="tblPremiosDocente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblPremiosDocente">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPersonal_TblSeguridadSocial">
+          <End Type="bdGestionDocenteModel.TblSeguridadSocial" Role="TblSeguridadSocial" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblSeguridadSocial">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblPersonal">
+              <PropertyRef Name="idSeguridadSocial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPortafolioPersonal_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblPortafolioPersonal" Role="tblPortafolioPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblPortafolioPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduccionArtistica_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblProduccionArtistica" Role="tblProduccionArtistica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblProduccionArtistica">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductividadInnovadora_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblProductividadInnovadora" Role="tblProductividadInnovadora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblProductividadInnovadora">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProgresoProdep_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblProgresoProdep" Role="tblProgresoProdep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblProgresoProdep">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPrototipo_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblPrototipo" Role="tblPrototipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblPrototipo">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblProyectoInvestigacionAplicadaDesarrolloTecnologico" Role="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblProyectoInvestigacionAplicadaDesarrolloTecnologico">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTutoria_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.tblTutoria" Role="tblTutoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="tblTutoria">
               <PropertyRef Name="idPersonal" />
             </Dependent>
           </ReferentialConstraint>
@@ -10859,37 +10857,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblPersonal">
-            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblPersonal">
-              <MappingFragment StoreEntitySet="tblPersonal">
-                <ScalarProperty Name="idSeguridadSocial" ColumnName="idSeguridadSocial" />
-                <ScalarProperty Name="strUniversidad" ColumnName="strUniversidad" />
-                <ScalarProperty Name="strTipoPersonal" ColumnName="strTipoPersonal" />
-                <ScalarProperty Name="bitPermisoEncuesta" ColumnName="bitPermisoEncuesta" />
-                <ScalarProperty Name="idEncuesta" ColumnName="idEncuesta" />
-                <ScalarProperty Name="idBachillerato" ColumnName="idBachillerato" />
-                <ScalarProperty Name="idNacionalidad" ColumnName="idNacionalidad" />
-                <ScalarProperty Name="idDireccion" ColumnName="idDireccion" />
-                <ScalarProperty Name="idTipoSangre" ColumnName="idTipoSangre" />
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-                <ScalarProperty Name="idEstadoCivil" ColumnName="idEstadoCivil" />
-                <ScalarProperty Name="strUrlNacionalidad" ColumnName="strUrlNacionalidad" />
-                <ScalarProperty Name="strGenero" ColumnName="strGenero" />
-                <ScalarProperty Name="strUrlRfc" ColumnName="strUrlRfc" />
-                <ScalarProperty Name="strUrlCurp" ColumnName="strUrlCurp" />
-                <ScalarProperty Name="strUrlFoto" ColumnName="strUrlFoto" />
-                <ScalarProperty Name="strLogros" ColumnName="strLogros" />
-                <ScalarProperty Name="dteFechaNacimiento" ColumnName="dteFechaNacimiento" />
-                <ScalarProperty Name="strHomoclave" ColumnName="strHomoclave" />
-                <ScalarProperty Name="strRfc" ColumnName="strRfc" />
-                <ScalarProperty Name="strCurp" ColumnName="strCurp" />
-                <ScalarProperty Name="strApellidoMaterno" ColumnName="strApellidoMaterno" />
-                <ScalarProperty Name="strApellidoPaterno" ColumnName="strApellidoPaterno" />
-                <ScalarProperty Name="strNombre" ColumnName="strNombre" />
-                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CatHobbies">
             <EntityTypeMapping TypeName="bdGestionDocenteModel.CatHobbies">
               <MappingFragment StoreEntitySet="CatHobbies">
@@ -11412,6 +11379,37 @@
                 <ScalarProperty Name="strApellidoPaterno" ColumnName="strApellidoPaterno" />
                 <ScalarProperty Name="strNombre" ColumnName="strNombre" />
                 <ScalarProperty Name="idFamiliar" ColumnName="idFamiliar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPersonal">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.tblPersonal">
+              <MappingFragment StoreEntitySet="tblPersonal">
+                <ScalarProperty Name="strNumeroEmpleado" ColumnName="strNumeroEmpleado" />
+                <ScalarProperty Name="idSeguridadSocial" ColumnName="idSeguridadSocial" />
+                <ScalarProperty Name="strUniversidad" ColumnName="strUniversidad" />
+                <ScalarProperty Name="strTipoPersonal" ColumnName="strTipoPersonal" />
+                <ScalarProperty Name="bitPermisoEncuesta" ColumnName="bitPermisoEncuesta" />
+                <ScalarProperty Name="idEncuesta" ColumnName="idEncuesta" />
+                <ScalarProperty Name="idBachillerato" ColumnName="idBachillerato" />
+                <ScalarProperty Name="idNacionalidad" ColumnName="idNacionalidad" />
+                <ScalarProperty Name="idDireccion" ColumnName="idDireccion" />
+                <ScalarProperty Name="idTipoSangre" ColumnName="idTipoSangre" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idEstadoCivil" ColumnName="idEstadoCivil" />
+                <ScalarProperty Name="strGenero" ColumnName="strGenero" />
+                <ScalarProperty Name="strUrlRfc" ColumnName="strUrlRfc" />
+                <ScalarProperty Name="strUrlCurp" ColumnName="strUrlCurp" />
+                <ScalarProperty Name="strUrlFoto" ColumnName="strUrlFoto" />
+                <ScalarProperty Name="strLogros" ColumnName="strLogros" />
+                <ScalarProperty Name="dteFechaNacimiento" ColumnName="dteFechaNacimiento" />
+                <ScalarProperty Name="strHomoclave" ColumnName="strHomoclave" />
+                <ScalarProperty Name="strRfc" ColumnName="strRfc" />
+                <ScalarProperty Name="strCurp" ColumnName="strCurp" />
+                <ScalarProperty Name="strApellidoMaterno" ColumnName="strApellidoMaterno" />
+                <ScalarProperty Name="strApellidoPaterno" ColumnName="strApellidoPaterno" />
+                <ScalarProperty Name="strNombre" ColumnName="strNombre" />
+                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

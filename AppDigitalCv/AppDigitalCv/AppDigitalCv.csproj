@@ -796,6 +796,7 @@
     <Compile Include="ViewModels\InstitucionAcreditaDoctoradoVM.cs" />
     <Compile Include="ViewModels\InstitucionAcreditaLicenciaturaVM.cs" />
     <Compile Include="ViewModels\InstitucionAcreditaMaestriaVM.cs" />
+    <Compile Include="ViewModels\InstitucionesSaludVM.cs" />
     <Compile Include="ViewModels\InstitucionSuperiorVM.cs" />
     <Compile Include="ViewModels\LenguasVM.cs" />
     <Compile Include="ViewModels\LesionArticulacionesVM.cs" />
@@ -854,6 +855,7 @@
     <Compile Include="ViewModels\Respuestas17VM.cs" />
     <Compile Include="ViewModels\RhVM.cs" />
     <Compile Include="ViewModels\SalariosVM.cs" />
+    <Compile Include="ViewModels\SeguridadSocialVM.cs" />
     <Compile Include="ViewModels\SessionManagerVM.cs" />
     <Compile Include="ViewModels\SolicitudEmpleoVM.cs" />
     <Compile Include="ViewModels\StatusDoctoradoVM.cs" />
