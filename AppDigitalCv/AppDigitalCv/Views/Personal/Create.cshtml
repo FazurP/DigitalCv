@@ -41,9 +41,10 @@
                                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                     <label for="etSexo">Sexo:</label>
                                     <br />
-                                    <span>Femenino: </span> @Html.RadioButtonFor(model => model.StrGenero, "Femenino", new { id = "sexo", required = "" })
-                                    <span>Masculino: </span> @Html.RadioButtonFor(model => model.StrGenero, "Maculino", new { id = "sexo", required = "" })
-                                    <span>Otro: </span> @Html.RadioButtonFor(model => model.StrGenero, "Otro", new { id = "sexo", required = "" })
+                                    <span>Femenino: </span> @Html.RadioButtonFor(model => model.StrGenero, "Femenino", new { id = "sexoF", required = "" })
+                                    <span>Masculino: </span> @Html.RadioButtonFor(model => model.StrGenero, "Masculino", new { id = "sexoM", required = "" })
+                                    <span>Otro: </span> @Html.RadioButtonFor(model => model.StrGenero, "Otro", new { id = "sexoO", required = "" })
+                           
                                 </div>
                             </div>
                         </div>
@@ -129,21 +130,13 @@
 
 @section scripts{
     <script src="~/Scripts/toastr.min.js"></script>
-    <script src="~/Scripts/Validate/Personal/validar-personal-create.js?v=1"></script>
-    <script src="~/Scripts/Validate/Personal/validate-personal-create-regExp.js"></script>
-    <script src="~/Scripts/Validate/Personal/validate-personal-upload.js"></script>
+    <script src="~/Scripts/Validate/Personal/validar-personal-create.js"></script>
+    @*<script src="~/Scripts/Validate/Personal/validate-personal-create-regExp.js"></script>
+    <script src="~/Scripts/Validate/Personal/validate-personal-upload.js"></script>*@
     <script src="~/Scripts/Validate/Personal/calculate-homo-clave.js"></script>
-    <script src="~/Scripts/Validate/Personal/generate-curp.js"></script>
     <script>
 
         $(document).ready(function () {
-
-            //$('#btn').click(function () {
-            //    var dat = $("input[id='sexo']:checked").val();
-
-            //    alert(dat);
-            //})
-
 
             $("#fotoInputFile").change(function () {
 

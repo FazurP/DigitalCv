@@ -1,143 +1,178 @@
-﻿$(document).ready(function () {
+﻿$(document).ready(function ()
+{
 
-    
-    $('#Curp').attr('disabled', true);
-    $('#Rfc').attr('disabled', true);
-    $('#Semblanza').attr('disabled', true);
-    $('#Enviar').attr('disabled', true);
-    $('#IdEstadoCivil').attr('disabled', true);
-    $('input[id=sexo]').attr('disabled', true);
-    $('#Homoclave').attr('readonly', true);
-
+    $('#IdEstadoCivil').prop('disabled', true);
+    $('input[name=StrGenero]').prop('disabled', true);
+    $('#Curp').prop('disabled', true);
+    $('#UCurp').prop('disabled', true);
+    $('#Rfc').prop('disabled', true);
+    $('#Homoclave').prop('disabled', true);
+    $('#URfc').prop('disabled', true);
+    $('#InstitucionSalud').prop('disabled', true);
+    $('#NumeroSeguroSocial').prop('disabled', true);
+    $('#NumeroEmpleado').prop('disabled', true);
+    $('#Semblanza').prop('disabled', true);
+    $('#Enviar').prop('disabled', true);
 
     $('#idNacionalidad').change(function ()
     {
         let data = $(this).val();
 
-        if (data == 0 || data == '0' || data == "0" || data == null) {
+        if (data == 0) {
 
-            $('#Curp').attr('disabled', true);
-            $('#Rfc').attr('disabled', true);
-            $('#Semblanza').attr('disabled', true);
-            $('#Enviar').attr('disabled', true);
-            $('#IdEstadoCivil').attr('disabled', true);
-            $('input[id=sexo]').attr('disabled', true);
+            $('#IdEstadoCivil').prop('disabled', true);
+            $('input[name=StrGenero]').prop('disabled', true);
+            $('#Curp').prop('disabled', true);
+            $('#UCurp').prop('disabled', true);
+            $('#Rfc').prop('disabled', true);
+            $('#Homoclave').prop('disabled', true);
+            $('#URfc').prop('disabled', true);
+            $('#InstitucionSalud').prop('disabled', true);
+            $('#NumeroSeguroSocial').prop('disabled', true);
+            $('#NumeroEmpleado').prop('disabled', true);
+            $('#Semblanza').prop('disabled', true);
+            $('#Enviar').prop('disabled', true);
 
-            $('#IdEstadoCivil').val("");
+            $('#IdEstadoCivil').val(0);
             $('#Curp').val("");
+            $('#UCurp').get(0).files = null;
             $('#Rfc').val("");
             $('#Homoclave').val("");
+            $('#URfc').get(0).files = null;
+            $('#InstitucionSalud').val(0);
+            $('#NumeroSeguroSocial').val("");
+            $('#NumeroEmpleado').val("");
             $('#Semblanza').val("");
-            $('input[id=sexo]').prop('checked', false);
 
         } else
         {
-            $('#IdEstadoCivil').attr('disabled', false);
-            toastr.success('Nacionalidad Seleccionada', 'Digital-Cv dice:', { timeOut: 1000, closeButton: true });
+            $('#IdEstadoCivil').prop('disabled', false);
+            toastr.success('Nacionalidad Seleccionada', 'Digital-Cv dice:', { timeOut: 1500, closeButton: true });
+        }  
+    });
+
+    $('#IdEstadoCivil').change(function () {
+        let data = $(this).val();
+
+        if (data == 0) {
+
+            $('input[name=StrGenero]').prop('disabled', true);
+            $('#Curp').prop('disabled', true);
+            $('#UCurp').prop('disabled', true);
+            $('#Rfc').prop('disabled', true);
+            $('#Homoclave').prop('disabled', true);
+            $('#URfc').prop('disabled', true);
+            $('#InstitucionSalud').prop('disabled', true);
+            $('#NumeroSeguroSocial').prop('disabled', true);
+            $('#NumeroEmpleado').prop('disabled', true);
+            $('#Semblanza').prop('disabled', true);
+            $('#Enviar').prop('disabled', true);
+
+            $('#Curp').val("");
+            $('#UCurp').get(0).files = null;
+            $('#Rfc').val("");
+            $('#Homoclave').val("");
+            $('#URfc').get(0).files = null;
+            $('#InstitucionSalud').val(0);
+            $('#NumeroSeguroSocial').val("");
+            $('#NumeroEmpleado').val("");
+            $('#Semblanza').val("");
+
+        } else {
+            $('input[name=StrGenero]').prop('disabled', false);
+            toastr.success('Estado Civil Seleccionado', 'Digital-Cv dice:', { timeOut: 1500, closeButton: true });
         }
     });
-    //Evento para el campo de Estado Civil
-    $('#IdEstadoCivil').change(function () {
-        var estadoCivil = $('#IdEstadoCivil').val();
-        if (estadoCivil == 0 || estadoCivil == '0' || estadoCivil == "0") {
-            $('#Curp').attr('disabled', true);
-            $('#Rfc').attr('disabled', true);
-            //$('#Homoclave').attr('disabled', true);
-            $('#Semblanza').attr('disabled', true);
-            $('#Enviar').attr('disabled', true);
-            $('input[id=sexo]').attr('disabled', true);
+
+    $('input[name=StrGenero]').change(function () {
+        let data = $(this).val();
+
+        if (data == null) {
+            
+            $('#Curp').prop('disabled', true);
+            $('#UCurp').prop('disabled', true);
+            $('#Rfc').prop('disabled', true);
+            $('#Homoclave').prop('disabled', true);
+            $('#URfc').prop('disabled', true);
+            $('#InstitucionSalud').prop('disabled', true);
+            $('#NumeroSeguroSocial').prop('disabled', true);
+            $('#NumeroEmpleado').prop('disabled', true);
+            $('#Semblanza').prop('disabled', true);
+            $('#Enviar').prop('disabled', true);
 
             $('#Curp').val("");
+            $('#UCurp').get(0).files = null;
             $('#Rfc').val("");
             $('#Homoclave').val("");
-            $('#Semblanza').val("");
-            $('input[id=sexo]').prop('checked', false);
-        } else {
-            $('input[id=sexo]').attr('disabled', false);
-            toastr.info("Estado Civil Seleccionado", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
-        }
-    })
-    //Evento para el campo de Sexo
-    $('input[id=sexo]').change(function () {
-        var sexo = $('input[id=sexo]:checked').val();
-        if (sexo == null || sexo == '' || sexo == "") {
-            $('#Curp').attr('disabled', true);
-            $('#Rfc').attr('disabled', true);
-            //$('#Homoclave').attr('disabled', true);
-            $('#Semblanza').attr('disabled', true);
-            $('#Enviar').attr('disabled', true);
-
-            $('#Curp').val("");
-            $('#Rfc').val("");
-            $('#Homoclave').val("");
+            $('#URfc').get(0).files = null;
+            $('#InstitucionSalud').val(0);
+            $('#NumeroSeguroSocial').val("");
+            $('#NumeroEmpleado').val("");
             $('#Semblanza').val("");
 
         } else {
-            toastr.success('Sexo Seleccionado', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
-            $('#Curp').attr('disabled', false);
+            $('#Curp').prop('disabled', false);
+            toastr.success('Sexo Seleccionado', 'Digital-Cv dice:', { timeOut: 1500, closeButton: true });
         }
-    })
-    //Evento para el campo de texto Curp
+    });
+
     $('#Curp').keyup(function () {
 
-        var texto = $('#Curp').val();
+        let data = $(this).val();
 
-        if (texto == "") {
+        if (data == "") {
 
-            $('#Rfc').attr('disabled', true);
-            //$('#Homoclave').attr('disabled', true);
-            $('#Semblanza').attr('disabled', true);
-            $('#Enviar').attr('disabled', true);
+            $('#UCurp').prop('disabled', true);
+            $('#Rfc').prop('disabled', true);
+            $('#Homoclave').prop('disabled', true);
+            $('#URfc').prop('disabled', true);
+            $('#InstitucionSalud').prop('disabled', true);
+            $('#NumeroSeguroSocial').prop('disabled', true);
+            $('#NumeroEmpleado').prop('disabled', true);
+            $('#Semblanza').prop('disabled', true);
+            $('#Enviar').prop('disabled', true);
+
+            $('#UCurp').get(0).files = null;
+            $('#Rfc').val("");
+            $('#Homoclave').val("");
+            $('#URfc').get(0).files = null;
+            $('#InstitucionSalud').val(0);
+            $('#NumeroSeguroSocial').val("");
+            $('#NumeroEmpleado').val("");
+            $('#Semblanza').val("");
+
+        } else {
+            $('#UCurp').prop('disabled', false);
+        }{
+           
+        }
+    });
+
+    $('#UCurp').change(function () {
+
+        let data = $(this).get(0).files[0];
+        debugger;
+        if (data == undefined) {
+
+            $('#Rfc').prop('disabled', true);
+            $('#Homoclave').prop('disabled', true);
+            $('#URfc').prop('disabled', true);
+            $('#InstitucionSalud').prop('disabled', true);
+            $('#NumeroSeguroSocial').prop('disabled', true);
+            $('#NumeroEmpleado').prop('disabled', true);
+            $('#Semblanza').prop('disabled', true);
+            $('#Enviar').prop('disabled', true);
 
             $('#Rfc').val("");
             $('#Homoclave').val("");
+            $('#URfc').get(0).files = null;
+            $('#InstitucionSalud').val(0);
+            $('#NumeroSeguroSocial').val("");
+            $('#NumeroEmpleado').val("");
             $('#Semblanza').val("");
 
         } else {
-
-            $('#Rfc').attr('disabled', false);
-
-        }
-
-    })
-    //Evento para el campo de texto Rfc
-    $('#Rfc').keyup(function () {
-
-        var texto = $('#Rfc').val();
-
-        if (texto == "") {
-
-            //$('#Homoclave').attr('disabled', true);
-            $('#Semblanza').attr('disabled', true);
-            $('#Enviar').attr('disabled', true);
-
-
-            $('#Homoclave').val("");
-            $('#Semblanza').val("");
-
-        } else {
-
-            
-
-        }
-
-    })
-    //Evento para el campo de texto Homoclave
-    $('#Semblanza').keyup(function () {
-
-        var texto = $('#Semblanza').val();
-
-        if (texto == "") {
-
-            $('#Enviar').attr('disabled', true);
-
-        } else {
-
-            $('#Enviar').attr('disabled', false);
-
-        }
-
-    })
+            $('#Rfc').prop('disabled', false);
+        } 
+    });
 });
-
-
