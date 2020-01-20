@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                     <label for="curpInputFile">Cargar Archivo del Curp:</label>
-                                    @Html.TextBoxFor(model => model.ArchivoCurp, new { @class = "form-control", @type = "file", required = "", id = "UCurp" })
+                                    @Html.TextBoxFor(model => model.ArchivoCurp, new { @class = "form-control input-sm", @type = "file", required = "", id = "UCurp" })
                                     @Html.ValidationMessageFor(model => model.ArchivoCurp, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -70,7 +70,7 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                    <label for="etrfc">Rfc:</label>
+                                    <label for="etrfc">RFC con Homoclave:</label>
                                     @Html.TextBoxFor(model => model.RFC, new { @class = "form-control input-sm", placeholder = "Tu Rfc", id = "Rfc", required = "", maxlength = "14" })
                                     @Html.ValidationMessageFor(model => model.RFC, "", new { @class = "text-danger" })
                                 </div>
@@ -80,8 +80,8 @@
                                     @Html.ValidationMessageFor(model => model.HomoClave, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                    <label for="curpInputFile">Cargar Archivo del Rfc:</label>
-                                    @Html.TextBoxFor(model => model.ArchivoRfc, new { @class = "form-control", @type = "file", required = "", id = "URfc" })
+                                    <label for="curpInputFile">Cargar Archivo del RFC:</label>
+                                    @Html.TextBoxFor(model => model.ArchivoRfc, new { @class = "form-control input-sm", @type = "file", required = "", id = "URfc" })
                                     @Html.ValidationMessageFor(model => model.ArchivoRfc, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -131,8 +131,8 @@
 @section scripts{
     <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/Scripts/Validate/Personal/validar-personal-create.js"></script>
-    @*<script src="~/Scripts/Validate/Personal/validate-personal-create-regExp.js"></script>
-    <script src="~/Scripts/Validate/Personal/validate-personal-upload.js"></script>*@
+    <script src="~/Scripts/Validate/Personal/validate-personal-create-regExp.js"></script>
+    <script src="~/Scripts/Validate/Personal/validate-personal-upload.js"></script>
     <script src="~/Scripts/Validate/Personal/calculate-homo-clave.js"></script>
     <script>
 

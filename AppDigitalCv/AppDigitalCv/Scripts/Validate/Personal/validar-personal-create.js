@@ -6,7 +6,7 @@
     $('#Curp').prop('disabled', true);
     $('#UCurp').prop('disabled', true);
     $('#Rfc').prop('disabled', true);
-    $('#Homoclave').prop('disabled', true);
+    $('#Homoclave').prop('readonly', true);
     $('#URfc').prop('disabled', true);
     $('#InstitucionSalud').prop('disabled', true);
     $('#NumeroSeguroSocial').prop('disabled', true);
@@ -25,7 +25,6 @@
             $('#Curp').prop('disabled', true);
             $('#UCurp').prop('disabled', true);
             $('#Rfc').prop('disabled', true);
-            $('#Homoclave').prop('disabled', true);
             $('#URfc').prop('disabled', true);
             $('#InstitucionSalud').prop('disabled', true);
             $('#NumeroSeguroSocial').prop('disabled', true);
@@ -35,10 +34,10 @@
 
             $('#IdEstadoCivil').val(0);
             $('#Curp').val("");
-            $('#UCurp').get(0).files = null;
+            $('#UCurp').val("");
             $('#Rfc').val("");
             $('#Homoclave').val("");
-            $('#URfc').get(0).files = null;
+            $('#URfc').val("");
             $('#InstitucionSalud').val(0);
             $('#NumeroSeguroSocial').val("");
             $('#NumeroEmpleado').val("");
@@ -60,7 +59,6 @@
             $('#Curp').prop('disabled', true);
             $('#UCurp').prop('disabled', true);
             $('#Rfc').prop('disabled', true);
-            $('#Homoclave').prop('disabled', true);
             $('#URfc').prop('disabled', true);
             $('#InstitucionSalud').prop('disabled', true);
             $('#NumeroSeguroSocial').prop('disabled', true);
@@ -69,10 +67,10 @@
             $('#Enviar').prop('disabled', true);
 
             $('#Curp').val("");
-            $('#UCurp').get(0).files = null;
+            $('#UCurp').val("");
             $('#Rfc').val("");
             $('#Homoclave').val("");
-            $('#URfc').get(0).files = null;
+            $('#URfc').val("");
             $('#InstitucionSalud').val(0);
             $('#NumeroSeguroSocial').val("");
             $('#NumeroEmpleado').val("");
@@ -92,7 +90,6 @@
             $('#Curp').prop('disabled', true);
             $('#UCurp').prop('disabled', true);
             $('#Rfc').prop('disabled', true);
-            $('#Homoclave').prop('disabled', true);
             $('#URfc').prop('disabled', true);
             $('#InstitucionSalud').prop('disabled', true);
             $('#NumeroSeguroSocial').prop('disabled', true);
@@ -101,10 +98,10 @@
             $('#Enviar').prop('disabled', true);
 
             $('#Curp').val("");
-            $('#UCurp').get(0).files = null;
+            $('#UCurp').val("");
             $('#Rfc').val("");
             $('#Homoclave').val("");
-            $('#URfc').get(0).files = null;
+            $('#URfc').val("");
             $('#InstitucionSalud').val(0);
             $('#NumeroSeguroSocial').val("");
             $('#NumeroEmpleado').val("");
@@ -124,7 +121,6 @@
 
             $('#UCurp').prop('disabled', true);
             $('#Rfc').prop('disabled', true);
-            $('#Homoclave').prop('disabled', true);
             $('#URfc').prop('disabled', true);
             $('#InstitucionSalud').prop('disabled', true);
             $('#NumeroSeguroSocial').prop('disabled', true);
@@ -132,10 +128,10 @@
             $('#Semblanza').prop('disabled', true);
             $('#Enviar').prop('disabled', true);
 
-            $('#UCurp').get(0).files = null;
+            $('#UCurp').val("");
             $('#Rfc').val("");
             $('#Homoclave').val("");
-            $('#URfc').get(0).files = null;
+            $('#URfc').val("");
             $('#InstitucionSalud').val(0);
             $('#NumeroSeguroSocial').val("");
             $('#NumeroEmpleado').val("");
@@ -151,11 +147,9 @@
     $('#UCurp').change(function () {
 
         let data = $(this).get(0).files[0];
-        debugger;
         if (data == undefined) {
 
             $('#Rfc').prop('disabled', true);
-            $('#Homoclave').prop('disabled', true);
             $('#URfc').prop('disabled', true);
             $('#InstitucionSalud').prop('disabled', true);
             $('#NumeroSeguroSocial').prop('disabled', true);
@@ -165,7 +159,7 @@
 
             $('#Rfc').val("");
             $('#Homoclave').val("");
-            $('#URfc').get(0).files = null;
+            $('#URfc').val("");
             $('#InstitucionSalud').val(0);
             $('#NumeroSeguroSocial').val("");
             $('#NumeroEmpleado').val("");
@@ -174,5 +168,114 @@
         } else {
             $('#Rfc').prop('disabled', false);
         } 
+    });
+
+    $('#Rfc').keyup(function () {
+
+        let data = $(this).val();
+        if (data == "" || data.length < 13) {
+
+            $('#URfc').prop('disabled', true);
+            $('#InstitucionSalud').prop('disabled', true);
+            $('#NumeroSeguroSocial').prop('disabled', true);
+            $('#NumeroEmpleado').prop('disabled', true);
+            $('#Semblanza').prop('disabled', true);
+            $('#Enviar').prop('disabled', true);
+
+            $('#Homoclave').val("");
+            $('#URfc').val("");
+            $('#InstitucionSalud').val(0);
+            $('#NumeroSeguroSocial').val("");
+            $('#NumeroEmpleado').val("");
+            $('#Semblanza').val("");
+        } else if (data.length >= 13 && data.length <= 14)
+        {
+            $('#URfc').prop('disabled', false);
+        }
+    });
+
+    $('#URfc').change(function () {
+
+        let data = $(this).get(0).files[0];
+        if (data == undefined) {
+
+            $('#InstitucionSalud').prop('disabled', true);
+            $('#NumeroSeguroSocial').prop('disabled', true);
+            $('#NumeroEmpleado').prop('disabled', true);
+            $('#Semblanza').prop('disabled', true);
+            $('#Enviar').prop('disabled', true);
+
+            $('#InstitucionSalud').val(0);
+            $('#NumeroSeguroSocial').val("");
+            $('#NumeroEmpleado').val("");
+            $('#Semblanza').val("");
+
+        } else {
+            $('#InstitucionSalud').prop('disabled', false);
+        }
+    });
+
+    $('#InstitucionSalud').change(function () {
+
+        let data = $(this).val();
+        if (data == 0) {
+
+            $('#NumeroSeguroSocial').prop('disabled', true);
+            $('#NumeroEmpleado').prop('disabled', true);
+            $('#Semblanza').prop('disabled', true);
+            $('#Enviar').prop('disabled', true);
+
+            $('#NumeroSeguroSocial').val("");
+            $('#NumeroEmpleado').val("");
+            $('#Semblanza').val("");
+
+        } else {
+            toastr.success("Institución de Salud Seleccionada", "Digital-Cv dice:", { timeOut: 1000, closeButton: true });
+            $('#NumeroSeguroSocial').prop('disabled', false);
+        }
+    });
+
+    $('#NumeroSeguroSocial').keyup(function () {
+
+        let data = $(this).val();
+        if (data == "") {
+
+            $('#NumeroEmpleado').prop('disabled', true);
+            $('#Semblanza').prop('disabled', true);
+            $('#Enviar').prop('disabled', true);
+
+            $('#NumeroEmpleado').val("");
+            $('#Semblanza').val("");
+
+        } else {
+            $('#NumeroEmpleado').prop('disabled', false);
+        }
+    });
+
+    $('#NumeroEmpleado').keyup(function () {
+
+        let data = $(this).val();
+        if (data == "") {
+
+            $('#Semblanza').prop('disabled', true);
+            $('#Enviar').prop('disabled', true);
+
+            $('#Semblanza').val("");
+
+        } else {
+            $('#Semblanza').prop('disabled', false);
+        }
+    });
+
+    $('#Semblanza').keyup(function () {
+
+        let data = $(this).val();
+        if (data == "") {
+
+            $('#Enviar').prop('disabled', true);
+
+        } else {
+            $('#Enviar').prop('disabled', false);
+        }
     });
 });
