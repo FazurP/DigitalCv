@@ -619,9 +619,6 @@
     <Content Include="Views\Prototipo\_Eliminar.cshtml" />
     <Content Include="Views\Prototipo\_Editar.cshtml" />
     <Content Include="Views\ProyectoInvestigacion\Create.cshtml" />
-    <Content Include="Views\DireccionIndividualizada\Create.cshtml" />
-    <Content Include="Views\DireccionIndividualizada\_Eliminar.cshtml" />
-    <Content Include="Views\DireccionIndividualizada\_Editar.cshtml" />
     <Content Include="Views\EstadiaEmpresa\Create.cshtml" />
     <Content Include="Views\EstadiaEmpresa\_Eliminar.cshtml" />
     <Content Include="Views\EstadiaEmpresa\_Editar.cshtml" />

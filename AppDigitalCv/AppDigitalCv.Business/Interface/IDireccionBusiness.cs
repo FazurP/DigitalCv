@@ -44,36 +44,22 @@ namespace AppDigitalCv.Business.Interface
         /// <param name="direccionDM"> Pide un objeto de direccion de domain model </param>
         /// <returns> Regresa un valor booleano </returns>
         bool AddUpdateDireccion(DireccionDomainModel direccionDM);
-        /// <summary>
-        /// Metodo encargado de obtener los datos de una direccion
-        /// </summary>
-        /// <param name="idPersona"> Pide el Id de personal </param>
-        /// <returns> Regresa uan  lista de domain model </returns>
-        List<DireccionDomainModel> GetDatosDireccion(int idPersona);
+        
         /// <summary>
         /// Metodo que se encarga de obtener los datos de la direccion
         /// </summary>
         /// <param name="idPersona"> Pide el parametro del id de persona </param>
         /// <returns> Regresa un objeto del tipo direccion </returns>
-        List<DireccionDomainModel> GetDireccion(int idPersonal);
-
-        /// <summary>
-        /// Este metodo se encarga de obtener los datos de una direccion de forma personalizada
-        /// </summary>
-        /// <param name="idPersonal">el identificador del personal</param>
-        /// <returns>la direccion de una persona</returns>
-        DireccionDomainModel GetDireccionPersonal(int idDireccion, int idPersonal);
+        List<DireccionDomainModel> GetDirecciones(int idPersonal);
         /// <summary>
         /// Este metodo se encarga de eliminar fisicamente una direccion  de la base de datos
         /// </summary>
         /// <param name="direccionDomainModel">recive una entidad del tipo direccionDomainModel</param>
         /// <returns>regresa una respuesta del tipo true o false</returns>
         bool DeleteDireccion(DireccionDomainModel direccionDomainModel);
-        /// <summary>
-        /// Este es un metodo utilitario que busca la direccion basada en sus criterios de igualdad
-        /// </summary>
-        /// <param name="catDireccion">una entidad direccion</param>
-        /// <returns>la entidad direccion buscada</returns>
-        DireccionDomainModel GetDireccionInsertada(DireccionDomainModel direccionDModel);
+
+        DireccionDomainModel GetDireccion(int _idDireccion);
+
+
     }
 }

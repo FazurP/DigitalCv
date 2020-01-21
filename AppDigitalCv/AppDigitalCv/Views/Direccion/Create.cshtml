@@ -33,21 +33,21 @@
                     <div role="form">
                         <div class="box-body">
                             <div class="form-group">
-                                <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                    <div class="form-group">
-                                        <label for="etCalle">Calle:</label>
-                                        @Html.TextBoxFor(model => model.StrCalle, new { @class = "form-control input-sm", placeholder = "Calle", required = "", id = "Calle", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.# ]+$" })
+                                <div class="row">
+                                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                        <div class="form-group">
+                                            <label for="etCalle">Calle:</label>
+                                            @Html.TextBoxFor(model => model.StrCalle, new { @class = "form-control input-sm", placeholder = "Calle", required = "", id = "Calle", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.# ]+$" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="etNoExterior">No° Exterior:</label>
+                                            @Html.TextBoxFor(model => model.StrNumeroExterior, new { @class = "form-control input-sm", placeholder = "Numero Exterior", required = "", id = "NExterior", pattern = "^[0-9a-zA-Z]+$" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="etNoInterior">No.Interior:</label>
+                                            @Html.TextBoxFor(model => model.StrNumeroInterior, new { @class = "form-control input-sm", placeholder = "Numero Interior", required = "", id = "NInterior", pattern = "^[0-9a-zA-Z]+$" })
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="etNoExterior">No° Exterior:</label>
-                                        @Html.TextBoxFor(model => model.StrNumeroExterior, new { @class = "form-control input-sm", placeholder = "Numero Exterior", required = "", id = "NExterior", pattern = "^[0-9a-zA-Z]+$" })
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="etNoInterior">No.Interior:</label>
-                                        @Html.TextBoxFor(model => model.StrNumeroInterior, new { @class = "form-control input-sm", placeholder = "Numero Interior", required = "", id = "NInterior", pattern = "^[0-9a-zA-Z]+$" })
-                                    </div>                                   
-                                </div>
-                                <div class="form-group">
                                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                         <label>Estado:</label>
                                         @Html.DropDownList("Estados", null, htmlAttributes: new { @class = "form-control input-sm", id = "Estados" })
@@ -65,15 +65,28 @@
                                         </div>
                                         <div class="form-group col-lg-3 col-md-3 col-xs-12 col-sm-12">
                                             <label for="etCodigoPostal"> Codigo Postal: </label>
-                                            @Html.TextBoxFor(model => model.ColoniaVM.intCp, new { @class = "form-control input-sm", placeholder = "Codigo Postal", id = "codigoPostal" })
+                                            @Html.TextBoxFor(model => model.Colonia.intCp, new { @class = "form-control input-sm", placeholder = "Codigo Postal", id = "codigoPostal" })
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
+                                </div>                                                              
+                                <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <input type="submit" value="Guardar Datos" class="btn btn-success" id="Enviar" />
+                                        <div class="form-group">
+                                            <label>Es la Dirección Actual?</label>
+                                            <br />
+                                            Si @Html.RadioButtonFor(model => model.bitActual, true, new { })
+                                            No @Html.RadioButtonFor(model => model.bitActual, false, new { })
+                                        </div>
+                                     
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <input type="submit" value="Guardar Datos" class="btn btn-success" id="Enviar" />
+                                        </div>
+                                    </div>
+                                </div>                         
                             </div>
                         </div>
                     </div>
@@ -82,8 +95,8 @@
         </div>
         <div class="form-group" id="addTable">
             <br />
-            <table id="tblDireccion" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
-                <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
+            <table id="tblDireccion" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-responsive">
+                <thead style="color:white; background-color:#428BCA; font-size:10px;">
                     <tr>
                         <th>Calle</th>
                         <th>Colonia</th>
@@ -193,7 +206,7 @@
                         "columns": [
 
                             { "data": "StrCalle" },
-                            { "data": "NombreColonia" },
+                            { "data": "Colonia.StrValor" },
                             { "data": "StrNumeroInterior" },
                             { "data": "StrNumeroExterior" },
 

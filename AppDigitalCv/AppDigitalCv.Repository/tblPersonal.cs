@@ -17,6 +17,7 @@ namespace AppDigitalCv.Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblPersonal()
         {
+            this.catDireccion = new HashSet<catDireccion>();
             this.catFamiliar = new HashSet<catFamiliar>();
             this.tblAlergiasPersonal = new HashSet<tblAlergiasPersonal>();
             this.TblCapacitacionCompetenciasProfesionales = new HashSet<TblCapacitacionCompetenciasProfesionales>();
@@ -78,7 +79,6 @@ namespace AppDigitalCv.Repository
         public Nullable<int> idEstadoCivil { get; set; }
         public Nullable<int> idUsuario { get; set; }
         public Nullable<int> idTipoSangre { get; set; }
-        public Nullable<int> idDireccion { get; set; }
         public Nullable<int> idNacionalidad { get; set; }
         public Nullable<int> idBachillerato { get; set; }
         public Nullable<int> idEncuesta { get; set; }
@@ -88,7 +88,8 @@ namespace AppDigitalCv.Repository
         public Nullable<int> idSeguridadSocial { get; set; }
         public string strNumeroEmpleado { get; set; }
     
-        public virtual catDireccion catDireccion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<catDireccion> catDireccion { get; set; }
         public virtual catEstadoCivil catEstadoCivil { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<catFamiliar> catFamiliar { get; set; }

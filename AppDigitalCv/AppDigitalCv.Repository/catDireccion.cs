@@ -14,20 +14,15 @@ namespace AppDigitalCv.Repository
     
     public partial class catDireccion
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public catDireccion()
-        {
-            this.tblPersonal = new HashSet<tblPersonal>();
-        }
-    
         public int idDireccion { get; set; }
         public string strCalle { get; set; }
         public string strNumeroInterior { get; set; }
         public string strNumeroExterior { get; set; }
         public int idColonia { get; set; }
+        public Nullable<bool> bitActual { get; set; }
+        public Nullable<int> idPersonal { get; set; }
     
         public virtual CatColonia CatColonia { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblPersonal> tblPersonal { get; set; }
+        public virtual tblPersonal tblPersonal { get; set; }
     }
 }

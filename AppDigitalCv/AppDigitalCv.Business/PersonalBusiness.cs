@@ -33,19 +33,19 @@ namespace AppDigitalCv.Business
         /// <param name="direccionDomainM">entidad el tipo direciconDM</param>
         /// <param name="idPersonal">el identificador de la persona</param>
         /// <returns>respuesta booleana</returns>
-        public bool AddUpdatePersonalDireccion(DireccionDomainModel direccionDomainM,int idPersonal)
-        {
-            int IdPersonal = idPersonal;
-            bool respuesta = false;
-            if (direccionDomainM.IdDireccion > 0)
-            {
-                tblPersonal tblPersonal = personalRepository.SingleOrDefault(p => p.idPersonal.Equals(IdPersonal));
-                tblPersonal.idDireccion = direccionDomainM.IdDireccion;
-                personalRepository.Update(tblPersonal);
-                respuesta = true;
-            }
-            return respuesta;
-        }
+        //public bool AddUpdatePersonalDireccion(DireccionDomainModel direccionDomainM, int idPersonal)
+        //{
+        //    int IdPersonal = idPersonal;
+        //    bool respuesta = false;
+        //    if (direccionDomainM.IdDireccion > 0)
+        //    {
+        //        tblPersonal tblPersonal = personalRepository.SingleOrDefault(p => p.idPersonal.Equals(IdPersonal));
+        //        tblPersonal.idDireccion = direccionDomainM.IdDireccion;
+        //        personalRepository.Update(tblPersonal);
+        //        respuesta = true;
+        //    }
+        //    return respuesta;
+        //}
 
         public string AddUpdatePersonalFamliar(PersonalDomainModel personalDM)
         {
@@ -234,24 +234,7 @@ namespace AppDigitalCv.Business
             }
             return documentoMD;
         }
-
-        /// <summary>
-        /// Este metodo se encarga de establecer un idDireccion de la tabla personal en null
-        /// </summary>
-        /// <param name="idPersonal">el identificador del personal</param>
-        /// <returns>un valor true o false</returns>
-        public bool UpdateCampoDireccionId(int idPersonal)
-        {
-            bool respuesta = false;
-            tblPersonal personal = personalRepository.SingleOrDefault(p => p.idPersonal == idPersonal);
-            if (personal != null)
-            {
-                personal.idDireccion = null;
-                personalRepository.Update(personal);
-                respuesta = true;
-            }
-            return respuesta;
-        }
+       
 
         public bool DeletePersonal(int _idPersonal)
         {

@@ -281,8 +281,8 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblSeguridadSocial_CatInstitucionesSalud" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catFamiliar" Width="1.5" PointX="31.5" PointY="21" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_catFamiliar_catParentesco" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.tblPersonal" Width="1.5" PointX="34.125" PointY="10.25" />
-        <AssociationConnector Association="bdGestionDocenteModel.fk_direccion_personal" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblPersonal" Width="1.5" PointX="34.125" PointY="10.375" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_catDireccion_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_estadoCivil_personal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_catFamiliar_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblPersonal_CatNacionalidad" />

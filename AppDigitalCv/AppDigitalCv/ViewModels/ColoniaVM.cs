@@ -11,5 +11,6 @@ namespace AppDigitalCv.ViewModels
         public string StrValor { get; set; }
         public int intCp { get; set; }
         public Nullable<int> IdMunicipio { get; set; }
+
     }
 }

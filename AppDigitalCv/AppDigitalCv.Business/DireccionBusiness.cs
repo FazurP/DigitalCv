@@ -52,7 +52,6 @@ namespace AppDigitalCv.Business
             return paises;
         }
 
-
         /// <summary>
         /// Este metodo se encarga de consultar estados por el id del páis
         /// </summary>
@@ -74,6 +73,15 @@ namespace AppDigitalCv.Business
                 estadoDM.IdPais = estados.idPais;
                 estadosDM.Add(estadoDM);
             }
+
+            EstadoDomainModel estadoDomainModel = new EstadoDomainModel();
+
+            estadoDomainModel.IdEstado = 0;
+            estadoDomainModel.IdPais = 0;
+            estadoDomainModel.StrValor = "Seleccionar";
+
+            estadosDM.Insert(0, estadoDomainModel);
+
             return estadosDM;
         }
 
@@ -157,10 +165,8 @@ namespace AppDigitalCv.Business
         public bool AddUpdateDireccion(DireccionDomainModel direccionDM)
         {
             bool respuesta = false;
-            //string resultado = string.Empty;
             if (direccionDM.IdDireccion > 0)
             {
-                //buscamos por id y lo almacenamos en nuestra entidad de entityframework
                 catDireccion direccion = direccionRepository.SingleOrDefault(p => p.idDireccion == direccionDM.IdDireccion);
 
                 if (direccion != null)
@@ -169,9 +175,9 @@ namespace AppDigitalCv.Business
                     direccion.strNumeroInterior = direccionDM.StrNumeroInterior;
                     direccion.strNumeroExterior = direccionDM.StrNumeroExterior;
                     direccion.idColonia = direccionDM.IdColonia;
-                    //actualizamos los datos en la base de datos.
+                    direccion.idPersonal = direccionDM.idPersonal;
+                    direccion.bitActual = direccionDM.bitActual;
                     direccionRepository.Update(direccion);
-                    //resultado = "Se Actualizo correctamente";
                     respuesta = true;
                 }
             }
@@ -182,7 +188,9 @@ namespace AppDigitalCv.Business
                 direccion.strNumeroInterior = direccionDM.StrNumeroInterior;
                 direccion.strNumeroExterior = direccionDM.StrNumeroExterior;
                 direccion.idColonia = direccionDM.IdColonia;
-                var record = direccionRepository.Insert(direccion);
+                direccion.idPersonal = direccionDM.idPersonal;
+                direccion.bitActual = direccionDM.bitActual;
+                direccionRepository.Insert(direccion);
                 respuesta = true;
             }
             return respuesta;
@@ -192,70 +200,29 @@ namespace AppDigitalCv.Business
         /// Metodo que se encarga de obtener los datos de la direccion
         /// </summary>
         /// <param name="idPersona"> Pide el parametro del id de persona </param>
-        /// <returns> Regresa una lista con los datos de direccion </returns>
-        public List<DireccionDomainModel> GetDatosDireccion(int idPersona)
-        {
-            //falta de id de la persona con la tabla
-            List<catDireccion> direccion = null;
-            Expression<Func<catDireccion, bool>> predicado = p => p.tblPersonal.Equals(idPersona);
-            List<DireccionDomainModel> listaDireccion = new List<DireccionDomainModel>();
-            direccion = direccionRepository.GetAll(predicado).ToList();
-
-            foreach (catDireccion cat in direccion)
-            {
-                DireccionDomainModel direccionDM = new DireccionDomainModel();
-                direccionDM.IdDireccion = cat.idDireccion;
-                direccionDM.StrCalle = cat.strCalle;
-                direccionDM.StrNumeroExterior = cat.strNumeroExterior;
-                direccionDM.StrNumeroInterior = cat.strNumeroInterior;
-                direccionDM.IdColonia = cat.idColonia;
-                listaDireccion.Add(direccionDM);
-            }
-            return listaDireccion;   
-        }
-
-        /// <summary>
-        /// Metodo que se encarga de obtener los datos de la direccion
-        /// </summary>
-        /// <param name="idPersona"> Pide el parametro del id de persona </param>
         /// <returns> Regresa un objeto del tipo direccion </returns>
-        public List<DireccionDomainModel> GetDireccion(int idPersonal)
+        public List<DireccionDomainModel> GetDirecciones(int idPersonal)
         {
             List<DireccionDomainModel> direcciones = new List<DireccionDomainModel>();
-            Expression<Func<tblPersonal, bool>> predicado = p => p.idPersonal.Equals(idPersonal);
-            tblPersonal  tblpersonal = personalRepository.GetAll(predicado).FirstOrDefault<tblPersonal>();
-            DireccionDomainModel direccionDM = new DireccionDomainModel();
-            if (tblpersonal.catDireccion != null)
+            List<catDireccion> catDireccions = new List<catDireccion>();
+
+            catDireccions = direccionRepository.GetAll().Where(p => p.idPersonal == idPersonal).ToList();
+
+            foreach (catDireccion item in catDireccions)
             {
-                direccionDM.IdDireccion = tblpersonal.catDireccion.idDireccion;
-                direccionDM.StrCalle = tblpersonal.catDireccion.strCalle;
-                direccionDM.StrNumeroExterior = tblpersonal.catDireccion.strNumeroExterior;
-                direccionDM.StrNumeroInterior = tblpersonal.catDireccion.strNumeroInterior;
-                direccionDM.IdColonia = tblpersonal.catDireccion.idColonia;
-                direccionDM.NombreColonia = tblpersonal.catDireccion.CatColonia.strValor;
-                direcciones.Add(direccionDM);
+                DireccionDomainModel direccionDomainModel = new DireccionDomainModel();
+
+                direccionDomainModel.IdColonia = item.idColonia;
+                direccionDomainModel.IdDireccion = item.idDireccion;
+                direccionDomainModel.Colonia = new ColoniaDomainModel { IdColonia = item.CatColonia.id, IdMunicipio = item.CatColonia.idMunicipio, IntCp = item.CatColonia.intCp, StrValor = item.CatColonia.strValor };
+                direccionDomainModel.StrCalle = item.strCalle;
+                direccionDomainModel.StrNumeroExterior = item.strNumeroExterior;
+                direccionDomainModel.StrNumeroInterior = item.strNumeroInterior;
+
+                direcciones.Add(direccionDomainModel);
+
             }
-            
             return direcciones;
-        }
-        /// <summary>
-        /// Este metodo se encarga de obtener los datos de una direccion de forma personalizada
-        /// </summary>
-        /// <param name="idPersonal">el identificador del personal</param>
-        /// <returns>la direccion de una persona</returns>
-        public DireccionDomainModel GetDireccionPersonal(int idDireccion,int idPersonal)
-        {
-            //DireccionDomainModel direccion = new DireccionDomainModel();
-            Expression<Func<tblPersonal, bool>> predicado = p => p.idPersonal.Equals(idPersonal) && p.idDireccion.Equals(idDireccion);
-            tblPersonal tblpersonal = personalRepository.GetAll(predicado).FirstOrDefault<tblPersonal>();
-            DireccionDomainModel direccionDM = new DireccionDomainModel();
-            direccionDM.IdDireccion = tblpersonal.catDireccion.idDireccion;
-            direccionDM.StrCalle = tblpersonal.catDireccion.strCalle;
-            direccionDM.StrNumeroExterior = tblpersonal.catDireccion.strNumeroExterior;
-            direccionDM.StrNumeroInterior = tblpersonal.catDireccion.strNumeroInterior;
-            direccionDM.NombreColonia = tblpersonal.catDireccion.CatColonia.strValor;
-            direccionDM.IdColonia = tblpersonal.catDireccion.idColonia;
-            return direccionDM;
         }
 
         /// <summary>
@@ -272,26 +239,25 @@ namespace AppDigitalCv.Business
             return respuesta;
         }
 
-        /// <summary>
-        /// Este es un metodo utilitario que busca la direccion basada en sus criterios de igualdad
-        /// </summary>
-        /// <param name="catDireccion">una entidad direccion</param>
-        /// <returns>la entidad direccion buscada</returns>
-        public DireccionDomainModel GetDireccionInsertada(DireccionDomainModel direccionDModel)
+        public DireccionDomainModel GetDireccion(int _idDireccion) 
         {
-            Expression<Func<catDireccion, bool>> predicate = p => p.strCalle.Equals(direccionDModel.StrCalle)
-             && p.strNumeroExterior.Equals(direccionDModel.StrNumeroExterior) && p.strNumeroInterior.Equals(direccionDModel.StrNumeroInterior);
+            DireccionDomainModel direccion = new DireccionDomainModel();
 
-            catDireccion direccion = direccionRepository.GetAll(predicate).FirstOrDefault<catDireccion>();
-            DireccionDomainModel direccionDM = new DireccionDomainModel();
-            direccionDM.IdDireccion = direccion.idDireccion;
-            direccionDM.StrCalle = direccion.strCalle;
-            direccionDM.StrNumeroExterior = direccion.strNumeroExterior;
-            direccionDM.StrNumeroInterior = direccion.strNumeroInterior;
+            catDireccion catDireccion = new catDireccion();
 
-            return direccionDM;
+            catDireccion = direccionRepository.GetAll().Where(p => p.idDireccion == _idDireccion).FirstOrDefault();
+
+            direccion.IdColonia = catDireccion.idColonia;
+            direccion.IdDireccion = catDireccion.idDireccion;
+            direccion.idPersonal = catDireccion.idPersonal.Value;
+            direccion.StrCalle = catDireccion.strCalle;
+            direccion.StrNumeroExterior = catDireccion.strNumeroExterior;
+            direccion.StrNumeroInterior = catDireccion.strNumeroInterior;
+            direccion.bitActual = catDireccion.bitActual.Value;
+            direccion.Colonia = new ColoniaDomainModel { IdColonia = catDireccion.CatColonia.id, IdMunicipio = catDireccion.CatColonia.idMunicipio, IntCp = catDireccion.CatColonia.intCp,StrValor = catDireccion.CatColonia.strValor };
+
+            return direccion;
         }
-
 
     }
 }

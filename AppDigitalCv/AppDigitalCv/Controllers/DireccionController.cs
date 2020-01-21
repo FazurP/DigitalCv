@@ -20,12 +20,6 @@ namespace AppDigitalCv.Controllers
             IdireccionBusiness = _IdDireccionBusiness;
             IpersonalBusiness = _IpersonalBusiness;
 
-    }
-
-        // GET: Direccion
-        public ActionResult Index()
-        {
-            return View();
         }
 
         [HttpGet]
@@ -48,9 +42,8 @@ namespace AppDigitalCv.Controllers
         public ActionResult Create()
         {
             if (SessionPersister.AccountSession != null)
-            {
-                ViewBag.Pais = new SelectList(IdireccionBusiness.GetPais(), "IdPais", "StrValor");
-                ViewBag.Estados = new SelectList("");
+            {              
+                ViewBag.Estados = new SelectList(IdireccionBusiness.GetEstadoByIdPais(1),"IdEstado","StrValor");
                 ViewBag.Municipios = new SelectList("");
                 ViewBag.IdColonia = new SelectList("");
                 return View();
@@ -59,7 +52,6 @@ namespace AppDigitalCv.Controllers
             {
                 return View("~/Views/Seguridad/Login.cshtml");
             }
-            
         }
 
         /// <summary>
@@ -68,16 +60,11 @@ namespace AppDigitalCv.Controllers
         /// <param name="direccionVM"> Pide un objeto de direccion como parametro e incluye solo algunos campos </param>
         /// <returns> Regresa la vista de crear </returns>
         [HttpPost]
-        public ActionResult Create([Bind(Include = "StrCalle,StrNumeroInterior,StrNumeroExterior,IdColonia,IdEstado,IdPais,IdMunicipio")]DireccionVM direccionVM)
+        public ActionResult Create(DireccionVM direccionVM)
         {
             if (ModelState.IsValid)
-            {
-                    AddEditDireccion(direccionVM);
-                    //ViewBag.Pais = new SelectList(IdireccionBusiness.GetPais(), "IdPais", "StrValor");
-                    //ViewBag.Estados = new SelectList("");
-                    //ViewBag.Municipios = new SelectList("");
-                    //ViewBag.IdColonia = new SelectList("");
-                    return RedirectToAction("Create","Direccion");
+            {              
+                  return RedirectToAction("Create","Direccion");
             }
             return RedirectToAction("Create","Direccion");
         }
@@ -138,39 +125,7 @@ namespace AppDigitalCv.Controllers
             return Json(codigoPostal, JsonRequestBehavior.AllowGet);
         }
 
-
-        #region  Crear Una Direccion
-        /// <summary>
-        /// Metodo para crear una direccion 
-        /// </summary>
-        /// <param name="direccionVM"> Pide un objeto de tipo direccion como parametro </param>
-        /// <returns> Regresa un valor boleano </returns>
-        public bool AddEditDireccion(DireccionVM direccionVM)
-        {
-            bool respuesta = false;
-            int IdPersonal = SessionPersister.AccountSession.IdPersonal;
-            DireccionDomainModel direccionDomainModel = new DireccionDomainModel();
-            AutoMapper.Mapper.Map(direccionVM, direccionDomainModel);///hacemos el mapeado de la entidad
-            respuesta= IdireccionBusiness.AddUpdateDireccion(direccionDomainModel);
-            DireccionDomainModel direccionMD = IdireccionBusiness.GetDireccionInsertada(direccionDomainModel);
-            IpersonalBusiness.AddUpdatePersonalDireccion(direccionMD,IdPersonal);
-            return respuesta;
-        }
-
-        #endregion
-
-        #region Consultar Datos de Direccion
-      
-        public JsonResult ConsultarDatosDireccion()
-        {
-            int IdPersonal = SessionPersister.AccountSession.IdPersonal;
-            var datosDireccion = IdireccionBusiness.GetDireccion(IdPersonal); 
-            return Json(datosDireccion, JsonRequestBehavior.AllowGet);
-        }
-
-        #endregion
-
-        #region  Consultar los datos del estado de los habitos personales
+        #region  
 
         [HttpGet]
         public JsonResult GetDireccion(DataTablesParam param)
@@ -187,16 +142,12 @@ namespace AppDigitalCv.Controllers
             int totalCount = 0;
             if (param.sSearch != null)
             {
-                direcciones = IdireccionBusiness.GetDireccion(IdentityPersonal).Where(p => p.StrCalle.Contains(param.sSearch)).ToList();
-               
-
+                direcciones = IdireccionBusiness.GetDirecciones(IdentityPersonal).Where(p => p.StrCalle.Contains(param.sSearch)).ToList();
             }
             else
             {
-                totalCount = IdireccionBusiness.GetDireccion(IdentityPersonal).Count();
-
-
-                direcciones = IdireccionBusiness.GetDireccion(IdentityPersonal).OrderBy(p => p.StrCalle)
+                totalCount = IdireccionBusiness.GetDirecciones(IdentityPersonal).Count();
+                direcciones = IdireccionBusiness.GetDirecciones(IdentityPersonal).OrderBy(p => p.StrCalle)
                     .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
 
             }
@@ -222,9 +173,8 @@ namespace AppDigitalCv.Controllers
         /// <returns>regresa una direccion  en una vista</returns>
         public ActionResult GeDireccion(int IdDireccion)
         {
-            int IdPersonal = SessionPersister.AccountSession.IdPersonal;
-            DireccionDomainModel direccionDM = IdireccionBusiness.GetDireccionPersonal(IdDireccion, IdPersonal);
-            
+            DireccionDomainModel direccionDM = IdireccionBusiness.GetDireccion(IdDireccion);
+
             if (direccionDM != null)
             {
                 DireccionVM direccionVM = new DireccionVM();
@@ -242,21 +192,14 @@ namespace AppDigitalCv.Controllers
         /// <returns>regresa una direccion en una vista</returns>
         public ActionResult EliminarDireccion(DireccionVM direccionVM)
         {
-            int idPersonal = SessionPersister.AccountSession.IdPersonal;
-            DireccionDomainModel direccionDM = IdireccionBusiness.GetDireccionPersonal(direccionVM.IdDireccion, idPersonal);
-            if (direccionDM != null)
+            DireccionDomainModel direccionDomainModel = new DireccionDomainModel();
+
+            if (direccionVM.IdDireccion > 0)
             {
-                if (IpersonalBusiness.UpdateCampoDireccionId(idPersonal))
-                {
-                    IdireccionBusiness.DeleteDireccion(direccionDM);
-                }
-                
-            }
-            ViewBag.Pais = new SelectList(IdireccionBusiness.GetPais(), "IdPais", "StrValor");
-            ViewBag.Estados = new SelectList("");
-            ViewBag.Municipios = new SelectList("");
-            ViewBag.IdColonia = new SelectList("");
-            return View("Create");
+                AutoMapper.Mapper.Map(direccionVM, direccionDomainModel);
+                IdireccionBusiness.DeleteDireccion(direccionDomainModel);
+            }        
+            return RedirectToAction("Create","Direccion");
         }
         #endregion
 

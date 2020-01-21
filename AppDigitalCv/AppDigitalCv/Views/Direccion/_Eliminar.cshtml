@@ -22,7 +22,7 @@
                             <tr>
                                 <td>Colonia:</td>
                                 <td>
-                                    @Html.TextBoxFor(model => model.NombreColonia, new { @class = "form-control input-sm", @placeholder = "Colonia", size = "30", title = "Nombre de la colonia", id = "NombreColonia", disabled = true })
+                                    @Html.TextBoxFor(model => model.Colonia.StrValor, new { @class = "form-control input-sm", @placeholder = "Colonia", size = "30", title = "Nombre de la colonia", id = "NombreColonia", disabled = true })
                                 </td>
                             </tr>
                             <tr>
@@ -37,11 +37,18 @@
                                     @Html.TextBoxFor(model => model.StrNumeroExterior, new { @class = "form-control input-sm", @placeholder = "Num.Exterior", size = "30", title = "Número Exterior", id = "StrNumeroExterior", type = "Number", disabled = true })
                                 </td>
                             </tr>
-
+                            <tr>
+                                <td>Dirección Actual:</td>
+                                <td>
+                                    Si @Html.RadioButtonFor(model => model.bitActual,true)
+                                    No @Html.RadioButtonFor(model => model.bitActual,false)
+                          
+                                </td>
+                            </tr>
                             <tr>
                                 <td></td>
                                 <td>
-                                    <a href="#" id="btnSubmit" class="btn btn-sm btn-danger left"><span><i class="fa fa-edit"></i>Eliminar</span></a>
+                                    <a href="#" id="btnSubmit" class="btn btn-sm btn-danger left"><span>Eliminar</span></a>
                                 </td>
                             </tr>
                         </tbody>
