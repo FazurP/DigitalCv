@@ -165,24 +165,9 @@ namespace AppDigitalCv.Business
         public bool AddUpdateDireccion(DireccionDomainModel direccionDM)
         {
             bool respuesta = false;
-            if (direccionDM.IdDireccion > 0)
-            {
-                catDireccion direccion = direccionRepository.SingleOrDefault(p => p.idDireccion == direccionDM.IdDireccion);
-
-                if (direccion != null)
-                {
-                    direccion.strCalle = direccionDM.StrCalle;
-                    direccion.strNumeroInterior = direccionDM.StrNumeroInterior;
-                    direccion.strNumeroExterior = direccionDM.StrNumeroExterior;
-                    direccion.idColonia = direccionDM.IdColonia;
-                    direccion.idPersonal = direccionDM.idPersonal;
-                    direccion.bitActual = direccionDM.bitActual;
-                    direccionRepository.Update(direccion);
-                    respuesta = true;
-                }
-            }
-            else
-            {
+          
+           
+            
                 catDireccion direccion = new catDireccion();
                 direccion.strCalle = direccionDM.StrCalle;
                 direccion.strNumeroInterior = direccionDM.StrNumeroInterior;
@@ -192,7 +177,7 @@ namespace AppDigitalCv.Business
                 direccion.bitActual = direccionDM.bitActual;
                 direccionRepository.Insert(direccion);
                 respuesta = true;
-            }
+            
             return respuesta;
         }
 

@@ -43,14 +43,14 @@ namespace AppDigitalCv.Controllers
         {
             if (SessionPersister.AccountSession != null)
             {              
-                ViewBag.Estados = new SelectList(IdireccionBusiness.GetEstadoByIdPais(1),"IdEstado","StrValor");
-                ViewBag.Municipios = new SelectList("");
+                ViewBag.IdEstado = new SelectList(IdireccionBusiness.GetEstadoByIdPais(1),"IdEstado","StrValor");
+                ViewBag.IdMunicipio = new SelectList("");
                 ViewBag.IdColonia = new SelectList("");
                 return View();
             }
             else
             {
-                return View("~/Views/Seguridad/Login.cshtml");
+                return RedirectToAction("Login","Seguridad");
             }
         }
 
@@ -62,10 +62,12 @@ namespace AppDigitalCv.Controllers
         [HttpPost]
         public ActionResult Create(DireccionVM direccionVM)
         {
-            if (ModelState.IsValid)
-            {              
-                  return RedirectToAction("Create","Direccion");
-            }
+
+                direccionVM.idPersonal = SessionPersister.AccountSession.IdPersonal;
+                DireccionDomainModel direccionDomainModel = new DireccionDomainModel();
+                AutoMapper.Mapper.Map(direccionVM, direccionDomainModel);
+                IdireccionBusiness.AddUpdateDireccion(direccionDomainModel);
+            
             return RedirectToAction("Create","Direccion");
         }
 
