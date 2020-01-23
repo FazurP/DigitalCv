@@ -88,6 +88,7 @@
     <Compile Include="HobbiesBusiness.cs" />
     <Compile Include="IdiomaBusiness.cs" />
     <Compile Include="IdiomasBusiness.cs" />
+    <Compile Include="Interface\IDoctoradoBusiness.cs" />
     <Compile Include="InformeTecnicoBusiness.cs" />
     <Compile Include="InstitucionAcreditaDoctoradoBusiness.cs" />
     <Compile Include="InstitucionAcreditaLicenciaturaBusiness.cs" />

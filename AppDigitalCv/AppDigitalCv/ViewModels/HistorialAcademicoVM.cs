@@ -10,12 +10,12 @@ namespace AppDigitalCv.ViewModels
         public string strNombre { get; set; }
         public int InstitucionAcredita { get; set; }
         public int Status { get; set; }
-        public bool PNPC { get; set; }
+        public bool bitReconocimientePNPC { get; set; }
         public int FuenteFinanciamiento { get; set; }
         public LicenciaturaIngenieriaVM LicenciaturaIngenieria { get; set; }
         public BachilleratoVM Bachillerato { get; set; }
         public DocumentosVM Documentos { get; set; }
-
+        public int idPersonal { get; set; }
         //Distribuidores
 
         public int Type { get; set; }

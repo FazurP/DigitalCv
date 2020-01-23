@@ -55,8 +55,8 @@
                                 <div class="form-group">
                                     <label>Reconocido Dentro de PNPC:</label>
                                     <br />
-                                    Si @Html.RadioButton("PNPC", true, false, new { id = "PNPCSi" })
-                                    No @Html.RadioButton("PNPC", false, true, new { id = "PNPCNo" })
+                                    Si @Html.RadioButton("bitReconocimientePNPC", true, false, new { id = "PNPCSi" })
+                                    No @Html.RadioButton("bitReconocimientePNPC", false, true, new { id = "PNPCNo" })
                                 </div>
                                 <div class="form-group">
                                     <label>Documento que Acredita:</label>
@@ -124,8 +124,7 @@
                 switch (data) {
 
                     case 1:
-                        $('#Type').val(data)
-                        
+                        $('#Type').val(data)                     
                         break;
                     case 2:
                          $('#Type').val(data)

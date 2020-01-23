@@ -4,6 +4,7 @@ using AppDigitalCv.Security;
 using AppDigitalCv.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,16 +18,19 @@ namespace AppDigitalCv.Controllers
         IInstitucionAcreditaLicenciaturaBusiness institucionAcreditaLicenciaturaBusiness;
         IStatusDoctoradoBusiness statusDoctorado;
         IFuenteFinaciamientoDoctoradoBusiness fuenteFinaciamientoDoctoradoBusiness;
+        IDoctoradoBusiness doctoradoBusiness;
 
         public HistorialAcademicoController(IInstitucionAcreditaDoctoradoBusiness _institucionAcreditaDoctorado,
             IInstitucionAcreditaLicenciaturaBusiness _institucionAcreditaLicenciaturaBusiness,
             IStatusDoctoradoBusiness _statusDoctorado,
-            IFuenteFinaciamientoDoctoradoBusiness _fuenteFinaciamientoDoctoradoBusiness)
+            IFuenteFinaciamientoDoctoradoBusiness _fuenteFinaciamientoDoctoradoBusiness,
+            IDoctoradoBusiness _doctoradoBusiness)
         {
             institucionAcreditaDoctorado = _institucionAcreditaDoctorado;
             institucionAcreditaLicenciaturaBusiness = _institucionAcreditaLicenciaturaBusiness;
             statusDoctorado = _statusDoctorado;
             fuenteFinaciamientoDoctoradoBusiness = _fuenteFinaciamientoDoctoradoBusiness;
+            doctoradoBusiness = _doctoradoBusiness;
         }
 
         [HttpGet]
@@ -49,7 +53,16 @@ namespace AppDigitalCv.Controllers
             switch (historialAcademicoVM.Type)
             {
                 case 1:
+                    
+                    Object[] obj = CrearDocumentoPersonales(historialAcademicoVM);
 
+                    if (obj[0].Equals(true))
+                    {
+                        HistorialAcademicoDomainModel historialAcademicoDM = new HistorialAcademicoDomainModel();
+                        AutoMapper.Mapper.Map(historialAcademicoVM, historialAcademicoDM);
+                        doctoradoBusiness.AddDoctorado(historialAcademicoDM);
+                    }
+                   
                     break;
                 case 2:
                     break;
@@ -125,6 +138,29 @@ namespace AppDigitalCv.Controllers
             ViewBag.InstitucionAcreditaLicenciatura = new SelectList(institucionAcreditaLicenciaturaVMs,"id","strValor");
 
             return PartialView("_InstitucionesAcreditanLicenciatura");
+        }
+
+        public Object[] CrearDocumentoPersonales(HistorialAcademicoVM historialAcademicoVM)
+        {
+            Object[] respuesta = new Object[2];
+            historialAcademicoVM.idPersonal = SessionPersister.AccountSession.IdPersonal;
+            string nombrecompleto = SessionPersister.AccountSession.NombreCompleto;
+            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombrecompleto));
+
+            if (Directory.Exists(path))
+            {
+                if (historialAcademicoVM.Documentos.DocumentoFile != null)
+                {
+                    respuesta = FileManager.FileManager.CheckFileIfExist(path, historialAcademicoVM.Documentos);
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory(path);
+                CrearDocumentoPersonales(historialAcademicoVM);
+            }
+
+            return respuesta;
         }
     }
 }
