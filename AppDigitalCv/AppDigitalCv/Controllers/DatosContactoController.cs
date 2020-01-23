@@ -28,12 +28,6 @@ namespace AppDigitalCv.Controllers
             Itelefono = _Itelefono;
         }
 
-        // GET: DatosContacto
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet]
         public ActionResult Create()
         {

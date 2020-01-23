@@ -38,8 +38,6 @@
                                     <br />
                                     <input type="radio" id="rdbSi" name="seleccion" value="SI " class="custom-control-input"><label for="si">SI</label>
                                     <input type="radio" id="rdbNo" name="seleccion" value="NO" class="custom-control-input" checked="checked"><label for="no">NO</label>
-                                    &nbsp;
-                                    <a href="@Url.Action("Registrar","HabitosPersonales")" class="social-auth-links"><i class="fa fa-plus"></i>Agregar Nueva Activdad Deportiva</a>&nbsp;
                                 </div>
                                 <div id="bodyForm">
                                     <div class="form-group">
@@ -53,13 +51,13 @@
                                         Frecuencia con la que lo Practica: @Html.DropDownList("IdFrecuencia", null, htmlAttributes: new { @class = "form-control input-sm", id = "IdFrecuencia", title = "Selecciona un Deporte" })
                                     </div>
                                     <div class="form-group">
-                                        Tiempo en Horas que lo Practica:
+                                        Tiempo en Horas por Sesión que lo Practica:
                                         @Html.TextBoxFor(model => model.strHorasPractica, new { @class = "form-control input-sm", size = "62", title = "Describe tu pasatiempo Favorito", id = "IdPasatiempo" })
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-6">
-                                <input type="submit" value="Guardar" class="btn btn-sm btn-success" id="btnSubmit" />
+                                <input type="submit" value="Guardar Información" class="btn btn-sm btn-success" id="btnSubmit" />
                             </div>
                         </div>
 
