@@ -891,6 +891,7 @@
           <Property Name="idFuenteFinanciamientoDoctorado" Type="int" />
           <Property Name="bitReconomientoPNPC" Type="bit" />
           <Property Name="idPersonal" Type="int" />
+          <Property Name="dteFechaInicio" Type="date" />
         </EntityType>
         <EntityType Name="tblDocumentacionPersonal">
           <Key>
@@ -1104,6 +1105,7 @@
           <Property Name="idFuentaFinanciamientoMaestria" Type="int" />
           <Property Name="bitReconocidoPNPC" Type="bit" />
           <Property Name="idPersonal" Type="int" />
+          <Property Name="dteFechaInicio" Type="date" />
         </EntityType>
         <EntityType Name="tblManualOperacion">
           <Key>
@@ -5398,52 +5400,18 @@
             <End Role="catDocumentos" EntitySet="catDocumentos" />
             <End Role="TblBachillerato" EntitySet="TblBachillerato" />
           </AssociationSet>
-          <EntitySet Name="TblDoctorado" EntityType="bdGestionDocenteModel.TblDoctorado" />
           <EntitySet Name="TblLicenciaturaIngenieria" EntityType="bdGestionDocenteModel.TblLicenciaturaIngenieria" />
-          <EntitySet Name="TblMaetria" EntityType="bdGestionDocenteModel.TblMaetria" />
-          <AssociationSet Name="FK_TblDoctorado_catDocumentos" Association="bdGestionDocenteModel.FK_TblDoctorado_catDocumentos">
-            <End Role="catDocumentos" EntitySet="catDocumentos" />
-            <End Role="TblDoctorado" EntitySet="TblDoctorado" />
-          </AssociationSet>
           <AssociationSet Name="FK_TblLicenciaturaIngenieria_catDocumentos" Association="bdGestionDocenteModel.FK_TblLicenciaturaIngenieria_catDocumentos">
             <End Role="catDocumentos" EntitySet="catDocumentos" />
             <End Role="TblLicenciaturaIngenieria" EntitySet="TblLicenciaturaIngenieria" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblMaetria_catDocumentos" Association="bdGestionDocenteModel.FK_TblMaetria_catDocumentos">
-            <End Role="catDocumentos" EntitySet="catDocumentos" />
-            <End Role="TblMaetria" EntitySet="TblMaetria" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblMaetria_CatFuentaFinaciamientoMaestria" Association="bdGestionDocenteModel.FK_TblMaetria_CatFuentaFinaciamientoMaestria">
-            <End Role="CatFuentaFinaciamientoMaestria" EntitySet="CatFuentaFinaciamientoMaestria" />
-            <End Role="TblMaetria" EntitySet="TblMaetria" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblDoctorado_CatFuenteFinanciamientoDoctorado" Association="bdGestionDocenteModel.FK_TblDoctorado_CatFuenteFinanciamientoDoctorado">
-            <End Role="CatFuenteFinanciamientoDoctorado" EntitySet="CatFuenteFinanciamientoDoctorado" />
-            <End Role="TblDoctorado" EntitySet="TblDoctorado" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblDoctorado_CatInstitucionAcreditaDoctorado" Association="bdGestionDocenteModel.FK_TblDoctorado_CatInstitucionAcreditaDoctorado">
-            <End Role="CatInstitucionAcreditaDoctorado" EntitySet="CatInstitucionAcreditaDoctorado" />
-            <End Role="TblDoctorado" EntitySet="TblDoctorado" />
           </AssociationSet>
           <AssociationSet Name="FK_TblLicenciaturaIngenieria_CatInstitucionAcreditaLicenciatura" Association="bdGestionDocenteModel.FK_TblLicenciaturaIngenieria_CatInstitucionAcreditaLicenciatura">
             <End Role="CatInstitucionAcreditaLicenciatura" EntitySet="CatInstitucionAcreditaLicenciatura" />
             <End Role="TblLicenciaturaIngenieria" EntitySet="TblLicenciaturaIngenieria" />
           </AssociationSet>
-          <AssociationSet Name="FK_TblMaetria_CatInstitucionAcreditaMaestria" Association="bdGestionDocenteModel.FK_TblMaetria_CatInstitucionAcreditaMaestria">
-            <End Role="CatInstitucionAcreditaMaestria" EntitySet="CatInstitucionAcreditaMaestria" />
-            <End Role="TblMaetria" EntitySet="TblMaetria" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblDoctorado_CatStatusDoctorado" Association="bdGestionDocenteModel.FK_TblDoctorado_CatStatusDoctorado">
-            <End Role="CatStatusDoctorado" EntitySet="CatStatusDoctorado" />
-            <End Role="TblDoctorado" EntitySet="TblDoctorado" />
-          </AssociationSet>
           <AssociationSet Name="FK_TblLicenciaturaIngenieria_CatStatusLicenciatura" Association="bdGestionDocenteModel.FK_TblLicenciaturaIngenieria_CatStatusLicenciatura">
             <End Role="CatStatusLicenciatura" EntitySet="CatStatusLicenciatura" />
             <End Role="TblLicenciaturaIngenieria" EntitySet="TblLicenciaturaIngenieria" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblMaetria_CatStatusMaestria" Association="bdGestionDocenteModel.FK_TblMaetria_CatStatusMaestria">
-            <End Role="CatStatusMaestria" EntitySet="CatStatusMaestria" />
-            <End Role="TblMaetria" EntitySet="TblMaetria" />
           </AssociationSet>
           <EntitySet Name="CatInstitucionesSalud" EntityType="bdGestionDocenteModel.CatInstitucionesSalud" />
           <EntitySet Name="TblSeguridadSocial" EntityType="bdGestionDocenteModel.TblSeguridadSocial" />
@@ -5533,10 +5501,6 @@
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblDireccionIndividualizada" EntitySet="tblDireccionIndividualizada" />
           </AssociationSet>
-          <AssociationSet Name="FK_TblDoctorado_tblPersonal" Association="bdGestionDocenteModel.FK_TblDoctorado_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="TblDoctorado" EntitySet="TblDoctorado" />
-          </AssociationSet>
           <AssociationSet Name="fk_personal_documentacionPersonal" Association="bdGestionDocenteModel.fk_personal_documentacionPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblDocumentacionPersonal" EntitySet="tblDocumentacionPersonal" />
@@ -5588,10 +5552,6 @@
           <AssociationSet Name="FK_TblLicenciaturaIngenieria_tblPersonal" Association="bdGestionDocenteModel.FK_TblLicenciaturaIngenieria_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="TblLicenciaturaIngenieria" EntitySet="TblLicenciaturaIngenieria" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblMaetria_tblPersonal" Association="bdGestionDocenteModel.FK_TblMaetria_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="TblMaetria" EntitySet="TblMaetria" />
           </AssociationSet>
           <AssociationSet Name="FK_tblManualOperacion_tblPersonal" Association="bdGestionDocenteModel.FK_tblManualOperacion_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
@@ -5656,6 +5616,48 @@
           <AssociationSet Name="FK_tblTutoria_tblPersonal" Association="bdGestionDocenteModel.FK_tblTutoria_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="tblTutoria" EntitySet="tblTutoria" />
+          </AssociationSet>
+          <EntitySet Name="TblMaetria" EntityType="bdGestionDocenteModel.TblMaetria" />
+          <AssociationSet Name="FK_TblMaetria_catDocumentos" Association="bdGestionDocenteModel.FK_TblMaetria_catDocumentos">
+            <End Role="catDocumentos" EntitySet="catDocumentos" />
+            <End Role="TblMaetria" EntitySet="TblMaetria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMaetria_CatFuentaFinaciamientoMaestria" Association="bdGestionDocenteModel.FK_TblMaetria_CatFuentaFinaciamientoMaestria">
+            <End Role="CatFuentaFinaciamientoMaestria" EntitySet="CatFuentaFinaciamientoMaestria" />
+            <End Role="TblMaetria" EntitySet="TblMaetria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMaetria_CatInstitucionAcreditaMaestria" Association="bdGestionDocenteModel.FK_TblMaetria_CatInstitucionAcreditaMaestria">
+            <End Role="CatInstitucionAcreditaMaestria" EntitySet="CatInstitucionAcreditaMaestria" />
+            <End Role="TblMaetria" EntitySet="TblMaetria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMaetria_CatStatusMaestria" Association="bdGestionDocenteModel.FK_TblMaetria_CatStatusMaestria">
+            <End Role="CatStatusMaestria" EntitySet="CatStatusMaestria" />
+            <End Role="TblMaetria" EntitySet="TblMaetria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMaetria_tblPersonal" Association="bdGestionDocenteModel.FK_TblMaetria_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="TblMaetria" EntitySet="TblMaetria" />
+          </AssociationSet>
+          <EntitySet Name="TblDoctorado" EntityType="bdGestionDocenteModel.TblDoctorado" />
+          <AssociationSet Name="FK_TblDoctorado_catDocumentos" Association="bdGestionDocenteModel.FK_TblDoctorado_catDocumentos">
+            <End Role="catDocumentos" EntitySet="catDocumentos" />
+            <End Role="TblDoctorado" EntitySet="TblDoctorado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblDoctorado_CatFuenteFinanciamientoDoctorado" Association="bdGestionDocenteModel.FK_TblDoctorado_CatFuenteFinanciamientoDoctorado">
+            <End Role="CatFuenteFinanciamientoDoctorado" EntitySet="CatFuenteFinanciamientoDoctorado" />
+            <End Role="TblDoctorado" EntitySet="TblDoctorado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblDoctorado_CatInstitucionAcreditaDoctorado" Association="bdGestionDocenteModel.FK_TblDoctorado_CatInstitucionAcreditaDoctorado">
+            <End Role="CatInstitucionAcreditaDoctorado" EntitySet="CatInstitucionAcreditaDoctorado" />
+            <End Role="TblDoctorado" EntitySet="TblDoctorado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblDoctorado_CatStatusDoctorado" Association="bdGestionDocenteModel.FK_TblDoctorado_CatStatusDoctorado">
+            <End Role="CatStatusDoctorado" EntitySet="CatStatusDoctorado" />
+            <End Role="TblDoctorado" EntitySet="TblDoctorado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblDoctorado_tblPersonal" Association="bdGestionDocenteModel.FK_TblDoctorado_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="TblDoctorado" EntitySet="TblDoctorado" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="catAlergias">
@@ -6251,9 +6253,9 @@
           <NavigationProperty Name="TblCapacitacionesImpartidas" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_catDocumentos" FromRole="catDocumentos" ToRole="TblCapacitacionesImpartidas" />
           <NavigationProperty Name="TblCapacitacionesRecibidas" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_catDocumentos" FromRole="catDocumentos" ToRole="TblCapacitacionesRecibidas" />
           <NavigationProperty Name="TblBachillerato" Relationship="bdGestionDocenteModel.FK_TblBachillerato_catDocumentos" FromRole="catDocumentos" ToRole="TblBachillerato" />
-          <NavigationProperty Name="TblDoctorado" Relationship="bdGestionDocenteModel.FK_TblDoctorado_catDocumentos" FromRole="catDocumentos" ToRole="TblDoctorado" />
           <NavigationProperty Name="TblLicenciaturaIngenieria" Relationship="bdGestionDocenteModel.FK_TblLicenciaturaIngenieria_catDocumentos" FromRole="catDocumentos" ToRole="TblLicenciaturaIngenieria" />
           <NavigationProperty Name="TblMaetria" Relationship="bdGestionDocenteModel.FK_TblMaetria_catDocumentos" FromRole="catDocumentos" ToRole="TblMaetria" />
+          <NavigationProperty Name="TblDoctorado" Relationship="bdGestionDocenteModel.FK_TblDoctorado_catDocumentos" FromRole="catDocumentos" ToRole="TblDoctorado" />
         </EntityType>
         <EntityType Name="tblPortafolioPersonal">
           <Key>
@@ -8913,24 +8915,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="TblDoctorado">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="strNombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="idInstitucionAcreditaDoctorado" Type="Int32" />
-          <Property Name="idStatusDoctorado" Type="Int32" />
-          <Property Name="idDocumento" Type="Int32" />
-          <Property Name="idFuenteFinanciamientoDoctorado" Type="Int32" />
-          <Property Name="bitReconomientoPNPC" Type="Boolean" />
-          <Property Name="idPersonal" Type="Int32" />
-          <NavigationProperty Name="catDocumentos" Relationship="bdGestionDocenteModel.FK_TblDoctorado_catDocumentos" FromRole="TblDoctorado" ToRole="catDocumentos" />
-          <NavigationProperty Name="CatFuenteFinanciamientoDoctorado" Relationship="bdGestionDocenteModel.FK_TblDoctorado_CatFuenteFinanciamientoDoctorado" FromRole="TblDoctorado" ToRole="CatFuenteFinanciamientoDoctorado" />
-          <NavigationProperty Name="CatInstitucionAcreditaDoctorado" Relationship="bdGestionDocenteModel.FK_TblDoctorado_CatInstitucionAcreditaDoctorado" FromRole="TblDoctorado" ToRole="CatInstitucionAcreditaDoctorado" />
-          <NavigationProperty Name="CatStatusDoctorado" Relationship="bdGestionDocenteModel.FK_TblDoctorado_CatStatusDoctorado" FromRole="TblDoctorado" ToRole="CatStatusDoctorado" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_TblDoctorado_tblPersonal" FromRole="TblDoctorado" ToRole="tblPersonal" />
-        </EntityType>
         <EntityType Name="TblLicenciaturaIngenieria">
           <Key>
             <PropertyRef Name="id" />
@@ -8946,38 +8930,6 @@
           <NavigationProperty Name="CatStatusLicenciatura" Relationship="bdGestionDocenteModel.FK_TblLicenciaturaIngenieria_CatStatusLicenciatura" FromRole="TblLicenciaturaIngenieria" ToRole="CatStatusLicenciatura" />
           <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_TblLicenciaturaIngenieria_tblPersonal" FromRole="TblLicenciaturaIngenieria" ToRole="tblPersonal" />
         </EntityType>
-        <EntityType Name="TblMaetria">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="strNombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="idInstitucionAcreditaMaestria" Type="Int32" />
-          <Property Name="idStatusMaestria" Type="Int32" />
-          <Property Name="idDocumento" Type="Int32" />
-          <Property Name="idFuentaFinanciamientoMaestria" Type="Int32" />
-          <Property Name="bitReconocidoPNPC" Type="Boolean" />
-          <Property Name="idPersonal" Type="Int32" />
-          <NavigationProperty Name="catDocumentos" Relationship="bdGestionDocenteModel.FK_TblMaetria_catDocumentos" FromRole="TblMaetria" ToRole="catDocumentos" />
-          <NavigationProperty Name="CatFuentaFinaciamientoMaestria" Relationship="bdGestionDocenteModel.FK_TblMaetria_CatFuentaFinaciamientoMaestria" FromRole="TblMaetria" ToRole="CatFuentaFinaciamientoMaestria" />
-          <NavigationProperty Name="CatInstitucionAcreditaMaestria" Relationship="bdGestionDocenteModel.FK_TblMaetria_CatInstitucionAcreditaMaestria" FromRole="TblMaetria" ToRole="CatInstitucionAcreditaMaestria" />
-          <NavigationProperty Name="CatStatusMaestria" Relationship="bdGestionDocenteModel.FK_TblMaetria_CatStatusMaestria" FromRole="TblMaetria" ToRole="CatStatusMaestria" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_TblMaetria_tblPersonal" FromRole="TblMaetria" ToRole="tblPersonal" />
-        </EntityType>
-        <Association Name="FK_TblDoctorado_catDocumentos">
-          <End Type="bdGestionDocenteModel.catDocumentos" Role="catDocumentos" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.TblDoctorado" Role="TblDoctorado" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catDocumentos">
-              <PropertyRef Name="idDocumento" />
-            </Principal>
-            <Dependent Role="TblDoctorado">
-              <PropertyRef Name="idDocumento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TblLicenciaturaIngenieria_catDocumentos">
           <End Type="bdGestionDocenteModel.catDocumentos" Role="catDocumentos" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -8989,56 +8941,6 @@
             </Principal>
             <Dependent Role="TblLicenciaturaIngenieria">
               <PropertyRef Name="idDocumento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblMaetria_catDocumentos">
-          <End Type="bdGestionDocenteModel.catDocumentos" Role="catDocumentos" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.TblMaetria" Role="TblMaetria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catDocumentos">
-              <PropertyRef Name="idDocumento" />
-            </Principal>
-            <Dependent Role="TblMaetria">
-              <PropertyRef Name="idDocumento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblMaetria_CatFuentaFinaciamientoMaestria">
-          <End Type="bdGestionDocenteModel.CatFuentaFinaciamientoMaestria" Role="CatFuentaFinaciamientoMaestria" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblMaetria" Role="TblMaetria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CatFuentaFinaciamientoMaestria">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TblMaetria">
-              <PropertyRef Name="idFuentaFinanciamientoMaestria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblDoctorado_CatFuenteFinanciamientoDoctorado">
-          <End Type="bdGestionDocenteModel.CatFuenteFinanciamientoDoctorado" Role="CatFuenteFinanciamientoDoctorado" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblDoctorado" Role="TblDoctorado" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CatFuenteFinanciamientoDoctorado">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TblDoctorado">
-              <PropertyRef Name="idFuenteFinanciamientoDoctorado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblDoctorado_CatInstitucionAcreditaDoctorado">
-          <End Type="bdGestionDocenteModel.CatInstitucionAcreditaDoctorado" Role="CatInstitucionAcreditaDoctorado" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblDoctorado" Role="TblDoctorado" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CatInstitucionAcreditaDoctorado">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TblDoctorado">
-              <PropertyRef Name="idInstitucionAcreditaDoctorado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9054,30 +8956,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TblMaetria_CatInstitucionAcreditaMaestria">
-          <End Type="bdGestionDocenteModel.CatInstitucionAcreditaMaestria" Role="CatInstitucionAcreditaMaestria" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblMaetria" Role="TblMaetria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CatInstitucionAcreditaMaestria">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TblMaetria">
-              <PropertyRef Name="idInstitucionAcreditaMaestria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblDoctorado_CatStatusDoctorado">
-          <End Type="bdGestionDocenteModel.CatStatusDoctorado" Role="CatStatusDoctorado" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblDoctorado" Role="TblDoctorado" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CatStatusDoctorado">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TblDoctorado">
-              <PropertyRef Name="idStatusDoctorado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TblLicenciaturaIngenieria_CatStatusLicenciatura">
           <End Type="bdGestionDocenteModel.CatStatusLicenciatura" Role="CatStatusLicenciatura" Multiplicity="0..1" />
           <End Type="bdGestionDocenteModel.TblLicenciaturaIngenieria" Role="TblLicenciaturaIngenieria" Multiplicity="*" />
@@ -9087,18 +8965,6 @@
             </Principal>
             <Dependent Role="TblLicenciaturaIngenieria">
               <PropertyRef Name="idStatusLicenciatura" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblMaetria_CatStatusMaestria">
-          <End Type="bdGestionDocenteModel.CatStatusMaestria" Role="CatStatusMaestria" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblMaetria" Role="TblMaetria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CatStatusMaestria">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TblMaetria">
-              <PropertyRef Name="idStatusMaestria" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9207,7 +9073,6 @@
           <NavigationProperty Name="tblDatosLaboralesDocente" Relationship="bdGestionDocenteModel.fk_personal_datosLaboralesDocente" FromRole="tblPersonal" ToRole="tblDatosLaboralesDocente" />
           <NavigationProperty Name="tblDeportePersonal" Relationship="bdGestionDocenteModel.fk_personal_deportePersonal" FromRole="tblPersonal" ToRole="tblDeportePersonal" />
           <NavigationProperty Name="tblDireccionIndividualizada" Relationship="bdGestionDocenteModel.FK_tblDireccionIndividualizada_tblPersonal" FromRole="tblPersonal" ToRole="tblDireccionIndividualizada" />
-          <NavigationProperty Name="TblDoctorado" Relationship="bdGestionDocenteModel.FK_TblDoctorado_tblPersonal" FromRole="tblPersonal" ToRole="TblDoctorado" />
           <NavigationProperty Name="tblDocumentacionPersonal" Relationship="bdGestionDocenteModel.fk_personal_documentacionPersonal" FromRole="tblPersonal" ToRole="tblDocumentacionPersonal" />
           <NavigationProperty Name="tblEmergencia" Relationship="bdGestionDocenteModel.fk_personal_emergencia" FromRole="tblPersonal" ToRole="tblEmergencia" />
           <NavigationProperty Name="TblEncuesta" Relationship="bdGestionDocenteModel.FK_tblPersonal_TblEncuesta1" FromRole="tblPersonal" ToRole="TblEncuesta" />
@@ -9221,7 +9086,6 @@
           <NavigationProperty Name="TblLenguas" Relationship="bdGestionDocenteModel.FK_TblLenguas_tblPersonal" FromRole="tblPersonal" ToRole="TblLenguas" />
           <NavigationProperty Name="tblLibro" Relationship="bdGestionDocenteModel.FK_tblLibro_tblPersonal" FromRole="tblPersonal" ToRole="tblLibro" />
           <NavigationProperty Name="TblLicenciaturaIngenieria" Relationship="bdGestionDocenteModel.FK_TblLicenciaturaIngenieria_tblPersonal" FromRole="tblPersonal" ToRole="TblLicenciaturaIngenieria" />
-          <NavigationProperty Name="TblMaetria" Relationship="bdGestionDocenteModel.FK_TblMaetria_tblPersonal" FromRole="tblPersonal" ToRole="TblMaetria" />
           <NavigationProperty Name="tblManualOperacion" Relationship="bdGestionDocenteModel.FK_tblManualOperacion_tblPersonal" FromRole="tblPersonal" ToRole="tblManualOperacion" />
           <NavigationProperty Name="TblMemoriasExtenso" Relationship="bdGestionDocenteModel.FK_TblMemoriasExtenso_tblPersonal" FromRole="tblPersonal" ToRole="TblMemoriasExtenso" />
           <NavigationProperty Name="TblOtraCapacitacion" Relationship="bdGestionDocenteModel.FK_TblOtraCapacitacion_tblPersonal" FromRole="tblPersonal" ToRole="TblOtraCapacitacion" />
@@ -9238,6 +9102,8 @@
           <NavigationProperty Name="tblPrototipo" Relationship="bdGestionDocenteModel.FK_tblPrototipo_tblPersonal" FromRole="tblPersonal" ToRole="tblPrototipo" />
           <NavigationProperty Name="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" Relationship="bdGestionDocenteModel.FK_tblProyectoInvestigacionAplicadaDesarrolloTecnologico_tblPersonal" FromRole="tblPersonal" ToRole="tblProyectoInvestigacionAplicadaDesarrolloTecnologico" />
           <NavigationProperty Name="tblTutoria" Relationship="bdGestionDocenteModel.FK_tblTutoria_tblPersonal" FromRole="tblPersonal" ToRole="tblTutoria" />
+          <NavigationProperty Name="TblMaetria" Relationship="bdGestionDocenteModel.FK_TblMaetria_tblPersonal" FromRole="tblPersonal" ToRole="TblMaetria" />
+          <NavigationProperty Name="TblDoctorado" Relationship="bdGestionDocenteModel.FK_TblDoctorado_tblPersonal" FromRole="tblPersonal" ToRole="TblDoctorado" />
         </EntityType>
         <Association Name="FK_catDireccion_tblPersonal">
           <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
@@ -9479,18 +9345,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TblDoctorado_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblDoctorado" Role="TblDoctorado" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="TblDoctorado">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_personal_documentacionPersonal">
           <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="1" />
           <End Type="bdGestionDocenteModel.tblDocumentacionPersonal" Role="tblDocumentacionPersonal" Multiplicity="*" />
@@ -9655,18 +9509,6 @@
               <PropertyRef Name="idPersonal" />
             </Principal>
             <Dependent Role="TblLicenciaturaIngenieria">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblMaetria_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblMaetria" Role="TblMaetria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="TblMaetria">
               <PropertyRef Name="idPersonal" />
             </Dependent>
           </ReferentialConstraint>
@@ -9881,6 +9723,168 @@
               <PropertyRef Name="idPersonal" />
             </Principal>
             <Dependent Role="tblTutoria">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TblMaetria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strNombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="idInstitucionAcreditaMaestria" Type="Int32" />
+          <Property Name="idStatusMaestria" Type="Int32" />
+          <Property Name="idDocumento" Type="Int32" />
+          <Property Name="idFuentaFinanciamientoMaestria" Type="Int32" />
+          <Property Name="bitReconocidoPNPC" Type="Boolean" />
+          <Property Name="idPersonal" Type="Int32" />
+          <Property Name="dteFechaInicio" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="catDocumentos" Relationship="bdGestionDocenteModel.FK_TblMaetria_catDocumentos" FromRole="TblMaetria" ToRole="catDocumentos" />
+          <NavigationProperty Name="CatFuentaFinaciamientoMaestria" Relationship="bdGestionDocenteModel.FK_TblMaetria_CatFuentaFinaciamientoMaestria" FromRole="TblMaetria" ToRole="CatFuentaFinaciamientoMaestria" />
+          <NavigationProperty Name="CatInstitucionAcreditaMaestria" Relationship="bdGestionDocenteModel.FK_TblMaetria_CatInstitucionAcreditaMaestria" FromRole="TblMaetria" ToRole="CatInstitucionAcreditaMaestria" />
+          <NavigationProperty Name="CatStatusMaestria" Relationship="bdGestionDocenteModel.FK_TblMaetria_CatStatusMaestria" FromRole="TblMaetria" ToRole="CatStatusMaestria" />
+          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_TblMaetria_tblPersonal" FromRole="TblMaetria" ToRole="tblPersonal" />
+        </EntityType>
+        <Association Name="FK_TblMaetria_catDocumentos">
+          <End Type="bdGestionDocenteModel.catDocumentos" Role="catDocumentos" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.TblMaetria" Role="TblMaetria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catDocumentos">
+              <PropertyRef Name="idDocumento" />
+            </Principal>
+            <Dependent Role="TblMaetria">
+              <PropertyRef Name="idDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMaetria_CatFuentaFinaciamientoMaestria">
+          <End Type="bdGestionDocenteModel.CatFuentaFinaciamientoMaestria" Role="CatFuentaFinaciamientoMaestria" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblMaetria" Role="TblMaetria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatFuentaFinaciamientoMaestria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblMaetria">
+              <PropertyRef Name="idFuentaFinanciamientoMaestria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMaetria_CatInstitucionAcreditaMaestria">
+          <End Type="bdGestionDocenteModel.CatInstitucionAcreditaMaestria" Role="CatInstitucionAcreditaMaestria" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblMaetria" Role="TblMaetria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatInstitucionAcreditaMaestria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblMaetria">
+              <PropertyRef Name="idInstitucionAcreditaMaestria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMaetria_CatStatusMaestria">
+          <End Type="bdGestionDocenteModel.CatStatusMaestria" Role="CatStatusMaestria" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblMaetria" Role="TblMaetria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatStatusMaestria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblMaetria">
+              <PropertyRef Name="idStatusMaestria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMaetria_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblMaetria" Role="TblMaetria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="TblMaetria">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TblDoctorado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strNombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="idInstitucionAcreditaDoctorado" Type="Int32" />
+          <Property Name="idStatusDoctorado" Type="Int32" />
+          <Property Name="idDocumento" Type="Int32" />
+          <Property Name="idFuenteFinanciamientoDoctorado" Type="Int32" />
+          <Property Name="bitReconomientoPNPC" Type="Boolean" />
+          <Property Name="idPersonal" Type="Int32" />
+          <Property Name="dteFechaInicio" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="catDocumentos" Relationship="bdGestionDocenteModel.FK_TblDoctorado_catDocumentos" FromRole="TblDoctorado" ToRole="catDocumentos" />
+          <NavigationProperty Name="CatFuenteFinanciamientoDoctorado" Relationship="bdGestionDocenteModel.FK_TblDoctorado_CatFuenteFinanciamientoDoctorado" FromRole="TblDoctorado" ToRole="CatFuenteFinanciamientoDoctorado" />
+          <NavigationProperty Name="CatInstitucionAcreditaDoctorado" Relationship="bdGestionDocenteModel.FK_TblDoctorado_CatInstitucionAcreditaDoctorado" FromRole="TblDoctorado" ToRole="CatInstitucionAcreditaDoctorado" />
+          <NavigationProperty Name="CatStatusDoctorado" Relationship="bdGestionDocenteModel.FK_TblDoctorado_CatStatusDoctorado" FromRole="TblDoctorado" ToRole="CatStatusDoctorado" />
+          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_TblDoctorado_tblPersonal" FromRole="TblDoctorado" ToRole="tblPersonal" />
+        </EntityType>
+        <Association Name="FK_TblDoctorado_catDocumentos">
+          <End Type="bdGestionDocenteModel.catDocumentos" Role="catDocumentos" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.TblDoctorado" Role="TblDoctorado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catDocumentos">
+              <PropertyRef Name="idDocumento" />
+            </Principal>
+            <Dependent Role="TblDoctorado">
+              <PropertyRef Name="idDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblDoctorado_CatFuenteFinanciamientoDoctorado">
+          <End Type="bdGestionDocenteModel.CatFuenteFinanciamientoDoctorado" Role="CatFuenteFinanciamientoDoctorado" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblDoctorado" Role="TblDoctorado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatFuenteFinanciamientoDoctorado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblDoctorado">
+              <PropertyRef Name="idFuenteFinanciamientoDoctorado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblDoctorado_CatInstitucionAcreditaDoctorado">
+          <End Type="bdGestionDocenteModel.CatInstitucionAcreditaDoctorado" Role="CatInstitucionAcreditaDoctorado" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblDoctorado" Role="TblDoctorado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatInstitucionAcreditaDoctorado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblDoctorado">
+              <PropertyRef Name="idInstitucionAcreditaDoctorado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblDoctorado_CatStatusDoctorado">
+          <End Type="bdGestionDocenteModel.CatStatusDoctorado" Role="CatStatusDoctorado" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblDoctorado" Role="TblDoctorado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatStatusDoctorado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblDoctorado">
+              <PropertyRef Name="idStatusDoctorado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblDoctorado_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblDoctorado" Role="TblDoctorado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="TblDoctorado">
               <PropertyRef Name="idPersonal" />
             </Dependent>
           </ReferentialConstraint>
@@ -11318,20 +11322,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TblDoctorado">
-            <EntityTypeMapping TypeName="bdGestionDocenteModel.TblDoctorado">
-              <MappingFragment StoreEntitySet="TblDoctorado">
-                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
-                <ScalarProperty Name="bitReconomientoPNPC" ColumnName="bitReconomientoPNPC" />
-                <ScalarProperty Name="idFuenteFinanciamientoDoctorado" ColumnName="idFuenteFinanciamientoDoctorado" />
-                <ScalarProperty Name="idDocumento" ColumnName="idDocumento" />
-                <ScalarProperty Name="idStatusDoctorado" ColumnName="idStatusDoctorado" />
-                <ScalarProperty Name="idInstitucionAcreditaDoctorado" ColumnName="idInstitucionAcreditaDoctorado" />
-                <ScalarProperty Name="strNombre" ColumnName="strNombre" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TblLicenciaturaIngenieria">
             <EntityTypeMapping TypeName="bdGestionDocenteModel.TblLicenciaturaIngenieria">
               <MappingFragment StoreEntitySet="TblLicenciaturaIngenieria">
@@ -11339,20 +11329,6 @@
                 <ScalarProperty Name="idDocumento" ColumnName="idDocumento" />
                 <ScalarProperty Name="idStatusLicenciatura" ColumnName="idStatusLicenciatura" />
                 <ScalarProperty Name="idIstitucionAcreditaLicenciatura" ColumnName="idIstitucionAcreditaLicenciatura" />
-                <ScalarProperty Name="strNombre" ColumnName="strNombre" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TblMaetria">
-            <EntityTypeMapping TypeName="bdGestionDocenteModel.TblMaetria">
-              <MappingFragment StoreEntitySet="TblMaetria">
-                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
-                <ScalarProperty Name="bitReconocidoPNPC" ColumnName="bitReconocidoPNPC" />
-                <ScalarProperty Name="idFuentaFinanciamientoMaestria" ColumnName="idFuentaFinanciamientoMaestria" />
-                <ScalarProperty Name="idDocumento" ColumnName="idDocumento" />
-                <ScalarProperty Name="idStatusMaestria" ColumnName="idStatusMaestria" />
-                <ScalarProperty Name="idInstitucionAcreditaMaestria" ColumnName="idInstitucionAcreditaMaestria" />
                 <ScalarProperty Name="strNombre" ColumnName="strNombre" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
@@ -11417,6 +11393,36 @@
                 <ScalarProperty Name="strApellidoPaterno" ColumnName="strApellidoPaterno" />
                 <ScalarProperty Name="strNombre" ColumnName="strNombre" />
                 <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblMaetria">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.TblMaetria">
+              <MappingFragment StoreEntitySet="TblMaetria">
+                <ScalarProperty Name="dteFechaInicio" ColumnName="dteFechaInicio" />
+                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
+                <ScalarProperty Name="bitReconocidoPNPC" ColumnName="bitReconocidoPNPC" />
+                <ScalarProperty Name="idFuentaFinanciamientoMaestria" ColumnName="idFuentaFinanciamientoMaestria" />
+                <ScalarProperty Name="idDocumento" ColumnName="idDocumento" />
+                <ScalarProperty Name="idStatusMaestria" ColumnName="idStatusMaestria" />
+                <ScalarProperty Name="idInstitucionAcreditaMaestria" ColumnName="idInstitucionAcreditaMaestria" />
+                <ScalarProperty Name="strNombre" ColumnName="strNombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblDoctorado">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.TblDoctorado">
+              <MappingFragment StoreEntitySet="TblDoctorado">
+                <ScalarProperty Name="dteFechaInicio" ColumnName="dteFechaInicio" />
+                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
+                <ScalarProperty Name="bitReconomientoPNPC" ColumnName="bitReconomientoPNPC" />
+                <ScalarProperty Name="idFuenteFinanciamientoDoctorado" ColumnName="idFuenteFinanciamientoDoctorado" />
+                <ScalarProperty Name="idDocumento" ColumnName="idDocumento" />
+                <ScalarProperty Name="idStatusDoctorado" ColumnName="idStatusDoctorado" />
+                <ScalarProperty Name="idInstitucionAcreditaDoctorado" ColumnName="idInstitucionAcreditaDoctorado" />
+                <ScalarProperty Name="strNombre" ColumnName="strNombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

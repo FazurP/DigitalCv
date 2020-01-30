@@ -15,13 +15,16 @@
             case 0:
                 $('#lblNombre').html("Nombre:");
                 $('#InstitucionAcredita').empty();
+                $('#Status').empty();
+                $('#FuenteFinanciamiento').empty();
                 break;
 
             case 1:
+
                 url = "/HistorialAcademico/GetInstitucionAcreditanDoctorados";
                 urlStatus = "/HistorialAcademico/GetStatusDoctorados";
                 urlFuenteFinaciamiento = "/HistorialAcademico/GetFuentesFinanciamientoDoctorados"
-                ///
+                ////////////////////////////////////////////////////////
                 $.get(url).done(function (response) {
 
                     $('#InstitucionAcredita').empty();
@@ -30,7 +33,7 @@
                 }).fail(function () {
                     console.log("Service not available");
                 });
-                ///
+                /////////////////////////////////////////////////////////
                 $.get(urlStatus).done(function (response)
                 {
                     $('#Status').empty();
@@ -39,21 +42,24 @@
                 {
                     console.log("Service not available");
                 });
-                ///
+                /////////////////////////////////////////////////////////
                 $.get(urlFuenteFinaciamiento).done(function (response) {
                     $('#FuenteFinanciamiento').empty();
                     $('#FuenteFinanciamiento').append(response);
                 }).fail(function () {
                     console.log("Service not available");
                 });
-
+                ///////////////////////////////////////////////////////
                 $('#lblNombre').html("Nombre del Doctorado:");
 
                 break;
 
             case 2:
-                 url = "/HistorialAcademico/GetInstitucionAcreditanMaestrias";
 
+                url = "/HistorialAcademico/GetInstitucionAcreditanMaestrias";
+                urlStatus = "/HistorialAcademico/GetStatusMaestrias";
+                urlFuenteFinanciamiento = "/HistorialAcademico/GetFuentesFinanciamientoMaestrias";
+                //////////////////////////////////////////
                 $.get(url).done(function (response) {
 
                     $('#InstitucionAcredita').empty();
@@ -62,8 +68,27 @@
                 }).fail(function () {
                     console.log("Service not available");
                 });
+                //////////////////////////////////////////
+                $.get(urlStatus).done(function (response) {
 
+                    $('#Status').empty();
+                    $('#Status').append(response);
+
+                }).fail(function () {
+                    console.log("Service not available");
+                });
+                /////////////////////////////////////////////////////////
+                $.get(urlFuenteFinanciamiento).done(function (response) {
+
+                    $('#FuenteFinanciamiento').empty();
+                    $('#FuenteFinanciamiento').append(response);
+
+                }).fail(function () {
+                    console.log("Service not available");
+                });
+                //////////////////////////////////////////////
                 $('#lblNombre').html("Nombre de la Maestria:");
+
                 break;
 
             case 3:
@@ -95,19 +120,8 @@
 
                 $('#lblNombre').html("Nombre de la Licenciatura:");
                 break;
-
             case 5:
-
-                $('#InstitucionAcredita').empty();
-                $('#NombreEstudio').prop("disabled", true);
-                $('#InstitucionAcredita').remove();
-                $('#txt').append("@Html.TextBoxFor(model => model.strInstitucionAcredita, new { @class = "+'form-control input-sm", id = "NombreEstudio'+" })")
-                $('#FuenteFinanciamiento').prop("disabled", true);
-                $('#PNPCSi').prop("disabled", true);
-                $('#PNPCNo').prop("disabled", true);
-
-                $('#lblNombre').html("Nombre de la Licenciatura:");
-
+                $('#lblNombre').html("Institución que lo Acredita:");
                 break;
 
             default:

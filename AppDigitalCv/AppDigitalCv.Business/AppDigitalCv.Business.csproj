@@ -54,6 +54,7 @@
     <Compile Include="AlergiasPersonalBusiness.cs" />
     <Compile Include="AreaBusiness.cs" />
     <Compile Include="AsosiacionesBusiness.cs" />
+    <Compile Include="BachilleratoBusiness.cs" />
     <Compile Include="CapituloLibroBusiness.cs" />
     <Compile Include="CategoriaBusiness.cs" />
     <Compile Include="CompetenciasBusiness.cs" />
@@ -84,10 +85,13 @@
     <Compile Include="FamiliarBusiness.cs" />
     <Compile Include="FrecuenciaBusiness.cs" />
     <Compile Include="FuenteFinaciamientoDoctoradoBusiness.cs" />
+    <Compile Include="FuenteFinanciamientoMaestriaBusiness.cs" />
     <Compile Include="HobbieBusiness.cs" />
     <Compile Include="HobbiesBusiness.cs" />
     <Compile Include="IdiomaBusiness.cs" />
     <Compile Include="IdiomasBusiness.cs" />
+    <Compile Include="InstitucionAcreditaMaestriaBusiness.cs" />
+    <Compile Include="Interface\IBachilleratoBusiness.cs" />
     <Compile Include="Interface\IDoctoradoBusiness.cs" />
     <Compile Include="InformeTecnicoBusiness.cs" />
     <Compile Include="InstitucionAcreditaDoctoradoBusiness.cs" />
@@ -126,6 +130,7 @@
     <Compile Include="Interface\IFamiliarBusiness.cs" />
     <Compile Include="Interface\IFrecuenciaBusiness.cs" />
     <Compile Include="Interface\IFuenteFinaciamientoDoctoradoBusiness.cs" />
+    <Compile Include="Interface\IFuenteFinanciamientoMaestriaBusiness.cs" />
     <Compile Include="Interface\IHobbieBusiness.cs" />
     <Compile Include="Interface\IHobbiesBusiness.cs" />
     <Compile Include="Interface\IIdiomaBusiness.cs" />
@@ -138,9 +143,12 @@
     <Compile Include="Interface\IInformeTecnicoBusiness.cs" />
     <Compile Include="Interface\IInstitucionAcreditaDoctoradoBusiness.cs" />
     <Compile Include="Interface\IInstitucionAcreditaLicenciaturaBusiness.cs" />
+    <Compile Include="Interface\IInstitucionAcreditaMaestriaBusiness.cs" />
     <Compile Include="Interface\IInstitucionesSaludRepository.cs" />
     <Compile Include="Interface\IInstitucionSuperiorBusiness.cs" />
     <Compile Include="Interface\ILibroBusiness.cs" />
+    <Compile Include="Interface\ILicenciaturaIngBusiness.cs" />
+    <Compile Include="Interface\IMaestriaBusiness.cs" />
     <Compile Include="Interface\IManualOperacionBusiness.cs" />
     <Compile Include="Interface\INacionalidadBusiness.cs" />
     <Compile Include="Interface\INivelConocimientoBusiness.cs" />
@@ -161,6 +169,7 @@
     <Compile Include="Interface\IPrototipoBusiness.cs" />
     <Compile Include="Interface\IProyectoInvestigacionBusiness.cs" />
     <Compile Include="Interface\IStatusDoctoradoBusiness.cs" />
+    <Compile Include="Interface\IStatusMaestriaBusiness.cs" />
     <Compile Include="Interface\ITelefono.cs" />
     <Compile Include="Interface\ITipoActividad.cs" />
     <Compile Include="Interface\ITipoContratoBusiness.cs" />
@@ -171,6 +180,8 @@
     <Compile Include="Interface\ITutoriasBusiness.cs" />
     <Compile Include="Interface\IUnidadesAcademicasBusiness.cs" />
     <Compile Include="LibroBusiness.cs" />
+    <Compile Include="LicenciaturaIngBusiness.cs" />
+    <Compile Include="MaestriaBusiness.cs" />
     <Compile Include="ManualOperacionBusiness.cs" />
     <Compile Include="NacionalidadBusiness.cs" />
     <Compile Include="NivelConocimientoBusiness.cs" />
@@ -197,6 +208,7 @@
       <DependentUpon>BaseConfiguration.resx</DependentUpon>
     </Compile>
     <Compile Include="StatusDoctoradoBusiness.cs" />
+    <Compile Include="StatusMaestriaBusiness.cs" />
     <Compile Include="TelefonoBusiness.cs" />
     <Compile Include="TipoActividadBusiness.cs" />
     <Compile Include="TipoDocumentoBusiness.cs" />

@@ -21,7 +21,6 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <!-- /.box-tools -->
                     </div>
                     <div class="box-body">
                         <div class="row">
@@ -39,27 +38,30 @@
                                     @Html.TextBoxFor(model => model.strNombre, new { @class = "form-control input-sm", id = "NombreEstudioDoctorado" })
                                 </div>
                                 <div class="form-group">
-                                    <label>Institución que lo Acredita:</label>  
+                                    <label id="lblAcredita">Institución que lo Acredita:</label>
                                     @Html.DropDownList("InstitucionAcredita", new SelectList(""), new { @class = "form-control input-sm", id = "InstitucionAcredita" })
+
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" style="display:flex;flex-direction:row;" id="divStatus">
                                     <label>Estatus Academico:</label>
                                     @Html.DropDownList("Status", new SelectList(""), new { @class = "form-control input-sm", id = "Status" })
+                                    <label style="display:none;" id="lblDte">Fecha de Inicio:</label>
+                                    @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm", id = "dteFechaInicio", style = "display:none;", type = "date" })
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="form-group">
+                                <div class="form-group" id="toggleFF">
                                     <label>Fuente de Financiamiento:</label>
                                     @Html.DropDownList("FuenteFinanciamiento", new SelectList(""), new { @class = "form-control input-sm", id = "FuenteFinanciamiento" })
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group " id="togglePNPC">
                                     <label>Reconocido Dentro de PNPC:</label>
                                     <br />
                                     Si @Html.RadioButton("bitReconocimientePNPC", true, false, new { id = "PNPCSi" })
                                     No @Html.RadioButton("bitReconocimientePNPC", false, true, new { id = "PNPCNo" })
                                 </div>
                                 <div class="form-group">
-                                    <label>Documento que Acredita:</label>
+                                    <label>Documento que Acredita (Titulo, Certificado, Cedula, etc.):</label>
                                     @Html.TextBoxFor(model => model.Documentos.DocumentoFile, new { @class = "form-control input-sm", id = "Documento", type = "file" })
                                 </div>
                             </div>
@@ -109,25 +111,23 @@
         </div>
     </div>
 }
-
+<link href="~/Content/toastr.min.css" rel="stylesheet" />
 @section scripts
     {
 
     <script>
-        $(document).ready(function ()
-        {
-            $('#NivelEstudio').change(function ()
-            {
+        $(document).ready(function () {
+            $('#NivelEstudio').change(function () {
 
                 let data = $(this).get(0).selectedIndex;
 
                 switch (data) {
 
                     case 1:
-                        $('#Type').val(data)                     
+                        $('#Type').val(data)
                         break;
                     case 2:
-                         $('#Type').val(data)
+                        $('#Type').val(data)
                         break;
                     case 3:
                         $('#Type').val(data)
@@ -139,7 +139,7 @@
                         $('#Type').val(data)
                         break;
                     default:
-                         $('#Type').val(data)
+                        $('#Type').val(data)
                         break;
                 }
 
@@ -147,5 +147,8 @@
         });
     </script>
 
-    <script src="~/Scripts/Validate/HistorialAcademico/setdata-historial-academico.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/Validate/HistorialAcademico/setdata-historial-academico.js?v=3"></script>
+    <script src="~/Scripts/Validate/HistorialAcademico/fixdom-historial-academico.js?v=3"></script>
+    <script src="~/Scripts/Validate/HistorialAcademico/validate-historial-academico-form.js?v=1"></script>
 }

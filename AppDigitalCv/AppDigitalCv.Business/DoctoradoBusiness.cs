@@ -38,6 +38,7 @@ namespace AppDigitalCv.Business
                 tblDoctorado.idPersonal = historialAcademico.idPersonal;
                 tblDoctorado.idStatusDoctorado = historialAcademico.Status;
                 tblDoctorado.strNombre = historialAcademico.strNombre;
+                tblDoctorado.dteFechaInicio = historialAcademico.dteFechaInicio;
 
                 catDocumentos.strUrl = historialAcademico.Documentos.DocumentoFile.FileName;
 

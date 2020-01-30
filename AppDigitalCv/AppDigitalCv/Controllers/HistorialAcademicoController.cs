@@ -19,18 +19,37 @@ namespace AppDigitalCv.Controllers
         IStatusDoctoradoBusiness statusDoctorado;
         IFuenteFinaciamientoDoctoradoBusiness fuenteFinaciamientoDoctoradoBusiness;
         IDoctoradoBusiness doctoradoBusiness;
+        IInstitucionAcreditaMaestriaBusiness institucionAcredita;
+        IStatusMaestriaBusiness statusMaestria;
+        IFuenteFinanciamientoMaestriaBusiness fuenteFinanciamiento;
+        IMaestriaBusiness maestriaBusiness;
+        ILicenciaturaIngBusiness licenciaturaIngBusiness;
+        IBachilleratoBusiness bachilleratoBusiness;
 
         public HistorialAcademicoController(IInstitucionAcreditaDoctoradoBusiness _institucionAcreditaDoctorado,
             IInstitucionAcreditaLicenciaturaBusiness _institucionAcreditaLicenciaturaBusiness,
             IStatusDoctoradoBusiness _statusDoctorado,
             IFuenteFinaciamientoDoctoradoBusiness _fuenteFinaciamientoDoctoradoBusiness,
-            IDoctoradoBusiness _doctoradoBusiness)
+            IDoctoradoBusiness _doctoradoBusiness,
+            IInstitucionAcreditaMaestriaBusiness _institucionAcredita,
+            IStatusMaestriaBusiness _statusMaestria,
+            IFuenteFinanciamientoMaestriaBusiness _fuenteFinanciamiento,
+            IMaestriaBusiness _maestriaBusiness,
+            ILicenciaturaIngBusiness _licenciaturaIngBusiness,
+            IBachilleratoBusiness _bachilleratoBusiness
+            )
         {
             institucionAcreditaDoctorado = _institucionAcreditaDoctorado;
             institucionAcreditaLicenciaturaBusiness = _institucionAcreditaLicenciaturaBusiness;
             statusDoctorado = _statusDoctorado;
             fuenteFinaciamientoDoctoradoBusiness = _fuenteFinaciamientoDoctoradoBusiness;
             doctoradoBusiness = _doctoradoBusiness;
+            institucionAcredita = _institucionAcredita;
+            statusMaestria = _statusMaestria;
+            fuenteFinanciamiento = _fuenteFinanciamiento;
+            maestriaBusiness = _maestriaBusiness;
+            licenciaturaIngBusiness = _licenciaturaIngBusiness;
+            bachilleratoBusiness = _bachilleratoBusiness;
         }
 
         [HttpGet]
@@ -50,11 +69,13 @@ namespace AppDigitalCv.Controllers
         [HttpPost]
         public ActionResult Create(HistorialAcademicoVM historialAcademicoVM) 
         {
+            Object[] obj = { };
+
             switch (historialAcademicoVM.Type)
-            {
+            {             
                 case 1:
                     
-                    Object[] obj = CrearDocumentoPersonales(historialAcademicoVM);
+                    obj = CrearDocumentoPersonales(historialAcademicoVM);
 
                     if (obj[0].Equals(true))
                     {
@@ -65,12 +86,44 @@ namespace AppDigitalCv.Controllers
                    
                     break;
                 case 2:
+                     obj = CrearDocumentoPersonales(historialAcademicoVM);
+
+                    if (obj[0].Equals(true))
+                    {
+                        HistorialAcademicoDomainModel historialAcademicoDM = new HistorialAcademicoDomainModel();
+                        AutoMapper.Mapper.Map(historialAcademicoVM, historialAcademicoDM);
+                        maestriaBusiness.AddMaestria(historialAcademicoDM);
+                    }
                     break;
                 case 3:
+                    obj = CrearDocumentoPersonales(historialAcademicoVM);
+
+                    if (obj[0].Equals(true))
+                    {
+                        HistorialAcademicoDomainModel historialAcademicoDM = new HistorialAcademicoDomainModel();
+                        AutoMapper.Mapper.Map(historialAcademicoVM, historialAcademicoDM);
+                        licenciaturaIngBusiness.AddLicenciaturaIng(historialAcademicoDM);
+                    }
                     break;
                 case 4:
+                    obj = CrearDocumentoPersonales(historialAcademicoVM);
+
+                    if (obj[0].Equals(true))
+                    {
+                        HistorialAcademicoDomainModel historialAcademicoDM = new HistorialAcademicoDomainModel();
+                        AutoMapper.Mapper.Map(historialAcademicoVM, historialAcademicoDM);
+                        licenciaturaIngBusiness.AddLicenciaturaIng(historialAcademicoDM);
+                    }
                     break;
                 case 5:
+                    obj = CrearDocumentoPersonales(historialAcademicoVM);
+
+                    if (obj[0].Equals(true))
+                    {
+                        HistorialAcademicoDomainModel historialAcademicoDM = new HistorialAcademicoDomainModel();
+                        AutoMapper.Mapper.Map(historialAcademicoVM, historialAcademicoDM);
+                        bachilleratoBusiness.addBachillerato(historialAcademicoDM);
+                    }
                     break;
                 default:
                     break;
@@ -138,6 +191,51 @@ namespace AppDigitalCv.Controllers
             ViewBag.InstitucionAcreditaLicenciatura = new SelectList(institucionAcreditaLicenciaturaVMs,"id","strValor");
 
             return PartialView("_InstitucionesAcreditanLicenciatura");
+        }
+
+        [HttpGet]
+        public ActionResult GetInstitucionAcreditanMaestrias()
+        {
+            List<InstitucionAcreditaMaestriaDomainModel> institucionAcreditaMaestriaDomainModels = new List<InstitucionAcreditaMaestriaDomainModel>();
+
+            institucionAcreditaMaestriaDomainModels = institucionAcredita.GetAllInstitucionesAcreditanMaestria();
+
+            List<InstitucionAcreditaMaestriaVM> institucionAcreditaMaestriaVMs = new List<InstitucionAcreditaMaestriaVM>();
+
+            AutoMapper.Mapper.Map(institucionAcreditaMaestriaDomainModels, institucionAcreditaMaestriaVMs);
+
+            ViewBag.InstitucionAcredita = new SelectList(institucionAcreditaMaestriaVMs, "id", "strValor");
+            return PartialView("_InstitucionesAcreditan");
+        }
+
+        [HttpGet]
+        public ActionResult GetStatusMaestrias()
+        {
+            List<StatusMaestriaVM> statusMaestriasVM = new List<StatusMaestriaVM>();
+            List<StatusMaestriaDomainModel> statusMaestriasDM = new List<StatusMaestriaDomainModel>();
+
+            statusMaestriasDM = statusMaestria.GetAllStatusMaestrias();
+
+            AutoMapper.Mapper.Map(statusMaestriasDM, statusMaestriasVM);
+
+            ViewBag.Status = new SelectList(statusMaestriasVM, "id", "strValor");
+
+            return PartialView("_StatusDoctorados");
+        }
+
+        [HttpGet]
+        public ActionResult GetFuentesFinanciamientoMaestrias()
+        {
+            List<FuenteFinaciamientoMaestriaDomainModel> fuenteFinaciamientoMaestriaDomainModels = new List<FuenteFinaciamientoMaestriaDomainModel>();
+            List<FuenteFinaciamientoMaestriaVM> fuenteFinaciamientoMaestriaVMs = new List<FuenteFinaciamientoMaestriaVM>();
+
+            fuenteFinaciamientoMaestriaDomainModels = fuenteFinanciamiento.GetAllFuentesFinanciamientosMaestria();
+
+            AutoMapper.Mapper.Map(fuenteFinaciamientoMaestriaDomainModels, fuenteFinaciamientoMaestriaVMs);
+
+            ViewBag.FuenteFinaciamiento = new SelectList(fuenteFinaciamientoMaestriaVMs, "id", "strValor");
+
+            return PartialView("_FuenteFinaciamientoDoctorado");
         }
 
         public Object[] CrearDocumentoPersonales(HistorialAcademicoVM historialAcademicoVM)

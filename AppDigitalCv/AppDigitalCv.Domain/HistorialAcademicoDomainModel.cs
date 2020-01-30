@@ -17,6 +17,7 @@ namespace AppDigitalCv.Domain
         public BachilleratoDomainModel Bachillerato { get; set; }
         public DocumentosDomainModel Documentos { get; set; }
         public int idPersonal { get; set; }
+        public DateTime dteFechaInicio { get; set; }
 
         //Distribuidores
 

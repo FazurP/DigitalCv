@@ -16,6 +16,8 @@ namespace AppDigitalCv.ViewModels
         public BachilleratoVM Bachillerato { get; set; }
         public DocumentosVM Documentos { get; set; }
         public int idPersonal { get; set; }
+        public DateTime dteFechaInicio { get; set; }
+        public string strInstitucionAcredita { get; set; }
         //Distribuidores
 
         public int Type { get; set; }
