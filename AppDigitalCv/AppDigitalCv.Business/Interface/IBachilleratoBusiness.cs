@@ -10,5 +10,6 @@ namespace AppDigitalCv.Business.Interface
     public interface IBachilleratoBusiness
     {
         bool addBachillerato(HistorialAcademicoDomainModel historialAcademico);
+        BachilleratoDomainModel GetBachillerato(int idPersonal);
     }
 }

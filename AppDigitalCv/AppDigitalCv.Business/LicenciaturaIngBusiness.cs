@@ -48,5 +48,41 @@ namespace AppDigitalCv.Business
 
             return respuesta;
         }
+
+        public List<LicenciaturaIngenieriaDomainModel> GetLicenciaturasIngs(int idPersonal)
+        {
+            List<LicenciaturaIngenieriaDomainModel> licenciaturaIngenieriaDomainModels = new List<LicenciaturaIngenieriaDomainModel>();
+            List<TblLicenciaturaIngenieria> tblLicenciaturaIngenierias = new List<TblLicenciaturaIngenieria>();
+
+            tblLicenciaturaIngenierias = lecenciaturaIngenieriaRepository.GetAll().Where(p => p.idPersonal == idPersonal).ToList();
+
+            foreach (TblLicenciaturaIngenieria item in tblLicenciaturaIngenierias)
+            {
+                LicenciaturaIngenieriaDomainModel licenciaturaIngenieriaDomainModel = new LicenciaturaIngenieriaDomainModel();
+
+                licenciaturaIngenieriaDomainModel.id = item.id;
+                licenciaturaIngenieriaDomainModel.idDocumento = item.idDocumento.Value;
+                licenciaturaIngenieriaDomainModel.idInstitucionAcredita = item.idIstitucionAcreditaLicenciatura.Value;
+                licenciaturaIngenieriaDomainModel.idPersonal = item.idPersonal.Value;
+                licenciaturaIngenieriaDomainModel.idStatusLicenciatura = item.idStatusLicenciatura.Value;
+                licenciaturaIngenieriaDomainModel.strNombre = item.strNombre;
+                licenciaturaIngenieriaDomainModel.Documentos = new DocumentosDomainModel { StrUrl = item.catDocumentos.strUrl};
+                licenciaturaIngenieriaDomainModel.InstitucionAcreditaLicenciatura = new InstitucionAcreditaLicenciaturaDomainModel
+                {
+                    id = item.CatInstitucionAcreditaLicenciatura.id,
+                    strDescripcion = item.CatInstitucionAcreditaLicenciatura.strDescripcion,
+                    strValor =item.CatInstitucionAcreditaLicenciatura.strValor
+                };
+                licenciaturaIngenieriaDomainModel.StatusLicenciatura = new StatusLicenciaturaDomainModel
+                {
+                    id = item.CatStatusLicenciatura.id,
+                    strDescripcion = item.CatStatusLicenciatura.strDescripcion,
+                    strValor =item.CatStatusLicenciatura.strValor
+                };
+                licenciaturaIngenieriaDomainModels.Add(licenciaturaIngenieriaDomainModel);
+            }
+
+            return licenciaturaIngenieriaDomainModels;
+        }
     }
 }

@@ -51,5 +51,51 @@ namespace AppDigitalCv.Business
 
             return respuesta;
         }
+
+        public List<DoctoradoDomainModel> GetDoctorados(int idPersonal)
+        {
+            List<DoctoradoDomainModel> doctoradoDomainModels = new List<DoctoradoDomainModel>();
+
+            List<TblDoctorado> tblDoctorados = new List<TblDoctorado>();
+
+            tblDoctorados = doctoradoRepository.GetAll().Where(p => p.idPersonal == idPersonal).ToList();
+
+            foreach (TblDoctorado item in tblDoctorados)
+            {
+                DoctoradoDomainModel doctoradoDomainModel = new DoctoradoDomainModel();
+
+                doctoradoDomainModel.id = item.id;
+                doctoradoDomainModel.idDocumento = item.idDocumento.Value;
+                doctoradoDomainModel.idFuentaFinaciamientoDoctorado = item.idFuenteFinanciamientoDoctorado.Value;
+                doctoradoDomainModel.idInstitucionAcreditaDoctorado = item.idInstitucionAcreditaDoctorado.Value;
+                doctoradoDomainModel.idPersonal = item.idPersonal.Value;
+                doctoradoDomainModel.idStatusDoctorado = item.idStatusDoctorado.Value;
+                doctoradoDomainModel.strNombre = item.strNombre;
+                doctoradoDomainModel.bitReconocimientePNPC = item.bitReconomientoPNPC.Value;
+                doctoradoDomainModel.Documentos = new DocumentosDomainModel { StrUrl = item.catDocumentos.strUrl};
+                doctoradoDomainModel.FuenteFinanciamientoDoctorado = new FuenteFinanciamientoDoctoradoDomainModel
+                {
+                    id = item.CatFuenteFinanciamientoDoctorado.id,
+                    strDescripcion =item.CatFuenteFinanciamientoDoctorado.strDescripcion,
+                    strValor =item.CatFuenteFinanciamientoDoctorado.strValor
+                };
+                doctoradoDomainModel.InstitucionAcreditaDoctorado = new InstitucionAcreditaDoctoradoDomainModel
+                {
+                    id = item.CatInstitucionAcreditaDoctorado.id,
+                    strDescripcion = item.CatInstitucionAcreditaDoctorado.strDescripcion,
+                    strValor =item.CatInstitucionAcreditaDoctorado.strValor
+                };
+                doctoradoDomainModel.StatusDoctorado = new StatusDoctoradoDomainModel
+                {
+                    id = item.CatStatusDoctorado.id,
+                    strDescripcion = item.CatStatusDoctorado.strDescripcion,
+                    strValor =item.CatStatusDoctorado.strValor
+                };
+
+                doctoradoDomainModels.Add(doctoradoDomainModel);
+            }
+
+            return doctoradoDomainModels;
+        }
     }
 }

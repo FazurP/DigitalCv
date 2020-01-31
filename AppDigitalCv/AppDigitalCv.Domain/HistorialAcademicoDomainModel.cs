@@ -13,6 +13,8 @@ namespace AppDigitalCv.Domain
         public int Status { get; set; }
         public bool bitReconocimientePNPC { get; set; }
         public int FuenteFinanciamiento { get; set; }
+        public DoctoradoDomainModel Doctorado { get; set; }
+        public MaestriaDomainModel Maestria { get; set; }
         public LicenciaturaIngenieriaDomainModel LicenciaturaIngenieria { get; set; }
         public BachilleratoDomainModel Bachillerato { get; set; }
         public DocumentosDomainModel Documentos { get; set; }

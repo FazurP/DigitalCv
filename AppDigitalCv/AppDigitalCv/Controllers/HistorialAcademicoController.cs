@@ -1,5 +1,6 @@
 ﻿using AppDigitalCv.Business.Interface;
 using AppDigitalCv.Domain;
+using AppDigitalCv.Models;
 using AppDigitalCv.Security;
 using AppDigitalCv.ViewModels;
 using System;
@@ -259,6 +260,62 @@ namespace AppDigitalCv.Controllers
             }
 
             return respuesta;
+        }
+
+        [HttpGet]
+        public JsonResult GetHistorialAcademico(DataTablesParam param)
+        {
+            int identityPersonal = SessionPersister.AccountSession.IdPersonal;
+            List<HistorialAcademicoVM> historialAcademicoVMs = new List<HistorialAcademicoVM>();
+            List<HistorialAcademicoDomainModel> historialAcademicoDomainModels = new List<HistorialAcademicoDomainModel>();
+            HistorialAcademicoVM historialAcademicoVM = new HistorialAcademicoVM();
+
+            List<DoctoradoDomainModel> doctorados = doctoradoBusiness.GetDoctorados(identityPersonal);
+            List<MaestriaDomainModel> maestrias = maestriaBusiness.GetMaestrias(identityPersonal);
+            List<LicenciaturaIngenieriaDomainModel> licIngs = licenciaturaIngBusiness.GetLicenciaturasIngs(identityPersonal);
+            List<BachilleratoDomainModel> bachilleratos = new List<BachilleratoDomainModel>();
+            bachilleratos.Add(bachilleratoBusiness.GetBachillerato(identityPersonal));
+
+            List<DoctoradoVM> doctoradosVM = new List<DoctoradoVM>();
+            List<MaestriaVM> maestriasVM = new List<MaestriaVM>();
+            List<LicenciaturaIngenieriaVM> licIngsVM = new List<LicenciaturaIngenieriaVM>();
+            List<BachilleratoVM> bachilleratosVM = new List<BachilleratoVM>();
+
+            AutoMapper.Mapper.Map(doctorados, doctoradosVM);
+            AutoMapper.Mapper.Map(maestrias, maestriasVM);
+            AutoMapper.Mapper.Map(licIngs, licIngsVM);
+            AutoMapper.Mapper.Map(bachilleratos, bachilleratosVM);
+
+            int pageNo = 1;
+
+            if (param.iDisplayStart >= param.iDisplayLength)
+            {
+                pageNo = (param.iDisplayStart / param.iDisplayLength) + 1;
+            }
+
+            int totalCount = 0;
+
+            if (param.sSearch != null)
+            {
+                historialAcademicoDomainModels = estadiaEmpresaBusiness.GetAllEstadiaEmpresaByIdPersonal(identityPersonal).Where(p => p.strNombreEstadia.Contains(param.sSearch)).ToList();
+            }
+            else
+            {
+                totalCount = estadiaEmpresaBusiness.GetAllEstadiaEmpresaByIdPersonal(identityPersonal).Count();
+
+                historialAcademicoDomainModels = estadiaEmpresaBusiness.GetAllEstadiaEmpresaByIdPersonal(identityPersonal).OrderBy(p => p.strNombreEstadia).Skip((pageNo - 1)
+                    * param.iDisplayLength).Take(param.iDisplayLength).ToList();
+            }
+
+            return Json(new
+            {
+
+                aaData = historialAcademicoDomainModels,
+                sEcho = param.sEcho,
+                iTotalDisplayRecords = historialAcademicoDomainModels.Count(),
+                iTotalRecords = historialAcademicoDomainModels.Count()
+
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -12,6 +12,8 @@ namespace AppDigitalCv.ViewModels
         public int Status { get; set; }
         public bool bitReconocimientePNPC { get; set; }
         public int FuenteFinanciamiento { get; set; }
+        public DoctoradoVM Doctorado { get; set; }
+        public MaestriaVM Maestria { get; set; }
         public LicenciaturaIngenieriaVM LicenciaturaIngenieria { get; set; }
         public BachilleratoVM Bachillerato { get; set; }
         public DocumentosVM Documentos { get; set; }

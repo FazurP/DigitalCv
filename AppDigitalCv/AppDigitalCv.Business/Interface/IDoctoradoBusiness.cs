@@ -10,5 +10,6 @@ namespace AppDigitalCv.Business.Interface
     public interface IDoctoradoBusiness
     {
         bool AddDoctorado(HistorialAcademicoDomainModel historialAcademico);
+        List<DoctoradoDomainModel> GetDoctorados(int idPersonal);
     }
 }
