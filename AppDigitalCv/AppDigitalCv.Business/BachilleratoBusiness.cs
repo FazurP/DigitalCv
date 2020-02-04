@@ -28,40 +28,50 @@ namespace AppDigitalCv.Business
         public bool addBachillerato(HistorialAcademicoDomainModel historialAcademico)
         {
             bool respuesta = false;
+            tblPersonal tblPersonal = personalRepository.SingleOrDefault(p => p.idPersonal == historialAcademico.idPersonal);
 
-            if (historialAcademico != null)
+            if (tblPersonal.idBachillerato == null)
             {
-                catDocumentos catDocumentos = new catDocumentos();
-                TblBachillerato tblBachillerato = new TblBachillerato();
+                if (historialAcademico != null)
+                {
+                    catDocumentos catDocumentos = new catDocumentos();
+                    TblBachillerato tblBachillerato = new TblBachillerato();
 
-                tblBachillerato.strInstitucionAcreditaBachillerato = historialAcademico.strNombre;
-                catDocumentos.strUrl = historialAcademico.Documentos.DocumentoFile.FileName;
+                    tblBachillerato.strInstitucionAcreditaBachillerato = historialAcademico.strNombre;
+                    catDocumentos.strUrl = historialAcademico.Documentos.DocumentoFile.FileName;
 
-                catDocumentos.TblBachillerato.Add(tblBachillerato);
+                    catDocumentos.TblBachillerato.Add(tblBachillerato);
 
-                documentosRepository.Insert(catDocumentos);
-                respuesta = true;
-            }
+                    documentosRepository.Insert(catDocumentos);
+                    respuesta = true;
+                }
+            }          
             return respuesta;
         }
 
-        public BachilleratoDomainModel GetBachillerato(int idPersonal)
+        public List<BachilleratoDomainModel> GetBachillerato(int idPersonal)
         {
             tblPersonal tblPersonal = new tblPersonal();
-
+            List<BachilleratoDomainModel> bachilleratoDomainModels = new List<BachilleratoDomainModel>();
             tblPersonal = personalRepository.SingleOrDefault(p => p.idPersonal == idPersonal);
 
-            BachilleratoDomainModel bachilleratoDomainModel = new BachilleratoDomainModel();
-
-            bachilleratoDomainModel.Documentos = new DocumentosDomainModel
+            if (tblPersonal.TblBachillerato != null)
             {
-                StrUrl = tblPersonal.TblBachillerato.catDocumentos.strUrl
-            };
-            bachilleratoDomainModel.id = tblPersonal.TblBachillerato.id;
-            bachilleratoDomainModel.idDocumento = tblPersonal.TblBachillerato.idDocumento.Value;
-            bachilleratoDomainModel.strNombre = tblPersonal.TblBachillerato.strInstitucionAcreditaBachillerato;
-            
-            return bachilleratoDomainModel;
+                BachilleratoDomainModel bachilleratoDomainModel = new BachilleratoDomainModel();
+                
+
+                bachilleratoDomainModel.Documentos = new DocumentosDomainModel
+                {
+                    StrUrl = tblPersonal.TblBachillerato.catDocumentos.strUrl
+                };
+                bachilleratoDomainModel.id = tblPersonal.TblBachillerato.id;
+                bachilleratoDomainModel.idDocumento = tblPersonal.TblBachillerato.idDocumento.Value;
+                bachilleratoDomainModel.strNombre = tblPersonal.TblBachillerato.strInstitucionAcreditaBachillerato;
+
+                bachilleratoDomainModels.Add(bachilleratoDomainModel);
+            }
+          
+            return bachilleratoDomainModels;
         }
     }
 }

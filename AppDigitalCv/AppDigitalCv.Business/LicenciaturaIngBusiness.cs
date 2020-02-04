@@ -14,6 +14,7 @@ namespace AppDigitalCv.Business
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly LecenciaturaIngenieriaRepository lecenciaturaIngenieriaRepository;
+        private readonly StatusLicenciaturaRepository statusLicenciaturaRepository;
         private readonly DocumentosRepository documentosRepository;
 
         public LicenciaturaIngBusiness(IUnitOfWork _unitOfWork)
@@ -21,6 +22,37 @@ namespace AppDigitalCv.Business
             unitOfWork = _unitOfWork;
             lecenciaturaIngenieriaRepository = new LecenciaturaIngenieriaRepository(unitOfWork);
             documentosRepository = new DocumentosRepository(unitOfWork);
+            statusLicenciaturaRepository = new StatusLicenciaturaRepository(unitOfWork);
+        }
+
+        public List<StatusLicenciaturaDomainModel> GetStatusLicenciaturas()
+        {
+            List<StatusLicenciaturaDomainModel> statusLicenciaturaDomainModels = new List<StatusLicenciaturaDomainModel>();
+            List<CatStatusLicenciatura> status = new List<CatStatusLicenciatura>();
+
+            status = statusLicenciaturaRepository.GetAll().ToList();
+
+            foreach (CatStatusLicenciatura item in status)
+            {
+                StatusLicenciaturaDomainModel statusLicenciaturaDomainModel = new StatusLicenciaturaDomainModel();
+
+                statusLicenciaturaDomainModel.id = item.id;
+                statusLicenciaturaDomainModel.strDescripcion = item.strDescripcion;
+                statusLicenciaturaDomainModel.strValor = item.strValor;
+
+                statusLicenciaturaDomainModels.Add(statusLicenciaturaDomainModel);
+
+            }
+
+            StatusLicenciaturaDomainModel statusLicenciaturaDomainModel01 = new StatusLicenciaturaDomainModel();
+
+            statusLicenciaturaDomainModel01.id = 0;
+            statusLicenciaturaDomainModel01.strDescripcion = "Seleccionar";
+            statusLicenciaturaDomainModel01.strValor = "Seleccionar";
+
+            statusLicenciaturaDomainModels.Insert(0,statusLicenciaturaDomainModel01);
+
+            return statusLicenciaturaDomainModels;
         }
 
         public bool AddLicenciaturaIng(HistorialAcademicoDomainModel historialAcademicoDomainModel)

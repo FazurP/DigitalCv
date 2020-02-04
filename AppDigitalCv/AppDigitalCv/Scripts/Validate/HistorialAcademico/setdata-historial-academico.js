@@ -93,6 +93,7 @@
 
             case 3:
                 url = "/HistorialAcademico/GetInstitucionAcreditanLicenciaturaIng";
+                url2 = "/HistorialAcademico/GetStatusLicenciaturasIng";
 
                 $.get(url).done(function (response) {
 
@@ -103,16 +104,36 @@
                     console.log("Service not available");
                 });
 
+                $.get(url2).done(function (response) {
+                
+                    $('#Status').empty();
+                    $('#Status').append(response);
+
+                }).fail(function () {
+                    console.log("Service not available");
+                });
+
+
                 $('#lblNombre').html("Nombre de la Ingenieria:");
                 break;
 
             case 4:
                 url = "/HistorialAcademico/GetInstitucionAcreditanLicenciaturaIng";
+                url2 = "/HistorialAcademico/GetStatusLicenciaturasIng";
 
                 $.get(url).done(function (response) {
 
                     $('#InstitucionAcredita').empty();
                     $('#InstitucionAcredita').append(response);
+
+                }).fail(function () {
+                    console.log("Service not available");
+                });
+
+                $.get(url2).done(function (response) {
+
+                    $('#Status').empty();
+                    $('#Status').append(response);
 
                 }).fail(function () {
                     console.log("Service not available");

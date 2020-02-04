@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace AppDigitalCv.Business.Interface
 {
-    public interface IBachilleratoBusiness
+    public interface IHistorialAcademicoBusiness
     {
-        bool addBachillerato(HistorialAcademicoDomainModel historialAcademico);
-        List<BachilleratoDomainModel> GetBachillerato(int idPersonal);
+        List<HistorialAcademicoDomainModel> GetHistorialesAcademicos(int _idPersona);
     }
 }

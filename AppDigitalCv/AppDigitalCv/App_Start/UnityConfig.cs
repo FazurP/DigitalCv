@@ -99,6 +99,7 @@ namespace AppDigitalCv
             container.RegisterType<IMaestriaBusiness, MaestriaBusiness>();
             container.RegisterType<ILicenciaturaIngBusiness, LicenciaturaIngBusiness>();
             container.RegisterType<IBachilleratoBusiness, BachilleratoBusiness>();
+            container.RegisterType<IHistorialAcademicoBusiness, HistorialAcademicoBusiness>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

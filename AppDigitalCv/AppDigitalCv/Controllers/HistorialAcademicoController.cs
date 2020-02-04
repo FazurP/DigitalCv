@@ -26,6 +26,7 @@ namespace AppDigitalCv.Controllers
         IMaestriaBusiness maestriaBusiness;
         ILicenciaturaIngBusiness licenciaturaIngBusiness;
         IBachilleratoBusiness bachilleratoBusiness;
+        IHistorialAcademicoBusiness HistorialAcademicoBusiness;
 
         public HistorialAcademicoController(IInstitucionAcreditaDoctoradoBusiness _institucionAcreditaDoctorado,
             IInstitucionAcreditaLicenciaturaBusiness _institucionAcreditaLicenciaturaBusiness,
@@ -37,7 +38,8 @@ namespace AppDigitalCv.Controllers
             IFuenteFinanciamientoMaestriaBusiness _fuenteFinanciamiento,
             IMaestriaBusiness _maestriaBusiness,
             ILicenciaturaIngBusiness _licenciaturaIngBusiness,
-            IBachilleratoBusiness _bachilleratoBusiness
+            IBachilleratoBusiness _bachilleratoBusiness,
+            IHistorialAcademicoBusiness _historialAcademicoBusiness
             )
         {
             institucionAcreditaDoctorado = _institucionAcreditaDoctorado;
@@ -51,6 +53,7 @@ namespace AppDigitalCv.Controllers
             maestriaBusiness = _maestriaBusiness;
             licenciaturaIngBusiness = _licenciaturaIngBusiness;
             bachilleratoBusiness = _bachilleratoBusiness;
+            HistorialAcademicoBusiness = _historialAcademicoBusiness;
         }
 
         [HttpGet]
@@ -195,6 +198,21 @@ namespace AppDigitalCv.Controllers
         }
 
         [HttpGet]
+        public ActionResult GetStatusLicenciaturasIng()
+        {
+            List<StatusLicenciaturaDomainModel> statusLicenciaturaDomainModels = new List<StatusLicenciaturaDomainModel>();
+            List<StatusLicenciaturaVM> statusLicenciaturaVMs = new List<StatusLicenciaturaVM>();
+
+            statusLicenciaturaDomainModels = licenciaturaIngBusiness.GetStatusLicenciaturas();
+
+            AutoMapper.Mapper.Map(statusLicenciaturaDomainModels, statusLicenciaturaVMs);
+
+            ViewBag.Status = new SelectList(statusLicenciaturaVMs, "id", "strValor");
+
+            return PartialView("_StatusDoctorados");
+        }
+
+      [HttpGet]
         public ActionResult GetInstitucionAcreditanMaestrias()
         {
             List<InstitucionAcreditaMaestriaDomainModel> institucionAcreditaMaestriaDomainModels = new List<InstitucionAcreditaMaestriaDomainModel>();
@@ -263,28 +281,11 @@ namespace AppDigitalCv.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetHistorialAcademico(DataTablesParam param)
+        public JsonResult GetDoctorados(DataTablesParam param)
         {
             int identityPersonal = SessionPersister.AccountSession.IdPersonal;
-            List<HistorialAcademicoVM> historialAcademicoVMs = new List<HistorialAcademicoVM>();
-            List<HistorialAcademicoDomainModel> historialAcademicoDomainModels = new List<HistorialAcademicoDomainModel>();
-            HistorialAcademicoVM historialAcademicoVM = new HistorialAcademicoVM();
+            List<DoctoradoDomainModel> historialAcademicoDomainModels = new List<DoctoradoDomainModel>();
 
-            List<DoctoradoDomainModel> doctorados = doctoradoBusiness.GetDoctorados(identityPersonal);
-            List<MaestriaDomainModel> maestrias = maestriaBusiness.GetMaestrias(identityPersonal);
-            List<LicenciaturaIngenieriaDomainModel> licIngs = licenciaturaIngBusiness.GetLicenciaturasIngs(identityPersonal);
-            List<BachilleratoDomainModel> bachilleratos = new List<BachilleratoDomainModel>();
-            bachilleratos.Add(bachilleratoBusiness.GetBachillerato(identityPersonal));
-
-            List<DoctoradoVM> doctoradosVM = new List<DoctoradoVM>();
-            List<MaestriaVM> maestriasVM = new List<MaestriaVM>();
-            List<LicenciaturaIngenieriaVM> licIngsVM = new List<LicenciaturaIngenieriaVM>();
-            List<BachilleratoVM> bachilleratosVM = new List<BachilleratoVM>();
-
-            AutoMapper.Mapper.Map(doctorados, doctoradosVM);
-            AutoMapper.Mapper.Map(maestrias, maestriasVM);
-            AutoMapper.Mapper.Map(licIngs, licIngsVM);
-            AutoMapper.Mapper.Map(bachilleratos, bachilleratosVM);
 
             int pageNo = 1;
 
@@ -297,19 +298,132 @@ namespace AppDigitalCv.Controllers
 
             if (param.sSearch != null)
             {
-                historialAcademicoDomainModels = estadiaEmpresaBusiness.GetAllEstadiaEmpresaByIdPersonal(identityPersonal).Where(p => p.strNombreEstadia.Contains(param.sSearch)).ToList();
+                historialAcademicoDomainModels = doctoradoBusiness.GetDoctorados(identityPersonal).Where(p => p.strNombre.Contains(param.sSearch)).ToList();
             }
             else
             {
-                totalCount = estadiaEmpresaBusiness.GetAllEstadiaEmpresaByIdPersonal(identityPersonal).Count();
+                totalCount = doctoradoBusiness.GetDoctorados(identityPersonal).Count();
 
-                historialAcademicoDomainModels = estadiaEmpresaBusiness.GetAllEstadiaEmpresaByIdPersonal(identityPersonal).OrderBy(p => p.strNombreEstadia).Skip((pageNo - 1)
+                historialAcademicoDomainModels = doctoradoBusiness.GetDoctorados(identityPersonal).OrderBy(p => p.strNombre).Skip((pageNo - 1)
                     * param.iDisplayLength).Take(param.iDisplayLength).ToList();
             }
 
             return Json(new
             {
+                aaData = historialAcademicoDomainModels,
+                sEcho = param.sEcho,
+                iTotalDisplayRecords = historialAcademicoDomainModels.Count(),
+                iTotalRecords = historialAcademicoDomainModels.Count()
 
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult GetMaestrias(DataTablesParam param)
+        {
+            int identityPersonal = SessionPersister.AccountSession.IdPersonal;
+            List<MaestriaDomainModel> historialAcademicoDomainModels = new List<MaestriaDomainModel>();
+
+
+            int pageNo = 1;
+
+            if (param.iDisplayStart >= param.iDisplayLength)
+            {
+                pageNo = (param.iDisplayStart / param.iDisplayLength) + 1;
+            }
+
+            int totalCount = 0;
+
+            if (param.sSearch != null)
+            {
+                historialAcademicoDomainModels = maestriaBusiness.GetMaestrias(identityPersonal).Where(p => p.strNombre.Contains(param.sSearch)).ToList();
+            }
+            else
+            {
+                totalCount = maestriaBusiness.GetMaestrias(identityPersonal).Count();
+
+                historialAcademicoDomainModels = maestriaBusiness.GetMaestrias(identityPersonal).OrderBy(p => p.strNombre).Skip((pageNo - 1)
+                    * param.iDisplayLength).Take(param.iDisplayLength).ToList();
+            }
+
+            return Json(new
+            {
+                aaData = historialAcademicoDomainModels,
+                sEcho = param.sEcho,
+                iTotalDisplayRecords = historialAcademicoDomainModels.Count(),
+                iTotalRecords = historialAcademicoDomainModels.Count()
+
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult GetLicenciaturasIng(DataTablesParam param)
+        {
+            int identityPersonal = SessionPersister.AccountSession.IdPersonal;
+            List<LicenciaturaIngenieriaDomainModel> historialAcademicoDomainModels = new List<LicenciaturaIngenieriaDomainModel>();
+
+
+            int pageNo = 1;
+
+            if (param.iDisplayStart >= param.iDisplayLength)
+            {
+                pageNo = (param.iDisplayStart / param.iDisplayLength) + 1;
+            }
+
+            int totalCount = 0;
+
+            if (param.sSearch != null)
+            {
+                historialAcademicoDomainModels = licenciaturaIngBusiness.GetLicenciaturasIngs(identityPersonal).Where(p => p.strNombre.Contains(param.sSearch)).ToList();
+            }
+            else
+            {
+                totalCount = licenciaturaIngBusiness.GetLicenciaturasIngs(identityPersonal).Count();
+
+                historialAcademicoDomainModels = licenciaturaIngBusiness.GetLicenciaturasIngs(identityPersonal).OrderBy(p => p.strNombre).Skip((pageNo - 1)
+                    * param.iDisplayLength).Take(param.iDisplayLength).ToList();
+            }
+
+            return Json(new
+            {
+                aaData = historialAcademicoDomainModels,
+                sEcho = param.sEcho,
+                iTotalDisplayRecords = historialAcademicoDomainModels.Count(),
+                iTotalRecords = historialAcademicoDomainModels.Count()
+
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult GetBachilleratos(DataTablesParam param)
+        {
+            int identityPersonal = SessionPersister.AccountSession.IdPersonal;
+            List<BachilleratoDomainModel> historialAcademicoDomainModels = new List<BachilleratoDomainModel>();
+
+
+            int pageNo = 1;
+
+            if (param.iDisplayStart >= param.iDisplayLength)
+            {
+                pageNo = (param.iDisplayStart / param.iDisplayLength) + 1;
+            }
+
+            int totalCount = 0;
+
+            if (param.sSearch != null)
+            {
+                historialAcademicoDomainModels = bachilleratoBusiness.GetBachillerato(identityPersonal).Where(p => p.strNombre.Contains(param.sSearch)).ToList();
+            }
+            else
+            {
+                totalCount = bachilleratoBusiness.GetBachillerato(identityPersonal).Count();
+
+                historialAcademicoDomainModels = bachilleratoBusiness.GetBachillerato(identityPersonal).OrderBy(p => p.strNombre).Skip((pageNo - 1)
+                    * param.iDisplayLength).Take(param.iDisplayLength).ToList();
+            }
+
+            return Json(new
+            {
                 aaData = historialAcademicoDomainModels,
                 sEcho = param.sEcho,
                 iTotalDisplayRecords = historialAcademicoDomainModels.Count(),

@@ -86,6 +86,7 @@
     <Compile Include="FrecuenciaBusiness.cs" />
     <Compile Include="FuenteFinaciamientoDoctoradoBusiness.cs" />
     <Compile Include="FuenteFinanciamientoMaestriaBusiness.cs" />
+    <Compile Include="HistorialAcademicoBusiness.cs" />
     <Compile Include="HobbieBusiness.cs" />
     <Compile Include="HobbiesBusiness.cs" />
     <Compile Include="IdiomaBusiness.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="Interface\IFrecuenciaBusiness.cs" />
     <Compile Include="Interface\IFuenteFinaciamientoDoctoradoBusiness.cs" />
     <Compile Include="Interface\IFuenteFinanciamientoMaestriaBusiness.cs" />
+    <Compile Include="Interface\IHistorialAcademicoBusiness.cs" />
     <Compile Include="Interface\IHobbieBusiness.cs" />
     <Compile Include="Interface\IHobbiesBusiness.cs" />
     <Compile Include="Interface\IIdiomaBusiness.cs" />

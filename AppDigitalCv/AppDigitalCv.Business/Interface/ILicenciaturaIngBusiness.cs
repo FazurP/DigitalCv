@@ -11,5 +11,6 @@ namespace AppDigitalCv.Business.Interface
     {
         bool AddLicenciaturaIng(HistorialAcademicoDomainModel historialAcademicoDomainModel);
         List<LicenciaturaIngenieriaDomainModel> GetLicenciaturasIngs(int idPersonal);
+        List<StatusLicenciaturaDomainModel> GetStatusLicenciaturas();
     }
 }
