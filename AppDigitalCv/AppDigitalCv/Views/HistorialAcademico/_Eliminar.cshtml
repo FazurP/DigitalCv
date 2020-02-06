@@ -1,0 +1,126 @@
+﻿@model AppDigitalCv.ViewModels.HistorialAcademicoVM
+@using AppDigitalCv.Security
+<div>
+    <form id="myForm">
+        <div class="bs-container">
+            <div class="row">
+                <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                    <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+                </div>
+                <div class="col-md-7 col-xs-11 col-sm-5 col-lg-7">
+                    
+                    @if (Model.Type.Equals(1))
+                    {
+                        @Html.HiddenFor(model => model.Doctorado.id,htmlAttributes:new { id="doctorado"})
+                        <div class="form-group">
+                            <label>Doctorado:</label>
+                            @Html.TextBoxFor(model => model.Doctorado.strNombre, new { @class = "form-control input-sm", disabled = "", id = "nombre" })
+                        </div>
+                        <div class="form-group">
+                            <label>Institución:</label>
+                            @Html.TextBoxFor(model => model.Doctorado.InstitucionAcreditaDoctorado.strValor, new { @class = "form-control input-sm", disabled = "", id = "idFrecuencia" })
+                        </div>
+                    }
+                    else if (Model.Type.Equals(2))
+                    {
+                        @Html.HiddenFor(model => model.Maestria.id, new { id = "maestria" })
+                        <div class="form-group">
+                            <label>Maestria:</label>
+                            @Html.TextBoxFor(model => model.Maestria.strNombre, new { @class = "form-control input-sm", disabled = "", id = "nombre" })
+                        </div>
+                        <div class="form-group">
+                            <label>Institución:</label>
+                            @Html.TextBoxFor(model => model.Maestria.InstitucionAcreditaMaestria.strValor, new { @class = "form-control input-sm", disabled = "", id = "idFrecuencia" })
+                        </div>
+                    }
+                    else if (Model.Type.Equals(3))
+                    {
+                        @Html.HiddenFor(model => model.LicenciaturaIngenieria.id, new { id = "licenciatura" })
+                        <div class="form-group">
+                            <label>Licenciatura y/o Ingenieria:</label>
+                            @Html.TextBoxFor(model => model.LicenciaturaIngenieria.strNombre, new { @class = "form-control input-sm", disabled = "", id = "nombre" })
+                        </div>
+                        <div class="form-group">
+                            <label>Institución:</label>
+                            @Html.TextBoxFor(model => model.LicenciaturaIngenieria.InstitucionAcreditaLicenciatura.strValor, new { @class = "form-control input-sm", disabled = "", id = "idFrecuencia" })
+                        </div>
+                    }
+                    else if (Model.Type.Equals(4))
+                    {
+                        @Html.HiddenFor(model => model.Bachillerato.id, new { id = "bachillerato" })
+                        <div class="form-group">
+                            <label>Institución:</label>
+                            @Html.TextBoxFor(model => model.Bachillerato.strNombre, new { @class = "form-control input-sm", disabled = "", id = "idFrecuencia" })
+                        </div>
+                    }
+                    <div class="form-group">
+                        <input type="button" class="btn btn-danger" value="Eliminar" id="btnEnviar" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#btnEnviar").click(function () {
+
+            
+
+            var HistorialAcademicoVM = {};
+            debugger;
+            switch (@Model.Type) {
+                case 1:
+
+                    let Doctorado = {};
+                    Doctorado.id = $('#doctorado').val();
+                    HistorialAcademicoVM.Doctorado = Doctorado;
+                    HistorialAcademicoVM.Type = 1;
+                    break;
+
+                case 2:
+
+                    let Maestria = {};
+                    Maestria.id = $('#maestria').val();
+                    HistorialAcademicoVM.Maestria = Maestria;
+                    HistorialAcademicoVM.Type = 2;
+                    break;
+
+                case 3:
+
+                    let LicenciaturaIngenieria = {};
+                    LicenciaturaIngenieria.id = $('#licenciatura').val();
+                    HistorialAcademicoVM.LicenciaturaIngenieria = LicenciaturaIngenieria;
+                    HistorialAcademicoVM.Type = 3;
+                    break;
+
+                case 4:
+
+                    let Bachillerato = {};
+                    Bachillerato.id = $('#bachillerato').val();
+                    HistorialAcademicoVM.Bachillerato = Bachillerato;
+                    HistorialAcademicoVM.Type = 4;
+                    break;
+
+                default:
+                    break;
+            }
+           
+            $.ajax({
+                type: "post",
+                url: "/HistorialAcademico/Delete",
+                data: { historialAcademicoVM: HistorialAcademicoVM},
+                success: function () {
+                    window.location.href = "/HistorialAcademico/Create";
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(textStatus);
+                    console.log(textStatus);
+                }
+            });
+        });
+    });
+</script>

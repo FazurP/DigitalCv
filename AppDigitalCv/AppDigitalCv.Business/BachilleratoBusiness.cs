@@ -43,6 +43,9 @@ namespace AppDigitalCv.Business
                     catDocumentos.TblBachillerato.Add(tblBachillerato);
 
                     documentosRepository.Insert(catDocumentos);
+
+                    tblPersonal.idBachillerato = tblBachillerato.id;
+                    personalRepository.Update(tblPersonal);
                     respuesta = true;
                 }
             }          
@@ -72,6 +75,37 @@ namespace AppDigitalCv.Business
             }
           
             return bachilleratoDomainModels;
+        }
+
+        public BachilleratoDomainModel GetBachilleratos(int _id)
+        {
+            BachilleratoDomainModel bachilleratoDomainModel = new BachilleratoDomainModel();
+
+            TblBachillerato tblBachillerato = bachilleratoRepository.SingleOrDefault(p => p.id == _id);
+
+            bachilleratoDomainModel.id = tblBachillerato.id;
+            bachilleratoDomainModel.idDocumento = tblBachillerato.idDocumento.Value;
+            bachilleratoDomainModel.strNombre = tblBachillerato.strInstitucionAcreditaBachillerato;
+
+            bachilleratoDomainModel.Documentos = new DocumentosDomainModel
+            {
+                StrUrl = tblBachillerato.catDocumentos.strUrl
+            };
+
+            return bachilleratoDomainModel;
+        }
+
+        public bool DeleteBachillerato(HistorialAcademicoDomainModel historialAcademicoDomainModel)
+        {
+            bool respuesta = false;
+
+            if (historialAcademicoDomainModel.Bachillerato.id > 0)
+            {
+                bachilleratoRepository.Delete(p => p.id == historialAcademicoDomainModel.Bachillerato.id);
+                respuesta = true;
+            }
+
+            return respuesta;
         }
     }
 }

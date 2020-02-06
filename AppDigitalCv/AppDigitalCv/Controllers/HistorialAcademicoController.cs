@@ -27,6 +27,7 @@ namespace AppDigitalCv.Controllers
         ILicenciaturaIngBusiness licenciaturaIngBusiness;
         IBachilleratoBusiness bachilleratoBusiness;
         IHistorialAcademicoBusiness HistorialAcademicoBusiness;
+        IDocumentosBusiness documentosBusiness;
 
         public HistorialAcademicoController(IInstitucionAcreditaDoctoradoBusiness _institucionAcreditaDoctorado,
             IInstitucionAcreditaLicenciaturaBusiness _institucionAcreditaLicenciaturaBusiness,
@@ -39,7 +40,8 @@ namespace AppDigitalCv.Controllers
             IMaestriaBusiness _maestriaBusiness,
             ILicenciaturaIngBusiness _licenciaturaIngBusiness,
             IBachilleratoBusiness _bachilleratoBusiness,
-            IHistorialAcademicoBusiness _historialAcademicoBusiness
+            IHistorialAcademicoBusiness _historialAcademicoBusiness,
+            IDocumentosBusiness _documentosBusiness
             )
         {
             institucionAcreditaDoctorado = _institucionAcreditaDoctorado;
@@ -54,6 +56,7 @@ namespace AppDigitalCv.Controllers
             licenciaturaIngBusiness = _licenciaturaIngBusiness;
             bachilleratoBusiness = _bachilleratoBusiness;
             HistorialAcademicoBusiness = _historialAcademicoBusiness;
+            documentosBusiness = _documentosBusiness;
         }
 
         [HttpGet]
@@ -430,6 +433,107 @@ namespace AppDigitalCv.Controllers
                 iTotalRecords = historialAcademicoDomainModels.Count()
 
             }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult DeleteHistorialAcademico(int _idHistorial, int _idType)
+        {
+            HistorialAcademicoVM historialAcademicoVM = new HistorialAcademicoVM();
+            switch (_idType)
+            {
+                case 1:
+                    DoctoradoDomainModel doctoradoDomainModel = doctoradoBusiness.GetDoctorado(_idHistorial);
+                    historialAcademicoVM.Doctorado = new DoctoradoVM();
+                    AutoMapper.Mapper.Map(doctoradoDomainModel, historialAcademicoVM.Doctorado);
+                    historialAcademicoVM.Type = 1;
+                    break;
+                case 2:
+                    MaestriaDomainModel maestriaDomainModel = maestriaBusiness.GetMaestria(_idHistorial);
+                    historialAcademicoVM.Maestria = new MaestriaVM();
+                    AutoMapper.Mapper.Map(maestriaDomainModel,historialAcademicoVM.Maestria);
+                    historialAcademicoVM.Type = 2;
+                    break;
+                case 3:
+                    LicenciaturaIngenieriaDomainModel licenciaturaIngenieriaDomainModel = licenciaturaIngBusiness.GetLicenciaturaIng(_idHistorial);
+                    historialAcademicoVM.LicenciaturaIngenieria = new LicenciaturaIngenieriaVM();
+                    AutoMapper.Mapper.Map(licenciaturaIngenieriaDomainModel,historialAcademicoVM.LicenciaturaIngenieria);
+                    historialAcademicoVM.Type = 3;
+                    break;
+                case 4:
+                    BachilleratoDomainModel bachilleratoDomainModel = bachilleratoBusiness.GetBachilleratos(_idHistorial);
+                    historialAcademicoVM.Bachillerato = new BachilleratoVM();
+                    AutoMapper.Mapper.Map(bachilleratoDomainModel,historialAcademicoVM.Bachillerato);
+                    historialAcademicoVM.Type = 4;
+                    break;
+                default:
+                    break;
+            }
+
+            return PartialView("_Eliminar", historialAcademicoVM);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(HistorialAcademicoVM historialAcademicoVM)
+        {
+            HistorialAcademicoDomainModel historialAcademicoDomainModel = new HistorialAcademicoDomainModel();
+            string url;
+            switch (historialAcademicoVM.Type)
+            {
+                case 1:
+                   
+                    historialAcademicoDomainModel.Doctorado = new DoctoradoDomainModel();
+
+                    historialAcademicoDomainModel.Doctorado = doctoradoBusiness.GetDoctorado(historialAcademicoVM.Doctorado.id);
+
+                    url = Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + SessionPersister.AccountSession.NombreCompleto + "/" + historialAcademicoDomainModel.Doctorado.Documentos.StrUrl);
+
+                    if (FileManager.FileManager.DeleteFileFromServer(url))
+                    {
+                        doctoradoBusiness.DeleteDoctorado(historialAcademicoDomainModel);
+                    }
+                    break;
+                case 2:
+
+                    historialAcademicoDomainModel.Maestria = new MaestriaDomainModel();
+                    historialAcademicoDomainModel.Maestria = maestriaBusiness.GetMaestria(historialAcademicoVM.Maestria.id);
+                    url = Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + SessionPersister.AccountSession.NombreCompleto + "/" + historialAcademicoDomainModel.Maestria.Documentos.StrUrl);
+
+                    if (FileManager.FileManager.DeleteFileFromServer(url))
+                    {
+                        maestriaBusiness.DeleteMaestria(historialAcademicoDomainModel);
+                    }
+                    break;
+                case 3:
+
+                    historialAcademicoDomainModel.LicenciaturaIngenieria = new LicenciaturaIngenieriaDomainModel();
+                    historialAcademicoDomainModel.LicenciaturaIngenieria = licenciaturaIngBusiness.GetLicenciaturaIng(historialAcademicoVM.LicenciaturaIngenieria.id);
+                    url = Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + SessionPersister.AccountSession.NombreCompleto + "/" + historialAcademicoDomainModel.LicenciaturaIngenieria.Documentos.StrUrl);
+
+                    if (FileManager.FileManager.DeleteFileFromServer(url))
+                    {
+                        licenciaturaIngBusiness.DeleteLicenciarturaIng(historialAcademicoDomainModel);
+                    }
+                    break;
+                case 4:
+
+                    historialAcademicoDomainModel.Bachillerato = new BachilleratoDomainModel();
+                    historialAcademicoDomainModel.Bachillerato = bachilleratoBusiness.GetBachilleratos(historialAcademicoVM.Bachillerato.id);
+                    url = Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + SessionPersister.AccountSession.NombreCompleto + "/" + historialAcademicoDomainModel.Bachillerato.Documentos.StrUrl);
+
+                    if (FileManager.FileManager.DeleteFileFromServer(url))
+                    {
+                        if (documentosBusiness.DeleteDocumento(historialAcademicoDomainModel.Bachillerato.idDocumento))
+                        {
+                            bachilleratoBusiness.DeleteBachillerato(historialAcademicoDomainModel);
+                        }
+                    }
+
+                    break;
+                default:
+                    break;
+            }
+
+            return RedirectToAction("Create","HistorialAcademico");
         }
     }
 }

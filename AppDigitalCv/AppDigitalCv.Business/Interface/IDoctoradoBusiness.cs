@@ -11,5 +11,7 @@ namespace AppDigitalCv.Business.Interface
     {
         bool AddDoctorado(HistorialAcademicoDomainModel historialAcademico);
         List<DoctoradoDomainModel> GetDoctorados(int idPersonal);
+        DoctoradoDomainModel GetDoctorado(int idDoctorado);
+        bool DeleteDoctorado(HistorialAcademicoDomainModel historialAcademicoDomainModel);
     }
 }

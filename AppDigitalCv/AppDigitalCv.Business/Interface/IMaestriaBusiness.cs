@@ -11,5 +11,7 @@ namespace AppDigitalCv.Business.Interface
     {
         bool AddMaestria(HistorialAcademicoDomainModel historialAcademicoDomainModel);
         List<MaestriaDomainModel> GetMaestrias(int idPersonal);
+        MaestriaDomainModel GetMaestria(int _id);
+        bool DeleteMaestria(HistorialAcademicoDomainModel historialAcademicoDomainModel);
     }
 }

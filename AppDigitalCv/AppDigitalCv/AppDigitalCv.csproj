@@ -466,6 +466,7 @@
     <Content Include="Scripts\Validate\Hijos\validate-hijos-regExp.js" />
     <Content Include="Scripts\Validate\HistorialAcademico\fixdom-historial-academico.js" />
     <Content Include="Scripts\Validate\HistorialAcademico\setdata-historial-academico.js" />
+    <Content Include="Scripts\Validate\HistorialAcademico\validate-historial-academico-upload.js" />
     <Content Include="Scripts\Validate\HistorialAcademico\validate-historial-academico-form.js" />
     <Content Include="Scripts\Validate\Hobbie\validate-hobbie-form.js" />
     <Content Include="Scripts\Validate\Hobbie\validate-hobbie-regExp.js" />
@@ -649,6 +650,7 @@
     <Content Include="Views\HistorialAcademico\_InstitucionesAcreditanLicenciatura.cshtml" />
     <Content Include="Views\HistorialAcademico\_StatusDoctorados.cshtml" />
     <Content Include="Views\HistorialAcademico\_FuenteFinaciamientoDoctorado.cshtml" />
+    <Content Include="Views\HistorialAcademico\_Eliminar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

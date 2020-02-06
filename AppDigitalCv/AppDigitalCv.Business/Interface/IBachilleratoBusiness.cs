@@ -11,5 +11,7 @@ namespace AppDigitalCv.Business.Interface
     {
         bool addBachillerato(HistorialAcademicoDomainModel historialAcademico);
         List<BachilleratoDomainModel> GetBachillerato(int idPersonal);
+        BachilleratoDomainModel GetBachilleratos(int _id);
+        bool DeleteBachillerato(HistorialAcademicoDomainModel historialAcademicoDomainModel);
     }
 }

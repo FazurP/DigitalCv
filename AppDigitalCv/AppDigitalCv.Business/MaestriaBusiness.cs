@@ -98,5 +98,50 @@ namespace AppDigitalCv.Business
 
             return maestriaDomainModels;
         }
+        public MaestriaDomainModel GetMaestria(int _id)
+        {
+            MaestriaDomainModel maestriaDomainModel = new MaestriaDomainModel();
+            TblMaetria tblMaetria = maestriaRepository.SingleOrDefault(p => p.id == _id);
+
+            maestriaDomainModel.bitReconocidoPNPC = tblMaetria.bitReconocidoPNPC.Value;
+            maestriaDomainModel.id = tblMaetria.id;
+            maestriaDomainModel.idDocumento = tblMaetria.idDocumento.Value;
+            maestriaDomainModel.idFuenteFinanciamientoMaestria = tblMaetria.idFuentaFinanciamientoMaestria.Value;
+            maestriaDomainModel.idInstitucionAcreditaMaestria = tblMaetria.idInstitucionAcreditaMaestria.Value;
+            maestriaDomainModel.idPersonal = tblMaetria.idPersonal.Value;
+            maestriaDomainModel.idStatusMaestria = tblMaetria.idStatusMaestria.Value;
+            maestriaDomainModel.strNombre = tblMaetria.strNombre;
+            maestriaDomainModel.Documentos = new DocumentosDomainModel
+            {
+                StrUrl = tblMaetria.catDocumentos.strUrl
+            };
+            maestriaDomainModel.FuenteFinaciamientoMaestria = new FuenteFinaciamientoMaestriaDomainModel
+            {
+                strValor = tblMaetria.CatFuentaFinaciamientoMaestria.strValor
+            };
+            maestriaDomainModel.InstitucionAcreditaMaestria = new InstitucionAcreditaMaestriaDomainModel
+            {
+                strValor = tblMaetria.CatInstitucionAcreditaMaestria.strValor
+            };
+            maestriaDomainModel.StatusMaestria = new StatusMaestriaDomainModel
+            {
+                strValor = tblMaetria.CatStatusMaestria.strValor
+            };
+
+            return maestriaDomainModel;
+        }
+
+        public bool DeleteMaestria(HistorialAcademicoDomainModel historialAcademicoDomainModel)
+        {
+            bool respuesta = false;
+
+            if (historialAcademicoDomainModel.Maestria.id > 0)
+            {
+                maestriaRepository.Delete(p => p.id == historialAcademicoDomainModel.Maestria.id);
+                respuesta = true;
+            }
+
+            return respuesta;
+        }
     }
 }

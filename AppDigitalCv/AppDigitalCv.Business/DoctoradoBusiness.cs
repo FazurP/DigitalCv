@@ -97,5 +97,51 @@ namespace AppDigitalCv.Business
 
             return doctoradoDomainModels;
         }
+
+        public DoctoradoDomainModel GetDoctorado(int idDoctorado)
+        {
+            DoctoradoDomainModel doctoradoDomainModel = new DoctoradoDomainModel();
+
+            TblDoctorado tblDoctorado = doctoradoRepository.SingleOrDefault(p => p.id == idDoctorado);
+
+            doctoradoDomainModel.id = tblDoctorado.id;
+            doctoradoDomainModel.idDocumento = tblDoctorado.idDocumento.Value;
+            doctoradoDomainModel.idFuentaFinaciamientoDoctorado = tblDoctorado.idFuenteFinanciamientoDoctorado.Value;
+            doctoradoDomainModel.idInstitucionAcreditaDoctorado = tblDoctorado.idInstitucionAcreditaDoctorado.Value;
+            doctoradoDomainModel.idPersonal = tblDoctorado.idPersonal.Value;
+            doctoradoDomainModel.idStatusDoctorado = tblDoctorado.idStatusDoctorado.Value;
+            doctoradoDomainModel.strNombre = tblDoctorado.strNombre;
+            doctoradoDomainModel.bitReconocimientePNPC = tblDoctorado.bitReconomientoPNPC.Value;
+            doctoradoDomainModel.Documentos = new DocumentosDomainModel
+            {
+                StrUrl = tblDoctorado.catDocumentos.strUrl
+            };
+            doctoradoDomainModel.FuenteFinanciamientoDoctorado = new FuenteFinanciamientoDoctoradoDomainModel
+            {
+                strValor = tblDoctorado.CatFuenteFinanciamientoDoctorado.strValor
+            };
+            doctoradoDomainModel.InstitucionAcreditaDoctorado = new InstitucionAcreditaDoctoradoDomainModel
+            {
+                strValor = tblDoctorado.CatInstitucionAcreditaDoctorado.strValor
+            };
+            doctoradoDomainModel.StatusDoctorado = new StatusDoctoradoDomainModel
+            {
+                strValor = tblDoctorado.CatStatusDoctorado.strValor
+            };
+
+            return doctoradoDomainModel;
+        }
+        public bool DeleteDoctorado(HistorialAcademicoDomainModel historialAcademicoDomainModel)
+        {
+            bool respuesta = false;
+
+            if (historialAcademicoDomainModel.Doctorado.id > 0)
+            {
+                documentosRepository.Delete(p => p.idDocumento == historialAcademicoDomainModel.Doctorado.idDocumento);
+                respuesta = true;
+            }
+
+            return respuesta;
+        }
     }
 }
