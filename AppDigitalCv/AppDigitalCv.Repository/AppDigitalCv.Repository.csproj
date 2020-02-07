@@ -80,6 +80,7 @@
     <Compile Include="AsociacionesRepository.cs" />
     <Compile Include="BachilleratoRepository.cs" />
     <Compile Include="CapacitacionCompetenciasProfesionalesRepository.cs" />
+    <Compile Include="CapacitacionesRecibidasRepository.cs" />
     <Compile Include="CapituloLibroRepository.cs" />
     <Compile Include="CatActividadesFisicas.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
@@ -563,6 +564,7 @@
     </Compile>
     <Compile Include="TelefonoRepository.cs" />
     <Compile Include="TipoActividadRepository.cs" />
+    <Compile Include="TipoCapacitacionRepository.cs" />
     <Compile Include="TipoDocumentoRepository.cs" />
     <Compile Include="TipoEstudioRepository.cs" />
     <Compile Include="TipoProductoRepository.cs" />

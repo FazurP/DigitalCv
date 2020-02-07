@@ -78,13 +78,6 @@
           <Property Name="strDescripcion" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="strObservacion" Type="varchar(max)" />
         </EntityType>
-        <EntityType Name="CatCapaciones">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="strValor" Type="varchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="CatCapacitacionesCompetenciasProfesionales">
           <Key>
             <PropertyRef Name="id" />
@@ -741,7 +734,6 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idDocumento" Type="int" />
           <Property Name="idPersonal" Type="int" />
-          <Property Name="idCapacitaciones" Type="int" />
           <Property Name="idTipoCapacitacion" Type="int" />
           <Property Name="strNombre" Type="varchar" MaxLength="150" />
           <Property Name="strTotalHoras" Type="varchar" MaxLength="150" />
@@ -2060,10 +2052,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TblBachillerato_catDocumentos">
-          <End Role="catDocumentos" Type="Self.catDocumentos" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK_TblBachillerato_catDocumentos1">
+          <End Role="catDocumentos" Type="Self.catDocumentos" Multiplicity="0..1" />
           <End Role="TblBachillerato" Type="Self.TblBachillerato" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="catDocumentos">
@@ -2110,18 +2100,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TblCapacitacionesImpartidas_CatCapaciones">
-          <End Role="CatCapaciones" Type="Self.CatCapaciones" Multiplicity="0..1" />
-          <End Role="TblCapacitacionesImpartidas" Type="Self.TblCapacitacionesImpartidas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CatCapaciones">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TblCapacitacionesImpartidas">
-              <PropertyRef Name="idCapacitacion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TblCapacitacionesImpartidas_catDocumentos">
           <End Role="catDocumentos" Type="Self.catDocumentos" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -2159,18 +2137,6 @@
             </Principal>
             <Dependent Role="TblCapacitacionesImpartidas">
               <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblCapacitacionesRecibidas_CatCapaciones">
-          <End Role="CatCapaciones" Type="Self.CatCapaciones" Multiplicity="0..1" />
-          <End Role="TblCapacitacionesRecibidas" Type="Self.TblCapacitacionesRecibidas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CatCapaciones">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TblCapacitacionesRecibidas">
-              <PropertyRef Name="idCapacitaciones" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3358,7 +3324,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblPersonal_TblBachillerato">
+        <Association Name="FK_tblPersonal_TblBachillerato1">
           <End Role="TblBachillerato" Type="Self.TblBachillerato" Multiplicity="0..1" />
           <End Role="tblPersonal" Type="Self.tblPersonal" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3862,7 +3828,6 @@
           <EntitySet Name="CatAlergiaSustancia" EntityType="Self.CatAlergiaSustancia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catArea" EntityType="Self.catArea" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catAsociaciones" EntityType="Self.catAsociaciones" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CatCapaciones" EntityType="Self.CatCapaciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CatCapacitacionesCompetenciasProfesionales" EntityType="Self.CatCapacitacionesCompetenciasProfesionales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="catCategoria" EntityType="Self.catCategoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CatCategoriaProfesor" EntityType="Self.CatCategoriaProfesor" Schema="dbo" store:Type="Tables" />
@@ -4205,7 +4170,7 @@
             <End Role="catStatus" EntitySet="catStatus" />
             <End Role="catUsuarios" EntitySet="catUsuarios" />
           </AssociationSet>
-          <AssociationSet Name="FK_TblBachillerato_catDocumentos" Association="Self.FK_TblBachillerato_catDocumentos">
+          <AssociationSet Name="FK_TblBachillerato_catDocumentos1" Association="Self.FK_TblBachillerato_catDocumentos1">
             <End Role="catDocumentos" EntitySet="catDocumentos" />
             <End Role="TblBachillerato" EntitySet="TblBachillerato" />
           </AssociationSet>
@@ -4221,10 +4186,6 @@
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="TblCapacitacionCompetenciasProfesionales" EntitySet="TblCapacitacionCompetenciasProfesionales" />
           </AssociationSet>
-          <AssociationSet Name="FK_TblCapacitacionesImpartidas_CatCapaciones" Association="Self.FK_TblCapacitacionesImpartidas_CatCapaciones">
-            <End Role="CatCapaciones" EntitySet="CatCapaciones" />
-            <End Role="TblCapacitacionesImpartidas" EntitySet="TblCapacitacionesImpartidas" />
-          </AssociationSet>
           <AssociationSet Name="FK_TblCapacitacionesImpartidas_catDocumentos" Association="Self.FK_TblCapacitacionesImpartidas_catDocumentos">
             <End Role="catDocumentos" EntitySet="catDocumentos" />
             <End Role="TblCapacitacionesImpartidas" EntitySet="TblCapacitacionesImpartidas" />
@@ -4236,10 +4197,6 @@
           <AssociationSet Name="FK_TblCapacitacionesImpartidas_tblPersonal" Association="Self.FK_TblCapacitacionesImpartidas_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="TblCapacitacionesImpartidas" EntitySet="TblCapacitacionesImpartidas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblCapacitacionesRecibidas_CatCapaciones" Association="Self.FK_TblCapacitacionesRecibidas_CatCapaciones">
-            <End Role="CatCapaciones" EntitySet="CatCapaciones" />
-            <End Role="TblCapacitacionesRecibidas" EntitySet="TblCapacitacionesRecibidas" />
           </AssociationSet>
           <AssociationSet Name="FK_TblCapacitacionesRecibidas_catDocumentos" Association="Self.FK_TblCapacitacionesRecibidas_catDocumentos">
             <End Role="catDocumentos" EntitySet="catDocumentos" />
@@ -4605,7 +4562,7 @@
             <End Role="CatNacionalidad" EntitySet="CatNacionalidad" />
             <End Role="tblPersonal" EntitySet="tblPersonal" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblPersonal_TblBachillerato" Association="Self.FK_tblPersonal_TblBachillerato">
+          <AssociationSet Name="FK_tblPersonal_TblBachillerato1" Association="Self.FK_tblPersonal_TblBachillerato1">
             <End Role="TblBachillerato" EntitySet="TblBachillerato" />
             <End Role="tblPersonal" EntitySet="tblPersonal" />
           </AssociationSet>
@@ -5367,33 +5324,15 @@
             <End Role="catUsuarios" EntitySet="catUsuarios" />
             <End Role="tblUsuarioRol" EntitySet="tblUsuarioRol" />
           </AssociationSet>
-          <EntitySet Name="CatCapaciones" EntityType="bdGestionDocenteModel.CatCapaciones" />
           <EntitySet Name="CatTiposCapacitacion" EntityType="bdGestionDocenteModel.CatTiposCapacitacion" />
           <EntitySet Name="TblCapacitacionesImpartidas" EntityType="bdGestionDocenteModel.TblCapacitacionesImpartidas" />
-          <EntitySet Name="TblCapacitacionesRecibidas" EntityType="bdGestionDocenteModel.TblCapacitacionesRecibidas" />
-          <AssociationSet Name="FK_TblCapacitacionesImpartidas_CatCapaciones" Association="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_CatCapaciones">
-            <End Role="CatCapaciones" EntitySet="CatCapaciones" />
-            <End Role="TblCapacitacionesImpartidas" EntitySet="TblCapacitacionesImpartidas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblCapacitacionesRecibidas_CatCapaciones" Association="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_CatCapaciones">
-            <End Role="CatCapaciones" EntitySet="CatCapaciones" />
-            <End Role="TblCapacitacionesRecibidas" EntitySet="TblCapacitacionesRecibidas" />
-          </AssociationSet>
           <AssociationSet Name="FK_TblCapacitacionesImpartidas_catDocumentos" Association="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_catDocumentos">
             <End Role="catDocumentos" EntitySet="catDocumentos" />
             <End Role="TblCapacitacionesImpartidas" EntitySet="TblCapacitacionesImpartidas" />
           </AssociationSet>
-          <AssociationSet Name="FK_TblCapacitacionesRecibidas_catDocumentos" Association="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_catDocumentos">
-            <End Role="catDocumentos" EntitySet="catDocumentos" />
-            <End Role="TblCapacitacionesRecibidas" EntitySet="TblCapacitacionesRecibidas" />
-          </AssociationSet>
           <AssociationSet Name="FK_TblCapacitacionesImpartidas_CatTiposCapacitacion" Association="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_CatTiposCapacitacion">
             <End Role="CatTiposCapacitacion" EntitySet="CatTiposCapacitacion" />
             <End Role="TblCapacitacionesImpartidas" EntitySet="TblCapacitacionesImpartidas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblCapacitacionesRecibidas_CatTiposCapacitacion" Association="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_CatTiposCapacitacion">
-            <End Role="CatTiposCapacitacion" EntitySet="CatTiposCapacitacion" />
-            <End Role="TblCapacitacionesRecibidas" EntitySet="TblCapacitacionesRecibidas" />
           </AssociationSet>
           <EntitySet Name="TblBachillerato" EntityType="bdGestionDocenteModel.TblBachillerato" />
           <AssociationSet Name="FK_TblBachillerato_catDocumentos" Association="bdGestionDocenteModel.FK_TblBachillerato_catDocumentos">
@@ -5460,10 +5399,6 @@
           <AssociationSet Name="FK_TblCapacitacionesImpartidas_tblPersonal" Association="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="TblCapacitacionesImpartidas" EntitySet="TblCapacitacionesImpartidas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblCapacitacionesRecibidas_tblPersonal" Association="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_tblPersonal">
-            <End Role="tblPersonal" EntitySet="tblPersonal" />
-            <End Role="TblCapacitacionesRecibidas" EntitySet="TblCapacitacionesRecibidas" />
           </AssociationSet>
           <AssociationSet Name="FK_tblCapituloLibro_tblPersonal" Association="bdGestionDocenteModel.FK_tblCapituloLibro_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
@@ -5658,6 +5593,19 @@
           <AssociationSet Name="FK_TblDoctorado_tblPersonal" Association="bdGestionDocenteModel.FK_TblDoctorado_tblPersonal">
             <End Role="tblPersonal" EntitySet="tblPersonal" />
             <End Role="TblDoctorado" EntitySet="TblDoctorado" />
+          </AssociationSet>
+          <EntitySet Name="TblCapacitacionesRecibidas" EntityType="bdGestionDocenteModel.TblCapacitacionesRecibidas" />
+          <AssociationSet Name="FK_TblCapacitacionesRecibidas_catDocumentos" Association="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_catDocumentos">
+            <End Role="catDocumentos" EntitySet="catDocumentos" />
+            <End Role="TblCapacitacionesRecibidas" EntitySet="TblCapacitacionesRecibidas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblCapacitacionesRecibidas_CatTiposCapacitacion" Association="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_CatTiposCapacitacion">
+            <End Role="CatTiposCapacitacion" EntitySet="CatTiposCapacitacion" />
+            <End Role="TblCapacitacionesRecibidas" EntitySet="TblCapacitacionesRecibidas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblCapacitacionesRecibidas_tblPersonal" Association="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_tblPersonal">
+            <End Role="tblPersonal" EntitySet="tblPersonal" />
+            <End Role="TblCapacitacionesRecibidas" EntitySet="TblCapacitacionesRecibidas" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="catAlergias">
@@ -6251,11 +6199,11 @@
           <NavigationProperty Name="tblDocumentacionPersonal" Relationship="bdGestionDocenteModel.fk_documento_documentacionPersonal" FromRole="catDocumentos" ToRole="tblDocumentacionPersonal" />
           <NavigationProperty Name="tblCompetenciasConocimientosPersonal" Relationship="bdGestionDocenteModel.FK_tblCompetenciasConocimientosPersonal_catDocumentos" FromRole="catDocumentos" ToRole="tblCompetenciasConocimientosPersonal" />
           <NavigationProperty Name="TblCapacitacionesImpartidas" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_catDocumentos" FromRole="catDocumentos" ToRole="TblCapacitacionesImpartidas" />
-          <NavigationProperty Name="TblCapacitacionesRecibidas" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_catDocumentos" FromRole="catDocumentos" ToRole="TblCapacitacionesRecibidas" />
           <NavigationProperty Name="TblBachillerato" Relationship="bdGestionDocenteModel.FK_TblBachillerato_catDocumentos" FromRole="catDocumentos" ToRole="TblBachillerato" />
           <NavigationProperty Name="TblLicenciaturaIngenieria" Relationship="bdGestionDocenteModel.FK_TblLicenciaturaIngenieria_catDocumentos" FromRole="catDocumentos" ToRole="TblLicenciaturaIngenieria" />
           <NavigationProperty Name="TblMaetria" Relationship="bdGestionDocenteModel.FK_TblMaetria_catDocumentos" FromRole="catDocumentos" ToRole="TblMaetria" />
           <NavigationProperty Name="TblDoctorado" Relationship="bdGestionDocenteModel.FK_TblDoctorado_catDocumentos" FromRole="catDocumentos" ToRole="TblDoctorado" />
+          <NavigationProperty Name="TblCapacitacionesRecibidas" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_catDocumentos" FromRole="catDocumentos" ToRole="TblCapacitacionesRecibidas" />
         </EntityType>
         <EntityType Name="tblPortafolioPersonal">
           <Key>
@@ -8760,15 +8708,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="CatCapaciones">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="strValor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="TblCapacitacionesImpartidas" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_CatCapaciones" FromRole="CatCapaciones" ToRole="TblCapacitacionesImpartidas" />
-          <NavigationProperty Name="TblCapacitacionesRecibidas" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_CatCapaciones" FromRole="CatCapaciones" ToRole="TblCapacitacionesRecibidas" />
-        </EntityType>
         <EntityType Name="CatTiposCapacitacion">
           <Key>
             <PropertyRef Name="id" />
@@ -8791,53 +8730,10 @@
           <Property Name="strLugarIntitucion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="strTotalHoras" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="dteFecha" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="CatCapaciones" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_CatCapaciones" FromRole="TblCapacitacionesImpartidas" ToRole="CatCapaciones" />
           <NavigationProperty Name="catDocumentos" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_catDocumentos" FromRole="TblCapacitacionesImpartidas" ToRole="catDocumentos" />
           <NavigationProperty Name="CatTiposCapacitacion" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_CatTiposCapacitacion" FromRole="TblCapacitacionesImpartidas" ToRole="CatTiposCapacitacion" />
           <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_tblPersonal" FromRole="TblCapacitacionesImpartidas" ToRole="tblPersonal" />
         </EntityType>
-        <EntityType Name="TblCapacitacionesRecibidas">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idDocumento" Type="Int32" />
-          <Property Name="idPersonal" Type="Int32" />
-          <Property Name="idCapacitaciones" Type="Int32" />
-          <Property Name="idTipoCapacitacion" Type="Int32" />
-          <Property Name="strNombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strTotalHoras" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strInstitucionAcredita" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="dteFecha" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="CatCapaciones" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_CatCapaciones" FromRole="TblCapacitacionesRecibidas" ToRole="CatCapaciones" />
-          <NavigationProperty Name="catDocumentos" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_catDocumentos" FromRole="TblCapacitacionesRecibidas" ToRole="catDocumentos" />
-          <NavigationProperty Name="CatTiposCapacitacion" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_CatTiposCapacitacion" FromRole="TblCapacitacionesRecibidas" ToRole="CatTiposCapacitacion" />
-          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_tblPersonal" FromRole="TblCapacitacionesRecibidas" ToRole="tblPersonal" />
-        </EntityType>
-        <Association Name="FK_TblCapacitacionesImpartidas_CatCapaciones">
-          <End Type="bdGestionDocenteModel.CatCapaciones" Role="CatCapaciones" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblCapacitacionesImpartidas" Role="TblCapacitacionesImpartidas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CatCapaciones">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TblCapacitacionesImpartidas">
-              <PropertyRef Name="idCapacitacion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblCapacitacionesRecibidas_CatCapaciones">
-          <End Type="bdGestionDocenteModel.CatCapaciones" Role="CatCapaciones" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblCapacitacionesRecibidas" Role="TblCapacitacionesRecibidas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CatCapaciones">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TblCapacitacionesRecibidas">
-              <PropertyRef Name="idCapacitaciones" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TblCapacitacionesImpartidas_catDocumentos">
           <End Type="bdGestionDocenteModel.catDocumentos" Role="catDocumentos" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -8852,20 +8748,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TblCapacitacionesRecibidas_catDocumentos">
-          <End Type="bdGestionDocenteModel.catDocumentos" Role="catDocumentos" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.TblCapacitacionesRecibidas" Role="TblCapacitacionesRecibidas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="catDocumentos">
-              <PropertyRef Name="idDocumento" />
-            </Principal>
-            <Dependent Role="TblCapacitacionesRecibidas">
-              <PropertyRef Name="idDocumento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TblCapacitacionesImpartidas_CatTiposCapacitacion">
           <End Type="bdGestionDocenteModel.CatTiposCapacitacion" Role="CatTiposCapacitacion" Multiplicity="0..1" />
           <End Type="bdGestionDocenteModel.TblCapacitacionesImpartidas" Role="TblCapacitacionesImpartidas" Multiplicity="*" />
@@ -8874,18 +8756,6 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="TblCapacitacionesImpartidas">
-              <PropertyRef Name="idTipoCapacitacion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblCapacitacionesRecibidas_CatTiposCapacitacion">
-          <End Type="bdGestionDocenteModel.CatTiposCapacitacion" Role="CatTiposCapacitacion" Multiplicity="0..1" />
-          <End Type="bdGestionDocenteModel.TblCapacitacionesRecibidas" Role="TblCapacitacionesRecibidas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CatTiposCapacitacion">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TblCapacitacionesRecibidas">
               <PropertyRef Name="idTipoCapacitacion" />
             </Dependent>
           </ReferentialConstraint>
@@ -9063,7 +8933,6 @@
           <NavigationProperty Name="TblBachillerato" Relationship="bdGestionDocenteModel.FK_tblPersonal_TblBachillerato" FromRole="tblPersonal" ToRole="TblBachillerato" />
           <NavigationProperty Name="TblCapacitacionCompetenciasProfesionales" Relationship="bdGestionDocenteModel.FK_TblCapacitacionCompetenciasProfesionales_tblPersonal" FromRole="tblPersonal" ToRole="TblCapacitacionCompetenciasProfesionales" />
           <NavigationProperty Name="TblCapacitacionesImpartidas" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesImpartidas_tblPersonal" FromRole="tblPersonal" ToRole="TblCapacitacionesImpartidas" />
-          <NavigationProperty Name="TblCapacitacionesRecibidas" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_tblPersonal" FromRole="tblPersonal" ToRole="TblCapacitacionesRecibidas" />
           <NavigationProperty Name="tblCapituloLibro" Relationship="bdGestionDocenteModel.FK_tblCapituloLibro_tblPersonal" FromRole="tblPersonal" ToRole="tblCapituloLibro" />
           <NavigationProperty Name="tblCompetenciasConocimientosPersonal" Relationship="bdGestionDocenteModel.fk_personal_competenciaConocimietosPersonal" FromRole="tblPersonal" ToRole="tblCompetenciasConocimientosPersonal" />
           <NavigationProperty Name="tblCompetenciasTIPersonal" Relationship="bdGestionDocenteModel.fk_personal_competenciaTIPersonal" FromRole="tblPersonal" ToRole="tblCompetenciasTIPersonal" />
@@ -9104,6 +8973,7 @@
           <NavigationProperty Name="tblTutoria" Relationship="bdGestionDocenteModel.FK_tblTutoria_tblPersonal" FromRole="tblPersonal" ToRole="tblTutoria" />
           <NavigationProperty Name="TblMaetria" Relationship="bdGestionDocenteModel.FK_TblMaetria_tblPersonal" FromRole="tblPersonal" ToRole="TblMaetria" />
           <NavigationProperty Name="TblDoctorado" Relationship="bdGestionDocenteModel.FK_TblDoctorado_tblPersonal" FromRole="tblPersonal" ToRole="TblDoctorado" />
+          <NavigationProperty Name="TblCapacitacionesRecibidas" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_tblPersonal" FromRole="tblPersonal" ToRole="TblCapacitacionesRecibidas" />
         </EntityType>
         <Association Name="FK_catDireccion_tblPersonal">
           <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
@@ -9213,20 +9083,6 @@
               <PropertyRef Name="idPersonal" />
             </Principal>
             <Dependent Role="TblCapacitacionesImpartidas">
-              <PropertyRef Name="idPersonal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblCapacitacionesRecibidas_tblPersonal">
-          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="bdGestionDocenteModel.TblCapacitacionesRecibidas" Role="TblCapacitacionesRecibidas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPersonal">
-              <PropertyRef Name="idPersonal" />
-            </Principal>
-            <Dependent Role="TblCapacitacionesRecibidas">
               <PropertyRef Name="idPersonal" />
             </Dependent>
           </ReferentialConstraint>
@@ -9885,6 +9741,62 @@
               <PropertyRef Name="idPersonal" />
             </Principal>
             <Dependent Role="TblDoctorado">
+              <PropertyRef Name="idPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TblCapacitacionesRecibidas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idDocumento" Type="Int32" />
+          <Property Name="idPersonal" Type="Int32" />
+          <Property Name="idTipoCapacitacion" Type="Int32" />
+          <Property Name="strNombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="strTotalHoras" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="strInstitucionAcredita" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="dteFecha" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="catDocumentos" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_catDocumentos" FromRole="TblCapacitacionesRecibidas" ToRole="catDocumentos" />
+          <NavigationProperty Name="CatTiposCapacitacion" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_CatTiposCapacitacion" FromRole="TblCapacitacionesRecibidas" ToRole="CatTiposCapacitacion" />
+          <NavigationProperty Name="tblPersonal" Relationship="bdGestionDocenteModel.FK_TblCapacitacionesRecibidas_tblPersonal" FromRole="TblCapacitacionesRecibidas" ToRole="tblPersonal" />
+        </EntityType>
+        <Association Name="FK_TblCapacitacionesRecibidas_catDocumentos">
+          <End Type="bdGestionDocenteModel.catDocumentos" Role="catDocumentos" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.TblCapacitacionesRecibidas" Role="TblCapacitacionesRecibidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catDocumentos">
+              <PropertyRef Name="idDocumento" />
+            </Principal>
+            <Dependent Role="TblCapacitacionesRecibidas">
+              <PropertyRef Name="idDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblCapacitacionesRecibidas_CatTiposCapacitacion">
+          <End Type="bdGestionDocenteModel.CatTiposCapacitacion" Role="CatTiposCapacitacion" Multiplicity="0..1" />
+          <End Type="bdGestionDocenteModel.TblCapacitacionesRecibidas" Role="TblCapacitacionesRecibidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatTiposCapacitacion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblCapacitacionesRecibidas">
+              <PropertyRef Name="idTipoCapacitacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblCapacitacionesRecibidas_tblPersonal">
+          <End Type="bdGestionDocenteModel.tblPersonal" Role="tblPersonal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="bdGestionDocenteModel.TblCapacitacionesRecibidas" Role="TblCapacitacionesRecibidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPersonal">
+              <PropertyRef Name="idPersonal" />
+            </Principal>
+            <Dependent Role="TblCapacitacionesRecibidas">
               <PropertyRef Name="idPersonal" />
             </Dependent>
           </ReferentialConstraint>
@@ -11266,14 +11178,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CatCapaciones">
-            <EntityTypeMapping TypeName="bdGestionDocenteModel.CatCapaciones">
-              <MappingFragment StoreEntitySet="CatCapaciones">
-                <ScalarProperty Name="strValor" ColumnName="strValor" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CatTiposCapacitacion">
             <EntityTypeMapping TypeName="bdGestionDocenteModel.CatTiposCapacitacion">
               <MappingFragment StoreEntitySet="CatTiposCapacitacion">
@@ -11292,21 +11196,6 @@
                 <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
                 <ScalarProperty Name="idCapacitacion" ColumnName="idCapacitacion" />
                 <ScalarProperty Name="idTipoCapacitacion" ColumnName="idTipoCapacitacion" />
-                <ScalarProperty Name="idDocumento" ColumnName="idDocumento" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TblCapacitacionesRecibidas">
-            <EntityTypeMapping TypeName="bdGestionDocenteModel.TblCapacitacionesRecibidas">
-              <MappingFragment StoreEntitySet="TblCapacitacionesRecibidas">
-                <ScalarProperty Name="dteFecha" ColumnName="dteFecha" />
-                <ScalarProperty Name="strInstitucionAcredita" ColumnName="strInstitucionAcredita" />
-                <ScalarProperty Name="strTotalHoras" ColumnName="strTotalHoras" />
-                <ScalarProperty Name="strNombre" ColumnName="strNombre" />
-                <ScalarProperty Name="idTipoCapacitacion" ColumnName="idTipoCapacitacion" />
-                <ScalarProperty Name="idCapacitaciones" ColumnName="idCapacitaciones" />
-                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
                 <ScalarProperty Name="idDocumento" ColumnName="idDocumento" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
@@ -11422,6 +11311,20 @@
                 <ScalarProperty Name="idStatusDoctorado" ColumnName="idStatusDoctorado" />
                 <ScalarProperty Name="idInstitucionAcreditaDoctorado" ColumnName="idInstitucionAcreditaDoctorado" />
                 <ScalarProperty Name="strNombre" ColumnName="strNombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblCapacitacionesRecibidas">
+            <EntityTypeMapping TypeName="bdGestionDocenteModel.TblCapacitacionesRecibidas">
+              <MappingFragment StoreEntitySet="TblCapacitacionesRecibidas">
+                <ScalarProperty Name="dteFecha" ColumnName="dteFecha" />
+                <ScalarProperty Name="strInstitucionAcredita" ColumnName="strInstitucionAcredita" />
+                <ScalarProperty Name="strTotalHoras" ColumnName="strTotalHoras" />
+                <ScalarProperty Name="strNombre" ColumnName="strNombre" />
+                <ScalarProperty Name="idTipoCapacitacion" ColumnName="idTipoCapacitacion" />
+                <ScalarProperty Name="idPersonal" ColumnName="idPersonal" />
+                <ScalarProperty Name="idDocumento" ColumnName="idDocumento" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -54,6 +54,7 @@
     <Compile Include="AsociacionesDomainModel.cs" />
     <Compile Include="BachilleratoDomainModel.cs" />
     <Compile Include="CapacitacionCompetenciasProfesionalesDomainModel.cs" />
+    <Compile Include="CapacitacionesRecibidasDomainModel.cs" />
     <Compile Include="CapituloLibroDomainModel.cs" />
     <Compile Include="CategoriaDomainModel.cs" />
     <Compile Include="ColoniaDomainModel.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="StatusLicenciaturaDomainModel.cs" />
     <Compile Include="StatusMaestriaDomainModel.cs" />
     <Compile Include="TipoActividadDomainModel.cs" />
+    <Compile Include="TipoCapacitacionDomainModel.cs" />
     <Compile Include="TipoContratoDomainModel.cs" />
     <Compile Include="TipoDocumentoDomainModel.cs" />
     <Compile Include="TipoEmpresaDomainModel.cs" />

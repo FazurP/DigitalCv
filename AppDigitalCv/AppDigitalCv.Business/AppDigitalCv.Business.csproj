@@ -55,6 +55,7 @@
     <Compile Include="AreaBusiness.cs" />
     <Compile Include="AsosiacionesBusiness.cs" />
     <Compile Include="BachilleratoBusiness.cs" />
+    <Compile Include="CapacitacionesRecibidadBusiness.cs" />
     <Compile Include="CapituloLibroBusiness.cs" />
     <Compile Include="CategoriaBusiness.cs" />
     <Compile Include="CompetenciasBusiness.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="IdiomasBusiness.cs" />
     <Compile Include="InstitucionAcreditaMaestriaBusiness.cs" />
     <Compile Include="Interface\IBachilleratoBusiness.cs" />
+    <Compile Include="Interface\ICapacitacionesRecibidasBusiness.cs" />
     <Compile Include="Interface\IDoctoradoBusiness.cs" />
     <Compile Include="InformeTecnicoBusiness.cs" />
     <Compile Include="InstitucionAcreditaDoctoradoBusiness.cs" />
@@ -174,6 +176,7 @@
     <Compile Include="Interface\IStatusMaestriaBusiness.cs" />
     <Compile Include="Interface\ITelefono.cs" />
     <Compile Include="Interface\ITipoActividad.cs" />
+    <Compile Include="Interface\ITipoCapacitacionBusiness.cs" />
     <Compile Include="Interface\ITipoContratoBusiness.cs" />
     <Compile Include="Interface\ITipoDocumentoBusiness.cs" />
     <Compile Include="Interface\ITipoEstudioBusiness.cs" />
@@ -213,6 +216,7 @@
     <Compile Include="StatusMaestriaBusiness.cs" />
     <Compile Include="TelefonoBusiness.cs" />
     <Compile Include="TipoActividadBusiness.cs" />
+    <Compile Include="TipoCapacitacionBusiness.cs" />
     <Compile Include="TipoDocumentoBusiness.cs" />
     <Compile Include="TipoEstudioBusiness.cs" />
     <Compile Include="TipoProductoBusiness.cs" />

@@ -424,6 +424,10 @@
     <Content Include="Scripts\Validate\Asociaciones\validate-asociaciones-form.js" />
     <Content Include="Scripts\Validate\Asociaciones\validate-asociaciones-regExp.js" />
     <Content Include="Scripts\Validate\Block\validate-block-click.js" />
+    <Content Include="Scripts\Validate\CapacitacionesRecibidas\fixdom-capacitaciones-recibidas.js" />
+    <Content Include="Scripts\Validate\CapacitacionesRecibidas\validate-capacitaciones-recibidas-regExp.js" />
+    <Content Include="Scripts\Validate\CapacitacionesRecibidas\validate-capacitaciones-recibidas-upload.js" />
+    <Content Include="Scripts\Validate\CapacitacionesRecibidas\validate-capacitaciones-tomadas-form.js" />
     <Content Include="Scripts\Validate\CapituloLibro\validate-capitulo-libro-form.js" />
     <Content Include="Scripts\Validate\CapituloLibro\validate-capitulo-libro-regExp.js" />
     <Content Include="Scripts\Validate\CompetenciasTi\validate-competencias-ti-checked.js" />
@@ -651,6 +655,7 @@
     <Content Include="Views\HistorialAcademico\_StatusDoctorados.cshtml" />
     <Content Include="Views\HistorialAcademico\_FuenteFinaciamientoDoctorado.cshtml" />
     <Content Include="Views\HistorialAcademico\_Eliminar.cshtml" />
+    <Content Include="Views\CapacitacionesRecibidas\_Eliminar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -741,6 +746,7 @@
     <Compile Include="ViewModels\AsociacionesVM.cs" />
     <Compile Include="ViewModels\BachilleratoVM.cs" />
     <Compile Include="ViewModels\CapacitacionCompetenciasProfesionalesVM.cs" />
+    <Compile Include="ViewModels\CapacitacionesRecibidasVM.cs" />
     <Compile Include="ViewModels\CapituloLibroVM.cs" />
     <Compile Include="ViewModels\CategoriaVM.cs" />
     <Compile Include="ViewModels\ColoniaVM.cs" />
@@ -863,6 +869,7 @@
     <Compile Include="ViewModels\StatusLicenciaturaVM.cs" />
     <Compile Include="ViewModels\StatusMaestriaVM.cs" />
     <Compile Include="ViewModels\TipoActividadVM.cs" />
+    <Compile Include="ViewModels\TipoCapacitacionVM.cs" />
     <Compile Include="ViewModels\TipoContratoVM.cs" />
     <Compile Include="ViewModels\TipoDocumentoVM.cs" />
     <Compile Include="ViewModels\TipoEmpresaVM.cs" />

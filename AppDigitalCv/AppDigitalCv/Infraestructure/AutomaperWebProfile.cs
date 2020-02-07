@@ -478,6 +478,12 @@ namespace AppDigitalCv.Infraestructure
 
             CreateMap<SeguridadSocialVM, SeguridadSocialDomainModel>();
             CreateMap<SeguridadSocialDomainModel, SeguridadSocialVM>();
+
+            CreateMap<TipoCapacitacionVM, TipoCapacitacionDomainModel>();
+            CreateMap<TipoCapacitacionDomainModel, TipoCapacitacionVM>();
+
+            CreateMap<CapacitacionesRecibidasVM,CapacitacionesRecibidasDomainModel>();
+            CreateMap<CapacitacionesRecibidasDomainModel,CapacitacionesRecibidasVM>();
         }
 
         public static void Run()
