@@ -55,6 +55,7 @@
     <Compile Include="AreaBusiness.cs" />
     <Compile Include="AsosiacionesBusiness.cs" />
     <Compile Include="BachilleratoBusiness.cs" />
+    <Compile Include="CapacitacionesImpartidasBusiness.cs" />
     <Compile Include="CapacitacionesRecibidadBusiness.cs" />
     <Compile Include="CapituloLibroBusiness.cs" />
     <Compile Include="CategoriaBusiness.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="IdiomasBusiness.cs" />
     <Compile Include="InstitucionAcreditaMaestriaBusiness.cs" />
     <Compile Include="Interface\IBachilleratoBusiness.cs" />
+    <Compile Include="Interface\ICapacitacionesImpartidasBusiness.cs" />
     <Compile Include="Interface\ICapacitacionesRecibidasBusiness.cs" />
     <Compile Include="Interface\IDoctoradoBusiness.cs" />
     <Compile Include="InformeTecnicoBusiness.cs" />

@@ -656,6 +656,7 @@
     <Content Include="Views\HistorialAcademico\_FuenteFinaciamientoDoctorado.cshtml" />
     <Content Include="Views\HistorialAcademico\_Eliminar.cshtml" />
     <Content Include="Views\CapacitacionesRecibidas\_Eliminar.cshtml" />
+    <Content Include="Views\CapacitacionesImpartidas\_Eliminar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -746,6 +747,7 @@
     <Compile Include="ViewModels\AsociacionesVM.cs" />
     <Compile Include="ViewModels\BachilleratoVM.cs" />
     <Compile Include="ViewModels\CapacitacionCompetenciasProfesionalesVM.cs" />
+    <Compile Include="ViewModels\CapacitacionesImpartidadVM.cs" />
     <Compile Include="ViewModels\CapacitacionesRecibidasVM.cs" />
     <Compile Include="ViewModels\CapituloLibroVM.cs" />
     <Compile Include="ViewModels\CategoriaVM.cs" />

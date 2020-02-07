@@ -54,6 +54,7 @@
     <Compile Include="AsociacionesDomainModel.cs" />
     <Compile Include="BachilleratoDomainModel.cs" />
     <Compile Include="CapacitacionCompetenciasProfesionalesDomainModel.cs" />
+    <Compile Include="CapacitacionesImpartidadDomainModel.cs" />
     <Compile Include="CapacitacionesRecibidasDomainModel.cs" />
     <Compile Include="CapituloLibroDomainModel.cs" />
     <Compile Include="CategoriaDomainModel.cs" />

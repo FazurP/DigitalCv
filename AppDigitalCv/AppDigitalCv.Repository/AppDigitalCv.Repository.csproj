@@ -80,6 +80,7 @@
     <Compile Include="AsociacionesRepository.cs" />
     <Compile Include="BachilleratoRepository.cs" />
     <Compile Include="CapacitacionCompetenciasProfesionalesRepository.cs" />
+    <Compile Include="CapacitacionesImpartidasRepository.cs" />
     <Compile Include="CapacitacionesRecibidasRepository.cs" />
     <Compile Include="CapituloLibroRepository.cs" />
     <Compile Include="CatActividadesFisicas.cs">
