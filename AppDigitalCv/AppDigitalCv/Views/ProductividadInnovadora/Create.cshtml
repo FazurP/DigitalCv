@@ -1,7 +1,7 @@
 ﻿@model AppDigitalCv.ViewModels.ProductividadInnovadoraVM
 @using AppDigitalCv.Security
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "ProductividadInnovadora", FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="bs-container" style="min-height:960px;">
@@ -21,12 +21,6 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h5 class="box-title">
-                            <label class="text-success emailtitleletter">
-                                <i class="text-success fa fa-heartbeat"></i>
-                                @SessionPersister.AccountSession.NombreCompleto
-                            </label>
-                        </h5>
                     </div>
                     <div class="box-body">
                         <div class="form-group">
@@ -51,23 +45,11 @@
                                     <label>Clasificación Internacional de Patentes</label>
                                     @Html.DropDownList("strClasificacionInternacionalPatentes", null, new { @class = "form-control input-sm", id = "Patentes" })
                                 </div>
-                                <div class="form-group">
-                                    <label>Uso</label>
-                                    @Html.TextBoxFor(model => model.strUso, new { @class = "form-control input-sm", id = "Uso" })
-                                </div>
-                                <div class="form-group">
-                                    <label>Estado Actual</label>
-                                    @Html.DropDownList("strEstadoActual", null, new { @class = "form-control input-sm", id = "EstadoActual" })
-                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Número de Registro</label>
                                     @Html.TextBoxFor(model => model.strNumeroRegistro, new { @class = "form-control input-sm", id = "NumeroRegistro" })
-                                </div>
-                                <div class="form-group">
-                                    <label>Usuario</label>
-                                    @Html.TextBoxFor(model => model.strUsuario, new { @class = "form-control input-sm", id = "Usuario" })
                                 </div>
                                 <div class="form-group">
                                     <label>País</label>
@@ -83,22 +65,16 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Evidencia en Archivo PDF</label>
-                                    @Html.TextBoxFor(model => model.documentoVM.DocumentoFile, new { @class = "form-control input-sm", id = "inputFileUpload", type = "file" })
-                                </div>
-                                <div class="form-group">
-                                    <label>Considera para Curriculum</label>
-                                    <br />
-                                    Si @Html.RadioButtonFor(model => model.bitConsideraCurriculum, true, new { id = "cv" })
-                                    No @Html.RadioButtonFor(model => model.bitConsideraCurriculum, false, new { id = "cv" })
+                                    @Html.TextBoxFor(model => model.documento.DocumentoFile, new { @class = "form-control input-sm", id = "inputFileUpload", type = "file" })
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <input type="submit" id="btnGuardar" value="Guardar" class="btn btn-success" />
+                                <input type="submit" id="btnGuardar" value="Guardar Información" class="btn btn-sm btn-success" />
                             </div>
                         </div>
-                        <div class="form-group-sm">
+                        <div class="">
                             <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
                             <div class="form-group" id="addTable">
                                 <br />
@@ -106,10 +82,9 @@
                                     <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
                                         <tr>
                                             <th>Titulo</th>
-                                            <th>Visualizar Documento</th>
+                                            <th>Documento</th>
                                             <th>Editar</th>
                                             <th>Eliminar</th>
-
                                         </tr>
                                     </thead>
                                     <tbody id="tblBody"></tbody>
@@ -145,9 +120,9 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-    <script src="~/Scripts/Validate/ProductividadInnovadora/validate-productividad-innovadora-form.js"></script>
-    <script src="~/Scripts/Validate/ProductividadInnovadora/validate-productividad-innovadora-date.js"></script>
-    <script src="~/Scripts/Validate/ProductividadInnovadora/validate-productividad-innovadora-regExp.js"></script>
+    <script src="~/Scripts/Validate/ProductividadInnovadora/validate-productividad-innovadora-form.js?v=1"></script>
+    <script src="~/Scripts/Validate/ProductividadInnovadora/validate-productividad-innovadora-regExp.js?v=2"></script>
+    <script src="~/Scripts/Validate/ProductividadInnovadora/validate-productividad-innovadora-upload.js?v=3"></script>
     <script>
 
         var AddEditar = function (id) {
@@ -227,9 +202,9 @@
 
                             { "data": "strTitulo" },
                                 {
-                        "data": "strNombreDocumento",
-                        "render": function (strNombreDocumento) {
-                            return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + strNombreDocumento + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'
+                        "data": "documento.StrUrl",
+                        "render": function (StrUrl) {
+                            return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
                         }
                     },
                             {

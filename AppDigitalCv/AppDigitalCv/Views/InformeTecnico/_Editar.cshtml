@@ -13,23 +13,27 @@
             </div>
             <div class="row">
                 <div class="form-group col-lg-7">
-                    @Html.Label("Datos del Informe Tecnico")
-                    <hr />
-                    <label>Autor</label>
-                    @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "txtAutor"})
-                    <label>Nombre del Proyecto</label>
-                    @Html.TextBoxFor(model => model.strNombreProyecto, new { @class = "form-control input-sm", id = "txtNombreProyecto"})
-                    <label>Alcance</label>
-                    @Html.TextBoxFor(model => model.strAlcance, new { @class = "form-control input-sm",id = "txtAlcance"})
-                    <label>Intitución Beneficiaria</label>
-                    @Html.TextBoxFor(model => model.strInstitucionBeneficiaria, new { @class = "form-control input-sm", id = "txtInstitucionBeneficiaria"})
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-lg-6 col-lg-offset-4">
-                        <a href="#" id="btnEnviar" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i>Actualizar</span></a>
+                    <div class="form-group">
+                        <label>Autor</label>
+                        @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "txtAutor" })
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre del Proyecto</label>
+                        @Html.TextBoxFor(model => model.strNombreProyecto, new { @class = "form-control input-sm", id = "txtNombreProyecto" })
+                    </div>
+                    <div class="form-group">
+                        <label>Alcance</label>
+                        @Html.TextBoxFor(model => model.strAlcance, new { @class = "form-control input-sm", id = "txtAlcance" })
+                    </div>
+                    <div class="form-group">
+                        <label>Intitución Beneficiaria</label>
+                        @Html.TextBoxFor(model => model.strInstitucionBeneficiaria, new { @class = "form-control input-sm", id = "txtInstitucionBeneficiaria" })
+                    </div>    
+                    <div class="form-group">
+                        <a href="#" id="btnEnviar" class="btn btn-sm btn-success"><span><i class=""></i>Actualizar</span></a>
                     </div>
                 </div>
+               
             </div>
         </div>
     </form>

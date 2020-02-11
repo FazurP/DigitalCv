@@ -55,7 +55,6 @@ namespace AppDigitalCv.Business
 
                     tblCapitulo.idPais = capituloLibroDomainModel.idPais;
                     tblCapitulo.idPersonal = capituloLibroDomainModel.idPersonal;
-                    tblCapitulo.idStatus = capituloLibroDomainModel.idStatus;
                     tblCapitulo.paginaInicio = capituloLibroDomainModel.paginaInicio;
                     tblCapitulo.paginaTermino = capituloLibroDomainModel.paginaTermino;
                     tblCapitulo.strAutor = capituloLibroDomainModel.strAutor;
@@ -69,7 +68,6 @@ namespace AppDigitalCv.Business
                     tblCapitulo.dteFechaPublicacion = capituloLibroDomainModel.dteFechaPublicacion;
                     tblCapitulo.enumEstadoActual = capituloLibroDomainModel.enumEstadoActual.ToString();
                     tblCapitulo.enumProposito = capituloLibroDomainModel.enumProposito.ToString();
-                    tblCapitulo.bitLigarCurriculum = capituloLibroDomainModel.bitLigarCurriculum;
 
                     capituloLibroRepository.Insert(tblCapitulo);
                     respuesta = true;          
@@ -95,7 +93,6 @@ namespace AppDigitalCv.Business
                 capitulo.id = item.id;
                 capitulo.idPais = item.idPais.Value;
                 capitulo.idPersonal = item.idPersonal.Value;
-                capitulo.idStatus = item.idStatus.Value;
                 capitulo.paginaInicio = item.paginaInicio.Value;
                 capitulo.paginaTermino = item.paginaTermino.Value;
                 capitulo.strAutor = item.strAutor;
@@ -109,7 +106,6 @@ namespace AppDigitalCv.Business
                 capitulo.enumProposito = item.enumProposito;
                 capitulo.enumEstadoActual = item.enumEstadoActual;
                 capitulo.dteFechaPublicacion = item.dteFechaPublicacion.Value;
-                capitulo.bitLigarCurriculum = item.bitLigarCurriculum.Value;
 
                 capituloLibroDomainModels.Add(capitulo);
             }
@@ -132,7 +128,6 @@ namespace AppDigitalCv.Business
             capituloLibroDM.id = tblCapituloLibro.id;
             capituloLibroDM.idPais = tblCapituloLibro.idPais.Value;
             capituloLibroDM.idPersonal = tblCapituloLibro.idPersonal.Value;
-            capituloLibroDM.idStatus = tblCapituloLibro.idStatus.Value;
             capituloLibroDM.paginaInicio = tblCapituloLibro.paginaInicio.Value;
             capituloLibroDM.paginaTermino = tblCapituloLibro.paginaTermino.Value;
             capituloLibroDM.strAutor = tblCapituloLibro.strAutor;
@@ -146,7 +141,6 @@ namespace AppDigitalCv.Business
             capituloLibroDM.enumProposito = tblCapituloLibro.enumProposito;
             capituloLibroDM.enumEstadoActual = tblCapituloLibro.enumEstadoActual;
             capituloLibroDM.dteFechaPublicacion = tblCapituloLibro.dteFechaPublicacion.Value;
-            capituloLibroDM.bitLigarCurriculum = tblCapituloLibro.bitLigarCurriculum.Value;
 
             return capituloLibroDM;
         }

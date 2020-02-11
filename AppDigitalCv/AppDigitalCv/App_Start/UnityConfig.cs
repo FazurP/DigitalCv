@@ -66,7 +66,6 @@ namespace AppDigitalCv
             container.RegisterType<IParticipacionDocenteBusiness, ParticipacionDocenteBusiness>();
             container.RegisterType<ICapituloLibro, CapituloLibroBusiness>();
             container.RegisterType<IPaisBusiness, PaisBusiness>();
-            container.RegisterType<IProgresoProdep, ProgresoProdepBusiness>();
             container.RegisterType<IInformeTecnicoBusiness, InformeTecnicoBusiness>();
             container.RegisterType<ILibroBusiness, LibroBusiness>();
             container.RegisterType<IManualOperacionBusiness, ManualOperacionBusiness>();

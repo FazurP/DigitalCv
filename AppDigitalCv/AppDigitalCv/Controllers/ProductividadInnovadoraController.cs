@@ -20,17 +20,15 @@ namespace AppDigitalCv.Controllers
         IPaisBusiness paisBusiness;
         IProductividadInnovadoraBusiness productividadInnovadoraBusiness;
         IDocumentosBusiness documentosBusiness;
-        IProgresoProdep progresoProdep;
         List list = new List();
 
         public ProductividadInnovadoraController(IUnitOfWork _unitOfWork,IPaisBusiness _paisBusiness,IProductividadInnovadoraBusiness
-            _productividadInnovadoraBusiness, IDocumentosBusiness _documentosBusiness, IProgresoProdep _progresoProdep)
+            _productividadInnovadoraBusiness, IDocumentosBusiness _documentosBusiness)
         {
             unitofWork = _unitOfWork;
             paisBusiness = _paisBusiness;
             productividadInnovadoraBusiness = _productividadInnovadoraBusiness;
             documentosBusiness = _documentosBusiness;
-            progresoProdep = _progresoProdep;
         }
        
         [HttpGet]
@@ -58,61 +56,49 @@ namespace AppDigitalCv.Controllers
             if (ModelState.IsValid)
             {
                 ProductividadInnovadoraDomainModel productividadInnovadoraDM = new ProductividadInnovadoraDomainModel();
-                DocumentosDomainModel documentosDM = new DocumentosDomainModel();
-                ProgresoProdepDomainModel progresoProdepDM = new ProgresoProdepDomainModel();
 
                 string nombre = SessionPersister.AccountSession.NombreCompleto;
                 int idPersonal = SessionPersister.AccountSession.IdPersonal;
-                int idStatus = int.Parse(Recursos.RecursosSistema.REGISTRO_PRODUCTIVIDAD_INNOVADORA);
 
                 productividadInnovadoraVM.idPersonal = idPersonal;
-                productividadInnovadoraVM.idStatus = idStatus;
 
                 AutoMapper.Mapper.Map(productividadInnovadoraVM, productividadInnovadoraDM);
-                AutoMapper.Mapper.Map(productividadInnovadoraVM.documentoVM, documentosDM);
-                productividadInnovadoraDM.documentosDomainModel = documentosDM;
 
-                if (GuadarArchivo(productividadInnovadoraDM, nombre))
+                object[] obj = CrearDocumentoPersonales(productividadInnovadoraVM);
+
+                if (obj[0].Equals(true))
                 {
-                    productividadInnovadoraDM.documentosDomainModel.StrUrl = productividadInnovadoraDM.documentosDomainModel.DocumentoFile.FileName;
-                    DocumentosDomainModel documentos = documentosBusiness.AddDocumento(documentosDM);
-                    productividadInnovadoraDM.idDocumento = documentos.IdDocumento;
+                    productividadInnovadoraDM.documento = new DocumentosDomainModel { StrUrl = obj[1].ToString()};
                     productividadInnovadoraBusiness.AddUpdateProductividadInnovador(productividadInnovadoraDM);
-                    progresoProdepDM.idPersonal = idPersonal;
-                    progresoProdepDM.idStatus = idStatus;
-                    progresoProdep.AddUpdateProgresoProdep(progresoProdepDM);
-                }
-                else
-                {
-                    ViewBag.ErrorArchivo = Recursos.RecursosSistema.ERROR_GUARDADO_ARCHIVO;
                 }
             }
             return RedirectToAction("Create","ProductividadInnovadora");
         }
 
-        public bool GuadarArchivo(ProductividadInnovadoraDomainModel productividadInnovadoraDomainModel, string nombre)
-        {
-            bool respuesta = false;
 
-            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombre + "/"));
+        public Object[] CrearDocumentoPersonales(ProductividadInnovadoraVM productividadInnovadoraVM)
+        {
+            Object[] respuesta = new Object[2];
+            productividadInnovadoraVM.idPersonal = SessionPersister.AccountSession.IdPersonal;
+            string nombrecompleto = SessionPersister.AccountSession.NombreCompleto;
+            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombrecompleto));
 
             if (Directory.Exists(path))
             {
-                if (productividadInnovadoraDomainModel.documentosDomainModel.DocumentoFile.ContentType.Equals("application/pdf"))
+                if (productividadInnovadoraVM.documento.DocumentoFile != null)
                 {
-                    string pahtCompleto = Path.Combine(path, Path.GetFileName(productividadInnovadoraDomainModel.documentosDomainModel.DocumentoFile.FileName));
-                    productividadInnovadoraDomainModel.documentosDomainModel.DocumentoFile.SaveAs(pahtCompleto);
-                    respuesta = true;
+                    respuesta = FileManager.FileManager.CheckFileIfExist(path, productividadInnovadoraVM.documento);
                 }
             }
             else
             {
                 DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
-                GuadarArchivo(productividadInnovadoraDomainModel,nombre);
-                respuesta = true;
+                CrearDocumentoPersonales(productividadInnovadoraVM);
             }
+
             return respuesta;
         }
+
         [HttpGet]
         public JsonResult GetProductividad(DataTablesParam param)
         {
@@ -166,6 +152,7 @@ namespace AppDigitalCv.Controllers
 
             return PartialView("_Eliminar");
         }
+
         [HttpPost]
         public ActionResult DeleteProductividad(ProductividadInnovadoraVM productividadInnovadoraVM)
         {
@@ -175,20 +162,17 @@ namespace AppDigitalCv.Controllers
 
             if (productividadInnovadoraDM !=  null)
             {
-                if (productividadInnovadoraBusiness.GetProductividades(SessionPersister.AccountSession.IdPersonal).Count == 1)
-                {
-                    ProgresoProdepDomainModel progresoProdepDM = progresoProdep.GetProgresoPersonal(SessionPersister.AccountSession.IdPersonal, int.Parse(Recursos.RecursosSistema.REGISTRO_PRODUCTIVIDAD_INNOVADORA));
-                    documentosBusiness.DeleteDocumento(productividadInnovadoraDM.idDocumento);
-                    progresoProdep.DeleteProgresoProdep(progresoProdepDM.id);
-                }
-                else
+                string url = Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + SessionPersister.AccountSession.NombreCompleto + "/" + productividadInnovadoraDM.documento.StrUrl);
+
+                if (FileManager.FileManager.DeleteFileFromServer(url))
                 {
                     documentosBusiness.DeleteDocumento(productividadInnovadoraDM.idDocumento);
-                }
+                }              
             }
 
             return RedirectToAction("Create","ProductivadInnovadora");
         }
+
         [HttpGet]
         public ActionResult GetProductividadUpdate(int _idProductividad)
         {
@@ -204,6 +188,7 @@ namespace AppDigitalCv.Controllers
             }
             return PartialView("_Editar");
         }
+
         [HttpPost]
         public ActionResult UpdateProductividad(ProductividadInnovadoraVM productividadInnovadoraVM)
         {

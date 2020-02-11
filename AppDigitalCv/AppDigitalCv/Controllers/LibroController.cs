@@ -16,14 +16,12 @@ namespace AppDigitalCv.Controllers
     {
         ILibroBusiness libroBusiness;
         IPaisBusiness paisBusiness;
-        IProgresoProdep progresoProdep;
         List list = new List();
 
-        public LibroController(ILibroBusiness _libroBusiness, IPaisBusiness _paisBusiness, IProgresoProdep _progresoProdep)
+        public LibroController(ILibroBusiness _libroBusiness, IPaisBusiness _paisBusiness)
         {
             libroBusiness = _libroBusiness;
             paisBusiness = _paisBusiness;
-            progresoProdep = _progresoProdep;
         }
 
         [HttpGet]
@@ -58,23 +56,20 @@ namespace AppDigitalCv.Controllers
         {
             bool respuesta = false;
             int idPersonal = SessionPersister.AccountSession.IdPersonal;
-            int idStatus = int.Parse(Recursos.RecursosSistema.REGISTRO_LIBRO);
+            //int idStatus = int.Parse(Recursos.RecursosSistema.REGISTRO_LIBRO);
 
             libroVM.idPersonal = idPersonal;
-            libroVM.idStatus = idStatus;
 
             LibroDomainModel libroDM = new LibroDomainModel();
-            ProgresoProdepVM progresoProdepVM = new ProgresoProdepVM();
-            ProgresoProdepDomainModel progresoProdepDM = new ProgresoProdepDomainModel();
+            //ProgresoProdepVM progresoProdepVM = new ProgresoProdepVM();
+            //ProgresoProdepDomainModel progresoProdepDM = new ProgresoProdepDomainModel();
 
-            progresoProdepVM.idPersonal = idPersonal;
-            progresoProdepVM.idStatus = idStatus;
+            //progresoProdepVM.idPersonal = idPersonal;
+            //progresoProdepVM.idStatus = idStatus;
 
-
-            AutoMapper.Mapper.Map(progresoProdepVM,progresoProdepDM);
             AutoMapper.Mapper.Map(libroVM,libroDM);
             libroBusiness.AddUpdateLibro(libroDM);
-            progresoProdep.AddUpdateProgresoProdep(progresoProdepDM);
+            //progresoProdep.AddUpdateProgresoProdep(progresoProdepDM);
             respuesta = true;
             return respuesta;
         }
@@ -144,18 +139,8 @@ namespace AppDigitalCv.Controllers
             libroDM = libroBusiness.GetLibro(libroVM.id);
 
             if (libroDM != null)
-            {
-                if (libroBusiness.GetLibrosByPersonal(libroDM.idPersonal).Count == 1)
-                {
-                    ProgresoProdepDomainModel progresoProdepDM = new ProgresoProdepDomainModel();
-                    progresoProdepDM = progresoProdep.GetProgresoPersonal(SessionPersister.AccountSession.IdPersonal, int.Parse(Recursos.RecursosSistema.REGISTRO_LIBRO));
-                    progresoProdep.DeleteProgresoProdep(progresoProdepDM.id);
-                    libroBusiness.DeleteLibro(libroDM.id);
-                }
-                else
-                {
-                    libroBusiness.DeleteLibro(libroDM.id);
-                }
+            {       
+               libroBusiness.DeleteLibro(libroDM.id);
             }
             return RedirectToAction("Create","Libro");
         }

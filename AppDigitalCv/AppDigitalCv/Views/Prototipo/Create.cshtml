@@ -21,47 +21,59 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h5 class="box-title">
-                            <label class="text-success emailtitleletter">
-                                <i class="text-success fa fa-heartbeat"></i>
-                                @SessionPersister.AccountSession.NombreCompleto
-                            </label>
-                        </h5>
                     </div>
                     <div class="box-body">
                         <div class="form-group">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Autor(es)</label>
-                                    @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "txtAutor" })
-                                    <label>Tipo de Prototipo</label>
-                                    @Html.DropDownList("strTipoPrototipo", null, new { @class = "form-control input-sm", id = "ddlTipoPrototipo" })
-                                    <label>Nombre del Prototipo</label>
-                                    @Html.TextBoxFor(model => model.strNombrePrototipo, new { @class = "form-control input-sm", id = "txtNombrePrototipo" })
-                                    <label>Objetivos</label>
-                                    @Html.TextAreaFor(model => model.strObjetivos, new { @class = "form-control input-sm", id = "txtObjetivos" })
-                                    <label>Caracteristicas</label>
-                                    @Html.TextAreaFor(model => model.strCaracteristicas, new { @class = "form-control input-sm", id = "txtCaracteristicas" })
-                                    <label>Institución Para la que Fue Creado</label>
-                                    @Html.TextBoxFor(model => model.strInstitucionDestinada, new { @class = "form-control input-sm", id = "txtInstitucionDestinada" })
+                                    <div class="form-group">
+                                        <label>Autor(es)</label>
+                                        @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "txtAutor" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tipo de Prototipo</label>
+                                        @Html.DropDownList("strTipoPrototipo", null, new { @class = "form-control input-sm", id = "ddlTipoPrototipo" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Nombre del Prototipo</label>
+                                        @Html.TextBoxFor(model => model.strNombrePrototipo, new { @class = "form-control input-sm", id = "txtNombrePrototipo" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Objetivos</label>
+                                        @Html.TextAreaFor(model => model.strObjetivos, new { @class = "form-control input-sm", id = "txtObjetivos" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Caracteristicas</label>
+                                        @Html.TextAreaFor(model => model.strCaracteristicas, new { @class = "form-control input-sm", id = "txtCaracteristicas" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Institución Para la que Fue Creado</label>
+                                        @Html.TextBoxFor(model => model.strInstitucionDestinada, new { @class = "form-control input-sm", id = "txtInstitucionDestinada" })
+                                    </div>                                                                                                                                                                                                                   
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Fecha de Publicación</label>
-                                    @Html.TextBoxFor(model => model.dteFechaPublicacion, new { @class = "form-control input-sm", id = "dteFechaPublicacion", type = "date" })
-                                    <label>Estado Actual</label>
-                                    @Html.DropDownList("strEstadoActual", null, new { @class = "form-control input-sm", id = "ddlEstadoActual" })
-                                    <label>Pais</label>
-                                    @Html.DropDownList("idPais", null, new { @class = "form-control input-sm", id = "ddlPais" })
-                                    <label>Proposito</label>
-                                    @Html.DropDownList("strProposito", null, new { @class = "form-control input-sm", id = "ddlProposito", })
-                                    <label>Evidencia del Documento en PDF</label>
-                                    @Html.TextBoxFor(model => model.documentosVM.DocumentoFile, new { @class = "form-control input-sm", id = "inputFileUpload", type = "file" })
-                                    <label>Considera para el Curriculum</label>
-                                    <br />
-                                    Si @Html.RadioButtonFor(model => model.bitConsideraCurriculum, true, new { @class = "form-control input-sm", id = "cv" })
-                                    No @Html.RadioButtonFor(model => model.bitConsideraCurriculum, false, new { @class = "form-control input-sm", id = "cv" })
+                                    <div class="form-group">
+                                        <label>Fecha de Publicación</label>
+                                        @Html.TextBoxFor(model => model.dteFechaPublicacion, new { @class = "form-control input-sm", id = "dteFechaPublicacion", type = "date" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Estado Actual</label>
+                                        @Html.DropDownList("strEstadoActual", null, new { @class = "form-control input-sm", id = "ddlEstadoActual" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Pais</label>
+                                        @Html.DropDownList("idPais", null, new { @class = "form-control input-sm", id = "ddlPais" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Proposito</label>
+                                        @Html.DropDownList("strProposito", null, new { @class = "form-control input-sm", id = "ddlProposito", })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Evidencia del Documento en PDF</label>
+                                        @Html.TextBoxFor(model => model.documentosVM.DocumentoFile, new { @class = "form-control input-sm", id = "inputFileUpload", type = "file" })
+                                    </div>                                                                                                                                                                                  
                                 </div>
                             </div>
                         </div>
@@ -70,7 +82,7 @@
                                 <input type="submit" id="btnGuardar" value="Guardar" class="btn btn-success" />
                             </div>
                         </div>
-                        <div class="form-group-sm">
+                        <div class="">
                             <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
                             <div class="form-group" id="addTable">
                                 <br />
@@ -78,7 +90,7 @@
                                     <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
                                         <tr>
                                             <th>Nombre del Prototipo</th>
-                                            <th>Visualizar Documento</th>
+                                            <th>Documento</th>
                                             <th>Editar</th>
                                             <th>Eliminar</th>
 

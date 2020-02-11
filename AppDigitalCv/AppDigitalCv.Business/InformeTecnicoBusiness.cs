@@ -15,9 +15,11 @@ namespace AppDigitalCv.Business
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly InformeTecnicoRepository informeTecnicoRepository;
+        private readonly DocumentosRepository documentosRepository;
         public InformeTecnicoBusiness(IUnitOfWork _unitofWork) {
             unitOfWork = _unitofWork;
             informeTecnicoRepository = new InformeTecnicoRepository(unitOfWork);
+            documentosRepository = new DocumentosRepository(unitOfWork);
         }
 
         public bool AddUpdateInformeTecnico(InformeTecnicoDomainModel informeTecnicoDomainModel) {
@@ -41,24 +43,28 @@ namespace AppDigitalCv.Business
             else {
 
                 tblInformeTecnico tblInformeTecnico = new tblInformeTecnico();
+                catDocumentos catDocumentos = new catDocumentos();
 
                 tblInformeTecnico.id = informeTecnicoDomainModel.id;
                 tblInformeTecnico.idDocumento = informeTecnicoDomainModel.idDocumento;
                 tblInformeTecnico.idPais = informeTecnicoDomainModel.idPais;
                 tblInformeTecnico.idPersonal = informeTecnicoDomainModel.idPersonal;
-                tblInformeTecnico.idStatus = informeTecnicoDomainModel.idStatus;
+
                 tblInformeTecnico.numeroPaginas = informeTecnicoDomainModel.numeroPaginas;
                 tblInformeTecnico.strAlcance = informeTecnicoDomainModel.strAlcance;
                 tblInformeTecnico.strAutor = informeTecnicoDomainModel.strAutor;
                 tblInformeTecnico.strInstitucionBeneficiaria = informeTecnicoDomainModel.strInstitucionBeneficiaria;
                 tblInformeTecnico.strNombreProyecto = informeTecnicoDomainModel.strNombreProyecto;
                 tblInformeTecnico.dteElaboracionInforme = informeTecnicoDomainModel.dteElaboracionInforme;
-                tblInformeTecnico.dteFechaInicio = informeTecnicoDomainModel.dteFechaInicio;
                 tblInformeTecnico.enumEstadoActual = informeTecnicoDomainModel.enumEstadoActual;
                 tblInformeTecnico.enumProposito = informeTecnicoDomainModel.enumProposito;
-                tblInformeTecnico.bitLigarCurriculum = informeTecnicoDomainModel.bitLigarCurriculum;
 
-                informeTecnicoRepository.Insert(tblInformeTecnico);
+
+                catDocumentos.tblInformeTecnico.Add(tblInformeTecnico);
+
+                catDocumentos.strUrl = informeTecnicoDomainModel.Documentos.StrUrl;
+
+                documentosRepository.Insert(catDocumentos);
                 respuesta = true;
             }
             return respuesta;
@@ -78,18 +84,18 @@ namespace AppDigitalCv.Business
                 informeTecnicoDM.idDocumento = tblInformeTecnico.idDocumento.Value;
                 informeTecnicoDM.idPais = tblInformeTecnico.idPais.Value;
                 informeTecnicoDM.idPersonal = tblInformeTecnico.idPersonal.Value;
-                informeTecnicoDM.idStatus = tblInformeTecnico.idStatus.Value;
                 informeTecnicoDM.numeroPaginas = tblInformeTecnico.numeroPaginas.Value;
                 informeTecnicoDM.strAlcance = tblInformeTecnico.strAlcance;
                 informeTecnicoDM.strAutor = tblInformeTecnico.strAutor;
                 informeTecnicoDM.strInstitucionBeneficiaria = tblInformeTecnico.strInstitucionBeneficiaria;
                 informeTecnicoDM.strNombreProyecto = tblInformeTecnico.strNombreProyecto;
-                informeTecnicoDM.bitLigarCurriculum = tblInformeTecnico.bitLigarCurriculum.Value;
                 informeTecnicoDM.dteElaboracionInforme = tblInformeTecnico.dteElaboracionInforme.Value;
-                informeTecnicoDM.dteFechaInicio = tblInformeTecnico.dteFechaInicio.Value;
                 informeTecnicoDM.enumEstadoActual = tblInformeTecnico.enumEstadoActual;
                 informeTecnicoDM.enumProposito = tblInformeTecnico.enumProposito;
-                informeTecnicoDM.strNombreDocumento = tblInformeTecnico.catDocumentos.strUrl;
+                informeTecnicoDM.Documentos = new DocumentosDomainModel
+                {
+                    StrUrl = tblInformeTecnico.catDocumentos.strUrl
+                };
 
                 informeTecnicos.Add(informeTecnicoDM);
             }
@@ -107,17 +113,18 @@ namespace AppDigitalCv.Business
             informeTecnicoDM.idDocumento = tblInformeTecnico.idDocumento.Value;
             informeTecnicoDM.idPais = tblInformeTecnico.idPais.Value;
             informeTecnicoDM.idPersonal = tblInformeTecnico.idPersonal.Value;
-            informeTecnicoDM.idStatus = tblInformeTecnico.idStatus.Value;
             informeTecnicoDM.numeroPaginas = tblInformeTecnico.numeroPaginas.Value;
             informeTecnicoDM.strAlcance = tblInformeTecnico.strAlcance;
             informeTecnicoDM.strAutor = tblInformeTecnico.strAutor;
             informeTecnicoDM.strInstitucionBeneficiaria = tblInformeTecnico.strInstitucionBeneficiaria;
             informeTecnicoDM.strNombreProyecto = tblInformeTecnico.strNombreProyecto;
-            informeTecnicoDM.bitLigarCurriculum = tblInformeTecnico.bitLigarCurriculum.Value;
             informeTecnicoDM.dteElaboracionInforme = tblInformeTecnico.dteElaboracionInforme.Value;
-            informeTecnicoDM.dteFechaInicio = tblInformeTecnico.dteFechaInicio.Value;
             informeTecnicoDM.enumEstadoActual = tblInformeTecnico.enumEstadoActual;
             informeTecnicoDM.enumProposito = tblInformeTecnico.enumProposito;
+            informeTecnicoDM.Documentos = new DocumentosDomainModel
+            {
+                StrUrl = tblInformeTecnico.catDocumentos.strUrl
+            };
 
             return informeTecnicoDM;
 

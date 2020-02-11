@@ -3,7 +3,6 @@
     $('#NombreProyecto').prop('disabled', true);
     $('#Alcance').prop('disabled', true);
     $('#Institucion').prop('disabled', true);
-    $('#FechaInicio').prop('disabled', true);
     $('#EstadoActual').prop('disabled', true);
     $('#ElaboracionInforme').prop('disabled', true);
     $('#NumeroPaginas').prop('disabled', true);
@@ -21,7 +20,6 @@
             $('#NombreProyecto').prop('disabled', true);
             $('#Alcance').prop('disabled', true);
             $('#Institucion').prop('disabled', true);
-            $('#FechaInicio').prop('disabled', true);
             $('#EstadoActual').prop('disabled', true);
             $('#ElaboracionInforme').prop('disabled', true);
             $('#NumeroPaginas').prop('disabled', true);
@@ -33,7 +31,6 @@
             $('#NombreProyecto').val('');
             $('#Alcance').val('');
             $('#Institucion').val('');
-            $('#FechaInicio').val('');
             $('#EstadoActual').val(0);
             $('#ElaboracionInforme').val('');
             $('#Pais').val(0);
@@ -53,7 +50,6 @@
 
             $('#Alcance').prop('disabled', true);
             $('#Institucion').prop('disabled', true);
-            $('#FechaInicio').prop('disabled', true);
             $('#EstadoActual').prop('disabled', true);
             $('#ElaboracionInforme').prop('disabled', true);
             $('#NumeroPaginas').prop('disabled', true);
@@ -64,7 +60,6 @@
 
             $('#Alcance').val('');
             $('#Institucion').val('');
-            $('#FechaInicio').val('');
             $('#EstadoActual').val(0);
             $('#ElaboracionInforme').val('');
             $('#Pais').val(0);
@@ -83,7 +78,6 @@
         if (data == null || data == '' || data == "") {
 
             $('#Institucion').prop('disabled', true);
-            $('#FechaInicio').prop('disabled', true);
             $('#EstadoActual').prop('disabled', true);
             $('#ElaboracionInforme').prop('disabled', true);
             $('#NumeroPaginas').prop('disabled', true);
@@ -93,7 +87,6 @@
             $('#btnGuardar').prop('disabled', true);
 
             $('#Institucion').val('');
-            $('#FechaInicio').val('');
             $('#EstadoActual').val(0);
             $('#ElaboracionInforme').val('');
             $('#Pais').val(0);
@@ -106,33 +99,6 @@
     })
 
     $('#Institucion').keyup(function () {
-
-        var data = $(this).val();
-
-        if (data == null || data == '' || data == "") {
-
-            $('#FechaInicio').prop('disabled', true);
-            $('#EstadoActual').prop('disabled', true);
-            $('#ElaboracionInforme').prop('disabled', true);
-            $('#NumeroPaginas').prop('disabled', true);
-            $('#Pais').prop('disabled', true);
-            $('#Proposito').prop('disabled', true);
-            $('#inputFileUpload').prop('disabled', true);
-            $('#btnGuardar').prop('disabled', true);
-
-            $('#FechaInicio').val('');
-            $('#EstadoActual').val(0);
-            $('#ElaboracionInforme').val('');
-            $('#Pais').val(0);
-            $('#Proposito').val(0);
-            $('#inputFileUpload').val('');
-        } else {
-            $('#FechaInicio').prop('disabled', false);
-        }
-
-    })
-
-    $('#FechaInicio').change(function () {
 
         var data = $(this).val();
 

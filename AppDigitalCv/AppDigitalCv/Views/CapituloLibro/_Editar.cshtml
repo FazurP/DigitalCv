@@ -13,32 +13,40 @@
             </div>
             <div class="row">
                 <div class="form-group col-lg-7">
-                    @Html.Label("Datos del Capitulo");
-                    <hr />
-                    <label>Autor:</label>
-                    @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "txtAutor" })
-                    <label>Titulo</label>
-                    @Html.TextBoxFor(model => model.strTitulo, new { @class = "form-control input-sm", id = "txtTitulo" })
-                    <label>Editorial</label>
-                    @Html.TextBoxFor(model => model.strEditorial, new { @class = "form-control input-sm", id = "txtEditorial" })
-                    <label>Edicion</label>
-                    @Html.TextBoxFor(model => model.strEdicion, new { @class = "form-control input-sm", id = "txtEdicion" })
-                    <label>Tiraje</label>
-                    @Html.TextBoxFor(model => model.strTiraje, new { @class = "form-control input-sm", id = "txtTiraje" })
-                    <label>ISBN</label>
-                    @Html.TextBoxFor(model => model.strISBN, new { @class = "form-control input-sm", id = "txtISBN" })
-                    <hr />
-                    @Html.Label("Datos del Capitulo")
-                    <hr />
-                    <label>Titulo del Capitulo</label>
-                    @Html.TextBoxFor(model => model.strTituloCapitulo, new { @class = "form-control input-sm", id = "txtTituloCapitulo" })
-                    <label>Autores</label>
-                    @Html.TextBoxFor(model => model.strAutores, new { @class = "form-control input-sm", id = "txtAutores" })
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-lg-6 col-lg-offset-4">
-                        <a href="#" id="btnEnviar" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
+                    <div class="form-group">
+                        <label>Autor:</label>
+                        @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "txtAutor" })
+                    </div>
+                    <div class="form-group">
+                        <label>Titulo</label>
+                        @Html.TextBoxFor(model => model.strTitulo, new { @class = "form-control input-sm", id = "txtTitulo" })
+                    </div>
+                    <div class="form-group">
+                        <label>Editorial</label>
+                        @Html.TextBoxFor(model => model.strEditorial, new { @class = "form-control input-sm", id = "txtEditorial" })
+                    </div>
+                    <div class="form-group">
+                        <label>Edicion</label>
+                        @Html.TextBoxFor(model => model.strEdicion, new { @class = "form-control input-sm", id = "txtEdicion" })
+                    </div>
+                    <div class="form-group">
+                        <label>Tiraje</label>
+                        @Html.TextBoxFor(model => model.strTiraje, new { @class = "form-control input-sm", id = "txtTiraje" })
+                    </div>
+                    <div class="form-group">
+                        <label>ISBN</label>
+                        @Html.TextBoxFor(model => model.strISBN, new { @class = "form-control input-sm", id = "txtISBN" })
+                    </div>
+                    <div class="form-group">
+                        <label>Titulo del Capitulo</label>
+                        @Html.TextBoxFor(model => model.strTituloCapitulo, new { @class = "form-control input-sm", id = "txtTituloCapitulo" })
+                    </div>
+                    <div class="form-group">
+                        <label>Autores</label>
+                        @Html.TextBoxFor(model => model.strAutores, new { @class = "form-control input-sm", id = "txtAutores" })
+                    </div>          
+                    <div class="form-group">
+                        <a href="" id="btnEnviar" class="btn btn-sm btn-success"><span><i class="">Actualizar</i></span></a>
                     </div>
                 </div>
             </div>

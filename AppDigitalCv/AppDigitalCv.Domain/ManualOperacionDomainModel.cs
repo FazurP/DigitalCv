@@ -10,7 +10,6 @@ namespace AppDigitalCv.Domain
     {
         public int id { get; set; }
         public int idPais { get; set; }
-        public int idStatus { get; set; }
         public int idPersonal { get; set; }
         public string strAutor { get; set; }
         public string strNombre { get; set; }

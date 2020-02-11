@@ -49,7 +49,6 @@ namespace AppDigitalCv.Business
                 tblLibro.idPais = libroDM.idPais;
                 tblLibro.idPersonal = libroDM.idPersonal;
                 tblLibro.idPersonal = libroDM.idPersonal;
-                tblLibro.idStatus = libroDM.idStatus;
                 tblLibro.Paginas = libroDM.Paginas;
                 tblLibro.strAutores = libroDM.strAutores;
                 tblLibro.strEdicion = libroDM.strEdicion;
@@ -61,7 +60,6 @@ namespace AppDigitalCv.Business
                 tblLibro.strTiraje = libroDM.strTiraje;
                 tblLibro.strTituloLibro = libroDM.strTituloLibro;
                 tblLibro.FechaPublicacion = libroDM.FechaPublicacion;
-                tblLibro.bitConsideraCurriculum = libroDM.bitConsideraCurriculum;
 
                 libroRepository.Insert(tblLibro);
                 respuesta = true;
@@ -84,7 +82,6 @@ namespace AppDigitalCv.Business
                 libroDM.id = tblLibro.id;
                 libroDM.idPais = tblLibro.idPais.Value;
                 libroDM.idPersonal = tblLibro.idPersonal.Value;
-                libroDM.idStatus = tblLibro.idStatus.Value;
                 libroDM.Paginas = tblLibro.Paginas.Value;
                 libroDM.strAutores = tblLibro.strAutores;
                 libroDM.strEdicion = tblLibro.strEdicion;
@@ -96,7 +93,6 @@ namespace AppDigitalCv.Business
                 libroDM.strTiraje = tblLibro.strTiraje;
                 libroDM.strTituloLibro = tblLibro.strTituloLibro;
                 libroDM.FechaPublicacion = tblLibro.FechaPublicacion.Value;
-                libroDM.bitConsideraCurriculum = tblLibro.bitConsideraCurriculum.Value;
 
                 libros.Add(libroDM);
             }
@@ -115,7 +111,6 @@ namespace AppDigitalCv.Business
             libro.id = tblLibro.id;
             libro.idPais = tblLibro.idPais.Value;
             libro.idPersonal = tblLibro.idPersonal.Value;
-            libro.idStatus = tblLibro.idStatus.Value;
             libro.Paginas = tblLibro.Paginas.Value;
             libro.strAutores = tblLibro.strAutores;
             libro.strEdicion = tblLibro.strEdicion;
@@ -126,7 +121,6 @@ namespace AppDigitalCv.Business
             libro.strTipoParticipacion = tblLibro.strTipoParticipacion;
             libro.strTiraje = tblLibro.strTiraje;
             libro.strTituloLibro = tblLibro.strTituloLibro;
-            libro.bitConsideraCurriculum = tblLibro.bitConsideraCurriculum.Value;
             libro.FechaPublicacion = tblLibro.FechaPublicacion.Value;
 
             return libro;

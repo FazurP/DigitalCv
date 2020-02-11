@@ -11,7 +11,6 @@ namespace AppDigitalCv.Domain
     {
         public int id { get; set; }
         public int idPersonal { get; set; }
-        public int idStatus { get; set; }
         public string strAutor { get; set; }
         public string strTitulo { get; set; }
         public string enumEstadoActual { get; set; }
@@ -26,6 +25,5 @@ namespace AppDigitalCv.Domain
         public string strAutores { get; set; }
         public int paginaInicio { get; set; }
         public int paginaTermino { get; set; }
-        public bool bitLigarCurriculum { get; set; }
     }
 }

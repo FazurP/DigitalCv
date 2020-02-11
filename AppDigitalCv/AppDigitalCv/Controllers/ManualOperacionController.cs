@@ -15,14 +15,12 @@ namespace AppDigitalCv.Controllers
     {
         IManualOperacionBusiness operacionBusiness;
         IPaisBusiness paisBusiness;
-        IProgresoProdep progresoProdep;
 
-        public ManualOperacionController(IManualOperacionBusiness _operacionBusiness, IPaisBusiness _paisBusiness, IProgresoProdep _progresoProdep)
+        public ManualOperacionController(IManualOperacionBusiness _operacionBusiness, IPaisBusiness _paisBusiness)
         {
 
             operacionBusiness = _operacionBusiness;
             paisBusiness = _paisBusiness;
-            progresoProdep = _progresoProdep;
 
         }
         [HttpGet]
@@ -45,33 +43,17 @@ namespace AppDigitalCv.Controllers
         {
             if (ModelState.IsValid)
             {
-                this.AddUpdateManualOperacion(manualOperacionVM);
+                int idPersonal = SessionPersister.AccountSession.IdPersonal;
+
+                ManualOperacionDomainModel manualOperacionDM = new ManualOperacionDomainModel();
+
+                AutoMapper.Mapper.Map(manualOperacionVM, manualOperacionDM);
+                manualOperacionDM.idPersonal = idPersonal;
+
+                operacionBusiness.AddUpdateManualOperacion(manualOperacionDM);
             }
 
             return RedirectToAction("Create", "ManualOperacion");
-        }
-
-        public bool AddUpdateManualOperacion(ManualOperacionVM manualOperacionVM)
-        {
-            bool respuesta = false;
-            int idPersonal = SessionPersister.AccountSession.IdPersonal;
-            int idStatus = int.Parse(Recursos.RecursosSistema.REGISTRO_MANUAL_OPERACION);
-
-            manualOperacionVM.idPersonal = idPersonal;
-            manualOperacionVM.idStatus = idStatus;
-
-            ManualOperacionDomainModel manualOperacionDM = new ManualOperacionDomainModel();
-            ProgresoProdepDomainModel progresoProdepDM = new ProgresoProdepDomainModel();
-
-            progresoProdepDM.idPersonal = idPersonal;
-            progresoProdepDM.idStatus = idStatus;
-
-            AutoMapper.Mapper.Map(manualOperacionVM, manualOperacionDM);
-
-            operacionBusiness.AddUpdateManualOperacion(manualOperacionDM);
-            respuesta = progresoProdep.AddUpdateProgresoProdep(progresoProdepDM);
-
-            return respuesta;
         }
 
         [HttpGet]
@@ -141,8 +123,7 @@ namespace AppDigitalCv.Controllers
             {
                 if (operacionBusiness.GetManualesByPersonal(manualOperacionDM.idPersonal).Count == 1)
                 {
-                    ProgresoProdepDomainModel progresoProdepDM = progresoProdep.GetProgresoPersonal(SessionPersister.AccountSession.IdPersonal,int.Parse(Recursos.RecursosSistema.REGISTRO_MANUAL_OPERACION));
-                    progresoProdep.DeleteProgresoProdep(progresoProdepDM.id);
+                 
                     operacionBusiness.DeleteManualOperacion(manualOperacionDM.id);
                 }
                 else

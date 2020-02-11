@@ -19,14 +19,13 @@ namespace AppDigitalCv.Controllers
         IPaisBusiness paisBusiness;
         IDocumentosBusiness documentosBusiness;
         IInformeTecnicoBusiness informeTecnicoBusiness;
-        IProgresoProdep progresoProdep;
 
         public InformeTecnicoController(IPaisBusiness _paisBusiness, IDocumentosBusiness _documentosBusiness,IInformeTecnicoBusiness
-            _informeTecnicoBusiness, IProgresoProdep _progresoProdep) {
+            _informeTecnicoBusiness) {
             paisBusiness = _paisBusiness;
             documentosBusiness = _documentosBusiness;
             informeTecnicoBusiness = _informeTecnicoBusiness;
-            progresoProdep = _progresoProdep;
+
         }
 
         [HttpGet]
@@ -46,27 +45,19 @@ namespace AppDigitalCv.Controllers
 
             string nombre = SessionPersister.AccountSession.NombreCompleto;
             informeTecnicoVM.idPersonal = SessionPersister.AccountSession.IdPersonal;
-            informeTecnicoVM.idStatus = int.Parse(Recursos.RecursosSistema.REGISTRO_INFORME_TECNICO);
 
             if (ModelState.IsValid)
             {
                 InformeTecnicoDomainModel informeTecnicoDM = new InformeTecnicoDomainModel();
-                DocumentosDomainModel documentosDM = new DocumentosDomainModel();
 
                 AutoMapper.Mapper.Map(informeTecnicoVM,informeTecnicoDM);
-                AutoMapper.Mapper.Map(informeTecnicoVM.DocumentosVM, documentosDM);
-                informeTecnicoDM.DocumentosDM = documentosDM;
 
-                if (GuardarArchivo(informeTecnicoDM,nombre))
+                object[] obj = CrearDocumentoPersonales(informeTecnicoVM);
+
+                if (obj[0].Equals(true))
                 {
-                    informeTecnicoDM.DocumentosDM.StrUrl = informeTecnicoDM.DocumentosDM.DocumentoFile.FileName;
-                    DocumentosDomainModel documentos = documentosBusiness.AddDocumento(documentosDM);
-                    informeTecnicoDM.idDocumento = documentos.IdDocumento;
-                    informeTecnicoBusiness.AddUpdateInformeTecnico(informeTecnicoDM);
-                        ProgresoProdepDomainModel progresoProdepDM = new ProgresoProdepDomainModel();
-                        progresoProdepDM.idPersonal = SessionPersister.AccountSession.IdPersonal;
-                        progresoProdepDM.idStatus = informeTecnicoDM.idStatus;
-                        progresoProdep.AddUpdateProgresoProdep(progresoProdepDM);                   
+                    informeTecnicoDM.Documentos = new DocumentosDomainModel { StrUrl = obj[1].ToString() };
+                    informeTecnicoBusiness.AddUpdateInformeTecnico(informeTecnicoDM);                                    
                 }
 
             }
@@ -74,27 +65,26 @@ namespace AppDigitalCv.Controllers
             return RedirectToAction("Create","InformeTecnico");
         }
 
-        public bool GuardarArchivo(InformeTecnicoDomainModel informeTecnicoDM, string nombre)
+        public Object[] CrearDocumentoPersonales(InformeTecnicoVM informeTecnicoVM)
         {
-            //bool respuesta = false;
-            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombre + "/"));
+            Object[] respuesta = new Object[2];
+            informeTecnicoVM.idPersonal = SessionPersister.AccountSession.IdPersonal;
+            string nombrecompleto = SessionPersister.AccountSession.NombreCompleto;
+            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombrecompleto));
+
             if (Directory.Exists(path))
             {
-                if (informeTecnicoDM.DocumentosDM.DocumentoFile.ContentType.Equals("application/pdf"))
+                if (informeTecnicoVM.Documentos.DocumentoFile != null)
                 {
-                    string pathCompleto = Path.Combine(path, Path.GetFileName(informeTecnicoDM.DocumentosDM.DocumentoFile.FileName));
-                    informeTecnicoDM.DocumentosDM.DocumentoFile.SaveAs(pathCompleto);
-                
+                    respuesta = FileManager.FileManager.CheckFileIfExist(path, informeTecnicoVM.Documentos);
                 }
-                return true;
             }
             else
             {
-                Directory.CreateDirectory(path);
-                return GuardarArchivo(informeTecnicoDM, nombre);
+                DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
+                CrearDocumentoPersonales(informeTecnicoVM);
             }
-
-     
+            return respuesta;
         }
 
         [HttpGet]
@@ -160,17 +150,13 @@ namespace AppDigitalCv.Controllers
 
             if (informeTecnicoDM != null)
             {
-                if (informeTecnicoBusiness.GetInformesByUsuario(informeTecnicoDM.idPersonal).Count == 1)
-                {
-                    ProgresoProdepDomainModel progresoProdepDM = progresoProdep.GetProgresoPersonal
-                        (SessionPersister.AccountSession.IdPersonal, int.Parse(Recursos.RecursosSistema.REGISTRO_INFORME_TECNICO));
+                string url = Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + SessionPersister.AccountSession.NombreCompleto + "/" + informeTecnicoDM.Documentos.StrUrl);
 
-                    progresoProdep.DeleteProgresoProdep(progresoProdepDM.id);
+                if (FileManager.FileManager.DeleteFileFromServer(url))
+                {
                     documentosBusiness.DeleteDocumento(informeTecnicoDM.idDocumento);
                 }
-                else {
-                    documentosBusiness.DeleteDocumento(informeTecnicoDM.idDocumento);
-                }
+                          
             }
 
             return RedirectToAction("Create","InformeTecnico");

@@ -47,7 +47,6 @@ namespace AppDigitalCv.Business
 
                     tblManual.idPais = manualOperacionDM.idPais;
                     tblManual.idPersonal = manualOperacionDM.idPersonal;
-                    tblManual.idStatus = manualOperacionDM.idStatus;
                     tblManual.strDescripcion = manualOperacionDM.strDescripcion;
                     tblManual.strInstitucionBeneficiaria = manualOperacionDM.strInstitucionBeneficiaria;
                     tblManual.strNombre = manualOperacionDM.strNombre;
@@ -76,7 +75,6 @@ namespace AppDigitalCv.Business
                 manualOperacionDM.id = tblManualOperacion.id;
                 manualOperacionDM.idPais = tblManualOperacion.idPais.Value;
                 manualOperacionDM.idPersonal = tblManualOperacion.idPersonal.Value;
-                manualOperacionDM.idStatus = tblManualOperacion.idStatus.Value;
                 manualOperacionDM.strAutor = tblManualOperacion.strAutor;
                 manualOperacionDM.strDescripcion = tblManualOperacion.strDescripcion;
                 manualOperacionDM.strInstitucionBeneficiaria = tblManualOperacion.strInstitucionBeneficiaria;
@@ -100,7 +98,6 @@ namespace AppDigitalCv.Business
             manualOperacionDM.id = tblManualOperacion.id;
             manualOperacionDM.idPais = tblManualOperacion.idPais.Value;
             manualOperacionDM.idPersonal = tblManualOperacion.idPersonal.Value;
-            manualOperacionDM.idStatus = tblManualOperacion.idStatus.Value;
             manualOperacionDM.strAutor = tblManualOperacion.strAutor;
             manualOperacionDM.strDescripcion = tblManualOperacion.strDescripcion;
             manualOperacionDM.strInstitucionBeneficiaria = tblManualOperacion.strInstitucionBeneficiaria;

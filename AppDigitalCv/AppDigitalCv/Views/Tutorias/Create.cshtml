@@ -20,40 +20,52 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h5 class="box-title">
-                            <label class="text-success emailtitleletter">
-                                <i class="text-success fa fa-heartbeat"></i>
-                                @SessionPersister.AccountSession.NombreCompleto
-                            </label>
-                        </h5>
+                    <div class="box-header with-border">                       
                     </div>
                     <div class="box-body">
                         <div class="form-group">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Tutoria</label>
-                                    @Html.DropDownList("strTutoria", null, new { @class = "form-control input-sm", id = "ddlTutoria" })
-                                    <label>Nivel</label>
-                                    @Html.DropDownList("idTipoEstudio", null, new { @class = "form-control input-sm", id = "ddlNivel" })
-                                    <label>Programa Educativo</label>
-                                    @Html.DropDownList("idProgramaEductivo", null, new { @class = "form-control input-sm", id = "ddlProgramaEducativo" })
-                                    <label>Numero de Estudiantes</label>
-                                    @Html.TextBoxFor(model => model.strNumeroEstudiantes, new { @class = "form-control input-sm", id = "txtNumeroEstudiantes" })
-                                    <label>Nombre del Estudiante</label>
-                                    @Html.TextBoxFor(model => model.strNombreEstudantes, new { @class = "form-control input-sm", id = "txtNombreEstudiante" })
+                                    <div class="form-group">
+                                        <label>Tutoria</label>
+                                        @Html.DropDownList("strTutoria", null, new { @class = "form-control input-sm", id = "ddlTutoria" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Nivel</label>
+                                        @Html.DropDownList("idTipoEstudio", null, new { @class = "form-control input-sm", id = "ddlNivel" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Programa Educativo</label>
+                                        @Html.DropDownList("idProgramaEductivo", null, new { @class = "form-control input-sm", id = "ddlProgramaEducativo" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Numero de Estudiantes</label>
+                                        @Html.TextBoxFor(model => model.strNumeroEstudiantes, new { @class = "form-control input-sm", id = "txtNumeroEstudiantes" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Nombre del Estudiante</label>
+                                        @Html.TextBoxFor(model => model.strNombreEstudantes, new { @class = "form-control input-sm", id = "txtNombreEstudiante" })
+                                    </div>                                                                                                                                                                             
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Fecha de Inicio</label>
-                                    @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm", id = "dteFechaInicio", type = "date" })
-                                    <label>Fecha de Termino</label>
-                                    @Html.TextBoxFor(model => model.dteFechaTermino, new { @class = "form-control input-sm", id = "dteFechaTermino", type = "date" })
-                                    <label>Tipo</label>
-                                    @Html.DropDownList("strTipo", null, new { @class = "form-control input-sm", id = "ddlTipo" })
-                                    <label>Estado de la Tutoria</label>
-                                    @Html.DropDownList("strEstadoTutoria", null, new { @class = "form-control input-sm", id = "ddlEstadoTutoria" })
+                                    <div class="form-group">
+                                        <label>Fecha de Inicio</label>
+                                        @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm", id = "dteFechaInicio", type = "date" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Fecha de Termino</label>
+                                        @Html.TextBoxFor(model => model.dteFechaTermino, new { @class = "form-control input-sm", id = "dteFechaTermino", type = "date" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tipo</label>
+                                        @Html.DropDownList("strTipo", null, new { @class = "form-control input-sm", id = "ddlTipo" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Estado de la Tutoria</label>
+                                        @Html.DropDownList("strEstadoTutoria", null, new { @class = "form-control input-sm", id = "ddlEstadoTutoria" })
+                                    </div>                                                                                                        
                                 </div>
                             </div>
                         </div>

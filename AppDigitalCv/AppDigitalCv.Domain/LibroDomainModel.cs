@@ -11,7 +11,6 @@ namespace AppDigitalCv.Domain
         public int id { get; set; }
         public int idPersonal { get; set; }
         public int idPais { get; set; }
-        public int idStatus { get; set; }
         public string strAutores { get; set; }
         public string strTituloLibro { get; set; }
         public string strTipoParticipacion { get; set; }
@@ -23,7 +22,6 @@ namespace AppDigitalCv.Domain
         public string strISBM { get; set; }
         public DateTime FechaPublicacion { get; set; }
         public string strProposito { get; set; }
-        public bool bitConsideraCurriculum { get; set; }
 
     }
 }

@@ -1,7 +1,7 @@
 ﻿@model AppDigitalCv.ViewModels.ProyectoInvestigacionVM
 @using AppDigitalCv.Security
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "ProyectoInvestigacion", FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="bs-container" style="min-height:960px;">
@@ -20,53 +20,62 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h5 class="box-title">
-                            <label class="text-success emailtitleletter">
-                                <i class="text-success fa fa-heartbeat"></i>
-                                @SessionPersister.AccountSession.NombreCompleto
-                            </label>
-                        </h5>
+                    <div class="box-header with-border">                      
                     </div>
                     <div class="box-body">
                         <div class="form-group">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Titulo del Proyecto</label>
-                                    @Html.TextBoxFor(model => model.strTituloProyecto, new { @class = "form-control input-sm", id = "txtTituloProyecto" })
-                                    <label>Nombre del Patrocinador</label>
-                                    @Html.TextBoxFor(model => model.strNombrePatrocinador, new { @class = "form-control input-sm", id = "txtNombrePatrocinador" })
-                                    <label>Fecha de Inicio del Proyecto</label>
-                                    @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm", id = "dteFechaInicio", type = "date" })
-                                    <label>Fecha de Fin del Proyecto</label>
-                                    @Html.TextBoxFor(model => model.dteFechaTermino, new { @class = "form-control input-sm", id = "dteFechaFin", type = "date" })
-                                    <label>Tipo de Patrocinador</label>
-                                    @Html.DropDownList("strTipoPatrocinador", null, new { @class = "form-control input-sm", id = "ddlTipoPatrocinador" })
-                                    <label>Investigadores Participantes</label>
-                                    @Html.TextAreaFor(model => model.strInvestigadoresParticipantes, new { @class = "form-control input-sm", id = "txtInvestigadores" })
-
+                                    <div class="form-group">
+                                        <label>Titulo del Proyecto</label>
+                                        @Html.TextBoxFor(model => model.strTituloProyecto, new { @class = "form-control input-sm", id = "txtTituloProyecto" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Nombre del Patrocinador</label>
+                                        @Html.TextBoxFor(model => model.strNombrePatrocinador, new { @class = "form-control input-sm", id = "txtNombrePatrocinador" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Fecha de Inicio del Proyecto</label>
+                                        @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm", id = "dteFechaInicio", type = "date" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Fecha de Fin del Proyecto</label>
+                                        @Html.TextBoxFor(model => model.dteFechaTermino, new { @class = "form-control input-sm", id = "dteFechaFin", type = "date" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tipo de Patrocinador</label>
+                                        @Html.DropDownList("strTipoPatrocinador", null, new { @class = "form-control input-sm", id = "ddlTipoPatrocinador" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Investigadores Participantes</label>
+                                        @Html.TextAreaFor(model => model.strInvestigadoresParticipantes, new { @class = "form-control input-sm", id = "txtInvestigadores" })
+                                    </div>                                                                                                                                                                                                                    
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Alumnos Participantes</label>
-                                    @Html.TextAreaFor(model => model.strAlumnosParticipantes, new { @class = "form-control input-sm", id = "txtAlumnos" })
-                                    <label>Actividades Realizadas</label>
-                                    @Html.TextAreaFor(model => model.strActividadesRealizadas, new { @class = "form-control input-sm", id = "txtActividades" })
-                                    <label>Convocatoria</label>
-                                    @Html.TextBoxFor(model => model.strConvocatoria, new { @class = "form-control input-sm", id = "txtConvocatoria" })
-                                    <label>Evidencia del Resumen del Proyecto en PDF</label>
-                                    @Html.TextBoxFor(model => model.documentosVMResumen.DocumentoFile, new { @class = "form-control input-sm", id = "inputFileUploadResumen", type = "file" })
-
-                                    <label>Es un Proyecto Tecnológico</label>
-                                    <br />
-                                    Si @Html.RadioButtonFor(model => model.bitProyectoTecnologico, true, new { @class = "form-control input-sm", id = "pt" })
-                                    No @Html.RadioButtonFor(model => model.bitProyectoTecnologico, false, new { @class = "form-control input-sm", id = "pt" })
-                                    <br />
-                                    <label>Considera para Curriculum</label>
-                                    <br />
-                                    Si @Html.RadioButtonFor(model => model.bitConsideraCurriculum, true, new { @class = "form-control input-sm", id = "cv" })
-                                    No @Html.RadioButtonFor(model => model.bitConsideraCurriculum, false, new { @class = "form-control input-sm", id = "cv" })
+                                    <div class="form-group">
+                                        <label>Alumnos Participantes</label>
+                                        @Html.TextAreaFor(model => model.strAlumnosParticipantes, new { @class = "form-control input-sm", id = "txtAlumnos" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Actividades Realizadas</label>
+                                        @Html.TextAreaFor(model => model.strActividadesRealizadas, new { @class = "form-control input-sm", id = "txtActividades" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Convocatoria</label>
+                                        @Html.TextBoxFor(model => model.strConvocatoria, new { @class = "form-control input-sm", id = "txtConvocatoria" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Evidencia del Resumen del Proyecto en PDF</label>
+                                        @Html.TextBoxFor(model => model.documentosVMResumen.DocumentoFile, new { @class = "form-control input-sm", id = "inputFileUploadResumen", type = "file" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Es un Proyecto Tecnológico</label>
+                                        <br />
+                                        Si @Html.RadioButtonFor(model => model.bitProyectoTecnologico, true, new { @class = "", id = "pt" })
+                                        No @Html.RadioButtonFor(model => model.bitProyectoTecnologico, false, new { @class = "", id = "pt" })
+                                    </div>                                                                                                                                                                                                                
                                 </div>
                             </div>
                         </div>
@@ -75,7 +84,7 @@
                                 <input type="submit" id="btnGuardar" value="Guardar" class="btn btn-success" />
                             </div>
                         </div>
-                        <div class="form-group-sm">
+                        <div class="">
                             <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
                             <div class="form-group" id="addTable">
                                 <br />

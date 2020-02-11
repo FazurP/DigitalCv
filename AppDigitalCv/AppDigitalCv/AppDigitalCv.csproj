@@ -500,8 +500,8 @@
     <Content Include="Scripts\Validate\Premios\validate-premios-regExp.js" />
     <Content Include="Scripts\Validate\ProduccionesArtisticas\validate-producciones-artisticas-date.js" />
     <Content Include="Scripts\Validate\ProduccionesArtisticas\validate-producciones-artisticas-upload.js" />
-    <Content Include="Scripts\Validate\ProductividadInnovadora\validate-productividad-innovadora-date.js" />
     <Content Include="Scripts\Validate\ProductividadInnovadora\validate-productividad-innovadora-regExp.js" />
+    <Content Include="Scripts\Validate\ProductividadInnovadora\validate-productividad-innovadora-upload.js" />
     <Content Include="Scripts\Validate\Prototipo\validate-prototipo-date.js" />
     <Content Include="Scripts\Validate\Prototipo\validate-prototipo-form.js" />
     <Content Include="Scripts\Validate\Prototipo\validate-prototipo-upload.js" />
@@ -681,7 +681,6 @@
     <Compile Include="Controllers\DatosFamiliaresController.cs" />
     <Compile Include="Controllers\DialectoIdiomaController.cs" />
     <Compile Include="Controllers\DireccionController.cs" />
-    <Compile Include="Controllers\DireccionIndividualizadaController.cs" />
     <Compile Include="Controllers\DocumentacionPersonalController.cs" />
     <Compile Include="Controllers\DocumentacionPersonalV2Controller.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />

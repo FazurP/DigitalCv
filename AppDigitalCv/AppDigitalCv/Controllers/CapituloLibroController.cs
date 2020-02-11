@@ -18,14 +18,11 @@ namespace AppDigitalCv.Controllers
 
         ICapituloLibro capituloLibroBusiness;
         IPaisBusiness paisBusiness;
-        IProgresoProdep progresoProdep;
         List list = new List();
 
-        public CapituloLibroController(ICapituloLibro _capituloLibroBusiness, IPaisBusiness _paisBusiness,
-            IProgresoProdep _progresoProdep) {
+        public CapituloLibroController(ICapituloLibro _capituloLibroBusiness, IPaisBusiness _paisBusiness) {
             capituloLibroBusiness = _capituloLibroBusiness;
             paisBusiness = _paisBusiness;
-            progresoProdep = _progresoProdep;
         }
         /// <summary>
         /// Este metodo se encarga de cargar la pantalla con todos sus elementos
@@ -71,17 +68,9 @@ namespace AppDigitalCv.Controllers
             bool respuesta = false;
             capituloLibro.idPersonal = SessionPersister.AccountSession.IdPersonal;
             CapituloLibroDomainModel capituloLibroDomainModel = new CapituloLibroDomainModel();
-            ProgresoProdepVM progresoProdepVM = new ProgresoProdepVM();
-            ProgresoProdepDomainModel progresoProdepDM = new ProgresoProdepDomainModel();
 
-            progresoProdepVM.id = 0;
-            progresoProdepVM.idPersonal = SessionPersister.AccountSession.IdPersonal;
-            progresoProdepVM.idStatus = int.Parse(Recursos.RecursosSistema.REGISTRO_EXITOSO);
             Mapper.Map(capituloLibro, capituloLibroDomainModel);
-            Mapper.Map(progresoProdepVM, progresoProdepDM);
 
-            progresoProdep.AddUpdateProgresoProdep(progresoProdepDM);
-            capituloLibroDomainModel.idStatus = progresoProdepDM.idStatus;
             respuesta = capituloLibroBusiness.AddUpdateCapituloLibro(capituloLibroDomainModel);
 
             return respuesta;
@@ -167,15 +156,7 @@ namespace AppDigitalCv.Controllers
 
             if (capituloLibroDM != null)
             {
-                if (capituloLibroBusiness.GetCapitulosLibrosByPersonal(capituloLibroDM.idPersonal).Count == 1)
-                {
-                    ProgresoProdepDomainModel progresoProdepDM = progresoProdep.GetProgresoPersonal(SessionPersister.AccountSession.IdPersonal,int.Parse(Recursos.RecursosSistema.REGISTRO_EXITOSO));
-                    progresoProdep.DeleteProgresoProdep(progresoProdepDM.id);
-                    capituloLibroBusiness.DeleteCapituloLibro(capituloLibroDM.id);
-                }
-                else {
-                    capituloLibroBusiness.DeleteCapituloLibro(capituloLibroDM.id);
-                }
+                capituloLibroBusiness.DeleteCapituloLibro(capituloLibroDM.id);
             }
 
             return RedirectToAction("Create", "CapituloLibro");

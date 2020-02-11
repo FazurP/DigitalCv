@@ -15,10 +15,12 @@ namespace AppDigitalCv.Business
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly ProduccionInnovadoraRepository produccionInnovadoraRepository;
+        private readonly DocumentosRepository documentosRepository;
         public ProductividadInnovadoraBusiness(IUnitOfWork _unitofWork)
         {
             unitOfWork = _unitofWork;
             produccionInnovadoraRepository = new ProduccionInnovadoraRepository(unitOfWork);
+            documentosRepository = new DocumentosRepository(unitOfWork);
         }
 
         public bool AddUpdateProductividadInnovador(ProductividadInnovadoraDomainModel productividadInnovadoraDomainModel)
@@ -34,9 +36,7 @@ namespace AppDigitalCv.Business
                     tblProductividad.strAutor = productividadInnovadoraDomainModel.strAutor;
                     tblProductividad.strTitulo = productividadInnovadoraDomainModel.strTitulo;
                     tblProductividad.strDescripcion = productividadInnovadoraDomainModel.strDescripcion;
-                    tblProductividad.strUso = productividadInnovadoraDomainModel.strUso;
                     tblProductividad.strNumeroRegistro = productividadInnovadoraDomainModel.strNumeroRegistro;
-                    tblProductividad.strUsuario = productividadInnovadoraDomainModel.strUsuario;
 
                     produccionInnovadoraRepository.Update(tblProductividad);
                     respuesta = true;
@@ -45,25 +45,25 @@ namespace AppDigitalCv.Business
             else
             {
                 tblProductividadInnovadora tblProductividad = new tblProductividadInnovadora();
+                catDocumentos catDocumentos = new catDocumentos();
 
                 tblProductividad.idDocumento = productividadInnovadoraDomainModel.idDocumento;
                 tblProductividad.idPais = productividadInnovadoraDomainModel.idPais;
                 tblProductividad.idPersonal = productividadInnovadoraDomainModel.idPersonal;
-                tblProductividad.idStatus = productividadInnovadoraDomainModel.idStatus;
                 tblProductividad.strAutor = productividadInnovadoraDomainModel.strAutor;
                 tblProductividad.strClasificacionInternacionalPatentes = productividadInnovadoraDomainModel.strClasificacionInternacionalPatentes;
                 tblProductividad.strDescripcion = productividadInnovadoraDomainModel.strDescripcion;
-                tblProductividad.strEstadoActual = productividadInnovadoraDomainModel.strEstadoActual;
                 tblProductividad.strNumeroRegistro = productividadInnovadoraDomainModel.strNumeroRegistro;
                 tblProductividad.strProposito = productividadInnovadoraDomainModel.strProposito;
                 tblProductividad.strTipoProductividadInnovadora = productividadInnovadoraDomainModel.strTipoProductividadInnovadora;
                 tblProductividad.strTitulo = productividadInnovadoraDomainModel.strTitulo;
-                tblProductividad.strUso = productividadInnovadoraDomainModel.strUso;
-                tblProductividad.strUsuario = productividadInnovadoraDomainModel.strUsuario;
                 tblProductividad.dteFechaRegistro = productividadInnovadoraDomainModel.dteFechaRegistro;
-                tblProductividad.bitConsideraCurriculum = productividadInnovadoraDomainModel.bitConsideraCurriculum;
 
-                produccionInnovadoraRepository.Insert(tblProductividad);
+                catDocumentos.tblProductividadInnovadora.Add(tblProductividad);
+
+                catDocumentos.strUrl = productividadInnovadoraDomainModel.documento.StrUrl;
+
+                documentosRepository.Insert(catDocumentos);
                 respuesta = true;
             }
 
@@ -85,20 +85,18 @@ namespace AppDigitalCv.Business
                 productividadInnovadoraDM.idDocumento = item.idDocumento.Value;
                 productividadInnovadoraDM.idPais = item.idPais.Value;
                 productividadInnovadoraDM.idPersonal = item.idPersonal.Value;
-                productividadInnovadoraDM.idStatus = item.idStatus.Value;
                 productividadInnovadoraDM.strAutor = item.strAutor;
                 productividadInnovadoraDM.strClasificacionInternacionalPatentes = item.strClasificacionInternacionalPatentes;
                 productividadInnovadoraDM.strDescripcion = item.strDescripcion;
-                productividadInnovadoraDM.strEstadoActual = item.strEstadoActual;
                 productividadInnovadoraDM.strNumeroRegistro = item.strNumeroRegistro;
                 productividadInnovadoraDM.strProposito = item.strProposito;
                 productividadInnovadoraDM.strTipoProductividadInnovadora = item.strTipoProductividadInnovadora;
                 productividadInnovadoraDM.strTitulo = item.strTitulo;
-                productividadInnovadoraDM.strUso = item.strUso;
-                productividadInnovadoraDM.strUsuario = item.strUsuario;
                 productividadInnovadoraDM.dteFechaRegistro = item.dteFechaRegistro.Value;
-                productividadInnovadoraDM.bitConsideraCurriculum = item.bitConsideraCurriculum.Value;
-                productividadInnovadoraDM.strNombreDocumento = item.catDocumentos.strUrl;
+                productividadInnovadoraDM.documento = new DocumentosDomainModel
+                {
+                    StrUrl = item.catDocumentos.strUrl
+                };
 
                 productividad.Add(productividadInnovadoraDM);
 
@@ -118,19 +116,18 @@ namespace AppDigitalCv.Business
             productividadInnovadoraDM.idDocumento = tblProductividad.idDocumento.Value;
             productividadInnovadoraDM.idPais = tblProductividad.idPais.Value;
             productividadInnovadoraDM.idPersonal = tblProductividad.idPersonal.Value;
-            productividadInnovadoraDM.idStatus = tblProductividad.idStatus.Value;
             productividadInnovadoraDM.strAutor = tblProductividad.strAutor;
             productividadInnovadoraDM.strClasificacionInternacionalPatentes = tblProductividad.strClasificacionInternacionalPatentes;
             productividadInnovadoraDM.strDescripcion = tblProductividad.strDescripcion;
-            productividadInnovadoraDM.strEstadoActual = tblProductividad.strEstadoActual;
             productividadInnovadoraDM.strNumeroRegistro = tblProductividad.strNumeroRegistro;
             productividadInnovadoraDM.strProposito = tblProductividad.strProposito;
             productividadInnovadoraDM.strTipoProductividadInnovadora = tblProductividad.strTipoProductividadInnovadora;
             productividadInnovadoraDM.strTitulo = tblProductividad.strTitulo;
-            productividadInnovadoraDM.strUso = tblProductividad.strUso;
-            productividadInnovadoraDM.strUsuario = tblProductividad.strUsuario;
             productividadInnovadoraDM.dteFechaRegistro = tblProductividad.dteFechaRegistro.Value;
-            productividadInnovadoraDM.bitConsideraCurriculum = tblProductividad.bitConsideraCurriculum.Value;
+            productividadInnovadoraDM.documento = new DocumentosDomainModel
+            {
+                StrUrl = tblProductividad.catDocumentos.strUrl
+            };
 
             return productividadInnovadoraDM;
         }
