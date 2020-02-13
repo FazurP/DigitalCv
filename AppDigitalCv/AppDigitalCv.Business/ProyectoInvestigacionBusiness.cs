@@ -15,11 +15,13 @@ namespace AppDigitalCv.Business
     {
         private readonly IUnitOfWork unitofWork;
         private readonly ProyectoInvestigacionRepository proyectoInvestigacionRepository;
+        private readonly DocumentosRepository documentos;
 
         public ProyectoInvestigacionBusiness(IUnitOfWork _unitOfWork)
         {
             unitofWork = _unitOfWork;
             proyectoInvestigacionRepository = new ProyectoInvestigacionRepository(unitofWork);
+            documentos = new DocumentosRepository(unitofWork);
         }
 
         public bool AddUpdateProyectoInvestigacion(ProyectoInvestigacionDomainModel proyectoInvestigacionDM)
@@ -47,9 +49,9 @@ namespace AppDigitalCv.Business
             else
             {
                 tblProyectoInvestigacionAplicadaDesarrolloTecnologico tblProyectoInvestigacionAplicadaDesarrolloTecnologico = new tblProyectoInvestigacionAplicadaDesarrolloTecnologico();
+                catDocumentos catDocumentos = new catDocumentos();
                 tblProyectoInvestigacionAplicadaDesarrolloTecnologico.idDocumento = proyectoInvestigacionDM.idDocumento;
                 tblProyectoInvestigacionAplicadaDesarrolloTecnologico.idPersonal = proyectoInvestigacionDM.idPersonal;
-                tblProyectoInvestigacionAplicadaDesarrolloTecnologico.idStatus = proyectoInvestigacionDM.idStatus;
                 tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strActividadesRealizadas = proyectoInvestigacionDM.strActividadesRealizadas;
                 tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strAlumnosParticipantes = proyectoInvestigacionDM.strAlumnosParticipantes;
                 tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strConvocatoria = proyectoInvestigacionDM.strConvocatoria;
@@ -60,8 +62,13 @@ namespace AppDigitalCv.Business
                 tblProyectoInvestigacionAplicadaDesarrolloTecnologico.dteFechaInicio = proyectoInvestigacionDM.dteFechaInicio;
                 tblProyectoInvestigacionAplicadaDesarrolloTecnologico.dteFechaTermino = proyectoInvestigacionDM.dteFechaTermino;
                 tblProyectoInvestigacionAplicadaDesarrolloTecnologico.bitProyectoTecnologico = proyectoInvestigacionDM.bitProyectoTecnologico;
-                tblProyectoInvestigacionAplicadaDesarrolloTecnologico.bitConsideraCurriculum = proyectoInvestigacionDM.bitConsideraCurriculum;
-                proyectoInvestigacionRepository.Insert(tblProyectoInvestigacionAplicadaDesarrolloTecnologico);
+
+                catDocumentos.tblProyectoInvestigacionAplicadaDesarrolloTecnologico.Add(tblProyectoInvestigacionAplicadaDesarrolloTecnologico);
+
+                catDocumentos.strUrl = proyectoInvestigacionDM.documentos.StrUrl;
+
+                documentos.Insert(catDocumentos);
+
                 respuesta = true;
             }
 
@@ -82,7 +89,6 @@ namespace AppDigitalCv.Business
                 proyectoInvestigacionDM.id = item.id;
                 proyectoInvestigacionDM.idDocumento = item.idDocumento.Value;
                 proyectoInvestigacionDM.idPersonal = item.idPersonal.Value;
-                proyectoInvestigacionDM.idStatus = item.idStatus.Value;
                 proyectoInvestigacionDM.strActividadesRealizadas = item.strActividadesRealizadas;
                 proyectoInvestigacionDM.strAlumnosParticipantes = item.strAlumnosParticipantes;
                 proyectoInvestigacionDM.strConvocatoria = item.strConvocatoria;
@@ -92,15 +98,14 @@ namespace AppDigitalCv.Business
                 proyectoInvestigacionDM.strTituloProyecto = item.strTituloProyecto;
                 proyectoInvestigacionDM.dteFechaInicio = item.dteFechaInicio.Value;
                 proyectoInvestigacionDM.dteFechaTermino = item.dteFechaTermino.Value;
-                proyectoInvestigacionDM.bitConsideraCurriculum = item.bitConsideraCurriculum.Value;
                 proyectoInvestigacionDM.bitProyectoTecnologico = item.bitProyectoTecnologico.Value;
-                proyectoInvestigacionDM.strNombreDocumento = item.catDocumentos.strUrl;
+                proyectoInvestigacionDM.documentos = new DocumentosDomainModel
+                {
+                    StrUrl = item.catDocumentos.strUrl
+                };
                 proyectos.Add(proyectoInvestigacionDM);
-
             }
-
             return proyectos;
-
         }
 
         public ProyectoInvestigacionDomainModel GetProyectoById(int _idProyecto)
@@ -114,7 +119,6 @@ namespace AppDigitalCv.Business
             proyectoInvestigacionDM.id = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.id;
             proyectoInvestigacionDM.idDocumento = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.idDocumento.Value;
             proyectoInvestigacionDM.idPersonal = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.idPersonal.Value;
-            proyectoInvestigacionDM.idStatus = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.idStatus.Value;
             proyectoInvestigacionDM.strActividadesRealizadas = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strActividadesRealizadas;
             proyectoInvestigacionDM.strAlumnosParticipantes = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strAlumnosParticipantes;
             proyectoInvestigacionDM.strConvocatoria = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strConvocatoria;
@@ -124,8 +128,11 @@ namespace AppDigitalCv.Business
             proyectoInvestigacionDM.strTituloProyecto = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strTituloProyecto;
             proyectoInvestigacionDM.dteFechaInicio = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.dteFechaInicio.Value;
             proyectoInvestigacionDM.dteFechaTermino = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.dteFechaTermino.Value;
-            proyectoInvestigacionDM.bitConsideraCurriculum = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.bitConsideraCurriculum.Value;
             proyectoInvestigacionDM.bitProyectoTecnologico = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.bitProyectoTecnologico.Value;
+            proyectoInvestigacionDM.documentos = new DocumentosDomainModel
+            {
+                StrUrl = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.catDocumentos.strUrl
+            };
 
             return proyectoInvestigacionDM;
         }

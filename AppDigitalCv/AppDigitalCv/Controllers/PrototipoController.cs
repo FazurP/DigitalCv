@@ -20,17 +20,15 @@ namespace AppDigitalCv.Controllers
         IUnitOfWork unitofWork;
         IDocumentosBusiness documentosBusiness;
         IPrototipoBusiness prototipoBusiness;
-        IProgresoProdep progresoProdep;
         List list = new List();
 
         public PrototipoController(IUnitOfWork _unitOfWork, IPaisBusiness _paisBusiness, IDocumentosBusiness _documentosBusiness,
-            IPrototipoBusiness _prototipoBusiness, IProgresoProdep _progresoProdep)
+            IPrototipoBusiness _prototipoBusiness)
         {
             unitofWork = _unitOfWork;
             paisBusiness = _paisBusiness;
             documentosBusiness = _documentosBusiness;
             prototipoBusiness = _prototipoBusiness;
-            progresoProdep = _progresoProdep;
         }
 
         [HttpGet]
@@ -58,29 +56,20 @@ namespace AppDigitalCv.Controllers
             if (ModelState.IsValid)
             {
                 PrototipoDomainModel prototipoDM = new PrototipoDomainModel();
-                ProgresoProdepDomainModel progresoProdepDM = new ProgresoProdepDomainModel();
-                DocumentosDomainModel documentosDM = new DocumentosDomainModel();
 
                 string nombre = SessionPersister.AccountSession.NombreCompleto;
                 int idPersonal = SessionPersister.AccountSession.IdPersonal;
-                int idStatus = int.Parse(Recursos.RecursosSistema.REGISTRO_PROTOTIPO);
 
                 prototipoVM.idPersonal = idPersonal;
-                prototipoVM.idStatsu = idStatus;
 
                 AutoMapper.Mapper.Map(prototipoVM,prototipoDM);
-                AutoMapper.Mapper.Map(prototipoVM.documentosVM, documentosDM);
-                prototipoDM.documentosDM = documentosDM;
 
-                if (GuadarArchivo(prototipoDM,nombre))
+                object[] obj = CrearDocumentoPersonales(prototipoVM);
+
+                if (obj[0].Equals(true))
                 {
-                    prototipoDM.documentosDM.StrUrl = prototipoDM.documentosDM.DocumentoFile.FileName;
-                    DocumentosDomainModel documento = documentosBusiness.AddDocumento(documentosDM);
-                    prototipoDM.idDocumento = documento.IdDocumento;
+                    prototipoDM.documentos = new DocumentosDomainModel { StrUrl=obj[1].ToString() };
                     prototipoBusiness.AddUpdatePrototipo(prototipoDM);
-                    progresoProdepDM.idPersonal = idPersonal;
-                    progresoProdepDM.idStatus = idStatus;
-                    progresoProdep.AddUpdateProgresoProdep(progresoProdepDM);
                 }
 
             }
@@ -88,27 +77,26 @@ namespace AppDigitalCv.Controllers
             return RedirectToAction("Create","Prototipo");
         }
 
-        public bool GuadarArchivo(PrototipoDomainModel prototipoDomainModel, string nombre)
+        private Object[] CrearDocumentoPersonales(PrototipoVM prototipoVM)
         {
-            bool respuesta = false;
-
-            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombre + "/"));
+            Object[] respuesta = new Object[2];
+            prototipoVM.idPersonal = SessionPersister.AccountSession.IdPersonal;
+            string nombrecompleto = SessionPersister.AccountSession.NombreCompleto;
+            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombrecompleto));
 
             if (Directory.Exists(path))
             {
-                if (prototipoDomainModel.documentosDM.DocumentoFile.ContentType.Equals("application/pdf"))
+                if (prototipoVM.documentos.DocumentoFile != null)
                 {
-                    string pahtCompleto = Path.Combine(path, Path.GetFileName(prototipoDomainModel.documentosDM.DocumentoFile.FileName));
-                    prototipoDomainModel.documentosDM.DocumentoFile.SaveAs(pahtCompleto);
-                    respuesta = true;
+                    respuesta = FileManager.FileManager.CheckFileIfExist(path, prototipoVM.documentos);
                 }
             }
             else
             {
                 DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
-                GuadarArchivo(prototipoDomainModel, nombre);
-                respuesta = true;
+                CrearDocumentoPersonales(prototipoVM);
             }
+
             return respuesta;
         }
 
@@ -178,16 +166,11 @@ namespace AppDigitalCv.Controllers
 
             if (prototipoDM != null)
             {
-                if (prototipoBusiness.GetPrototipos(SessionPersister.AccountSession.IdPersonal).Count == 1)
-                {
-                    ProgresoProdepDomainModel progresoProdepDM = progresoProdep.GetProgresoPersonal(SessionPersister.AccountSession.IdPersonal, int.Parse(Recursos.RecursosSistema.REGISTRO_PROTOTIPO));
-                    documentosBusiness.DeleteDocumento(prototipoDM.idDocumento);
-                    progresoProdep.DeleteProgresoProdep(progresoProdepDM.id);
-                }
-                else
+                string url = Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + SessionPersister.AccountSession.NombreCompleto + "/" + prototipoDM.documentos.StrUrl);
+                if (FileManager.FileManager.DeleteFileFromServer(url))
                 {
                     documentosBusiness.DeleteDocumento(prototipoDM.idDocumento);
-                }
+                }            
             }
 
             return RedirectToAction("Create","Prototipo");

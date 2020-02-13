@@ -10,9 +10,8 @@ namespace AppDigitalCv.Domain
     {
         public int id { get; set; }
         public int idDocumento { get; set; }
-        public int idStatus { get; set; }
         public int idPersonal { get; set; }
-        public DocumentosDomainModel documentosDMResumen { get; set; }
+        public DocumentosDomainModel documentos { get; set; }
         public string strTituloProyecto { get; set; }
         public string strNombrePatrocinador { get; set; }
         public DateTime dteFechaInicio { get; set; }
@@ -23,7 +22,6 @@ namespace AppDigitalCv.Domain
         public string strActividadesRealizadas { get; set; }
         public string strConvocatoria { get; set; }
         public bool bitProyectoTecnologico { get; set; }
-        public bool bitConsideraCurriculum { get; set; }
-        public string strNombreDocumento { get; set; }
+
     }
 }

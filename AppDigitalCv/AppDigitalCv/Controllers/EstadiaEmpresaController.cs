@@ -19,17 +19,15 @@ namespace AppDigitalCv.Controllers
         IEstadiaEmpresaBusiness estadiaEmpresaBusiness;
         ITipoProductoBusiness tipoProductoBusiness;
         IProgramaEducativoBusiness programaEducativoBusiness;
-        IProgresoProdep progresoProdep;
         IDocumentosBusiness documentosBusiness;
         List list = new List();
 
         public EstadiaEmpresaController(IEstadiaEmpresaBusiness _estadiaEmpresaBusiness,ITipoProductoBusiness _tipoProductoBusiness,
-            IProgramaEducativoBusiness _programaEducativoBusiness, IProgresoProdep _progresoProdep, IDocumentosBusiness _documentosBusiness)
+            IProgramaEducativoBusiness _programaEducativoBusiness, IDocumentosBusiness _documentosBusiness)
         {
             estadiaEmpresaBusiness = _estadiaEmpresaBusiness;
             tipoProductoBusiness = _tipoProductoBusiness;
             programaEducativoBusiness = _programaEducativoBusiness;
-            progresoProdep = _progresoProdep;
             documentosBusiness = _documentosBusiness;
         }
 
@@ -38,7 +36,6 @@ namespace AppDigitalCv.Controllers
         {
             if (SessionPersister.AccountSession != null)
             {
-                ViewBag.idTipoProducto = new SelectList(tipoProductoBusiness.GetAllTipoProducto(),"id","strDescripcion");
                 ViewBag.idProgramaEducativo = new SelectList(programaEducativoBusiness.GetProgramasEducativos(), "idProgramaEducativo", "strDescripcion");
                 ViewBag.strEstadoEstadia = new SelectList(list.FillEstadoEstadia());
                 return View();
@@ -56,56 +53,44 @@ namespace AppDigitalCv.Controllers
             if (ModelState.IsValid)
             {
                 EstadiaEmpresaDomainModel estadiaEmpresaDM = new EstadiaEmpresaDomainModel();
-                ProgresoProdepDomainModel progresoProdepDM = new ProgresoProdepDomainModel();
-                DocumentosDomainModel documentosDM = new DocumentosDomainModel();
 
-                string nombre = SessionPersister.AccountSession.NombreCompleto;
                 int idPersonal = SessionPersister.AccountSession.IdPersonal;
-                int idStatus = int.Parse(Recursos.RecursosSistema.REGISTRO_ESTADIA_EMPRESA);
 
                 estadiaEmpresaVM.idPersonal = idPersonal;
-                estadiaEmpresaVM.idStatus = idStatus;
 
                 AutoMapper.Mapper.Map(estadiaEmpresaVM,estadiaEmpresaDM);
-                AutoMapper.Mapper.Map(estadiaEmpresaVM.documentosVM,documentosDM);
-                estadiaEmpresaDM.documentosDM = documentosDM;
 
-                if (GuadarArchivo(estadiaEmpresaDM,nombre))
+                object[] obj = CrearDocumentoPersonales(estadiaEmpresaVM);
+
+                if (obj[0].Equals(true))
                 {
-                    estadiaEmpresaDM.documentosDM.StrUrl = estadiaEmpresaDM.documentosDM.DocumentoFile.FileName;
-                    DocumentosDomainModel documentos = documentosBusiness.AddDocumento(documentosDM);
-                    estadiaEmpresaDM.idDocumento = documentos.IdDocumento;
+                    estadiaEmpresaDM.documentos = new DocumentosDomainModel { StrUrl = obj[1].ToString() };
                     estadiaEmpresaBusiness.AddUpdateEstadiaEmpresa(estadiaEmpresaDM);
-                    progresoProdepDM.idPersonal = idPersonal;
-                    progresoProdepDM.idStatus = idStatus;
-                    progresoProdep.AddUpdateProgresoProdep(progresoProdepDM);
                 }
             }
-
             return RedirectToAction("Create","EstadiaEmpresa");
         }
 
-        public bool GuadarArchivo(EstadiaEmpresaDomainModel estadiaEmpresaDM, string nombre)
+        private Object[] CrearDocumentoPersonales(EstadiaEmpresaVM estadiaEmpresaVM)
         {
-            bool respuesta = false;
-
-            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombre + "/"));
+            Object[] respuesta = new Object[2];
+            estadiaEmpresaVM.idPersonal = SessionPersister.AccountSession.IdPersonal;
+            string nombrecompleto = SessionPersister.AccountSession.NombreCompleto;
+            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombrecompleto));
 
             if (Directory.Exists(path))
             {
-                if (estadiaEmpresaDM.documentosDM.DocumentoFile.ContentType.Equals("application/pdf"))
+                if (estadiaEmpresaVM.documentos.DocumentoFile != null)
                 {
-                    string pahtCompleto = Path.Combine(path, Path.GetFileName(estadiaEmpresaDM.documentosDM.DocumentoFile.FileName));
-                    estadiaEmpresaDM.documentosDM.DocumentoFile.SaveAs(pahtCompleto);
-                    respuesta = true;
+                    respuesta = FileManager.FileManager.CheckFileIfExist(path, estadiaEmpresaVM.documentos);
                 }
             }
             else
             {
                 DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
-                GuadarArchivo(estadiaEmpresaDM, nombre);
-                respuesta = true;
+                CrearDocumentoPersonales(estadiaEmpresaVM);
             }
+
             return respuesta;
         }
 
@@ -126,13 +111,13 @@ namespace AppDigitalCv.Controllers
 
             if (param.sSearch != null)
             {
-                estadiasDM = estadiaEmpresaBusiness.GetAllEstadiaEmpresaByIdPersonal(identityPersonal).Where(p => p.strNombreEstadia.Contains(param.sSearch)).ToList();
+                estadiasDM = estadiaEmpresaBusiness.GetAllEstadiaEmpresaByIdPersonal(identityPersonal).Where(p => p.strNombreEmpresaInstitucion.Contains(param.sSearch)).ToList();
             }
             else
             {
                 totalCount = estadiaEmpresaBusiness.GetAllEstadiaEmpresaByIdPersonal(identityPersonal).Count();
 
-                estadiasDM = estadiaEmpresaBusiness.GetAllEstadiaEmpresaByIdPersonal(identityPersonal).OrderBy(p => p.strNombreEstadia).Skip((pageNo - 1)
+                estadiasDM = estadiaEmpresaBusiness.GetAllEstadiaEmpresaByIdPersonal(identityPersonal).OrderBy(p => p.strNombreEmpresaInstitucion).Skip((pageNo - 1)
                     * param.iDisplayLength).Take(param.iDisplayLength).ToList();
             }
 
@@ -173,13 +158,12 @@ namespace AppDigitalCv.Controllers
 
             if (estadiaEmpresaDM != null)
             {
-                if (progresoProdep.GetProgresoByPersonal(SessionPersister.AccountSession.IdPersonal).Count == 1)
+                string url = Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + SessionPersister.AccountSession.NombreCompleto + "/" + estadiaEmpresaDM.documentos.StrUrl);
+                if (FileManager.FileManager.DeleteFileFromServer(url))
                 {
                     documentosBusiness.DeleteDocumento(estadiaEmpresaDM.idDocumento);
-                    ProgresoProdepDomainModel progresoProdepDM = progresoProdep.GetProgresoPersonal(SessionPersister.AccountSession.IdPersonal,int.Parse(Recursos.RecursosSistema.REGISTRO_ESTADIA_EMPRESA));
-                    progresoProdep.DeleteProgresoProdep(progresoProdepDM.id);
                 }
-                    documentosBusiness.DeleteDocumento(estadiaEmpresaDM.idDocumento);
+                  
             }
 
             return RedirectToAction("Create","EstadiaEmpresa");
@@ -195,6 +179,7 @@ namespace AppDigitalCv.Controllers
 
             if (estadiaEmpresaDM != null)
             {
+                ViewBag.strEstadoEstadia = new SelectList(list.FillEstadoEstadia());
                 AutoMapper.Mapper.Map(estadiaEmpresaDM,empresaVM);
                 return PartialView("_Editar",empresaVM);
             }

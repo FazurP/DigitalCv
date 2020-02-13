@@ -13,19 +13,30 @@
             </div>
             <div class="row">
                 <div class="form-group col-lg-7">
-                    @Html.Label("Datos del Prototipo")
-                    <hr />
-                    <label>Numero de Estudiantes</label>
-                    @Html.TextBoxFor(model => model.strNumeroEstudiantes,new { @class="form-control input-sm",id="NumeroEstudiantes"})
-                <label>Nombre de Estudiantes</label>
-                    @Html.TextBoxFor(model => model.strNombreEstudantes,new { @class="form-control input-sm",id="NombreEstudiante"})
-                </div>
-                <div class="row">
-                    <div class="form-group col-lg-6 col-lg-offset-4">
-                        <a href="#" id="btnSubmit" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
+                    <div class="form-group">
+                        <label>Programa Educativo: </label>
+                        @Html.DropDownListFor(model => model.idProgramaEductivo, null, new { @class = "form-control input-sm", id = "ProgramaEducativo" })
                     </div>
+                    <div class="form-group">
+                        <label>Nombre del Estudiante: </label>
+                        @Html.TextBoxFor(model => model.strNombreEstudantes, new { @class = "form-control input-sm", id = "NombreEstudiante" })
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo: </label>
+                        @Html.DropDownListFor(model => model.strTipo, null, new { @class = "form-control input-sm", id = "Tipo" })
+                    </div>
+                    <div class="form-group">
+                        <label>Horas: </label>
+                        @Html.TextBoxFor(model => model.strHoras, new { @class = "form-control input-sm", id = "Horas" })
+                    </div>
+                    <div class="form-group">
+                        <label>Estado de la Tutoria: </label>
+                        @Html.DropDownListFor(model => model.strEstadoTutoria, null, new { @class = "form-control input-sm", id = "EstadoTutoria" })
+                    </div>
+                    <div class="form-group">
+                        <a href="#" id="btnSubmit" class="btn btn-sm btn-success"><span><i class=""></i>Actualizar</span></a>
+                    </div>                   
                 </div>
-            </div>
         </div>
     </form>
 
@@ -35,42 +46,24 @@
 
     $(document).ready(function () {
 
-        $('#NumeroEstudiantes').keypress(function (e) {
-             let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
-            let regExp = new RegExp("^[0-9 ]+$");
-
-            if (!regExp.test(data))
-            {
-                e.preventDefault();
-                toastr.warning('Solo se Permiten Numeros', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
-            }
-        });
-
-        $('#NombreEstudiante').keypress(function (e) {
-
-            let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
-            let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$");
-
-            if (!regExp.test(data)) {
-                e.preventDefault();
-                toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
-            }
-
-        });
-
         $("#btnSubmit").click(function () {
 
-            let numeroEstudiantes = $('#NumeroEstudiantes').val();
-            let nombreEstudiantes = $('#NombreEstudiante').val();
-        
-            if (numeroEstudiantes != "" && nombreEstudiantes != "") {
+            let ddlProgramaEducativo = $('#ProgramaEducativo').val();
+            let txtNombreEstudiante = $('#NombreEstudiante').val();
+            let ddlTipo = $('#Tipo').get(0).selectedIndex;
+            let txtHoras = $('#Horas').val();
+            let ddlEstadoTutoria = $('#EstadoTutoria').get(0).selectedIndex;
+
+            if (ddlProgramaEducativo > 0 && txtNombreEstudiante != "" && ddlTipo > 0 && txtHoras != "" && ddlEstadoTutoria > 0) {
                 var TutoriasVM = {};
                 var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
 
                 TutoriasVM.id = $('#id').val();
-                TutoriasVM.strNumeroEstudiantes = $('#NumeroEstudiantes').val();
-                TutoriasVM.strNombreEstudantes = $('#NombreEstudiante').val();
-
+                TutoriasVM.strNombreEstudantes = txtNombreEstudiante;
+                TutoriasVM.idProgramaEductivo = ddlProgramaEducativo;
+                TutoriasVM.strEstadoTutoria = $('#EstadoTutoria').val();
+                TutoriasVM.strTipo = $('#Tipo').val();
+                TutoriasVM.strHoras = txtHoras;
                 $.ajax({
                     type: "POST",
                     url: "/Tutorias/UpdateTutoria",

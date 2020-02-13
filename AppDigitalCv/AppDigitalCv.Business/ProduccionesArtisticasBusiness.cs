@@ -15,11 +15,13 @@ namespace AppDigitalCv.Business
     {
         private readonly IUnitOfWork unitofWork;
         private readonly ProduccionesArtisticasRepository produccionesArtisticasRepository;
+        private readonly DocumentosRepository documentosRepository;
 
         public ProduccionesArtisticasBusiness(IUnitOfWork _unitOfWork)
         {
             unitofWork = _unitOfWork;
             produccionesArtisticasRepository = new ProduccionesArtisticasRepository(unitofWork);
+            documentosRepository = new DocumentosRepository(unitofWork);
         }
 
         public bool AddUpdateProduccionesArtisticas(ProduccionesArtisticasDomainModel produccionesArtisticasDM)
@@ -45,12 +47,12 @@ namespace AppDigitalCv.Business
             else
             {
                 tblProduccionArtistica tblProduccionArtistica = new tblProduccionArtistica();
+                catDocumentos catDocumentos = new catDocumentos();
 
                 tblProduccionArtistica.idDocumento = produccionesArtisticasDM.idDocumento;
                 tblProduccionArtistica.idPais = produccionesArtisticasDM.idPais;
                 tblProduccionArtistica.idPersonal = produccionesArtisticasDM.idPersonal;
                 tblProduccionArtistica.idProduccionArtistica = produccionesArtisticasDM.idProduccionesArtisticas;
-                tblProduccionArtistica.idStatus = produccionesArtisticasDM.idStatus;
                 tblProduccionArtistica.strAutor = produccionesArtisticasDM.strAutor;
                 tblProduccionArtistica.strDescripcion = produccionesArtisticasDM.strDescripcion;
                 tblProduccionArtistica.strImpactoDiseño = produccionesArtisticasDM.strImpactoDiseño;
@@ -61,9 +63,12 @@ namespace AppDigitalCv.Business
                 tblProduccionArtistica.strNombreObra = produccionesArtisticasDM.strNombreObra;
                 tblProduccionArtistica.strProposito = produccionesArtisticasDM.strProposito;
                 tblProduccionArtistica.dteFechaPublicacion = produccionesArtisticasDM.dteFechaPublicacion;
-                tblProduccionArtistica.bitConsideraCurriculum = produccionesArtisticasDM.bitLigarCurriculum;
 
-                produccionesArtisticasRepository.Insert(tblProduccionArtistica);
+                catDocumentos.tblProduccionArtistica.Add(tblProduccionArtistica);
+
+                catDocumentos.strUrl = produccionesArtisticasDM.documentos.StrUrl;
+
+                documentosRepository.Insert(catDocumentos);
                 respuesta = true;
 
             }
@@ -87,7 +92,6 @@ namespace AppDigitalCv.Business
                 produccionesArtisticasDM.idPais = tblProduccion.idPais.Value;
                 produccionesArtisticasDM.idPersonal = tblProduccion.idPersonal.Value;
                 produccionesArtisticasDM.idProduccionesArtisticas = tblProduccion.idProduccionArtistica.Value;
-                produccionesArtisticasDM.idStatus = tblProduccion.idStatus.Value;
                 produccionesArtisticasDM.strAutor = tblProduccion.strAutor;
                 produccionesArtisticasDM.strDescripcion = tblProduccion.strDescripcion;
                 produccionesArtisticasDM.strImpactoDiseño = tblProduccion.strImpactoDiseño;
@@ -98,8 +102,14 @@ namespace AppDigitalCv.Business
                 produccionesArtisticasDM.strNombreObra = tblProduccion.strNombreObra;
                 produccionesArtisticasDM.strProposito = tblProduccion.strProposito;
                 produccionesArtisticasDM.dteFechaPublicacion = tblProduccion.dteFechaPublicacion.Value;
-                produccionesArtisticasDM.bitLigarCurriculum = tblProduccion.bitConsideraCurriculum.Value;
-                produccionesArtisticasDM.strNombreDocumento = tblProduccion.catDocumentos.strUrl;
+                produccionesArtisticasDM.documentos = new DocumentosDomainModel
+                {
+                    StrUrl = tblProduccion.catDocumentos.strUrl
+                };
+                produccionesArtisticasDM.ProduccionArtistica = new ProduccionArtisticaDomainModel
+                {
+                    strDescripcion = tblProduccion.catProduccionArtistica.strDescripcion
+                };
 
                 produccionesArtisticas.Add(produccionesArtisticasDM);
             }
@@ -119,7 +129,6 @@ namespace AppDigitalCv.Business
             produccionesArtisticasDM.idPais = tblProduccion.idPais.Value;
             produccionesArtisticasDM.idPersonal = tblProduccion.idPersonal.Value;
             produccionesArtisticasDM.idProduccionesArtisticas = tblProduccion.idProduccionArtistica.Value;
-            produccionesArtisticasDM.idStatus = tblProduccion.idStatus.Value;
             produccionesArtisticasDM.strAutor = tblProduccion.strAutor;
             produccionesArtisticasDM.strDescripcion = tblProduccion.strDescripcion;
             produccionesArtisticasDM.strImpactoDiseño = tblProduccion.strImpactoDiseño;
@@ -130,7 +139,10 @@ namespace AppDigitalCv.Business
             produccionesArtisticasDM.strNombreObra = tblProduccion.strNombreObra;
             produccionesArtisticasDM.strProposito = tblProduccion.strProposito;
             produccionesArtisticasDM.dteFechaPublicacion = tblProduccion.dteFechaPublicacion.Value;
-            produccionesArtisticasDM.bitLigarCurriculum = tblProduccion.bitConsideraCurriculum.Value;
+            produccionesArtisticasDM.documentos = new DocumentosDomainModel
+            {
+                StrUrl = tblProduccion.catDocumentos.strUrl
+            };
 
             return produccionesArtisticasDM;
         }

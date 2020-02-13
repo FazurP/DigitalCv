@@ -7,7 +7,7 @@
     <div class="bs-container" style="min-height:960px;">
         <section class="content-header">
             <h1>
-                Producción Academica
+                Manuales de Operación
                 <small>(Agregar)</small>
             </h1>
             <ol class="breadcrumb">
@@ -36,7 +36,7 @@
                                 <div class="form-group">
                                     <label>Descripción</label>
                                     @Html.TextBoxFor(model => model.strDescripcion, new { @class = "form-control input-sm", id = "Descripcion", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$" })
-                                </div>                                                                                     
+                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -50,11 +50,11 @@
                                 <div class="form-group">
                                     <label>Fecha de Publicación</label>
                                     @Html.TextBoxFor(model => model.dteFechaPublicacion, new { @class = "form-control input-sm", type = "date", id = "Fecha" })
-                                </div>                                                                                             
+                                </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input type="submit" id="btnGuardar" value="Guardar" class="btn btn-sm btn-success" />
+                                    <input type="submit" id="btnGuardar" value="Guardar Información" class="btn btn-sm btn-success" />
                                 </div>
                             </div>
                             <div class="">
@@ -107,6 +107,7 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/Scripts/Validate/ManualOperacion/validate-manual-operacion-form.js"></script>
+    <script src="~/Scripts/Validate/ManualOperacion/validate-manual-operacion-regExp.js"></script>
     <script>
 
         var AddEditar = function (id) {
@@ -154,7 +155,7 @@
                                 success: fnCallback
                             })
                         },
-                        "pageLength": 5,
+                        "pageLength": 10,
                         "paging": true,
                         "language": {
 

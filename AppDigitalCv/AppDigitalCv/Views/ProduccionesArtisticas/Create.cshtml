@@ -7,7 +7,7 @@
     <div class="bs-container" style="min-height:960px;">
         <section class="content-header">
             <h1>
-                Producción Academica
+                Producciones Artisticas
                 <small>(Agregar)</small>
             </h1>
             <ol class="breadcrumb">
@@ -20,85 +20,87 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="box box-success">
-                    <div class="box-header with-border">                      
+                    <div class="box-header with-border">
                     </div>
                     <div class="box-body">
                         <div class="form-group">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <div class="form-group">
-                                        <label>Tipo de Producción Artistica</label>
+                                        <label>Tipo de Producción Artistica:</label>
                                         @Html.DropDownList("idProduccionesArtisticas", null, new { @class = "form-control input-sm", id = "Produccion" })
                                     </div>
                                     <div class="form-group">
-                                        <label>Pais</label>
+                                        <label>Pais:</label>
                                         @Html.DropDownList("idPais", null, new { @class = "form-control input-sm", id = "Pais" })
                                     </div>
                                     <div class="form-group">
-                                        <label>Autor(es)</label>
+                                        <label>Autor(es):</label>
                                         @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "Autor" })
                                     </div>
                                     <div class="form-group">
-                                        <label>Nombre de la Obra</label>
+                                        <label>Nombre:</label>
                                         @Html.TextBoxFor(model => model.strNombreObra, new { @class = "form-control input-sm", id = "Nombre" })
                                     </div>
                                     <div class="form-group">
-                                        <label>Descripción</label>
+                                        <label>Descripción:</label>
                                         @Html.TextAreaFor(model => model.strDescripcion, new { @class = "form-control input-sm", id = "Descripcion" })
                                     </div>
                                     <div class="form-group">
-                                        <label>Impacto de la Investigación</label>
+                                        <label>Impacto de la Investigación:</label>
                                         @Html.TextAreaFor(model => model.strImpactoInvestigacion, new { @class = "form-control input-sm", id = "Investigacion" })
                                     </div>
                                     <div class="form-group">
-                                        <label>Impacto de la Metodologia</label>
+                                        <label>Impacto de la Metodologia:</label>
                                         @Html.TextAreaFor(model => model.strImpactoMetodologia, new { @class = "form-control input-sm", id = "Metodologia" })
-                                    </div>                                                                                                                                                                                                             
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <div class="form-group">
-                                        <label>Impacto del Diseño</label>
+                                        <label>Impacto del Diseño:</label>
                                         @Html.TextAreaFor(model => model.strImpactoDiseño, new { @class = "form-control input-sm", id = "Diseño" })
                                     </div>
                                     <div class="form-group">
-                                        <label>Impacto de la Innovación</label>
+                                        <label>Impacto de la Innovación:</label>
                                         @Html.TextAreaFor(model => model.strImpactoInnovacion, new { @class = "form-control input-sm", id = "Innovacion" })
                                     </div>
                                     <div class="form-group">
-                                        <label>Fecha de Publicación</label>
+                                        <label>Fecha de Publicación:</label>
                                         @Html.TextBoxFor(model => model.dteFechaPublicacion, new { @class = "form-control input-sm", type = "date", id = "Publicacion" })
                                     </div>
                                     <div class="form-group">
-                                        <label>Lugar de Presentación</label>
+                                        <label>Lugar de Presentación:</label>
                                         @Html.TextBoxFor(model => model.strLugarPresento, new { @class = "form-control input-sm", id = "Presentacion" })
                                     </div>
                                     <div class="form-group">
-                                        <label>Proposito</label>
+                                        <label>Proposito:</label>
                                         @Html.DropDownList("strProposito", null, new { @class = "form-control input-sm", id = "Proposito" })
                                     </div>
                                     <div class="form-group">
-                                        <label>Envidencia del Documento en PDF</label>
-                                        @Html.TextBoxFor(model => model.documentosVM.DocumentoFile, new { @class = "form-control input-sm", type = "file", id = "inputFileUpload" })
-                                    </div>                                                                                                                                                                                                                
+                                        <label>Envidencia del Documento en PDF:</label>
+                                        @Html.TextBoxFor(model => model.documentos.DocumentoFile, new { @class = "form-control input-sm", type = "file", id = "inputFileUpload" })
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <input type="submit" id="btnGuardar" value="Guardar" class="btn btn-success" />
+                                <input type="submit" id="btnGuardar" value="Guardar Información" class="btn btn-sm btn-success" />
                             </div>
                         </div>
                         <div class="">
                             <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
                             <div class="form-group" id="addTable">
                                 <br />
-                                <table id="tblProductividad" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
-                                    <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
+                                <table id="tblProductividad" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-responsive">
+                                    <thead class="" style="color:white; background-color:#428BCA; font-size:10px;">
                                         <tr>
-                                            <th>Nombre de la Obra</th>
-                                            <th>Visualizar Documento</th>
+                                            <th>Nombre</th>
+                                            <th>Tipo de Producción</th>
+                                            <th>Autor</th>
+                                            <th>Documento</th>
                                             <th>Editar</th>
                                             <th>Eliminar</th>
 
@@ -140,6 +142,7 @@
     <script src="~/Scripts/Validate/ProduccionesArtisticas/validate-producciones-artisticas-form.js"></script>
     <script src="~/Scripts/Validate/ProduccionesArtisticas/validate-producciones-artisticas-date.js"></script>
     <script src="~/Scripts/Validate/ProduccionesArtisticas/validate-producciones-artisticas-upload.js"></script>
+    <script src="~/Scripts/Validate/ProduccionesArtisticas/validate-producciones-artistica-regExp.js?v=1"></script>
 
 
     <script>
@@ -220,10 +223,12 @@
                         "columns": [
 
                             { "data": "strNombreObra" },
+                            { "data": "ProduccionArtistica.strDescripcion" },
+                            { "data": "strAutor" },
                             {
-                            "data": "strNombreDocumento",
-                                "render": function (strNombreDocumento) {
-                                    return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + strNombreDocumento + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'
+                            "data": "documentos.StrUrl",
+                                "render": function (StrUrl) {
+                                    return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
                             }
                             },
                             {

@@ -34,7 +34,11 @@ namespace AppDigitalCv.Business
                 if (tblTutoria != null)
                 {
                     tblTutoria.strNombreEstudiante = tutoriasDM.strNombreEstudantes;
-                    tblTutoria.strNumeroEstudiantes = tutoriasDM.strNumeroEstudiantes;
+                    tblTutoria.idProgramaEductivo = tutoriasDM.idProgramaEductivo;
+                    tblTutoria.strEstadoTutoria = tutoriasDM.strEstadoTutoria;
+                    tblTutoria.strHoras = tutoriasDM.strHoras;
+                    tblTutoria.strNombreEstudiante = tutoriasDM.strNombreEstudantes;
+                    tblTutoria.strTipo = tutoriasDM.strTipo;
 
                     tutoriaRepository.Update(tblTutoria);
                     respuesta = true;
@@ -46,15 +50,12 @@ namespace AppDigitalCv.Business
 
                 tblTutoria.idPersonal = tutoriasDM.idPersonal;
                 tblTutoria.idProgramaEductivo = tutoriasDM.idProgramaEductivo;
-                tblTutoria.idStatus = tutoriasDM.idStatus;
-                tblTutoria.idTipoEstudio = tutoriasDM.idTipoEstudio;
                 tblTutoria.strEstadoTutoria = tutoriasDM.strEstadoTutoria;
                 tblTutoria.strNombreEstudiante = tutoriasDM.strNombreEstudantes;
-                tblTutoria.strNumeroEstudiantes = tutoriasDM.strNumeroEstudiantes;
-                tblTutoria.strTipo = tutoriasDM.strTipo;
-                tblTutoria.strTutoria = tutoriasDM.strTutoria;
                 tblTutoria.dteFechaInicio = tutoriasDM.dteFechaInicio;
                 tblTutoria.dteFechaTermino = tutoriasDM.dteFechaTermino;
+                tblTutoria.strHoras = tutoriasDM.strHoras;
+                tblTutoria.strTipo = tutoriasDM.strTipo;
 
                 tutoriaRepository.Insert(tblTutoria);
                 respuesta = true;
@@ -77,15 +78,12 @@ namespace AppDigitalCv.Business
                 tutoriasDM.id = item.id;
                 tutoriasDM.idPersonal = item.idPersonal.Value;
                 tutoriasDM.idProgramaEductivo = item.idProgramaEductivo.Value;
-                tutoriasDM.idStatus = item.idStatus.Value;
-                tutoriasDM.idTipoEstudio = item.idTipoEstudio.Value;
                 tutoriasDM.strEstadoTutoria = item.strEstadoTutoria;
                 tutoriasDM.strNombreEstudantes = item.strNombreEstudiante;
-                tutoriasDM.strNumeroEstudiantes = item.strNumeroEstudiantes;
-                tutoriasDM.strTipo = item.strTipo;
-                tutoriasDM.strTutoria = item.strTutoria;
                 tutoriasDM.dteFechaInicio = item.dteFechaInicio.Value;
                 tutoriasDM.dteFechaTermino = item.dteFechaTermino.Value;
+                tutoriasDM.strHoras = item.strHoras;
+                tutoriasDM.strTipo = item.strTipo;
 
                 tutorias.Add(tutoriasDM);
             }
@@ -103,15 +101,12 @@ namespace AppDigitalCv.Business
             tutoriasDM.id = tblTutoria.id;
             tutoriasDM.idPersonal = tblTutoria.idPersonal.Value;
             tutoriasDM.idProgramaEductivo = tblTutoria.idProgramaEductivo.Value;
-            tutoriasDM.idStatus = tblTutoria.idStatus.Value;
-            tutoriasDM.idTipoEstudio = tblTutoria.idTipoEstudio.Value;
             tutoriasDM.strEstadoTutoria = tblTutoria.strEstadoTutoria;
             tutoriasDM.strNombreEstudantes = tblTutoria.strNombreEstudiante;
-            tutoriasDM.strNumeroEstudiantes = tblTutoria.strNumeroEstudiantes;
-            tutoriasDM.strTipo = tblTutoria.strTipo;
-            tutoriasDM.strTutoria = tblTutoria.strTutoria;
             tutoriasDM.dteFechaInicio = tblTutoria.dteFechaInicio.Value;
             tutoriasDM.dteFechaTermino = tblTutoria.dteFechaTermino.Value;
+            tutoriasDM.strTipo = tblTutoria.strTipo;
+            tutoriasDM.strHoras = tblTutoria.strHoras;
 
             return tutoriasDM;
         }

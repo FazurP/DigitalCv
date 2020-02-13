@@ -15,8 +15,10 @@
                     <div class="col-lg-6 col-md-6">
                         <ul class="todo-list">
                             <li class="list-unstyled">
-                                @Html.DisplayFor(model => model.strNombreEstudantes, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
-
+                                <label>Nombre: </label> @Html.DisplayFor(model => model.strNombreEstudantes, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
+                            </li>
+                            <li class="list-unstyled">
+                                <label>Estado: </label> @Html.DisplayFor(model => model.strEstadoTutoria, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
                             </li>
                         </ul>
                         <hr />

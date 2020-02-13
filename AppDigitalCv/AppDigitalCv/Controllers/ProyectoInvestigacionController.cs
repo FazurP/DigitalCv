@@ -20,15 +20,13 @@ namespace AppDigitalCv.Controllers
         IUnitOfWork unitOfWork;
         IDocumentosBusiness documentosBusiness;
         IProyectoInvestigacionBusiness proyectoInvestigacionBusiness;
-        IProgresoProdep progresoProdep;
 
         public ProyectoInvestigacionController(IUnitOfWork _unitofWork,IDocumentosBusiness _documentosBusiness,
-            IProyectoInvestigacionBusiness _proyectoInvestigacionBusiness,IProgresoProdep _progresoProdep)
+            IProyectoInvestigacionBusiness _proyectoInvestigacionBusiness)
         {
             unitOfWork = _unitofWork;
             documentosBusiness = _documentosBusiness;
             proyectoInvestigacionBusiness = _proyectoInvestigacionBusiness;
-            progresoProdep = _progresoProdep;
         }
 
         [HttpGet]
@@ -52,31 +50,19 @@ namespace AppDigitalCv.Controllers
             if (ModelState.IsValid)
             {
                 ProyectoInvestigacionDomainModel proyectoInvestigacionDM = new ProyectoInvestigacionDomainModel();
-                ProgresoProdepDomainModel progresoProdepDM = new ProgresoProdepDomainModel();
-                DocumentosDomainModel documentoDMResumen = new DocumentosDomainModel();
 
-                string nombre = SessionPersister.AccountSession.NombreCompleto;
                 int idPersonal = SessionPersister.AccountSession.IdPersonal;
-                int idStatus = int.Parse(Recursos.RecursosSistema.REGISTRO_PROYECTO_INVESTIGACION);
 
                 proyectoInvestigacionVM.idPersonal = idPersonal;
-                proyectoInvestigacionVM.idStatus = idStatus;
 
                 AutoMapper.Mapper.Map(proyectoInvestigacionVM,proyectoInvestigacionDM);
-                AutoMapper.Mapper.Map(proyectoInvestigacionVM.documentosVMResumen, documentoDMResumen);
-                proyectoInvestigacionDM.documentosDMResumen = documentoDMResumen;
-               
 
-                if (GuadarArchivo(proyectoInvestigacionDM,nombre))
+                object[] obj = CrearDocumentoPersonales(proyectoInvestigacionVM);
+
+                if (obj[0].Equals(true))
                 {
-                    proyectoInvestigacionDM.documentosDMResumen.StrUrl = proyectoInvestigacionDM.documentosDMResumen.DocumentoFile.FileName;
-                    
-                    DocumentosDomainModel documentosDMResumen = documentosBusiness.AddDocumento(documentoDMResumen);
-                    proyectoInvestigacionDM.idDocumento = documentosDMResumen.IdDocumento;
+                    proyectoInvestigacionDM.documentos = new DocumentosDomainModel { StrUrl = obj[1].ToString()};    
                     proyectoInvestigacionBusiness.AddUpdateProyectoInvestigacion(proyectoInvestigacionDM);
-                    progresoProdepDM.idPersonal = idPersonal;
-                    progresoProdepDM.idStatus = idStatus;
-                    progresoProdep.AddUpdateProgresoProdep(progresoProdepDM);
                 }
 
             }
@@ -84,30 +70,26 @@ namespace AppDigitalCv.Controllers
             return RedirectToAction("Create","ProyectoInvestigacion");
         }
 
-        public bool GuadarArchivo(ProyectoInvestigacionDomainModel proyectoInvestigacionDM, string nombre)
+        private Object[] CrearDocumentoPersonales(ProyectoInvestigacionVM proyectoInvestigacionVM)
         {
-            bool respuesta = false;
-
-            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombre + "/"));
+            Object[] respuesta = new Object[2];
+            proyectoInvestigacionVM.idPersonal = SessionPersister.AccountSession.IdPersonal;
+            string nombrecompleto = SessionPersister.AccountSession.NombreCompleto;
+            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombrecompleto));
 
             if (Directory.Exists(path))
             {
-                if (proyectoInvestigacionDM.documentosDMResumen.DocumentoFile.ContentType.Equals("application/pdf"))
+                if (proyectoInvestigacionVM.documentos.DocumentoFile != null)
                 {
-                    string pahtCompletoResumen = Path.Combine(path, Path.GetFileName(proyectoInvestigacionDM.documentosDMResumen.DocumentoFile.FileName));
-                    proyectoInvestigacionDM.documentosDMResumen.DocumentoFile.SaveAs(pahtCompletoResumen);
-
-                   
-
-                    respuesta = true;
+                    respuesta = FileManager.FileManager.CheckFileIfExist(path, proyectoInvestigacionVM.documentos);
                 }
             }
             else
             {
                 DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
-                GuadarArchivo(proyectoInvestigacionDM, nombre);
-                respuesta = true;
+                CrearDocumentoPersonales(proyectoInvestigacionVM);
             }
+
             return respuesta;
         }
 
@@ -177,13 +159,11 @@ namespace AppDigitalCv.Controllers
 
             if (proyectoInvestigacionDM != null)
             {
-                if (proyectoInvestigacionBusiness.GetProyectosByIdPersonal(SessionPersister.AccountSession.IdPersonal).Count == 1)
+                string url = Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + SessionPersister.AccountSession.NombreCompleto + "/" + proyectoInvestigacionDM.documentos.StrUrl);
+                if (FileManager.FileManager.DeleteFileFromServer(url))
                 {
                     documentosBusiness.DeleteDocumento(proyectoInvestigacionDM.idDocumento);
-                    ProgresoProdepDomainModel progresoProdepDM = progresoProdep.GetProgresoPersonal(SessionPersister.AccountSession.IdPersonal,int.Parse(Recursos.RecursosSistema.REGISTRO_PROYECTO_INVESTIGACION));
-                    progresoProdep.DeleteProgresoProdep(progresoProdepDM.id);
-                }
-                documentosBusiness.DeleteDocumento(proyectoInvestigacionDM.idDocumento);
+                }              
             }
 
             return RedirectToAction("Create","ProyectoInvestigacion");

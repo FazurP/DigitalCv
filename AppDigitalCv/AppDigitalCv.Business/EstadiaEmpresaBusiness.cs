@@ -15,11 +15,13 @@ namespace AppDigitalCv.Business
     {
         private readonly IUnitOfWork unitofWork;
         private readonly EstadiaEmpresaRepository estadiaEmpresaRepository;
+        private readonly DocumentosRepository documentosRepository;
 
         public EstadiaEmpresaBusiness(IUnitOfWork _unitOfWork)
         {
             unitofWork = _unitOfWork;
             estadiaEmpresaRepository = new EstadiaEmpresaRepository(unitofWork);
+            documentosRepository = new DocumentosRepository(unitofWork);
         }
 
         public bool AddUpdateEstadiaEmpresa(EstadiaEmpresaDomainModel estadiaEmpresaDM)
@@ -33,14 +35,13 @@ namespace AppDigitalCv.Business
 
                 if (tblEstadiaEmpresa != null)
                 {
-                    tblEstadiaEmpresa.strNombreEstadia = estadiaEmpresaDM.strNombreEstadia;
                     tblEstadiaEmpresa.strResumenProyecto = estadiaEmpresaDM.strResumenProyecto;
                     tblEstadiaEmpresa.strObjetivo = estadiaEmpresaDM.strObjetivo;
-                    tblEstadiaEmpresa.strNumeroAlumnos = estadiaEmpresaDM.strNumeroAlumnos;
-                    tblEstadiaEmpresa.strNumeroHoras = estadiaEmpresaDM.strNumeroHoras;
                     tblEstadiaEmpresa.strNombreEmpresaInstitucion = estadiaEmpresaDM.strNombreEmpresaInstitucion;
                     tblEstadiaEmpresa.strPuntosCriticosResolver = estadiaEmpresaDM.strPuntosCriticosResolver;
                     tblEstadiaEmpresa.strLogrosBeneficiosObtenidos = estadiaEmpresaDM.strLogrosBeneficiosObtenidos;
+                    tblEstadiaEmpresa.strNombreAlumno = estadiaEmpresaDM.strNombreAlumno;
+                    tblEstadiaEmpresa.strEstadoEstadia = estadiaEmpresaDM.strEstadoEstadia;
 
                     estadiaEmpresaRepository.Update(tblEstadiaEmpresa);
                     respuesta = true;
@@ -49,25 +50,22 @@ namespace AppDigitalCv.Business
             else
             {
                 tblEstadiaEmpresa tblEstadiaEmpresa = new tblEstadiaEmpresa();
+                catDocumentos catDocumentos = new catDocumentos();
                 tblEstadiaEmpresa.idDocumento = estadiaEmpresaDM.idDocumento;
                 tblEstadiaEmpresa.idPersonal = estadiaEmpresaDM.idPersonal;
                 tblEstadiaEmpresa.idProgramaEducativo = estadiaEmpresaDM.idProgramaEducativo;
-                tblEstadiaEmpresa.idStatus = estadiaEmpresaDM.idStatus;
-                tblEstadiaEmpresa.idTipoProducto = estadiaEmpresaDM.idTipoProducto;
                 tblEstadiaEmpresa.strEstadoEstadia = estadiaEmpresaDM.strEstadoEstadia;
                 tblEstadiaEmpresa.strLogrosBeneficiosObtenidos = estadiaEmpresaDM.strLogrosBeneficiosObtenidos;
                 tblEstadiaEmpresa.strNombreEmpresaInstitucion = estadiaEmpresaDM.strNombreEmpresaInstitucion;
-                tblEstadiaEmpresa.strNombreEstadia = estadiaEmpresaDM.strNombreEstadia;
-                tblEstadiaEmpresa.strNumeroAlumnos = estadiaEmpresaDM.strNumeroAlumnos;
-                tblEstadiaEmpresa.strNumeroHoras = estadiaEmpresaDM.strNumeroHoras;
                 tblEstadiaEmpresa.strObjetivo = estadiaEmpresaDM.strObjetivo;
                 tblEstadiaEmpresa.strPuntosCriticosResolver = estadiaEmpresaDM.strPuntosCriticosResolver;
                 tblEstadiaEmpresa.strResumenProyecto = estadiaEmpresaDM.strResumenProyecto;
                 tblEstadiaEmpresa.dteFechaInicio = estadiaEmpresaDM.dteFechaInicio;
                 tblEstadiaEmpresa.dteFechaTermino = estadiaEmpresaDM.dteFechaTermino;
-                tblEstadiaEmpresa.bitConsideraCurriculum = estadiaEmpresaDM.bitConsideraCurriculum;
-
-                estadiaEmpresaRepository.Insert(tblEstadiaEmpresa);
+                tblEstadiaEmpresa.strNombreAlumno = estadiaEmpresaDM.strNombreAlumno;
+                catDocumentos.tblEstadiaEmpresa.Add(tblEstadiaEmpresa);
+                catDocumentos.strUrl = estadiaEmpresaDM.documentos.StrUrl;
+                documentosRepository.Insert(catDocumentos);
                 respuesta = true;
             }
             return respuesta;
@@ -88,22 +86,19 @@ namespace AppDigitalCv.Business
                 estadiaEmpresaDM.idDocumento = item.idDocumento.Value;
                 estadiaEmpresaDM.idPersonal = item.idPersonal.Value;
                 estadiaEmpresaDM.idProgramaEducativo = item.idProgramaEducativo.Value;
-                estadiaEmpresaDM.idStatus = item.idStatus.Value;
-                estadiaEmpresaDM.idTipoProducto = item.idTipoProducto.Value;
                 estadiaEmpresaDM.strEstadoEstadia = item.strEstadoEstadia;
                 estadiaEmpresaDM.strLogrosBeneficiosObtenidos = item.strLogrosBeneficiosObtenidos;
                 estadiaEmpresaDM.strNombreEmpresaInstitucion = item.strNombreEmpresaInstitucion;
-                estadiaEmpresaDM.strNombreEstadia = item.strNombreEstadia;
-                estadiaEmpresaDM.strNumeroAlumnos = item.strNumeroAlumnos;
-                estadiaEmpresaDM.strNumeroHoras = item.strNumeroHoras;
                 estadiaEmpresaDM.strObjetivo = item.strObjetivo;
                 estadiaEmpresaDM.strPuntosCriticosResolver = item.strPuntosCriticosResolver;
                 estadiaEmpresaDM.strResumenProyecto = item.strResumenProyecto;
                 estadiaEmpresaDM.dteFechaInicio = item.dteFechaInicio.Value;
                 estadiaEmpresaDM.dteFechaTermino = item.dteFechaTermino.Value;
-                estadiaEmpresaDM.bitConsideraCurriculum = item.bitConsideraCurriculum.Value;
-                estadiaEmpresaDM.strNombreDocumento = item.catDocumentos.strUrl;
-
+                estadiaEmpresaDM.strNombreAlumno = item.strNombreAlumno;
+                estadiaEmpresaDM.documentos = new DocumentosDomainModel
+                {
+                    StrUrl = item.catDocumentos.strUrl
+                };
                 estadiaEmpresas.Add(estadiaEmpresaDM);
             }
 
@@ -121,20 +116,19 @@ namespace AppDigitalCv.Business
             estadiaEmpresaDM.idDocumento = tblEstadiaEmpresa.idDocumento.Value;
             estadiaEmpresaDM.idPersonal = tblEstadiaEmpresa.idPersonal.Value;
             estadiaEmpresaDM.idProgramaEducativo = tblEstadiaEmpresa.idProgramaEducativo.Value;
-            estadiaEmpresaDM.idStatus = tblEstadiaEmpresa.idStatus.Value;
-            estadiaEmpresaDM.idTipoProducto = tblEstadiaEmpresa.idTipoProducto.Value;
             estadiaEmpresaDM.strEstadoEstadia = tblEstadiaEmpresa.strEstadoEstadia;
             estadiaEmpresaDM.strLogrosBeneficiosObtenidos = tblEstadiaEmpresa.strLogrosBeneficiosObtenidos;
             estadiaEmpresaDM.strNombreEmpresaInstitucion = tblEstadiaEmpresa.strNombreEmpresaInstitucion;
-            estadiaEmpresaDM.strNombreEstadia = tblEstadiaEmpresa.strNombreEstadia;
-            estadiaEmpresaDM.strNumeroAlumnos = tblEstadiaEmpresa.strNumeroAlumnos;
-            estadiaEmpresaDM.strNumeroHoras = tblEstadiaEmpresa.strNumeroHoras;
             estadiaEmpresaDM.strObjetivo = tblEstadiaEmpresa.strObjetivo;
             estadiaEmpresaDM.strPuntosCriticosResolver = tblEstadiaEmpresa.strPuntosCriticosResolver;
             estadiaEmpresaDM.strResumenProyecto = tblEstadiaEmpresa.strResumenProyecto;
             estadiaEmpresaDM.dteFechaInicio = tblEstadiaEmpresa.dteFechaInicio.Value;
             estadiaEmpresaDM.dteFechaTermino = tblEstadiaEmpresa.dteFechaTermino.Value;
-            estadiaEmpresaDM.bitConsideraCurriculum = tblEstadiaEmpresa.bitConsideraCurriculum.Value;
+            estadiaEmpresaDM.strNombreAlumno = tblEstadiaEmpresa.strNombreAlumno;
+            estadiaEmpresaDM.documentos = new DocumentosDomainModel
+            {
+                StrUrl = tblEstadiaEmpresa.catDocumentos.strUrl
+            };
 
             return estadiaEmpresaDM;
         }

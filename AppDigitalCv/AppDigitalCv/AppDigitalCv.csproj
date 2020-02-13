@@ -455,6 +455,7 @@
     <Content Include="Scripts\Validate\Documentos\validate-documentos-upload.js" />
     <Content Include="Scripts\Validate\EstadiaEmpresa\validate-estadia-empresa-date.js" />
     <Content Include="Scripts\Validate\EstadiaEmpresa\validate-estadia-empresa-form.js" />
+    <Content Include="Scripts\Validate\EstadiaEmpresa\validate-estadia-empresa-regExp.js" />
     <Content Include="Scripts\Validate\EstadiaEmpresa\validate-estadia-empresa-upload.js" />
     <Content Include="Scripts\Validate\EstadoCivil\validate-estado-civil-radio.js" />
     <Content Include="Scripts\Validate\EstadoSalud\validate-estado-salud-form.js" />
@@ -483,6 +484,7 @@
     <Content Include="Scripts\Validate\Libro\validate-libro-form.js" />
     <Content Include="Scripts\Validate\Libro\validate-libro-regExp.js" />
     <Content Include="Scripts\Validate\ManualOperacion\validate-manual-operacion-form.js" />
+    <Content Include="Scripts\Validate\ManualOperacion\validate-manual-operacion-regExp.js" />
     <Content Include="Scripts\Validate\ParticipacionDocente\validate-participacion-docente-form.js" />
     <Content Include="Scripts\Validate\ParticipacionInstitucionalExterna\validate-participacion-institucion-externa-upload.js" />
     <Content Include="Scripts\Validate\ParticipacionInstitucionalExterna\validate-participacion-institucional-externa-form.js" />
@@ -504,14 +506,16 @@
     <Content Include="Scripts\Validate\ProductividadInnovadora\validate-productividad-innovadora-upload.js" />
     <Content Include="Scripts\Validate\Prototipo\validate-prototipo-date.js" />
     <Content Include="Scripts\Validate\Prototipo\validate-prototipo-form.js" />
+    <Content Include="Scripts\Validate\Prototipo\validate-prototipo-regExp.js" />
     <Content Include="Scripts\Validate\Prototipo\validate-prototipo-upload.js" />
-    <Content Include="Scripts\Validate\ProyectoInvestigacion\validate-proyecto-investigacion-date.js" />
     <Content Include="Scripts\Validate\ProyectoInvestigacion\validate-proyecto-investigacion-form.js" />
+    <Content Include="Scripts\Validate\ProyectoInvestigacion\validate-proyecto-investigacion-regExp.js" />
     <Content Include="Scripts\Validate\ProyectoInvestigacion\validate-proyecto-investigacion-upload.js" />
     <Content Include="Scripts\Validate\ScriptTest.js" />
     <Content Include="Scripts\Validate\ProductividadInnovadora\validate-productividad-innovadora-form.js" />
     <Content Include="Scripts\Validate\Tutorias\validate-tutorias-date.js" />
     <Content Include="Scripts\Validate\Tutorias\validate-tutorias-form.js" />
+    <Content Include="Scripts\Validate\Tutorias\validate-tutorias-regExp.js" />
     <Content Include="Scripts\Validate\Tutorias\_Modal\validate-modal-tutorias-regExp.js" />
     <Content Include="Scripts\Validate\validate-datos-contacto-email.js" />
     <Content Include="Scripts\Validate\ProduccionesArtisticas\validate-producciones-artisticas-form.js" />
@@ -657,6 +661,7 @@
     <Content Include="Views\HistorialAcademico\_Eliminar.cshtml" />
     <Content Include="Views\CapacitacionesRecibidas\_Eliminar.cshtml" />
     <Content Include="Views\CapacitacionesImpartidas\_Eliminar.cshtml" />
+    <Content Include="Scripts\Validate\ProduccionesArtisticas\validate-producciones-artistica-regExp.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

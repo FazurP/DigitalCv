@@ -15,13 +15,15 @@
                     <div class="col-lg-6 col-md-6">
                         <ul class="todo-list">
                             <li class="list-unstyled">
-                                @Html.DisplayFor(model => model.strNombreEstadia, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
-
+                                <label>Empresa: </label> @Html.DisplayFor(model => model.strNombreEmpresaInstitucion, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
+                            </li>
+                            <li class="list-unstyled">
+                                <label>Alumno: </label> @Html.DisplayFor(model => model.strNombreAlumno, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
                             </li>
                         </ul>
                         <hr />
                         <a href="#" id="btnEliminar">
-                            <i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i>
+                            <i class="btn btn-sm btn-google">Eliminar</i>
                         </a>
                     </div>
                 </div>

@@ -13,29 +13,41 @@
             </div>
             <div class="row">
                 <div class="form-group col-lg-7">
-                    @Html.Label("Datos de la Estadia")
-                    <hr />
-                    <label>Nombre de la Estadia</label>
-                    @Html.TextBoxFor(model => model.strNombreEstadia, new { @class="form-control input-sm",id="NombreEstadia"})
-                <label>Resumen del Proyecto</label>
-                    @Html.TextBoxFor(model => model.strResumenProyecto, new { @class="form-control input-sm",id="Resumen"})
-                <label>Objetivo</label>
-                    @Html.TextBoxFor(model => model.strObjetivo, new { @class="form-control input-sm",id="Objetivo"})
-                <label>Numero de Alumnos</label>
-                    @Html.TextBoxFor(model => model.strNumeroAlumnos, new { @class="form-control input-sm",id="NumeroAlumnos"})
-                <label>Numero de Horas</label>
-                    @Html.TextBoxFor(model => model.strNumeroHoras, new { @class="form-control input-sm",id="NumeroHoras"})
-                <label>Nombre de la Empresa o Institución</label>
-                    @Html.TextBoxFor(model => model.strNombreEmpresaInstitucion,new { @class="form-control input-sm",id="NombreEmpresa"})
-                <label>Puntos Criticos a Resolver</label>
-                    @Html.TextBoxFor(model => model.strPuntosCriticosResolver, new { @class="form-control input-sm",id="PuntosCriticos"})
-                <label>Logros o Beneficios Obtenidos</label>
-                    @Html.TextBoxFor(model => model.strLogrosBeneficiosObtenidos, new { @class="form-control input-sm",id="LogrosObtenidos"})
+                    <div class="form-group">
+                        <label>Nombre de la Empresa o Institución</label>
+                        @Html.TextBoxFor(model => model.strNombreEmpresaInstitucion, new { @class = "form-control input-sm",id="NombreEmpresaInstitucion" })
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre del Alumno(a):</label>
+                        @Html.TextBoxFor(model => model.strNombreAlumno, new { @class = "form-control input-sm",id="NombreAlumno"})
+                    </div>
+                    <div class="form-group">
+                        <label>Estado de la Estadia:</label>
+                        @Html.DropDownListFor(model => model.strEstadoEstadia, null, new { @class = "form-control input-sm",id="EstadoEstadia" })
+                    </div>
+                    <div class="form-group">
+                        <label>Resumen del Proyecto</label>
+                        @Html.TextBoxFor(model => model.strResumenProyecto, new { @class = "form-control input-sm",id="ResumenProyecto"})
+                    </div>
+                    <div class="form-group">
+                        <label>Objetivo</label>
+                        @Html.TextBoxFor(model => model.strObjetivo, new { @class = "form-control input-sm",id="Objetivo"})
+                    </div>                  
+                    <div class="form-group">
+                        <label>Puntos Criticos a Resolver</label>
+                        @Html.TextBoxFor(model => model.strPuntosCriticosResolver, new { @class = "form-control input-sm",id="PuntosCriticosResolver"})
+                    </div>
+                    <div class="form-group">
+                        <label>Logros o Beneficios Obtenidos</label>
+                        @Html.TextBoxFor(model => model.strLogrosBeneficiosObtenidos, new { @class = "form-control input-sm",id="LogrosBeneficiosObtenidos"})
+                    </div> 
+                    <div class="form-group">
+                        <a href="#" id="btnSubmit" class="btn btn-sm btn-success"><span><i class=""></i> Actualizar</span></a>
+                    </div>
                 </div>
-
                 <div class="row">
                     <div class="form-group col-lg-6 col-lg-offset-4">
-                        <a href="#" id="btnSubmit" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
+                        
                     </div>
                 </div>
             </div>
@@ -46,57 +58,34 @@
 
 <script>
 
-    $(document).ready(function () {
-
-        $('#NombreEstadia').keypress(function (e) {
-            let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
-            let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$");
-
-            if (!regExp.test(data)) {
-                toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
-                e.preventDefault();
-            }
-        });
-
-        $('#Resumen').keypress(function (e) {
-
-            let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
-            let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$");
-
-            if (!regExp.test(data)) {
-                e.preventDefault();
-                toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
-            }
-
-        });
-
+    $(document).ready(function () {   
         $("#btnSubmit").click(function () {
 
-            let nombreEstadia = $('#NombreEstadia').val();
-            let resumen = $('#Resumen').val();
-            let objetivo = $('#Objetivo').val();
-            let numeroAlumnos = $('#NumeroAlumnos').val();
-            let numeroHoras = $('#NumeroHoras').val();
-            let nombreEmpresa = $('#NombreEmpresa').val();
-            let puntosCriticos = $('#PuntosCriticos').val();
-            let logrosObtenidos = $('#LogrosObtenidos').val();
-          
-            if (nombreEstadia != "" && resumen != "" && objetivo != "" && numeroAlumnos != "" && numeroHoras != ""
-                && nombreEmpresa != "" && puntosCriticos != "" && logrosObtenidos != "") {
+            let strNombreEmpresaInstitucion = $('#NombreEmpresaInstitucion').val();
+            let strNombreAlumno = $('#NombreAlumno').val();
+            let strEstadoEstadia = $('#EstadoEstadia').get(0).selectedIndex;
+            let strResumenProyecto = $('#ResumenProyecto').val();
+            let strObjetivo = $('#sObjetivo').val();
+            let strPuntosCriticosResolver = $('#PuntosCriticosResolver').val();
+            let strLogrosBeneficiosObtenidos = $('#LogrosBeneficiosObtenidos').val();
+
+            if (strNombreEmpresaInstitucion != $.isEmptyObject() && strNombreAlumno != $.isEmptyObject() && strEstadoEstadia > 0 && strResumenProyecto != $.isEmptyObject()
+                && strObjetivo != $.isEmptyObject()
+                && strPuntosCriticosResolver != $.isEmptyObject() && strLogrosBeneficiosObtenidos != $.isEmptyObject()) {
 
 
                 var EstadiaEmpresaVM = {};
                 var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
 
                 EstadiaEmpresaVM.id = $('#id').val();
-                EstadiaEmpresaVM.strNombreEstadia = $('#NombreEstadia').val();
-                EstadiaEmpresaVM.strResumenProyecto = $('#Resumen').val();
+                EstadiaEmpresaVM.strNombreEmpresaInstitucion = $('#NombreEmpresaInstitucion').val();
+                EstadiaEmpresaVM.strNombreAlumno = $('#NombreAlumno').val();
+                EstadiaEmpresaVM.strEstadoEstadia = $('#EstadoEstadia').val();
+                EstadiaEmpresaVM.strResumenProyecto = $('#ResumenProyecto').val();
                 EstadiaEmpresaVM.strObjetivo = $('#Objetivo').val();
-                EstadiaEmpresaVM.strNumeroAlumnos = $('#NumeroAlumnos').val();
-                EstadiaEmpresaVM.strNumeroHoras = $('#NumeroHoras').val();
-                EstadiaEmpresaVM.strNombreEmpresaInstitucion = $('#NombreEmpresa').val();
-                EstadiaEmpresaVM.strPuntosCriticosResolver = $('#PuntosCriticos').val();
-                EstadiaEmpresaVM.strLogrosBeneficiosObtenidos = $('#LogrosObtenidos').val();
+                EstadiaEmpresaVM.strPuntosCriticosResolver = $('#PuntosCriticosResolver').val();
+                EstadiaEmpresaVM.strLogrosBeneficiosObtenidos = $('#LogrosBeneficiosObtenidos').val();
+
                 $.ajax({
                     type: "POST",
                     url: "/EstadiaEmpresa/UpdateEstadia",

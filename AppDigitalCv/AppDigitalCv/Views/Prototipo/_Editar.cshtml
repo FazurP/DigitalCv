@@ -13,24 +13,29 @@
             </div>
             <div class="row">
                 <div class="form-group col-lg-7">
-                    @Html.Label("Datos del Prototipo")
-                    <hr />
-                    <label>Autor(es)</label>
-                    @Html.TextBoxFor(model => model.strAutor, new { @class="form-control input-sm", id="Autor"})
-                    <label>Nombre del Prototipo</label>
-                    @Html.TextBoxFor(model => model.strNombrePrototipo, new { @class = "form-control input-sm", id="NombrePrototipo"})
-                    <label>Objetivos</label>
-                    @Html.TextAreaFor(model => model.strObjetivos, new { @class ="form-control input-sm",id="Objetivos"})
-                    <label>Caracteristicas</label>
-                    @Html.TextAreaFor(model => model.strCaracteristicas, new { @class="form-control input-sm",id="Caracteristicas"})
-                    <label>Institución Destinada</label>
-                    @Html.TextBoxFor(model => model.strInstitucionDestinada, new { @class="form-control input-sm",id="Beneficiario"})
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-lg-6 col-lg-offset-4">
-                        <a href="#" id="btnSubmit" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
+                    <div class="form-group">
+                        <label>Autor(es)</label>
+                        @Html.TextBoxFor(model => model.strAutor, new { @class = "form-control input-sm", id = "Autor" })
                     </div>
+                    <div class="form-group">
+                        <label>Nombre del Prototipo</label>
+                        @Html.TextBoxFor(model => model.strNombrePrototipo, new { @class = "form-control input-sm", id = "NombrePrototipo" })
+                    </div>
+                    <div class="form-group">
+                        <label>Objetivos</label>
+                        @Html.TextAreaFor(model => model.strObjetivos, new { @class = "form-control input-sm", id = "Objetivos" })
+                    </div>
+                    <div class="form-group">
+                        <label>Caracteristicas</label>
+                        @Html.TextAreaFor(model => model.strCaracteristicas, new { @class = "form-control input-sm", id = "Caracteristicas" })
+                    </div>
+                    <div class="form-group">
+                        <label>Institución Destinada</label>
+                        @Html.TextBoxFor(model => model.strInstitucionDestinada, new { @class = "form-control input-sm", id = "Beneficiario" })
+                    </div>
+                    <div class="form-group">
+                        <a href="#" id="btnSubmit" class="btn btn-sm btn-success"><span><i class=""></i>Actualizar</span></a>
+                    </div>                                                                         
                 </div>
             </div>
         </div>

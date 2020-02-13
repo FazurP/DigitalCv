@@ -21,19 +21,16 @@ namespace AppDigitalCv.Controllers
         IProduccionesArtisticasBusiness produccionesArtisticasBusiness;
         IProduccionArtistica produccionArtistica;
         IDocumentosBusiness documentosBusiness;
-        IProgresoProdep progresoProdep;
         List list = new List();
 
         public ProduccionesArtisticasController(IUnitOfWork _unitOfWork, IPaisBusiness _paisBusiness, IProduccionesArtisticasBusiness
-            _produccionesArtisticasBusiness, IDocumentosBusiness _documentosBusiness, IProduccionArtistica _produccionArtistica,
-            IProgresoProdep _progresoProdep)
+            _produccionesArtisticasBusiness, IDocumentosBusiness _documentosBusiness, IProduccionArtistica _produccionArtistica)
         {
             unitofWork = _unitOfWork;
             paisBusiness = _paisBusiness;
             produccionesArtisticasBusiness = _produccionesArtisticasBusiness;
             documentosBusiness = _documentosBusiness;
             produccionArtistica = _produccionArtistica;
-            progresoProdep = _progresoProdep;
         }
 
         [HttpGet]
@@ -59,55 +56,44 @@ namespace AppDigitalCv.Controllers
             if (ModelState.IsValid)
             {
                 ProduccionesArtisticasDomainModel produccionesArtisticasDM = new ProduccionesArtisticasDomainModel();
-                DocumentosDomainModel documentosDM = new DocumentosDomainModel();
-                ProgresoProdepDomainModel progresoProdepDM = new ProgresoProdepDomainModel();
 
-                string nombre = SessionPersister.AccountSession.NombreCompleto;
                 int idPersonal = SessionPersister.AccountSession.IdPersonal;
-                int idStatus = int.Parse(Recursos.RecursosSistema.REGISTRO_PRODUCCIONES_ARTISTICAS);
 
                 produccionesArtisticasVM.idPersonal = idPersonal;
-                produccionesArtisticasVM.idStatus = idStatus;
 
                 AutoMapper.Mapper.Map(produccionesArtisticasVM, produccionesArtisticasDM);
-                AutoMapper.Mapper.Map(produccionesArtisticasVM.documentosVM, documentosDM);
-                produccionesArtisticasDM.documentosDM = documentosDM;
 
-                if (GuadarArchivo(produccionesArtisticasDM, nombre))
+                object[] obj = CrearDocumentoPersonales(produccionesArtisticasVM);
+
+                if (obj[0].Equals(true))
                 {
-                    produccionesArtisticasDM.documentosDM.StrUrl = produccionesArtisticasDM.documentosDM.DocumentoFile.FileName;
-                    DocumentosDomainModel documentos = documentosBusiness.AddDocumento(documentosDM);
-                    produccionesArtisticasDM.idDocumento = documentos.IdDocumento;
+                    produccionesArtisticasDM.documentos = new DocumentosDomainModel { StrUrl = obj[1].ToString() };
                     produccionesArtisticasBusiness.AddUpdateProduccionesArtisticas(produccionesArtisticasDM);
-                    progresoProdepDM.idPersonal = idPersonal;
-                    progresoProdepDM.idStatus = idStatus;
-                    progresoProdep.AddUpdateProgresoProdep(progresoProdepDM);
                 }
             }
             return RedirectToAction("Create", "ProduccionesArtisticas");
         }
 
-        public bool GuadarArchivo(ProduccionesArtisticasDomainModel produccionesArtisticasDomainModel, string nombre)
+        private Object[] CrearDocumentoPersonales(ProduccionesArtisticasVM produccionesArtisticasVM)
         {
-            bool respuesta = false;
-
-            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombre + "/"));
+            Object[] respuesta = new Object[2];
+            produccionesArtisticasVM.idPersonal = SessionPersister.AccountSession.IdPersonal;
+            string nombrecompleto = SessionPersister.AccountSession.NombreCompleto;
+            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombrecompleto));
 
             if (Directory.Exists(path))
             {
-                if (produccionesArtisticasDomainModel.documentosDM.DocumentoFile.ContentType.Equals("application/pdf"))
+                if (produccionesArtisticasVM.documentos.DocumentoFile != null)
                 {
-                    string pahtCompleto = Path.Combine(path, Path.GetFileName(produccionesArtisticasDomainModel.documentosDM.DocumentoFile.FileName));
-                    produccionesArtisticasDomainModel.documentosDM.DocumentoFile.SaveAs(pahtCompleto);
-                    respuesta = true;
+                    respuesta = FileManager.FileManager.CheckFileIfExist(path, produccionesArtisticasVM.documentos);
                 }
             }
             else
             {
                 DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
-                GuadarArchivo(produccionesArtisticasDomainModel, nombre);
-                respuesta = true;
+                CrearDocumentoPersonales(produccionesArtisticasVM);
             }
+
             return respuesta;
         }
 
@@ -175,14 +161,12 @@ namespace AppDigitalCv.Controllers
 
             if (produccionesArtisticasDM != null)
             {
-                if (produccionesArtisticasBusiness.GetProduccionesArtisticasByPersonal(SessionPersister.AccountSession.IdPersonal).Count == 1)
+                string url = Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + SessionPersister.AccountSession.NombreCompleto + "/" + produccionesArtisticasDM.documentos.StrUrl);
+                if (FileManager.FileManager.DeleteFileFromServer(url))
                 {
-                    ProgresoProdepDomainModel progresoProdepDM = progresoProdep.GetProgresoPersonal(SessionPersister.AccountSession.IdPersonal,int.Parse(Recursos.RecursosSistema.REGISTRO_PRODUCCIONES_ARTISTICAS));
                     documentosBusiness.DeleteDocumento(produccionesArtisticasDM.idDocumento);
-                    progresoProdep.DeleteProgresoProdep(progresoProdepDM.id);
-
                 }
-                documentosBusiness.DeleteDocumento(produccionesArtisticasDM.idDocumento);
+              
             }
 
             return RedirectToAction("Create","ProduccionesArtisticas");

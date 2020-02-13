@@ -17,16 +17,15 @@ namespace AppDigitalCv.Controllers
         ITutoriasBusiness tutoriasBusiness;
         ITipoEstudioBusiness tipoEstudioBusiness;
         IProgramaEducativoBusiness programaEducativoBusiness;
-        IProgresoProdep progresoProdep;
         List list = new List();
 
         public TutoriasController(ITutoriasBusiness _tutoriasBusiness, ITipoEstudioBusiness _tipoEstudioBusiness,
-            IProgramaEducativoBusiness _programaEducativoBusiness, IProgresoProdep _progresoProdep)
+            IProgramaEducativoBusiness _programaEducativoBusiness)
         {
             tutoriasBusiness = _tutoriasBusiness;
             tipoEstudioBusiness = _tipoEstudioBusiness;
             programaEducativoBusiness = _programaEducativoBusiness;
-            progresoProdep = _progresoProdep;
+
         }
 
         [HttpGet]
@@ -34,9 +33,7 @@ namespace AppDigitalCv.Controllers
         {
             if (SessionPersister.AccountSession != null)
             {
-                ViewBag.strTutoria = new SelectList(list.FillTutoria());
-                ViewBag.idTipoEstudio = new SelectList(tipoEstudioBusiness.GetTiposEstudios(), "idTipoEstudio", "strDescripcion");
-                ViewBag.idProgramaEductivo = new SelectList("");
+                ViewBag.idProgramaEductivo = new SelectList(programaEducativoBusiness.GetProgramasEducativos(), "idProgramaEducativo", "strDescripcion");
                 ViewBag.strTipo = new SelectList(list.FillTipoTutoria());
                 ViewBag.strEstadoTutoria = new SelectList(list.FillEstadoTutoria());
 
@@ -83,20 +80,13 @@ namespace AppDigitalCv.Controllers
             bool respuesta = false;
 
             int idPersonal = SessionPersister.AccountSession.IdPersonal;
-            int idStatus = int.Parse(Recursos.RecursosSistema.REGISTRO_TUTORIAS);
 
             tutoriasVM.idPersonal = idPersonal;
-            tutoriasVM.idStatus = idStatus;
 
             TutoriasDomainModel tutoriasDM = new TutoriasDomainModel();
-            ProgresoProdepDomainModel progresoProdepDM = new ProgresoProdepDomainModel();
-
-            progresoProdepDM.idPersonal = idPersonal;
-            progresoProdepDM.idStatus = idStatus;
 
             AutoMapper.Mapper.Map(tutoriasVM, tutoriasDM);
             tutoriasBusiness.AddUpdateTutorias(tutoriasDM);
-            progresoProdep.AddUpdateProgresoProdep(progresoProdepDM);
             respuesta = true;
 
             return respuesta;
@@ -168,14 +158,9 @@ namespace AppDigitalCv.Controllers
 
             if (tutoriasDM != null)
             {
-                if (tutoriasBusiness.GetAllTutoriasByIdPersonal(SessionPersister.AccountSession.IdPersonal).Count == 1)
-                {
-                    tutoriasBusiness.DeleteTutoria(tutoriasDM.id);
-                    ProgresoProdepDomainModel progresoProdepDM = progresoProdep.GetProgresoPersonal(SessionPersister.AccountSession.IdPersonal
-                        ,int.Parse(Recursos.RecursosSistema.REGISTRO_TUTORIAS));
-                    progresoProdep.DeleteProgresoProdep(progresoProdepDM.id);
-                }
+ 
                 tutoriasBusiness.DeleteTutoria(tutoriasDM.id);
+
             }
 
             return RedirectToAction("Create","Tutorias");
@@ -193,7 +178,9 @@ namespace AppDigitalCv.Controllers
                 TutoriasVM tutoriasVM = new TutoriasVM();
 
                 AutoMapper.Mapper.Map(tutoriasDM, tutoriasVM);
-
+                ViewBag.idProgramaEductivo = new SelectList(programaEducativoBusiness.GetProgramasEducativos(), "idProgramaEducativo", "strDescripcion");
+                ViewBag.strTipo = new SelectList(list.FillTipoTutoria());
+                ViewBag.strEstadoTutoria = new SelectList(list.FillEstadoTutoria());
                 return PartialView("_Editar", tutoriasVM);
             }
 

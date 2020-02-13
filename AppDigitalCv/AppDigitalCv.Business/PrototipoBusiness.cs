@@ -15,11 +15,13 @@ namespace AppDigitalCv.Business
     {
         private readonly IUnitOfWork unitofWork;
         private readonly PrototipoRepository prototipoRepository;
+        private readonly DocumentosRepository documentosRepository;
 
         public PrototipoBusiness(IUnitOfWork _unitOfWork)
         {
             unitofWork = _unitOfWork;
             prototipoRepository = new PrototipoRepository(unitofWork);
+            documentosRepository = new DocumentosRepository(unitofWork);
         }
 
         public bool AddUpdatePrototipo(PrototipoDomainModel prototipoDomainModel)
@@ -46,11 +48,11 @@ namespace AppDigitalCv.Business
             else
             {
                 tblPrototipo tblPrototipo = new tblPrototipo();
+                catDocumentos catDocumentos = new catDocumentos();
 
                 tblPrototipo.idDocumento = prototipoDomainModel.idDocumento;
                 tblPrototipo.idPais = prototipoDomainModel.idPais;
                 tblPrototipo.idPersonal = prototipoDomainModel.idPersonal;
-                tblPrototipo.idStatus = prototipoDomainModel.idStatsu;
                 tblPrototipo.strAutor = prototipoDomainModel.strAutor;
                 tblPrototipo.strCaracteristicas = prototipoDomainModel.strCaracteristicas;
                 tblPrototipo.strEstadoActual = prototipoDomainModel.strEstadoActual;
@@ -60,9 +62,12 @@ namespace AppDigitalCv.Business
                 tblPrototipo.strProposito = prototipoDomainModel.strProposito;
                 tblPrototipo.strTipoPrototipo = prototipoDomainModel.strTipoPrototipo;
                 tblPrototipo.dteFechaPublicacion = prototipoDomainModel.dteFechaPublicacion;
-                tblPrototipo.bitConsideraCurriculum = prototipoDomainModel.bitConsideraCurriculum;
 
-                prototipoRepository.Insert(tblPrototipo);
+                catDocumentos.tblPrototipo.Add(tblPrototipo);
+
+                catDocumentos.strUrl = prototipoDomainModel.documentos.StrUrl;
+
+                documentosRepository.Insert(catDocumentos);
                 respuesta = true;
             }
 
@@ -84,7 +89,6 @@ namespace AppDigitalCv.Business
                 prototipoDM.idDocumento = tblPrototipo.idDocumento.Value;
                 prototipoDM.idPais = tblPrototipo.idPais.Value;
                 prototipoDM.idPersonal = tblPrototipo.idPersonal.Value;
-                prototipoDM.idStatsu = tblPrototipo.idStatus.Value;
                 prototipoDM.strAutor = tblPrototipo.strAutor;
                 prototipoDM.strCaracteristicas = tblPrototipo.strCaracteristicas;
                 prototipoDM.strEstadoActual = tblPrototipo.strEstadoActual;
@@ -94,8 +98,10 @@ namespace AppDigitalCv.Business
                 prototipoDM.strProposito = tblPrototipo.strProposito;
                 prototipoDM.strTipoPrototipo = tblPrototipo.strTipoPrototipo;
                 prototipoDM.dteFechaPublicacion = tblPrototipo.dteFechaPublicacion.Value;
-                prototipoDM.bitConsideraCurriculum = tblPrototipo.bitConsideraCurriculum.Value;
-                prototipoDM.strNombreDocumento = tblPrototipo.catDocumentos.strUrl;
+                prototipoDM.documentos = new DocumentosDomainModel
+                {
+                    StrUrl = tblPrototipo.catDocumentos.strUrl
+                };
 
                 prototipos.Add(prototipoDM);
 
@@ -116,7 +122,6 @@ namespace AppDigitalCv.Business
             prototipoDM.idDocumento = tblPrototipo.idDocumento.Value;
             prototipoDM.idPais = tblPrototipo.idPais.Value;
             prototipoDM.idPersonal = tblPrototipo.idPersonal.Value;
-            prototipoDM.idStatsu = tblPrototipo.idStatus.Value;
             prototipoDM.strAutor = tblPrototipo.strAutor;
             prototipoDM.strCaracteristicas = tblPrototipo.strCaracteristicas;
             prototipoDM.strEstadoActual = tblPrototipo.strEstadoActual;
@@ -126,7 +131,10 @@ namespace AppDigitalCv.Business
             prototipoDM.strProposito = tblPrototipo.strProposito;
             prototipoDM.strTipoPrototipo = tblPrototipo.strTipoPrototipo;
             prototipoDM.dteFechaPublicacion = tblPrototipo.dteFechaPublicacion.Value;
-            prototipoDM.bitConsideraCurriculum = tblPrototipo.bitConsideraCurriculum.Value;
+            prototipoDM.documentos = new DocumentosDomainModel
+            {
+                StrUrl = tblPrototipo.catDocumentos.strUrl
+            };
 
             return prototipoDM;
         }

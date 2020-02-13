@@ -11,9 +11,8 @@ namespace AppDigitalCv.Domain
         public int id { get; set; }
         public int idPais { get; set; }
         public int idDocumento { get; set; }
-        public DocumentosDomainModel documentosDM { get; set; }
+        public DocumentosDomainModel documentos{ get; set; }
         public int idPersonal { get; set; }
-        public int idStatsu { get; set; }
         public string strAutor { get; set; }
         public string strTipoPrototipo { get; set; }
         public string strNombrePrototipo { get; set; }
@@ -23,10 +22,6 @@ namespace AppDigitalCv.Domain
         public DateTime dteFechaPublicacion { get; set; }
         public string strEstadoActual { get; set; }
         public string strProposito { get; set; }
-        public bool bitConsideraCurriculum { get; set; }
 
-        //Campos de prueba temporales
-
-        public string strNombreDocumento { get; set; }
     }
 }

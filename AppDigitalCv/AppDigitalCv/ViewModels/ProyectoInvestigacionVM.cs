@@ -9,9 +9,8 @@ namespace AppDigitalCv.ViewModels
     {
         public int id { get; set; }
         public int idDocumento { get; set; }
-        public int idStatus { get; set; }
         public int idPersonal { get; set; }
-        public DocumentosVM documentosVMResumen { get; set; }
+        public DocumentosVM documentos { get; set; }
         public string strTituloProyecto { get; set; }
         public string strNombrePatrocinador { get; set; }
         public DateTime dteFechaInicio { get; set; }
@@ -22,8 +21,6 @@ namespace AppDigitalCv.ViewModels
         public string strActividadesRealizadas { get; set; }
         public string strConvocatoria { get; set; }
         public bool bitProyectoTecnologico { get; set; }
-        public bool bitConsideraCurriculum { get; set; }
-        public string strNombreDocumento { get; set; }
 
     }
 }
