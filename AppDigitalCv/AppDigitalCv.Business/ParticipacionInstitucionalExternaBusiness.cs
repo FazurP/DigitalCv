@@ -16,10 +16,12 @@ namespace AppDigitalCv.Business
 
         private readonly IUnitOfWork unitofWork;
         private readonly ParticipacionInstitucionalExternaRepository participacionInstitucionalExternaRepository;
+        private readonly DocumentosRepository documentosRepository;
         public ParticipacionInstitucionalExternaBusiness(IUnitOfWork _unitOfWork)
         {
             unitofWork = _unitOfWork;
             participacionInstitucionalExternaRepository = new ParticipacionInstitucionalExternaRepository(unitofWork);
+            documentosRepository = new DocumentosRepository(unitofWork);
         }
         /// <summary>
         /// Este metodo se encarga de insertar o actualizar un objeto de una persona, en la base de datos.
@@ -40,9 +42,8 @@ namespace AppDigitalCv.Business
                 if (participacion != null)
                 {
                     participacion.strActividad = participacionInstitucionalExternaDM.strActividad;
-                    participacion.dteFechaInicio = participacionInstitucionalExternaDM.dteFechaInicio;
-                    participacion.dteFechaTermino = participacionInstitucionalExternaDM.dteFechaTermino;
-
+                    participacion.idCatInstitucionSuperior = participacionInstitucionalExternaDM.idCatInstitucionSuperior;
+   
                     participacionInstitucionalExternaRepository.Update(participacion);
 
                     respuesta = true;
@@ -52,16 +53,18 @@ namespace AppDigitalCv.Business
             else
             {
                 tblParticipacionInstitucionalExterna tblParticipacionInstitucional = new tblParticipacionInstitucionalExterna();
+                catDocumentos catDocumentos = new catDocumentos();
                 tblParticipacionInstitucional.id = participacionInstitucionalExternaDM.id;
-                tblParticipacionInstitucional.idCatDocumento = participacionInstitucionalExternaDM.idCatDocumento;
                 tblParticipacionInstitucional.idCatInstitucionSuperior = participacionInstitucionalExternaDM.idCatInstitucionSuperior;
-                tblParticipacionInstitucional.idCatPeriodo = participacionInstitucionalExternaDM.idCatPeriodo;
                 tblParticipacionInstitucional.idPersonal = participacionInstitucionalExternaDM.idPersonal;
                 tblParticipacionInstitucional.strActividad = participacionInstitucionalExternaDM.strActividad;
                 tblParticipacionInstitucional.dteFechaInicio = participacionInstitucionalExternaDM.dteFechaInicio;
                 tblParticipacionInstitucional.dteFechaTermino = participacionInstitucionalExternaDM.dteFechaTermino;
 
-                participacionInstitucionalExternaRepository.Insert(tblParticipacionInstitucional);
+                catDocumentos.tblParticipacionInstitucionalExterna.Add(tblParticipacionInstitucional);
+                catDocumentos.strUrl = participacionInstitucionalExternaDM.documentos.StrUrl;
+
+                documentosRepository.Insert(catDocumentos);
 
                 respuesta = true;
             }
@@ -87,12 +90,14 @@ namespace AppDigitalCv.Business
                 participacionDM.id = participacion.id;
                 participacionDM.idCatDocumento = participacion.idCatDocumento.Value;
                 participacionDM.idCatInstitucionSuperior = participacion.idCatInstitucionSuperior.Value;
-                participacionDM.idCatPeriodo = participacion.idCatPeriodo.Value;
                 participacionDM.idPersonal = participacion.idPersonal.Value;
                 participacionDM.strActividad = participacion.strActividad;
                 participacionDM.dteFechaInicio = participacion.dteFechaInicio.Value;
                 participacionDM.dteFechaTermino = participacion.dteFechaTermino.Value;
-
+                participacionDM.documentos = new DocumentosDomainModel
+                {
+                    StrUrl = participacion.catDocumentos.strUrl
+                };
                 participaciones.Add(participacionDM);
             }
 
@@ -118,32 +123,14 @@ namespace AppDigitalCv.Business
             participacionDM.id = tblParticipacion.id;
             participacionDM.idCatDocumento = tblParticipacion.idCatDocumento.Value;
             participacionDM.idCatInstitucionSuperior = tblParticipacion.idCatInstitucionSuperior.Value;
-            participacionDM.idCatPeriodo = tblParticipacion.idCatPeriodo.Value;
             participacionDM.idPersonal = tblParticipacion.idPersonal.Value;
             participacionDM.strActividad = tblParticipacion.strActividad;
             participacionDM.dteFechaInicio = tblParticipacion.dteFechaInicio.Value;
             participacionDM.dteFechaTermino = tblParticipacion.dteFechaTermino.Value;
-
-
-            return participacionDM;
-        }
-
-        public ParticipacionInstitucionalExternaDomainModel GetParticipacionEdit(int idPersonal, int idDocumento)
-        {
-            ParticipacionInstitucionalExternaDomainModel participacionDM = new ParticipacionInstitucionalExternaDomainModel();
-
-            Expression<Func<tblParticipacionInstitucionalExterna, bool>> predicate
-                = p => p.idPersonal == idPersonal && p.idCatDocumento == idDocumento;
-
-            tblParticipacionInstitucionalExterna tblParticipacion = 
-                participacionInstitucionalExternaRepository.GetAll(predicate).FirstOrDefault<tblParticipacionInstitucionalExterna>();
-            participacionDM.id = tblParticipacion.id;
-            participacionDM.institucionSuperior = tblParticipacion.catInstitucionSuperior.strDescripcion;
-            participacionDM.periodo = tblParticipacion.catPeriodo.strDescripcion;
-            participacionDM.documento = tblParticipacion.catDocumentos.strUrl;
-            participacionDM.strActividad = tblParticipacion.strActividad;
-            participacionDM.dteFechaInicio = tblParticipacion.dteFechaInicio.Value;
-            participacionDM.dteFechaTermino = tblParticipacion.dteFechaTermino.Value;
+            participacionDM.documentos = new DocumentosDomainModel
+            {
+                StrUrl = tblParticipacion.catDocumentos.strUrl
+            };
 
             return participacionDM;
         }

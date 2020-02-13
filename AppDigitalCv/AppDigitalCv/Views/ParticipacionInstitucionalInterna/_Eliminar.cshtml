@@ -16,10 +16,13 @@
                         ¿Deseas <strong>Eliminar</strong> este registro realmente?
                     </div>
                     <div class="col-lg-6">
-                        @Html.TextBoxFor(m => m.strActividad, new { @class = "form-control input-sm", @placeholder = "Nombre de la Actividad", @disabled = "disabled" })
-
+                        <ul class="todo-list">
+                            <li class="list-unstyled">
+                                <label>Actividad: </label> @Html.DisplayFor(model => model.strActividad, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
+                            </li>
+                        </ul>
                         <a href="#" id="btnSubmit">
-                            <i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i>
+                            <i class="btn btn-sm btn-google ">Eliminar</i>
                         </a>
                     </div>
                 </div>

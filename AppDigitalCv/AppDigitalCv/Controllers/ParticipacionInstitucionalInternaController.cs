@@ -58,71 +58,53 @@ namespace AppDigitalCv.Controllers
         {
             if (ModelState.IsValid)
             {
-                CrearDocumentoPersonales(institucionalInternaVM);
+                object[] obj = CrearDocumentoPersonales(institucionalInternaVM);
+
+                if (obj[0].Equals(true))
+                {
+                    institucionalInternaVM.documentos = new DocumentosVM { StrUrl = obj[1].ToString() };
+                    AddUpdatePartipacionInstitucionalInterna(institucionalInternaVM);
+                }
+
             }
             return RedirectToAction("Create","ParticipacionInstitucionalInterna");
         }
-        /// <summary>
-        /// Este metodo se encarga de guardar los documentos en el servidor
-        /// </summary>
-        /// <param name="institucionalInternaVM"></param>
-        public void CrearDocumentoPersonales(ParticipacionInstitucionalInternaVM institucionalInternaVM)
-        {
 
+        private Object[] CrearDocumentoPersonales(ParticipacionInstitucionalInternaVM institucionalInternaVM)
+        {
+            Object[] respuesta = new Object[2];
             institucionalInternaVM.idPersonal = SessionPersister.AccountSession.IdPersonal;
             string nombrecompleto = SessionPersister.AccountSession.NombreCompleto;
             string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombrecompleto));
 
-            if (!Directory.Exists(path))
+            if (Directory.Exists(path))
             {
-                DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
-
-                if (institucionalInternaVM.documentosVM.DocumentoFile != null)
+                if (institucionalInternaVM.documentos.DocumentoFile != null)
                 {
-                    path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombrecompleto + "/"), Path.GetFileName(institucionalInternaVM.documentosVM.DocumentoFile.FileName));
-                    string sfpath = institucionalInternaVM.documentosVM.DocumentoFile.FileName;
-                    institucionalInternaVM.documentosVM.DocumentoFile.SaveAs(path);
-                    DocumentosVM documentoVM = new DocumentosVM();
-                    documentoVM.StrUrl = sfpath;
-                    institucionalInternaVM.documentosVM = documentoVM;
+                    respuesta = FileManager.FileManager.CheckFileIfExist(path, institucionalInternaVM.documentos);
                 }
-
-
-                this.AddUpdatePartipacionInstitucionalInterna(institucionalInternaVM);
             }
             else
             {
-                if (institucionalInternaVM.documentosVM.DocumentoFile != null)
-                {
-                    path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombrecompleto + "/"), Path.GetFileName(institucionalInternaVM.documentosVM.DocumentoFile.FileName));
-                    string sfpath = institucionalInternaVM.documentosVM.DocumentoFile.FileName;
-                    institucionalInternaVM.documentosVM.DocumentoFile.SaveAs(path);
-                    DocumentosVM documentoVM = new DocumentosVM();
-                    documentoVM.StrUrl = sfpath;
-                    institucionalInternaVM.documentosVM = documentoVM;
-                }
-
-                this.AddUpdatePartipacionInstitucionalInterna(institucionalInternaVM);
+                DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
+                CrearDocumentoPersonales(institucionalInternaVM);
             }
+            return respuesta;
         }
+
         /// <summary>
         /// Este metodo se encarga de insertar el objeto en la base de datos
         /// </summary>
         /// <param name="institucionalInternaVM"></param>
         /// <returns></returns>
-        public bool AddUpdatePartipacionInstitucionalInterna(ParticipacionInstitucionalInternaVM institucionalInternaVM)
+        private bool AddUpdatePartipacionInstitucionalInterna(ParticipacionInstitucionalInternaVM institucionalInternaVM)
         {
             bool respuesta = false;
 
             ParticipacionInstitucionalInternaDomainModel participacionInstitucionalInternaDM = new ParticipacionInstitucionalInternaDomainModel();
-            DocumentosDomainModel documentosDM = new DocumentosDomainModel();
 
             AutoMapper.Mapper.Map(institucionalInternaVM, participacionInstitucionalInternaDM);
-            AutoMapper.Mapper.Map(institucionalInternaVM.documentosVM, documentosDM);
-            participacionInstitucionalInternaDM.documentosDM = documentosDM;
 
-            DocumentosDomainModel documento = documentosBusiness.AddUpdateDocumento(documentosDM);
-            participacionInstitucionalInternaDM.idCatDocumento = documento.IdDocumento;
             respuesta = participacionInstitucionalInternaBusiness.AddUpdateParticipacion(participacionInstitucionalInternaDM);
             return respuesta;
         }
@@ -205,7 +187,11 @@ namespace AppDigitalCv.Controllers
 
             if (participacionDM != null)
             {
-                documentosBusiness.DeleteDocumento(participacionVM.idCatDocumento);
+                string url = Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + SessionPersister.AccountSession.NombreCompleto + "/" + participacionDM.documentos.StrUrl);
+                if (FileManager.FileManager.DeleteFileFromServer(url))
+                {
+                    documentosBusiness.DeleteDocumento(participacionVM.idCatDocumento);
+                }            
             }
 
             return View(Create());
@@ -222,7 +208,7 @@ namespace AppDigitalCv.Controllers
         {
             int idPersonal = SessionPersister.AccountSession.IdPersonal;
             ParticipacionInstitucionalInternaDomainModel participacionDM =
-              participacionInstitucionalInternaBusiness.GetParticipacionEdit(idPersonal, idCatDocumento);
+              participacionInstitucionalInternaBusiness.GetParticipacion(idPersonal, idCatDocumento);
             if (participacionDM != null)
             {
 

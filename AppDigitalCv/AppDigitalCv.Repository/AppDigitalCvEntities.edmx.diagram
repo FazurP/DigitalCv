@@ -59,16 +59,7 @@
         <EntityTypeShape EntityType="bdGestionDocenteModel.catPeriodo" Width="1.5" PointX="11.25" PointY="5.625" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catTipoActividad" Width="1.5" PointX="14.25" PointY="11.25" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblParticipacionDocente" Width="1.5" PointX="19.5" PointY="20.75" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.tblParticipacionInstitucionalExterna" Width="1.5" PointX="13.5" PointY="13.875" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.tblParticipacionInstitucionalInterna" Width="1.5" PointX="16.5" PointY="14.125" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionDocente_catDocumentos" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_catDocumentos" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_catDocumentos" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_catInstitucionSuperior" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_catPeriodo" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_catPeriodo" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_catProgramaEducativo" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_catTipoActividad" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblExperienciaLaboralExterna" Width="1.5" PointX="16.5" PointY="27" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralExterna_catDocumentos" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralExterna_catPeriodo" />
@@ -254,8 +245,6 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblMemoriasExtenso_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblOtraCapacitacion_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionDocente_tblPersonal1" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_tblPersonal" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_personal_personalAsociaciones" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_personal_premiosDocente" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblPersonal_TblSeguridadSocial" />
@@ -314,6 +303,15 @@
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblTutoria" Width="1.5" PointX="36.375" PointY="6.625" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblTutoria_catProgramaEducativo" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblTutoria_tblPersonal" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblParticipacionInstitucionalExterna" Width="1.5" PointX="42.375" PointY="7.125" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_catDocumentos" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_catInstitucionSuperior" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalExterna_tblPersonal" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblParticipacionInstitucionalInterna" Width="1.5" PointX="42.375" PointY="21.375" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_catDocumentos" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_catProgramaEducativo" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_catTipoActividad" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_tblPersonal" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

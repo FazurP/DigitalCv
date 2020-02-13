@@ -47,72 +47,53 @@ namespace AppDigitalCv.Controllers
         {
             if (ModelState.IsValid)
             {
-                this.CrearDocumentoPersonales(participacionInstitucionalExternaVM);
+                object[] obj = CrearDocumentoPersonales(participacionInstitucionalExternaVM);
+
+                if (obj[0].Equals(true))
+                {
+                    participacionInstitucionalExternaVM.documentos = new DocumentosVM { StrUrl = obj[1].ToString() };
+                    AddUpdatePartipacionInstitucionalExterna(participacionInstitucionalExternaVM);
+                }
             }
             return RedirectToAction("Create", "ParticipacionInstitucionalExterna");
 
         }
-        /// <summary>
-        /// Este metodo se encarga de guardar los documentos en el servidor
-        /// </summary>
-        /// <param name="participacionInstitucionalExternaVM"></param>
-        public void CrearDocumentoPersonales(ParticipacionInstitucionalExternaVM participacionInstitucionalExternaVM)
-        {
 
+        private Object[] CrearDocumentoPersonales(ParticipacionInstitucionalExternaVM participacionInstitucionalExternaVM)
+        {
+            Object[] respuesta = new Object[2];
             participacionInstitucionalExternaVM.idPersonal = SessionPersister.AccountSession.IdPersonal;
             string nombrecompleto = SessionPersister.AccountSession.NombreCompleto;
             string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombrecompleto));
 
-            if (!Directory.Exists(path))
+            if (Directory.Exists(path))
             {
-                DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
-
-                if (participacionInstitucionalExternaVM.documentosVM.DocumentoFile != null)
+                if (participacionInstitucionalExternaVM.documentos.DocumentoFile != null)
                 {
-                    path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombrecompleto + "/"), Path.GetFileName(participacionInstitucionalExternaVM.documentosVM.DocumentoFile.FileName));
-                    string sfpath = participacionInstitucionalExternaVM.documentosVM.DocumentoFile.FileName;
-                    participacionInstitucionalExternaVM.documentosVM.DocumentoFile.SaveAs(path);
-                    DocumentosVM documentoVM = new DocumentosVM();
-                    documentoVM.StrUrl = sfpath;
-                    participacionInstitucionalExternaVM.documentosVM = documentoVM;
+                    respuesta = FileManager.FileManager.CheckFileIfExist(path, participacionInstitucionalExternaVM.documentos);
                 }
-
-
-                this.AddUpdatePartipacionInstitucionalExterna(participacionInstitucionalExternaVM);
             }
             else
             {
-                if (participacionInstitucionalExternaVM.documentosVM.DocumentoFile != null)
-                {
-                    path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombrecompleto + "/"), Path.GetFileName(participacionInstitucionalExternaVM.documentosVM.DocumentoFile.FileName));
-                    string sfpath = participacionInstitucionalExternaVM.documentosVM.DocumentoFile.FileName;
-                    participacionInstitucionalExternaVM.documentosVM.DocumentoFile.SaveAs(path);
-                    DocumentosVM documentoVM = new DocumentosVM();
-                    documentoVM.StrUrl = sfpath;
-                    participacionInstitucionalExternaVM.documentosVM = documentoVM;
-                }
-
-                this.AddUpdatePartipacionInstitucionalExterna(participacionInstitucionalExternaVM);
+                DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
+                CrearDocumentoPersonales(participacionInstitucionalExternaVM);
             }
+            return respuesta;
         }
+
+
         /// <summary>
         /// Este metodo se encarga de insertar los datos en la base de datos
         /// </summary>
         /// <param name="participacionInstitucionalExternaVM"></param>
         /// <returns>true o false</returns>
-        public bool AddUpdatePartipacionInstitucionalExterna(ParticipacionInstitucionalExternaVM participacionInstitucionalExternaVM)
+        private bool AddUpdatePartipacionInstitucionalExterna(ParticipacionInstitucionalExternaVM participacionInstitucionalExternaVM)
         {
             bool respuesta = false;
 
             ParticipacionInstitucionalExternaDomainModel participacionInstitucionalExternaDM = new ParticipacionInstitucionalExternaDomainModel();
-            DocumentosDomainModel documentosDM = new DocumentosDomainModel();
 
             AutoMapper.Mapper.Map(participacionInstitucionalExternaVM, participacionInstitucionalExternaDM);
-            AutoMapper.Mapper.Map(participacionInstitucionalExternaVM.documentosVM, documentosDM);
-            participacionInstitucionalExternaDM.documentosDM = documentosDM;
-
-            DocumentosDomainModel documento = documentosBusiness.AddUpdateDocumento(documentosDM);
-            participacionInstitucionalExternaDM.idCatDocumento = documento.IdDocumento;
             respuesta = participacionInstitucionalExtenaBusiness.AddUpdateParticipacion(participacionInstitucionalExternaDM);
             return respuesta;
         }
@@ -194,7 +175,11 @@ namespace AppDigitalCv.Controllers
 
             if (participacionDM != null)
             {
-                documentosBusiness.DeleteDocumento(participacionVM.idCatDocumento);
+                string url = Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + SessionPersister.AccountSession.NombreCompleto + "/" + participacionDM.documentos.StrUrl);
+                if (FileManager.FileManager.DeleteFileFromServer(url))
+                {
+                    documentosBusiness.DeleteDocumento(participacionVM.idCatDocumento);
+                }
             }
 
             return View(Create());
@@ -209,11 +194,10 @@ namespace AppDigitalCv.Controllers
         {
             int idPersonal = SessionPersister.AccountSession.IdPersonal;
             ParticipacionInstitucionalExternaDomainModel participacionDM =
-              participacionInstitucionalExtenaBusiness.GetParticipacionEdit(idPersonal, idCatDocumento);
+              participacionInstitucionalExtenaBusiness.GetParticipacion(idPersonal, idCatDocumento);
             if (participacionDM!= null)
             {
                 ViewBag.idCatInstitucionSuperior = new SelectList(institucionSuperiorBusiness.GetInstitucionSuperior(), "idInstitucionSuperior", "strDescripcion");
-                ViewBag.idCatPeriodo = new SelectList(periodoBusiness.GetPeriodos(), "id", "strDescripcion");
                 ParticipacionInstitucionalExternaVM participacionVM = new ParticipacionInstitucionalExternaVM();
                 AutoMapper.Mapper.Map(participacionDM, participacionVM);
                 return PartialView("_Editar", participacionVM);

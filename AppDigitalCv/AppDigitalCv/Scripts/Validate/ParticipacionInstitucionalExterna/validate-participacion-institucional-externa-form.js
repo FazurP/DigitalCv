@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
 
     $('#ddlInstitucion').prop('disabled', true);
-    $('#ddlPeriodo').prop('disabled', true);
     $('#dteFechaInicio').prop('disabled', true);
     $('#dteFechaTermino').prop('disabled', true);
     $('#inputUploadFile').prop('disabled', true);
@@ -13,14 +12,12 @@
 
         if (actividad == null || actividad == '' || actividad == "") {
             $('#ddlInstitucion').prop('disabled', true);
-            $('#ddlPeriodo').prop('disabled', true);
             $('#dteFechaInicio').prop('disabled', true);
             $('#dteFechaTermino').prop('disabled', true);
             $('#inputUploadFile').prop('disabled', true);
             $('#btnGuardar').prop('disabled', true);
 
             $('#ddlInstitucion').val(0);
-            $('#ddlPeriodo').val(0);
             $('#dteFechaInicio').val('');
             $('#dteFechaTermino').val('');
             $('#inputUploadFile').val('');
@@ -35,28 +32,6 @@
         var institucion = $('#ddlInstitucion').val();
 
         if (institucion == null || institucion == 0 || institucion == '0' || institucion == "0") {
-            $('#ddlPeriodo').prop('disabled', true);
-            $('#dteFechaInicio').prop('disabled', true);
-            $('#dteFechaTermino').prop('disabled', true);
-            $('#inputUploadFile').prop('disabled', true);
-            $('#btnGuardar').prop('disabled', true);
-
-            $('#ddlPeriodo').val(0);
-            $('#dteFechaInicio').val('');
-            $('#dteFechaTermino').val('');
-            $('#inputUploadFile').val('');
-        } else {
-            $('#ddlPeriodo').prop('disabled', false);
-            toastr.success('Institución Seleccionada', 'Digital-Cv dice', { timeOut: 1000, closeButton: true })
-        }
-
-    })
-
-    $('#ddlPeriodo').change(function () {
-
-        var periodo = $('#ddlPeriodo').val();
-
-        if (periodo == null || periodo == 0 || periodo == '0' || periodo == "0") {
             $('#dteFechaInicio').prop('disabled', true);
             $('#dteFechaTermino').prop('disabled', true);
             $('#inputUploadFile').prop('disabled', true);
@@ -67,7 +42,7 @@
             $('#inputUploadFile').val('');
         } else {
             $('#dteFechaInicio').prop('disabled', false);
-            toastr.success('Periodo Seleccionado', 'Digital-Cv dice', { timeOut: 1000, closeButton: true })
+            toastr.success('Institución Seleccionada', 'Digital-Cv dice', { timeOut: 1000, closeButton: true })
         }
 
     })

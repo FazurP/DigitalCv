@@ -11,7 +11,7 @@
     <div class="bs-container" style="min-height:960px;">
         <section class="content-header">
             <h1>
-                Participación Institucional Externa
+                Participaciónes Fuera de la Institución
                 <small>(Agregar)</small>
             </h1>
             <ol class="breadcrumb">
@@ -28,7 +28,7 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Actividad</label>
                                     @Html.TextBoxFor(model => model.strActividad, new { @class = "form-control input-sm", @id = "txtActividad" })
@@ -38,39 +38,36 @@
                                     @Html.DropDownList("idCatInstitucionSuperior", null, new { @class = "form-control input-sm", @id = "ddlInstitucion" })
                                 </div>
                                 <div class="form-group">
-                                    <label>Periodo</label>
-                                    @Html.DropDownList("idCatPeriodo", null, new { @class = "form-control input-sm", @id = "ddlPeriodo" })
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
                                     <label>Fecha de Inicio</label>
                                     @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm", @id = "dteFechaInicio", @type = "date" })
                                 </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Fecha de Termino</label>
                                     @Html.TextBoxFor(model => model.dteFechaTermino, new { @class = "form-control input-sm", @id = "dteFechaTermino", @type = "date" })
                                 </div>
                                 <div class="form-group">
                                     <label>Evidencia en PDF</label>
-                                    @Html.TextBoxFor(model => model.documentosVM.DocumentoFile, new { @class = "form-control input-sm", @id = "inputUploadFile", @type = "file" })
+                                    @Html.TextBoxFor(model => model.documentos.DocumentoFile, new { @class = "form-control input-sm", @id = "inputUploadFile", @type = "file" })
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <input type="submit" id="btnGuardar" value="Guardar" class="btn btn-success" />
+                                <input type="submit" id="btnGuardar" value="Guardar Información" class="btn btn-sm btn-success" />
                             </div>
                         </div>
 
-                        <div class="form-group-sm">
+                        <div class="">
                             <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
                             <div class="form-group" id="addTable">
                                 <br />
-                                <table id="tblActividad" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
-                                    <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
+                                <table id="tblActividad" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-responsive">
+                                    <thead class="" style="color:white; background-color:#428BCA; font-size:10px;">
                                         <tr>
                                             <th>Actividad</th>
+                                            <th>Documento</th>
                                             <th>Editar</th>
                                             <th>Eliminar</th>
 
@@ -84,7 +81,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header" style="background-color:#3C8DBC;color:white;">
                                                 <a href="#" class="close" data-dismiss="modal">&times;</a>
-                                                <h5 class="modal-title"><label style="font-size:medium;">Participaciones</label></h5>
+                                                <h5 class="modal-title"><label style="font-size:medium;">Participacion Fuera de la Institución</label></h5>
                                             </div>
                                             <div class="modal-body" id="myModalBodyDiv1">
                                             </div>
@@ -109,9 +106,9 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-    <script src="~/Scripts/Validate/ParticipacionInstitucionalExterna/validate-participacion-institucional-externa-form.js"></script>
+    <script src="~/Scripts/Validate/ParticipacionInstitucionalExterna/validate-participacion-institucional-externa-form.js?v=1"></script>
     <script src="~/Scripts/Validate/ParticipacionInstitucionalExterna/validate-participacion-institucion-externa-upload.js"></script>
-    <script src="~/Scripts/Validate/ParticipacionInstitucionalExterna/validate-participacion-institucional-externa-date.js"></script>
+    <script src="~/Scripts/Validate/ParticipacionInstitucionalExterna/validate-participacion-institucional-externa-regExo.js"></script>
 
     <script>
 
@@ -190,6 +187,13 @@
                         "columns": [
 
                             { "data": "strActividad" },
+                           {
+                                "data": "documentos.StrUrl",
+                                "render": function (StrUrl)
+                                {
+                                    return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
+                                }
+                            },
 
                             {
                                 "data": "idCatDocumento",

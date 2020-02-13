@@ -15,20 +15,16 @@
             </div>
             <div class="row">
                 <div class="form-group col-lg-7">
-                    @*<label>Institucion Superior</label>
-                    @Html.DropDownList("idCatInstitucionSuperior", null, new { @class = "form-control input-sm" })
-                    <label>Periodo</label>
-                    @Html.DropDownList("idCatPeriodo", null, new { @class = "form-control input-sm" })*@
-                    <label>Actividad</label>
-                    @Html.TextBoxFor(model => model.strActividad, null, new { @class = "form-control input-sm",id="Actividad" })
-                    <label>Fecha de Inicio</label>
-                    @Html.TextBoxFor(model => model.dteFechaInicio, null, new { @class = "form-control input-sm", @type = "date",id="FechaInicio" })
-                    <label>Fecha de Termino</label>
-                    @Html.TextBoxFor(model => model.dteFechaTermino, null, new { @class = "form-control input-sm", @type = "date",id="FechaTermino" })
-                </div>
-                <div class="row">
-                    <div class="form-group col-lg-6 col-lg-offset-4">
-                        <a href="#" id="btnEnviar" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i>Actualizar</span></a>
+                    <div class="form-group">
+                        <label>Actividad: </label>
+                        @Html.TextBoxFor(model => model.strActividad, null, new { @class = "form-control input-sm", id = "Actividad" })
+                    </div>
+                    <div class="form-group">
+                        <label>Institución: </label>
+                        @Html.DropDownListFor(model => model.idCatInstitucionSuperior,null,new { @class = "form-control input-sm", id="Institucion" })
+                    </div>
+                    <div class="form-group">
+                        <a href="#" id="btnEnviar" class="btn btn-sm btn-success"><span><i class=""></i>Actualizar</span></a>
                     </div>
                 </div>
             </div>
@@ -47,10 +43,9 @@
 
 
             let actividad = $('#Actividad').val();
-            let fechaInicio = $('#FechaInicio').val();
-            let fechaTermino = $('#FechaTermino').val();
+            let institucion = $('#Institucion').val();
 
-            if (actividad != "" && fechaInicio != "" && fechaTermino != "") {
+            if (actividad != "" && institucion > 0) {
                 
             var ParticipacionInstitucionalExternaVM = {};
             var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
@@ -58,12 +53,9 @@
             ParticipacionInstitucionalExternaVM.IdPersonal = IdPersonal;
             ParticipacionInstitucionalExternaVM.id = $('#id').val();
 
-            //ParticipacionInstitucionalExternaVM.idCatInstitucionSuperior = $('#idCatInstitucionSuperior').val();
-            //ParticipacionInstitucionalExternaVM.idCatPeriodo = $('#idCatPeriodo').val();
-            //ParticipacionInstitucionalExternaVM.idCatDocumento = $('#idCatDocumento').val();
             ParticipacionInstitucionalExternaVM.strActividad = $('#Actividad').val();
-            ParticipacionInstitucionalExternaVM.dteFechaInicio = $('#FechaInicio').val();
-            ParticipacionInstitucionalExternaVM.dteFechaTermino = $('#FechaTermino').val();
+            ParticipacionInstitucionalExternaVM.idCatInstitucionSuperior = $('#Institucion').val();
+
             $.ajax({
                 type: "POST",
                 url: "/ParticipacionInstitucionalExterna/EditarParticipacionPersonal",

@@ -15,10 +15,12 @@ namespace AppDigitalCv.Business
     {
         private readonly IUnitOfWork unitofWork;
         private readonly ParticipacionInstitucionalInternaRepository participacionInstitucionalInternaRepository;
+        private readonly DocumentosRepository documentosRepository;
         public ParticipacionInstitucionalInternaBusiness(IUnitOfWork _unitOfWork)
         {
             unitofWork = _unitOfWork;
             participacionInstitucionalInternaRepository = new ParticipacionInstitucionalInternaRepository(unitofWork);
+            documentosRepository = new DocumentosRepository(unitofWork);
         }
         /// <summary>
         /// Este metodo se encarga de insertar o actualizar un objeto de una persona, en la base de datos
@@ -39,12 +41,9 @@ namespace AppDigitalCv.Business
                 if (participacion != null)
                 {
                     participacion.id = participacionInstitucionalInternaDM.id;
-                    participacion.idCatPeriodo = participacionInstitucionalInternaDM.idCatPeriodo;
                     participacion.idCatProgramaEducativo = participacionInstitucionalInternaDM.idCatProgramaEducativo;
                     participacion.idCatTipoActividad = participacionInstitucionalInternaDM.idCatTipoActividad;
                     participacion.strActividad = participacionInstitucionalInternaDM.strActividad;
-                    participacion.fechaInicio = participacionInstitucionalInternaDM.fechaInicio;
-                    participacion.fechaTermino = participacionInstitucionalInternaDM.fechaTermino;
 
                     participacionInstitucionalInternaRepository.Update(participacion);
 
@@ -55,9 +54,9 @@ namespace AppDigitalCv.Business
             else
             {
                 tblParticipacionInstitucionalInterna tblParticipacionInstitucional = new tblParticipacionInstitucionalInterna();
+                catDocumentos catDocumentos = new catDocumentos();
                 tblParticipacionInstitucional.id = participacionInstitucionalInternaDM.id;
                 tblParticipacionInstitucional.idCatDocumento = participacionInstitucionalInternaDM.idCatDocumento;
-                tblParticipacionInstitucional.idCatPeriodo = participacionInstitucionalInternaDM.idCatPeriodo;
                 tblParticipacionInstitucional.idCatProgramaEducativo = participacionInstitucionalInternaDM.idCatProgramaEducativo;
                 tblParticipacionInstitucional.idCatTipoActividad = participacionInstitucionalInternaDM.idCatTipoActividad;
                 tblParticipacionInstitucional.idPersonal = participacionInstitucionalInternaDM.idPersonal;
@@ -65,8 +64,9 @@ namespace AppDigitalCv.Business
                 tblParticipacionInstitucional.fechaInicio = participacionInstitucionalInternaDM.fechaInicio;
                 tblParticipacionInstitucional.fechaTermino = participacionInstitucionalInternaDM.fechaTermino;
 
-                participacionInstitucionalInternaRepository.Insert(tblParticipacionInstitucional);
-
+                catDocumentos.tblParticipacionInstitucionalInterna.Add(tblParticipacionInstitucional);
+                catDocumentos.strUrl = participacionInstitucionalInternaDM.documentos.StrUrl;
+                documentosRepository.Insert(catDocumentos);
                 respuesta = true;
             }
 
@@ -90,13 +90,16 @@ namespace AppDigitalCv.Business
 
                 participacionDM.id = participacion.id;
                 participacionDM.idCatDocumento = participacion.idCatDocumento.Value;
-                participacionDM.idCatPeriodo = participacion.idCatPeriodo.Value;
                 participacionDM.idCatProgramaEducativo = participacion.idCatProgramaEducativo.Value;
                 participacionDM.idCatTipoActividad = participacion.idCatTipoActividad.Value;
                 participacionDM.idPersonal = participacion.idPersonal.Value;
                 participacionDM.strActividad = participacion.strActividad;
                 participacionDM.fechaInicio = participacion.fechaInicio.Value;
                 participacionDM.fechaTermino = participacion.fechaTermino.Value;
+                participacionDM.documentos = new DocumentosDomainModel
+                {
+                    StrUrl = participacion.catDocumentos.strUrl
+                };
 
                 participaciones.Add(participacionDM);
             }
@@ -122,42 +125,19 @@ namespace AppDigitalCv.Business
 
             participacionDM.id = tblParticipacion.id;
             participacionDM.idCatDocumento = tblParticipacion.idCatDocumento.Value;
-            participacionDM.idCatPeriodo = tblParticipacion.idCatPeriodo.Value;
             participacionDM.idCatProgramaEducativo = tblParticipacion.idCatProgramaEducativo.Value;
             participacionDM.idCatTipoActividad = tblParticipacion.idCatTipoActividad.Value;
             participacionDM.idPersonal = tblParticipacion.idPersonal.Value;
             participacionDM.strActividad = tblParticipacion.strActividad;
             participacionDM.fechaInicio = tblParticipacion.fechaInicio.Value;
             participacionDM.fechaTermino = tblParticipacion.fechaTermino.Value;
+            participacionDM.documentos = new DocumentosDomainModel
+            {
+                StrUrl = tblParticipacion.catDocumentos.strUrl
+            };
 
             return participacionDM;
-        }
-
-        public ParticipacionInstitucionalInternaDomainModel GetParticipacionEdit(int idPersonal, int idDocumento)
-        {
-            ParticipacionInstitucionalInternaDomainModel participacionDM = new ParticipacionInstitucionalInternaDomainModel();
-
-            Expression<Func<tblParticipacionInstitucionalInterna, bool>> predicate
-                = p => p.idPersonal == idPersonal && p.idCatDocumento == idDocumento;
-
-            tblParticipacionInstitucionalInterna tblParticipacion =
-                participacionInstitucionalInternaRepository.GetAll(predicate).FirstOrDefault<tblParticipacionInstitucionalInterna>();
-            participacionDM.id = tblParticipacion.id;
-            participacionDM.idCatDocumento = tblParticipacion.idCatDocumento.Value;
-            participacionDM.idCatPeriodo = tblParticipacion.idCatPeriodo.Value;
-            participacionDM.idCatProgramaEducativo = tblParticipacion.idCatProgramaEducativo.Value;
-            participacionDM.idCatTipoActividad = tblParticipacion.idCatTipoActividad.Value;
-            participacionDM.idPersonal = tblParticipacion.idPersonal.Value;
-            participacionDM.strActividad = tblParticipacion.strActividad;
-            participacionDM.fechaInicio = tblParticipacion.fechaInicio.Value;
-            participacionDM.fechaTermino = tblParticipacion.fechaTermino.Value;
-            participacionDM.periodo = tblParticipacion.catPeriodo.strDescripcion;
-            participacionDM.programaEducativo = tblParticipacion.catProgramaEducativo.strDescripcion;
-            participacionDM.TipoActividad = tblParticipacion.catTipoActividad.strDescripcion;
-            participacionDM.documento = tblParticipacion.catDocumentos.strUrl;
-
-            return participacionDM;
-        }
+        }  
 
     }
 }

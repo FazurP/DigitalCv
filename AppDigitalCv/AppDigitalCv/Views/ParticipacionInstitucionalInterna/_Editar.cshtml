@@ -15,16 +15,22 @@
             </div>
             <div class="row">
                 <div class="form-group col-lg-7">
-                    <label>Actividad</label>
-                    @Html.TextBox("Actividad",null, new { @class = "form-control input-sm" })
-                    <label>Fecha de Inicio</label>
-                    @Html.TextBox("FechaInicio", null, new { @class = "form-control input-sm", @type = "date" })
-                    <label>Fecha de Termino</label>
-                    @Html.TextBox("FechaTermino", null, new { @class = "form-control input-sm", @type = "date" })
+                    <div class="form-group">
+                        <label>Actividad:</label>
+                        @Html.TextBoxFor(model => model.strActividad, null, new { @class = "form-control input-sm",id = "Actividad" })
+                    </div>
+                    <div class="form-group">
+                        <label>Programa Educativo:</label>
+                        @Html.DropDownListFor(model => model.idCatProgramaEducativo, null, new { @class = "form-control input-sm",id="ProgramaEducativo" })
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo de Actividad: </label>
+                        @Html.DropDownListFor(model => model.idCatTipoActividad, null, new { @class = "form-control input-sm",id="TipoActividad" })
+                    </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-6 col-lg-offset-4">
-                        <a href="#" id="btnEnviar" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
+                        <a href="#" id="btnEnviar" class="btn btn-sm btn-success"><span><i class=""></i>Actualizar</span></a>
                     </div>
                 </div>
             </div>
@@ -41,10 +47,10 @@
         $("#btnEnviar").click(function () {
 
             let actividad = $('#Actividad').val();
-            let fechaInicio = $('#FechaInicio').val();
-            let fechaTermino = $('#FechaTermino').val();
+            let programaEducativo = $('#ProgramaEducativo').val();
+            let tipoActividad = $('#TipoActividad').val();
 
-            if (actividad != "" && fechaInicio != "" && fechaTermino != "") {
+            if (actividad != "" && programaEducativo > 0 && tipoActividad > 0) {
                 var ParticipacionInstitucionalInternaVM = {};
                 var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
 
@@ -52,13 +58,13 @@
                 ParticipacionInstitucionalInternaVM.id = $('#id').val();
 
                 ParticipacionInstitucionalInternaVM.strActividad = $('#Actividad').val();
-                ParticipacionInstitucionalInternaVM.fechaInicio = $('#FechaInicio').val();
-                ParticipacionInstitucionalInternaVM.fechaTermino = $('#FechaTermino').val();
+                ParticipacionInstitucionalInternaVM.idCatProgramaEducativo = $('#ProgramaEducativo').val();
+                ParticipacionInstitucionalInternaVM.idCatTipoActividad = $('#TipoActividad').val();
 
                 $.ajax({
                     type: "POST",
                     url: "/ParticipacionInstitucionalInterna/EditarParticipacionPersonal",
-                    data: { participacionInstitucionalExternaVM: ParticipacionInstitucionalExternaVM },
+                    data: { participacionInstitucionalInternaVM: ParticipacionInstitucionalInternaVM },
                     success: function () {
                         $("#myModal1").modal("hide");
                         window.location.href = "/ParticipacionInstitucionalInterna/Create";

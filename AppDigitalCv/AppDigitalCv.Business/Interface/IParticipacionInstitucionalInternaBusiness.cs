@@ -12,6 +12,5 @@ namespace AppDigitalCv.Business.Interface
         bool AddUpdateParticipacion(ParticipacionInstitucionalInternaDomainModel participacionInstitucionalInternaDM);
         List<ParticipacionInstitucionalInternaDomainModel> GetParticipacionesPersonalesById(int id);
         ParticipacionInstitucionalInternaDomainModel GetParticipacion(int idPersonal, int idDocumento);
-        ParticipacionInstitucionalInternaDomainModel GetParticipacionEdit(int idPersonal, int idDocumento);
     }
 }
