@@ -19,13 +19,11 @@ namespace AppDigitalCv.Repository
         public Nullable<int> idPersonal { get; set; }
         public Nullable<int> idCatDocumento { get; set; }
         public Nullable<int> idCatTipoActividad { get; set; }
-        public Nullable<int> idCatPeriodo { get; set; }
         public string strActividad { get; set; }
         public Nullable<System.DateTime> fechaInicio { get; set; }
         public Nullable<System.DateTime> fechaTermino { get; set; }
     
         public virtual catDocumentos catDocumentos { get; set; }
-        public virtual catPeriodo catPeriodo { get; set; }
         public virtual catProgramaEducativo catProgramaEducativo { get; set; }
         public virtual catTipoActividad catTipoActividad { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }

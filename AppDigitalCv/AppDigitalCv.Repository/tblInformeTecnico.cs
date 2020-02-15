@@ -17,21 +17,17 @@ namespace AppDigitalCv.Repository
         public int id { get; set; }
         public Nullable<int> idDocumento { get; set; }
         public Nullable<int> idPersonal { get; set; }
-        public Nullable<int> idStatus { get; set; }
         public string strAutor { get; set; }
         public string strNombreProyecto { get; set; }
         public string strAlcance { get; set; }
         public string strInstitucionBeneficiaria { get; set; }
-        public Nullable<System.DateTime> dteFechaInicio { get; set; }
         public string enumEstadoActual { get; set; }
         public Nullable<System.DateTime> dteElaboracionInforme { get; set; }
         public Nullable<int> numeroPaginas { get; set; }
         public Nullable<int> idPais { get; set; }
         public string enumProposito { get; set; }
-        public Nullable<bool> bitLigarCurriculum { get; set; }
     
         public virtual catDocumentos catDocumentos { get; set; }
-        public virtual catStatus catStatus { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
     }
 }

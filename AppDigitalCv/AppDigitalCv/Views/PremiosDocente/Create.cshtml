@@ -9,7 +9,7 @@
 @using (Html.BeginForm("Create", "PremiosDocente", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    <div class="bs-container" style="min-height:960px;">
+    <div class="bs-container" style="min-height:960px; margin-top:30px">
         <section class="content-header">
             <h1>
                 Premios y Distinciones Sociales
@@ -32,32 +32,47 @@
                         <div class="form-group">
                             <div class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <label>Nombre del Premio:</label>
-                                    @Html.TextBoxFor(model => model.StrNombrePremio, new { @class = "form-control input-sm", required = "required", placeholder = "Nombre del Premio", title = "Escribe el Nombre del Premio", pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}", id = "Premio" })
-                                    <label>Describa la Función Desempeñada:</label>
-                                    @Html.TextBoxFor(model => model.StrActividadDesempeniada, new
-                                    {
-                                        @class = "form-control input-sm",
-                                        placeholder = "Nombre de la Actividad Desempeñada",
-                                   pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}",
-                                        required = "required",
-                                        title = "Ingresa la Actividad Desempeñada",
-                                        id = "Actividad"
-                                    })
+                                    <div class="form-group">
+                                        <label>Nombre del Premio:</label>
+                                        @Html.TextBoxFor(model => model.StrNombrePremio, new { @class = "form-control input-sm", required = "required", placeholder = "Nombre del Premio", title = "Escribe el Nombre del Premio", pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}", id = "Premio" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Describa la Función Desempeñada:</label>
+                                        @Html.TextBoxFor(model => model.StrActividadDesempeniada, new
+                                        {
+                                            @class = "form-control input-sm",
+                                            placeholder = "Nombre de la Actividad Desempeñada",
+                                       pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}",
+                                            required = "required",
+                                            title = "Ingresa la Actividad Desempeñada",
+                                            id = "Actividad"
+                                        })
+                                    </div>
+                                   
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <label>Nombre de la Institución:</label>
-                                    @Html.TextBoxFor(model => model.StrInstitucion, new { @class = "form-control input-sm", placeholder = "Institución", title = "Escribe el Nombre de la Institución", required = "", pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}", id = "Institucion" })
-                                    <label>Año de Recepción del Premio:</label>
-                                    @Html.TextBoxFor(model => model.DteFechaObtencionPremio, new { @class = "form-control input-sm", type = "date", required = "required", title = "Fecha de Entrega del Premio", id = "fechaObtencion" })
+                                    <div class="form-group">
+                                        <label>Nombre de la Institución:</label>
+                                        @Html.TextBoxFor(model => model.StrInstitucion, new { @class = "form-control input-sm", placeholder = "Institución", title = "Escribe el Nombre de la Institución", required = "", pattern = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}", id = "Institucion" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Año de Recepción del Premio:</label>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            @Html.TextBoxFor(model => model.DteFechaObtencionPremio, new { @class = "form-control input-sm pull-rigth datepicker", required = "required", title = "Fecha de Entrega del Premio", id = "fechaObtencion" })
+                                        </div>
+                                    </div>
+                                  
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="form-group">
                                     <label>Evidencia Documental</label>
-                                    @Html.TextBoxFor(model => model.Documentos.DocumentoFile, new { @class = "btn btn-sm btn-social btn-linkedin", @type = "file", id = "documentoInputFile" })
+                                    @Html.TextBoxFor(model => model.Documentos.DocumentoFile, new { @class = "form-control input-sm", @type = "file", id = "documentoInputFile" })
                                     @Html.ValidationMessageFor(model => model.Documentos.DocumentoFile, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -71,42 +86,55 @@
                 </div>
             </div>
         </div>
-        <div class="form-group" id="addTable">
+        <div class="form-group input-sm" id="addTable">
             <br />
-            <table id="tblPremiosDocente" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
-                <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
+            <table id="tblPremiosDocente" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-responsive">
+                <thead class="" style="color:white; background-color:#428BCA; font-size:10px;">
                     <tr>
                         <th>Nombre del Premio</th>
                         <th>Fecha de Obtención</th>
                         <th>Documento</th>
-                        <th>Actualizar</th>
-                        <th>Eliminar</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="tblBody"></tbody>
             </table>
             <!-- Establecemos el Modal que se va a presentar cuando demos click en la edicion de los datos-->
-            <div class="modal fade" id="myModal1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header" style="background-color:#3C8DBC;color:white;">
-                            <a href="#" class="close" data-dismiss="modal">&times;</a>
-                            <h5 class="modal-title"><label style="font-size:medium;">Eliminar Premio del Docente</label></h5>
-                        </div>
-                        <div class="modal-body" id="myModalBodyDiv1">
-                        </div>
+
+        </div>
+
+        <div class="modal fade" id="myModal1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h5 class="modal-title"><label style="font-size:medium;">Premio del Docente</label></h5>
+                    </div>
+                    <div class="modal-body" id="myModalBodyDiv1">
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="myModalUpdate">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header" style="background-color:#3C8DBC;color:white;">
-                            <a href="#" class="close" data-dismiss="modal">&times;</a>
-                            <h5 class="modal-title"><label style="font-size:medium;">Actualizar Premio del Docente</label></h5>
-                        </div>
-                        <div class="modal-body" id="myModalBodyUpdate">
-                        </div>
+        </div>
+        <div class="modal fade" id="myModalUpdate">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h5 class="modal-title"><label style="font-size:medium;">Premio del Docente</label></h5>
+                    </div>
+                    <div class="modal-body" id="myModalBodyUpdate">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="myModalDipslay">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h5 class="modal-title"><label style="font-size:medium;">Premio del Docente</label></h5>
+                    </div>
+                    <div class="modal-body " id="myModalBodyDisplay">
                     </div>
                 </div>
             </div>
@@ -123,11 +151,22 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-    <script src="~/Scripts/Validate/Premios/validate-premios-form.js"></script>
+    <script src="~/Scripts/Validate/Premios/validate-premios-form.js?v=1"></script>
     <script src="~/Scripts/Validate/Premios/validate-premios-regExp.js"></script>
-    <script src="~/Scripts/Validate/PremiosDocente/validate-premios-docente-upload.js"></script>
+    <script src="~/Scripts/Validate/PremiosDocente/validate-premios-docente-upload.js?v=1"></script>
 
     <script>
+
+         var AddDisplay = function (id) {
+
+            var url = "/PremiosDocente/DisplayPremiosDocente?_idPremio=" + id;
+
+            $("#myModalBodyDisplay").load(url, function () {
+                $("#myModalDipslay").modal("show");
+
+            })
+
+        };
 
          var AddUpdate = function (id) {
 
@@ -150,6 +189,7 @@
             })
 
         };
+
 
         $(document).ready(function () {
 
@@ -214,16 +254,10 @@
                                 "data": "id",
                                 "render": function (id, type, full, meta) {
 
-                                    return '<a href="#" onclick="AddUpdate(' + id + ')"><i class="btn btn-sm btn-success fa fa-pencil-square-o"></i></a>'
+                                    return ' <a href="#" class="" onclick="AddDisplay(' + id + ')"><i class="btn btn-sm btn-default">Ver Datos</i></a> <a href="#" onclick="AddUpdate(' + id + ')"><i class="btn btn-sm btn-success">Actualizar</i></a> <a href="#" class="" onclick="AddDelete(' + id + ')"><i class="btn btn-sm btn-danger">Eliminar</i></a> '
                                   }
                             },
-                            {
-                                "data": "id",
-                                "render": function (id, type, full, meta) {
-
-                                    return '<a href="#" onclick="AddDelete(' + id + ')"><i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i></a>'
-                                  }
-                            },
+                          
                         ]
                     });
                 }

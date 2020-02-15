@@ -54,31 +54,17 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<tblDeportePersonal> tblDeportePersonal { get; set; }
         public virtual DbSet<tblEmergencia> tblEmergencia { get; set; }
         public virtual DbSet<tblEnfermedadPersonal> tblEnfermedadPersonal { get; set; }
-        public virtual DbSet<tblPersonalAsociaciones> tblPersonalAsociaciones { get; set; }
         public virtual DbSet<tblUsuarioRol> tblUsuarioRol { get; set; }
         public virtual DbSet<catDocumentos> catDocumentos { get; set; }
         public virtual DbSet<tblPortafolioPersonal> tblPortafolioPersonal { get; set; }
         public virtual DbSet<catPeriodo> catPeriodo { get; set; }
         public virtual DbSet<catTipoActividad> catTipoActividad { get; set; }
         public virtual DbSet<tblParticipacionDocente> tblParticipacionDocente { get; set; }
-        public virtual DbSet<tblParticipacionInstitucionalExterna> tblParticipacionInstitucionalExterna { get; set; }
-        public virtual DbSet<tblParticipacionInstitucionalInterna> tblParticipacionInstitucionalInterna { get; set; }
         public virtual DbSet<tblExperienciaLaboralExterna> tblExperienciaLaboralExterna { get; set; }
         public virtual DbSet<tblExperienciaLaboralInterna> tblExperienciaLaboralInterna { get; set; }
-        public virtual DbSet<tblCapituloLibro> tblCapituloLibro { get; set; }
-        public virtual DbSet<tblProgresoProdep> tblProgresoProdep { get; set; }
-        public virtual DbSet<tblInformeTecnico> tblInformeTecnico { get; set; }
-        public virtual DbSet<tblLibro> tblLibro { get; set; }
-        public virtual DbSet<tblManualOperacion> tblManualOperacion { get; set; }
-        public virtual DbSet<tblProductividadInnovadora> tblProductividadInnovadora { get; set; }
         public virtual DbSet<catProduccionArtistica> catProduccionArtistica { get; set; }
-        public virtual DbSet<tblProduccionArtistica> tblProduccionArtistica { get; set; }
-        public virtual DbSet<tblPrototipo> tblPrototipo { get; set; }
-        public virtual DbSet<tblProyectoInvestigacionAplicadaDesarrolloTecnologico> tblProyectoInvestigacionAplicadaDesarrolloTecnologico { get; set; }
         public virtual DbSet<tblDireccionIndividualizada> tblDireccionIndividualizada { get; set; }
         public virtual DbSet<catTipoProducto> catTipoProducto { get; set; }
-        public virtual DbSet<tblEstadiaEmpresa> tblEstadiaEmpresa { get; set; }
-        public virtual DbSet<tblTutoria> tblTutoria { get; set; }
         public virtual DbSet<administradores> administradores { get; set; }
         public virtual DbSet<administrar> administrar { get; set; }
         public virtual DbSet<Organizaciones_Salud> Organizaciones_Salud { get; set; }
@@ -149,17 +135,29 @@ namespace AppDigitalCv.Repository
         public virtual DbSet<CatRespuestas09> CatRespuestas09 { get; set; }
         public virtual DbSet<CatEnfermedadesExantemática> CatEnfermedadesExantemática { get; set; }
         public virtual DbSet<catUsuarios> catUsuarios { get; set; }
-        public virtual DbSet<CatCapaciones> CatCapaciones { get; set; }
         public virtual DbSet<CatTiposCapacitacion> CatTiposCapacitacion { get; set; }
-        public virtual DbSet<TblCapacitacionesImpartidas> TblCapacitacionesImpartidas { get; set; }
-        public virtual DbSet<TblCapacitacionesRecibidas> TblCapacitacionesRecibidas { get; set; }
         public virtual DbSet<TblBachillerato> TblBachillerato { get; set; }
-        public virtual DbSet<TblDoctorado> TblDoctorado { get; set; }
         public virtual DbSet<TblLicenciaturaIngenieria> TblLicenciaturaIngenieria { get; set; }
-        public virtual DbSet<TblMaetria> TblMaetria { get; set; }
         public virtual DbSet<CatInstitucionesSalud> CatInstitucionesSalud { get; set; }
         public virtual DbSet<TblSeguridadSocial> TblSeguridadSocial { get; set; }
         public virtual DbSet<catFamiliar> catFamiliar { get; set; }
         public virtual DbSet<tblPersonal> tblPersonal { get; set; }
+        public virtual DbSet<TblMaetria> TblMaetria { get; set; }
+        public virtual DbSet<TblDoctorado> TblDoctorado { get; set; }
+        public virtual DbSet<TblCapacitacionesRecibidas> TblCapacitacionesRecibidas { get; set; }
+        public virtual DbSet<TblCapacitacionesImpartidas> TblCapacitacionesImpartidas { get; set; }
+        public virtual DbSet<tblLibro> tblLibro { get; set; }
+        public virtual DbSet<tblInformeTecnico> tblInformeTecnico { get; set; }
+        public virtual DbSet<tblManualOperacion> tblManualOperacion { get; set; }
+        public virtual DbSet<tblCapituloLibro> tblCapituloLibro { get; set; }
+        public virtual DbSet<tblProductividadInnovadora> tblProductividadInnovadora { get; set; }
+        public virtual DbSet<tblProduccionArtistica> tblProduccionArtistica { get; set; }
+        public virtual DbSet<tblProyectoInvestigacionAplicadaDesarrolloTecnologico> tblProyectoInvestigacionAplicadaDesarrolloTecnologico { get; set; }
+        public virtual DbSet<tblPrototipo> tblPrototipo { get; set; }
+        public virtual DbSet<tblEstadiaEmpresa> tblEstadiaEmpresa { get; set; }
+        public virtual DbSet<tblTutoria> tblTutoria { get; set; }
+        public virtual DbSet<tblParticipacionInstitucionalExterna> tblParticipacionInstitucionalExterna { get; set; }
+        public virtual DbSet<tblParticipacionInstitucionalInterna> tblParticipacionInstitucionalInterna { get; set; }
+        public virtual DbSet<tblPersonalAsociaciones> tblPersonalAsociaciones { get; set; }
     }
 }

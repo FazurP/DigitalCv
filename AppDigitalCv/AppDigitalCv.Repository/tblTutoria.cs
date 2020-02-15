@@ -23,10 +23,8 @@ namespace AppDigitalCv.Repository
         public string strEstadoTutoria { get; set; }
         public string strHoras { get; set; }
         public string strTipo { get; set; }
-
+    
         public virtual catProgramaEducativo catProgramaEducativo { get; set; }
-        public virtual catStatus catStatus { get; set; }
-        public virtual catTipoEstudio catTipoEstudio { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
     }
 }

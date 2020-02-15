@@ -18,7 +18,6 @@ namespace AppDigitalCv.Repository
         public Nullable<int> idProduccionArtistica { get; set; }
         public Nullable<int> idPais { get; set; }
         public Nullable<int> idPersonal { get; set; }
-        public Nullable<int> idStatus { get; set; }
         public Nullable<int> idDocumento { get; set; }
         public string strAutor { get; set; }
         public string strNombreObra { get; set; }
@@ -30,12 +29,10 @@ namespace AppDigitalCv.Repository
         public Nullable<System.DateTime> dteFechaPublicacion { get; set; }
         public string strLugarPresento { get; set; }
         public string strProposito { get; set; }
-        public Nullable<bool> bitConsideraCurriculum { get; set; }
     
         public virtual catDocumentos catDocumentos { get; set; }
         public virtual CatPais CatPais { get; set; }
         public virtual catProduccionArtistica catProduccionArtistica { get; set; }
-        public virtual catStatus catStatus { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
     }
 }

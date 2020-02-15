@@ -17,18 +17,7 @@ namespace AppDigitalCv.Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public catStatus()
         {
-            this.tblCapituloLibro = new HashSet<tblCapituloLibro>();
-            this.tblProgresoProdep = new HashSet<tblProgresoProdep>();
-            this.tblInformeTecnico = new HashSet<tblInformeTecnico>();
-            this.tblLibro = new HashSet<tblLibro>();
-            this.tblManualOperacion = new HashSet<tblManualOperacion>();
-            this.tblProductividadInnovadora = new HashSet<tblProductividadInnovadora>();
-            this.tblProduccionArtistica = new HashSet<tblProduccionArtistica>();
-            this.tblPrototipo = new HashSet<tblPrototipo>();
-            this.tblProyectoInvestigacionAplicadaDesarrolloTecnologico = new HashSet<tblProyectoInvestigacionAplicadaDesarrolloTecnologico>();
             this.tblDireccionIndividualizada = new HashSet<tblDireccionIndividualizada>();
-            this.tblEstadiaEmpresa = new HashSet<tblEstadiaEmpresa>();
-            this.tblTutoria = new HashSet<tblTutoria>();
             this.catUsuarios = new HashSet<catUsuarios>();
         }
     
@@ -37,29 +26,7 @@ namespace AppDigitalCv.Repository
         public string strObservacion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblCapituloLibro> tblCapituloLibro { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblProgresoProdep> tblProgresoProdep { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblInformeTecnico> tblInformeTecnico { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblLibro> tblLibro { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblManualOperacion> tblManualOperacion { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblProductividadInnovadora> tblProductividadInnovadora { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblProduccionArtistica> tblProduccionArtistica { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblPrototipo> tblPrototipo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblProyectoInvestigacionAplicadaDesarrolloTecnologico> tblProyectoInvestigacionAplicadaDesarrolloTecnologico { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblDireccionIndividualizada> tblDireccionIndividualizada { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblEstadiaEmpresa> tblEstadiaEmpresa { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblTutoria> tblTutoria { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<catUsuarios> catUsuarios { get; set; }
     }

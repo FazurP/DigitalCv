@@ -25,7 +25,7 @@ namespace AppDigitalCv.Repository
         public string strEmailInstitucional { get; set; }
         public string strNombrUsuario { get; set; }
         public string strPassword { get; set; }
-        public System.DateTime dteFechaRegistro { get; set; }
+        public Nullable<System.DateTime> dteFechaRegistro { get; set; }
         public int idStatus { get; set; }
         public string strTipoUsuario { get; set; }
     

@@ -16,7 +16,6 @@ namespace AppDigitalCv.Repository
     {
         public int id { get; set; }
         public Nullable<int> idPais { get; set; }
-        public Nullable<int> idStatus { get; set; }
         public Nullable<int> idPersonal { get; set; }
         public string strAutor { get; set; }
         public string strNombre { get; set; }
@@ -25,7 +24,6 @@ namespace AppDigitalCv.Repository
         public Nullable<System.DateTime> dteFechaPublicacion { get; set; }
     
         public virtual CatPais CatPais { get; set; }
-        public virtual catStatus catStatus { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
     }
 }

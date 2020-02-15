@@ -34,7 +34,6 @@
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblDeportePersonal" Width="2.25" PointX="10.5" PointY="19.375" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblEmergencia" Width="1.5" PointX="10.5" PointY="27.375" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblEnfermedadPersonal" Width="1.5" PointX="13.5" PointY="19.625" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.tblPersonalAsociaciones" Width="1.5" PointX="13.5" PointY="30.625" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblUsuarioRol" Width="1.5" PointX="11.25" PointY="35.125" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_alegia_alergiaPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_tipoAlergias_alergias" />
@@ -115,7 +114,6 @@
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblPremiosDocente" Width="1.5" PointX="25.5" PointY="29.625" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_documento_premiosDocente" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catAsociaciones" Width="1.5" PointX="12.375" PointY="0.875" />
-        <AssociationConnector Association="bdGestionDocenteModel.fk_asociacion_personalAsociaciones" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.catParentesco" Width="1.5" PointX="22.375" PointY="1.625" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_parentesco_emergencia" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatNacionalidad" Width="1.5" PointX="4.375" PointY="10.875" />
@@ -245,7 +243,6 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblMemoriasExtenso_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblOtraCapacitacion_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionDocente_tblPersonal1" />
-        <AssociationConnector Association="bdGestionDocenteModel.fk_personal_personalAsociaciones" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_personal_premiosDocente" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblPersonal_TblSeguridadSocial" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblPortafolioPersonal_tblPersonal" />
@@ -312,6 +309,9 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_catProgramaEducativo" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_catTipoActividad" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_tblPersonal" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblPersonalAsociaciones" Width="1.5" PointX="42.375" PointY="4" />
+        <AssociationConnector Association="bdGestionDocenteModel.fk_asociacion_personalAsociaciones" />
+        <AssociationConnector Association="bdGestionDocenteModel.fk_personal_personalAsociaciones" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

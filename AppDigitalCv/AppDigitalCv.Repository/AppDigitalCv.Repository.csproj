@@ -104,9 +104,6 @@
     <Compile Include="catAsociaciones.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="CatCapaciones.cs">
-      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="CatCapacitacionesCompetenciasProfesionales.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
@@ -397,7 +394,6 @@
     <Compile Include="ProduccionesArtisticasRepository.cs" />
     <Compile Include="ProduccionInnovadoraRepository.cs" />
     <Compile Include="ProgramaEducativoRepository.cs" />
-    <Compile Include="ProgresoProdepRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InformeTecnicoRepository.cs" />
     <Compile Include="PrototipoRepository.cs" />
@@ -537,9 +533,6 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblProductividadInnovadora.cs">
-      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblProgresoProdep.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPrototipo.cs">

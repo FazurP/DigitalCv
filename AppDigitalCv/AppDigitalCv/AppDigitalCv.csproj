@@ -663,6 +663,7 @@
     <Content Include="Views\CapacitacionesRecibidas\_Eliminar.cshtml" />
     <Content Include="Views\CapacitacionesImpartidas\_Eliminar.cshtml" />
     <Content Include="Scripts\Validate\ProduccionesArtisticas\validate-producciones-artistica-regExp.js" />
+    <Content Include="Views\PremiosDocente\_VerDatos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

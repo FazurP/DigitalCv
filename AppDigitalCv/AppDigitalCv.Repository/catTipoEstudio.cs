@@ -19,7 +19,6 @@ namespace AppDigitalCv.Repository
         {
             this.catProgramaEducativo = new HashSet<catProgramaEducativo>();
             this.tblDireccionIndividualizada = new HashSet<tblDireccionIndividualizada>();
-            this.tblTutoria = new HashSet<tblTutoria>();
         }
     
         public int idTipoEstudio { get; set; }
@@ -30,7 +29,5 @@ namespace AppDigitalCv.Repository
         public virtual ICollection<catProgramaEducativo> catProgramaEducativo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblDireccionIndividualizada> tblDireccionIndividualizada { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblTutoria> tblTutoria { get; set; }
     }
 }

@@ -14,16 +14,7 @@ namespace AppDigitalCv.Repository
     
     public partial class catTipoProducto
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public catTipoProducto()
-        {
-            this.tblEstadiaEmpresa = new HashSet<tblEstadiaEmpresa>();
-        }
-    
         public int id { get; set; }
         public string strDescripcion { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblEstadiaEmpresa> tblEstadiaEmpresa { get; set; }
     }
 }

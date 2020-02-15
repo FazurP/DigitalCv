@@ -23,13 +23,6 @@ namespace AppDigitalCv.ViewModels
 
         [RegularExpression("^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$")]
         [Required(ErrorMessage = "Este Campo es Requerido")]
-        [StringLength(70)]
-        [DataType(DataType.Text)]
-        public string strOrganizacionPertenece { get; set; }
-
-
-        [RegularExpression("^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$")]
-        [Required(ErrorMessage = "Este Campo es Requerido")]
         [StringLength(170)]
         [DataType(DataType.Text)]
         public string strFuncionDesempeñada { get; set; }

@@ -9,7 +9,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div class="bs-container" style="min-height:960px;">
+    <div class="bs-container" style="min-height:960px;margin-top:30px;">
         <section class="content-header">
             <h1>
                 Asociaciones y/o Colectivos
@@ -29,15 +29,7 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    Pertenece a Alguna Asociación y/o Colectivo?
-                                    <br />
-                                    <input type="radio" id="rdbSi" name="seleccion" value="SI " class="custom-control-input"><label for="si">SI</label>
-                                    <input type="radio" id="rdbNo" name="seleccion" value="NO" class="custom-control-input" checked><label for="no">NO</label>
-                                    &nbsp;
-                                    @*<a href="@Url.Action("Create","Asociacion")" class="social-auth-links"><i class="fa fa-plus"></i>"Agregar Nueva Asociación"</a>*@&nbsp;
-                                </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                                
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="form-group">
@@ -45,13 +37,16 @@
                                     @Html.DropDownList("IdAsociacion", null, htmlAttributes: new { @class = "form-control input-sm", id = "asociacion", title = "Selecciona una Asociación", required = "" })
 
                                 </div>
-                                <div class="form-group">
-                                    <label>Organización a la que Pertenece:</label>
-                                  @Html.TextBoxFor(model => model.strOrganizacionPertenece, htmlAttributes: new { @class = "form-control input-sm", id = "organizacionPertenece", title = "Organización a la que Pertenece", required = "" })
-                                </div>
+                                 
                                 <div class="form-group">
                                     <label>Fecha de Ingreso:</label>
-                                   @Html.TextBoxFor(model => model.DteFecha, null, htmlAttributes: new { @class = "form-control input-sm", type = "date", title = "Selecciona una Fecha", required = "", id = "fecha" })
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        @Html.TextBoxFor(model => model.DteFecha, null, htmlAttributes: new { @class = "form-control input-sm datepicker", title = "Selecciona una Fecha", required = "", id = "fecha" })
+                                    </div>
+                                   
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-6">
@@ -67,7 +62,7 @@
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <input type="submit" value="Guardar" class="btn btn-sm btn-success" id="btnGuardar" />
+                                    <input type="submit" value="Guardar Información" class="btn btn-sm btn-success" id="btnGuardar" />
 
                                 </div>
                             </div>
@@ -76,7 +71,7 @@
 
                         <!--inicio y configuración de la tabla-->
                         <!--fin de la tabla-->
-                        <div class="form-group">
+                        <div class="form-group input-sm">
                             <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
                             <div class="form-group" id="addTable">
                                 <br />
@@ -85,7 +80,7 @@
                                         <tr>
 
                                             <th>Asociación / Colectivo</th>                               
-                                            <th>Eliminar Asociación</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tblBody"></tbody>
@@ -128,7 +123,7 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-    <script src="~/Scripts/Validate/Asociaciones/validate-asociaciones-form.js"></script>
+    <script src="~/Scripts/Validate/Asociaciones/validate-asociaciones-form.js?v=2"></script>
     <script src="~/Scripts/Validate/Asociaciones/validate-asociaciones-regExp.js"></script>
 
     <script>
@@ -187,7 +182,7 @@
                                 success: fnCallback
                             })
                         },
-                        "pageLength": 5,
+                        "pageLength": 10,
                         "language": {
 
                             "sProcessing": "Procesando...",
@@ -218,13 +213,6 @@
 
 
                             { "data": "AsociacionesDomainModel.StrDescripcion" },
-                            //{ "data": "StrTipoParticipacion" },
-                            //{ "data": "StrNombrePremio" },
-                            //{ "data": "DteFechaObtencionPremio" },
-
-
-                            //{ "data": "DteFechaInicioPremio" },
-                            //{ "data": "DteFechaFinPremio" },
 
                             {
                                 "data": "IdAsociacion",

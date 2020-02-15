@@ -64,24 +64,6 @@ namespace AppDigitalCv.Controllers
         }
 
 
-
-        /// <summary>
-        /// Este metodo se encarga de hacer una consulta de tipo de empresa
-        /// </summary>
-        /// <param name="idPais"> pide el id de pais para asi realizar la consulta </param>
-        /// <returns> Regresa una vista parecial que contiene una lista de estados dependiendo del pais seleccionado </returns>
-        //[HttpPost]
-        //public ActionResult ConsultarTipoEmpresaByIdAsociacion(int idAsociacion)
-        //{
-
-        //    List<TipoEmpresaDomainModel> tipoEmpresas = ItipoEmpresaBusiness.GetTipoEmpresaByIdAsociacion(idAsociacion);
-        //    List<TipoEmpresaVM> tiposEmpresaVM = new List<TipoEmpresaVM>();
-        //    AutoMapper.Mapper.Map(tipoEmpresas, tiposEmpresaVM);
-
-        //    ViewBag.TipoEmpresa = new SelectList(tiposEmpresaVM, "IdTipoEmpresa", "StrDescripcion");
-        //    return PartialView("_TipoEmpresa");
-        //}
-
         #region  Consultar los datos del estado de salud del personal junto con el datatable se pueden ordenar de forma adecuada
 
         [HttpGet]
@@ -146,8 +128,6 @@ namespace AppDigitalCv.Controllers
         }
         #endregion
 
-
-
         #region Consultar para Eliminar de Forma permanente el registro
         /// <summary>
         /// Este metodo se encarga de presentar los datos a la vista que se van a eliminar
@@ -171,8 +151,6 @@ namespace AppDigitalCv.Controllers
         }
 
         #endregion
-
-
 
     }
 }

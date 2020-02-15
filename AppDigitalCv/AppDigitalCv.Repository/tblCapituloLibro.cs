@@ -16,7 +16,6 @@ namespace AppDigitalCv.Repository
     {
         public int id { get; set; }
         public Nullable<int> idPersonal { get; set; }
-        public Nullable<int> idStatus { get; set; }
         public string strAutor { get; set; }
         public string strTitulo { get; set; }
         public string enumEstadoActual { get; set; }
@@ -31,9 +30,7 @@ namespace AppDigitalCv.Repository
         public string strAutores { get; set; }
         public Nullable<int> paginaInicio { get; set; }
         public Nullable<int> paginaTermino { get; set; }
-        public Nullable<bool> bitLigarCurriculum { get; set; }
     
-        public virtual catStatus catStatus { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
     }
 }

@@ -72,7 +72,6 @@ namespace AppDigitalCv.Business
                tblPersonalAsociaciones.idPersonal = personalAsociacionesDM.IdPersonal;
                tblPersonalAsociaciones.dteFecha = DateTime.Parse(personalAsociacionesDM.DteFecha);
                tblPersonalAsociaciones.strTipoParticipacion = personalAsociacionesDM.StrTipoParticipacion;
-               tblPersonalAsociaciones.strOrganizacionPertenece = personalAsociacionesDM.strOrganizacionPertenece;
                tblPersonalAsociaciones.strFuncionDesempeñada = personalAsociacionesDM.strFuncionDesempeñada;
                var record = personalAsociacionesRepository.Insert(tblPersonalAsociaciones);
                resultado = "Se insertaron correctamente los valores";
@@ -101,7 +100,6 @@ namespace AppDigitalCv.Business
                 personalAsociacionesDomainModel.DteFecha = p.dteFecha.ToString();
                 personalAsociacionesDomainModel.StrTipoParticipacion = p.strTipoParticipacion;
                 personalAsociacionesDomainModel.strFuncionDesempeñada = p.strFuncionDesempeñada;
-                personalAsociacionesDomainModel.strOrganizacionPertenece = p.strOrganizacionPertenece;
                 personalAsociacionesDomainModel.AsociacionesDomainModel = new AsociacionesDomainModel { StrDescripcion = p.catAsociaciones.strDescripcion };
                 personalAsociacionDM.Add(personalAsociacionesDomainModel);
             }

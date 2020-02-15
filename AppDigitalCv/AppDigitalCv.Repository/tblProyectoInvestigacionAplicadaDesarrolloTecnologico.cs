@@ -16,7 +16,6 @@ namespace AppDigitalCv.Repository
     {
         public int id { get; set; }
         public Nullable<int> idDocumento { get; set; }
-        public Nullable<int> idStatus { get; set; }
         public Nullable<int> idPersonal { get; set; }
         public string strTituloProyecto { get; set; }
         public string strNombrePatrocinador { get; set; }
@@ -28,10 +27,8 @@ namespace AppDigitalCv.Repository
         public string strActividadesRealizadas { get; set; }
         public string strConvocatoria { get; set; }
         public Nullable<bool> bitProyectoTecnologico { get; set; }
-        public Nullable<bool> bitConsideraCurriculum { get; set; }
     
         public virtual catDocumentos catDocumentos { get; set; }
-        public virtual catStatus catStatus { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
     }
 }

@@ -23,18 +23,12 @@ namespace AppDigitalCv.Repository
         public string strTitulo { get; set; }
         public string strDescripcion { get; set; }
         public string strClasificacionInternacionalPatentes { get; set; }
-        public string strUso { get; set; }
-        public string strEstadoActual { get; set; }
         public string strNumeroRegistro { get; set; }
-        public string strUsuario { get; set; }
         public Nullable<System.DateTime> dteFechaRegistro { get; set; }
         public string strProposito { get; set; }
-        public Nullable<bool> bitConsideraCurriculum { get; set; }
-        public Nullable<int> idStatus { get; set; }
     
         public virtual catDocumentos catDocumentos { get; set; }
         public virtual CatPais CatPais { get; set; }
-        public virtual catStatus catStatus { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
     }
 }

@@ -1,0 +1,34 @@
+﻿@model AppDigitalCv.ViewModels.PremiosDocenteVM
+@using AppDigitalCv.Security
+
+<div>
+        @Html.HiddenFor(model => model.id, new { id = "id" })
+
+        <div class="bs-container">
+
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+            </div>
+            <div class="row">
+                <div class="form-group  col-lg-7">
+                    <ul class="todo-list">
+                        <li class="list-unstyled">
+                            <label>Nombre del Premio: </label> @Html.DisplayFor(model => model.StrNombrePremio, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
+                        </li>
+                        <li class="list-unstyled">
+                            <label>Actividad Desempeñada: </label> @Html.DisplayFor(model => model.StrActividadDesempeniada, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
+                        </li>
+                        <li class="list-unstyled">
+                            <label>Nombre de la Institución: </label> @Html.DisplayFor(model => model.StrInstitucion, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
+                        </li>
+                        <li class="list-unstyled">
+                            <label>Fecha de Obtencion del Premio: </label> @Html.DisplayFor(model => model.DteFechaObtencionPremio, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
+                        </li>
+                        <li class="list-unstyled">
+                            <label>Nombre del Documento: </label> @Html.DisplayFor(model => model.Documentos.StrUrl, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</div>

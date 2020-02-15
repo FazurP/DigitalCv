@@ -50,7 +50,7 @@ namespace AppDigitalCv.Controllers
         [HttpPost]
         public ActionResult Create(PremiosDocenteVM premiosDocenteVM)
         {
-            premiosDocenteVM.IdPersonal = Security.SessionPersister.AccountSession.IdPersonal;
+            premiosDocenteVM.IdPersonal = SessionPersister.AccountSession.IdPersonal;
             if (ModelState.IsValid)
             {
                 object[] obj = CrearDocumentoPersonales(premiosDocenteVM);
@@ -251,6 +251,20 @@ namespace AppDigitalCv.Controllers
             return RedirectToAction("Create","PremiosDocente");
         }
         #endregion
+
+        [HttpGet]
+        public ActionResult DisplayPremiosDocente(int _idPremio)
+        {
+            if (_idPremio > 0)
+            {
+                int idPersonal = SessionPersister.AccountSession.IdPersonal;
+                PremiosDocenteDomainModel premiosDocenteDomainModel = IpremiosDocenteBusiness.GetPremioDocenteById(_idPremio, idPersonal);
+                PremiosDocenteVM premiosDocenteVM = new PremiosDocenteVM();
+                AutoMapper.Mapper.Map(premiosDocenteDomainModel, premiosDocenteVM);
+                return PartialView("_verDatos", premiosDocenteVM);
+            }
+            return PartialView();        
+        }
 
         /// <summary>
         /// Este metodo se encarga de eliminar un archivo o documento de la carpeta del usuario
