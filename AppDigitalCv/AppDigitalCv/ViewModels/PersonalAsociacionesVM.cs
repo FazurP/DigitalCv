@@ -28,6 +28,6 @@ namespace AppDigitalCv.ViewModels
         public string strFuncionDesempeñada { get; set; }
 
         public virtual PersonalVM PersonalVM { get; set; }
-        public virtual AsociacionesVM AsociacionesVM { get; set; }
+        public virtual AsociacionesVM Asociaciones{ get; set; }
     }
 }

@@ -143,7 +143,7 @@ namespace AppDigitalCv.Controllers
             {
                 PersonalAsociacionesVM personalAsociacionesVM = new PersonalAsociacionesVM();
                 AutoMapper.Mapper.Map(personalAsociacionDM, personalAsociacionesVM);
-                personalAsociacionesVM.AsociacionesVM = new AsociacionesVM { StrDescripcion = personalAsociacionDM.AsociacionesDomainModel.StrDescripcion};
+                personalAsociacionesVM.Asociaciones = new AsociacionesVM { StrDescripcion = personalAsociacionDM.Asociaciones.StrDescripcion};
                 return PartialView("_Eliminar", personalAsociacionesVM);
                 
             }
@@ -151,6 +151,21 @@ namespace AppDigitalCv.Controllers
         }
 
         #endregion
+
+        [HttpGet]
+        public ActionResult DisplayPersonalAsociacion(int _id) 
+        {
+            if (_id>0)
+            {
+                PersonalAsociacionesDomainModel personalAsociacionesDomainModel = IpersonalAsociacionesBusiness.GetPersonalAsociacionByIdAsociacion(_id);
+                PersonalAsociacionesVM personalAsociacionesVM = new PersonalAsociacionesVM();
+                AutoMapper.Mapper.Map(personalAsociacionesDomainModel, personalAsociacionesVM);
+
+                return PartialView("_VerDatos", personalAsociacionesVM);
+            }
+
+            return PartialView();
+        }
 
     }
 }

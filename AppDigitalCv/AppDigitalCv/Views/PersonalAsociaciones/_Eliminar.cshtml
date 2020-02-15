@@ -14,28 +14,27 @@
                     <div class="col-lg-3">
                         ¿Deseas <strong>Eliminar</strong> este registro realmente?
                     </div>
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label>Asociación / Colectivo</label>
-                            @Html.TextBoxFor(m => m.AsociacionesVM.StrDescripcion, new { @class = "form-control input-sm", @placeholder = "Fecha", @disabled = "disabled" })
-                        </div>
-                        <div class="form-group">
-                            <label>Fecha de la Incorporacion</label>
-                            @Html.TextBoxFor(m => m.DteFecha, new { @class = "form-control input-sm", @placeholder = "Fecha", @disabled = "disabled" })
-                        </div>
-                        <div class="form-group">
-                            <label>Participacion Desempeñada</label>
-                            @Html.TextBoxFor(m => m.StrTipoParticipacion, new { @class = "form-control input-sm", @placeholder = "Fecha", @disabled = "disabled" })
-
-                        </div>
-
+                    <div class="form-group col-lg-6">
+                        <ul class="todo-list">
+                            <li class="list-unstyled">
+                                <label>Asociación / Colectivo: </label>
+                                @Html.DisplayFor(m => m.Asociaciones.StrDescripcion, new { @class = "form-control input-sm", @placeholder = "Fecha", @disabled = "disabled" })
+                            </li>
+                            <li class="list-unstyled">
+                                <label>Fecha de la Incorporacion: </label>
+                                @Html.DisplayFor(m => m.DteFecha, new { @class = "form-control input-sm", @placeholder = "Fecha", @disabled = "disabled" })
+                            </li>
+                            <li class="list-unstyled">
+                                <label>Participacion Desempeñada:</label>
+                                @Html.DisplayFor(m => m.StrTipoParticipacion, new { @class = "form-control input-sm", @placeholder = "Fecha", @disabled = "disabled" })
+                            </li>
+                        </ul>
                         <div class="form-group">
                             <br />
                             <a href="#" id="btnSubmit">
                                 <i class="btn btn-sm btn-google">Eliminar</i>
                             </a>
                         </div>
-
                     </div>
                 </div>
             </div>

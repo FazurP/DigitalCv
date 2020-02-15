@@ -39,7 +39,7 @@ namespace AppDigitalCv.Business
                 {
                     tblPersonalAsociaciones.idAsociacion = personalAsociacionesDM.IdAsociacion;
                     tblPersonalAsociaciones.idPersonal = personalAsociacionesDM.IdPersonal;
-                    tblPersonalAsociaciones.dteFecha = DateTime.Parse( personalAsociacionesDM.DteFecha);
+                    tblPersonalAsociaciones.dteFecha = personalAsociacionesDM.DteFecha;
                     tblPersonalAsociaciones.strTipoParticipacion = personalAsociacionesDM.StrTipoParticipacion;
                     personalAsociacionesRepository.Update(tblPersonalAsociaciones);
                     resultado = "Se Actualizo correctamente";
@@ -51,7 +51,7 @@ namespace AppDigitalCv.Business
                 tblPersonalAsociaciones tblPersonalAsociaciones = new tblPersonalAsociaciones();
                 tblPersonalAsociaciones.idAsociacion = personalAsociacionesDM.IdAsociacion;
                 tblPersonalAsociaciones.idPersonal = personalAsociacionesDM.IdPersonal;
-                tblPersonalAsociaciones.dteFecha = DateTime.Parse( personalAsociacionesDM.DteFecha);
+                tblPersonalAsociaciones.dteFecha = personalAsociacionesDM.DteFecha;
                 tblPersonalAsociaciones.strTipoParticipacion = personalAsociacionesDM.StrTipoParticipacion;
                 var record = personalAsociacionesRepository.Insert(tblPersonalAsociaciones);
                 resultado = "Se insertaron correctamente los valores";
@@ -70,7 +70,7 @@ namespace AppDigitalCv.Business
                tblPersonalAsociaciones tblPersonalAsociaciones = new tblPersonalAsociaciones();
                tblPersonalAsociaciones.idAsociacion = personalAsociacionesDM.IdAsociacion;
                tblPersonalAsociaciones.idPersonal = personalAsociacionesDM.IdPersonal;
-               tblPersonalAsociaciones.dteFecha = DateTime.Parse(personalAsociacionesDM.DteFecha);
+               tblPersonalAsociaciones.dteFecha = personalAsociacionesDM.DteFecha;
                tblPersonalAsociaciones.strTipoParticipacion = personalAsociacionesDM.StrTipoParticipacion;
                tblPersonalAsociaciones.strFuncionDesempeñada = personalAsociacionesDM.strFuncionDesempeñada;
                var record = personalAsociacionesRepository.Insert(tblPersonalAsociaciones);
@@ -97,10 +97,10 @@ namespace AppDigitalCv.Business
                 PersonalAsociacionesDomainModel personalAsociacionesDomainModel = new PersonalAsociacionesDomainModel();
                 personalAsociacionesDomainModel.IdAsociacion = p.idAsociacion;
                 personalAsociacionesDomainModel.IdPersonal = p.idPersonal;
-                personalAsociacionesDomainModel.DteFecha = p.dteFecha.ToString();
+                personalAsociacionesDomainModel.DteFecha = p.dteFecha.Value;
                 personalAsociacionesDomainModel.StrTipoParticipacion = p.strTipoParticipacion;
                 personalAsociacionesDomainModel.strFuncionDesempeñada = p.strFuncionDesempeñada;
-                personalAsociacionesDomainModel.AsociacionesDomainModel = new AsociacionesDomainModel { StrDescripcion = p.catAsociaciones.strDescripcion };
+                personalAsociacionesDomainModel.Asociaciones = new AsociacionesDomainModel { StrDescripcion = p.catAsociaciones.strDescripcion };
                 personalAsociacionDM.Add(personalAsociacionesDomainModel);
             }
 
@@ -121,8 +121,9 @@ namespace AppDigitalCv.Business
                 personalAsociacionesDomainModel.IdPersonal = personalAsociaciones.idPersonal;
                 personalAsociacionesDomainModel.IdAsociacion = personalAsociaciones.idAsociacion;
                 personalAsociacionesDomainModel.StrTipoParticipacion = personalAsociaciones.strTipoParticipacion;
-                personalAsociacionesDomainModel.DteFecha = personalAsociaciones.dteFecha.ToString();
-            personalAsociacionesDomainModel.AsociacionesDomainModel = new AsociacionesDomainModel { StrDescripcion = personalAsociaciones.catAsociaciones.strDescripcion };
+                personalAsociacionesDomainModel.DteFecha = personalAsociaciones.dteFecha.Value;
+            personalAsociacionesDomainModel.strFuncionDesempeñada = personalAsociaciones.strFuncionDesempeñada;
+                personalAsociacionesDomainModel.Asociaciones = new AsociacionesDomainModel { StrDescripcion = personalAsociaciones.catAsociaciones.strDescripcion };
                 return personalAsociacionesDomainModel;
 
         }
