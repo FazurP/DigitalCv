@@ -139,6 +139,10 @@ namespace AppDigitalCv.Business
             premiosDDM.StrNombrePremio = premio.strNombrePremio;
             premiosDDM.StrActividadDesempeniada = premio.strActividadDesempeniada;
             premiosDDM.StrTipoPremio = premio.strTipoPremio;
+            premiosDDM.Documentos = new DocumentosDomainModel 
+            {
+                StrUrl = premio.catDocumentos.strUrl
+            };
             return premiosDDM;
         }
 
