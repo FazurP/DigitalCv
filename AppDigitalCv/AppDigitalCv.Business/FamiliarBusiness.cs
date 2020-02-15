@@ -41,13 +41,11 @@ namespace AppDigitalCv.Business
                 {
                     catFamiliar.idFamiliar = familiarDM.IdFamiliar;
                     catFamiliar.idPersonal = familiarDM.IdPersonal;
-                    //catFamiliar.idParentesco = familiarDM.IdParentesco;
                     catFamiliar.strDomicilio = familiarDM.StrDomicilio;
                     catFamiliar.strNombre = familiarDM.StrNombre;
                     catFamiliar.strApellidoPaterno = familiarDM.strApellidoPaterno;
                     catFamiliar.strApellidoMaterno = familiarDM.strApellidoMaterno;
                     catFamiliar.strOcupacion = familiarDM.StrOcupacion;
-                    catFamiliar.dteFechaNacimiento = DateTime.Parse(familiarDM.DteFechaNacimiento);
                     
                     //actualizamos la tabla catfamiliar
                     familiarRepository.Update(catFamiliar);
@@ -64,7 +62,6 @@ namespace AppDigitalCv.Business
                 catFamiliar.strApellidoPaterno = familiarDM.strApellidoPaterno;
                 catFamiliar.strApellidoMaterno = familiarDM.strApellidoMaterno;
                 catFamiliar.strOcupacion = familiarDM.StrOcupacion;
-                catFamiliar.dteFechaNacimiento = DateTime.Parse(familiarDM.DteFechaNacimiento);
                 catFamiliar.idPersonal = familiarDM.IdPersonal;
                 ///insertamos  la entidad catfamiliar
                 familiarRepository.Insert(catFamiliar);
@@ -115,9 +112,11 @@ namespace AppDigitalCv.Business
                 familiarDM.DteFechaNacimiento = catFamiliars.dteFechaNacimiento.ToString();
                 familiarDM.IdParentesco = catFamiliars.idParentesco.Value;
                 familiarDM.IdPersonal = catFamiliars.idPersonal.Value;
-                if(familiarDM.IdParentesco > 1) { 
-                    familiares.Add(familiarDM);
-                }
+                familiarDM.Parentesco = new ParentescoDomainModel
+                {
+                    StrDescripcion = catFamiliars.catParentesco.strDescripcion
+                };
+                familiares.Add(familiarDM);
             }
 
             return familiares;
@@ -142,7 +141,10 @@ namespace AppDigitalCv.Business
             familiarDM.StrDomicilio = familiar.strDomicilio;
             familiarDM.StrNombre = familiar.strNombre;
             familiarDM.StrOcupacion = familiar.strOcupacion;
-            familiarDM.DteFechaNacimiento = familiar.dteFechaNacimiento.ToString();
+            familiarDM.Parentesco = new ParentescoDomainModel
+            {
+                StrDescripcion = familiar.catParentesco.strDescripcion
+            };
             return familiarDM;
         }
 

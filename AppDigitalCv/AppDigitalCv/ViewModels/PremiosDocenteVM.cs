@@ -29,6 +29,6 @@ namespace AppDigitalCv.ViewModels
 
         public string StrTipoPremio { get; set; }
         public virtual PersonalVM PersonalVM { get; set; }
-        public virtual DocumentosVM DocumentosVM { get; set; }
+        public virtual DocumentosVM Documentos { get; set; }
     }
 }

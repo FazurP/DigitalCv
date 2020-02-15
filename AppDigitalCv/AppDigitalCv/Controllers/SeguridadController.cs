@@ -75,22 +75,40 @@ namespace AppDigitalCv.Controllers
             else
             {
                 var res = wsusuariosSoapClient.ConsultaUsuarios(seguridad, usuario);
+                var sigeAlumnp = wsusuariosSoapClient.ConsultaUsuariosAlumno(seguridad, usuario);
 
-                PersonalDomainModel personalDomainModel = new PersonalDomainModel();        
-                if (res.Nombre_usuario != null && res.Clave != null)
+                PersonalDomainModel personalDomainModel = new PersonalDomainModel();
+                //if (res.Nombre_usuario != null && res.Clave != null)
+                //{
+                //    _ = res.Nombre == null ? res.Nombre = "..." : res.Nombre = res.Nombre;                        
+                //    personalDomainModel.ApellidoPaterno = res.ApellidoPaterno;
+                //    personalDomainModel.ApellidoMaterno = res.ApellidoMaterno;
+                //    personalDomainModel.AccountDomainModel = new AccountDomainModel { Email = res.Correo_Electronico, Password = usuario.Password, Nombre = usuario.NomUsuario,TipoUsuario = res.TipoUsuario.ToString() };
+                //    personalDomainModel.strTipoPersonal = res.TipoPersonal.ToString();
+                //    personalDomainModel.strUniversidad = res.Universidad;
+
+                //    if (IAccountBusiness.AddUsuario(personalDomainModel))
+                //    {
+                //        AccountViewModel viewAccount = new AccountViewModel();
+                //        viewAccount.NombreCompleto = res.Nombre + " " + res.ApellidoPaterno + " " + res.ApellidoMaterno;
+                //        SessionPersister.AccountSession = viewAccount;
+                //        return RedirectToAction("Create", "Personal");
+                //    }
+                //}
+
+                if (sigeAlumnp.Matricula != null)
                 {
-                    //personalDomainModel.Nombre = res.Nombre;
-                    _ = res.Nombre == null ? res.Nombre = "..." : res.Nombre = res.Nombre;                        
-                    personalDomainModel.ApellidoPaterno = res.ApellidoPaterno;
-                    personalDomainModel.ApellidoMaterno = res.ApellidoMaterno;
-                    personalDomainModel.AccountDomainModel = new AccountDomainModel { Email = res.Correo_Electronico, Password = usuario.Password, Nombre = usuario.NomUsuario,TipoUsuario = res.TipoUsuario.ToString() };
-                    personalDomainModel.strTipoPersonal = res.TipoPersonal.ToString();
-                    personalDomainModel.strUniversidad = res.Universidad;
+                    _ = sigeAlumnp.Nombre == null ? res.Nombre = "..." : res.Nombre = res.Nombre;
+                    personalDomainModel.ApellidoPaterno = sigeAlumnp.APaterno;
+                    personalDomainModel.ApellidoMaterno = sigeAlumnp.AMaterno;
+                    personalDomainModel.Nombre = sigeAlumnp.Nombre;
+                    personalDomainModel.AccountDomainModel = new AccountDomainModel { Password = usuario.Password, Nombre = usuario.NomUsuario,Email=usuario.NomUsuario};
 
                     if (IAccountBusiness.AddUsuario(personalDomainModel))
                     {
                         AccountViewModel viewAccount = new AccountViewModel();
-                        viewAccount.NombreCompleto = res.Nombre + " " + res.ApellidoPaterno + " " + res.ApellidoMaterno;
+                        viewAccount.NombreCompleto = sigeAlumnp.Nombre + " " + sigeAlumnp.APaterno + " " + sigeAlumnp.AMaterno;
+                        viewAccount.Nombre = sigeAlumnp.Nombre;
                         SessionPersister.AccountSession = viewAccount;
                         return RedirectToAction("Create", "Personal");
                     }

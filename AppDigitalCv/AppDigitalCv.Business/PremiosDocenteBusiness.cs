@@ -60,7 +60,7 @@ namespace AppDigitalCv.Business
                 tblPremios.strActividadDesempeniada = premiosDocenteDM.StrActividadDesempeniada;
                 tblPremios.strTipoPremio = premiosDocenteDM.StrTipoPremio;
 
-                catDocumentos.strUrl = premiosDocenteDM.DocumentosDomainModel.StrUrl;
+                catDocumentos.strUrl = premiosDocenteDM.Documentos.StrUrl;
 
                 catDocumentos.tblPremiosDocente.Add(tblPremios);
 
@@ -115,7 +115,7 @@ namespace AppDigitalCv.Business
                 premioDocenteDM.StrNombrePremio = p.strNombrePremio;
                 premioDocenteDM.StrTipoPremio = p.strTipoPremio;
                 premioDocenteDM.StrActividadDesempeniada = p.strActividadDesempeniada;
-                premioDocenteDM.DocumentosDomainModel = new DocumentosDomainModel { StrUrl = p.catDocumentos.strUrl };
+                premioDocenteDM.Documentos = new DocumentosDomainModel { StrUrl = p.catDocumentos.strUrl };
 
                 premiosDM.Add(premioDocenteDM);
             }

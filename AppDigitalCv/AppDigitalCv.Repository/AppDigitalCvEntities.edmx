@@ -656,10 +656,10 @@
             <PropertyRef Name="idUsuario" />
           </Key>
           <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="strEmailInstitucional" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="strNombrUsuario" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="strPassword" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="dteFechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="strEmailInstitucional" Type="varchar" MaxLength="150" />
+          <Property Name="strNombrUsuario" Type="varchar" MaxLength="150" />
+          <Property Name="strPassword" Type="varchar" MaxLength="150" />
+          <Property Name="dteFechaRegistro" Type="datetime" />
           <Property Name="idStatus" Type="int" Nullable="false" />
           <Property Name="strTipoUsuario" Type="varchar" MaxLength="50" />
         </EntityType>
@@ -7507,10 +7507,10 @@
             <PropertyRef Name="idUsuario" />
           </Key>
           <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="strEmailInstitucional" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strNombrUsuario" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="strPassword" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="dteFechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="strEmailInstitucional" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="strNombrUsuario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="strPassword" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="dteFechaRegistro" Type="DateTime" Precision="3" />
           <Property Name="idStatus" Type="Int32" Nullable="false" />
           <Property Name="strTipoUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="catStatus" Relationship="bdGestionDocenteModel.fk_Status_usuario" FromRole="catUsuarios" ToRole="catStatus" />

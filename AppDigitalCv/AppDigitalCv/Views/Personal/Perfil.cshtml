@@ -28,7 +28,21 @@
                     <div role="form">
                         <div class="box-body">
                             <div id="imgPreview">
-                                <img id="targetImg" alt="User profile picture" src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil.jpeg" class="profile-user-img img-responsive img-circle">
+                                @{
+
+                                   string url = Server.MapPath("~/Imagenes/Usuarios/" + @SessionPersister.AccountSession.NombreCompleto + "/ImagePerfil/perfil.jpeg");
+
+                                   if (File.Exists(url))
+                                    {
+                                        <img src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil.jpeg" class="profile-user-img img-responsive img-circle">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil_anonimo.jpg" class="profile-user-img img-responsive img-circle">
+                                    }
+                                }
+                                
+
                             </div>
                             <h3 class="profile-username text-center">@SessionPersister.AccountSession.TipoPersonal</h3>
                             <p class="text-muted text-center">@SessionPersister.AccountSession.TipoUsuario</p>
@@ -76,4 +90,28 @@
 
 @section scripts
 {
+    <script>
+          $('#fotoInputFile').change(function ()
+        {
+            let img = $('#fotoInputFile').get(0).files;
+
+
+            let data = new FormData;
+            data.append('Image', img[0]);
+            debugger;
+            let urlTarget = "/Personal/GuardarImagen";
+            $.ajax({
+            url: urlTarget,
+            type: 'post',
+            data: data,
+            contentType: false,
+            processData: false,
+                success: function () {
+                    window.location.href = "/Personal/Perfil";
+            }
+            });
+
+        });
+
+    </script>
 }

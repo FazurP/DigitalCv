@@ -16,14 +16,18 @@
                         ¿Deseas <strong>Eliminar</strong> este registro realmente?
                     </div>
                     <div class="col-lg-6">
-                        <label>Nombre del Premio</label>
-                        @Html.TextBoxFor(m => m.StrNombrePremio, new { @class = "form-control input-sm", @placeholder = "Nombre de la Alergia", @disabled = "disabled" })
-                        <label>Actividad Desempeñada</label>
-                        @Html.TextBoxFor(m => m.StrActividadDesempeniada, new { @class = "form-control input-sm", @placeholder = "Nombre de la Alergia", @disabled = "disabled" })
-                        <label>Fecha de Obtencion del Premio</label>
-                        @Html.TextBoxFor(m => m.DteFechaObtencionPremio, new { @class = "form-control input-sm", @placeholder = "Nombre de la Alergia", @disabled = "disabled" })
-                    <br />
-                    <br />
+                        <ul class="todo-list">
+                            <li class="list-unstyled">
+                                <label>Nombre: </label> @Html.DisplayFor(model => model.StrNombrePremio, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
+                            </li>
+                            <li class="list-unstyled">
+                                <label>Actividad Desempeñada: </label> @Html.DisplayFor(model => model.StrActividadDesempeniada, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
+                            </li>
+                            <li class="list-unstyled">
+                                <label>Fecha de Obtencion del Premio: </label> @Html.DisplayFor(model => model.DteFechaObtencionPremio, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
+                            </li>
+                        </ul>                     
+                        <br />
                         <a href="#" id="btnSubmit">
                             <i class="btn btn-danger">Eliminar</i>
                         </a>

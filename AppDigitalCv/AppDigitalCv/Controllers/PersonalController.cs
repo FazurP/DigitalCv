@@ -97,7 +97,7 @@ namespace AppDigitalCv.Controllers
         {
             string resultado = string.Empty;
             PersonalDomainModel personalDM = new PersonalDomainModel();
-            AutoMapper.Mapper.Map(personalVM, personalDM);///hacemos el mapeado de la entidad
+            AutoMapper.Mapper.Map(personalVM, personalDM);
 
             resultado = IPersonalBussines.AddUpdatePersonal(personalDM);
             return resultado;
@@ -117,34 +117,16 @@ namespace AppDigitalCv.Controllers
                     {
                         if (img.image.ContentType.Equals("image/jpeg"))
                         {
-                            img.image.SaveAs(ruta + nombre);
-                            Bitmap bmp = new Bitmap(CambiarTamanioImagen(Image.FromFile(ruta + nombre), 128, 128));
-                            using (var stream = new MemoryStream())
-                            {
-                                bmp.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
-
-                                var image = Image.FromStream(stream);
-
-                                image.Save(ruta + nombre + ".jpeg");
-                            }
+                            Bitmap bmp = new Bitmap(CambiarTamanioImagen(Image.FromStream(img.image.InputStream), 128, 128));
+                            bmp.Save(ruta + nombre + ".jpeg");                                                 
                         }
                     }
                     else
                     {
-                        System.IO.File.Delete(ruta + nombre);
-                        System.IO.File.Delete(ruta + nombre + ".jpeg");
                         if (img.image.ContentType.Equals("image/jpeg"))
                         {
-                            img.image.SaveAs(ruta + nombre);
-                            Bitmap bmp = new Bitmap(CambiarTamanioImagen(Image.FromFile(ruta + nombre), 128, 128));
-                            using (var stream = new MemoryStream())
-                            {
-                                bmp.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
-
-                                var image = Image.FromStream(stream);
-
-                                image.Save(ruta + nombre + ".jpeg");
-                            }
+                            Bitmap bmp = new Bitmap(CambiarTamanioImagen(Image.FromStream(img.image.InputStream), 128, 128));
+                            bmp.Save(ruta + nombre + ".jpeg");                       
                         }
                     }
                 }
@@ -154,17 +136,14 @@ namespace AppDigitalCv.Controllers
                     GuardarImagen(img);
                 }
             }
+
+            img = null;
         }
         public Bitmap CambiarTamanioImagen(Image imagenOriginal, int width, int height)
         {
-            var radio = Math.Max((double)width / imagenOriginal.Width, (double)height / imagenOriginal.Height);
-            var nuevoAncho = (int)(imagenOriginal.Width * radio);
-            var nuevoAlto = (int)(imagenOriginal.Height * radio);
-
             var ImagenRedimencionada = new Bitmap(width, height);
             Graphics.FromImage(ImagenRedimencionada).DrawImage(imagenOriginal, 0, 0, width, height);
             Bitmap ImagenFinal = new Bitmap(ImagenRedimencionada);
-
             return ImagenFinal;
         }
 

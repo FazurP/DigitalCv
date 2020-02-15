@@ -17,5 +17,9 @@ namespace AppDigitalCv.Domain
         public string DteFechaNacimiento { get; set; }
         public int IdParentesco { get; set; }
         public int IdPersonal { get; set; }
+
+        //Objetos de las relaciones
+      
+        public ParentescoDomainModel Parentesco { get; set; }
     }
 }

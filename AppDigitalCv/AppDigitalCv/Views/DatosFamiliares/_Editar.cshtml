@@ -31,14 +31,7 @@
                                     <td>
                                         @Html.TextBoxFor(model => model.strApellidoMaterno, new { @class = "form-control input-sm", @placeholder = "Apellido Materno", size = "30", title = "Apellido Materno del Familiar", id = "ApellidoMaterno" })
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        @Html.RadioButtonFor(model => model.BitVive, true, htmlAttributes: new { id = "rdbFamiliarVive", name = "rdbPadreVive" })<text>Vivo</text>
-                                        @Html.RadioButtonFor(model => model.BitVive, false, htmlAttributes: new { id = "rdbFamiliarFinado", name = "rdbPadreFinado" })<text>Finado</text>
-                                    </td>
-                                </tr>
+                                </tr>                                
                                 <tr>
                                     <td>Ocupación:</td>
                                     <td>
@@ -50,17 +43,11 @@
                                     <td>
                                         @Html.TextBoxFor(model => model.StrDomicilio, new { @class = "form-control input-sm", @placeholder = "Domicilio", size = "30", title = "Domicilio", id = "Domicilio" })
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>Fecha Nacimiento:</td>
-                                    <td>
-                                        @Html.TextBoxFor(model => model.DteFechaNacimiento, new { @class = "form-control input-sm", type = "date", title = "Fecha de Nacimiento", id = "DteFechaNacimiento" })
-                                    </td>
-                                </tr>
+                                </tr>                              
                                 <tr>
                                     <td></td>
                                     <td>
-                                        <a href="#" id="btnSubmit" class="btn btn-sm btn-success left"><span><i class="fa fa-edit"></i> Actualizar</span></a>
+                                        <a href="#" id="btnSubmit" class="btn btn-sm btn-success left"><span><i class=""></i> Actualizar</span></a>
                                     </td>
                                 </tr>
                             </tbody>

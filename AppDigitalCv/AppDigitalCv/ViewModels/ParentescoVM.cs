@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppDigitalCv.Domain;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -51,5 +52,9 @@ namespace AppDigitalCv.ViewModels
         public int IdParentesco { get; set; }
         public virtual ICollection<PersonalVM> PersonalVm { get; set; }
         public int IdPersonal { get; set; }
+
+        //Objetos de las relaciones
+
+        public ParentescoDomainModel Parentesco { get; set; }
     }
 }

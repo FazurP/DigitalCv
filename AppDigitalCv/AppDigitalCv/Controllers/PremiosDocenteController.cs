@@ -53,62 +53,51 @@ namespace AppDigitalCv.Controllers
             premiosDocenteVM.IdPersonal = Security.SessionPersister.AccountSession.IdPersonal;
             if (ModelState.IsValid)
             {
-                this.CrearDocumentoPremioDocente(premiosDocenteVM);
+                object[] obj = CrearDocumentoPersonales(premiosDocenteVM);
+
+                if (obj[0].Equals(true))
+                {
+                    premiosDocenteVM.Documentos = new DocumentosVM { StrUrl = obj[1].ToString() };
+                    AddEditPremiosDocente(premiosDocenteVM);
+                }
             }
 
             return RedirectToAction("Create", "PremiosDocente");
         }
 
         #region  Crear el documento
-        public void CrearDocumentoPremioDocente(PremiosDocenteVM premiosDocenteVM)
+        private Object[] CrearDocumentoPersonales(PremiosDocenteVM premiosDocenteVM)
         {
-            //PersonalDomainModel personalDM= this.GetPersonalVM(premiosDocenteVM.IdPersonal);
+            Object[] respuesta = new Object[2];
             premiosDocenteVM.IdPersonal = SessionPersister.AccountSession.IdPersonal;
-            string nombreCompleto = SessionPersister.AccountSession.NombreCompleto;
-            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO+ nombreCompleto));
+            string nombrecompleto = SessionPersister.AccountSession.NombreCompleto;
+            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombrecompleto));
 
-            if (!Directory.Exists(path))
+            if (Directory.Exists(path))
             {
-                //creamos el directorio
-                DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
-                path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombreCompleto + "/"), Path.GetFileName(premiosDocenteVM.DocumentosVM.DocumentoFile.FileName));
-                
-                //solo se guarda el nombre del archivo
-                string sfpath = premiosDocenteVM.DocumentosVM.DocumentoFile.FileName;
-
-                premiosDocenteVM.DocumentosVM.DocumentoFile.SaveAs(path);
-                DocumentosVM documentoVM = new DocumentosVM();
-                documentoVM.StrUrl = sfpath;
-                premiosDocenteVM.DocumentosVM = documentoVM;
-                this.AddEditPremiosDocente(premiosDocenteVM);
-
+                if (premiosDocenteVM.Documentos.DocumentoFile != null)
+                {
+                    respuesta = FileManager.FileManager.CheckFileIfExist(path, premiosDocenteVM.Documentos);
+                }
             }
             else
             {
-                path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombreCompleto + "/"), Path.GetFileName(premiosDocenteVM.DocumentosVM.DocumentoFile.FileName));
-                string sfpath = premiosDocenteVM.DocumentosVM.DocumentoFile.FileName;
-                premiosDocenteVM.DocumentosVM.DocumentoFile.SaveAs(path);
-                DocumentosVM documentoVM = new DocumentosVM();
-                documentoVM.StrUrl = sfpath;
-                premiosDocenteVM.DocumentosVM = documentoVM;
-                this.AddEditPremiosDocente(premiosDocenteVM);
+                DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
+                CrearDocumentoPersonales(premiosDocenteVM);
             }
+
+            return respuesta;
         }
 
         #endregion
 
         #region  Agregar Premios del Docente
-        public bool AddEditPremiosDocente(PremiosDocenteVM premiosDocenteVM)
+        private bool AddEditPremiosDocente(PremiosDocenteVM premiosDocenteVM)
         {
             bool resultado = false;
             PremiosDocenteDomainModel premiosDocenteDM = new PremiosDocenteDomainModel();
-            DocumentosDomainModel documentosDomainModel = new DocumentosDomainModel();
             AutoMapper.Mapper.Map(premiosDocenteVM, premiosDocenteDM);///hacemos el mapeado de la entidad
-            AutoMapper.Mapper.Map(premiosDocenteVM.DocumentosVM, documentosDomainModel);
-            premiosDocenteDM.DocumentosDomainModel = documentosDomainModel;
 
-            DocumentosDomainModel documento =IdocumentosBusiness.AddDocumento(documentosDomainModel);
-            premiosDocenteDM.IdDocumento = documento.IdDocumento;
              resultado = IpremiosDocenteBusiness.AddUpdatePremiosDocente(premiosDocenteDM);
             return resultado;
         }

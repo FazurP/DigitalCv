@@ -20,6 +20,6 @@ namespace AppDigitalCv.Domain
         //aqui va el catalogo de documentos pero desde el domain model
         ///public virtual catDocumentos catDocumentos { get; set; }
         public virtual PersonalDomainModel PersonalDomainModel { get; set; }
-        public virtual DocumentosDomainModel DocumentosDomainModel { get; set; }
+        public virtual DocumentosDomainModel Documentos { get; set; }
     }
 }

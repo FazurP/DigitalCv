@@ -310,7 +310,18 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     @if (SessionPersister.AccountSession != null)
                     {
-                        <img src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil.jpeg" class="user-image">
+
+                        string url = Server.MapPath("~/Imagenes/Usuarios/" + @SessionPersister.AccountSession.NombreCompleto + "/ImagePerfil/perfil.jpeg");
+
+                        if (File.Exists(url))
+                        {
+                            <img src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil.jpeg" class="user-image">
+                        }
+                        else
+                        {
+                            <img src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil_anonimo.jpg" class="user-image">
+                        }
+
                         <span class="hidden-xs">
                             @if (SessionPersister.AccountSession != null)
                             {
@@ -324,7 +335,17 @@
                     <li class="user-header">
                         @if (SessionPersister.AccountSession != null)
                         {
-                            <img src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil.jpeg" class="img-circle">
+
+                            string url = Server.MapPath("~/Imagenes/Usuarios/" + @SessionPersister.AccountSession.NombreCompleto + "/ImagePerfil/perfil.jpeg");
+
+                            if (File.Exists(url))
+                            {
+                                <img src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil.jpeg" class="img-circle">
+                            }
+                            else
+                            {
+                                <img src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil_anonimo.jpg" class="img-circle">
+                            }
                         }
                         <p>
                             @if (SessionPersister.AccountSession != null)

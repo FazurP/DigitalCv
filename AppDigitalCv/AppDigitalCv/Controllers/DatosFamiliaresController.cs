@@ -41,7 +41,7 @@ namespace AppDigitalCv.Controllers
         {
 
             FamiliarDomainModel familiarDomainModel = new FamiliarDomainModel();
-
+            familiaresVM.IdPersonal = SessionPersister.AccountSession.IdPersonal;
             AutoMapper.Mapper.Map(familiaresVM, familiarDomainModel);
 
             ifamiliarBusiness.AddUpdateFamiliar(familiarDomainModel);
@@ -74,9 +74,7 @@ namespace AppDigitalCv.Controllers
             {
                 totalCount = ifamiliarBusiness.GetFamiliaresById(IdentityPersonal).Count();
                 familiares = ifamiliarBusiness.GetFamiliaresById(IdentityPersonal).OrderBy(p => p.IdPersonal)
-                             .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
-                //ifamiliarBusiness.GetFamiliaresHijosById(IdentityPersonal).OrderBy(p => p.IdPersonal)
-                //.Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
+                             .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();             
 
             }
             return Json(new

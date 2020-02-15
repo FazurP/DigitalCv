@@ -13,18 +13,19 @@
             </div>
             <div class="row">
                 <div class="form-group col-lg-7">
-                    @Html.Label("Datos del Premio y/o Distinción")
-                    <hr />
-                    <label>Nombre del Premios:</label>
-                    @Html.TextBoxFor(model => model.StrNombrePremio, new { @class = "form-control input-sm", id = "NombrePremio" })
-                    <label>Institución:</label>
-                    @Html.TextBoxFor(model => model.StrInstitucion, new { @class = "form-control input-sm", id = "Institucion" })
-                    <label>Actividades Desempeñadas:</label>
-                    @Html.TextAreaFor(model => model.StrActividadDesempeniada, new { @class = "form-control input-sm", id = "ActividadesDesempeñadas" })
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-lg-6 col-lg-offset-4">
+                    <div class="form-group">
+                        <label>Nombre del Premios:</label>
+                        @Html.TextBoxFor(model => model.StrNombrePremio, new { @class = "form-control input-sm", id = "NombrePremio" })
+                    </div>
+                    <div class="form-group">
+                        <label>Institución:</label>
+                        @Html.TextBoxFor(model => model.StrInstitucion, new { @class = "form-control input-sm", id = "Institucion" })
+                    </div>
+                    <div class="form-group">
+                        <label>Actividades Desempeñadas:</label>
+                        @Html.TextAreaFor(model => model.StrActividadDesempeniada, new { @class = "form-control input-sm", id = "ActividadesDesempeñadas" })
+                    </div>
+                    <div class="form-group">
                         <a href="#" id="btnSubmit" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
                     </div>
                 </div>

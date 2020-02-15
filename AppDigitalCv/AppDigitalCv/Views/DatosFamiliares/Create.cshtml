@@ -44,18 +44,18 @@
                             </div>
                             <div class="form-group col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <label>Domicilio de Contacto:</label>
-                                @Html.TextBoxFor(model => model.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio", required = "required", title = "Domicilio de tu familiar", size = "35", id = "domiciliopadre", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.#/ ]+$" })
+                                @Html.TextBoxFor(model => model.StrDomicilio, new { @class = "form-control input-sm", placeholder = "Domicilio", required = "required", title = "Domicilio de tu familiar", size = "35", id = "domicilio", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9.#/ ]+$" })
                             </div>
                             <div class="form-group col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <label>Ocupación:</label>
-                                @Html.TextBoxFor(model => model.StrOcupacion, new { @class = "form-control input-sm", placeholder = "Ocupación", required = "required", title = "Datos de la Ocupación", size = "10", id = "ocupacionpadre", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
+                                @Html.TextBoxFor(model => model.StrOcupacion, new { @class = "form-control input-sm", placeholder = "Ocupación", required = "required", title = "Datos de la Ocupación", size = "10", id = "ocupacion", pattern = "^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$" })
                             </div>
                             <div class="form-group  col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <label>Parentesco:</label>
-                                @Html.DropDownList("idParentesco", null, new { @class = "form-control input-sm", required = "" })
+                                @Html.DropDownList("idParentesco", null, new { @class = "form-control input-sm", required = "",id="tipo" })
                             </div>
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <input type="submit" id="btnGuardar" value="Guardar Información" class="btn btn-success"/>
+                                <input type="submit" id="btnGuardar" value="Guardar Información" class="btn btn-sm btn-success"/>
                             </div>
                         </div>
                     </div>
@@ -68,6 +68,7 @@
                 <thead style="color:white; background-color:#428BCA; font-size:10px;">
                     <tr>
                         <th>Nombre</th>
+                        <th>Parentesco</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
@@ -101,7 +102,7 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
     <script src="~/Scripts/toastr.min.js"></script>
-    <script src="~/Scripts/Validate/DatosFamiliares/validate-datos-familiares-form.js"></script>
+    <script src="~/Scripts/Validate/DatosFamiliares/validate-datos-familiares-form.js?v=4"></script>
     <script src="~/Scripts/Validate/DatosFamiliares/validate-datos-familiares-regExp.js"></script>
 
     <script>
@@ -152,7 +153,7 @@
                                 success: fnCallback
                             })
                         },
-                        "pageLength": 5,
+                        "pageLength": 10,
                         "paging": true,
                         "language": {
 
@@ -183,6 +184,7 @@
                         "columns": [
 
                             { "data": "StrNombre" },
+                            { "data": "Parentesco.StrDescripcion" },
                             {
                                 "data": "IdFamiliar",
                                 "render": function (IdFamiliar, type, full, meta) {
@@ -201,39 +203,6 @@
                     });
                 }
             }
-
-            var valor = $('#rdbPadreVive').change(function () {
-                $('#domiciliopadre').prop('disabled', false).css("border-bottom-color", "#00a65a");
-            });
-
-            var padreFinado = $('#rdbPadreFinado').change(function () {
-                $('#ocupacionpadre').prop('disabled', true).css("border-bottom-color", "#f39c12");
-                $('#domiciliopadre').prop('disabled', true).css("border-bottom-color", "#f39c12");
-                $('#edadpadre').prop('disabled', true).css("border-bottom-color", "#f39c12");
-            });
-
-            var madreVivo = $('#rdbMadreVive').change(function () {
-
-                $('#domiciliomadre').prop('disabled', false).css("border-bottom-color", "#00a65a");
-
-            });
-            var madreFinado = $('#rdbMadreFinado').change(function () {
-                $('#ocupacionmadre').prop('disabled', true).css("border-bottom-color", "#f39c12");
-                $('#domiciliomadre').prop('disabled', true).css("border-bottom-color", "#f39c12");
-                $('#edadmadre').prop('disabled', true).css("border-bottom-color", "#f39c12");
-            });
-
-            var parejaVivo = $('#rdbParejaVive').change(function () {
-
-                $('#domiciliopareja').prop('disabled', false).css("border-bottom-color", "#00a65a");
-
-            });
-            var parejaFinado = $('#rdbParejaFinado').change(function () {
-                $('#ocupacionpareja').prop('disabled', true).css("border-bottom-color", "#f39c12");
-                $('#domiciliopareja').prop('disabled', true).css("border-bottom-color", "#f39c12");
-                $('#edadpareja').prop('disabled', true).css("border-bottom-color", "#f39c12");
-            });
-
 
 
         });

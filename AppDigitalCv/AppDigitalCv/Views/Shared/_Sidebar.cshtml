@@ -4,9 +4,22 @@
     <div class="user-panel">
         @if (SessionPersister.AccountSession != null)
         {
-            <div class="pull-left image">
-                <img src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil.jpeg" class="img-circle" alt="User Image">
-            </div>
+        <div class="pull-left image">
+            @{
+
+                string url = Server.MapPath("~/Imagenes/Usuarios/" + @SessionPersister.AccountSession.NombreCompleto + "/ImagePerfil/perfil.jpeg");
+
+                if (File.Exists(url))
+                {
+                    <img src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil.jpeg" class="img-circle">
+                }
+                else
+                {
+                    <img src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil_anonimo.jpg" class="img-circle">
+                }
+
+            }
+        </div>
         }
         <div class="pull-left info">
             <p>
