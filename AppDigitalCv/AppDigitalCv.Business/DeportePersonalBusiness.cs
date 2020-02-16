@@ -54,8 +54,9 @@ namespace AppDigitalCv.Business
                     deportePersonalDM.FechaRegistro = c.dteFechaRegistro.Value.ToShortDateString();
                     deportePersonalDM.IdFrecuencia = c.idFrecuencia;
 
-                    deportePersonalDM.FrecuenciaDM = FrecuenciaDM;
-                    deportePersonalDM.DeporteDM = DeporteDM;
+                    deportePersonalDM.Frecuencia = FrecuenciaDM;
+                    deportePersonalDM.Deporte = DeporteDM;
+                    deportePersonalDM.strHorasPractica = c.strHorasPractica;
 
                     deportesPersonales.Add(deportePersonalDM);
 
@@ -140,8 +141,8 @@ namespace AppDigitalCv.Business
                     deportePersonalDM.FechaRegistro = c.dteFechaRegistro.Value.ToShortDateString();
                     deportePersonalDM.IdFrecuencia = c.idFrecuencia;
 
-                    deportePersonalDM.FrecuenciaDM = FrecuenciaDM;
-                    deportePersonalDM.DeporteDM = DeporteDM;
+                    deportePersonalDM.Frecuencia = FrecuenciaDM;
+                    deportePersonalDM.Deporte = DeporteDM;
 
                     deportesPersonales.Add(deportePersonalDM);
                 }
@@ -182,7 +183,7 @@ namespace AppDigitalCv.Business
             deportePersonal.IdDeportePersonal = tblDeporte.idDeportePersonal;
             deportePersonal.FechaRegistro = tblDeporte.dteFechaRegistro.Value.ToShortDateString();
             deportePersonal.strHorasPractica = tblDeporte.strHorasPractica;
-            deportePersonal.FrecuenciaDM = new FrecuenciaDomainModel { StrDescripcion = tblDeporte.catFrecuencia.strDescripcion };
+            deportePersonal.Frecuencia = new FrecuenciaDomainModel { StrDescripcion = tblDeporte.catFrecuencia.strDescripcion };
 
             catDeporte catDeporte = new catDeporte();
             catDeporte.idDeporte = tblDeporte.idDeporte;
@@ -194,7 +195,7 @@ namespace AppDigitalCv.Business
 
 
             
-            deportePersonal.DeporteDM = deporteDM;
+            deportePersonal.Deporte = deporteDM;
            
             return deportePersonal;
         }

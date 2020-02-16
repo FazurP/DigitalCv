@@ -1,25 +1,9 @@
 ﻿$(document).ready(function () {
-
-    $('#IdDeporte').prop('disabled', true);
     $('#IdFrecuencia').prop('disabled', true);
     $('#IdPasatiempo').prop('disabled', true);
     $('#btnSubmit').prop('disabled', true);
 
 
-    $('#rdbSi').change(function () {
-        $('#IdDeporte').prop('disabled', false);
-        toastr.info("Seleccione su(s) Deporte(s).", "Digital-Cv dice", { timeOut: 1000, closeButton: true })
-    })
-
-    $('#rdbNo').change(function () {
-        $('#IdDeporte').prop('disabled', true);
-        $('#IdFrecuencia').prop('disabled', true);
-        $('#IdPasatiempo').prop('disabled', true);
-
-        $('#IdDeporte').val(0);
-        $('#IdFrecuencia').val(0);
-        $('#IdPasatiempo').val('');
-    })
 
     $('#IdDeporte').change(function () {
 

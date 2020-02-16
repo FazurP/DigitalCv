@@ -76,7 +76,7 @@ namespace AppDigitalCv.Controllers
             int totalCount = 0;
             if (param.sSearch != null)
             {
-                deportes = IdeportePersonalBusiness.GetDeportesPersonalesById(IdentityPersonal).Where(p=> p.DeporteDM.StrDescripcion.Contains(param.sSearch)).ToList();
+                deportes = IdeportePersonalBusiness.GetDeportesPersonalesById(IdentityPersonal).Where(p=> p.Deporte.StrDescripcion.Contains(param.sSearch)).ToList();
                     
             }
             else
@@ -100,24 +100,11 @@ namespace AppDigitalCv.Controllers
 
         #endregion
 
-        #region  Consulta que muestra de forma general en json los datos arrojados de una consulta basica
-        public JsonResult GetDatos()
-        {
-            int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
-            List<DeportePersonalDomainModel> deportes = new List<DeportePersonalDomainModel>();
-            deportes = IdeportePersonalBusiness.GetDeportesPersonalesById(IdentityPersonal).ToList();
-            return Json(deportes,JsonRequestBehavior.AllowGet);
-        }
-        #endregion
-
-
-
         //Edicion de Datos Familiares
         public ActionResult AddEditHabitosPersonales(int idDeportePersonal)
         {
             
             DeportePersonalVM deportePersonalVM = new DeportePersonalVM();
-            DeporteVM deporteVM = new DeporteVM();
 
             //creamos el objeto del dominio
             DeportePersonalDomainModel deportePersonalDM = new DeportePersonalDomainModel();
@@ -126,9 +113,8 @@ namespace AppDigitalCv.Controllers
                 deportePersonalDM  = IdeportePersonalBusiness.GetDeportesPersonalByIdDeportePersonal(idDeportePersonal);          
 
             }
-            AutoMapper.Mapper.Map(deportePersonalDM.DeporteDM, deporteVM);
             AutoMapper.Mapper.Map(deportePersonalDM, deportePersonalVM);
-            deportePersonalVM.DeporteVM = deporteVM;
+
 
             ViewBag.IdDeporte = new SelectList(deporteBusiness.GetDeportes(), "IdDeporte", "StrDescripcion");
             ViewBag.IdFrecuencia = new SelectList(frecuenciaBusiness.GetFrecuencia(), "IdFrecuencia", "StrDescripcion");
@@ -164,16 +150,8 @@ namespace AppDigitalCv.Controllers
             if (idDeportePersonal > 0)
             {
                 deportePersonalDM = IdeportePersonalBusiness.GetDeportesPersonalByIdDeportePersonal(idDeportePersonal);
+                AutoMapper.Mapper.Map(deportePersonalDM, deportePersonalVM);
             }
-            DeporteDomainModel deporteDM= deportePersonalDM.DeporteDM;
-            DeporteVM deporteVM = new DeporteVM();
-            AutoMapper.Mapper.Map(deporteDM, deporteVM);
-            AutoMapper.Mapper.Map(deportePersonalDM, deportePersonalVM);
-            
-
-            ViewBag.IdFrecuencia = new SelectList(frecuenciaBusiness.GetFrecuencia(), "IdFrecuencia", "StrDescripcion");
-            deportePersonalVM.DeporteVM = deporteVM;
-            deportePersonalVM.FrecuenciaVM = new FrecuenciaVM { StrDescripcion = deportePersonalDM.FrecuenciaDM.StrDescripcion };
             return PartialView("_Eliminar", deportePersonalVM);
         }
 
@@ -196,7 +174,22 @@ namespace AppDigitalCv.Controllers
         }
         #endregion
 
+        [HttpGet]
+        public ActionResult DisplayDeporte(int _id) 
+        {
+            if (_id > 0)
+            {
+                DeportePersonalDomainModel deportePersonalDomainModel = new DeportePersonalDomainModel();
+                deportePersonalDomainModel = IdeportePersonalBusiness.GetDeportesPersonalByIdDeportePersonal(_id);
+                DeportePersonalVM deportePersonalVM = new DeportePersonalVM();
 
+                AutoMapper.Mapper.Map(deportePersonalDomainModel,deportePersonalVM);
+
+                return PartialView("_VerDatos",deportePersonalVM);
+            }
+            return PartialView();
+        }
+       
     }
 }
 

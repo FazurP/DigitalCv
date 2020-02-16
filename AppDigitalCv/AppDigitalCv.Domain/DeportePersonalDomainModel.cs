@@ -10,12 +10,11 @@ namespace AppDigitalCv.Domain
     {
         public int IdDeportePersonal { get; set; }
         public string FechaRegistro { get; set; }
-        public FrecuenciaDomainModel FrecuenciaDM { get; set; }
+        public FrecuenciaDomainModel Frecuencia { get; set; }
         public int IdPersonal { get; set; }
         public int IdDeporte { get; set; }
         public int IdFrecuencia { get; set; }
         public string strHorasPractica { get; set; }
-        public DeporteDomainModel DeporteDM { get; set; }
-        public PasatiempoDomainModel PasatiempoDM { get; set; }
+        public DeporteDomainModel Deporte { get; set; }
     }
 }

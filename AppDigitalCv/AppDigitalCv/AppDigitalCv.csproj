@@ -668,6 +668,7 @@
     <Content Include="Views\DatosFamiliares\_VerDatos.cshtml" />
     <Content Include="Views\DatosContacto\_VerDatos.cshtml" />
     <Content Include="Views\Direccion\_VerDatos.cshtml" />
+    <Content Include="Views\HabitosPersonales\_VerDatos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
