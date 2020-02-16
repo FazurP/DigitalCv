@@ -24,7 +24,7 @@ namespace AppDigitalCv.Security
             
             if (SessionPersister.AccountSession == null)
                 //si no viene vacio el objeto entramos sin problema
-                filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { controller = "Account", action = "Index" }));
+                filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { controller = "Seguridad", action = "Login" }));
             else
             {
                 AccountDomainModel accountModel = new AccountDomainModel();
@@ -33,16 +33,16 @@ namespace AppDigitalCv.Security
                 accountModel = IaccountBusiness.ValidarLogin(accountModel);
                 AutoMapper.Mapper.Map(accountModel, viewAccount);
                 CustomPrincipal customPrincipal = new CustomPrincipal(viewAccount);
-                filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { controller = "AccessDenegade", action = "Index" }));
+                filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { controller = "Seguridad", action = "Login" }));
             }
             //if (string.IsNullOrEmpty(SessionPersister.Username))
-            //    filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { controller = "Account", action = "Index" }));
+            //    filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { controller = "Seguridad", action = "Login" }));
             //else
             //{
-            //    AccountModel am = new AccountModel();
+            //    AccountViewModel am = new AccountViewModel();
             //    CustomPrincipal customPrincipal = new CustomPrincipal(am.Find(SessionPersister.Username));
             //    if (!customPrincipal.IsInRole(Roles))
-            //        filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { controller = "AccessDenegade", action = "Index" }));
+            //        filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { controller = "Seguridad", action = "Login" }));
             //}
         }
 

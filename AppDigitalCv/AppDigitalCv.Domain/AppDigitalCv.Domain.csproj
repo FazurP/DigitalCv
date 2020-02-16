@@ -145,6 +145,7 @@
     <Compile Include="PersonalAsociacionesDomainModel.cs" />
     <Compile Include="PersonalDomainModel.cs" />
     <Compile Include="PremiosDocenteDomainModel.cs" />
+    <Compile Include="PresentacionPonenciasDomainModel.cs" />
     <Compile Include="ProduccionArtisticaDomainModel.cs" />
     <Compile Include="ProduccionesArtisticasDomainModel.cs" />
     <Compile Include="ProductividadInnovadoraDomainModel.cs" />

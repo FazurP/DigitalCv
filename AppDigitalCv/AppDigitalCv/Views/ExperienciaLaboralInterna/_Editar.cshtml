@@ -14,22 +14,12 @@
             </div>
             <div class="row">
                 <div class="form-group col-lg-7">
-                    <label class="titleletter">Datos Actuales</label>
-                    <hr />
-                    <label>Actividades Desempeñadas:</label>
-                    @Html.TextBoxFor(model => model.strActividadDesempeñada, new { @class = "form-control input-sm",id="strActividadDesempeñada" })
-
-                    <Label>Fecha de Inicio:</Label>
-                    @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm",@type="date",id="FechaInicio" })
-
-                    <Label>Fecha de Termino:</Label>
-                    @Html.TextBoxFor(model => model.dteFechaTermino, new { @class = "form-control input-sm",@type="date",id="FechaTermino" })
-
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-lg-6 col-lg-offset-4">
-                        <a href="#" id="btnEnviar" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
+                    <div class="form-group">
+                        <label>Actividades Desempeñadas:</label>
+                        @Html.TextBoxFor(model => model.strActividadDesempeñada, new { @class = "form-control input-sm", id = "actividadDesempeñada" })
+                    </div>
+                    <div class="">
+                        <a href="#" id="btnEnviar" class="btn btn-sm btn-success"><span>Actualizar</span></a>
                     </div>
                 </div>
             </div>
@@ -39,19 +29,22 @@
 </div>
 
 
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
-
-
 <script>
+
+     $("#actividadDesempeñada").bind('keypress', function (e) {
+        var regex = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$");
+        var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (!regex.test(key)) {
+            toastr.warning("Solo se Admiten Cadenas de Texto.", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+            e.preventDefault();
+            return false;
+        }
+    });
 
     $(document).ready(function () {
 
         $("#btnEnviar").click(function () {
 
-            var prueba =  $('#id').val();
-
-            alert(prueba);
 
             var ExperienciaLaboralInternaVM = {};
             var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
@@ -59,9 +52,8 @@
             ExperienciaLaboralInternaVM.IdPersonal = IdPersonal;
             ExperienciaLaboralInternaVM.id = $('#id').val();
 
-            ExperienciaLaboralInternaVM.strActividadDesempeñada = $('#strActividadDesempeñada').val();
-            ExperienciaLaboralInternaVM.dteFechaInicio = $('#FechaInicio').val();
-            ExperienciaLaboralInternaVM.dteFechaTermino = $('#FechaTermino').val();
+            ExperienciaLaboralInternaVM.strActividadDesempeñada = $('#actividadDesempeñada').val();
+
             $.ajax({
                 type: "POST",
                 url: "/ExperienciaLaboralInterna/EditExperiencia",

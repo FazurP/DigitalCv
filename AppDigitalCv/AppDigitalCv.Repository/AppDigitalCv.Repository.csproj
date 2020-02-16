@@ -390,6 +390,7 @@
     <Compile Include="PersonalAsociacionesRepository.cs" />
     <Compile Include="PersonalRepository.cs" />
     <Compile Include="PremiosDocenteRepository.cs" />
+    <Compile Include="PresentacionPonenciasRepository.cs" />
     <Compile Include="ProduccionArtisticaRepository.cs" />
     <Compile Include="ProduccionesArtisticasRepository.cs" />
     <Compile Include="ProduccionInnovadoraRepository.cs" />
@@ -527,6 +528,9 @@
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPremiosDocente.cs">
+      <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblPresentacionPonencias.cs">
       <DependentUpon>AppDigitalCvEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblProduccionArtistica.cs">

@@ -167,6 +167,7 @@
     <Compile Include="Interface\IPersonalAsociacionesBusiness.cs" />
     <Compile Include="Interface\IPersonalBusiness.cs" />
     <Compile Include="Interface\IPremiosDocenteBusiness.cs" />
+    <Compile Include="Interface\IPresentacionPonenciasBusiness.cs" />
     <Compile Include="Interface\IProduccionArtistica.cs" />
     <Compile Include="Interface\IProduccionesArtisticasBusiness.cs" />
     <Compile Include="Interface\IProductividadInnovadoraBusiness.cs" />
@@ -201,6 +202,7 @@
     <Compile Include="PersonalAsociacionesBusiness.cs" />
     <Compile Include="PersonalBusiness.cs" />
     <Compile Include="PremiosDocenteBusiness.cs" />
+    <Compile Include="PresentacionPonenciasBusiness.cs" />
     <Compile Include="ProduccionArtisticaBusiness.cs" />
     <Compile Include="ProduccionesArtisticasBusiness.cs" />
     <Compile Include="ProductividadInnovadoraBusiness.cs" />

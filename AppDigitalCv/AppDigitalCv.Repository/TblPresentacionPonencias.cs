@@ -12,9 +12,14 @@ namespace AppDigitalCv.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class catPeriodo
+    public partial class TblPresentacionPonencias
     {
         public int id { get; set; }
-        public string strDescripcion { get; set; }
+        public Nullable<int> idPersonal { get; set; }
+        public string strNombre { get; set; }
+        public string strInstitucionLugarPresete { get; set; }
+        public string strAño { get; set; }
+    
+        public virtual tblPersonal tblPersonal { get; set; }
     }
 }

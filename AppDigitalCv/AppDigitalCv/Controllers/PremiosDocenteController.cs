@@ -26,12 +26,6 @@ namespace AppDigitalCv.Controllers
             IdocumentosBusiness = _IdocumentosBusiness;
         }
 
-        // GET: PremiosDocente
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet]
         public ActionResult Create()
         {

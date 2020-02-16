@@ -28,6 +28,7 @@ namespace AppDigitalCv.Domain
 
         public string TipoPersonal { get; set; }
         public string Universidad { get; set; }
+        public string Sexo { get; set; }
 
     }
 }

@@ -55,12 +55,12 @@ namespace AppDigitalCv.Controllers
             {
                 IdiomasDomainModel idiomasDomainModel = new IdiomasDomainModel();
                 AutoMapper.Mapper.Map(idiomasVM, idiomasDomainModel);
-                DocumentosDomainModel documentosDomain = new DocumentosDomainModel();
-                AutoMapper.Mapper.Map(idiomasVM.documentosVM,documentosDomain);
-                idiomasDomainModel.documentosDomain = documentosDomain;
-                if (GuardarArchivo(idiomasDomainModel,SessionPersister.AccountSession.NombreCompleto))
+
+                object[] obj = CrearDocumentoPersonales(idiomasVM);
+
+                if (obj[0].Equals(true))
                 {
-                    idiomasDomainModel.documentosDomain.StrUrl = idiomasDomainModel.documentosDomain.DocumentoFile.FileName;
+                    idiomasDomainModel.Documentos = new DocumentosDomainModel { StrUrl = obj[1].ToString()};
                     idiomasBusiness.AddUpdateIdioma(idiomasDomainModel);
                 }           
             }
@@ -68,24 +68,27 @@ namespace AppDigitalCv.Controllers
             return RedirectToAction("Create", "Idioma");
         }
 
-        private bool GuardarArchivo(IdiomasDomainModel idiomasDomainModel, string nombre)
+        private Object[] CrearDocumentoPersonales(IdiomasVM idiomasVM)
         {
-            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombre + "/"));
+            Object[] respuesta = new Object[2];
+            idiomasVM.idPersonal = SessionPersister.AccountSession.IdPersonal;
+            string nombrecompleto = SessionPersister.AccountSession.NombreCompleto;
+            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombrecompleto));
+
             if (Directory.Exists(path))
             {
-                if (idiomasDomainModel.documentosDomain.DocumentoFile.ContentType.Equals("application/pdf"))
+                if (idiomasVM.Documentos.DocumentoFile != null)
                 {
-                    string pathCompleto = Path.Combine(path, Path.GetFileName(idiomasDomainModel.documentosDomain.DocumentoFile.FileName));
-                    idiomasDomainModel.documentosDomain.DocumentoFile.SaveAs(pathCompleto);
-
+                    respuesta = FileManager.FileManager.CheckFileIfExist(path, idiomasVM.Documentos);
                 }
-                return true;
             }
             else
             {
-                Directory.CreateDirectory(path);
-                return GuardarArchivo(idiomasDomainModel, nombre);
+                DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
+                CrearDocumentoPersonales(idiomasVM);
             }
+
+            return respuesta;
         }
 
         #region Agregar o editar una entidad
@@ -117,7 +120,7 @@ namespace AppDigitalCv.Controllers
             int totalCount = 0;
             if (param.sSearch != null)
             {
-                idiomasDM = idiomasBusiness.GetAllIdiomasByPersonal(IdentityPersonal).Where(p => p.idiomaDomain.strDescripcion.Contains(param.sSearch)).ToList();
+                idiomasDM = idiomasBusiness.GetAllIdiomasByPersonal(IdentityPersonal).Where(p => p.Idioma.strDescripcion.Contains(param.sSearch)).ToList();
 
 
             }
@@ -126,7 +129,7 @@ namespace AppDigitalCv.Controllers
                 totalCount = idiomasBusiness.GetAllIdiomasByPersonal(IdentityPersonal).Count();
 
 
-                idiomasDM = idiomasBusiness.GetAllIdiomasByPersonal(IdentityPersonal).OrderBy(p => p.idiomaDomain.strDescripcion)
+                idiomasDM = idiomasBusiness.GetAllIdiomasByPersonal(IdentityPersonal).OrderBy(p => p.Idioma.strDescripcion)
                     .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
 
             }
@@ -176,6 +179,11 @@ namespace AppDigitalCv.Controllers
 
             if (idiomasDomainModel != null)
             {
+                string url = Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + SessionPersister.AccountSession.NombreCompleto + "/" + idiomasDomainModel.Documentos.StrUrl);
+                if (FileManager.FileManager.DeleteFileFromServer(url))
+                {
+
+                }
                 idiomasBusiness.DeleteIdioma(idiomasDomainModel);
             }
 

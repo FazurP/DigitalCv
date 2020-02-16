@@ -503,6 +503,7 @@
     <Content Include="Scripts\Validate\PremiosDocente\validate-premios-docente-upload.js" />
     <Content Include="Scripts\Validate\Premios\validate-premios-form.js" />
     <Content Include="Scripts\Validate\Premios\validate-premios-regExp.js" />
+    <Content Include="Scripts\Validate\PresentacionPonencias\validate-presentacion-ponencias-form.js" />
     <Content Include="Scripts\Validate\ProduccionesArtisticas\validate-producciones-artisticas-date.js" />
     <Content Include="Scripts\Validate\ProduccionesArtisticas\validate-producciones-artisticas-upload.js" />
     <Content Include="Scripts\Validate\ProductividadInnovadora\validate-productividad-innovadora-regExp.js" />
@@ -522,6 +523,7 @@
     <Content Include="Scripts\Validate\Tutorias\_Modal\validate-modal-tutorias-regExp.js" />
     <Content Include="Scripts\Validate\validate-datos-contacto-email.js" />
     <Content Include="Scripts\Validate\ProduccionesArtisticas\validate-producciones-artisticas-form.js" />
+    <Content Include="Scripts\Validate\validate-encuesta-salud-form.js" />
     <Content Include="Scripts\Validate\_Modals\ProyectoInvestigacion\partial-proyecto-investigacion-data.js" />
     <Content Include="Views\index.html" />
     <Content Include="Web.config" />
@@ -655,7 +657,6 @@
     <Content Include="Views\CapacitacionesRecibidas\Create.cshtml" />
     <Content Include="Views\CapacitacionesImpartidas\Create.cshtml" />
     <Content Include="Views\HistorialAcademico\Create.cshtml" />
-    <Content Include="Views\ParticipacionConferencias\Create.cshtml" />
     <Content Include="Views\PresentacionConferencias\Create.cshtml" />
     <Content Include="Views\HistorialAcademico\_InstitucionesAcreditan.cshtml" />
     <Content Include="Views\HistorialAcademico\_InstitucionesAcreditanLicenciatura.cshtml" />
@@ -672,6 +673,7 @@
     <Content Include="Views\Direccion\_VerDatos.cshtml" />
     <Content Include="Views\HabitosPersonales\_VerDatos.cshtml" />
     <Content Include="Views\Hobbie\_VerDatos.cshtml" />
+    <Content Include="Views\PresentacionConferencias\_Eliminar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -715,7 +717,6 @@
     <Compile Include="Controllers\InstitucionSuperiorController.cs" />
     <Compile Include="Controllers\LibroController.cs" />
     <Compile Include="Controllers\ManualOperacionController.cs" />
-    <Compile Include="Controllers\ParticipacionConferenciasController.cs" />
     <Compile Include="Controllers\ParticipacionInstitucionalExternaController.cs" />
     <Compile Include="Controllers\ParticipacionInstitucionalInternaController.cs" />
     <Compile Include="Controllers\PersonalAsociacionesController.cs" />
@@ -851,6 +852,7 @@
     <Compile Include="ViewModels\PersonalVM.cs" />
     <Compile Include="ViewModels\Porcentajes.cs" />
     <Compile Include="ViewModels\PremiosDocenteVM.cs" />
+    <Compile Include="ViewModels\PresentacionPonenciasVM.cs" />
     <Compile Include="ViewModels\ProduccionArtisticaVM.cs" />
     <Compile Include="ViewModels\ProduccionesArtisticasVM.cs" />
     <Compile Include="ViewModels\ProductividadInnovadoraVM.cs" />

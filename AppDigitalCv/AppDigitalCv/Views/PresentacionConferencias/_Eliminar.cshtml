@@ -1,11 +1,10 @@
-﻿
-@model AppDigitalCv.ViewModels.LenguasVM
+﻿@model AppDigitalCv.ViewModels.PresentacionPonenciasVM
 @using AppDigitalCv.Security
 
 <div>
-
-    <form id="myForm">
-       @Html.HiddenFor(model => model.id)
+    <form id="presentacion">
+        @Html.HiddenFor(model => model.idPersonal)
+        @Html.HiddenFor(model => model.id)
         <div class="form-inline">
             <div class="form-group">
                 <div class="row">
@@ -18,11 +17,11 @@
                     <div class="col-lg-6">
                         <ul class="todo-list">
                             <li class="list-unstyled">
-                                <label>Dialecto:</label> @Html.DisplayFor(m => m.Dialecto.StrDescripcion)
+                                <label>Nombre: </label> @Html.DisplayFor(model => model.strNombre, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
                             </li>
                         </ul>
                         <br />
-                        <a href="#" id="btnEnviar">
+                        <a href="#" id="btnSubmit">
                             <i class="btn btn-sm btn-danger">Eliminar</i>
                         </a>
                     </div>
@@ -31,27 +30,28 @@
         </div>
     </form>
 </div>
-
 <script>
-        $(document).ready(function () {
 
-            $("#btnEnviar").click(function () {
+    $(document).ready(function () {
 
-                var myformdat = $("#myForm").serialize();
+        $("#btnSubmit").click(function () {
 
-                $.ajax({
+            $("#loaderDiv").show();
 
-                    type: "POST",
-                    url: "/DialectoIdioma/DeleteDialectoById",
-                    data: myformdat,
-                    success: function () {
-                        $("#loaderDiv").hide();
-                        $("#myModal").modal("hide");
-                        window.location.href = "/DialectoIdioma/Create";
+            let presentacionPonenciasVM = $("#presentacion").serialize();
+            $.ajax({
 
-                    }
+                type: "POST",
+                url: "/PresentacionConferencias/EliminarPonencia",
+                data: presentacionPonenciasVM,
+                success: function () {
+                     window.location.href = "/PresentacionConferencias/Create";
+                }
 
-                })
             })
         })
+
+    })
+
+
 </script>

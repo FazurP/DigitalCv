@@ -90,7 +90,7 @@ namespace AppDigitalCv.Business
             LenguasDomainModel lenguasDM = new LenguasDomainModel();
             TblLenguas lenguas = new TblLenguas();
 
-            lenguas = lenguasRepository.GetAll().Where(p => p.idLengua == _idDialecto && p.idPersonal == _idPersonal).FirstOrDefault();
+            lenguas = lenguasRepository.GetAll().Where(p => p.id == _idDialecto && p.idPersonal == _idPersonal).FirstOrDefault();
 
             lenguasDM.id = lenguas.id;
             lenguasDM.idLengua = lenguas.idLengua.Value;

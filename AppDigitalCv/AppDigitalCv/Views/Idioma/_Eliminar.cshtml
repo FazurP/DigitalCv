@@ -16,18 +16,16 @@
                         ¿Deseas <strong>Eliminar</strong> este registro realmente?
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-16 col-xs-12">
-                        <div class="form-group">
-                            <label>Idioma</label>
-                            <br />
-                            @Html.DropDownListFor(m => m.idIdioma, null, new { @class = "form-control input-sm", @disabled = "disabled" })
-                        </div>
-                        <br />
-                        <div class="form-group">
-                            <label>Certificación</label>
-                            <br />
-                            @Html.DropDownListFor(m => m.idNivelConocimiento, null, new { @class = "form-control input-sm", @disabled = "disabled" })
-                        </div>
-                        <br />
+                        <ul class="todo-list">
+                            <li class="list-unstyled">
+                                <label>Idioma: </label>
+                                @Html.DisplayFor(m => m.Idioma.StrDescripcion)
+                            </li>
+                            <li class="list-unstyled">
+                                <label>Certificación: </label>
+                                @Html.DisplayFor(m => m.NivelConocimiento.strValor)
+                            </li>                  
+                        </ul>
                         <br />
                         <div class="form-group">
                             <a href="#" id="btnEnviar">

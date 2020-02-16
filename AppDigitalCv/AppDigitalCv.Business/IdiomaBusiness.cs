@@ -43,7 +43,7 @@ namespace AppDigitalCv.Business
                 TblIdioma tblIdioma = new TblIdioma();
                 catDocumentos catDocumentos = new catDocumentos();
 
-                catDocumentos.strUrl = idiomasDomainModel.documentosDomain.StrUrl;
+                catDocumentos.strUrl = idiomasDomainModel.Documentos.StrUrl;
                 tblIdioma.idIdioma = idiomasDomainModel.idIdioma;
                 tblIdioma.idNivelConocimiento = idiomasDomainModel.idNivelConocimiento;
                 tblIdioma.idPersonal = idiomasDomainModel.idPersonal;
@@ -73,9 +73,9 @@ namespace AppDigitalCv.Business
                 idiomasDomainModel.idIdioma = item.idIdioma.Value;
                 idiomasDomainModel.idNivelConocimiento = item.idNivelConocimiento.Value;
                 idiomasDomainModel.idPersonal = item.idPersonal.Value;
-                idiomasDomainModel.idiomaDomain = new IdiomaDomainModel { strDescripcion = item.catIdioma.strDescripcion };
-                idiomasDomainModel.nivelConocimientoDomain = new NivelConocimientoDomainModel { strValor = item.CatNivelConocimiento.strValor };
-                idiomasDomainModel.documentosDomain = new DocumentosDomainModel { StrUrl = item.catDocumentos.strUrl};
+                idiomasDomainModel.Idioma = new IdiomaDomainModel { strDescripcion = item.catIdioma.strDescripcion };
+                idiomasDomainModel.NivelConocimiento = new NivelConocimientoDomainModel { strValor = item.CatNivelConocimiento.strValor };
+                idiomasDomainModel.Documentos = new DocumentosDomainModel { StrUrl = item.catDocumentos.strUrl};
 
                 idiomasDomainModels.Add(idiomasDomainModel);
             }
@@ -96,6 +96,18 @@ namespace AppDigitalCv.Business
                 idiomasDomainModel.idIdioma = tblIdioma.idIdioma.Value;
                 idiomasDomainModel.idNivelConocimiento = tblIdioma.idNivelConocimiento.Value;
                 idiomasDomainModel.idPersonal = tblIdioma.idPersonal.Value;
+                idiomasDomainModel.NivelConocimiento = new NivelConocimientoDomainModel 
+                {
+                strValor = tblIdioma.CatNivelConocimiento.strValor
+                };
+                idiomasDomainModel.Idioma = new IdiomaDomainModel 
+                {
+                strDescripcion = tblIdioma.catIdioma.strDescripcion
+                };
+                idiomasDomainModel.Documentos = new DocumentosDomainModel
+                {
+                    StrUrl = tblIdioma.catDocumentos.strUrl
+                };
 
             }
 

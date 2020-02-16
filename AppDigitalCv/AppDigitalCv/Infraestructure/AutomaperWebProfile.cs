@@ -487,6 +487,9 @@ namespace AppDigitalCv.Infraestructure
 
             CreateMap<CapacitacionesImpartidadVM, CapacitacionesImpartidadDomainModel>();
             CreateMap<CapacitacionesImpartidadDomainModel, CapacitacionesImpartidadVM>();
+
+            CreateMap<PresentacionPonenciasVM, PresentacionPonenciasDomainModel>();
+            CreateMap<PresentacionPonenciasDomainModel, PresentacionPonenciasVM>();
         }
 
         public static void Run()

@@ -53,13 +53,14 @@ namespace AppDigitalCv.Business
                     account.ImgUserUrl = t.strUrlFoto; //establecemos la  foto del usuario
                     account.Universidad = t.strUniversidad;
                     account.TipoPersonal = t.strTipoPersonal;
+                    account.Sexo = t.strGenero;
                 }
                 account.IdUsuario = catUsuarios.idUsuario;
                 account.Email = catUsuarios.strEmailInstitucional;
                 account.Password = catUsuarios.strPassword;
                 account.Nombre = catUsuarios.strNombrUsuario; ///representara el nombre del usuario
                 account.TipoUsuario = catUsuarios.strTipoUsuario;
-                
+               
                 return account;
             }
             else

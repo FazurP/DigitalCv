@@ -14,8 +14,8 @@ namespace AppDigitalCv.Domain
         public int idDocumento { get; set; }
         public int idPersonal { get; set; }
 
-        public DocumentosDomainModel documentosDomain { get; set; }
-        public IdiomaDomainModel idiomaDomain { get; set; }
-        public NivelConocimientoDomainModel nivelConocimientoDomain { get; set; }
+        public DocumentosDomainModel Documentos { get; set; }
+        public IdiomaDomainModel Idioma { get; set; }
+        public NivelConocimientoDomainModel NivelConocimiento { get; set; }
     }
 }

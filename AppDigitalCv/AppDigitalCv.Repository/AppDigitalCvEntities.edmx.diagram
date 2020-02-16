@@ -257,18 +257,13 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblInformeTecnico_tblPersonal" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.TblDoctorado" Width="1.5" PointX="36.375" PointY="38.25" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblExperienciaLaboralExterna" Width="1.5" PointX="45.375" PointY="16.25" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.tblExperienciaLaboralInterna" Width="1.5" PointX="45.375" PointY="11.625" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catArea" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblDoctorado_catDocumentos" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralExterna_catDocumentos" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblDoctorado_CatFuenteFinanciamientoDoctorado" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblDoctorado_CatInstitucionAcreditaDoctorado" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catPeriodo" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catProgramaEducativo" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblDoctorado_CatStatusDoctorado" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblDoctorado_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralExterna_tblPersonal" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_tblPersonal" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblCapituloLibro" Width="1.5" PointX="36.375" PointY="46.625" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.TblMaetria" Width="1.5" PointX="36.375" PointY="33.75" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblManualOperacion" Width="1.5" PointX="39.375" PointY="20.375" />
@@ -311,6 +306,12 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_catTipoActividad" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblLibro_tblPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblParticipacionInstitucionalInterna_tblPersonal" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblExperienciaLaboralInterna" Width="1.5" PointX="42.375" PointY="21" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catArea" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_catProgramaEducativo" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_tblPersonal" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.TblPresentacionPonencias" Width="1.5" PointX="36.375" PointY="3.875" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_TblPresentacionPonencias_tblPersonal" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -4,7 +4,7 @@
 @using (Html.BeginForm(FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    <div class="bs-container" style="min-height:960px;margin-top:40px;">
+    <div class="bs-container" style="min-height:960px;margin-top:20px;">
         <section class="content-header">
             <h1>
                 Experiencia Laboral Dentro de la Institución
@@ -225,14 +225,14 @@
                                 "data": "id",
                                 "render": function (id, type, full, meta) {
 
-                                    return '<a href="#" onclick="AddEditar(' + id + ')"><i class="btn btn-sm btn-success fa fa-pencil-square-o"></i></a>'
+                                    return '<a href="#" onclick="AddEditar(' + id + ')"><i class="btn btn-sm btn-success">Actualizar</i></a>'
                                 }
                             },
                             {
                                 "data": "id",
                                 "render": function (id, type, full, meta) {
 
-                                    return '<a href="#" onclick="AddEliminar(' + id + ')"><i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i></a>'
+                                    return '<a href="#" onclick="AddEliminar(' + id + ')"><i class="btn btn-sm btn-danger">Eliminar</i></a>'
                                 }
                             },
                         ]

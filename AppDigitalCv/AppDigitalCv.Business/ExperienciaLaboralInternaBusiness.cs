@@ -52,7 +52,6 @@ namespace AppDigitalCv.Business
 
                 tblExperienciaLaboralInterna.id = experienciaLaboralInternaDM.id;
                 tblExperienciaLaboralInterna.idArea = experienciaLaboralInternaDM.idArea;
-                tblExperienciaLaboralInterna.idPeriodo = experienciaLaboralInternaDM.idPeriodo;
                 tblExperienciaLaboralInterna.idPersonal = experienciaLaboralInternaDM.idPersonal;
                 tblExperienciaLaboralInterna.idProgramaEduactivo = experienciaLaboralInternaDM.idProgramaEducativo;
                 tblExperienciaLaboralInterna.strActividadDesempenada = experienciaLaboralInternaDM.strActividadDesempeñada;
@@ -83,7 +82,6 @@ namespace AppDigitalCv.Business
 
                 experienciaLaboralInternaDM.id = tblExperiencia.id;
                 experienciaLaboralInternaDM.idArea = tblExperiencia.idArea.Value;
-                experienciaLaboralInternaDM.idPeriodo = tblExperiencia.idPeriodo.Value;
                 experienciaLaboralInternaDM.idPersonal = tblExperiencia.idPersonal.Value;
                 experienciaLaboralInternaDM.idProgramaEducativo = tblExperiencia.idProgramaEduactivo.Value;
                 experienciaLaboralInternaDM.strActividadDesempeñada = tblExperiencia.strActividadDesempenada;
@@ -121,7 +119,6 @@ namespace AppDigitalCv.Business
 
             experienciaLaboralInternaDM.id = tblExperienciaLaboral.id;
             experienciaLaboralInternaDM.idArea = tblExperienciaLaboral.idArea.Value;
-            experienciaLaboralInternaDM.idPeriodo = tblExperienciaLaboral.idPeriodo.Value;
             experienciaLaboralInternaDM.idPersonal = tblExperienciaLaboral.idPersonal.Value;
             experienciaLaboralInternaDM.idProgramaEducativo = tblExperienciaLaboral.idProgramaEduactivo.Value;
             experienciaLaboralInternaDM.strActividadDesempeñada = tblExperienciaLaboral.strActividadDesempenada;

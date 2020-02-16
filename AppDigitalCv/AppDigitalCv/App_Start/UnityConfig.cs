@@ -102,6 +102,7 @@ namespace AppDigitalCv
             container.RegisterType<ITipoCapacitacionBusiness, TipoCapacitacionBusiness>();
             container.RegisterType<ICapacitacionesRecibidasBusiness, CapacitacionesRecibidadBusiness>();
             container.RegisterType<ICapacitacionesImpartidasBusiness, CapacitacionesImpartidasBusiness>();
+            container.RegisterType<IPresentacionPonenciasBusiness, PresentacionPonenciasBusiness>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
