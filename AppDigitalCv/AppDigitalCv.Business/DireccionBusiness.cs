@@ -198,11 +198,33 @@ namespace AppDigitalCv.Business
                 DireccionDomainModel direccionDomainModel = new DireccionDomainModel();
 
                 direccionDomainModel.IdColonia = item.idColonia;
-                direccionDomainModel.IdDireccion = item.idDireccion;
-                direccionDomainModel.Colonia = new ColoniaDomainModel { IdColonia = item.CatColonia.id, IdMunicipio = item.CatColonia.idMunicipio, IntCp = item.CatColonia.intCp, StrValor = item.CatColonia.strValor };
+                direccionDomainModel.IdDireccion = item.idDireccion;       
                 direccionDomainModel.StrCalle = item.strCalle;
                 direccionDomainModel.StrNumeroExterior = item.strNumeroExterior;
                 direccionDomainModel.StrNumeroInterior = item.strNumeroInterior;
+                direccionDomainModel.bitActual = item.bitActual.Value;
+                direccionDomainModel.Colonia = new ColoniaDomainModel 
+                { 
+                    IdColonia = item.CatColonia.id,
+                    IdMunicipio = item.CatColonia.idMunicipio,
+                    IntCp = item.CatColonia.intCp,
+                    StrValor = item.CatColonia.strValor,
+                    Municipio = new MunicipioDomainModel 
+                    {
+                        IdEstado = item.CatColonia.CatMunicipio.id,
+                        StrValor = item.CatColonia.CatMunicipio.strValor,
+                        Estado = new EstadoDomainModel 
+                        {
+                            IdEstado = item.CatColonia.CatMunicipio.CatEstado.id,
+                            StrValor = item.CatColonia.CatMunicipio.CatEstado.strValor,
+                            Pais = new PaisDomainModel 
+                            {
+                                IdPais = item.CatColonia.CatMunicipio.CatEstado.CatPais.id,
+                                StrValor = item.CatColonia.CatMunicipio.CatEstado.CatPais.strValor
+                            }
+                        }
+                    }
+                };
 
                 direcciones.Add(direccionDomainModel);
 
@@ -239,7 +261,28 @@ namespace AppDigitalCv.Business
             direccion.StrNumeroExterior = catDireccion.strNumeroExterior;
             direccion.StrNumeroInterior = catDireccion.strNumeroInterior;
             direccion.bitActual = catDireccion.bitActual.Value;
-            direccion.Colonia = new ColoniaDomainModel { IdColonia = catDireccion.CatColonia.id, IdMunicipio = catDireccion.CatColonia.idMunicipio, IntCp = catDireccion.CatColonia.intCp,StrValor = catDireccion.CatColonia.strValor };
+            direccion.Colonia = new ColoniaDomainModel
+            {
+                IdColonia = catDireccion.CatColonia.id,
+                IdMunicipio = catDireccion.CatColonia.idMunicipio,
+                IntCp = catDireccion.CatColonia.intCp,
+                StrValor = catDireccion.CatColonia.strValor,
+                Municipio = new MunicipioDomainModel
+                {
+                    IdEstado = catDireccion.CatColonia.CatMunicipio.id,
+                    StrValor = catDireccion.CatColonia.CatMunicipio.strValor,
+                    Estado = new EstadoDomainModel
+                    {
+                        IdEstado = catDireccion.CatColonia.CatMunicipio.CatEstado.id,
+                        StrValor = catDireccion.CatColonia.CatMunicipio.CatEstado.strValor,
+                        Pais = new PaisDomainModel
+                        {
+                            IdPais = catDireccion.CatColonia.CatMunicipio.CatEstado.CatPais.id,
+                            StrValor = catDireccion.CatColonia.CatMunicipio.CatEstado.CatPais.strValor
+                        }
+                    }
+                }
+            };
 
             return direccion;
         }

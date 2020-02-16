@@ -130,16 +130,12 @@
         }
     });
 
-    $('input[name=bitActual]').change(function ()
-    {
-
-        if ('input[name=bitActual]:checked') {
+    $('input[name=bitActual]').on('ifChecked', function () {
+        if ($('input[id=si]:checked')) {
             $('#Enviar').prop('disabled', false);
-        } else
-        {
+        } else {
             $('#Enviar').prop('disabled', true);
         }
-
     });
 
 

@@ -1,0 +1,51 @@
+﻿@model AppDigitalCv.ViewModels.DireccionVM
+@using AppDigitalCv.Security
+
+<div>
+    <div class="bs-container">
+
+        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+            <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+        </div>
+        <div class="row">
+            <div class="form-group  col-lg-7">
+                <ul class="todo-list">
+                    <li class="list-unstyled">
+                        <label>Calle:</label>
+                        @Html.DisplayFor(model => model.StrCalle)
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Numero Exterior:</label>
+                        @Html.DisplayFor(model => model.StrNumeroExterior)
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Numero Interior:</label>
+                        @Html.DisplayFor(model => model.StrNumeroInterior)
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Estado:</label>
+                        @Html.DisplayFor(model => model.Colonia.Municipio.Estado.StrValor)
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Municipio:</label>
+                        @Html.DisplayFor(model => model.Colonia.Municipio.StrValor)
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Colonia:</label>
+                        @Html.DisplayFor(model => model.Colonia.StrValor)
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Codigo Postal:</label>
+                        @Html.DisplayFor(model => model.Colonia.intCp)
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Dirección Actual:</label>
+                        @Model.bitActual
+                    </li>                 
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+

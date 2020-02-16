@@ -13,10 +13,11 @@ namespace AppDigitalCv.Domain
         public string StrNumeroInterior { get; set; }
         public string StrNumeroExterior { get; set; }
         public int IdColonia { get; set; }
-
-        public ColoniaDomainModel Colonia { get; set; }
-
         public bool bitActual { get; set; }
         public int idPersonal { get; set; }
+
+        //Objetos de las relaciones
+
+        public ColoniaDomainModel Colonia { get; set; }
     }
 }

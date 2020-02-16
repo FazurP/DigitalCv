@@ -33,9 +33,12 @@ namespace AppDigitalCv.ViewModels
         public int IdPais { get; set; }
 
         [Required(ErrorMessage = "Es necesario seleccionar un municipio")]
-        public int IdMunicipio { get; set; }
-        public ColoniaVM Colonia { get; set; }      
+        public int IdMunicipio { get; set; } 
         public bool bitActual { get; set; }
         public int idPersonal { get; set; }
+
+        //Objetos de las Relaciones
+
+        public ColoniaVM Colonia { get; set; }
     }
 }

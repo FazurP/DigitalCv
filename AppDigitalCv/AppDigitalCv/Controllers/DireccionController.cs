@@ -205,7 +205,21 @@ namespace AppDigitalCv.Controllers
         }
         #endregion
 
+        [HttpGet]
+        public ActionResult DisplayDireccion(int id) 
+        {
 
+            if (id > 0)
+            {
+                DireccionDomainModel direccionDomainModel = IdireccionBusiness.GetDireccion(id);
+                DireccionVM direccionVM = new DireccionVM();
+
+                AutoMapper.Mapper.Map(direccionDomainModel, direccionVM);
+
+                return PartialView("_VerDatos",direccionVM);
+            }
+            return PartialView();
+        }
 
     }
 }

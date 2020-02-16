@@ -12,5 +12,9 @@ namespace AppDigitalCv.ViewModels
         public int intCp { get; set; }
         public Nullable<int> IdMunicipio { get; set; }
 
+        //Objetos de las relaciones
+
+        public MunicipioVM Municipio { get; set; }
+
     }
 }

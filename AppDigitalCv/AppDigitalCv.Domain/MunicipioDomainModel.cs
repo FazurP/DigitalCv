@@ -11,5 +11,9 @@ namespace AppDigitalCv.Domain
         public int IdMunicipio { get; set; }
         public string StrValor { get; set; }
         public Nullable<int> IdEstado { get; set; }
+
+        //Objetos de las relaciones
+
+        public EstadoDomainModel Estado { get; set; }
     }
 }
