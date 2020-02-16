@@ -21,8 +21,8 @@ namespace AppDigitalCv.Repository
         public string strNombreAlumno { get; set; }
         public string strResumenProyecto { get; set; }
         public string strObjetivo { get; set; }
-        public Nullable<System.DateTime> dteFechaInicio { get; set; }
-        public Nullable<System.DateTime> dteFechaTermino { get; set; }
+        public string dteFechaInicio { get; set; }
+        public string dteFechaTermino { get; set; }
         public string strNombreEmpresaInstitucion { get; set; }
         public string strPuntosCriticosResolver { get; set; }
         public string strLogrosBeneficiosObtenidos { get; set; }

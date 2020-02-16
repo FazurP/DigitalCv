@@ -18,11 +18,12 @@
                     <div class="col-lg-6">
                             <ul class="todo-list">
                                 <li class="list-unstyled">
-                                    @Html.DisplayFor(m => m.strInstitucionEmpresa, new { @class = "form-control input-sm", @placeholder = "Nombre de la Actividad", @disabled = "disabled" })
+                                    <label>Empresa: </label> @Html.DisplayFor(m => m.strInstitucionEmpresa, new { @class = "form-control input-sm", @placeholder = "Nombre de la Actividad", @disabled = "disabled" })
                                 </li>
                             </ul>                   
+                            <br />
                         <a href="#" id="btnSubmit">
-                            <i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i>
+                            <i class="btn btn-sm btn-google"> Eliminar</i>
                         </a>
                     </div>
                 </div>

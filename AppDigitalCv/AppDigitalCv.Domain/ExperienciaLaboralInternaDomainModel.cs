@@ -10,12 +10,16 @@ namespace AppDigitalCv.Domain
     {
         public int id { get; set; }
         public int idPersonal { get; set; }
-        public int idTipoContrato { get; set; }
         public int idArea { get; set; }
         public int idProgramaEducativo { get; set; }
         public int idPeriodo { get; set; }
-        public DateTime dteFechaInicio { get; set; }
-        public DateTime dteFechaTermino { get; set; }
+        public string dteFechaInicio { get; set; }
+        public string dteFechaTermino { get; set; }
         public string strActividadDesempeñada { get; set; }
+
+        //Objetos de las relaciones
+
+        public ProgramaEducativoDomainModel ProgramaEducativo { get; set; }
+        public AreaDomainModel Area { get; set; }
     }
 }

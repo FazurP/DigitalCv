@@ -19,8 +19,8 @@ namespace AppDigitalCv.Repository
         public Nullable<int> idCatDocumento { get; set; }
         public Nullable<int> idPersonal { get; set; }
         public string strActividad { get; set; }
-        public Nullable<System.DateTime> dteFechaInicio { get; set; }
-        public Nullable<System.DateTime> dteFechaTermino { get; set; }
+        public string dteFechaInicio { get; set; }
+        public string dteFechaTermino { get; set; }
     
         public virtual catDocumentos catDocumentos { get; set; }
         public virtual catInstitucionSuperior catInstitucionSuperior { get; set; }

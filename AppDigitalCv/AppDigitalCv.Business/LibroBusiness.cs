@@ -92,7 +92,7 @@ namespace AppDigitalCv.Business
                 libroDM.strTipoParticipacion = tblLibro.strTipoParticipacion;
                 libroDM.strTiraje = tblLibro.strTiraje;
                 libroDM.strTituloLibro = tblLibro.strTituloLibro;
-                libroDM.FechaPublicacion = tblLibro.FechaPublicacion.Value;
+                libroDM.FechaPublicacion = tblLibro.FechaPublicacion;
 
                 libros.Add(libroDM);
             }
@@ -121,7 +121,7 @@ namespace AppDigitalCv.Business
             libro.strTipoParticipacion = tblLibro.strTipoParticipacion;
             libro.strTiraje = tblLibro.strTiraje;
             libro.strTituloLibro = tblLibro.strTituloLibro;
-            libro.FechaPublicacion = tblLibro.FechaPublicacion.Value;
+            libro.FechaPublicacion = tblLibro.FechaPublicacion;
 
             return libro;
         }

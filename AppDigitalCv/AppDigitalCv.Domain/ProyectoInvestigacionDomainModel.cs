@@ -14,8 +14,8 @@ namespace AppDigitalCv.Domain
         public DocumentosDomainModel documentos { get; set; }
         public string strTituloProyecto { get; set; }
         public string strNombrePatrocinador { get; set; }
-        public DateTime dteFechaInicio { get; set; }
-        public DateTime dteFechaTermino { get; set; }
+        public string dteFechaInicio { get; set; }
+        public string dteFechaTermino { get; set; }
         public string strTipoPatrocinador { get; set; }
         public string strInvestigadoresParticipantes { get; set; }
         public string strAlumnosParticipantes { get; set; }

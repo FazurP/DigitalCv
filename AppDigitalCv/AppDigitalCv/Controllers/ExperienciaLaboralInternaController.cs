@@ -16,18 +16,16 @@ namespace AppDigitalCv.Controllers
 
         IAreaBusiness areaBusiness;
         IProgramaEducativoBusiness programaEducativoBusiness;
-        ITipoContratoBusiness tipoContratoBusiness;
         ICategoriaBusiness categoriaBusiness;
         IPeriodoBusiness periodoBusiness;
         IExperienciaLaboralInternaBusiness ExperienciaLaboralInternaBusiness;
 
         public ExperienciaLaboralInternaController(IAreaBusiness _areaBusiness, IProgramaEducativoBusiness _programaEducativoBusiness,
-            ITipoContratoBusiness _tipoContratoBusiness, ICategoriaBusiness _categoriaBusiness, IPeriodoBusiness _periodoBusiness
+           ICategoriaBusiness _categoriaBusiness, IPeriodoBusiness _periodoBusiness
             , IExperienciaLaboralInternaBusiness _experienciaLaboralInternaBusiness)
         {
             areaBusiness = _areaBusiness;
             programaEducativoBusiness = _programaEducativoBusiness;
-            tipoContratoBusiness = _tipoContratoBusiness;
             categoriaBusiness = _categoriaBusiness;
             periodoBusiness = _periodoBusiness;
             ExperienciaLaboralInternaBusiness = _experienciaLaboralInternaBusiness;
@@ -45,7 +43,6 @@ namespace AppDigitalCv.Controllers
                 ViewBag.idTipoContrato = new SelectList("");
                 ViewBag.idArea = new SelectList(areaBusiness.GetAreas(),"idArea","strDescripcion");
                 ViewBag.idProgramaEducativo = new SelectList(programaEducativoBusiness.GetProgramasEducativos(),"idProgramaEducativo","strDescripcion");
-                ViewBag.idPeriodo = new SelectList(periodoBusiness.GetPeriodos(),"id","strDescripcion");
                 return View();
             }
             else
@@ -64,11 +61,7 @@ namespace AppDigitalCv.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (experienciaLaboralInternaVM.dteFechaTermino > experienciaLaboralInternaVM.dteFechaInicio)
-                {
-                    this.AddUpdateExperienciaLaboralInterna(experienciaLaboralInternaVM);
-                }
-               
+                this.AddUpdateExperienciaLaboralInterna(experienciaLaboralInternaVM);
             }
             return RedirectToAction("Create","ExperienciaLaboralInterna");
         }
@@ -88,21 +81,7 @@ namespace AppDigitalCv.Controllers
             respuesta = true;
             return respuesta;
         }
-        /// <summary>
-        /// Este metodo se encarga de obtener un objeto y pintarlo en una vista parcial de un DropDawnList
-        /// </summary>
-        /// <param name="idCategoria"></param>
-        /// <returns>Una vista parcial con el objeto</returns>
-        [HttpPost]
-        public ActionResult GetTipoContratoByCategoria(int idCategoria)
-        {
-            List<TipoContratoDomainModel> tipoContrato = tipoContratoBusiness.GetTiposContratoById(idCategoria);
-            List<TipoContratoVM> tipoContratoVM = new List<TipoContratoVM>();
-
-            AutoMapper.Mapper.Map(tipoContrato, tipoContratoVM);
-            ViewBag.idTipoContrato = new SelectList(tipoContratoVM, "idTipoContrato", "strDescripcion");
-            return PartialView("_TipoDeContrato");
-        }
+       
         /// <summary>
         /// Este metodo se encarga de cargar y mostrar los objetos correspondientes de la persona en la tabla
         /// </summary>

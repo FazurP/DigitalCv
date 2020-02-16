@@ -55,7 +55,6 @@ namespace AppDigitalCv.Business
                 tblExperienciaLaboralInterna.idPeriodo = experienciaLaboralInternaDM.idPeriodo;
                 tblExperienciaLaboralInterna.idPersonal = experienciaLaboralInternaDM.idPersonal;
                 tblExperienciaLaboralInterna.idProgramaEduactivo = experienciaLaboralInternaDM.idProgramaEducativo;
-                tblExperienciaLaboralInterna.idTipoContrato = experienciaLaboralInternaDM.idTipoContrato;
                 tblExperienciaLaboralInterna.strActividadDesempenada = experienciaLaboralInternaDM.strActividadDesempeñada;
                 tblExperienciaLaboralInterna.dteFechaInicio = experienciaLaboralInternaDM.dteFechaInicio;
                 tblExperienciaLaboralInterna.dteFechaFin = experienciaLaboralInternaDM.dteFechaTermino;
@@ -87,10 +86,17 @@ namespace AppDigitalCv.Business
                 experienciaLaboralInternaDM.idPeriodo = tblExperiencia.idPeriodo.Value;
                 experienciaLaboralInternaDM.idPersonal = tblExperiencia.idPersonal.Value;
                 experienciaLaboralInternaDM.idProgramaEducativo = tblExperiencia.idProgramaEduactivo.Value;
-                experienciaLaboralInternaDM.idTipoContrato = tblExperiencia.idTipoContrato.Value;
                 experienciaLaboralInternaDM.strActividadDesempeñada = tblExperiencia.strActividadDesempenada;
-                experienciaLaboralInternaDM.dteFechaInicio = tblExperiencia.dteFechaInicio.Value;
-                experienciaLaboralInternaDM.dteFechaTermino = tblExperiencia.dteFechaFin.Value;
+                experienciaLaboralInternaDM.dteFechaInicio = tblExperiencia.dteFechaInicio;
+                experienciaLaboralInternaDM.dteFechaTermino = tblExperiencia.dteFechaFin;
+                experienciaLaboralInternaDM.Area = new AreaDomainModel
+                {
+                    strDescripcion = tblExperiencia.catArea.strDescripcion
+                };
+                experienciaLaboralInternaDM.ProgramaEducativo = new ProgramaEducativoDomainModel
+                {
+                    strDescripcion = tblExperiencia.catProgramaEducativo.strDescripcion
+                };
 
                 experienciaLaboralInternaDomainModels.Add(experienciaLaboralInternaDM);
 
@@ -118,10 +124,17 @@ namespace AppDigitalCv.Business
             experienciaLaboralInternaDM.idPeriodo = tblExperienciaLaboral.idPeriodo.Value;
             experienciaLaboralInternaDM.idPersonal = tblExperienciaLaboral.idPersonal.Value;
             experienciaLaboralInternaDM.idProgramaEducativo = tblExperienciaLaboral.idProgramaEduactivo.Value;
-            experienciaLaboralInternaDM.idTipoContrato = tblExperienciaLaboral.idTipoContrato.Value;
             experienciaLaboralInternaDM.strActividadDesempeñada = tblExperienciaLaboral.strActividadDesempenada;
-            experienciaLaboralInternaDM.dteFechaInicio = tblExperienciaLaboral.dteFechaInicio.Value;
-            experienciaLaboralInternaDM.dteFechaTermino = tblExperienciaLaboral.dteFechaFin.Value;
+            experienciaLaboralInternaDM.dteFechaInicio = tblExperienciaLaboral.dteFechaInicio;
+            experienciaLaboralInternaDM.dteFechaTermino = tblExperienciaLaboral.dteFechaFin;
+            experienciaLaboralInternaDM.Area = new AreaDomainModel
+            {
+                strDescripcion = tblExperienciaLaboral.catArea.strDescripcion
+            };
+            experienciaLaboralInternaDM.ProgramaEducativo = new ProgramaEducativoDomainModel
+            {
+                strDescripcion = tblExperienciaLaboral.catProgramaEducativo.strDescripcion
+            };
 
             return experienciaLaboralInternaDM;
         }

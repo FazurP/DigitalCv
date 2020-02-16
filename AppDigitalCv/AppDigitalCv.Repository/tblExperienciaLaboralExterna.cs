@@ -18,16 +18,14 @@ namespace AppDigitalCv.Repository
         public Nullable<int> idPersonal { get; set; }
         public Nullable<int> idDocumento { get; set; }
         public Nullable<int> idTipoPersonal { get; set; }
-        public Nullable<int> idPeriodo { get; set; }
         public string strInstitucionEmpresa { get; set; }
-        public Nullable<System.DateTime> dteFechaInicio { get; set; }
-        public Nullable<System.DateTime> dteFechaFinal { get; set; }
+        public string dteFechaInicio { get; set; }
+        public string dteFechaFinal { get; set; }
         public string strActividades { get; set; }
         public string strMotivoConclucion { get; set; }
         public string strPuestoDesempeñado { get; set; }
     
         public virtual catDocumentos catDocumentos { get; set; }
-        public virtual catPeriodo catPeriodo { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
     }
 }

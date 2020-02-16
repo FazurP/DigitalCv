@@ -13,7 +13,5 @@ namespace AppDigitalCv.Business.Interface
 
         List<ExperienciaLaboralExternaDomainModel> GetExperienciaLaboralByPersonal(int idPersonal);
         ExperienciaLaboralExternaDomainModel GetExperienciaLaboral(int idDocumento, int idPersonal);
-
-        ExperienciaLaboralExternaDomainModel GetExperienciaLaboralEdit(int idDocumento, int idPersonal);
     }
 }

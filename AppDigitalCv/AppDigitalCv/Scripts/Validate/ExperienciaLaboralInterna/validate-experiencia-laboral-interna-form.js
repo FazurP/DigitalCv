@@ -1,6 +1,5 @@
 ﻿$(document).ready(function () {
 
-    $('#idTipoContrato').prop('disabled', true);
     $('#idArea').prop('disabled', true);
     $('#idProgramaEducativo').prop('disabled', true);
     $('#idPeriodo').prop('disabled', true);
@@ -14,7 +13,6 @@
         var dato = $(this).val();
 
         if (dato == null || dato == 0 || dato == '0' || dato == "0") {
-            $('#idTipoContrato').prop('disabled', true);
             $('#idArea').prop('disabled', true);
             $('#idProgramaEducativo').prop('disabled', true);
             $('#idPeriodo').prop('disabled', true);
@@ -23,7 +21,6 @@
             $('#strActividadDesempeñada').prop('disabled', true);
             $('#btnGuardar').prop('disabled', true);
 
-            $('#idTipoContrato').val(0);
             $('#idArea').val(0);
             $('#idProgramaEducativo').val(0);
             $('#idPeriodo').val(0);
@@ -32,32 +29,6 @@
             $('#strActividadDesempeñada').val('');
         } else {
             toastr.success('Categoria Seleccionada', 'Digital-Cv dice', { timeOut: 1000, closeButton:true });
-            $('#idTipoContrato').prop('disabled', false);
-        }
-
-    })
-
-    $('#idTipoContrato').change(function () {
-
-        var dato = $(this).val();
-
-        if (dato == null || dato == 0 || dato == '0' || dato == "0") {
-            $('#idArea').prop('disabled', true);
-            $('#idProgramaEducativo').prop('disabled', true);
-            $('#idPeriodo').prop('disabled', true);
-            $('#dteFechaInicio').prop('disabled', true);
-            $('#dteFechaTermino').prop('disabled', true);
-            $('#strActividadDesempeñada').prop('disabled', true);
-            $('#btnGuardar').prop('disabled', true);
-
-            $('#idArea').val(0);
-            $('#idProgramaEducativo').val(0);
-            $('#idPeriodo').val(0);
-            $('#dteFechaInicio').val('');
-            $('#dteFechaTermino').val('');
-            $('#strActividadDesempeñada').val('');
-        } else {
-            toastr.success('Tipo de Contrato Seleccionado', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
             $('#idArea').prop('disabled', false);
         }
 

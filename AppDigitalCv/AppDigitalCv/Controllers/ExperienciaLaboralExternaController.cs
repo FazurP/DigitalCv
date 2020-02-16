@@ -56,53 +56,39 @@ namespace AppDigitalCv.Controllers
 
             if (ModelState.IsValid)
             {
-                if (experienciaLaboralExternaVM.dteFechaInicio <= experienciaLaboralExternaVM.dteFechaFinal)
-                {
-                    ExperienciaLaboralExternaDomainModel experienciaLaboralDM = new ExperienciaLaboralExternaDomainModel();
-                    DocumentosDomainModel documentosDomainModel = new DocumentosDomainModel();
-                    AutoMapper.Mapper.Map(experienciaLaboralExternaVM, experienciaLaboralDM);
-                    AutoMapper.Mapper.Map(experienciaLaboralExternaVM.documentosVM, documentosDomainModel);
-                    experienciaLaboralDM.documentosDM = documentosDomainModel;
+                object[] obj = CrearDocumentoPersonales(experienciaLaboralExternaVM);
 
-                    if (GuardarArchivo(experienciaLaboralDM, nombre))
-                    {
-                        experienciaLaboralDM.documentosDM.StrUrl = experienciaLaboralDM.documentosDM.DocumentoFile.FileName;
-                        DocumentosDomainModel documentos = documentosBusiness.AddDocumento(documentosDomainModel);
-                        experienciaLaboralDM.idDocumento = documentos.IdDocumento;
-                        experienciaLaboralExterna.AddUpdateExperiencia(experienciaLaboralDM);
-
-                    }
-                    else
-                    {
-                        ViewBag.ErrorArchivo = Recursos.RecursosSistema.ERROR_GUARDADO_ARCHIVO;
-                    }
-                }
-                else
+                if (obj[0].Equals(true))
                 {
-                    ViewBag.ErrorFechaComparacion = Recursos.RecursosSistema.ERROR_COMPARACION_FECHA;
+                    experienciaLaboralExternaVM.Documentos = new DocumentosVM { StrUrl = obj[1].ToString() };
+                    ExperienciaLaboralExternaDomainModel experienciaLaboralExternaDomainModel = new ExperienciaLaboralExternaDomainModel();
+                    AutoMapper.Mapper.Map(experienciaLaboralExternaVM, experienciaLaboralExternaDomainModel);
+                    experienciaLaboralExterna.AddUpdateExperiencia(experienciaLaboralExternaDomainModel);
                 }
             }
             return RedirectToAction("Create", "ExperienciaLaboralExterna");
         }
-        /// <summary>
-        /// Este metodo se encarga de guardar el archivo en la ruta del servidor
-        /// </summary>
-        /// <param name="experienciaDM"></param>
-        /// <param name="nombre"></param>
-        /// <returns>true o false</returns>
-        private bool GuardarArchivo(ExperienciaLaboralExternaDomainModel experienciaDM, string nombre)
+        
+        private Object[] CrearDocumentoPersonales(ExperienciaLaboralExternaVM experienciaLaboralExternaVM)
         {
-            bool respuesta = false;
-            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombre + "/"));
+            Object[] respuesta = new Object[2];
+            experienciaLaboralExternaVM.idPersonal = SessionPersister.AccountSession.IdPersonal;
+            string nombrecompleto = SessionPersister.AccountSession.NombreCompleto;
+            string path = Path.Combine(Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + nombrecompleto));
+
             if (Directory.Exists(path))
             {
-                if (experienciaDM.documentosDM.DocumentoFile.ContentType.Equals("application/pdf"))
+                if (experienciaLaboralExternaVM.Documentos.DocumentoFile != null)
                 {
-                    string pathCompleto = Path.Combine(path,Path.GetFileName(experienciaDM.documentosDM.DocumentoFile.FileName));
-                    experienciaDM.documentosDM.DocumentoFile.SaveAs(pathCompleto);
-                    respuesta = true;
+                    respuesta = FileManager.FileManager.CheckFileIfExist(path, experienciaLaboralExternaVM.Documentos);
                 }
             }
+            else
+            {
+                DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
+                CrearDocumentoPersonales(experienciaLaboralExternaVM);
+            }
+
             return respuesta;
         }
         /// <summary>
@@ -182,10 +168,13 @@ namespace AppDigitalCv.Controllers
 
             if (experienciaLaboralDM != null)
             {
-                documentosBusiness.DeleteDocumento(experienciaVM.idDocumento);
+                string url = Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + SessionPersister.AccountSession.NombreCompleto + "/" + experienciaLaboralDM.Documentos.StrUrl);
+                if (FileManager.FileManager.DeleteFileFromServer(url))
+                {
+                    documentosBusiness.DeleteDocumento(experienciaVM.idDocumento);
+                }
             }
-
-                
+            
             return RedirectToAction("Create","ExperienciaLaboralExterna");
         }
         /// <summary>
@@ -198,7 +187,7 @@ namespace AppDigitalCv.Controllers
         {
             int idPersonal = SessionPersister.AccountSession.IdPersonal;
             ExperienciaLaboralExternaVM experienciaLaboralVM = new ExperienciaLaboralExternaVM();
-            ExperienciaLaboralExternaDomainModel experienciaLaboral = experienciaLaboralExterna.GetExperienciaLaboralEdit(idDocumento, idPersonal);
+            ExperienciaLaboralExternaDomainModel experienciaLaboral = experienciaLaboralExterna.GetExperienciaLaboral(idDocumento, idPersonal);
 
             if (experienciaLaboral != null)
             {

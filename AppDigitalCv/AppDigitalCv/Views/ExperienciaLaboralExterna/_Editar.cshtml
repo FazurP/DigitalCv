@@ -15,30 +15,26 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-7">
-                        <label class="titleletter">Datos Actuales</label>
-                        <hr />
-                        <label>Institución o Empresa:</label>
-                        @Html.TextBoxFor(model => model.strInstitucionEmpresa, new { @class = "form-control input-sm" })
-
-                        <Label>Actividades:</Label>
-                        @Html.TextBoxFor(model => model.strActividades, new { @class = "form-control input-sm" })
-
-                        <Label>Motivo de Conclusión:</Label>
-                        @Html.TextBoxFor(model => model.strMotivoConclusion, new { @class = "form-control input-sm" })
-
-                        <label>Puesto Desempeñado:</label>
-                        @Html.TextBoxFor(model => model.strPuestoDesempeñado, new { @class = "form-control input-sm", @id="strPuestoDesempeñado" })
-                        <label>Fecha de Inicio</label>
-                        @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm", @type = "date", @id="FechaInicio" })
-                        <label>Fecha de Termino</label>
-                        @Html.TextBoxFor(model => model.dteFechaFinal, new { @class = "form-control input-sm", @type = "date" })
-
-
+                        <div class="form-group">
+                            <label>Institución o Empresa:</label>
+                            @Html.TextBoxFor(model => model.strInstitucionEmpresa, new { @class = "form-control input-sm" })
+                        </div>
+                        <div class="form-group">
+                            <Label>Actividades:</Label>
+                            @Html.TextBoxFor(model => model.strActividades, new { @class = "form-control input-sm" })
+                        </div>
+                        <div class="form-group">
+                            <Label>Motivo de Conclusión:</Label>
+                            @Html.TextBoxFor(model => model.strMotivoConclusion, new { @class = "form-control input-sm" })
+                        </div>                       
+                        <div class="form-group">
+                            <label>Puesto Desempeñado:</label>
+                            @Html.TextBoxFor(model => model.strPuestoDesempeñado, new { @class = "form-control input-sm", @id = "strPuestoDesempeñado" })
+                        </div>                                         
                     </div>
-
                     <div class="row">
                         <div class="form-group col-lg-6 col-lg-offset-4">
-                            <a href="#" id="btnEnviar" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
+                            <a href="#" id="btnEnviar" class="btn btn-sm btn-success"><span>Actualizar</span></a>
                         </div>
                     </div>
                 </div>
@@ -48,47 +44,93 @@
     </div>
 
 
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
 
 
 <script>
+
+     $("#strInstitucionEmpresa").bind('keypress', function (e) {
+        var regex = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9., ]+$");
+        var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (!regex.test(key)) {
+            toastr.warning("Solo se Admiten Cadenas de Texto.", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+            e.preventDefault();
+            return false;
+        }
+     });
+
+     $("#strActividades").bind('keypress', function (e) {
+        var regex = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$");
+        var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (!regex.test(key)) {
+            toastr.warning("Solo se Admiten Cadenas de Texto.", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+            e.preventDefault();
+            return false;
+        }
+     });
+
+     $("#strMotivoConclusion").bind('keypress', function (e) {
+        var regex = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$");
+        var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (!regex.test(key)) {
+            toastr.warning("Solo se Admiten Cadenas de Texto.", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+            e.preventDefault();
+            return false;
+        }
+     });
+
+     $("#strPuestoDesempeñado").bind('keypress', function (e) {
+        var regex = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$");
+        var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (!regex.test(key)) {
+            toastr.warning("Solo se Admiten Cadenas de Texto.", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+            e.preventDefault();
+            return false;
+        }
+    });
 
     $(document).ready(function () {
 
         $("#btnEnviar").click(function () {
 
-            var prueba =  $('#id').val();
+            let institucion =  $('#strInstitucionEmpresa').val();
+            let actividades =  $('#strActividades').val();
+            let motivo =  $('#strMotivoConclusion').val();
+            let puesto = $('#strPuestoDesempeñado').val();
 
-            alert(prueba);
+            if (institucion != "" && actividades != "" && motivo != "" && puesto != "") {
 
-            var ExperienciaLaboralExternaVM = {};
-            var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
+                var ExperienciaLaboralExternaVM = {};
+                var IdPersonal = @SessionPersister.AccountSession.IdPersonal;
 
-            ExperienciaLaboralExternaVM.IdPersonal = IdPersonal;
-            ExperienciaLaboralExternaVM.id = $('#id').val();
-            ExperienciaLaboralExternaVM.idDocumento = $('#idDocumento').val();
+                ExperienciaLaboralExternaVM.IdPersonal = IdPersonal;
+                ExperienciaLaboralExternaVM.id = $('#id').val();
+                ExperienciaLaboralExternaVM.idDocumento = $('#idDocumento').val();
 
-            ExperienciaLaboralExternaVM.strInstitucionEmpresa = $('#strInstitucionEmpresa').val();
-            ExperienciaLaboralExternaVM.strActividades = $('#strActividades').val();
-            ExperienciaLaboralExternaVM.strMotivoConclusion = $('#strMotivoConclusion').val();
-            ExperienciaLaboralExternaVM.strPuestoDesempeñado = $('#strPuestoDesempeñado').val();
-            ExperienciaLaboralExternaVM.dteFechaInicio = $('#FechaInicio').val();
-            ExperienciaLaboralExternaVM.dteFechaFinal = $('#dteFechaFinal').val();
-            $.ajax({
-                type: "POST",
-                url: "/ExperienciaLaboralExterna/EditExperiencia",
-                data: { experienciaLaboralExternaVM: ExperienciaLaboralExternaVM},
-                success: function () {
-                    $("#myModal1").modal("hide");
-                    window.location.href = "/ExperienciaLaboralExterna/Create";
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    alert(textStatus);
-                    console.log(textStatus);
+                ExperienciaLaboralExternaVM.strInstitucionEmpresa = $('#strInstitucionEmpresa').val();
+                ExperienciaLaboralExternaVM.strActividades = $('#strActividades').val();
+                ExperienciaLaboralExternaVM.strMotivoConclusion = $('#strMotivoConclusion').val();
+                ExperienciaLaboralExternaVM.strPuestoDesempeñado = $('#strPuestoDesempeñado').val();
 
-                }
-            })
+                $.ajax({
+                    type: "POST",
+                    url: "/ExperienciaLaboralExterna/EditExperiencia",
+                    data: { experienciaLaboralExternaVM: ExperienciaLaboralExternaVM },
+                    success: function () {
+                        $("#myModal1").modal("hide");
+                        window.location.href = "/ExperienciaLaboralExterna/Create";
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        alert(textStatus);
+                        console.log(textStatus);
+
+                    }
+                })
+            } else
+            {
+                toastr.warning("No Puedes Dejar Campos Vacios", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+            }
+
+          
         });
     });
 </script>

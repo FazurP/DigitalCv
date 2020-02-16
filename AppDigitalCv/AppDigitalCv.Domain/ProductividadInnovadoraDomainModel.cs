@@ -19,7 +19,7 @@ namespace AppDigitalCv.Domain
         public string strDescripcion { get; set; }
         public string strClasificacionInternacionalPatentes { get; set; }
         public string strNumeroRegistro { get; set; }
-        public DateTime dteFechaRegistro { get; set; }
+        public string dteFechaRegistro { get; set; }
         public string strProposito { get; set; }
 
     }

@@ -46,7 +46,7 @@
                         @Html.TextBoxFor(model => model.strAutores, new { @class = "form-control input-sm", id = "txtAutores" })
                     </div>          
                     <div class="form-group">
-                        <a href="" id="btnEnviar" class="btn btn-sm btn-success"><span><i class="">Actualizar</i></span></a>
+                        <a href="" id="enviar" class="btn btn-sm btn-success"><span><i class="">Actualizar</i></span></a>
                     </div>
                 </div>
             </div>
@@ -56,26 +56,114 @@
 </div>
 
 
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
-
-
 <script>
+
+    $('#txtAutor').keypress(function (e) {
+
+        let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$");
+
+        if (!regExp.test(data)) {
+            e.preventDefault();
+            toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+        }
+    })
+
+    $('#txtTitulo').keypress(function (e) {
+
+        let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ. ]+$");
+
+        if (!regExp.test(data)) {
+            e.preventDefault();
+            toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+        }
+
+    })
+
+    $('#txtEditorial').keypress(function (e) {
+
+        let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9. ]+$");
+
+        if (!regExp.test(data)) {
+            e.preventDefault();
+            toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+        }
+
+    })
+
+    $('#txtEdicion').keypress(function (e) {
+
+        let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9. ]+$");
+
+        if (!regExp.test(data)) {
+            e.preventDefault();
+            toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+        }
+
+    })
+
+    $('#txtTiraje').keypress(function (e) {
+
+        let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        let regExp = new RegExp("^[0-9]+$");
+
+        if (!regExp.test(data)) {
+            e.preventDefault();
+            toastr.warning('Solo se Permiten Numeros', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+        }
+    })
+
+    $('#txtISBN').keypress(function (e) {
+
+        let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        let regExp = new RegExp("^[0-9]+$");
+
+        if (!regExp.test(data)) {
+            e.preventDefault();
+            toastr.warning('Solo se Permiten Numeros', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+        }
+    })
+
+    $('#txtTituloCapitulo').keypress(function (e) {
+
+        let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ. ]+$");
+
+        if (!regExp.test(data)) {
+            e.preventDefault();
+            toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+        }
+
+    })
+
+    $('#txtAutores').keypress(function (e) {
+
+        let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$");
+
+        if (!regExp.test(data)) {
+            e.preventDefault();
+            toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+        }
+
+    })
+
 
     $(document).ready(function () {
 
-        $("#btnEnviar").click(function () {
+        $("#enviar").click(function () {
 
             let autor = $('#txtAutor').val();
-            let titulo = $('#txtEditorial').val();
+            let titulo = $('#txtTitulo').val();
             let editorial = $('#txtEditorial').val();
             let edicion = $('#txtEdicion').val();
             let tiraje = $('#txtTiraje').val();
             let isbn = $('#txtISBN').val();
             let tituloCapitulo = $('#txtTituloCapitulo').val();
             let autores = $('#txtAutores').val();
-
-         
 
             if (autor != "" && titulo != "" && editorial != "" && edicion != "" && tiraje != "" && isbn != "" && tituloCapitulo != ""
                 && autores != "") {
@@ -108,12 +196,11 @@
                     }
                 })
 
-            } else
+            }
+            else
             {
                 toastr.warning('No Puedes Dejar Campos Vacios', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
             }
-
-
             
         });
     });

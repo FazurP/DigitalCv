@@ -18,8 +18,8 @@ namespace AppDigitalCv.Repository
         public Nullable<int> idPersonal { get; set; }
         public Nullable<int> idProgramaEductivo { get; set; }
         public string strNombreEstudiante { get; set; }
-        public Nullable<System.DateTime> dteFechaInicio { get; set; }
-        public Nullable<System.DateTime> dteFechaTermino { get; set; }
+        public string dteFechaInicio { get; set; }
+        public string dteFechaTermino { get; set; }
         public string strEstadoTutoria { get; set; }
         public string strHoras { get; set; }
         public string strTipo { get; set; }

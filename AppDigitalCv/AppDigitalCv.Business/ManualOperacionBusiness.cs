@@ -79,7 +79,7 @@ namespace AppDigitalCv.Business
                 manualOperacionDM.strDescripcion = tblManualOperacion.strDescripcion;
                 manualOperacionDM.strInstitucionBeneficiaria = tblManualOperacion.strInstitucionBeneficiaria;
                 manualOperacionDM.strNombre = tblManualOperacion.strNombre;
-                manualOperacionDM.dteFechaPublicacion = tblManualOperacion.dteFechaPublicacion.Value;
+                manualOperacionDM.dteFechaPublicacion = tblManualOperacion.dteFechaPublicacion;
 
                 manualesOperacion.Add(manualOperacionDM);
             }
@@ -102,7 +102,7 @@ namespace AppDigitalCv.Business
             manualOperacionDM.strDescripcion = tblManualOperacion.strDescripcion;
             manualOperacionDM.strInstitucionBeneficiaria = tblManualOperacion.strInstitucionBeneficiaria;
             manualOperacionDM.strNombre = tblManualOperacion.strNombre;
-            manualOperacionDM.dteFechaPublicacion = tblManualOperacion.dteFechaPublicacion.Value;
+            manualOperacionDM.dteFechaPublicacion = tblManualOperacion.dteFechaPublicacion;
 
             return manualOperacionDM;
         }

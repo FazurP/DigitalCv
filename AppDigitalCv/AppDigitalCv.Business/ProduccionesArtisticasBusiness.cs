@@ -101,7 +101,7 @@ namespace AppDigitalCv.Business
                 produccionesArtisticasDM.strLugarPresento = tblProduccion.strLugarPresento;
                 produccionesArtisticasDM.strNombreObra = tblProduccion.strNombreObra;
                 produccionesArtisticasDM.strProposito = tblProduccion.strProposito;
-                produccionesArtisticasDM.dteFechaPublicacion = tblProduccion.dteFechaPublicacion.Value;
+                produccionesArtisticasDM.dteFechaPublicacion = tblProduccion.dteFechaPublicacion;
                 produccionesArtisticasDM.documentos = new DocumentosDomainModel
                 {
                     StrUrl = tblProduccion.catDocumentos.strUrl
@@ -138,7 +138,7 @@ namespace AppDigitalCv.Business
             produccionesArtisticasDM.strLugarPresento = tblProduccion.strLugarPresento;
             produccionesArtisticasDM.strNombreObra = tblProduccion.strNombreObra;
             produccionesArtisticasDM.strProposito = tblProduccion.strProposito;
-            produccionesArtisticasDM.dteFechaPublicacion = tblProduccion.dteFechaPublicacion.Value;
+            produccionesArtisticasDM.dteFechaPublicacion = tblProduccion.dteFechaPublicacion;
             produccionesArtisticasDM.documentos = new DocumentosDomainModel
             {
                 StrUrl = tblProduccion.catDocumentos.strUrl

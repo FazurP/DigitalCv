@@ -89,7 +89,7 @@ namespace AppDigitalCv.Business
                 informeTecnicoDM.strAutor = tblInformeTecnico.strAutor;
                 informeTecnicoDM.strInstitucionBeneficiaria = tblInformeTecnico.strInstitucionBeneficiaria;
                 informeTecnicoDM.strNombreProyecto = tblInformeTecnico.strNombreProyecto;
-                informeTecnicoDM.dteElaboracionInforme = tblInformeTecnico.dteElaboracionInforme.Value;
+                informeTecnicoDM.dteElaboracionInforme = tblInformeTecnico.dteElaboracionInforme;
                 informeTecnicoDM.enumEstadoActual = tblInformeTecnico.enumEstadoActual;
                 informeTecnicoDM.enumProposito = tblInformeTecnico.enumProposito;
                 informeTecnicoDM.Documentos = new DocumentosDomainModel
@@ -118,7 +118,7 @@ namespace AppDigitalCv.Business
             informeTecnicoDM.strAutor = tblInformeTecnico.strAutor;
             informeTecnicoDM.strInstitucionBeneficiaria = tblInformeTecnico.strInstitucionBeneficiaria;
             informeTecnicoDM.strNombreProyecto = tblInformeTecnico.strNombreProyecto;
-            informeTecnicoDM.dteElaboracionInforme = tblInformeTecnico.dteElaboracionInforme.Value;
+            informeTecnicoDM.dteElaboracionInforme = tblInformeTecnico.dteElaboracionInforme;
             informeTecnicoDM.enumEstadoActual = tblInformeTecnico.enumEstadoActual;
             informeTecnicoDM.enumProposito = tblInformeTecnico.enumProposito;
             informeTecnicoDM.Documentos = new DocumentosDomainModel

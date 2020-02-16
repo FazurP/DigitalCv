@@ -97,7 +97,7 @@ namespace AppDigitalCv.Business
                 prototipoDM.strObjetivos = tblPrototipo.strObjetivos;
                 prototipoDM.strProposito = tblPrototipo.strProposito;
                 prototipoDM.strTipoPrototipo = tblPrototipo.strTipoPrototipo;
-                prototipoDM.dteFechaPublicacion = tblPrototipo.dteFechaPublicacion.Value;
+                prototipoDM.dteFechaPublicacion = tblPrototipo.dteFechaPublicacion;
                 prototipoDM.documentos = new DocumentosDomainModel
                 {
                     StrUrl = tblPrototipo.catDocumentos.strUrl
@@ -130,7 +130,7 @@ namespace AppDigitalCv.Business
             prototipoDM.strObjetivos = tblPrototipo.strObjetivos;
             prototipoDM.strProposito = tblPrototipo.strProposito;
             prototipoDM.strTipoPrototipo = tblPrototipo.strTipoPrototipo;
-            prototipoDM.dteFechaPublicacion = tblPrototipo.dteFechaPublicacion.Value;
+            prototipoDM.dteFechaPublicacion = tblPrototipo.dteFechaPublicacion;
             prototipoDM.documentos = new DocumentosDomainModel
             {
                 StrUrl = tblPrototipo.catDocumentos.strUrl

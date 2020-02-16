@@ -15,8 +15,8 @@ namespace AppDigitalCv.Domain
         public string strNombreAlumno { get; set; }
         public string strResumenProyecto { get; set; }
         public string strObjetivo { get; set; }
-        public DateTime dteFechaInicio { get; set; }
-        public DateTime dteFechaTermino { get; set; }
+        public string dteFechaInicio { get; set; }
+        public string dteFechaTermino { get; set; }
         public string strNombreEmpresaInstitucion { get; set; }
         public string strPuntosCriticosResolver { get; set; }
         public string strLogrosBeneficiosObtenidos { get; set; }

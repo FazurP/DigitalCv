@@ -242,7 +242,8 @@ namespace AppDigitalCv.Controllers
             
             if (premioDDM != null)
             {
-                if (this.DeleteFileSystemDocument(nombreUsuario, premioDDM.IdDocumento))
+                string url = Server.MapPath(Recursos.RecursosSistema.DOCUMENTO_USUARIO + SessionPersister.AccountSession.NombreCompleto + "/" + premioDDM.Documentos.StrUrl);
+                if (FileManager.FileManager.DeleteFileFromServer(url))
                 {
                     IdocumentosBusiness.DeleteDocumento(premioDDM.IdDocumento);
                 }
@@ -264,26 +265,6 @@ namespace AppDigitalCv.Controllers
                 return PartialView("_verDatos", premiosDocenteVM);
             }
             return PartialView();        
-        }
-
-        /// <summary>
-        /// Este metodo se encarga de eliminar un archivo o documento de la carpeta del usuario
-        /// </summary>
-        /// <param name="nombreUsuario">nombre del usuario a eliminar</param>
-        /// <returns>valor true/false</returns>
-        public bool DeleteFileSystemDocument(string nombreUsuario,int IdDocumento)
-        {
-            bool respuesta = false;
-            string path = string.Empty;
-            DocumentosDomainModel documento = IdocumentosBusiness.GetDocumentoByIdDocumento(IdDocumento);
-            path = Recursos.RecursosSistema.DOCUMENTO_USUARIO+nombreUsuario+"/"+documento.StrUrl;
-            string pathf = Server.MapPath(path);
-
-            DirectoryInfo directorio = new DirectoryInfo(pathf);
-            FileInfo fileInfo = new FileInfo(pathf);
-            fileInfo.Delete();
-            respuesta = true;
-            return respuesta;
         }
 
 

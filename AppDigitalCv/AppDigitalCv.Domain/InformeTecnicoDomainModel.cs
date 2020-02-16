@@ -16,7 +16,7 @@ namespace AppDigitalCv.Domain
         public string strAlcance { get; set; }
         public string strInstitucionBeneficiaria { get; set; }
         public string enumEstadoActual { get; set; }
-        public DateTime dteElaboracionInforme { get; set; }
+        public string dteElaboracionInforme { get; set; }
         public int numeroPaginas { get; set; }
         public int idPais { get; set; }
         public string enumProposito { get; set; }

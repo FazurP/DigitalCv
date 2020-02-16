@@ -92,7 +92,7 @@ namespace AppDigitalCv.Business
                 productividadInnovadoraDM.strProposito = item.strProposito;
                 productividadInnovadoraDM.strTipoProductividadInnovadora = item.strTipoProductividadInnovadora;
                 productividadInnovadoraDM.strTitulo = item.strTitulo;
-                productividadInnovadoraDM.dteFechaRegistro = item.dteFechaRegistro.Value;
+                productividadInnovadoraDM.dteFechaRegistro = item.dteFechaRegistro;
                 productividadInnovadoraDM.documento = new DocumentosDomainModel
                 {
                     StrUrl = item.catDocumentos.strUrl
@@ -123,7 +123,7 @@ namespace AppDigitalCv.Business
             productividadInnovadoraDM.strProposito = tblProductividad.strProposito;
             productividadInnovadoraDM.strTipoProductividadInnovadora = tblProductividad.strTipoProductividadInnovadora;
             productividadInnovadoraDM.strTitulo = tblProductividad.strTitulo;
-            productividadInnovadoraDM.dteFechaRegistro = tblProductividad.dteFechaRegistro.Value;
+            productividadInnovadoraDM.dteFechaRegistro = tblProductividad.dteFechaRegistro;
             productividadInnovadoraDM.documento = new DocumentosDomainModel
             {
                 StrUrl = tblProductividad.catDocumentos.strUrl

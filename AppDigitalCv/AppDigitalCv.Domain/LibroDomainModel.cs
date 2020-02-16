@@ -20,7 +20,7 @@ namespace AppDigitalCv.Domain
         public string strEdicion { get; set; }
         public string strTiraje { get; set; }
         public string strISBM { get; set; }
-        public DateTime FechaPublicacion { get; set; }
+        public string FechaPublicacion { get; set; }
         public string strProposito { get; set; }
 
     }

@@ -105,7 +105,7 @@ namespace AppDigitalCv.Business
                 capitulo.strTituloCapitulo = item.strTituloCapitulo;
                 capitulo.enumProposito = item.enumProposito;
                 capitulo.enumEstadoActual = item.enumEstadoActual;
-                capitulo.dteFechaPublicacion = item.dteFechaPublicacion.Value;
+                capitulo.dteFechaPublicacion = item.dteFechaPublicacion;
 
                 capituloLibroDomainModels.Add(capitulo);
             }
@@ -140,7 +140,7 @@ namespace AppDigitalCv.Business
             capituloLibroDM.strTituloCapitulo = tblCapituloLibro.strTituloCapitulo;
             capituloLibroDM.enumProposito = tblCapituloLibro.enumProposito;
             capituloLibroDM.enumEstadoActual = tblCapituloLibro.enumEstadoActual;
-            capituloLibroDM.dteFechaPublicacion = tblCapituloLibro.dteFechaPublicacion.Value;
+            capituloLibroDM.dteFechaPublicacion = tblCapituloLibro.dteFechaPublicacion;
 
             return capituloLibroDM;
         }

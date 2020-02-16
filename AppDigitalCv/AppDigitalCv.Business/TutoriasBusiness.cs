@@ -80,8 +80,8 @@ namespace AppDigitalCv.Business
                 tutoriasDM.idProgramaEductivo = item.idProgramaEductivo.Value;
                 tutoriasDM.strEstadoTutoria = item.strEstadoTutoria;
                 tutoriasDM.strNombreEstudantes = item.strNombreEstudiante;
-                tutoriasDM.dteFechaInicio = item.dteFechaInicio.Value;
-                tutoriasDM.dteFechaTermino = item.dteFechaTermino.Value;
+                tutoriasDM.dteFechaInicio = item.dteFechaInicio;
+                tutoriasDM.dteFechaTermino = item.dteFechaTermino;
                 tutoriasDM.strHoras = item.strHoras;
                 tutoriasDM.strTipo = item.strTipo;
 
@@ -103,8 +103,8 @@ namespace AppDigitalCv.Business
             tutoriasDM.idProgramaEductivo = tblTutoria.idProgramaEductivo.Value;
             tutoriasDM.strEstadoTutoria = tblTutoria.strEstadoTutoria;
             tutoriasDM.strNombreEstudantes = tblTutoria.strNombreEstudiante;
-            tutoriasDM.dteFechaInicio = tblTutoria.dteFechaInicio.Value;
-            tutoriasDM.dteFechaTermino = tblTutoria.dteFechaTermino.Value;
+            tutoriasDM.dteFechaInicio = tblTutoria.dteFechaInicio;
+            tutoriasDM.dteFechaTermino = tblTutoria.dteFechaTermino;
             tutoriasDM.strTipo = tblTutoria.strTipo;
             tutoriasDM.strHoras = tblTutoria.strHoras;
 

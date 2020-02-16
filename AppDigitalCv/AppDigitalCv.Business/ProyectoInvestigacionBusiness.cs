@@ -96,8 +96,8 @@ namespace AppDigitalCv.Business
                 proyectoInvestigacionDM.strNombrePatrocinador = item.strNombrePatrocinador;
                 proyectoInvestigacionDM.strTipoPatrocinador = item.strTipoPatrocinador;
                 proyectoInvestigacionDM.strTituloProyecto = item.strTituloProyecto;
-                proyectoInvestigacionDM.dteFechaInicio = item.dteFechaInicio.Value;
-                proyectoInvestigacionDM.dteFechaTermino = item.dteFechaTermino.Value;
+                proyectoInvestigacionDM.dteFechaInicio = item.dteFechaInicio;
+                proyectoInvestigacionDM.dteFechaTermino = item.dteFechaTermino;
                 proyectoInvestigacionDM.bitProyectoTecnologico = item.bitProyectoTecnologico.Value;
                 proyectoInvestigacionDM.documentos = new DocumentosDomainModel
                 {
@@ -126,8 +126,8 @@ namespace AppDigitalCv.Business
             proyectoInvestigacionDM.strNombrePatrocinador = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strNombrePatrocinador;
             proyectoInvestigacionDM.strTipoPatrocinador = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strTipoPatrocinador;
             proyectoInvestigacionDM.strTituloProyecto = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.strTituloProyecto;
-            proyectoInvestigacionDM.dteFechaInicio = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.dteFechaInicio.Value;
-            proyectoInvestigacionDM.dteFechaTermino = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.dteFechaTermino.Value;
+            proyectoInvestigacionDM.dteFechaInicio = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.dteFechaInicio;
+            proyectoInvestigacionDM.dteFechaTermino = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.dteFechaTermino;
             proyectoInvestigacionDM.bitProyectoTecnologico = tblProyectoInvestigacionAplicadaDesarrolloTecnologico.bitProyectoTecnologico.Value;
             proyectoInvestigacionDM.documentos = new DocumentosDomainModel
             {

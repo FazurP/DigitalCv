@@ -11,7 +11,7 @@
     <div class="bs-container" style="min-height:960px;">
         <section class="content-header">
             <h1>
-                Experiencia Laboral Externa
+                Experiencia Laboral Fuera de la Institución
                 <small>(Agregar)</small>
             </h1>
             <ol class="breadcrumb">
@@ -25,82 +25,90 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="box box-success">
                     <div class="box-header with-border">
-
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6">
                                 <div class="form-group">
-                                    <label>Nombre de la Institución o Empresa</label>
-                                    @Html.TextBoxFor(model => model.strInstitucionEmpresa, new { @class = "form-control input-sm", @id = "txtInstitucion" })
-                                    <label>Puesto Desempeñado</label>
-                                    @Html.TextBoxFor(model => model.strPuestoDesempeñado, new { @class = "form-control input-sm", @id = "txtPuesto" })
-                                    <label>Periodo</label>
-                                    @Html.DropDownList("idPeriodo", null, new { @class = "form-control input-sm", @id = "ddlPeriodo" })
-                                    <label>Fecha de Inicio</label>
-                                    @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm", @id = "dteFechaInicio", @type = "date" })
+                                    <div class="form-group">
+                                        <label>Nombre de la Institución o Empresa</label>
+                                        @Html.TextBoxFor(model => model.strInstitucionEmpresa, new { @class = "form-control input-sm", @id = "txtInstitucion" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Puesto Desempeñado</label>
+                                        @Html.TextBoxFor(model => model.strPuestoDesempeñado, new { @class = "form-control input-sm", @id = "txtPuesto" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Fecha de Inicio</label>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm pull-rigth datepicker", required = "required", title = "Fecha de Entrega del Premio", id = "dteFechaInicio" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Fecha de Termino</label>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            @Html.TextBoxFor(model => model.dteFechaFinal, new { @class = "form-control input-sm pull-rigth datepicker", required = "required", title = "Fecha de Entrega del Premio", id = "dteFechaTermino" })
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <label>Fecha de Termino</label>
-                                @Html.TextBoxFor(model => model.dteFechaFinal, new { @class = "form-control input-sm", @id = "dteFechaTermino", @type = "date" })
-                                @if (ViewBag.ErrorFechaComparacion != null)
-                                {
-                                    <label class="text-red">
-                                        @ViewBag.ErrorFechaComparacion
-                                    </label>
-                                    <br />
-                                }
-                                <label>Actividades Realizadas</label>
-                                @Html.TextAreaFor(model => model.strActividades, new { @class = "form-control input-sm", @id = "txtActividades" })
-                                <label>Motivo de Conclusión</label>
-                                @Html.TextBoxFor(model => model.strMotivoConclusion, new { @class = "form-control input-sm", @id = "txtMotivoConclusion" })
-                                <label>Evidencia del Documento en PDF</label>
-                                @Html.TextBoxFor(model => model.documentosVM.DocumentoFile, new { @class = "form-control input-sm", @id = "inputFileUpload", @type = "file" })
-                                @if (ViewBag.ErrorArchivo != null)
-                                {
-                                    <label class="text-red">
-                                        @ViewBag.ErrorArchivo
-                                    </label>
-                                }
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    <label>Actividades Realizadas</label>
+                                    @Html.TextAreaFor(model => model.strActividades, new { @class = "form-control input-sm", @id = "txtActividades" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Motivo de Conclusión</label>
+                                    @Html.TextBoxFor(model => model.strMotivoConclusion, new { @class = "form-control input-sm", @id = "txtMotivoConclusion" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Evidencia del Documento en PDF</label>
+                                    @Html.TextBoxFor(model => model.Documentos.DocumentoFile, new { @class = "form-control input-sm", @id = "inputFileUpload", @type = "file" })
+                                </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input type="submit" id="btnGuardar" value="Guardar" class="btn btn-success" />
+                                    <input type="submit" id="btnGuardar" value="Guardar Información" class="btn btn-sm btn-success" />
                                 </div>
                             </div>
 
-                            <div class="form-group-sm">
-                                <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
-                                <div class="form-group" id="addTable">
-                                    <br />
-                                    <table id="tblExperienci" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
-                                        <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
-                                            <tr>
-                                                <th>Institucion o Empresa</th>
-                                                <th>Editar</th>
-                                                <th>Eliminar</th>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody id="tblBody"></tbody>
-                                    </table>
-                                    <!-- Establecemos el Modal que se va a presentar cuando demos click en la edicion de los datos-->
-                                    <div class="modal fade" id="myModal1">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header" style="background-color:#3C8DBC;color:white;">
-                                                    <a href="#" class="close" data-dismiss="modal">&times;</a>
-                                                    <h5 class="modal-title"><label style="font-size:medium;">Participaciones</label></h5>
-                                                </div>
-                                                <div class="modal-body" id="myModalBodyDiv1">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" id="hiddenAlergiaId" />
-                                    <!--Terminamos el modal de eliminacion-->
-                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group input-sm">
+            <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
+            <div class="form-group" id="addTable">
+                <br />
+                <table id="tblExperienci" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
+                    <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
+                        <tr>
+                            <th>Institucion o Empresa</th>
+                            <th>Documento</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="tblBody"></tbody>
+                </table>
+                <!-- Establecemos el Modal que se va a presentar cuando demos click en la edicion de los datos-->
+                <div class="modal fade" id="myModal1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                                <h5 class="modal-title"><label style="font-size:medium;">Participaciones</label></h5>
+                            </div>
+                            <div class="modal-body" id="myModalBodyDiv1">
                             </div>
                         </div>
                     </div>
@@ -115,9 +123,9 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-    <script src="~/Scripts/Validate/ExperienciaLaboralExterna/validate-experiencia-laboral-externa-form.js"></script>
+    <script src="~/Scripts/Validate/ExperienciaLaboralExterna/validate-experiencia-laboral-externa-form.js?v=1"></script>
     <script src="~/Scripts/Validate/ExperienciaLaboralExterna/validate-experiencia-laboral-externa-upload.js"></script>
-    <script src="~/Scripts/Validate/ExperienciaLaboralExterna/validate-experiencia-laboral-externa-date.js"></script>
+    <script src="~/Scripts/Validate/ExperienciaLaboralExterna/validate-experiencia-laboral-externa-regExp.js"></script>
     <script>
 
         var AddEditar = function (idDocumento) {
@@ -164,7 +172,7 @@
                                 success: fnCallback
                             })
                         },
-                        "pageLength": 5,
+                        "pageLength": 10,
                         "paging": true,
                         "language": {
 
@@ -195,19 +203,25 @@
                         "columns": [
 
                             { "data": "strInstitucionEmpresa" },
+         {
+                            "data": "Documentos.StrUrl",
+                                "render": function (StrUrl) {
+                                    return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
 
+                            }
+                            },
                             {
                                 "data": "idDocumento",
                                 "render": function (idDocumento, type, full, meta) {
 
-                                    return '<a href="#" onclick="AddEditar(' + idDocumento + ')"><i class="btn btn-sm btn-success fa fa-pencil-square-o"></i></a>'
+                                    return '<a href="#" onclick="AddEditar(' + idDocumento + ')"><i class="btn btn-sm btn-success">Actualizar</i></a>'
                                 }
                             },
                             {
                                 "data": "idDocumento",
                                 "render": function (idDocumento, type, full, meta) {
 
-                                    return '<a href="#" onclick="AddEliminar(' + idDocumento + ')"><i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i></a>'
+                                    return '<a href="#" onclick="AddEliminar(' + idDocumento + ')"><i class="btn btn-sm btn-danger">Eliminar</i></a>'
                                 }
                             },
                         ]

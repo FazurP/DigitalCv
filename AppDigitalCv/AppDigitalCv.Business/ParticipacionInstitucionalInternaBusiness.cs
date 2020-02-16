@@ -94,8 +94,8 @@ namespace AppDigitalCv.Business
                 participacionDM.idCatTipoActividad = participacion.idCatTipoActividad.Value;
                 participacionDM.idPersonal = participacion.idPersonal.Value;
                 participacionDM.strActividad = participacion.strActividad;
-                participacionDM.fechaInicio = participacion.fechaInicio.Value;
-                participacionDM.fechaTermino = participacion.fechaTermino.Value;
+                participacionDM.fechaInicio = participacion.fechaInicio;
+                participacionDM.fechaTermino = participacion.fechaTermino;
                 participacionDM.documentos = new DocumentosDomainModel
                 {
                     StrUrl = participacion.catDocumentos.strUrl
@@ -129,8 +129,8 @@ namespace AppDigitalCv.Business
             participacionDM.idCatTipoActividad = tblParticipacion.idCatTipoActividad.Value;
             participacionDM.idPersonal = tblParticipacion.idPersonal.Value;
             participacionDM.strActividad = tblParticipacion.strActividad;
-            participacionDM.fechaInicio = tblParticipacion.fechaInicio.Value;
-            participacionDM.fechaTermino = tblParticipacion.fechaTermino.Value;
+            participacionDM.fechaInicio = tblParticipacion.fechaInicio;
+            participacionDM.fechaTermino = tblParticipacion.fechaTermino;
             participacionDM.documentos = new DocumentosDomainModel
             {
                 StrUrl = tblParticipacion.catDocumentos.strUrl

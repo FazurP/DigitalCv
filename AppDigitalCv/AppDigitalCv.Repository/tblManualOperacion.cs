@@ -21,7 +21,7 @@ namespace AppDigitalCv.Repository
         public string strNombre { get; set; }
         public string strDescripcion { get; set; }
         public string strInstitucionBeneficiaria { get; set; }
-        public Nullable<System.DateTime> dteFechaPublicacion { get; set; }
+        public string dteFechaPublicacion { get; set; }
     
         public virtual CatPais CatPais { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }

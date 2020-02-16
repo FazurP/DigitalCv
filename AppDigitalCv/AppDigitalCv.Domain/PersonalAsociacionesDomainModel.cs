@@ -10,7 +10,7 @@ namespace AppDigitalCv.Domain
     {
         public int IdPersonal { get; set; }
         public int IdAsociacion { get; set; }
-        public DateTime DteFecha { get; set; }
+        public string DteFecha { get; set; }
         public string StrTipoParticipacion { get; set; }
         public string strFuncionDesempeñada { get; set; }
 

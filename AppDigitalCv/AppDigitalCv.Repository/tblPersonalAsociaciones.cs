@@ -16,7 +16,7 @@ namespace AppDigitalCv.Repository
     {
         public int idPersonal { get; set; }
         public int idAsociacion { get; set; }
-        public Nullable<System.DateTime> dteFecha { get; set; }
+        public string dteFecha { get; set; }
         public string strTipoParticipacion { get; set; }
         public string strFuncionDesempeñada { get; set; }
     

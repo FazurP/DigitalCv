@@ -20,8 +20,8 @@ namespace AppDigitalCv.Repository
         public Nullable<int> idArea { get; set; }
         public Nullable<int> idProgramaEduactivo { get; set; }
         public Nullable<int> idPeriodo { get; set; }
-        public Nullable<System.DateTime> dteFechaInicio { get; set; }
-        public Nullable<System.DateTime> dteFechaFin { get; set; }
+        public string dteFechaInicio { get; set; }
+        public string dteFechaFin { get; set; }
         public string strActividadDesempenada { get; set; }
     
         public virtual catArea catArea { get; set; }

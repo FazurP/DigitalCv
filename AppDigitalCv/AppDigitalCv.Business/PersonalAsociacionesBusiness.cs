@@ -97,7 +97,7 @@ namespace AppDigitalCv.Business
                 PersonalAsociacionesDomainModel personalAsociacionesDomainModel = new PersonalAsociacionesDomainModel();
                 personalAsociacionesDomainModel.IdAsociacion = p.idAsociacion;
                 personalAsociacionesDomainModel.IdPersonal = p.idPersonal;
-                personalAsociacionesDomainModel.DteFecha = p.dteFecha.Value;
+                personalAsociacionesDomainModel.DteFecha = p.dteFecha.ToString();
                 personalAsociacionesDomainModel.StrTipoParticipacion = p.strTipoParticipacion;
                 personalAsociacionesDomainModel.strFuncionDesempeñada = p.strFuncionDesempeñada;
                 personalAsociacionesDomainModel.Asociaciones = new AsociacionesDomainModel { StrDescripcion = p.catAsociaciones.strDescripcion };
@@ -121,7 +121,7 @@ namespace AppDigitalCv.Business
                 personalAsociacionesDomainModel.IdPersonal = personalAsociaciones.idPersonal;
                 personalAsociacionesDomainModel.IdAsociacion = personalAsociaciones.idAsociacion;
                 personalAsociacionesDomainModel.StrTipoParticipacion = personalAsociaciones.strTipoParticipacion;
-                personalAsociacionesDomainModel.DteFecha = personalAsociaciones.dteFecha.Value;
+                personalAsociacionesDomainModel.DteFecha = personalAsociaciones.dteFecha.ToString();
             personalAsociacionesDomainModel.strFuncionDesempeñada = personalAsociaciones.strFuncionDesempeñada;
                 personalAsociacionesDomainModel.Asociaciones = new AsociacionesDomainModel { StrDescripcion = personalAsociaciones.catAsociaciones.strDescripcion };
                 return personalAsociacionesDomainModel;

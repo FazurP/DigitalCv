@@ -54,7 +54,7 @@ namespace AppDigitalCv.Business
 
                 tblPremios.idDocumento = premiosDocenteDM.IdDocumento;
                 tblPremios.idPersonal = premiosDocenteDM.IdPersonal;
-                tblPremios.dteFechaObtencionPremio = DateTime.Parse(premiosDocenteDM.DteFechaObtencionPremio);
+                tblPremios.dteFechaObtencionPremio = premiosDocenteDM.DteFechaObtencionPremio;
                 tblPremios.strInstitucion = premiosDocenteDM.StrInstitucion;
                 tblPremios.strNombrePremio = premiosDocenteDM.StrNombrePremio;
                 tblPremios.strActividadDesempeniada = premiosDocenteDM.StrActividadDesempeniada;
@@ -82,7 +82,7 @@ namespace AppDigitalCv.Business
             tblPremiosDocente tblPremios = new tblPremiosDocente();
             tblPremios.idDocumento = premiosDocenteDM.IdDocumento;
             tblPremios.idPersonal = premiosDocenteDM.IdPersonal;
-            tblPremios.dteFechaObtencionPremio = DateTime.Parse(premiosDocenteDM.DteFechaObtencionPremio);
+            tblPremios.dteFechaObtencionPremio = premiosDocenteDM.DteFechaObtencionPremio;
             tblPremios.strInstitucion = premiosDocenteDM.StrInstitucion;
             tblPremios.strNombrePremio = premiosDocenteDM.StrNombrePremio;
             tblPremios.strActividadDesempeniada = premiosDocenteDM.StrActividadDesempeniada;

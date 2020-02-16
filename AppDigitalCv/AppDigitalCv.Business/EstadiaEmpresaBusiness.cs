@@ -92,8 +92,8 @@ namespace AppDigitalCv.Business
                 estadiaEmpresaDM.strObjetivo = item.strObjetivo;
                 estadiaEmpresaDM.strPuntosCriticosResolver = item.strPuntosCriticosResolver;
                 estadiaEmpresaDM.strResumenProyecto = item.strResumenProyecto;
-                estadiaEmpresaDM.dteFechaInicio = item.dteFechaInicio.Value;
-                estadiaEmpresaDM.dteFechaTermino = item.dteFechaTermino.Value;
+                estadiaEmpresaDM.dteFechaInicio = item.dteFechaInicio;
+                estadiaEmpresaDM.dteFechaTermino = item.dteFechaTermino;
                 estadiaEmpresaDM.strNombreAlumno = item.strNombreAlumno;
                 estadiaEmpresaDM.documentos = new DocumentosDomainModel
                 {
@@ -122,8 +122,8 @@ namespace AppDigitalCv.Business
             estadiaEmpresaDM.strObjetivo = tblEstadiaEmpresa.strObjetivo;
             estadiaEmpresaDM.strPuntosCriticosResolver = tblEstadiaEmpresa.strPuntosCriticosResolver;
             estadiaEmpresaDM.strResumenProyecto = tblEstadiaEmpresa.strResumenProyecto;
-            estadiaEmpresaDM.dteFechaInicio = tblEstadiaEmpresa.dteFechaInicio.Value;
-            estadiaEmpresaDM.dteFechaTermino = tblEstadiaEmpresa.dteFechaTermino.Value;
+            estadiaEmpresaDM.dteFechaInicio = tblEstadiaEmpresa.dteFechaInicio;
+            estadiaEmpresaDM.dteFechaTermino = tblEstadiaEmpresa.dteFechaTermino;
             estadiaEmpresaDM.strNombreAlumno = tblEstadiaEmpresa.strNombreAlumno;
             estadiaEmpresaDM.documentos = new DocumentosDomainModel
             {

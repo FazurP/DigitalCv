@@ -15,11 +15,13 @@ namespace AppDigitalCv.Business
     {
         private readonly IUnitOfWork unitofWork;
         private readonly ExperienciaLaboralExternaRepository experienciaLaboralExternaRepository;
+        private readonly DocumentosRepository documentosRepository;
 
         public ExperienciaLaboralExternaBusiness(IUnitOfWork _unitOfWork)
         {
             unitofWork = _unitOfWork;
             experienciaLaboralExternaRepository = new ExperienciaLaboralExternaRepository(unitofWork);
+            documentosRepository = new DocumentosRepository(unitofWork);
         }
         /// <summary>
         /// Este metodo se encarga de insertar o actualizar un objeto de la base de datos.
@@ -42,8 +44,6 @@ namespace AppDigitalCv.Business
                     tblExperiencia.strActividades = experienciaLaboralExternaDM.strActividades;
                     tblExperiencia.strMotivoConclucion = experienciaLaboralExternaDM.strMotivoConclusion;
                     tblExperiencia.strPuestoDesempeñado = experienciaLaboralExternaDM.strPuestoDesempeñado;
-                    tblExperiencia.dteFechaInicio = experienciaLaboralExternaDM.dteFechaInicio;
-                    tblExperiencia.dteFechaFinal = experienciaLaboralExternaDM.dteFechaFinal;
                     experienciaLaboralExternaRepository.Update(tblExperiencia);
 
                     respuesta = true;
@@ -53,9 +53,9 @@ namespace AppDigitalCv.Business
             else
             {
                 tblExperienciaLaboralExterna tblExperiencia = new tblExperienciaLaboralExterna();
+                catDocumentos catDocumentos = new catDocumentos();
                 tblExperiencia.id = experienciaLaboralExternaDM.id;
                 tblExperiencia.idDocumento = experienciaLaboralExternaDM.idDocumento;
-                tblExperiencia.idPeriodo = experienciaLaboralExternaDM.idPeriodo;
                 tblExperiencia.idPersonal = experienciaLaboralExternaDM.idPersonal;
                 tblExperiencia.idTipoPersonal = experienciaLaboralExternaDM.idTipoPersonal;
                 tblExperiencia.strActividades = experienciaLaboralExternaDM.strActividades;
@@ -64,7 +64,12 @@ namespace AppDigitalCv.Business
                 tblExperiencia.strPuestoDesempeñado = experienciaLaboralExternaDM.strPuestoDesempeñado;
                 tblExperiencia.dteFechaInicio = experienciaLaboralExternaDM.dteFechaInicio;
                 tblExperiencia.dteFechaFinal = experienciaLaboralExternaDM.dteFechaFinal;
-                experienciaLaboralExternaRepository.Insert(tblExperiencia);
+
+                catDocumentos.tblExperienciaLaboralExterna.Add(tblExperiencia);
+
+                catDocumentos.strUrl = experienciaLaboralExternaDM.Documentos.StrUrl;
+
+                documentosRepository.Insert(catDocumentos);
                 respuesta = true;
             }
 
@@ -88,15 +93,18 @@ namespace AppDigitalCv.Business
 
                 experienciaLaboralExternaDM.id = experiencia.id;
                 experienciaLaboralExternaDM.idDocumento = experiencia.idDocumento.Value;
-                experienciaLaboralExternaDM.idPeriodo = experiencia.idPeriodo.Value;
                 experienciaLaboralExternaDM.idPersonal = experiencia.idPersonal.Value;
                 experienciaLaboralExternaDM.idTipoPersonal = experiencia.idTipoPersonal.Value;
                 experienciaLaboralExternaDM.strActividades = experiencia.strActividades;
                 experienciaLaboralExternaDM.strInstitucionEmpresa = experiencia.strInstitucionEmpresa;
                 experienciaLaboralExternaDM.strMotivoConclusion = experiencia.strMotivoConclucion;
                 experienciaLaboralExternaDM.strPuestoDesempeñado = experiencia.strPuestoDesempeñado;
-                experienciaLaboralExternaDM.dteFechaInicio = experiencia.dteFechaInicio.Value;
-                experienciaLaboralExternaDM.dteFechaFinal = experiencia.dteFechaFinal.Value;
+                experienciaLaboralExternaDM.dteFechaInicio = experiencia.dteFechaInicio;
+                experienciaLaboralExternaDM.dteFechaFinal = experiencia.dteFechaFinal;
+                experienciaLaboralExternaDM.Documentos = new DocumentosDomainModel
+                {
+                    StrUrl = experiencia.catDocumentos.strUrl
+                };
 
                 experienciaLaboralExterna.Add(experienciaLaboralExternaDM);
 
@@ -121,40 +129,23 @@ namespace AppDigitalCv.Business
 
             experienciaLaboralDM.id = tblExperiencia.id;
             experienciaLaboralDM.idDocumento = tblExperiencia.idDocumento.Value;
-            experienciaLaboralDM.idPeriodo = tblExperiencia.idPeriodo.Value;
             experienciaLaboralDM.idPersonal = tblExperiencia.idPersonal.Value;
             experienciaLaboralDM.idTipoPersonal = tblExperiencia.idTipoPersonal.Value;
             experienciaLaboralDM.strActividades = tblExperiencia.strActividades;
             experienciaLaboralDM.strInstitucionEmpresa = tblExperiencia.strInstitucionEmpresa;
             experienciaLaboralDM.strMotivoConclusion = tblExperiencia.strMotivoConclucion;
             experienciaLaboralDM.strPuestoDesempeñado = tblExperiencia.strPuestoDesempeñado;
-            experienciaLaboralDM.dteFechaInicio = tblExperiencia.dteFechaInicio.Value;
-            experienciaLaboralDM.dteFechaFinal = tblExperiencia.dteFechaFinal.Value;
+            experienciaLaboralDM.dteFechaInicio = tblExperiencia.dteFechaInicio;
+            experienciaLaboralDM.dteFechaFinal = tblExperiencia.dteFechaFinal;
+            experienciaLaboralDM.Documentos = new DocumentosDomainModel
+            {
+                StrUrl = tblExperiencia.catDocumentos.strUrl
+            };
 
             return experienciaLaboralDM;
 
         }
   
-        public ExperienciaLaboralExternaDomainModel GetExperienciaLaboralEdit(int idDocumento, int idPersonal)
-        {
-            ExperienciaLaboralExternaDomainModel experienciaLaboralDM = new ExperienciaLaboralExternaDomainModel();
-            Expression<Func<tblExperienciaLaboralExterna, bool>> predicate = p => p.idDocumento == idDocumento &&
-             p.idPersonal == idPersonal;
-
-            tblExperienciaLaboralExterna tblExperiencia = experienciaLaboralExternaRepository.
-                GetAll(predicate).FirstOrDefault();
-
-            experienciaLaboralDM.id = tblExperiencia.id;
-            experienciaLaboralDM.documento = tblExperiencia.catDocumentos.strUrl;
-            experienciaLaboralDM.periodo = tblExperiencia.catPeriodo.strDescripcion;
-            experienciaLaboralDM.strActividades = tblExperiencia.strActividades;
-            experienciaLaboralDM.strInstitucionEmpresa = tblExperiencia.strInstitucionEmpresa;
-            experienciaLaboralDM.strMotivoConclusion = tblExperiencia.strMotivoConclucion;
-            experienciaLaboralDM.strPuestoDesempeñado = tblExperiencia.strPuestoDesempeñado;
-            experienciaLaboralDM.dteFechaInicio = tblExperiencia.dteFechaInicio.Value;
-            experienciaLaboralDM.dteFechaFinal = tblExperiencia.dteFechaFinal.Value;
-
-            return experienciaLaboralDM;
-        }
+      
     }
 }

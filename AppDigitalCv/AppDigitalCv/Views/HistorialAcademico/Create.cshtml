@@ -47,7 +47,7 @@
                                     <label>Estatus Academico:</label>
                                     @Html.DropDownList("Status", new SelectList(""), new { @class = "form-control input-sm", id = "Status" })
                                     <label style="display:none;" id="lblDte">Fecha de Inicio:</label>
-                                    @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm", id = "dteFechaInicio", style = "display:none;", type = "date" })
+                                    @Html.TextBoxFor(model => model.dteFechaInicio, new { @class = "form-control input-sm datepicker", id = "dteFechaInicio", style = "display:none;", type = "text" })
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">

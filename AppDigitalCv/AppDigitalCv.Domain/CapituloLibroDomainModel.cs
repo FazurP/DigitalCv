@@ -17,7 +17,7 @@ namespace AppDigitalCv.Domain
         public int idPais { get; set; }
         public string strEditorial { get; set; }
         public string strEdicion { get; set; }
-        public DateTime dteFechaPublicacion { get; set; }
+        public string dteFechaPublicacion { get; set; }
         public string strTiraje { get; set; }
         public string strISBN { get; set; }
         public string enumProposito { get; set; }

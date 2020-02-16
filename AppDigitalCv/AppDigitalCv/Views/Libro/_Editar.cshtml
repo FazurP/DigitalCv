@@ -45,6 +45,66 @@
 
 <script>
 
+     $('#txtAutores').keypress(function (e) {
+        let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ., ]+$");
+
+        if (!regExp.test(data)) {
+            e.preventDefault();
+            toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+        }
+    })
+
+    $('#txtTitulo').keypress(function (e) {
+        let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9. ]+$");
+
+        if (!regExp.test(data)) {
+            e.preventDefault();
+            toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+        }
+    })
+
+    $('#txtEditorial').keypress(function (e) {
+        let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9. ]+$");
+
+        if (!regExp.test(data)) {
+            e.preventDefault();
+            toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+        }
+    })
+
+    $('#txtEdicion').keypress(function (e) {
+        let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9. ]+$");
+
+        if (!regExp.test(data)) {
+            e.preventDefault();
+            toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+        }
+    })
+
+    $('#txtTiraje').keypress(function (e) {
+        let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        let regExp = new RegExp("^[0-9]+$");
+
+        if (!regExp.test(data)) {
+            e.preventDefault();
+            toastr.warning('Solo se Permiten Numeros', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+        }
+    })
+
+    $('#txtISBM').keypress(function (e) {
+        let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        let regExp = new RegExp("^[0-9]+$");
+
+        if (!regExp.test(data)) {
+            e.preventDefault();
+            toastr.warning('Solo se Permiten Numeros', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+        }
+    })
+
     $(document).ready(function () {
 
         $("#btnSubmit").click(function () {

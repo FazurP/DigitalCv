@@ -22,7 +22,7 @@ namespace AppDigitalCv.Repository
         public Nullable<int> idFuenteFinanciamientoDoctorado { get; set; }
         public Nullable<bool> bitReconomientoPNPC { get; set; }
         public Nullable<int> idPersonal { get; set; }
-        public Nullable<System.DateTime> dteFechaInicio { get; set; }
+        public string dteFechaInicio { get; set; }
     
         public virtual catDocumentos catDocumentos { get; set; }
         public virtual CatFuenteFinanciamientoDoctorado CatFuenteFinanciamientoDoctorado { get; set; }

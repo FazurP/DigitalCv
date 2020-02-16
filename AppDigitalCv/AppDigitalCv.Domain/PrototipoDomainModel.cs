@@ -19,7 +19,7 @@ namespace AppDigitalCv.Domain
         public string strObjetivos { get; set; }
         public string strCaracteristicas { get; set; }
         public string strInstitucionDestinada { get; set; }
-        public DateTime dteFechaPublicacion { get; set; }
+        public string dteFechaPublicacion { get; set; }
         public string strEstadoActual { get; set; }
         public string strProposito { get; set; }
 

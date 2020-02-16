@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
 
     $('#txtPuesto').prop('disabled', true);
-    $('#ddlPeriodo').prop('disabled', true);
     $('#dteFechaInicio').prop('disabled', true);
     $('#dteFechaTermino').prop('disabled', true);
     $('#txtActividades').prop('disabled', true);
@@ -16,7 +15,6 @@
         if (dato == null || dato == '' || dato == "") {
             
             $('#txtPuesto').prop('disabled', true);
-            $('#ddlPeriodo').prop('disabled', true);
             $('#dteFechaInicio').prop('disabled', true);
             $('#dteFechaTermino').prop('disabled', true);
             $('#txtActividades').prop('disabled', true);
@@ -25,7 +23,6 @@
             $('#btnGuardar').prop('disabled', true);
 
             $('#txtPuesto').val('');
-            $('#ddlPeriodo').val(0);
             $('#dteFechaInicio').val('');
             $('#dteFechaTermino').val('');
             $('#txtActividades').val('');
@@ -42,33 +39,6 @@
         var dato = $(this).val();
 
         if (dato == null || dato == '' || dato == "") {
-            $('#ddlPeriodo').prop('disabled', true);
-            $('#dteFechaInicio').prop('disabled', true);
-            $('#dteFechaTermino').prop('disabled', true);
-            $('#txtActividades').prop('disabled', true);
-            $('#txtMotivoConclusion').prop('disabled', true);
-            $('#inputFileUpload').prop('disabled', true);
-            $('#btnGuardar').prop('disabled', true);
-
-            $('#ddlPeriodo').val(0);
-            $('#dteFechaInicio').val('');
-            $('#dteFechaTermino').val('');
-            $('#txtActividades').val('');
-            $('#txtMotivoConclusion').val('');
-            $('#inputFileUpload').val('');
-        } else {
-
-            $('#ddlPeriodo').prop('disabled', false);
-
-        }
-
-    })
-
-    $('#ddlPeriodo').change(function () {
-
-        var dato = $(this).val();
-
-        if (dato == null || dato == 0 || dato == '0' || dato == "0") {
             $('#dteFechaInicio').prop('disabled', true);
             $('#dteFechaTermino').prop('disabled', true);
             $('#txtActividades').prop('disabled', true);
@@ -82,7 +52,7 @@
             $('#txtMotivoConclusion').val('');
             $('#inputFileUpload').val('');
         } else {
-            toastr.success('Periodo Seleccionado', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+
             $('#dteFechaInicio').prop('disabled', false);
 
         }

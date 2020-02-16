@@ -22,7 +22,7 @@ namespace AppDigitalCv.Repository
         public string strAlcance { get; set; }
         public string strInstitucionBeneficiaria { get; set; }
         public string enumEstadoActual { get; set; }
-        public Nullable<System.DateTime> dteElaboracionInforme { get; set; }
+        public string dteElaboracionInforme { get; set; }
         public Nullable<int> numeroPaginas { get; set; }
         public Nullable<int> idPais { get; set; }
         public string enumProposito { get; set; }

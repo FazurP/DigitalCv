@@ -26,7 +26,7 @@ namespace AppDigitalCv.Repository
         public string strEdicion { get; set; }
         public string strTiraje { get; set; }
         public string strISBN { get; set; }
-        public Nullable<System.DateTime> FechaPublicacion { get; set; }
+        public string FechaPublicacion { get; set; }
         public string strProposito { get; set; }
     
         public virtual CatPais CatPais { get; set; }
