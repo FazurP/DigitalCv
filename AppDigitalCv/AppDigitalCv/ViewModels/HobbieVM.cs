@@ -12,5 +12,10 @@ namespace AppDigitalCv.ViewModels
         public int idFrecuencia { get; set; }
         public int idPersonal { get; set; }
         public string strTiempoPractica { get; set; }
+
+        //Objetos de las relaciones
+
+        public FrecuenciaVM Frecuencia { get; set; }
+        public HobbiesVM  Hobbies { get; set; }
     }
 }

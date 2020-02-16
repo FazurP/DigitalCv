@@ -72,13 +72,13 @@ namespace AppDigitalCv.Controllers
 
             if (param.sSearch != null)
             {
-                hobbiesDM = hobbieBusiness.GetAllHobbiesByPersonal(identityPersonal).Where(p => p.catHobbies.strValor.Contains(param.sSearch)).ToList();
+                hobbiesDM = hobbieBusiness.GetAllHobbiesByPersonal(identityPersonal).Where(p => p.Hobbies.strValor.Contains(param.sSearch)).ToList();
             }
             else
             {
                 totalCount = hobbieBusiness.GetAllHobbiesByPersonal(identityPersonal).Count();
 
-                hobbiesDM = hobbieBusiness.GetAllHobbiesByPersonal(identityPersonal).OrderBy(p => p.catHobbies.strValor).Skip((pageNo - 1)
+                hobbiesDM = hobbieBusiness.GetAllHobbiesByPersonal(identityPersonal).OrderBy(p => p.Hobbies.strValor).Skip((pageNo - 1)
                     * param.iDisplayLength).Take(param.iDisplayLength).ToList();
             }
 
@@ -141,11 +141,6 @@ namespace AppDigitalCv.Controllers
                 hobbieDomainModel = hobbieBusiness.GetHobbieByPersonal(_id);
 
                 AutoMapper.Mapper.Map(hobbieDomainModel, hobbieVM);
-
-                ViewBag.idHobbie = new SelectList(hobbiesBusiness.GetAllHobbies(), "id", "strValor");
-                ViewBag.idFrecuencia = new SelectList(frecuenciaBusiness.GetFrecuencia(), "IdFrecuencia", "StrDescripcion");
-
-
             }
 
             return PartialView("_Eliminar", hobbieVM);
@@ -160,6 +155,22 @@ namespace AppDigitalCv.Controllers
             }
 
             return RedirectToAction("Create","Hobbie");
+        }
+
+        [HttpGet]
+        public ActionResult DisplayHobbie(int id) 
+        {
+            if (id > 0)
+            {
+                HobbieDomainModel hobbieDomainModel = hobbieBusiness.GetHobbieByPersonal(id);
+                HobbieVM hobbieVM = new HobbieVM();
+
+                AutoMapper.Mapper.Map(hobbieDomainModel, hobbieVM);
+
+                return PartialView("_VerDatos",hobbieVM);
+            }
+
+            return PartialView();
         }
     }
 }

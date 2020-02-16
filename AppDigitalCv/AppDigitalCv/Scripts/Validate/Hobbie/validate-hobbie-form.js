@@ -2,29 +2,9 @@
 
 $(document).ready(function ()
 {
-    $('#idHobbie').prop('disabled', true);
     $('#idFrecuencia').prop('disabled', true);
     $('#strTiempoPractica').prop('disabled', true);
     $('#btnGuardar').prop('disabled', true);
-
-    $('#rdbSi').change(function ()
-    {
-        $('#idHobbie').prop('disabled', false);
-        toastr.info('Seleccione su Hobbie', 'Digital-Cv dice:', { timeOut: 1000, closeButton: true })
-    });
-
-    $('#rdbNo').change(function () {
-        $('#idHobbie').prop('disabled', true);
-        $('#idFrecuencia').prop('disabled', true);
-        $('#strTiempoPractica').prop('disabled', true);
-        $('#btnGuardar').prop('disabled', true);
-
-        $('#idHobbie').val(0);
-        $('#idFrecuencia').val(0);
-        $('#strTiempoPractica').val('');
-
-    });
-
 
     $('#idHobbie').change(function () {
 

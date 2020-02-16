@@ -14,8 +14,8 @@ namespace AppDigitalCv.Domain
         public int idPersonal { get; set; }
         public string strTiempoPractica { get; set; }
 
-        public HobbiesDomainModel catHobbies { get; set; }
-        public FrecuenciaDomainModel frecuencia { get; set; }
+        public HobbiesDomainModel Hobbies { get; set; }
+        public FrecuenciaDomainModel Frecuencia { get; set; }
 
     }
 }

@@ -16,18 +16,21 @@
             </div>
             <div class="row">
                 <div class="col-lg-7">
-                    <div class="form-group">
-                        <label>Seleccione el Hobbie y/o Afición:</label>
-                        @Html.DropDownListFor(model => model.idHobbie, null, new { @class = "form-control input-sm", id = "hobbie",disabled="" })
-                    </div>
-                    <div class="form-group">
-                        <label>Frecuencia con la que lo Practica:</label>
-                        @Html.DropDownListFor(model => model.idFrecuencia, null, new { @class = "form-control input-sm", id = "frecuencia",disabled="" })
-                    </div>
-                    <div class="form-group">
-                        <label>Tiempo en Horas que lo Practica:</label>
-                        @Html.TextBoxFor(model => model.strTiempoPractica, null, new { @class = "form-control input-sm", id = "tiempoPractica",disabled="" })
-                    </div>
+                    <ul class="todo-list">
+                        <li class="list-unstyled">
+                            <label>Seleccione el Hobbie y/o Afición:</label>
+                            @Html.DisplayFor(model => model.Hobbies.strValor, null, new { @class = "form-control input-sm", id = "hobbie", disabled = "" })
+                        </li>
+                        <li class="list-unstyled">
+                            <label>Frecuencia con la que lo Practica:</label>
+                            @Html.DisplayFor(model => model.Frecuencia.StrDescripcion, null, new { @class = "form-control input-sm", id = "frecuencia", disabled = "" })
+                        </li>
+                        <li class="list-unstyled">
+                            <label>Tiempo en Horas que lo Practica:</label>
+                            @Html.DisplayFor(model => model.strTiempoPractica, null, new { @class = "form-control input-sm", id = "tiempoPractica", disabled = "" })
+                        </li>
+                    </ul>
+                    <br />
                     <div class="form-group">
                         <a id="btnSubmit" class="btn btn-sm btn-danger"><span><i class=""></i>Eliminar</span></a>
                     </div>

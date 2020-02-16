@@ -72,7 +72,8 @@ namespace AppDigitalCv.Business
                 hobbieDomainModel.idHobbie = item.idHobbie.Value;
                 hobbieDomainModel.idPersonal = item.idPersonal.Value;
                 hobbieDomainModel.strTiempoPractica = item.strTiempoPractica;
-                hobbieDomainModel.catHobbies = new HobbiesDomainModel { strValor = item.CatHobbies.strValor};
+                hobbieDomainModel.Hobbies = new HobbiesDomainModel { strValor = item.CatHobbies.strValor};
+                hobbieDomainModel.Frecuencia = new FrecuenciaDomainModel { StrDescripcion = item.catFrecuencia.strDescripcion };
 
                 hobbies.Add(hobbieDomainModel);
             }
@@ -94,6 +95,14 @@ namespace AppDigitalCv.Business
                 hobbieDomainModel.idHobbie = tblHobbies.idHobbie.Value;
                 hobbieDomainModel.idPersonal = tblHobbies.idPersonal.Value;
                 hobbieDomainModel.strTiempoPractica = tblHobbies.strTiempoPractica;
+                hobbieDomainModel.Frecuencia = new FrecuenciaDomainModel 
+                {
+                    StrDescripcion = tblHobbies.catFrecuencia.strDescripcion
+                };
+                hobbieDomainModel.Hobbies = new HobbiesDomainModel
+                {
+                    strValor = tblHobbies.CatHobbies.strValor
+                };
             }
 
 
