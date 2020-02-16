@@ -12,19 +12,12 @@ namespace AppDigitalCv.ViewModels
         public int IdAsociacion { get; set; }
 
         [Required(ErrorMessage ="Este Campo es Requerido")]
-        [DataType(DataType.Date)]
         public string DteFecha { get; set; }
 
-        [RegularExpression("^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$")]
         [Required(ErrorMessage = "Este Campo es Requerido")]
-        [StringLength(250)]
-        [DataType(DataType.Text)]
         public string StrTipoParticipacion { get; set; }
 
-        [RegularExpression("^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$")]
         [Required(ErrorMessage = "Este Campo es Requerido")]
-        [StringLength(170)]
-        [DataType(DataType.Text)]
         public string strFuncionDesempeñada { get; set; }
 
         public virtual PersonalVM PersonalVM { get; set; }

@@ -15,11 +15,6 @@ namespace AppDigitalCv.Domain
         public string StrInstitucion { get; set; }
         public string StrNombrePremio { get; set; }
         public string StrActividadDesempeniada { get; set; }
-        public string StrTipoPremio { get; set; }
-
-        //aqui va el catalogo de documentos pero desde el domain model
-        ///public virtual catDocumentos catDocumentos { get; set; }
-        public virtual PersonalDomainModel PersonalDomainModel { get; set; }
         public virtual DocumentosDomainModel Documentos { get; set; }
     }
 }

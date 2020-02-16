@@ -1,0 +1,38 @@
+﻿@model AppDigitalCv.ViewModels.ParentescoVM
+@using AppDigitalCv.Security
+
+<div>
+    @Html.HiddenFor(model => model.IdFamiliar, new { id = "id" })
+
+    <div class="bs-container">
+
+        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+            <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+        </div>
+        <div class="row">
+            <div class="form-group  col-lg-7">
+                <ul class="todo-list">
+                    <li class="list-unstyled">
+                        <label>Nombre(s): </label> @Html.DisplayFor(model => model.StrNombre, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Apellido Paterno: </label> @Html.DisplayFor(model => model.strApellidoPaterno, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Apellido Materno: </label> @Html.DisplayFor(model => model.strApellidoMaterno, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Domicilio de Contacto: </label> @Html.DisplayFor(model => model.StrDomicilio, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Ocupación: </label> @Html.DisplayFor(model => model.StrOcupacion, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Parentesco: </label> @Html.DisplayFor(model => model.Parentesco.StrDescripcion, new { @class = "form-control input-sm", @placeholder = "Nombre", @disabled = "disabled" })
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

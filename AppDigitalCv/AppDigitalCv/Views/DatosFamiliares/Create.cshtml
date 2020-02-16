@@ -69,8 +69,7 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Parentesco</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="tblBody"></tbody>
@@ -88,6 +87,7 @@
                     </div>
                 </div>
             </div>
+
             <input type="hidden" id="hiddenFamiliarId" />
             <!--Terminamos el modal de eliminacion-->
         </div>
@@ -103,9 +103,20 @@
 
     <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/Scripts/Validate/DatosFamiliares/validate-datos-familiares-form.js?v=4"></script>
-    <script src="~/Scripts/Validate/DatosFamiliares/validate-datos-familiares-regExp.js"></script>
+    <script src="~/Scripts/Validate/DatosFamiliares/validate-datos-familiares-regExp.js?v=4"></script>
 
     <script>
+
+          var AddDisplay = function (id) {
+
+            var url = "/DatosFamiliares/DisplayDatosFamiliar?idFamiliar=" + id;
+
+            $("#myModalBodyDiv1").load(url, function () {
+                $("#myModal1").modal("show");
+
+            })
+
+        };
 
         var AddEditar = function (idFamiliar) {
 
@@ -189,14 +200,7 @@
                                 "data": "IdFamiliar",
                                 "render": function (IdFamiliar, type, full, meta) {
 
-                                    return '<a href="#" onclick="AddEditar(' + IdFamiliar + ')"><i class="btn btn-sm btn-success fa fa-pencil-square-o"></i></a>'
-                                }
-                            },
-                            {
-                                "data": "IdFamiliar",
-                                "render": function (IdFamiliar, type, full, meta) {
-
-                                    return '<a href="#" onclick="AddDelete(' + IdFamiliar + ')"><i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i></a>'
+                                    return ' <a href="#" class="" onclick="AddDisplay(' + IdFamiliar + ')"><i class="btn btn-sm btn-default">Ver Datos</i></a> <a href="#" onclick="AddEditar(' + IdFamiliar + ')"><i class="btn btn-sm btn-success">Actualizar</i></a> <a href="#" onclick="AddDelete(' + IdFamiliar + ')"><i class="btn btn-sm btn-danger">Eliminar</i></a>'
                                 }
                             },
                         ]

@@ -665,6 +665,7 @@
     <Content Include="Scripts\Validate\ProduccionesArtisticas\validate-producciones-artistica-regExp.js" />
     <Content Include="Views\PremiosDocente\_VerDatos.cshtml" />
     <Content Include="Views\PersonalAsociaciones\_VerDatos.cshtml" />
+    <Content Include="Views\DatosFamiliares\_VerDatos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

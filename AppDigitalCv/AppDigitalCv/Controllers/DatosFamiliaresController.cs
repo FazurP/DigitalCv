@@ -154,9 +154,27 @@ namespace AppDigitalCv.Controllers
             {
                 ifamiliarBusiness.DeleteFamiliar(parentescoVM.IdFamiliar);
             }
-            return View("Create");
+            return RedirectToAction("Create","DatosFamiliares");
         }
         #endregion
+
+        [HttpGet]
+        public ActionResult DisplayDatosFamiliar(int idFamiliar) 
+        {
+            if (idFamiliar > 0)
+            {
+                ParentescoVM parentescoVM = new ParentescoVM();
+                FamiliarDomainModel familiarDM = new FamiliarDomainModel();
+                if (idFamiliar > 0)
+                {
+                    familiarDM = ifamiliarBusiness.GetFamiliarByIdFamiliar(idFamiliar);
+
+                }
+                AutoMapper.Mapper.Map(familiarDM, parentescoVM);
+                return PartialView("_VerDatos", parentescoVM);
+            }
+            return PartialView();
+        }
 
     }
 }

@@ -58,7 +58,6 @@ namespace AppDigitalCv.Business
                 tblPremios.strInstitucion = premiosDocenteDM.StrInstitucion;
                 tblPremios.strNombrePremio = premiosDocenteDM.StrNombrePremio;
                 tblPremios.strActividadDesempeniada = premiosDocenteDM.StrActividadDesempeniada;
-                tblPremios.strTipoPremio = premiosDocenteDM.StrTipoPremio;
 
                 catDocumentos.strUrl = premiosDocenteDM.Documentos.StrUrl;
 
@@ -87,7 +86,6 @@ namespace AppDigitalCv.Business
             tblPremios.strInstitucion = premiosDocenteDM.StrInstitucion;
             tblPremios.strNombrePremio = premiosDocenteDM.StrNombrePremio;
             tblPremios.strActividadDesempeniada = premiosDocenteDM.StrActividadDesempeniada;
-            tblPremios.strTipoPremio = premiosDocenteDM.StrTipoPremio;
             premiosDocenteRepository.Insert(tblPremios);
             respuesta = true;
             return respuesta;
@@ -113,7 +111,6 @@ namespace AppDigitalCv.Business
                 premioDocenteDM.DteFechaObtencionPremio = p.dteFechaObtencionPremio.ToString();
                 premioDocenteDM.StrInstitucion = p.strInstitucion;
                 premioDocenteDM.StrNombrePremio = p.strNombrePremio;
-                premioDocenteDM.StrTipoPremio = p.strTipoPremio;
                 premioDocenteDM.StrActividadDesempeniada = p.strActividadDesempeniada;
                 premioDocenteDM.Documentos = new DocumentosDomainModel { StrUrl = p.catDocumentos.strUrl };
 
@@ -138,7 +135,6 @@ namespace AppDigitalCv.Business
             premiosDDM.StrInstitucion = premio.strInstitucion;
             premiosDDM.StrNombrePremio = premio.strNombrePremio;
             premiosDDM.StrActividadDesempeniada = premio.strActividadDesempeniada;
-            premiosDDM.StrTipoPremio = premio.strTipoPremio;
             premiosDDM.Documentos = new DocumentosDomainModel 
             {
                 StrUrl = premio.catDocumentos.strUrl
