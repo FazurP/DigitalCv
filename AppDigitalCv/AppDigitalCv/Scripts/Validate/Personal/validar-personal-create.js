@@ -82,35 +82,10 @@
         }
     });
 
-    $('input[name=StrGenero]').change(function () {
-        let data = $(this).val();
-
-        if (data == null) {
-            
-            $('#Curp').prop('disabled', true);
-            $('#UCurp').prop('disabled', true);
-            $('#Rfc').prop('disabled', true);
-            $('#URfc').prop('disabled', true);
-            $('#InstitucionSalud').prop('disabled', true);
-            $('#NumeroSeguroSocial').prop('disabled', true);
-            $('#NumeroEmpleado').prop('disabled', true);
-            $('#Semblanza').prop('disabled', true);
-            $('#Enviar').prop('disabled', true);
-
-            $('#Curp').val("");
-            $('#UCurp').val("");
-            $('#Rfc').val("");
-            $('#Homoclave').val("");
-            $('#URfc').val("");
-            $('#InstitucionSalud').val(0);
-            $('#NumeroSeguroSocial').val("");
-            $('#NumeroEmpleado').val("");
-            $('#Semblanza').val("");
-
-        } else {
-            $('#Curp').prop('disabled', false);
-            toastr.success('Sexo Seleccionado', 'Digital-Cv dice:', { timeOut: 1500, closeButton: true });
-        }
+    $('input[name=StrGenero]').on('ifChecked',function () {
+       
+       $('#Curp').prop('disabled', false);
+       toastr.success('Sexo Seleccionado', 'Digital-Cv dice:', { timeOut: 1500, closeButton: true });
     });
 
     $('#Curp').keyup(function () {
