@@ -58,15 +58,11 @@
                         Si @Html.RadioButtonFor(model => model.bitContactoEmergencia,true)
                         No @Html.RadioButtonFor(model => model.bitContactoEmergencia,false)
                     </div>
+                    <div class="form-group">
+                        <a href="#" id="btnSubmit" class="btn btn-sm btn-success"><span>Actualizar</span></a>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"></div>
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                    <a href="#" id="btnSubmit" class="btn btn-sm btn-success"><span><i class="fa fa-edit"></i> Actualizar</span></a>
-                </div>
-            </div>
-
                 
             </div>
        
@@ -76,9 +72,98 @@
 
 </div>
 
-
-<script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
 <script>
+
+     $("#nombre").bind('keypress', function (e) {
+        var regex = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$");
+        var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (!regex.test(key)) {
+            toastr.warning("Solo se Admiten Cadenas de Texto.", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    $("#apellidoPaterno").bind('keypress', function (e) {
+        var regex = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$");
+        var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (!regex.test(key)) {
+            toastr.warning("Solo se Admiten Cadenas de Texto.", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    $("#apellidoMaterno").bind('keypress', function (e) {
+        var regex = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$");
+        var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (!regex.test(key)) {
+            toastr.warning("Solo se Admiten Cadenas de Texto.", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    $("#direccion").bind('keypress', function (e) {
+        var regex = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9, ]+$");
+        var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (!regex.test(key)) {
+            toastr.warning("Solo se Admiten Cadenas de Texto.", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    $("#telefonoCelular").bind('keypress', function (e) {
+        var regex = new RegExp("^[0-9]+$");
+        var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (!regex.test(key)) {
+            toastr.warning("Solo se Admiten Numeros", "Digital-Cv dice", { timeOut: 1000, closeButton: true  });
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    $("#telefonoCasa").bind('keypress', function (e) {
+        var regex = new RegExp("^[0-9]+$");
+        var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (!regex.test(key)) {
+            toastr.warning("Solo se Admiten Numeros.", "Digital-Cv dice", { timeOut: 1000, closeButton: true  });
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    $("#telefonoRecados").bind('keypress', function (e) {
+        var regex = new RegExp("^[0-9]+$");
+        var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (!regex.test(key)) {
+            toastr.warning("Solo se Admiten Numeros.", "Digital-Cv dice", { timeOut: 1000, closeButton: true  });
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    $("#Facebook").bind('keypress', function (e) {
+        var regex = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$");
+        var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (!regex.test(key)) {
+            toastr.warning("Solo se Admiten Cadenas de Texto.", "Digital-Cv dice", { timeOut: 1000, closeButton: true  });
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    $("#Twitter").bind('keypress', function (e) {
+        var regex = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ ]+$");
+        var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (!regex.test(key)) {
+            toastr.warning("Solo se Admiten Cadenas de Texto.", "Digital-Cv dice", { timeOut: 1000, closeButton: true  });
+            e.preventDefault();
+            return false;
+        }
+    });
+
     $(document).ready(function () {
         $("#btnSubmit").click(function () {
 
@@ -94,7 +179,6 @@
             if (nombre != "" && apellidoPaterno != "" && apellidoMaterno != "" && telefonoCelular != "" && telefonoCasa != ""
                 && telefonoRecados != "" && mailPersonal != "" && direccion != "") {
 
-                //serialización del formaulario
                 var myformdata = $("#myForm").serialize();
                 $.ajax({
                     type: "POST",

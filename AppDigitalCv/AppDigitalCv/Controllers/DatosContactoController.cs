@@ -82,14 +82,14 @@ namespace AppDigitalCv.Controllers
         }
 
         //voy allamar a esta vista cuando el usuario de click en la tabla
-        public ActionResult AddEditDatosContactoId(int idPersonal)
+        public ActionResult AddEditDatosContactoId(int id)
         {
             DatosContactoVM datosContactoVM = new DatosContactoVM();
             //creamos el objeto del dominio
             DatosContactoDomainModel datosContactoDM = new DatosContactoDomainModel();
-            if (idPersonal > 0)
+            if (id > 0)
             {
-                datosContactoDM = IdatosContacto.GetDatosContacto(SessionPersister.AccountSession.IdPersonal);
+                datosContactoDM = IdatosContacto.GetDatosContacto(id);
 
             }
             AutoMapper.Mapper.Map(datosContactoDM, datosContactoVM);
@@ -141,7 +141,7 @@ namespace AppDigitalCv.Controllers
 
         public JsonResult ConsultarDatosContacto()
         {
-            var datosContacto = IdatosContacto.GetDatosDeContacto(SessionPersister.AccountSession.IdPersonal);////////////////////////modificacion temporal
+            var datosContacto = IdatosContacto.GetDatosDeContacto(SessionPersister.AccountSession.IdPersonal);
             return Json(datosContacto, JsonRequestBehavior.AllowGet);
         }
         #endregion
@@ -168,7 +168,19 @@ namespace AppDigitalCv.Controllers
         }
         #endregion
 
-
+        [HttpGet]
+        public ActionResult DisplayDatosContacto(int id) 
+        {
+            if (id > 0)
+            {
+                DatosContactoVM datosContactoVM = new DatosContactoVM();
+                DatosContactoDomainModel datosContactoDM = new DatosContactoDomainModel();
+                datosContactoDM = IdatosContacto.GetDatosContacto(id);
+                AutoMapper.Mapper.Map(datosContactoDM, datosContactoVM);
+                return PartialView("_VerDatos", datosContactoVM);
+            }
+            return PartialView();
+        }
 
 
     }

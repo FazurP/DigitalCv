@@ -122,13 +122,13 @@ namespace AppDigitalCv.Business
                 datosContactoDM.strApellidoMaterno = lista.strApellidoMaterno;
                 datosContactoDM.strDireccion = lista.strDireccion;
                 datosContactoDM.bitContactoEmergencia = lista.bitContactoEmergencia.Value;
-                //foreach (tblTelefono t in lista.tblPersonal.tblTelefono)
-                //{
-                //    datosContactoDM.TelefonoCelular = t.strTelefonoCelular;
-                //    datosContactoDM.TelefonoCasa = t.strTelefonoCasa;
-                //    datosContactoDM.TelefonoRecados = t.strTelefonoRecados;
-                //    datosContactoDM.IdTelefono = t.idTelefono;
-                //}
+                foreach (tblTelefono t in lista.tblTelefono)
+                {
+                    datosContactoDM.TelefonoCelular = t.strTelefonoCelular;
+                    datosContactoDM.TelefonoCasa = t.strTelefonoCasa;
+                    datosContactoDM.TelefonoRecados = t.strTelefonoRecados;
+                    datosContactoDM.IdTelefono = t.idTelefono;
+                }
                 listaDatosContacto.Add(datosContactoDM);
             }
             return listaDatosContacto;
@@ -139,9 +139,9 @@ namespace AppDigitalCv.Business
         /// </summary>
         /// <param name="idPersonal">recibe el identificador del personal</param>
         /// <returns>una entidad del tipo datoscontactodomainmodel</returns>
-        public DatosContactoDomainModel GetDatosContacto(int idPersonal)
+        public DatosContactoDomainModel GetDatosContacto(int id)
         {
-            Expression<Func<tblDatosContacto, bool>> predicado = p => p.idPersonal.Equals(idPersonal);
+            Expression<Func<tblDatosContacto, bool>> predicado = p => p.idDatosContacto.Equals(id);
             tblDatosContacto tblDatosContacto = datosContactoRepository.SingleOrDefault(predicado);
             DatosContactoDomainModel datosContactoDM = new DatosContactoDomainModel();
             datosContactoDM.IdDatosContacto = tblDatosContacto.idDatosContacto;
@@ -173,7 +173,7 @@ namespace AppDigitalCv.Business
         public bool DeleteDatosContactoDocente(DatosContactoDomainModel datosContactoDomainModel)
         {
             bool respuesta = false;
-            Expression<Func<tblDatosContacto, bool>> predicado = p => p.idPersonal.Equals(datosContactoDomainModel.IdPersonal);
+            Expression<Func<tblDatosContacto, bool>> predicado = p => p.idDatosContacto.Equals(datosContactoDomainModel.IdDatosContacto);
             datosContactoRepository.Delete(predicado);
             respuesta = true;
             return respuesta;

@@ -103,12 +103,13 @@
                 </div>
             </div>
         </div>
-        <table id="myDataTableDatosContacto" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table-responsive">
+        <table id="myDataTableDatosContacto" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-responsive">
             <thead style="color:white; background-color:#428BCA; font-size:10px;">
                 <tr>
                     <th>Nombre</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
+                    <th>Telefono Celular</th>
+                    <th>Contacto Emergencia</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
         </table>
@@ -144,14 +145,25 @@
     <script src="~/Scripts/Validate/DatosContacto/validate-datos-contacto-regExp.js"></script>
     <script>
 
-        var AddEditDatosContacto = function (IdPersonal) {
-            var url = "/DatosContacto/AddEditDatosContactoId?idPersonal=" + IdPersonal;
+         var AddDisplay = function (id) {
+
+            var url = "/DatosContacto/DisplayDatosContacto?id=" + id;
+
+            $("#myModalBodyDiv1").load(url, function () {
+                $("#myModal1").modal("show");
+
+            })
+
+        };
+
+        var AddEditDatosContacto = function (idDatosContacto) {
+            var url = "/DatosContacto/AddEditDatosContactoId?id=" + idDatosContacto;
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
             })
         };
-        var ShowDeletetDatosContacto = function (idPersonal) {
-            var url = "/DatosContacto/GetDeleteDatosContactoId?idPersonal=" + idPersonal;
+        var ShowDeletetDatosContacto = function (idDatosContacto) {
+            var url = "/DatosContacto/GetDeleteDatosContactoId?idPersonal=" + idDatosContacto;
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
             })
@@ -191,27 +203,20 @@
                     "datatype": "json",
                     "dataSrc": ""
                 },
+                "paging": true,
                 "columns": [
 
-                    { "data": "strNombre"}
+                    { "data": "strNombre"},
+                    { "data": "TelefonoCelular"},
+                    { "data": "bitContactoEmergencia"}
                     ,
                     {
-                        "data": "IdPersonal",
-                        "render": function (IdPersonal, type, full, meta) {
-
-                            return '<a href="#" onclick="AddEditDatosContacto(' + IdPersonal + ')"><i class="btn btn-sm btn-success fa fa-pencil-square-o"></i></a>'
+                        "data": "IdDatosContacto",
+                        "render": function (idDatosContacto, type, full, meta) {
+                            return ' <a href="#" class="" onclick="AddDisplay(' + idDatosContacto + ')"><i class="btn btn-sm btn-default">Ver Datos</i></a> <a href="#" onclick="AddEditDatosContacto(' + idDatosContacto + ')"><i class="btn btn-sm btn-success">Actualizar</i></a> <a href="#" onclick="ShowDeletetDatosContacto(' + idDatosContacto + ')"><i class="btn btn-sm btn-google">Eliminar</i></a>'
                         }
                     }
                     ,
-                    {
-                        "data": "IdPersonal",
-                        "render": function (idPersonal, type, full, meta) {
-
-                            return '<a href="#" onclick="ShowDeletetDatosContacto(' + idPersonal + ')"><i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i></a>'
-                        }
-                    },
-
-
                 ]
             });
 

@@ -666,6 +666,7 @@
     <Content Include="Views\PremiosDocente\_VerDatos.cshtml" />
     <Content Include="Views\PersonalAsociaciones\_VerDatos.cshtml" />
     <Content Include="Views\DatosFamiliares\_VerDatos.cshtml" />
+    <Content Include="Views\DatosContacto\_VerDatos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,62 @@
+﻿@model AppDigitalCv.ViewModels.DatosContactoVM
+@using AppDigitalCv.Security
+
+<div>
+    <div class="bs-container">
+
+        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+            <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
+        </div>
+        <div class="row">
+            <div class="form-group  col-lg-7">
+                <ul class="todo-list">
+                    <li class="list-unstyled">
+                        <label>Nombre(s):</label>
+                        @Html.DisplayFor(model => model.strNombre)
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Apellido Paterno:</label>
+                        @Html.DisplayFor(model => model.strApellidoPaterno)
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Apellido Materno:</label>
+                        @Html.DisplayFor(model => model.strApellidoMaterno)
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Telefono Celular:</label>
+                        @Html.DisplayFor(model => model.TelefonoCelular)
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Telefono de Casa:</label>
+                        @Html.DisplayFor(model => model.TelefonoCasa)
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Telefono de Recados:</label>
+                        @Html.DisplayFor(model => model.TelefonoRecados)
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Email Personal:</label>
+                        @Html.DisplayFor(model => model.MailPersonal)
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Dirección:</label>
+                        @Html.DisplayFor(model => model.strDireccion)
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Nombre de Usuario en Facebook:</label>
+                        @Html.DisplayFor(model => model.NombreFacebook)
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Nombre de Usuario en Twitter:</label>
+                        @Html.DisplayFor(model => model.NombreTwitter)
+                    </li>
+                    <li class="list-unstyled">
+                        <label>Contacto de Emergencia:</label>
+                        @Model.bitContactoEmergencia
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

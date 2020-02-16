@@ -35,5 +35,6 @@ namespace AppDigitalCv.Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblTelefono> tblTelefono { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
+
     }
 }
