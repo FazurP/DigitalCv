@@ -27,26 +27,6 @@ namespace AppDigitalCv.Business
             personalRepository = new PersonalRepository(unitOfWork);
         }
 
-        /// <summary>
-        /// Este metodo se encarga de consulta una persona y actualiza el iddirecicon
-        /// </summary>
-        /// <param name="direccionDomainM">entidad el tipo direciconDM</param>
-        /// <param name="idPersonal">el identificador de la persona</param>
-        /// <returns>respuesta booleana</returns>
-        //public bool AddUpdatePersonalDireccion(DireccionDomainModel direccionDomainM, int idPersonal)
-        //{
-        //    int IdPersonal = idPersonal;
-        //    bool respuesta = false;
-        //    if (direccionDomainM.IdDireccion > 0)
-        //    {
-        //        tblPersonal tblPersonal = personalRepository.SingleOrDefault(p => p.idPersonal.Equals(IdPersonal));
-        //        tblPersonal.idDireccion = direccionDomainM.IdDireccion;
-        //        personalRepository.Update(tblPersonal);
-        //        respuesta = true;
-        //    }
-        //    return respuesta;
-        //}
-
         public string AddUpdatePersonalFamliar(PersonalDomainModel personalDM)
         {
             string resultado = string.Empty;
@@ -282,6 +262,15 @@ namespace AppDigitalCv.Business
                 personalDomainModel.Curp = tblPersonal.strCurp;
                 personalDomainModel.Rfc = tblPersonal.strRfc;
                 personalDomainModel.Homoclave = tblPersonal.strHomoclave;
+                personalDomainModel.strNumeroEmpleado = tblPersonal.strNumeroEmpleado;
+                personalDomainModel.SeguridadSocial = new SeguridadSocialDomainModel
+                {
+                    strNumero = tblPersonal.TblSeguridadSocial.strNumero,
+                    InstitucionesSalud = new InstitucionesSaludDomainModel 
+                    {
+                        strValor = tblPersonal.TblSeguridadSocial.CatInstitucionesSalud.strValor
+                    }
+                };
             }
             return personalDomainModel;
         }
