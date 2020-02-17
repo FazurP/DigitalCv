@@ -43,7 +43,7 @@ namespace AppDigitalCv.Controllers
         {
             if (SessionPersister.AccountSession != null)
             {              
-                ViewBag.IdEstado = new SelectList(IdireccionBusiness.GetEstadoByIdPais(1),"IdEstado","StrValor");
+                ViewBag.IdEstado = new SelectList(IdireccionBusiness.GetEstadoByIdPais(135),"IdEstado","StrValor");
                 ViewBag.IdMunicipio = new SelectList("");
                 ViewBag.IdColonia = new SelectList("");
                 return View();
