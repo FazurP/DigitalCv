@@ -9,7 +9,7 @@ namespace AppDigitalCv.ViewModels
 {
     public class DocumentacionPersonalV2VM
     {
-
+        public int id { get; set; }
         public int idPesonal { get; set; }
         public int idDocumento { get; set; }
         public int idTipoDocumento { get; set; }

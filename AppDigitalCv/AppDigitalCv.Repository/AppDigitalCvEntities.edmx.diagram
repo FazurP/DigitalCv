@@ -309,9 +309,8 @@
         <EntityTypeShape EntityType="bdGestionDocenteModel.TblPresentacionPonencias" Width="1.5" PointX="36.375" PointY="3.875" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblPresentacionPonencias_tblPersonal" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblDocumentacionPersonal" Width="1.5" PointX="45.375" PointY="12.75" />
-        <AssociationConnector Association="bdGestionDocenteModel.fk_documento_documentacionPersonal" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblDocumentacionPersonal_CatTipoDocumento" />
-        <AssociationConnector Association="bdGestionDocenteModel.fk_personal_documentacionPersonal" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblDocumentacionPersonal_catDocumentos" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblDocumentacionPersonal_tblPersonal" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

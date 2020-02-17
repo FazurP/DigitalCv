@@ -14,6 +14,7 @@ namespace AppDigitalCv.Repository
     
     public partial class tblDocumentacionPersonal
     {
+        public int id { get; set; }
         public int idPersonal { get; set; }
         public int idDocumento { get; set; }
         public Nullable<int> idTipoDocumento { get; set; }
@@ -21,7 +22,6 @@ namespace AppDigitalCv.Repository
         public string dteVigenciaDocumento { get; set; }
     
         public virtual catDocumentos catDocumentos { get; set; }
-        public virtual CatTipoDocumento CatTipoDocumento { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
     }
 }

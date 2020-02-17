@@ -14,16 +14,7 @@ namespace AppDigitalCv.Repository
     
     public partial class CatTipoDocumento
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CatTipoDocumento()
-        {
-            this.tblDocumentacionPersonal = new HashSet<tblDocumentacionPersonal>();
-        }
-    
         public int id { get; set; }
         public string strValor { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblDocumentacionPersonal> tblDocumentacionPersonal { get; set; }
     }
 }

@@ -38,6 +38,7 @@ namespace AppDigitalCv.Business
             tblDocumentacionPersonal.idPersonal = documentacionPersonalDM.idPesonal;
             tblDocumentacionPersonal.idTipoDocumento = documentacionPersonalDM.idTipoDocumento;
             tblDocumentacionPersonal.dteVigenciaDocumento = documentacionPersonalDM.dteVigenciaDocumento;
+            tblDocumentacionPersonal.dteExpedicion = documentacionPersonalDM.dteExpedicion;
 
             catDocumentos.tblDocumentacionPersonal.Add(tblDocumentacionPersonal);
 
@@ -56,11 +57,11 @@ namespace AppDigitalCv.Business
         public bool DeleteDocumentacionPersonal(int _idDocumento, int _idPersonal)
         {
             bool respuesta = false;
-            Expression<Func<tblDocumentacionPersonal, bool>> predicate = p => p.idDocumento == _idDocumento && p.idPersonal
-             == _idPersonal;
-
-            documentacionPersonalRepository.Delete(predicate);
-            respuesta = true;
+            if (_idDocumento > 0)
+            {
+                documentosRepository.Delete(p => p.idDocumento == _idDocumento);
+                respuesta = true;
+            }         
             return respuesta;
         }
     }
