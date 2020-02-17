@@ -40,11 +40,47 @@
 </div>
 
 
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
-
-
 <script>
+
+     $("#txtAutor").bind('keypress', function (e) {
+        var regex = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$");
+        var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (!regex.test(key)) {
+            toastr.warning("Solo se Admiten Cadenas de Texto.", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+            e.preventDefault();
+            return false;
+        }
+     });
+
+     $("#txtNombre").bind('keypress', function (e) {
+        var regex = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9,. ]+$");
+        var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (!regex.test(key)) {
+            toastr.warning("Solo se Admiten Cadenas de Texto.", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+            e.preventDefault();
+            return false;
+        }
+     });
+
+     $("#txtDescripcion").bind('keypress', function (e) {
+        var regex = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9,. ]+$");
+        var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (!regex.test(key)) {
+            toastr.warning("Solo se Admiten Cadenas de Texto.", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+            e.preventDefault();
+            return false;
+        }
+     });
+
+     $("#txtInstitucion").bind('keypress', function (e) {
+        var regex = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9,. ]+$");
+        var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (!regex.test(key)) {
+            toastr.warning("Solo se Admiten Cadenas de Texto.", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+            e.preventDefault();
+            return false;
+        }
+    });
 
     $(document).ready(function () {
 

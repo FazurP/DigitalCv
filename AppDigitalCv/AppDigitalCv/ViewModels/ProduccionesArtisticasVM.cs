@@ -20,7 +20,7 @@ namespace AppDigitalCv.ViewModels
         public string strImpactoMetodologia { get; set; }
         public string strImpactoDiseño { get; set; }
         public string strImpactoInnovacion { get; set; }
-        public DateTime dteFechaPublicacion { get; set; }
+        public string dteFechaPublicacion { get; set; }
         public string strLugarPresento { get; set; }
         public string strProposito { get; set; }
 

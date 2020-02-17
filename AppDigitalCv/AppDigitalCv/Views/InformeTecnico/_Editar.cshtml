@@ -44,6 +44,42 @@
 
 <script>
 
+     $('#txtAutor').keypress(function (e) {
+        let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$");
+        if (!regExp.test(data)) {
+            toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            e.preventDefault();
+        }
+     })
+
+     $('#txtNombreProyecto').keypress(function (e) {
+        let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9,. ]+$");
+        if (!regExp.test(data)) {
+            toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            e.preventDefault();
+        }
+     })
+
+     $('#txtAlcance').keypress(function (e) {
+        let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ,. ]+$");
+        if (!regExp.test(data)) {
+            toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            e.preventDefault();
+        }
+     })
+
+     $('#txtInstitucionBeneficiaria').keypress(function (e) {
+        let data = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        let regExp = new RegExp("^[a-záéíóúñA-ZÁÉÍÓÚÑ0-9,. ]+$");
+        if (!regExp.test(data)) {
+            toastr.warning('Solo se Permiten Cadenas de Texto', 'Digital-Cv dice', { timeOut: 1000, closeButton: true });
+            e.preventDefault();
+        }
+    })
+
     $(document).ready(function () {
 
         $("#btnEnviar").click(function () {
