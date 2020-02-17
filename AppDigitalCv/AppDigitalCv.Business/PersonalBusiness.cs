@@ -263,7 +263,8 @@ namespace AppDigitalCv.Business
                 personalDomainModel.Rfc = tblPersonal.strRfc;
                 personalDomainModel.Homoclave = tblPersonal.strHomoclave;
                 personalDomainModel.strNumeroEmpleado = tblPersonal.strNumeroEmpleado;
-                personalDomainModel.SeguridadSocial = new SeguridadSocialDomainModel
+
+                _ = tblPersonal.TblSeguridadSocial == null ? new SeguridadSocialDomainModel() : personalDomainModel.SeguridadSocial = new SeguridadSocialDomainModel
                 {
                     strNumero = tblPersonal.TblSeguridadSocial.strNumero,
                     InstitucionesSalud = new InstitucionesSaludDomainModel 

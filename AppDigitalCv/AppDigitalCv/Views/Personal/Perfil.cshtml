@@ -6,113 +6,116 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    @Html.AntiForgeryToken()
-    <div class="bs-container">
-        <section class="content-header">
-            <h1>
-                Mi Perfil
-                <small>(Datos Personales)</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
-                <li> <a href="#">Personal</a></li>
-                <li class="active">Perfil</li>
-            </ol>
-        </section>
-        <br />
-        <div class="row fix-position">
-            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
-                <div class="box box-success">
-                    <div class="box-header with-border">
+@Html.AntiForgeryToken()
+<div class="bs-container" style="min-height:1920px;">
+    <section class="content-header">
+        <h1>
+            Mi Perfil
+            <small>(Datos Personales)</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"> <i class="fa fa-dashboard"></i> Inicio </a></li>
+            <li> <a href="#">Personal</a></li>
+            <li class="active">Perfil</li>
+        </ol>
+    </section>
+    <br />
+    <div class="">
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+            <div class="box box-success">
+                <div class="box-header with-border">
+                </div>
+                <div class="box-body">
+                    <div id="imgPreview">
+                        @{
+
+                            string url = Server.MapPath("~/Imagenes/Usuarios/" + @SessionPersister.AccountSession.NombreCompleto + "/ImagePerfil/perfil.jpeg");
+
+                            if (File.Exists(url))
+                            {
+                                <img src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil.jpeg" class="profile-user-img img-responsive img-circle">
+                            }
+                            else
+                            {
+                                <img src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil_anonimo.jpg" class="profile-user-img img-responsive img-circle">
+                            }
+                        }
+
+
                     </div>
-                    <div role="form">
-                        <div class="box-body">
-                            <div id="imgPreview">
-                                @{
-
-                                   string url = Server.MapPath("~/Imagenes/Usuarios/" + @SessionPersister.AccountSession.NombreCompleto + "/ImagePerfil/perfil.jpeg");
-
-                                   if (File.Exists(url))
-                                    {
-                                        <img src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil.jpeg" class="profile-user-img img-responsive img-circle">
-                                    }
-                                    else
-                                    {
-                                        <img src="~/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/ImagePerfil/perfil_anonimo.jpg" class="profile-user-img img-responsive img-circle">
-                                    }
-                                }
-                                
-
-                            </div>
-                            <h3 class="profile-username text-center">@SessionPersister.AccountSession.TipoPersonal</h3>
-                            <p class="text-muted text-center">@SessionPersister.AccountSession.TipoUsuario</p>
-                            <ul class="list-group list-group-unbordered">
-                                <li class="list-group-item">
-                                    <b id="description" class="text-navy">Datos de la Foto: </b>
-                                    <a class="pull-right"><span class="fa  fa-camera"></span></a>
-                                </li>
-                                <li class="list-group-item">
-                                    Añade una foto de inicio de perfil para completar tu información.
-                                    <a class="pull-right"><span class="fa fa-file-photo-o"></span></a>
-                                </li>
-                                <li class="list-group-item">
-                                    <label for="exampleInputFile">Cargar Foto:</label>
-                                    @Html.TextBoxFor(model => model.ImageFile, new { @class = "btn btn-file btn-linkedin col-xs-12 col-sm-12 col-md-12 col-lg-12", @type = "file", id = "fotoInputFile" })
-                                    @Html.ValidationMessageFor(model => model.ImageFile, "", new { @class = "text-danger" })
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <h3 class="profile-username text-center">@SessionPersister.AccountSession.TipoPersonal</h3>
+                    <p class="text-muted text-center">@SessionPersister.AccountSession.TipoUsuario</p>
+                    <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                            <b id="description" class="text-navy">Datos de la Foto: </b>
+                            <a class="pull-right"><span class="fa  fa-camera"></span></a>
+                        </li>
+                        <li class="list-group-item">
+                            Añade una foto de inicio de perfil para completar tu información.
+                            <a class="pull-right"><span class="fa fa-file-photo-o"></span></a>
+                        </li>
+                        <li class="list-group-item">
+                            <label for="exampleInputFile">Cargar Foto:</label>
+                            @Html.TextBoxFor(model => model.ImageFile, new { @class = "btn btn-file btn-linkedin col-xs-12 col-sm-12 col-md-12 col-lg-12", @type = "file", id = "fotoInputFile" })
+                            @Html.ValidationMessageFor(model => model.ImageFile, "", new { @class = "text-danger" })
+                        </li>
+                    </ul>
                 </div>
             </div>
-                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
-                    <div class="box box-success">
-                        <div class="box-body">
-                            <ul class="todo-list">
-                                <li class="list-unstyled"><label class=" text-left">Nombre:</label> &nbsp; @Html.DisplayFor(model => model.Nombre,new { @class="form-control input-sm  text-bold"})</li>
-                                <li class="list-unstyled"><label>Apellido Paterno:</label> &nbsp; @Html.DisplayFor(model => model.ApellidoPaterno, new { @class = "form-control input-sm" })</li>
-                                <li class="list-unstyled"><label>Apellido Materno:</label> &nbsp; @Html.DisplayFor(model => model.ApellidoMaterno, new { @class = "form-control input-sm" })</li>
-                                <li class="list-unstyled"><label>Nacionalidad:</label> &nbsp; @Html.DisplayFor(model => model.Nacionalidad.strValor, new { @class = "form-control input-sm" })</li>
-                                <li class="list-unstyled"><label>Estado Civil:</label> &nbsp; @Html.DisplayFor(model => model.EstadoCivil.StrDescripcion, new { @class = "form-control input-sm" })</li>
-                                <li class="list-unstyled"><label>Sexo:</label> &nbsp; @Html.DisplayFor(model => model.StrGenero, new { @class = "form-control input-sm" })</li>
-                                <li class="list-unstyled"><label>Curp:</label> &nbsp; @Html.DisplayFor(model => model.Curp, new { @class = "form-control input-sm" })</li>
-                                <li class="list-unstyled"><label>RFC:</label> &nbsp; @Html.DisplayFor(model => model.RFC, new { @class = "form-control input-sm" })</li>
-                                <li class="list-unstyled"><label>Homoclave:</label> &nbsp; @Html.DisplayFor(model => model.HomoClave, new { @class = "form-control input-sm" })</li>
-                                <li class="list-unstyled"><label>Numero de Empleado:</label> &nbsp; @Html.DisplayFor(model => model.strNumeroEmpleado, new { @class = "form-control input-sm" })</li>
-                                <li class="list-unstyled"><label>Institución de Salud:</label> &nbsp; @Html.DisplayFor(model => model.SeguridadSocial.InstitucionesSalud.strValor, new { @class = "form-control input-sm" })</li>
-                                <li class="list-unstyled"><label>Numero de Seguridad:</label> &nbsp; @Html.DisplayFor(model => model.SeguridadSocial.strNumero, new { @class = "form-control input-sm" })</li>
-                            </ul>
-                        </div>
-                    </div>
+        </div>
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+            <div class="box box-success">
+                <div class="box-body">
+                    <ul class="todo-list">
+                        <li class="list-unstyled"><label class=" text-left">Nombre:</label> &nbsp; @Html.DisplayFor(model => model.Nombre, new { @class = "form-control input-sm  text-bold" })</li>
+                        <li class="list-unstyled"><label>Apellido Paterno:</label> &nbsp; @Html.DisplayFor(model => model.ApellidoPaterno, new { @class = "form-control input-sm" })</li>
+                        <li class="list-unstyled"><label>Apellido Materno:</label> &nbsp; @Html.DisplayFor(model => model.ApellidoMaterno, new { @class = "form-control input-sm" })</li>
+                        <li class="list-unstyled"><label>Nacionalidad:</label> &nbsp; @Html.DisplayFor(model => model.Nacionalidad.strValor, new { @class = "form-control input-sm" })</li>
+                        <li class="list-unstyled"><label>Estado Civil:</label> &nbsp; @Html.DisplayFor(model => model.EstadoCivil.StrDescripcion, new { @class = "form-control input-sm" })</li>
+                        <li class="list-unstyled"><label>Sexo:</label> &nbsp; @Html.DisplayFor(model => model.StrGenero, new { @class = "form-control input-sm" })</li>
+                        <li class="list-unstyled"><label>Curp:</label> &nbsp; @Html.DisplayFor(model => model.Curp, new { @class = "form-control input-sm" })</li>
+                        <li class="list-unstyled"><label>RFC:</label> &nbsp; @Html.DisplayFor(model => model.RFC, new { @class = "form-control input-sm" })</li>
+                        <li class="list-unstyled"><label>Homoclave:</label> &nbsp; @Html.DisplayFor(model => model.HomoClave, new { @class = "form-control input-sm" })</li>
+                        <li class="list-unstyled"><label>Numero de Empleado:</label> &nbsp; @Html.DisplayFor(model => model.strNumeroEmpleado, new { @class = "form-control input-sm" })</li>
+                        <li class="list-unstyled"><label>Institución de Salud:</label> &nbsp; @Html.DisplayFor(model => model.SeguridadSocial.InstitucionesSalud.strValor, new { @class = "form-control input-sm" })</li>
+                        <li class="list-unstyled"><label>Numero de Seguridad:</label> &nbsp; @Html.DisplayFor(model => model.SeguridadSocial.strNumero, new { @class = "form-control input-sm" })</li>
+                    </ul>
                 </div>
+            </div>
         </div>
     </div>
+</div>
 
-<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="~/Content/toastr.min.css" rel="stylesheet" />
 
 @section scripts
 {
+    <script src="~/Scripts/toastr.min.js"></script>
     <script>
-          $('#fotoInputFile').change(function ()
-        {
+        $('#fotoInputFile').change(function () {
             let img = $('#fotoInputFile').get(0).files;
-
-
-            let data = new FormData;
-            data.append('Image', img[0]);
-            debugger;
-            let urlTarget = "/Personal/GuardarImagen";
-            $.ajax({
-            url: urlTarget,
-            type: 'post',
-            data: data,
-            contentType: false,
-            processData: false,
-                success: function () {
-                    window.location.href = "/Personal/Perfil";
+            console.log(img[0].type);
+            if (img[0].type == "image/jpeg") {
+                let data = new FormData;
+                data.append('Image', img[0]);
+                debugger;
+                let urlTarget = "/Personal/GuardarImagen";
+                $.ajax({
+                    url: urlTarget,
+                    type: 'post',
+                    data: data,
+                    contentType: false,
+                    processData: false,
+                    success: function () {
+                        window.location.href = "/Personal/Perfil";
+                    }
+                });
+            } else {
+                $(this).val("");
+                toastr.warning("Solo se Permiten Imagenes en Formato JPEG", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
             }
-            });
+
+
 
         });
 

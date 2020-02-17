@@ -463,6 +463,7 @@
     <Content Include="Scripts\Validate\ExperienciaLaboralExterna\validate-experiencia-laboral-externa-regExp.js" />
     <Content Include="Scripts\Validate\ExperienciaLaboralExterna\validate-experiencia-laboral-externa-upload.js" />
     <Content Include="Scripts\Validate\ExperienciaLaboralExterna\validate-experiencia-laboral-externa-date.js" />
+    <Content Include="Scripts\Validate\ExperienciaLaboralInterna\fixdom-experiencia-laboral-interna.js" />
     <Content Include="Scripts\Validate\ExperienciaLaboralInterna\validate-experiencia-laboral-interna-date.js" />
     <Content Include="Scripts\Validate\ExperienciaLaboralInterna\validate-experiencia-laboral-interna-form.js" />
     <Content Include="Scripts\Validate\ExperienciaLaboralInterna\validate-experiencia-laboral-interna-regExp.js" />

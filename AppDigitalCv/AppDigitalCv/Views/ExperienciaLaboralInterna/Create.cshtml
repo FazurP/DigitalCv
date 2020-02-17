@@ -30,6 +30,10 @@
                                         <label>Categoria: </label>
                                         @Html.DropDownList("idCategoria", null, new { @class = "form-control input-sm", @id = "idCategoria" })
                                     </div>
+                                    <div class="form-group" style="display:none;" id="docente">
+                                        <label>Tipo de Docente: </label>
+                                        @Html.DropDownList("strTipoProfesor", new SelectList(new List<string> {"Seleccionar","Profesor Titular A","Profesor Titular B","Profesor Asociado C" }), new { @class = "form-control input-sm", @id = "tipoDocente" })
+                                    </div>
                                     <div class="form-group">
                                         <label>Area:</label>
                                         @Html.DropDownList("idArea", null, new { @class = "form-control input-sm", @id = "idArea" })
@@ -121,6 +125,7 @@
     <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/Scripts/Validate/ExperienciaLaboralInterna/validate-experiencia-laboral-interna-regExp.js"></script>
     <script src="~/Scripts/Validate/ExperienciaLaboralInterna/validate-experiencia-laboral-interna-form.js"></script>
+    <script src="~/Scripts/Validate/ExperienciaLaboralInterna/fixdom-experiencia-laboral-interna.js"></script>
     <script>
 
         var AddEditar = function (id) {

@@ -69,18 +69,19 @@ namespace AppDigitalCv.Controllers
                     AccountViewModel viewAccount = new AccountViewModel();
                     AutoMapper.Mapper.Map(accountDomainModel, viewAccount);
                     SessionPersister.AccountSession = viewAccount;
-                    return RedirectToAction("Create", "Personal");
+                    
                 }
             }
             else
             {
                 var res = wsusuariosSoapClient.ConsultaUsuarios(seguridad, usuario);
-                var sigeAlumnp = wsusuariosSoapClient.ConsultaUsuariosAlumno(seguridad, usuario);
+                //var sigeAlumnp = wsusuariosSoapClient.ConsultaUsuariosAlumno(seguridad, usuario);
 
                 PersonalDomainModel personalDomainModel = new PersonalDomainModel();
                 if (res.Nombre_usuario != null && res.Clave != null)
                 {
                     _ = res.Nombre == null ? res.Nombre = "..." : res.Nombre = res.Nombre;
+                    personalDomainModel.Nombre = res.Nombre;
                     personalDomainModel.ApellidoPaterno = res.ApellidoPaterno;
                     personalDomainModel.ApellidoMaterno = res.ApellidoMaterno;
                     personalDomainModel.AccountDomainModel = new AccountDomainModel { Email = res.Correo_Electronico, Password = usuario.Password, Nombre = usuario.NomUsuario, TipoUsuario = res.TipoUsuario.ToString() };
@@ -89,15 +90,14 @@ namespace AppDigitalCv.Controllers
 
                     if (IAccountBusiness.AddUsuario(personalDomainModel))
                     {
-                        AccountViewModel viewAccount = new AccountViewModel();
-                        viewAccount.NombreCompleto = res.Nombre + " " + res.ApellidoPaterno + " " + res.ApellidoMaterno;
-                        SessionPersister.AccountSession = viewAccount;
-                        return RedirectToAction("Create", "Personal");
+
+                        Login(accountViewModel);
+                       
                     }
                 }
 
             }
-            return View();
+            return RedirectToAction("Create", "Personal");
         }
             
         [HttpPost]

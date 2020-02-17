@@ -8,7 +8,7 @@
         <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-hourglass"></i></a></li>
         @if (SessionPersister.AccountSession != null)
         {
-            if (_= SessionPersister.AccountSession.Nombre.Equals("alilia"))
+            if (SessionPersister.AccountSession.Nombre.Equals("alilia") || SessionPersister.AccountSession.Nombre.Equals("mnunez"))
             {
                 <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
             }

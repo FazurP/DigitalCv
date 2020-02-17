@@ -16,6 +16,7 @@ namespace AppDigitalCv.ViewModels
         public string dteFechaInicio { get; set; }
         public string dteFechaTermino { get; set; }
         public string strActividadDesempeñada { get; set; }
+        public string strTipoProfesor { get; set; }
 
         //Objetos de las relaciones
 
