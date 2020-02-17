@@ -89,7 +89,7 @@
                             <th>Nombre del Doctorado</th>
                             <th>Institución</th>
                             <th>Documento</th>
-                            <th>Eliminar</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="tblBody"></tbody>
@@ -102,7 +102,7 @@
                             <th>Nombre de la Maestria</th>
                             <th>Institución</th>
                             <th>Documento</th>
-                            <th>Eliminar</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="tblBody"></tbody>
@@ -115,7 +115,7 @@
                             <th>Nombre de la Ingenieria y/o Licenciatura</th>
                             <th>Institución</th>
                             <th>Documento</th>
-                            <th>Eliminar</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="tblBody"></tbody>
@@ -127,8 +127,7 @@
                         <tr>
                             <th>Nombre del Bachillerato</th>
                             <th>Documento</th>
-                            <th>Eliminar</th>
-
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="tblBody"></tbody>
@@ -236,7 +235,7 @@
                             {
                                 "data": "id",
                                 "render": function (id, type, full, meta) {
-                                    return '<a href="#" onclick="AddDelete(' + id + ','+1+')"><i class="btn btn-sm btn-danger">Eliminar</i></a>'
+                                    return '<a href="#" onclick="AddDelete(' + id + ','+1+')"><i class="btn btn-sm btn-danger glyphicon glyphicon-remove"></i></a>'
                                 }
                             },
                         ]
@@ -302,7 +301,7 @@
                             {
                                 "data": "id",
                                 "render": function (id, type, full, meta) {
-                                    return '<a href="#" onclick="AddDelete(' + id + ',' + 2 +')"><i class="btn btn-sm btn-danger">Eliminar</i></a>'
+                                    return '<a href="#" onclick="AddDelete(' + id + ',' + 2 +')"><i class="btn btn-sm btn-danger glyphicon glyphicon-remove"></i></a>'
                                 }
                             },
                         ]
@@ -368,7 +367,7 @@
                             {
                                 "data": "id",
                                 "render": function (id, type, full, meta) {
-                                    return '<a href="#" onclick="AddDelete(' + id + ','+3+')"><i class="btn btn-sm btn-danger">Eliminar</i></a>'
+                                    return '<a href="#" onclick="AddDelete(' + id + ','+3+')"><i class="btn btn-sm btn-danger glyphicon glyphicon-remove"></i></a>'
                                 }
                             },
                         ]
@@ -433,7 +432,7 @@
                             {
                                 "data": "id",
                                 "render": function (id, type, full, meta) {
-                                    return '<a href="#" onclick="AddDelete(' + id + ','+4+')"><i class="btn btn-sm btn-danger">Eliminar</i></a>'
+                                    return '<a href="#" onclick="AddDelete(' + id + ','+4+')"><i class="btn btn-sm btn-danger glyphicon glyphicon-remove"></i></a>'
                                 }
                             },
                         ]

@@ -69,7 +69,6 @@
     <Compile Include="DireccionBusiness.cs" />
     <Compile Include="DireccionIndividualizadaBusiness.cs" />
     <Compile Include="DoctoradoBusiness.cs" />
-    <Compile Include="DocumentacionPersonalBusiness.cs" />
     <Compile Include="DocumentacionPersonalV2Business.cs" />
     <Compile Include="DocumentosBusiness.cs" />
     <Compile Include="EdificioBusiness.cs" />

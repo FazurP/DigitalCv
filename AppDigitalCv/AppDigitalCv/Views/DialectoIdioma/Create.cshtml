@@ -97,8 +97,7 @@
                     <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
                         <tr>
                             <th>Lengua</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="tblBody"></tbody>
@@ -219,17 +218,10 @@
                                 "data": "id",
                                 "render": function (id, type, full, meta) {
 
-                                    return '<a href="#" onclick="AddEditar(' + id + ')"><i class="btn btn-sm btn-success">Actualizar</i></a>'
+                                    return '<a href="#" onclick="AddEditar(' + id + ')"><i class="btn btn-sm btn-success glyphicon glyphicon-pencil"></i></a> <a href="#" onclick="AddEliminar(' + id + ')"><i class="btn btn-sm btn-danger glyphicon glyphicon-remove"></i></a>'
                                 }
                             },
 
-                            {
-                                "data": "id",
-                                "render": function (id, type, full, meta) {
-
-                                    return '<a href="#" onclick="AddEliminar(' + id + ')"><i class="btn btn-sm btn-danger">Eliminar</i></a>'
-                                }
-                            },
                         ]
                     });
                 }

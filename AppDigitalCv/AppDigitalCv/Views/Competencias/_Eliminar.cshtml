@@ -19,10 +19,13 @@
                         ¿Deseas <strong>Eliminar</strong> este registro realmente?
                     </div>
                     <div class="col-lg-6">
-                        <div class="form-group">
-                            <label>Documento</label>
-                            @Html.TextBoxFor(m => m.file.StrUrl, new { @class = "form-control input-sm", @placeholder = "Nombre de la Alergia", @disabled = "disabled" })
-                        </div>
+                        <ul class="todo-list">
+                            <li class="list-unstyled">
+                                <label>Documento: </label>
+                                @Html.DisplayFor(m => m.file.StrUrl, new { @class = "form-control input-sm", @placeholder = "Nombre de la Alergia", @disabled = "disabled" })
+                            </li>
+                        </ul>
+                        <br />
                         <div class="form-group">
                             <a href="#" id="btnSubmit">
                                 <i class="btn btn-danger">Eliminar</i>

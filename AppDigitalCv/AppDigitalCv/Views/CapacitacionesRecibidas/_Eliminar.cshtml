@@ -10,16 +10,19 @@
                 <div class="col-md-7 col-xs-11 col-sm-5 col-lg-7">
                         @Html.HiddenFor(model => model.id)
                         @Html.HiddenFor(model => model.idDocumento)
-                        <div class="form-group">
+                    <ul class="todo-list">
+                        <li class="list-unstyled">
                             <label>Nombre de la Capacitación:</label>
-                            @Html.TextBoxFor(model => model.strNombre, new { @class = "form-control input-sm", disabled = "", id = "nombre" })
-                        </div>
-                        <div class="form-group">
+                            @Html.DisplayFor(model => model.strNombre)
+                        </li>
+                        <li class="list-unstyled">
                             <label>Tipo de Capacitación:</label>
-                            @Html.TextBoxFor(model => model.TipoCapacitacion.strValor, new { @class = "form-control input-sm", disabled = "", id = "idFrecuencia" })
-                        </div>                                     
+                            @Html.DisplayFor(model => model.TipoCapacitacion.strValor)
+                        </li>
+                    </ul>    
+                    <br />
                     <div class="form-group">
-                        <input type="button" class="btn btn-danger" value="Eliminar" id="btnEnviar" />
+                        <input type="button" class="btn btn-sm btn-danger" value="Eliminar" id="btnEnviar" />
                     </div>
                 </div>
             </div>

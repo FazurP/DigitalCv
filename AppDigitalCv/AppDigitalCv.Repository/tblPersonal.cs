@@ -29,7 +29,6 @@ namespace AppDigitalCv.Repository
             this.tblDatosLaboralesDocente = new HashSet<tblDatosLaboralesDocente>();
             this.tblDeportePersonal = new HashSet<tblDeportePersonal>();
             this.tblDireccionIndividualizada = new HashSet<tblDireccionIndividualizada>();
-            this.tblDocumentacionPersonal = new HashSet<tblDocumentacionPersonal>();
             this.tblEmergencia = new HashSet<tblEmergencia>();
             this.tblEnfermedadPersonal = new HashSet<tblEnfermedadPersonal>();
             this.tblHobbies = new HashSet<tblHobbies>();
@@ -61,6 +60,7 @@ namespace AppDigitalCv.Repository
             this.tblParticipacionInstitucionalInterna = new HashSet<tblParticipacionInstitucionalInterna>();
             this.tblExperienciaLaboralInterna = new HashSet<tblExperienciaLaboralInterna>();
             this.TblPresentacionPonencias = new HashSet<TblPresentacionPonencias>();
+            this.tblDocumentacionPersonal = new HashSet<tblDocumentacionPersonal>();
         }
     
         public int idPersonal { get; set; }
@@ -116,8 +116,6 @@ namespace AppDigitalCv.Repository
         public virtual ICollection<tblDeportePersonal> tblDeportePersonal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblDireccionIndividualizada> tblDireccionIndividualizada { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblDocumentacionPersonal> tblDocumentacionPersonal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblEmergencia> tblEmergencia { get; set; }
         public virtual TblEncuesta TblEncuesta { get; set; }
@@ -182,5 +180,7 @@ namespace AppDigitalCv.Repository
         public virtual ICollection<tblExperienciaLaboralInterna> tblExperienciaLaboralInterna { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblPresentacionPonencias> TblPresentacionPonencias { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblDocumentacionPersonal> tblDocumentacionPersonal { get; set; }
     }
 }

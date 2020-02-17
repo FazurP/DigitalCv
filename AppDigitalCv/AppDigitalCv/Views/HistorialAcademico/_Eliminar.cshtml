@@ -8,51 +8,60 @@
                     <img alt="user Pic" src="~/Imagenes/escudo_uttt.jpg" id="profile-image1" class="product-img img-responsive" width="100" height="70" />
                 </div>
                 <div class="col-md-7 col-xs-11 col-sm-5 col-lg-7">
-                    
+
                     @if (Model.Type.Equals(1))
                     {
-                        @Html.HiddenFor(model => model.Doctorado.id,htmlAttributes:new { id="doctorado"})
-                        <div class="form-group">
-                            <label>Doctorado:</label>
-                            @Html.TextBoxFor(model => model.Doctorado.strNombre, new { @class = "form-control input-sm", disabled = "", id = "nombre" })
-                        </div>
-                        <div class="form-group">
-                            <label>Institución:</label>
-                            @Html.TextBoxFor(model => model.Doctorado.InstitucionAcreditaDoctorado.strValor, new { @class = "form-control input-sm", disabled = "", id = "idFrecuencia" })
-                        </div>
+                        @Html.HiddenFor(model => model.Doctorado.id, htmlAttributes: new { id = "doctorado" })
+                        <ul class="todo-list">
+                            <li class="list-unstyled">
+                                <label>Doctorado:</label>
+                                @Html.DisplayFor(model => model.Doctorado.strNombre, new { @class = "form-control input-sm", disabled = "", id = "nombre" })
+                            </li>
+                            <li class="list-unstyled">
+                                <label>Institución:</label>
+                                @Html.DisplayFor(model => model.Doctorado.InstitucionAcreditaDoctorado.strValor, new { @class = "form-control input-sm", disabled = "", id = "idFrecuencia" })
+                            </li>
+                        </ul>
                     }
                     else if (Model.Type.Equals(2))
                     {
                         @Html.HiddenFor(model => model.Maestria.id, new { id = "maestria" })
-                        <div class="form-group">
-                            <label>Maestria:</label>
-                            @Html.TextBoxFor(model => model.Maestria.strNombre, new { @class = "form-control input-sm", disabled = "", id = "nombre" })
-                        </div>
-                        <div class="form-group">
-                            <label>Institución:</label>
-                            @Html.TextBoxFor(model => model.Maestria.InstitucionAcreditaMaestria.strValor, new { @class = "form-control input-sm", disabled = "", id = "idFrecuencia" })
-                        </div>
+                        <ul class="todo-list">
+                            <li class="list-unstyled">
+                                <label>Maestria:</label>
+                                @Html.DisplayFor(model => model.Maestria.strNombre, new { @class = "form-control input-sm", disabled = "", id = "nombre" })
+                            </li>
+                            <li class="list-unstyled">
+                                <label>Institución:</label>
+                                @Html.DisplayFor(model => model.Maestria.InstitucionAcreditaMaestria.strValor, new { @class = "form-control input-sm", disabled = "", id = "idFrecuencia" })
+                            </li>
+                        </ul>
                     }
                     else if (Model.Type.Equals(3))
                     {
                         @Html.HiddenFor(model => model.LicenciaturaIngenieria.id, new { id = "licenciatura" })
-                        <div class="form-group">
-                            <label>Licenciatura y/o Ingenieria:</label>
-                            @Html.TextBoxFor(model => model.LicenciaturaIngenieria.strNombre, new { @class = "form-control input-sm", disabled = "", id = "nombre" })
-                        </div>
-                        <div class="form-group">
-                            <label>Institución:</label>
-                            @Html.TextBoxFor(model => model.LicenciaturaIngenieria.InstitucionAcreditaLicenciatura.strValor, new { @class = "form-control input-sm", disabled = "", id = "idFrecuencia" })
-                        </div>
+                        <ul class="todo-list">
+                            <li class="list-unstyled">
+                                <label>Licenciatura y/o Ingenieria:</label>
+                                @Html.DisplayFor(model => model.LicenciaturaIngenieria.strNombre, new { @class = "form-control input-sm", disabled = "", id = "nombre" })
+                            </li>
+                            <li class="list-unstyled">
+                                <label>Institución:</label>
+                                @Html.DisplayFor(model => model.LicenciaturaIngenieria.InstitucionAcreditaLicenciatura.strValor, new { @class = "form-control input-sm", disabled = "", id = "idFrecuencia" })
+                            </li>
+                        </ul>
                     }
                     else if (Model.Type.Equals(4))
                     {
                         @Html.HiddenFor(model => model.Bachillerato.id, new { id = "bachillerato" })
-                        <div class="form-group">
-                            <label>Institución:</label>
-                            @Html.TextBoxFor(model => model.Bachillerato.strNombre, new { @class = "form-control input-sm", disabled = "", id = "idFrecuencia" })
-                        </div>
+                        <ul class="todo-list">
+                            <li class="list-unstyled">
+                                <label>Institución:</label>
+                                @Html.DisplayFor(model => model.Bachillerato.strNombre, new { @class = "form-control input-sm", disabled = "", id = "idFrecuencia" })
+                            </li>
+                        </ul>
                     }
+                <br />
                     <div class="form-group">
                         <input type="button" class="btn btn-danger" value="Eliminar" id="btnEnviar" />
                     </div>

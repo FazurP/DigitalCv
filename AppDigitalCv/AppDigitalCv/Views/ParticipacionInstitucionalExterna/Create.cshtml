@@ -85,9 +85,7 @@
                         <tr>
                             <th>Actividad</th>
                             <th>Documento</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
-
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="tblBody"></tbody>
@@ -210,14 +208,7 @@
                                 "data": "idCatDocumento",
                                 "render": function (idCatDocumento, type, full, meta) {
 
-                                    return '<a href="#" onclick="AddEditar(' + idCatDocumento + ')"><i class="btn btn-sm btn-success">Actualizar</i></a>'
-                                }
-                            },
-                            {
-                                "data": "idCatDocumento",
-                                "render": function (idCatDocumento, type, full, meta) {
-
-                                    return '<a href="#" onclick="AddEliminar(' + idCatDocumento + ')"><i class="btn btn-sm btn-danger">Eliminar</i></a>'
+                                    return '<a href="#" onclick="AddEditar(' + idCatDocumento + ')"><i class="btn btn-sm btn-success glyphicon glyphicon-pencil"></i></a> <a href="#" onclick="AddEliminar(' + idCatDocumento + ')"><i class="btn btn-sm btn-danger glyphicon glyphicon-remove"></i></a>'
                                 }
                             },
                         ]

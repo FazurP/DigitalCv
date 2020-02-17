@@ -104,7 +104,7 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-    <script src="~/Scripts/Validate/HabitosPersonales/validate-habitos-personales-form.js"></script>
+    <script src="~/Scripts/Validate/HabitosPersonales/validate-habitos-personales-form.js?v=1"></script>
     <script src="~/Scripts/Validate/HabitosPersonales/validate-habitos-personales-regExp.js"></script>
     <script>
 
@@ -197,7 +197,7 @@
                                 "data": "IdDeportePersonal",
                                 "render": function (IdDeportePersonal, type, full, meta) {
 
-                                    return ' <a href="#" class="" onclick="AddDisplay(' + IdDeportePersonal + ')"><i class="btn btn-sm btn-default">Ver Datos</i></a> <a href="#" onclick="AddEditar(' + IdDeportePersonal + ')"><i class="btn btn-sm btn-success">Actualizar</i></a> <a href="#" onclick="AddDelete(' + IdDeportePersonal + ')"><i class="btn btn-sm btn-danger">Eliminar</i></a>'
+                                    return ' <a href="#" class="" onclick="AddDisplay(' + IdDeportePersonal + ')"><i class="btn btn-sm btn-default glyphicon glyphicon-search"></i></a> <a href="#" onclick="AddEditar(' + IdDeportePersonal + ')"><i class="btn btn-sm btn-success glyphicon glyphicon-pencil"></i></a> <a href="#" onclick="AddDelete(' + IdDeportePersonal + ')"><i class="btn btn-sm btn-danger glyphicon glyphicon-remove"></i></a>'
                                 }
                             },
                         ]

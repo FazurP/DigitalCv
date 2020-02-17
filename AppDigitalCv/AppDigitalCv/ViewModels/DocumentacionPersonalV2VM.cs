@@ -13,8 +13,9 @@ namespace AppDigitalCv.ViewModels
         public int idPesonal { get; set; }
         public int idDocumento { get; set; }
         public int idTipoDocumento { get; set; }
-        public DateTime dteVigenciaDocumento { get; set; }
-        public virtual DocumentosVM DocumentosVM { get; set; }
+        public string dteExpedicion { get; set; }
+        public string dteVigenciaDocumento { get; set; }
+        public virtual DocumentosVM Documentos { get; set; }
 
         
     }

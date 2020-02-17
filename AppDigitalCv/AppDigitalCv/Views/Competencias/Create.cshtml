@@ -41,31 +41,28 @@
                             </div>
                         </div>
                         <div>
-
                         </div>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <input type="submit" class="btn btn-success" value="Guardar" onclick="GuardarList()" id="Enviar" />
+                                <input type="submit" class="btn btn-sm btn-success" value="Guardar Información" id="Enviar" />
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="">
-        <div class="form-group-sm">
+    <div class="input-sm">
+        <div class="">
             <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
             <div class="form-group" id="addTable">
                 <br />
-                <table id="tblCompetencias" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
-                    <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
+                <table id="tblCompetencias" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-responsive">
+                    <thead class="" style="color:white; background-color:#428BCA; font-size:10px;">
                         <tr>
                             <th>Fecha</th>
                             <th>Documento</th>
-                            <th>Eliminar</th>
+                            <th>Acciones</th>
 
                         </tr>
                     </thead>
@@ -206,7 +203,7 @@
                             {
                             "data": "file.StrUrl",
                                 "render": function (StrUrl) {
-                                    return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'
+                                    return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
                                 }
                             },
 
@@ -214,7 +211,7 @@
                                 "data": "idCompetenciasConocimientosPersonal",
                                 "render": function (idCompetenciasConocimientosPersonal, type, full, meta) {
                                  
-                                    return '<a href="#" onclick="AddEliminar(' + idCompetenciasConocimientosPersonal + ')"><i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i></a>'
+                                    return '<a href="#" onclick="AddEliminar(' + idCompetenciasConocimientosPersonal + ')"><i class="btn btn-sm btn-danger glyphicon glyphicon-remove"></i></a>'
                                 }
                             },
                         ]

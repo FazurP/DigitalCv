@@ -36,14 +36,19 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
                                 <div class="form-group">
-                                    <label>Vigencia:</label>
-                                    @Html.TextBoxFor(model => model.dteVigenciaDocumento, new { @class = "form-control input-sm", id = "vigencia", type = "date" })
+                                    <label>Fecha de Expedición:</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        @Html.TextBoxFor(model => model.dteExpedicion, new { @class = "form-control input-sm pull-rigth datepicker", id = "vigencia" })
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
                                 <div class="form-group">
                                     <label>Envidencia del Documento en PDF:</label>
-                                    @Html.TextBoxFor(model => model.DocumentosVM.DocumentoFile, new { @class = "form-control input-sm", id = "fUpload", type = "file" })
+                                    @Html.TextBoxFor(model => model.Documentos.DocumentoFile, new { @class = "form-control input-sm", id = "fUpload", type = "file" })
                                 </div>
                             </div>
                         </div>
@@ -54,41 +59,42 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group-sm">
-                            <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
-                            <div class="form-group" id="addTable">
-                                <br />
-                                <table id="tblDocumentacion" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
-                                    <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
-                                        <tr>
-                                            <th>Nombre</th>
-                                            <th>Documento</th>
-                                            <th>Eliminar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tblBody"></tbody>
-                                </table>
-                                <!-- Establecemos el Modal que se va a presentar cuando demos click en la edicion de los datos-->
-                                <div class="modal fade" id="myModal1">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header" style="background-color:#3C8DBC;color:white;">
-                                                <a href="#" class="close" data-dismiss="modal">&times;</a>
-                                                <h5 class="modal-title"><label style="font-size:medium;">Alergias</label></h5>
-                                            </div>
-                                            <div class="modal-body" id="myModalBodyDiv1">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="hidden" id="hiddenAlergiaId" />
-                                <!--Terminamos el modal de eliminacion-->
-                            </div>
-                        </div>
+
 
                     </div>
 
                 </div>
+            </div>
+        </div>
+        <div class="input-sm">
+            <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
+            <div class="form-group" id="addTable">
+                <br />
+                <table id="tblDocumentacion" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
+                    <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Documento</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblBody"></tbody>
+                </table>
+                <!-- Establecemos el Modal que se va a presentar cuando demos click en la edicion de los datos-->
+                <div class="modal fade" id="myModal1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                                <h5 class="modal-title"><label style="font-size:medium;">Alergias</label></h5>
+                            </div>
+                            <div class="modal-body" id="myModalBodyDiv1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" id="hiddenAlergiaId" />
+                <!--Terminamos el modal de eliminacion-->
             </div>
         </div>
     </div>
@@ -134,7 +140,7 @@
                     oTable = $('#tblDocumentacion').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/DocumentacionPersonal/GetDocumentos',
+                        "sAjaxSource": '/DocumentacionPersonalV2/GetDocumentos',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -143,7 +149,7 @@
                                 success: fnCallback
                             })
                         },
-                        "pageLength": 5,
+                        "pageLength": 10,
                         "paging": true,
                         "language": {
 
@@ -174,7 +180,6 @@
                         "columns": [
 
                             { "data": "StrUrl" },
-
                             {
                             "data": "documentosDomain.StrUrl",
                                 "render": function (StrUrl) {
@@ -187,7 +192,7 @@
                                 "data": "IdDocumento",
                                 "render": function (IdDocumento, type, full, meta) {
 
-                                    return '<a href="#" onclick="AddEliminar(' + IdDocumento + ')"><i class="btn btn-sm btn-google glyphicon glyphicon-trash"></i></a>'
+                                    return '<a href="#" onclick="AddEliminar(' + IdDocumento + ')"><i class="btn btn-sm btn-danger glyphicon glyphicon-remove"></i></a>'
                                 }
                             },
                         ]

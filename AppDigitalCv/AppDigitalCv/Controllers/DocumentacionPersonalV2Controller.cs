@@ -1,6 +1,7 @@
 ﻿using AppDigitalCv.Business.Enum;
 using AppDigitalCv.Business.Interface;
 using AppDigitalCv.Domain;
+using AppDigitalCv.Models;
 using AppDigitalCv.Security;
 using AppDigitalCv.ViewModels;
 using System;
@@ -63,7 +64,7 @@ namespace AppDigitalCv.Controllers
                     {                     
                         DocumentacionPersonalV2DomainModel documentacionPersonalV2DomainModel = new DocumentacionPersonalV2DomainModel();
                         AutoMapper.Mapper.Map(documentacionPersonalVM, documentacionPersonalV2DomainModel);
-                        documentacionPersonalV2DomainModel.DocumentosDomainModel = new DocumentosDomainModel { StrUrl = obj[1].ToString() };
+                        documentacionPersonalV2DomainModel.Documentos = new DocumentosDomainModel { StrUrl = obj[1].ToString() };
 
                         IdocumentacionPersonalBusiness.AddDocumentacionPersonal(documentacionPersonalV2DomainModel);
                     }
@@ -93,9 +94,9 @@ namespace AppDigitalCv.Controllers
 
             if (Directory.Exists(path))
             {
-                if (documentacionPersonalVM.DocumentosVM.DocumentoFile != null)
+                if (documentacionPersonalVM.Documentos.DocumentoFile != null)
                 {
-                    respuesta = FileManager.FileManager.CheckFileIfExist(path, documentacionPersonalVM.DocumentosVM);
+                    respuesta = FileManager.FileManager.CheckFileIfExist(path, documentacionPersonalVM.Documentos);
                 }
             }
             else
@@ -105,6 +106,45 @@ namespace AppDigitalCv.Controllers
             }
 
             return respuesta;
+        }
+
+        [HttpGet]
+        public JsonResult GetDocumentos(DataTablesParam param)
+        {
+            int IdentityPersonal = SessionPersister.AccountSession.IdPersonal;
+            List<DocumentosDomainModel> documentosDM = new List<DocumentosDomainModel>();
+
+            int pageNo = 1;
+            if (param.iDisplayStart >= param.iDisplayLength)
+            {
+                pageNo = (param.iDisplayStart / param.iDisplayLength) + 1;
+            }
+
+            int totalCount = 0;
+            if (param.sSearch != null)
+            {
+                documentosDM = IdocumentosBusiness.GetDocumetosByIdPersonal(IdentityPersonal).Where(p => p.StrUrl.Contains(param.sSearch)).ToList();
+
+
+            }
+            else
+            {
+                totalCount = IdocumentosBusiness.GetDocumetosByIdPersonal(IdentityPersonal).Count();
+
+
+                documentosDM = IdocumentosBusiness.GetDocumetosByIdPersonal(IdentityPersonal).OrderBy(p => p.StrUrl)
+                    .Skip((pageNo - 1) * param.iDisplayLength).Take(param.iDisplayLength).ToList();
+
+            }
+            return Json(new
+            {
+                aaData = documentosDM,
+                sEcho = param.sEcho,
+                iTotalDisplayRecords = documentosDM.Count(),
+                iTotalRecords = documentosDM.Count()
+
+            }, JsonRequestBehavior.AllowGet);
+
         }
 
         public ActionResult GetDocumentoDelete(int IdDocumento) 

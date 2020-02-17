@@ -41,7 +41,7 @@ namespace AppDigitalCv.Business
 
             catDocumentos.tblDocumentacionPersonal.Add(tblDocumentacionPersonal);
 
-            catDocumentos.strUrl = documentacionPersonalDM.DocumentosDomainModel.StrUrl;
+            catDocumentos.strUrl = documentacionPersonalDM.Documentos.StrUrl;
 
             documentosRepository.Insert(catDocumentos);
             respuesta = true;

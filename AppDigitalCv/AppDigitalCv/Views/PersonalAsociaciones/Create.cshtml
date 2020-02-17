@@ -71,8 +71,8 @@
             <!-- Agregamos la tabla de forma dinamica  style="display:none" -->
             <div class="form-group" id="addTable">
                 <br />
-                <table id="tblTipoAsociacion" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-hover">
-                    <thead class="table table table-condensed table-bordered table-responsive table-hover" style="color:white; background-color:#428BCA; font-size:10px;">
+                <table id="tblTipoAsociacion" border="1" style="width: 100%; border:solid 1px #428BCA; border-collapse: collapse;" class="table table-responsive">
+                    <thead class="" style="color:white; background-color:#428BCA; font-size:10px;">
                         <tr>
 
                             <th>Asociación / Colectivo</th>
@@ -230,7 +230,7 @@
                                 "data": "IdAsociacion",
                                 "render": function (IdAsociacion, type, full, meta) {
 
-                                    return ' <a href="#" class="" onclick="AddDisplay(' + IdAsociacion + ')"><i class="btn btn-sm btn-default">Ver Datos</i></a> <a href="#" onclick="AddDelete(' + IdAsociacion + ')"><i class="btn btn-sm btn-danger">Eliminar</i></a>'
+                                    return ' <a href="#" class="" onclick="AddDisplay(' + IdAsociacion + ')"><i class="btn btn-sm btn-default glyphicon glyphicon-search"></i></a> <a href="#" onclick="AddDelete(' + IdAsociacion + ')"><i class="btn btn-sm btn-danger glyphicon glyphicon-remove"></i></a>'
                                 }
                             },
                         ]

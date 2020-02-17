@@ -12,7 +12,6 @@ namespace AppDigitalCv.ViewModels
         public int idCatInstitucionSuperior { get; set; }
         public int idCatDocumento { get; set; }
         public int idPersonal { get; set; }
-        [RegularExpression("^[a-záéíóúñA-ZÁÉÍÓÚÑ., ]+$")]
         public string strActividad { get; set; }
         public string dteFechaInicio { get; set; }
         public string dteFechaTermino { get; set; }

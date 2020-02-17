@@ -121,9 +121,6 @@
         <EntityTypeShape EntityType="bdGestionDocenteModel.TblLenguas" Width="1.5" PointX="27.5" PointY="39.75" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblLenguas_CatLenguas" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatTipoDocumento" Width="1.5" PointX="4.375" PointY="13.875" />
-        <EntityTypeShape EntityType="bdGestionDocenteModel.tblDocumentacionPersonal" Width="1.5" PointX="31.5" PointY="25.75" />
-        <AssociationConnector Association="bdGestionDocenteModel.fk_documento_documentacionPersonal" />
-        <AssociationConnector Association="bdGestionDocenteModel.FK_tblDocumentacionPersonal_CatTipoDocumento" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.tblCompetenciasConocimientosPersonal" Width="1.5" PointX="31.5" PointY="30" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblCompetenciasConocimientosPersonal_catDocumentos" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.CatActividadesFisicas" Width="1.5" PointX="25.375" PointY="68" />
@@ -221,7 +218,6 @@
         <AssociationConnector Association="bdGestionDocenteModel.fk_personal_datosLaboralesDocente" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_personal_deportePersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblDireccionIndividualizada_tblPersonal" />
-        <AssociationConnector Association="bdGestionDocenteModel.fk_personal_documentacionPersonal" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_personal_emergencia" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblPersonal_TblEncuesta1" />
         <AssociationConnector Association="bdGestionDocenteModel.fk_personal_enfermedadPersonal" />
@@ -312,6 +308,10 @@
         <AssociationConnector Association="bdGestionDocenteModel.FK_tblExperienciaLaboralInterna_tblPersonal" />
         <EntityTypeShape EntityType="bdGestionDocenteModel.TblPresentacionPonencias" Width="1.5" PointX="36.375" PointY="3.875" />
         <AssociationConnector Association="bdGestionDocenteModel.FK_TblPresentacionPonencias_tblPersonal" />
+        <EntityTypeShape EntityType="bdGestionDocenteModel.tblDocumentacionPersonal" Width="1.5" PointX="45.375" PointY="12.75" />
+        <AssociationConnector Association="bdGestionDocenteModel.fk_documento_documentacionPersonal" />
+        <AssociationConnector Association="bdGestionDocenteModel.FK_tblDocumentacionPersonal_CatTipoDocumento" />
+        <AssociationConnector Association="bdGestionDocenteModel.fk_personal_documentacionPersonal" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
