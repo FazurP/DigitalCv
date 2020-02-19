@@ -51,7 +51,12 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Elaboración de Informe</label>
-                                    @Html.TextBoxFor(model => model.dteElaboracionInforme, new { @class = "form-control input-sm", type = "date", id = "ElaboracionInforme" })
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        @Html.TextBoxFor(model => model.dteElaboracionInforme, new { @class = "form-control input-sm pull-rigth datepicker", required = "required", title = "Fecha de Entrega del Premio", id = "ElaboracionInforme" })
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Numero de Paginas</label>
@@ -151,6 +156,8 @@
         };
 
         $(document).ready(function () {
+
+            $('#Pais').select2();
 
             var oTable;
 

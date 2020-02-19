@@ -31,7 +31,7 @@
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                     <label>Nacionalidad</label>
-                                    @Html.DropDownListFor(model => model.idNacionalidad, null, new { @class = "form-control input-sm", id = "idNacionalidad" })
+                                    @Html.DropDownListFor(model => model.idNacionalidad, null, new { @class = " form-control input-sm", id = "idNacionalidad" })
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                     <label>Estado Civil:</label>
@@ -137,6 +137,10 @@
     <script>
 
         $(document).ready(function () {
+
+            $('#idNacionalidad').select2();
+            $('#IdEstadoCivil').select2();
+            $('#InstitucionSalud').select2();
 
             $("#fotoInputFile").change(function () {
 

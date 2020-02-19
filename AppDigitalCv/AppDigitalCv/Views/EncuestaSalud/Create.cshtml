@@ -23,173 +23,182 @@
                 <div class="box box-success">
                     <div class="box-header">
                     </div>
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="form-group">
-                                        <label>1.	¿Cuántas comidas realiza al día?</label>
-                                        @Html.TextBoxFor(model => model.Respuestas01.strComidasDias, new { @class = "form-control input-sm", id = "comidasDias" })
-                                    </div>
-                                    <div class="form-group">
-                                        <label>2.	¿Cuántas horas duerme al día?</label>
-                                        @Html.TextBoxFor(model => model.Respuestas02.strHorasDuermeDia, new { @class = "form-control input-sm", id = "horasDuerme" })
-                                    </div>
-                                    <div class="form-group">
-                                        <label>
-                                            3.	Si es fumador. Responda las siguientes preguntas.
-                                        </label>
-                                        Si @Html.RadioButtonFor(model => model.Respuestas03.bitFumador, true, new { @checked = false, id = "fumadorSi" })
-                                        No @Html.RadioButtonFor(model => model.Respuestas03.bitFumador, false, new { @checked = true, id = "fumadorNo" })
-                                        <br />
-                                        ¿Cuántos cigarrillos fuma al día?
-                                        @Html.TextBoxFor(model => model.Respuestas03.Fumador.strCigarrillosDia, new { @class = "form-control input-sm", id = "cigarrillosDia" })
-                                        ¿Desde qué edad es fumador?
-                                        @Html.TextBoxFor(model => model.Respuestas03.Fumador.strEdadComienzo, new { @class = "form-control input-sm", id = "edadFumador" })
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label>
-                                            4.	Seleccione la opción que más se ajuste a su hábito de consumo de alcohol.
-                                        </label>
-                                        @Html.DropDownList("Respuestas04.idOpcion", null, new { @class = "form-control input-sm", id = "consumoAlcohol" })
-                                    </div>
-                                    <div class="form-group">
-                                        <label>5.	¿Cuál es su grupo y RH sanguíneo?</label>
-                                        <br />
-                                        Grupo Sanguineo
-                                        @Html.DropDownList("Respuestas05.idRh", null, new { @class = "form-control input-sm", id = "grupoSanguineo" })
-                                        RH Sanguineo
-                                        @Html.DropDownList("Respuestas05.idGrupoSanguineo", null, new { @class = "form-control input-sm", id = "rh" })
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>6.	¿Es alérgico a algún medicamento, sustancia o alimento?</label>
-                                        Si @Html.RadioButtonFor(model => model.Respuestas06.bitAlergico, true, new { id = "alergicoSi" })
-                                        No @Html.RadioButtonFor(model => model.Respuestas06.bitAlergico, false, new { @checked = "", id = "alergicoNo" })
-                                        <br />
-                                        Medicamento
-                                        @Html.TextBoxFor(model => model.Respuestas06.AlergiaMedicamento.strMedicamento, new { @class = "form-control input-sm", id = "medicamento" })
-                                        Sustancia
-                                        @Html.TextBoxFor(model => model.Respuestas06.AlergiaSustancia.strSustancia, new { @class = "form-control input-sm", id = "sustancia" })
-                                        Alimento
-                                        @Html.TextBoxFor(model => model.Respuestas06.AlergiaAlimento.strAlimento, new { @class = "form-control input-sm", id = "alimento" })
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="form-group">
-                                        <label>
-                                            7.	¿Alguna vez ha presentado alguna enfermedad exantemática? Marque la(s) que corresponda(n).
-
-                                        </label>
-                                        Si @Html.RadioButtonFor(model => model.Respuestas07.bitPadecido, true, new { id = "padecidoSi" })
-                                        No @Html.RadioButtonFor(model => model.Respuestas07.bitPadecido, false, new { @checked = "", id = "padecidoNo" })
-
-                                        <br />
-
-                                        <ul class="list-group">
-                                            <li class="list-group-item">Varicela @Html.CheckBoxFor(model => model.Respuestas07.EnfermedadesExantematica.Varicela, new { id = "varicela" })</li>
-                                            <li class="list-group-item">Rubeola @Html.CheckBoxFor(model => model.Respuestas07.EnfermedadesExantematica.Rubeola, new { id = "rubeola" })</li>
-                                            <li class="list-group-item">Sarampión @Html.CheckBoxFor(model => model.Respuestas07.EnfermedadesExantematica.Sarampion, new { id = "sarempeon" })</li>
-                                            <li class="list-group-item">Escarlatina @Html.CheckBoxFor(model => model.Respuestas07.EnfermedadesExantematica.Escarlatina, new { id = "escarlatina" })</li>
-                                            <li class="list-group-item">Exantema Subito @Html.CheckBoxFor(model => model.Respuestas07.EnfermedadesExantematica.ExantemaSubito, new { id = "exantema" })</li>
-                                            <li class="list-group-item">Enfermedades de Manos,Pies o Boca @Html.CheckBoxFor(model => model.Respuestas07.EnfermedadesExantematica.EnfermedadManosPiesBoca, new { id = "manos" })</li>
-                                        </ul>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label>8.	Especifique a que intervenciones quirúrgicas ha sido sometido</label>
-                                        Si @Html.RadioButtonFor(model => model.Respuestas08.bitIntervencion, true, new { id = "intervencionSi" })
-                                        No @Html.RadioButtonFor(model => model.Respuestas08.bitIntervencion, false, new { @checked = "", id = "intervencionNo" })
-                                        @Html.TextBoxFor(model => model.Respuestas08.strIntervencion, new { @class = "form-control input-sm", id = "intervencion" })
-                                    </div>
-                                    <div class="form-group">
-                                        <label>9.	¿Ha sufrido de alguna lesión en huesos, ligamentos o articulaciones? Especifique</label>
-                                        Si @Html.RadioButtonFor(model => model.Respuestas09.bitLesion, true, new { id = "lesionSi" })
-                                        No @Html.RadioButtonFor(model => model.Respuestas09.bitLesion, false, new { @checked = "", id = "lesionNo" })
-                                        <br />
-                                        Huesos
-                                        @Html.TextBoxFor(model => model.Respuestas09.LesionHuesos.strLesion, new { @class = "form-control input-sm", id = "huesos" })
-                                        Ligamentos
-                                        @Html.TextBoxFor(model => model.Respuestas09.LesionLigamentos.strLesion, new { @class = "form-control input-sm", id = "ligamentos" })
-                                        Articulaciones
-                                        @Html.TextBoxFor(model => model.Respuestas09.LesionArticulaciones.strLesion, new { @class = "form-control input-sm", id = "articulaciones" })
-                                    </div>
-                                    <div class="form-group">
-                                        <label>10.	¿Ha sido hospitalizado alguna vez? Especifique la causa</label>
-                                        Si @Html.RadioButtonFor(model => model.Respuestas10.bitHospotalizado, true, new { id = "hopitalizadoSi" })
-                                        No @Html.RadioButtonFor(model => model.Respuestas10.bitHospotalizado, false, new { @checked = "", id = "hospitalizadoNo" })
-                                        <br />
-                                        Causa @Html.TextBoxFor(model => model.Respuestas10.strCausa, new { @class = "form-control input-sm", id = "causa" })
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label>11.	¿Realiza alguna actividad física o deporte? Especifique tipo y frecuencia</label>
-                                        Si @Html.RadioButtonFor(model => model.Respuestas11.bitRealizaActividadFisica, true, new { id = "deporteSi" })
-                                        No @Html.RadioButtonFor(model => model.Respuestas11.bitRealizaActividadFisica, false, new { @checked = "", id = "deporteNo" })
-                                        <br />
-                                        Tipo
-                                        @Html.TextBoxFor(model => model.Respuestas11.ActividadesFisicas.strTipo, new { @class = "form-control input-sm", id = "tipo" })
-                                        Frecuencia
-                                        @Html.TextBoxFor(model => model.Respuestas11.ActividadesFisicas.strFrecuencia, new { @class = "form-control input-sm", id = "frecuencia" })
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label>12.	¿Padece de alguna enfermedad actualmente? (Por ejemplo: diabetes, hipertensión, obesidad, cáncer, cardiopatía, artritis, LUPUS, glaucoma, hipo-hipertiroidismo, bronquitis crónica, enfisema pulmonar, insuficiencia renal, epilepsia, depresión, etc…)</label>
-                                        Si @Html.RadioButtonFor(model => model.Respuestas12.bitPadece, true, new { id = "padeceSi" })
-                                        No @Html.RadioButtonFor(model => model.Respuestas12.bitPadece, false, new { @checked = "", id = "padeceNo" })
-                                        <br />
-                                        Enfermedad(es)
-                                        @Html.TextBoxFor(model => model.Respuestas12.Enfermedades.strEnfermedad, new { @class = "form-control input-sm", id = "enfermedades" })
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="form-group">
-                                        <label>13.	Toma algún tratamiento actualmente. Especifique nombre y dosis</label>
-                                        Si @Html.RadioButtonFor(model => model.Respuestas13.bitTratamiento, true, new { id = "tratamientoSi" })
-                                        No @Html.RadioButtonFor(model => model.Respuestas13.bitTratamiento, false, new { @checked = "", id = "tratamientoNo" })
-                                        <br />
-                                        Tratamiento @Html.TextBoxFor(model => model.Respuestas13.Tratamiento.strTratamiento, new { @class = "form-control input-sm", id = "tratamiento" })
-                                        Dosis @Html.TextBoxFor(model => model.Respuestas13.Tratamiento.strDosis, new { @class = "form-control input-sm", id = "dosis" })
-                                    </div>
-                                    @{
-                                        if (SessionPersister.AccountSession.Sexo.Equals("Femenino"))
-                                        {
-                                            <div class="form-group">
-                                                <label>14.	¿Hace cuánto tiempo se realizó su último Papanicolaou?</label>
-                                                @Html.TextBoxFor(model => model.Respuestas14.strUltimoPapanicolaou, new { @class = "form-control input-sm", id = "papanicolaou" })
-                                            </div>
-                                            <div class="form-group">
-                                                <label>15.	¿Cada cuando se realiza autoexploración mamaria?</label>
-                                                @Html.TextBoxFor(model => model.Respuestas15.strFrecuenciaExploracionMamaria, new { @class = "form-control input-sm", id = "mamaria" })
-                                            </div>
-                                            <div class="form-group">
-                                                <label>16.	Número de embarazos.</label>
-                                                @Html.TextBoxFor(model => model.Respuestas16.strNumeroEmbarazos, new { @class = "form-control input-sm", id = "embarazos" })
-                                            </div>
-                                        }
-                                        else if(SessionPersister.AccountSession.Sexo.Equals("Masculino"))
-                                        {
-                                            <div class="form-group">
-                                                <label>17.	¿Hace cuánto tiempo se realizó la prueba de antígeno prostático?</label>
-                                                @Html.TextBoxFor(model => model.Respuestas17.strUltimoPruebaAntigenoProstatico, new { @class = "form-control input-sm", id = "antigeno" })
-                                            </div>
-                                        }
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    @if (SessionPersister.AccountSession.Sexo != null)
+                    {
+                        <div class="box-body">
+                            <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-success" value="Guardar Información" />
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label>1.	¿Cuántas comidas realiza al día?</label>
+                                            @Html.TextBoxFor(model => model.Respuestas01.strComidasDias, new { @class = "form-control input-sm", id = "comidasDias" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label>2.	¿Cuántas horas duerme al día?</label>
+                                            @Html.TextBoxFor(model => model.Respuestas02.strHorasDuermeDia, new { @class = "form-control input-sm", id = "horasDuerme" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                3.	Si es fumador. Responda las siguientes preguntas.
+                                            </label>
+                                            Si @Html.RadioButtonFor(model => model.Respuestas03.bitFumador, true, new { @checked = false, id = "fumadorSi" })
+                                            No @Html.RadioButtonFor(model => model.Respuestas03.bitFumador, false, new { @checked = true, id = "fumadorNo" })
+                                            <br />
+                                            ¿Cuántos cigarrillos fuma al día?
+                                            @Html.TextBoxFor(model => model.Respuestas03.Fumador.strCigarrillosDia, new { @class = "form-control input-sm", id = "cigarrillosDia" })
+                                            ¿Desde qué edad es fumador?
+                                            @Html.TextBoxFor(model => model.Respuestas03.Fumador.strEdadComienzo, new { @class = "form-control input-sm", id = "edadFumador" })
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                4.	Seleccione la opción que más se ajuste a su hábito de consumo de alcohol.
+                                            </label>
+                                            @Html.DropDownList("Respuestas04.idOpcion", null, new { @class = "form-control input-sm", id = "consumoAlcohol" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label>5.	¿Cuál es su grupo y RH sanguíneo?</label>
+                                            <br />
+                                            Grupo Sanguineo
+                                            @Html.DropDownList("Respuestas05.idRh", null, new { @class = "form-control input-sm", id = "grupoSanguineo" })
+                                            RH Sanguineo
+                                            @Html.DropDownList("Respuestas05.idGrupoSanguineo", null, new { @class = "form-control input-sm", id = "rh" })
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>6.	¿Es alérgico a algún medicamento, sustancia o alimento?</label>
+                                            Si @Html.RadioButtonFor(model => model.Respuestas06.bitAlergico, true, new { id = "alergicoSi" })
+                                            No @Html.RadioButtonFor(model => model.Respuestas06.bitAlergico, false, new { @checked = "", id = "alergicoNo" })
+                                            <br />
+                                            Medicamento
+                                            @Html.TextBoxFor(model => model.Respuestas06.AlergiaMedicamento.strMedicamento, new { @class = "form-control input-sm", id = "medicamento" })
+                                            Sustancia
+                                            @Html.TextBoxFor(model => model.Respuestas06.AlergiaSustancia.strSustancia, new { @class = "form-control input-sm", id = "sustancia" })
+                                            Alimento
+                                            @Html.TextBoxFor(model => model.Respuestas06.AlergiaAlimento.strAlimento, new { @class = "form-control input-sm", id = "alimento" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label>
+                                                7.	¿Alguna vez ha presentado alguna enfermedad exantemática? Marque la(s) que corresponda(n).
+
+                                            </label>
+                                            Si @Html.RadioButtonFor(model => model.Respuestas07.bitPadecido, true, new { id = "padecidoSi" })
+                                            No @Html.RadioButtonFor(model => model.Respuestas07.bitPadecido, false, new { @checked = "", id = "padecidoNo" })
+
+                                            <br />
+
+                                            <ul class="list-group">
+                                                <li class="list-group-item">Varicela @Html.CheckBoxFor(model => model.Respuestas07.EnfermedadesExantematica.Varicela, new { id = "varicela" })</li>
+                                                <li class="list-group-item">Rubeola @Html.CheckBoxFor(model => model.Respuestas07.EnfermedadesExantematica.Rubeola, new { id = "rubeola" })</li>
+                                                <li class="list-group-item">Sarampión @Html.CheckBoxFor(model => model.Respuestas07.EnfermedadesExantematica.Sarampion, new { id = "sarempeon" })</li>
+                                                <li class="list-group-item">Escarlatina @Html.CheckBoxFor(model => model.Respuestas07.EnfermedadesExantematica.Escarlatina, new { id = "escarlatina" })</li>
+                                                <li class="list-group-item">Exantema Subito @Html.CheckBoxFor(model => model.Respuestas07.EnfermedadesExantematica.ExantemaSubito, new { id = "exantema" })</li>
+                                                <li class="list-group-item">Enfermedades de Manos,Pies o Boca @Html.CheckBoxFor(model => model.Respuestas07.EnfermedadesExantematica.EnfermedadManosPiesBoca, new { id = "manos" })</li>
+                                            </ul>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>8.	Especifique a que intervenciones quirúrgicas ha sido sometido</label>
+                                            Si @Html.RadioButtonFor(model => model.Respuestas08.bitIntervencion, true, new { id = "intervencionSi" })
+                                            No @Html.RadioButtonFor(model => model.Respuestas08.bitIntervencion, false, new { @checked = "", id = "intervencionNo" })
+                                            @Html.TextBoxFor(model => model.Respuestas08.strIntervencion, new { @class = "form-control input-sm", id = "intervencion" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label>9.	¿Ha sufrido de alguna lesión en huesos, ligamentos o articulaciones? Especifique</label>
+                                            Si @Html.RadioButtonFor(model => model.Respuestas09.bitLesion, true, new { id = "lesionSi" })
+                                            No @Html.RadioButtonFor(model => model.Respuestas09.bitLesion, false, new { @checked = "", id = "lesionNo" })
+                                            <br />
+                                            Huesos
+                                            @Html.TextBoxFor(model => model.Respuestas09.LesionHuesos.strLesion, new { @class = "form-control input-sm", id = "huesos" })
+                                            Ligamentos
+                                            @Html.TextBoxFor(model => model.Respuestas09.LesionLigamentos.strLesion, new { @class = "form-control input-sm", id = "ligamentos" })
+                                            Articulaciones
+                                            @Html.TextBoxFor(model => model.Respuestas09.LesionArticulaciones.strLesion, new { @class = "form-control input-sm", id = "articulaciones" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label>10.	¿Ha sido hospitalizado alguna vez? Especifique la causa</label>
+                                            Si @Html.RadioButtonFor(model => model.Respuestas10.bitHospotalizado, true, new { id = "hopitalizadoSi" })
+                                            No @Html.RadioButtonFor(model => model.Respuestas10.bitHospotalizado, false, new { @checked = "", id = "hospitalizadoNo" })
+                                            <br />
+                                            Causa @Html.TextBoxFor(model => model.Respuestas10.strCausa, new { @class = "form-control input-sm", id = "causa" })
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>11.	¿Realiza alguna actividad física o deporte? Especifique tipo y frecuencia</label>
+                                            Si @Html.RadioButtonFor(model => model.Respuestas11.bitRealizaActividadFisica, true, new { id = "deporteSi" })
+                                            No @Html.RadioButtonFor(model => model.Respuestas11.bitRealizaActividadFisica, false, new { @checked = "", id = "deporteNo" })
+                                            <br />
+                                            Tipo
+                                            @Html.TextBoxFor(model => model.Respuestas11.ActividadesFisicas.strTipo, new { @class = "form-control input-sm", id = "tipo" })
+                                            Frecuencia
+                                            @Html.TextBoxFor(model => model.Respuestas11.ActividadesFisicas.strFrecuencia, new { @class = "form-control input-sm", id = "frecuencia" })
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>12.	¿Padece de alguna enfermedad actualmente? (Por ejemplo: diabetes, hipertensión, obesidad, cáncer, cardiopatía, artritis, LUPUS, glaucoma, hipo-hipertiroidismo, bronquitis crónica, enfisema pulmonar, insuficiencia renal, epilepsia, depresión, etc…)</label>
+                                            Si @Html.RadioButtonFor(model => model.Respuestas12.bitPadece, true, new { id = "padeceSi" })
+                                            No @Html.RadioButtonFor(model => model.Respuestas12.bitPadece, false, new { @checked = "", id = "padeceNo" })
+                                            <br />
+                                            Enfermedad(es)
+                                            @Html.TextBoxFor(model => model.Respuestas12.Enfermedades.strEnfermedad, new { @class = "form-control input-sm", id = "enfermedades" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="form-group">
+                                            <label>13.	Toma algún tratamiento actualmente. Especifique nombre y dosis</label>
+                                            Si @Html.RadioButtonFor(model => model.Respuestas13.bitTratamiento, true, new { id = "tratamientoSi" })
+                                            No @Html.RadioButtonFor(model => model.Respuestas13.bitTratamiento, false, new { @checked = "", id = "tratamientoNo" })
+                                            <br />
+                                            Tratamiento @Html.TextBoxFor(model => model.Respuestas13.Tratamiento.strTratamiento, new { @class = "form-control input-sm", id = "tratamiento" })
+                                            Dosis @Html.TextBoxFor(model => model.Respuestas13.Tratamiento.strDosis, new { @class = "form-control input-sm", id = "dosis" })
+                                        </div>
+                                        @{
+                                            if (SessionPersister.AccountSession.Sexo.Equals("Femenino"))
+                                            {
+                                                <div class="form-group">
+                                                    <label>14.	¿Hace cuánto tiempo se realizó su último Papanicolaou?</label>
+                                                    @Html.TextBoxFor(model => model.Respuestas14.strUltimoPapanicolaou, new { @class = "form-control input-sm", id = "papanicolaou" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>15.	¿Cada cuando se realiza autoexploración mamaria?</label>
+                                                    @Html.TextBoxFor(model => model.Respuestas15.strFrecuenciaExploracionMamaria, new { @class = "form-control input-sm", id = "mamaria" })
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>16.	Número de embarazos.</label>
+                                                    @Html.TextBoxFor(model => model.Respuestas16.strNumeroEmbarazos, new { @class = "form-control input-sm", id = "embarazos" })
+                                                </div>
+                                            }
+                                            else if (SessionPersister.AccountSession.Sexo.Equals("Masculino"))
+                                            {
+                                                <div class="form-group">
+                                                    <label>17.	¿Hace cuánto tiempo se realizó la prueba de antígeno prostático?</label>
+                                                    @Html.TextBoxFor(model => model.Respuestas17.strUltimoPruebaAntigenoProstatico, new { @class = "form-control input-sm", id = "antigeno" })
+                                                </div>
+                                            }
+                                        }
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-success" value="Guardar Información" />
+                                        </div>
+                                    </div>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
+                                            }
+                                            else {
+
+                                                <h3>Registra tus datos personales antes de continuar</h3>
+
+                                            }
+
                 </div>
             </div>
         </div>

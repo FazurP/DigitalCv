@@ -159,6 +159,8 @@
 
             function BindDataTable() {
 
+                $('#Pais').select2();
+
                 if ($.fn.DataTable.isDataTable('#tblProductividad')) {
                     oTable.Draw();
                 }
