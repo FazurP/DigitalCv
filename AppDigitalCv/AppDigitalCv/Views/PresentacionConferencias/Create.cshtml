@@ -109,7 +109,7 @@
 
         var AddEliminar = function (id) {
 
-            var url = "/PresentacionConferencias/GetPresentacionPonencia?idPonencia=" + id;
+            var url = "/digitalcv/PresentacionConferencias/GetPresentacionPonencia?idPonencia=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -132,7 +132,7 @@
                     oTable = $('#tblPonencias').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/PresentacionConferencias/GetPresentacionesPonencias',
+                        "sAjaxSource": '/digitalcv/PresentacionConferencias/GetPresentacionesPonencias',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",

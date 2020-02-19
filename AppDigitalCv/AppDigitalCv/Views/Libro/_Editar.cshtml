@@ -132,11 +132,11 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "/Libro/UpdateLibro",
+                    url: "/digitalcv/Libro/UpdateLibro",
                     data: { libroVM: LibroVM },
                     success: function () {
                         $("#myModal1").modal("hide");
-                        window.location.href = "/Libro/Create";
+                        window.location.href = "/digitalcv/Libro/Create";
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         alert(textStatus);

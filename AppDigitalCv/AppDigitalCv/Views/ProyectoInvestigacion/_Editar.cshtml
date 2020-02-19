@@ -132,11 +132,11 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "/ProyectoInvestigacion/UpdateProyecto",
+                    url: "/digitalcv/ProyectoInvestigacion/UpdateProyecto",
                     data: { proyectoInvestigacionVM: ProyectoInvestigacionVM },
                     success: function () {
                         $("#myModal1").modal("hide");
-                        window.location.href = "/ProyectoInvestigacion/Create";
+                        window.location.href = "/digitalcv/ProyectoInvestigacion/Create";
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         alert(textStatus);

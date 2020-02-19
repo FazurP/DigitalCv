@@ -98,7 +98,6 @@
             if (img[0].type == "image/jpeg") {
                 let data = new FormData;
                 data.append('Image', img[0]);
-                debugger;
                 let urlTarget = "/Personal/GuardarImagen";
                 $.ajax({
                     url: urlTarget,
@@ -107,7 +106,7 @@
                     contentType: false,
                     processData: false,
                     success: function () {
-                        window.location.href = "/Personal/Perfil";
+                        window.location.href = "/digitalcv/Personal/Perfil";
                     }
                 });
             } else {

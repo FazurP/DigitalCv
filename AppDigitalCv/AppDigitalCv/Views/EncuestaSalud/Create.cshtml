@@ -251,7 +251,7 @@
 
         var AddEliminar = function (id) {
 
-            var url = "/EncuestaSalud/GetEncuestaSaludDelete?_idEncuestaSalud=" + id;
+            var url = "/digitalcv/EncuestaSalud/GetEncuestaSaludDelete?_idEncuestaSalud=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -273,7 +273,7 @@
                     oTable = $('#tblEncuesta').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/EncuestaSalud/GetEncuestas',
+                        "sAjaxSource": '/digitalcv/EncuestaSalud/GetEncuestas',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",

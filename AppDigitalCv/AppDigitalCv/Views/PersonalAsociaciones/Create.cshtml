@@ -131,7 +131,7 @@
 
          var AddDisplay = function (id) {
 
-            var url = "/PersonalAsociaciones/DisplayPersonalAsociacion?_id=" + id;
+            var url = "/digitalcv/PersonalAsociaciones/DisplayPersonalAsociacion?_id=" + id;
 
             $("#myModalBodyDisplay").load(url, function () {
                 $("#myModalDipslay").modal("show");
@@ -142,7 +142,7 @@
 
         var AddDelete = function (IdAsociacion) {
 
-            var url = "/PersonalAsociaciones/GetAsociacionByIdAsociacion?IdAsociacion=" + IdAsociacion;
+            var url = "/digitalcv/PersonalAsociaciones/GetAsociacionByIdAsociacion?IdAsociacion=" + IdAsociacion;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -161,7 +161,7 @@
                 var idAsociacion = $(this).val();
                 $.ajax({
                     type: "Post",
-                    url: "/PersonalAsociaciones/ConsultarTipoEmpresaByIdAsociacion?idAsociacion=" + idAsociacion,
+                    url: "/digitalcv/PersonalAsociaciones/ConsultarTipoEmpresaByIdAsociacion?idAsociacion=" + idAsociacion,
                     contentType: "html",
                     success: function (response) {
                         $("#TipoEmpresa").empty();
@@ -185,7 +185,7 @@
                 else {
                     oTable = $('#tblTipoAsociacion').DataTable({
                         "bServerSide": true,
-                        "sAjaxSource": '/PersonalAsociaciones/GetDatosPersonalAsociacionTable',
+                        "sAjaxSource": '/digitalcv/PersonalAsociaciones/GetDatosPersonalAsociacionTable',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",

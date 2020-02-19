@@ -47,11 +47,11 @@
         $('#btnSubmit').click(function ()
         {
             let id = $('#id').val();
-            let url = "/Hobbie/DeleteHobbie?_id=" + id;
+            let url = "/digitalcv/Hobbie/DeleteHobbie?_id=" + id;
 
             $.get(url).done(function ()
             {
-                window.location.href = "/Hobbie/Create";
+                window.location.href = "/digitalcv/Hobbie/Create";
             });
         });
     });

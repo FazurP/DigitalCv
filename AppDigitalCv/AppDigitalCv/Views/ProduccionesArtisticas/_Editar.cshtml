@@ -103,11 +103,11 @@
 
             $.ajax({
                 type: "POST",
-                url: "/ProduccionesArtisticas/UpdateProducciones",
+                url: "/digitalcv/ProduccionesArtisticas/UpdateProducciones",
                 data: { produccionesArtisticasVM: ProduccionesArtisticasVM},
                 success: function () {
                     $("#myModal1").modal("hide");
-                    window.location.href = "/ProduccionesArtisticas/Create";
+                    window.location.href = "/digitalcv/ProduccionesArtisticas/Create";
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     alert(textStatus);

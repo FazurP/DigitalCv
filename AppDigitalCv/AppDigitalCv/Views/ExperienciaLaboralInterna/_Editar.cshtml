@@ -56,11 +56,11 @@
 
             $.ajax({
                 type: "POST",
-                url: "/ExperienciaLaboralInterna/EditExperiencia",
+                url: "/digitalcv/ExperienciaLaboralInterna/EditExperiencia",
                 data: { experienciaLaboralInternaVM: ExperienciaLaboralInternaVM},
                 success: function () {
                     $("#myModal1").modal("hide");
-                    window.location.href = "/ExperienciaLaboralInterna/Create";
+                    window.location.href = "/digitalcv/ExperienciaLaboralInterna/Create";
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     alert(textStatus);

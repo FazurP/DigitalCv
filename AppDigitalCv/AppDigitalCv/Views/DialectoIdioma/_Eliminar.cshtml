@@ -42,12 +42,12 @@
                 $.ajax({
 
                     type: "POST",
-                    url: "/DialectoIdioma/DeleteDialectoById",
+                    url: "/digitalcv/DialectoIdioma/DeleteDialectoById",
                     data: myformdat,
                     success: function () {
                         $("#loaderDiv").hide();
                         $("#myModal").modal("hide");
-                        window.location.href = "/DialectoIdioma/Create";
+                        window.location.href = "/digitalcv/DialectoIdioma/Create";
 
                     }
 

@@ -116,7 +116,7 @@
 
         var AddEditar = function (id) {
 
-            var url = "/ManualOperacion/GetManualOperacionUpdate?_idManualOperacion=" + id;
+            var url = "/digitalcv/ManualOperacion/GetManualOperacionUpdate?_idManualOperacion=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -127,7 +127,7 @@
 
         var AddEliminar = function (id) {
 
-            var url = "/ManualOperacion/GetManualOperacionDelete?_idManualOperacion=" + id;
+            var url = "/digitalcv/ManualOperacion/GetManualOperacionDelete?_idManualOperacion=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -153,7 +153,7 @@
                     oTable = $('#tblManuales').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/ManualOperacion/GetManuales',
+                        "sAjaxSource": '/digitalcv/ManualOperacion/GetManuales',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",

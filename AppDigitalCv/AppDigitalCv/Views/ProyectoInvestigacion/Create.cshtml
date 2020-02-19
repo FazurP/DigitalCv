@@ -147,7 +147,7 @@
     <script>
         var AddEditar = function (id) {
 
-    var url = "/ProyectoInvestigacion/GetProyectoUpdate?_idProyecto=" + id;
+    var url = "/digitalcv/ProyectoInvestigacion/GetProyectoUpdate?_idProyecto=" + id;
 
     $("#myModalBodyDiv1").load(url, function () {
         $("#myModal1").modal("show");
@@ -158,7 +158,7 @@
 
 var AddEliminar = function (id) {
 
-    var url = "/ProyectoInvestigacion/GetProyectoDelete?_idProyecto=" + id;
+    var url = "/digitalcv/ProyectoInvestigacion/GetProyectoDelete?_idProyecto=" + id;
 
     $("#myModalBodyDiv1").load(url, function () {
         $("#myModal1").modal("show");
@@ -181,7 +181,7 @@ $(document).ready(function () {
             oTable = $('#tblProyecto').DataTable({
 
                 "bServerSide": true,
-                "sAjaxSource": '/ProyectoInvestigacion/GetProyectos',
+                "sAjaxSource": '/digitalcv/ProyectoInvestigacion/GetProyectos',
                 "fnServerData": function (sSource, aoData, fnCallback) {
                     $.ajax({
                         type: "Get",
@@ -225,7 +225,7 @@ $(document).ready(function () {
                     {
                         "data": "documentos.StrUrl",
                         "render": function (StrUrl) {
-                            return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
+                            return '<a target="_blank" href="/digitalcv/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
                         }
                     },
 

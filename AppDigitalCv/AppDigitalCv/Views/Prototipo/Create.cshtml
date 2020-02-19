@@ -1,7 +1,7 @@
 ﻿@model AppDigitalCv.ViewModels.PrototipoVM
 @using AppDigitalCv.Security
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Prototipo", FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="bs-container" style="min-height:960px;">
@@ -142,7 +142,7 @@
 
         var AddEditar = function (id) {
 
-            var url = "/Prototipo/GetPropositoUpdate?_idPrototipo=" + id;
+            var url = "/digitalcv/Prototipo/GetPropositoUpdate?_idPrototipo=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -153,7 +153,7 @@
 
         var AddEliminar = function (id) {
 
-            var url = "/Prototipo/GetPrototipoDelete?_idPrototipo=" + id;
+            var url = "/digitalcv/Prototipo/GetPrototipoDelete?_idPrototipo=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -179,7 +179,7 @@
                     oTable = $('#tblPrototipo').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/Prototipo/GetPrototipos',
+                        "sAjaxSource": '/digitalcv/Prototipo/GetPrototipos',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -225,7 +225,7 @@
                                 "data": "documentos.StrUrl",
                                 "render": function (StrUrl)
                                 {
-                                    return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
+                                    return '<a target="_blank" href="/digitalcv/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
                                 }
                             },
 

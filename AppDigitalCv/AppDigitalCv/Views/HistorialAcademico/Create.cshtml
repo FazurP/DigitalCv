@@ -161,7 +161,7 @@
     <script>
 
         var AddDelete = function (id, idType) {
-            var url = "/HistorialAcademico/DeleteHistorialAcademico?_idHistorial=" + id + "&&" + "_idType=" + idType;
+            var url = "/digitalcv/HistorialAcademico/DeleteHistorialAcademico?_idHistorial=" + id + "&&" + "_idType=" + idType;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -188,7 +188,7 @@
 
                     oTable = $('#tblDoctorado').DataTable({
                         "bServerSide": true,
-                        "sAjaxSource": '/HistorialAcademico/GetDoctorados',
+                        "sAjaxSource": '/digitalcv/HistorialAcademico/GetDoctorados',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -197,7 +197,7 @@
                                 success: fnCallback
                             })
                         },
-                        "pageLength": 5,
+                        "pageLength": 10,
                         "paging": true,
                         "language": {
 
@@ -231,7 +231,7 @@
                             {
                             "data": "Documentos.StrUrl",
                                 "render": function (StrUrl) {
-                                return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>&nbsp; '+StrUrl+''
+                                return '<a target="_blank" href="/digitalcv/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>&nbsp; '+StrUrl+''
                                 }
                             },
                             {
@@ -254,7 +254,7 @@
 
                     oTable = $('#tblMaestria').DataTable({
                         "bServerSide": true,
-                        "sAjaxSource": '/HistorialAcademico/GetMaestrias',
+                        "sAjaxSource": '/digitalcv/HistorialAcademico/GetMaestrias',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -263,7 +263,7 @@
                                 success: fnCallback
                             })
                         },
-                        "pageLength": 5,
+                        "pageLength": 10,
                         "paging": true,
                         "language": {
 
@@ -297,7 +297,7 @@
                             {
                             "data": "Documentos.StrUrl",
                                 "render": function (StrUrl) {
-                                return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>&nbsp; '+StrUrl+''
+                                return '<a target="_blank" href="/digitalcv/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>&nbsp; '+StrUrl+''
                                 }
                             },
                             {
@@ -320,7 +320,7 @@
 
                     oTable = $('#tblLicenciatura').DataTable({
                         "bServerSide": true,
-                        "sAjaxSource": '/HistorialAcademico/GetLicenciaturasIng',
+                        "sAjaxSource": '/digitalcv/HistorialAcademico/GetLicenciaturasIng',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -329,7 +329,7 @@
                                 success: fnCallback
                             })
                         },
-                        "pageLength": 5,
+                        "pageLength": 10,
                         "paging": true,
                         "language": {
 
@@ -363,7 +363,7 @@
                             {
                             "data": "Documentos.StrUrl",
                                 "render": function (StrUrl) {
-                                return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>&nbsp; '+StrUrl+''
+                                return '<a target="_blank" href="/digitalcv/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>&nbsp; '+StrUrl+''
                                 }
                             },
                             {
@@ -386,7 +386,7 @@
 
                     oTable = $('#tblBachillerato').DataTable({
                         "bServerSide": true,
-                        "sAjaxSource": '/HistorialAcademico/GetBachilleratos',
+                        "sAjaxSource": '/digitalcv/HistorialAcademico/GetBachilleratos',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -395,7 +395,7 @@
                                 success: fnCallback
                             })
                         },
-                        "pageLength": 5,
+                        "pageLength": 10,
                         "paging": true,
                         "language": {
 
@@ -428,7 +428,7 @@
                             {
                             "data": "Documentos.StrUrl",
                                 "render": function (StrUrl) {
-                                return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>&nbsp; '+StrUrl+''
+                                return '<a target="_blank" href="/digitalcv/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>&nbsp; '+StrUrl+''
                                 }
                             },
                             {

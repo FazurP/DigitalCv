@@ -3,7 +3,7 @@
 @using AppDigitalCv.Security
 
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "InformeTecnico", FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="bs-container" style="min-height:960px;">
@@ -135,7 +135,7 @@
 
         var AddEditar = function (id) {
 
-            var url = "/InformeTecnico/GetInformeTecnicoUpdate?_idInformeTecnico=" + id;
+            var url = "/digitalcv/InformeTecnico/GetInformeTecnicoUpdate?_idInformeTecnico=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -146,7 +146,7 @@
 
         var AddEliminar = function (id) {
 
-            var url = "/InformeTecnico/GetInformeTecnicoDelete?_idInformeTecnico=" + id;
+            var url = "/digitalcv/InformeTecnico/GetInformeTecnicoDelete?_idInformeTecnico=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -172,7 +172,7 @@
                     oTable = $('#tblInforme').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/InformeTecnico/GetInformesTecnicos',
+                        "sAjaxSource": '/digitalcv/InformeTecnico/GetInformesTecnicos',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -216,7 +216,7 @@
                             {
                             "data": "Documentos.StrUrl",
                             "render": function (StrUrl) {
-                                return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
+                                return '<a target="_blank" href="/digitalcv/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
                                 }
                             },
 

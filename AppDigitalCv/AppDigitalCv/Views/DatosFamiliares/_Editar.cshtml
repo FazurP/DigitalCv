@@ -137,11 +137,11 @@
                 //var myformdata = $("#myForm").serialize();
                 $.ajax({
                     type: "POST",
-                    url: "/DatosFamiliares/EditarDatosFamiliar",
+                    url: "/digitalcv/DatosFamiliares/EditarDatosFamiliar",
                     data: { parentescoVM: ParentescoVM },
                     success: function () {
                         $("#myModal1").modal("hide");
-                        window.location.href = "/DatosFamiliares/Create";
+                        window.location.href = "/digitalcv/DatosFamiliares/Create";
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         alert(textStatus);

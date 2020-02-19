@@ -120,10 +120,10 @@
            
             $.ajax({
                 type: "post",
-                url: "/HistorialAcademico/Delete",
+                url: "/digitalcv/HistorialAcademico/Delete",
                 data: { historialAcademicoVM: HistorialAcademicoVM},
                 success: function () {
-                    window.location.href = "/HistorialAcademico/Create";
+                    window.location.href = "/digitalcv/HistorialAcademico/Create";
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     alert(textStatus);

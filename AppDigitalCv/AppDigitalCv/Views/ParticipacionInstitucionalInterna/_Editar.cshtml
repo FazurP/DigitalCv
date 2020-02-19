@@ -75,11 +75,11 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "/ParticipacionInstitucionalInterna/EditarParticipacionPersonal",
+                    url: "/digitalcv/ParticipacionInstitucionalInterna/EditarParticipacionPersonal",
                     data: { participacionInstitucionalInternaVM: ParticipacionInstitucionalInternaVM },
                     success: function () {
                         $("#myModal1").modal("hide");
-                        window.location.href = "/ParticipacionInstitucionalInterna/Create";
+                        window.location.href = "/digitalcv/ParticipacionInstitucionalInterna/Create";
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         alert(textStatus);

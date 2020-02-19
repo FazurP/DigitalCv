@@ -150,7 +150,7 @@
 
         var AddEditar = function (id) {
 
-            var url = "/EstadiaEmpresa/GetEstadiaUpdate?_idEstadia=" + id;
+            var url = "/digitalcv/EstadiaEmpresa/GetEstadiaUpdate?_idEstadia=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -161,7 +161,7 @@
 
         var AddEliminar = function (id) {
 
-            var url = "/EstadiaEmpresa/GetEstadiaDelete?_idEstadia=" + id;
+            var url = "/digitalcv/EstadiaEmpresa/GetEstadiaDelete?_idEstadia=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -184,7 +184,7 @@
                     oTable = $('#tblEstadia').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/EstadiaEmpresa/GetEstadias',
+                        "sAjaxSource": '/digitalcv/EstadiaEmpresa/GetEstadias',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -231,7 +231,7 @@
                                 "data": "documentos.StrUrl",
                                 "render": function (StrUrl)
                                 {
-                                    return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
+                                    return '<a target="_blank" href="/digitalcv/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
                                 }
                             },
 

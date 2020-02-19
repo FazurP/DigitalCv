@@ -1,7 +1,7 @@
 ﻿@model AppDigitalCv.ViewModels.ProduccionesArtisticasVM
 @using AppDigitalCv.Security
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "ProduccionesArtisticas", FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="bs-container" style="min-height:960px;">
@@ -149,7 +149,7 @@
 
         var AddEditar = function (id) {
 
-            var url = "/ProduccionesArtisticas/GetProduccionUpdate?_idProduccion=" + id;
+            var url = "/digitalcv/ProduccionesArtisticas/GetProduccionUpdate?_idProduccion=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -160,7 +160,7 @@
 
         var AddEliminar = function (id) {
 
-            var url = "/ProduccionesArtisticas/GetProduccionDelete?_idProduccion=" + id;
+            var url = "/digitalcv/ProduccionesArtisticas/GetProduccionDelete?_idProduccion=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -186,7 +186,7 @@
                     oTable = $('#tblProductividad').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/ProduccionesArtisticas/GetParticipacionArtisticas',
+                        "sAjaxSource": '/digitalcv/ProduccionesArtisticas/GetParticipacionArtisticas',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -231,7 +231,7 @@
                             {
                             "data": "documentos.StrUrl",
                                 "render": function (StrUrl) {
-                                    return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
+                                    return '<a target="_blank" href="/digitalcv/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
                             }
                             },
                             {

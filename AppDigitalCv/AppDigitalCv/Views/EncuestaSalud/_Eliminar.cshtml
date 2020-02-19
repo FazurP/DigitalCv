@@ -42,10 +42,10 @@
             var myformdat = $("#myFormulario").serialize();
             $.ajax({
                 type: "POST",
-                url: "/EncuestaSalud/DeleteEncuesta",
+                url: "/digitalcv/EncuestaSalud/DeleteEncuesta",
                 data: myformdat,
                 success: function () {
-                    window.location.href = "/EncuestaSalud/Create";
+                    window.location.href = "/digitalcv/EncuestaSalud/Create";
                 }
             });
         });

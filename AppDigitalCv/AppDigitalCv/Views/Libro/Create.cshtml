@@ -139,7 +139,7 @@
 
         var AddEditar = function (id) {
 
-            var url = "/Libro/GetLibroUpdate?_idLibro=" + id;
+            var url = "/digitalcv/Libro/GetLibroUpdate?_idLibro=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -150,7 +150,7 @@
 
         var AddEliminar = function (id) {
 
-            var url = "/Libro/GetLibroDelete?_idLibro=" + id;
+            var url = "/digitalcv/Libro/GetLibroDelete?_idLibro=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -176,7 +176,7 @@
                     oTable = $('#tblLibro').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/Libro/GetLibros',
+                        "sAjaxSource": '/digitalcv/Libro/GetLibros',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",

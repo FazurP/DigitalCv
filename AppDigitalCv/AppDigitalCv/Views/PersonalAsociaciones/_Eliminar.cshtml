@@ -42,7 +42,6 @@
     </form>
 
 </div>
-<script src="~/Content/js/plugins/bootstrap/bootstrap.min.js"></script>
 <script>
 
     $(document).ready(function () {
@@ -56,12 +55,12 @@
             $.ajax({
 
                 type: "POST",
-                url: "/PersonalAsociaciones/EliminarAsociacionPersonal",
+                url: "/digitalcv/PersonalAsociaciones/EliminarAsociacionPersonal",
                 data: myformdata,
                 success: function () {
                     $("#loaderDiv").hide();
                     $("#myModal").modal("hide");
-                    window.location.href = "/PersonalAsociaciones/Create";
+                    window.location.href = "/digitalcv/PersonalAsociaciones/Create";
 
                 }
 

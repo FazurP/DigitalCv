@@ -34,8 +34,7 @@
     </form>
 
 </div>
-<link href="~/Content/toastr.min.css" rel="stylesheet" />
-<script src="~/Scripts/toastr.min.js"></script>
+
 <script>
 
         $("#NombrePremio").bind('keypress', function (e) {
@@ -76,12 +75,12 @@
         let actividades = $('#ActividadesDesempeñadas').val();
 
         if (premio != "" && institucion != "" && actividades != "") {
-            let url = "/PremiosDocente/UpdatePremiosDocente";
+            let url = "/digitalcv/PremiosDocente/UpdatePremiosDocente";
 
             let data = $('#myForm').serialize();
 
             $.post(url, data).done(function () {
-                window.location.href = "/PremiosDocente/Create";
+                window.location.href = "/digitalcv/PremiosDocente/Create";
             });
         } else {
             toastr.warning("No Puedes Dejar Campos Vacios", "Digital-Cv dice", { timeOut: 1000, closeButton: true });

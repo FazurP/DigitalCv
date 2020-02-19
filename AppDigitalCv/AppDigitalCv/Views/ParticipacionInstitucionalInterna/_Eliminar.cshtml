@@ -43,12 +43,12 @@
             $.ajax({
 
                 type: "POST",
-                url: "/ParticipacionInstitucionalInterna/DeleteParticipacion",
+                url: "/digitalcv/ParticipacionInstitucionalInterna/DeleteParticipacion",
                 data: myformdat,
                 success: function () {
                     $("#loaderDiv").hide();
                     $("#myModal").modal("hide");
-                    window.location.href = "/ParticipacionInstitucionalInterna/Create";
+                    window.location.href = "/digitalcv/ParticipacionInstitucionalInterna/Create";
 
                 }
 

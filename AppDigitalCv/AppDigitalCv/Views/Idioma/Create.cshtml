@@ -108,7 +108,7 @@
         
         var AddEliminar = function (id) {
             
-            var url = "/Idioma/GetIdiomaById?_id=" + id;
+            var url = "/digitalcv/Idioma/GetIdiomaById?_id=" + id;
             
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -119,7 +119,7 @@
 
         var AddEditar = function (id) {
 
-            var url = "/Idioma/GetIdiomaByIdEdit?_id=" + id;
+            var url = "/digitalcv/Idioma/GetIdiomaByIdEdit?_id=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -145,7 +145,7 @@
                     oTable = $('#tblIdiomas').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/Idioma/GetIdiomas',
+                        "sAjaxSource": '/digitalcv/Idioma/GetIdiomas',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -154,7 +154,7 @@
                                 success: fnCallback
                             })
                         },
-                        "pageLength": 5,
+                        "pageLength": 10,
                         "paging": true,
                         "language": {
 
@@ -200,7 +200,7 @@
                             "data": "Documentos.StrUrl",
                                 "render": function (StrUrl) {
                                     @*return ;*@
-                                    return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
+                                    return '<a target="_blank" href="/digitalcv/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
                          
                             }
                             },

@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create","DialectoIdioma",FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -138,7 +138,7 @@
 
         var AddEliminar = function (idDialecto) {
 
-            var url = "/DialectoIdioma/GetDialectoById?idDialecto=" + idDialecto;
+            var url = "/digitalcv/DialectoIdioma/GetDialectoById?idDialecto=" + idDialecto;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -149,7 +149,7 @@
 
         var AddEditar = function (idDialecto) {
 
-            var url = "/DialectoIdioma/GetDialectoByIdEdit?idDialecto=" + idDialecto;
+            var url = "/digitalcv/DialectoIdioma/GetDialectoByIdEdit?idDialecto=" + idDialecto;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -179,7 +179,7 @@
                     oTable = $('#tblDialecto').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/DialectoIdioma/GetDialecto',
+                        "sAjaxSource": '/digitalcv/DialectoIdioma/GetDialecto',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",

@@ -118,11 +118,11 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "/Prototipo/UpdatePrototipo",
+                    url: "/digitalcv/Prototipo/UpdatePrototipo",
                     data: { prototipoVM: PrototipoVM },
                     success: function () {
                         $("#myModal1").modal("hide");
-                        window.location.href = "/Prototipo/Create";
+                        window.location.href = "/digitalcv/Prototipo/Create";
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         alert(textStatus);

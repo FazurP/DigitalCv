@@ -53,7 +53,7 @@
         </div>
     </div>
 </div>
-<link href="~/Content/toastr.min.css" rel="stylesheet" />
+
 @section scripts
     {
     <script src="~/Scripts/toastr.min.js"></script>
@@ -64,7 +64,7 @@
         {
             let idPersonal = @SessionPersister.AccountSession.IdPersonal;
 
-            let url = "/Personal/GetSemblanzaEdit?_idPersonal=" + idPersonal;
+            let url = "/digitalcv/Personal/GetSemblanzaEdit?_idPersonal=" + idPersonal;
       
             $('#myModalBodyDiv1').load(url, function ()
             {

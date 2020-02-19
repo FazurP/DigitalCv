@@ -115,7 +115,7 @@
     <script>
 
           var AddDelete = function (id) {
-            var url = "/CapacitacionesRecibidas/GetCapacitacionDelete?_id=" + id;
+            var url = "/digitalcv/CapacitacionesRecibidas/GetCapacitacionDelete?_id=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -141,7 +141,7 @@
 
                     oTable = $('#tblCapacitaciones').DataTable({
                         "bServerSide": true,
-                        "sAjaxSource": '/CapacitacionesRecibidas/GetCapacitacionesRecibidas',
+                        "sAjaxSource": '/digitalcv/CapacitacionesRecibidas/GetCapacitacionesRecibidas',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -184,7 +184,7 @@
                             {
                             "data": "Documentos.StrUrl",
                                 "render": function (StrUrl) {
-                                return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>&nbsp; '+StrUrl+''
+                                return '<a target="_blank" href="/digitalcv/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>&nbsp; '+StrUrl+''
                                 }
                             },
                             {

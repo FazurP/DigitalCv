@@ -41,12 +41,12 @@
                 $.ajax({
 
                     type: "POST",
-                    url: "/ProductividadInnovadora/DeleteProductividad",
+                    url: "/digitalcv/ProductividadInnovadora/DeleteProductividad",
                     data: myformdat,
                     success: function () {
                         $("#loaderDiv").hide();
                         $("#myModal").modal("hide");
-                        window.location.href = "/ProductividadInnovadora/Create";
+                        window.location.href = "/digitalcv/ProductividadInnovadora/Create";
 
                     }
 

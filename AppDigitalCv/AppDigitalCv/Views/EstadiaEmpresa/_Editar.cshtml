@@ -148,11 +148,11 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "/EstadiaEmpresa/UpdateEstadia",
+                    url: "/digitalcv/EstadiaEmpresa/UpdateEstadia",
                     data: { estadiaEmpresaVM: EstadiaEmpresaVM },
                     success: function () {
                         $("#myModal1").modal("hide");
-                        window.location.href = "/EstadiaEmpresa/Create";
+                        window.location.href = "/digitalcv/EstadiaEmpresa/Create";
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         alert(textStatus);

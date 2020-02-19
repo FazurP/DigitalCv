@@ -159,7 +159,7 @@
 
          var AddDisplay = function (id) {
 
-            var url = "/PremiosDocente/DisplayPremiosDocente?_idPremio=" + id;
+            var url = "/digitalcv/PremiosDocente/DisplayPremiosDocente?_idPremio=" + id;
 
             $("#myModalBodyDisplay").load(url, function () {
                 $("#myModalDipslay").modal("show");
@@ -170,7 +170,7 @@
 
          var AddUpdate = function (id) {
 
-            var url = "/PremiosDocente/GetPremioUpdateByPersonal?_idPremio=" + id;
+            var url = "/digitalcv/PremiosDocente/GetPremioUpdateByPersonal?_idPremio=" + id;
 
             $("#myModalBodyUpdate").load(url, function () {
                 $("#myModalUpdate").modal("show");
@@ -181,7 +181,7 @@
 
         var AddDelete = function (id) {
 
-            var url = "/PremiosDocente/GetPremioDeleteByPersonal?_idPremio=" + id;
+            var url = "/digitalcv/PremiosDocente/GetPremioDeleteByPersonal?_idPremio=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -205,7 +205,7 @@
                 else {
                     oTable = $('#tblPremiosDocente').DataTable({
                         "bServerSide": true,
-                        "sAjaxSource": '/PremiosDocente/GetDatosFamiliaresTable',
+                        "sAjaxSource": '/digitalcv/PremiosDocente/GetDatosFamiliaresTable',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -248,7 +248,7 @@
                             {
                             "data": "Documentos.StrUrl",
                                 "render": function (StrUrl) {
-                                return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>&nbsp; '+StrUrl+''
+                                return '<a target="_blank" href="/digitalcv/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>&nbsp; '+StrUrl+''
                                 }
                             },                                                          {
                                 "data": "id",

@@ -50,12 +50,12 @@
             $.ajax({
 
                 type: "POST",
-                url: "/Competencias/DeleteCompetenciaById",
+                url: "/digitalcv/Competencias/DeleteCompetenciaById",
                 data: myformdat,
                 success: function () {
                     $("#loaderDiv").hide();
                     $("#myModal").modal("hide");
-                    window.location.href = "/Competencias/Create";
+                    window.location.href = "/digitalcv/Competencias/Create";
 
                 }
 

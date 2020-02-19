@@ -150,7 +150,7 @@
 
         var AddDisplay = function (id) {
 
-            var url = "/DatosContacto/DisplayDatosContacto?id=" + id;
+            var url = "/digitalcv/DatosContacto/DisplayDatosContacto?id=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -160,13 +160,13 @@
         };
 
         var AddEditDatosContacto = function (idDatosContacto) {
-            var url = "/DatosContacto/AddEditDatosContactoId?id=" + idDatosContacto;
+            var url = "/digitalcv/DatosContacto/AddEditDatosContactoId?id=" + idDatosContacto;
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
             })
         };
         var ShowDeletetDatosContacto = function (idDatosContacto) {
-            var url = "/DatosContacto/GetDeleteDatosContactoId?idPersonal=" + idDatosContacto;
+            var url = "/digitalcv/DatosContacto/GetDeleteDatosContactoId?idPersonal=" + idDatosContacto;
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
             })
@@ -201,7 +201,7 @@
                     }
                 },
                 "ajax": {
-                    "url": '/DatosContacto/ConsultarDatosContacto/',
+                    "url": '/digitalcv/DatosContacto/ConsultarDatosContacto/',
                     "type": "GET",
                     "datatype": "json",
                     "dataSrc": ""

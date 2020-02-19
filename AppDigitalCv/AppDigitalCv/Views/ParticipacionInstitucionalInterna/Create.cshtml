@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "ParticipacionInstitucionalInterna", FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="bs-container" style="min-height:960px;">
@@ -126,7 +126,7 @@
     <script>
 
         var AddEditar = function (idCatDocumento) {
-            var url = "/ParticipacionInstitucionalInterna/GetParticipacionByIdEdit?idCatDocumento=" + idCatDocumento;
+            var url = "/digitalcv/ParticipacionInstitucionalInterna/GetParticipacionByIdEdit?idCatDocumento=" + idCatDocumento;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -136,7 +136,7 @@
         };
 
         var AddEliminar = function (idCatDocumento) {
-            var url = "/ParticipacionInstitucionalInterna/GetParticipacionById?idCatDocumento=" + idCatDocumento;
+            var url = "/digitalcv/ParticipacionInstitucionalInterna/GetParticipacionById?idCatDocumento=" + idCatDocumento;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -163,7 +163,7 @@
                     oTable = $('#tblActividad').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/ParticipacionInstitucionalInterna/GetParticipaciones',
+                        "sAjaxSource": '/digitalcv/ParticipacionInstitucionalInterna/GetParticipaciones',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -207,7 +207,7 @@
                                 "data": "documentos.StrUrl",
                                 "render": function (StrUrl)
                                 {
-                                    return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
+                                    return '<a target="_blank" href="/digitalcv/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
                                 }
                             },
 

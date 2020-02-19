@@ -79,11 +79,11 @@
             var myformdata = $("#myForm").serialize();
             $.ajax({
                 type: "POST",
-                url: "/DatosContacto/EliminarDatosDeContactoDocente",
+                url: "/digitalcv/DatosContacto/EliminarDatosDeContactoDocente",
                 data: myformdata,
                 success: function () {
                     $("#myModal1").modal("hide");
-                    window.location.href = "/DatosContacto/Create";
+                    window.location.href = "/digitalcv/DatosContacto/Create";
                 }
             })
         });

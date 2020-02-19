@@ -54,12 +54,12 @@
             $.ajax({
 
                 type: "POST",
-                url: "/Idioma/DeleteIdiomaById",
+                url: "/digitalcv/Idioma/DeleteIdiomaById",
                 data: myformdat,
                 success: function () {
                     $("#loaderDiv").hide();
                     $("#myModal").modal("hide");
-                    window.location.href = "/Idioma/Create";
+                    window.location.href = "/digitalcv/Idioma/Create";
 
                 }
 

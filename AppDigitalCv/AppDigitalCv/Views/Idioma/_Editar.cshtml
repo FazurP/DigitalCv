@@ -53,11 +53,11 @@
            
             $.ajax({
                 type: "POST",
-                url: "/Idioma/EditarIdiomasPersonales",
+                url: "/digitalcv/Idioma/EditarIdiomasPersonales",
                 data: { idiomasVM: IdiomasVM},
                 success: function () {
                     $("#myModal1").modal("hide");
-                    window.location.href = "/Idioma/Create";
+                    window.location.href = "/digitalcv/Idioma/Create";
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     alert(textStatus);

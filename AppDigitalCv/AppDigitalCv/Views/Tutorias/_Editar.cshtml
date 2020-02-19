@@ -85,11 +85,11 @@
                 TutoriasVM.strHoras = txtHoras;
                 $.ajax({
                     type: "POST",
-                    url: "/Tutorias/UpdateTutoria",
+                    url: "/digitalcv/Tutorias/UpdateTutoria",
                     data: { tutoriasVM: TutoriasVM },
                     success: function () {
                         $("#myModal1").modal("hide");
-                        window.location.href = "/Tutorias/Create";
+                        window.location.href = "/digitalcv/Tutorias/Create";
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         alert(textStatus);

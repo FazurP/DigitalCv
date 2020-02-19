@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "DocumentacionPersonalV2", FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="bs-container" style="min-height:960px;">
@@ -116,7 +116,7 @@
 
         var AddEliminar = function (IdDocumento) {
 
-            var url = "/DocumentacionPersonalV2/GetDocumentoDelete?IdDocumento=" + IdDocumento;
+            var url = "/digitalcv/DocumentacionPersonalV2/GetDocumentoDelete?IdDocumento=" + IdDocumento;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -142,7 +142,7 @@
                     oTable = $('#tblDocumentacion').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/DocumentacionPersonalV2/GetDocumentos',
+                        "sAjaxSource": '/digitalcv/DocumentacionPersonalV2/GetDocumentos',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -185,7 +185,7 @@
                             {
                             "data": "documentosDomain.StrUrl",
                                 "render": function (StrUrl) {
-                                    return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'
+                                    return '<a target="_blank" href="/digitalcv/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'
                          
                             }
                             },

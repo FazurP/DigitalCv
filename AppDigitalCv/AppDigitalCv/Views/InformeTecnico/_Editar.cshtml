@@ -101,11 +101,11 @@
          
                 $.ajax({
                     type: "POST",
-                    url: "/InformeTecnico/UpdateInformeTecnico",
+                    url: "/digitalcv/InformeTecnico/UpdateInformeTecnico",
                     data: { informeTecnicoVM: InformeTecnicoVM },
                     success: function () {
                         $("#myModal1").modal("hide");
-                        window.location.href = "/InformeTecnico/Create";
+                        window.location.href = "/digitalcv/InformeTecnico/Create";
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         alert(textStatus);

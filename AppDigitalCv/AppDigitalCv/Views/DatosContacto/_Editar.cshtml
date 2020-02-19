@@ -182,11 +182,11 @@
                 var myformdata = $("#myForm").serialize();
                 $.ajax({
                     type: "POST",
-                    url: "/DatosContacto/AddEditDatosContacto",
+                    url: "/digitalcv/DatosContacto/AddEditDatosContacto",
                     data: myformdata,
                     success: function () {
                         $("#myModal1").modal("hide");
-                        window.location.href = "/DatosContacto/Create";
+                        window.location.href = "/digitalcv/DatosContacto/Create";
                     }
                 })
             } else

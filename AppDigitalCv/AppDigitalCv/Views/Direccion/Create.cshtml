@@ -141,7 +141,7 @@
 
           var AddDisplay = function (id) {
 
-            var url = "/Direccion/DisplayDireccion?id=" + id;
+            var url = "/digitalcv/Direccion/DisplayDireccion?id=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -152,7 +152,7 @@
 
         var AddEditar = function (IdDireccion) {
 
-            var url = "/Direccion/GeDireccion?IdDireccion=" + IdDireccion;
+            var url = "/digitalcv/Direccion/GeDireccion?IdDireccion=" + IdDireccion;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -180,7 +180,7 @@
                     oTable = $('#tblDireccion').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/Direccion/GetDireccion',
+                        "sAjaxSource": '/digitalcv/Direccion/GetDireccion',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -242,7 +242,7 @@
 
                 $.ajax({
                     type: "Post",
-                    url: "/Direccion/ConsultarEstadosByPais?idPais=" + paisId,
+                    url: "/digitalcv/Direccion/ConsultarEstadosByPais?idPais=" + paisId,
                     contentType: "html",
                     success: function (response) {
                         $("#Estados").empty();
@@ -260,7 +260,7 @@
 
                 $.ajax({
                     type: "Post",
-                    url: "/Direccion/ConsultarMunicipiosByEstado?idEstado=" + estadoId,
+                    url: "/digitalcv/Direccion/ConsultarMunicipiosByEstado?idEstado=" + estadoId,
                     contentType: "html",
                     success: function (response) {
                         $("#Municipios").empty();
@@ -278,7 +278,7 @@
 
                 $.ajax({
                     type: "Post",
-                    url: "/Direccion/ConsultarColoniasByMunicipio?idMunicipio=" + municipioId,
+                    url: "/digitalcv/Direccion/ConsultarColoniasByMunicipio?idMunicipio=" + municipioId,
                     contentType: "html",
                     success: function (response) {
                         $("#IdColonia").empty();
@@ -296,7 +296,7 @@
 
                 $.ajax({
                     type: "Post",
-                    url: "/Direccion/ConsultarCodigoPostalByColonia?idColonia=" + coloniaId,
+                    url: "/digitalcv/Direccion/ConsultarCodigoPostalByColonia?idColonia=" + coloniaId,
                     contentType: "json",
                     success: function (response) {
 

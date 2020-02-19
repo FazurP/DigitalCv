@@ -43,10 +43,10 @@
 
             $.ajax({
                 type: "post",
-                url: "/CapacitacionesRecibidas/DeleteCapacitacionRecibida",
+                url: "/digitalcv/CapacitacionesRecibidas/DeleteCapacitacionRecibida",
                 data: { capacitacionesRecibidasVM: CapacitacionesRecibidasVM},
                 success: function () {
-                    window.location.href = "/CapacitacionesRecibidas/Create";
+                    window.location.href = "/digitalcv/CapacitacionesRecibidas/Create";
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     alert(textStatus);

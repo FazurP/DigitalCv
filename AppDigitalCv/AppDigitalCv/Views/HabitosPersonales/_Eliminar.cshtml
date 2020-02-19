@@ -49,11 +49,11 @@
             DeportePersonalVM.IdDeportePersonal = $("#IdDeportePersonal").val();
             $.ajax({
                 type: "POST",
-                url: "/HabitosPersonales/EliminarDatosHabitosPersonales",
+                url: "/digitalcv/HabitosPersonales/EliminarDatosHabitosPersonales",
                 data: { deportePersonalVM: DeportePersonalVM},
                 success: function () {
                     $("#myModal1").modal("hide");
-                    window.location.href = "/HabitosPersonales/Create";
+                    window.location.href = "/digitalcv/HabitosPersonales/Create";
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     alert(textStatus);

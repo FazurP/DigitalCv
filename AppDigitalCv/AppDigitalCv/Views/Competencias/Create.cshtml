@@ -120,11 +120,11 @@
                 comaSeparatedIds = arrItem.toString();
 
                 $.ajax({
-                    url: "/Competencias/CreateList",
+                    url: "/digitalcv/Competencias/CreateList",
                     type: "POST",
                     data: { ItemList: comaSeparatedIds },
                     success: function (response) {
-                        window.location.href = "/Competencias/Create";
+                        window.location.href = "/digitalcv/Competencias/Create";
                     }
                 })
             }
@@ -135,7 +135,7 @@
 
         var AddEliminar = function (idCompetenciasConocimientosPersonal) {
 
-            var url = "/Competencias/GetCompetenciaByIdPersonal?idCompetencia=" + idCompetenciasConocimientosPersonal;
+            var url = "/digitalcv/Competencias/GetCompetenciaByIdPersonal?idCompetencia=" + idCompetenciasConocimientosPersonal;
  
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -159,7 +159,7 @@
                     oTable = $('#tblCompetencias').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/Competencias/GetCompetencias',
+                        "sAjaxSource": '/digitalcv/Competencias/GetCompetencias',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -203,7 +203,7 @@
                             {
                             "data": "file.StrUrl",
                                 "render": function (StrUrl) {
-                                    return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
+                                    return '<a target="_blank" href="/digitalcv/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
                                 }
                             },
 

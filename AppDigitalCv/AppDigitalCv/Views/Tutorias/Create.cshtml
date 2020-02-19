@@ -1,7 +1,7 @@
 ﻿@model AppDigitalCv.ViewModels.TutoriasVM
 @using AppDigitalCv.Security
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Tutorias", FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="bs-container" style="min-height:960px;">
@@ -130,7 +130,7 @@
 
         var AddEditar = function (id) {
 
-            var url = "/Tutorias/GetTutoriaUpdate?_idTutoria=" + id;
+            var url = "/digitalcv/Tutorias/GetTutoriaUpdate?_idTutoria=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -141,7 +141,7 @@
 
         var AddEliminar = function (id) {
 
-            var url = "/Tutorias/GetTutoriaDelete?_idTutoria=" + id;
+            var url = "/digitalcv/Tutorias/GetTutoriaDelete?_idTutoria=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -157,7 +157,7 @@
 
                 $.ajax({
                     type: "Post",
-                    url: "/Tutorias/GetProgramaEducativoByTipoEstudio?_idTipoEstudio=" + idNivel,
+                    url: "/digitalcv/Tutorias/GetProgramaEducativoByTipoEstudio?_idTipoEstudio=" + idNivel,
                     contentType: "html",
                     success: function (response) {
                         $("#ddlProgramaEducativo").empty();
@@ -183,7 +183,7 @@
                     oTable = $('#tblTutorias').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/Tutorias/GetTutorias',
+                        "sAjaxSource": '/digitalcv/Tutorias/GetTutorias',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -192,7 +192,7 @@
                                 success: fnCallback
                             })
                         },
-                        "pageLength": 5,
+                        "pageLength": 10,
                         "paging": true,
                         "language": {
 

@@ -44,12 +44,12 @@
             $.ajax({
 
                 type: "POST",
-                url: "/ExperienciaLaboralExterna/DeleteExperiencia",
+                url: "/digitalcv/ExperienciaLaboralExterna/DeleteExperiencia",
                 data: myformdat,
                 success: function () {
                     $("#loaderDiv").hide();
                     $("#myModal").modal("hide");
-                    window.location.href = "/ExperienciaLaboralExterna/Create";
+                    window.location.href = "/digitalcv/ExperienciaLaboralExterna/Create";
 
                 }
 

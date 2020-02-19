@@ -69,10 +69,10 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "/Hobbie/UpdateHobbie",
+                    url: "/digitalcv/Hobbie/UpdateHobbie",
                     data: { hobbieVM: HobbieVM },
                     success: function () {
-                        window.location.href = "/Hobbie/Create";
+                        window.location.href = "/digitalcv/Hobbie/Create";
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         alert(textStatus);

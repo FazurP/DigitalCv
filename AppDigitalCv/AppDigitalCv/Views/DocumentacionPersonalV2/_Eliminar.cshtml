@@ -42,12 +42,12 @@
             $.ajax({
 
                 type: "POST",
-                url: "/DocumentacionPersonalV2/DeleteDocumento",
+                url: "/digitalcv/DocumentacionPersonalV2/DeleteDocumento",
                 data: myformdat,
                 success: function () {
                     $("#loaderDiv").hide();
                     $("#myModal").modal("hide");
-                    window.location.href = "/DocumentacionPersonalV2/Create";
+                    window.location.href = "/digitalcv/DocumentacionPersonalV2/Create";
 
                 }
 

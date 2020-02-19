@@ -41,12 +41,12 @@
                 $.ajax({
 
                     type: "POST",
-                    url: "/Libro/DeleteLibro",
+                    url: "/digitalcv/Libro/DeleteLibro",
                     data: myformdat,
                     success: function () {
                         $("#loaderDiv").hide();
                         $("#myModal").modal("hide");
-                        window.location.href = "/Libro/Create";
+                        window.location.href = "/digitalcv/Libro/Create";
 
                     }
 

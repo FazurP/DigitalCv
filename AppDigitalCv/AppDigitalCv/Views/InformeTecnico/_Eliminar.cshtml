@@ -40,12 +40,12 @@
                 var myformdat = $("#myFormulario").serialize();
                 $.ajax({
                     type: "POST",
-                    url: "/InformeTecnico/DeleteInformeTecnico",
+                    url: "/digitalcv/InformeTecnico/DeleteInformeTecnico",
                     data: myformdat,
                     success: function () {
                         $("#loaderDiv").hide();
                         $("#myModal").modal("hide");
-                        window.location.href = "/InformeTecnico/Create";
+                        window.location.href = "/digitalcv/InformeTecnico/Create";
                     }
                 })
             })

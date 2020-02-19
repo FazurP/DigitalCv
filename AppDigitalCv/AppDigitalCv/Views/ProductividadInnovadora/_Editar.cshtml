@@ -104,11 +104,11 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "/ProductividadInnovadora/UpdateProductividad",
+                    url: "/digitalcv/ProductividadInnovadora/UpdateProductividad",
                     data: { productividadInnovadoraVM: ProductividadInnovadoraVM },
                     success: function () {
                         $("#myModal1").modal("hide");
-                        window.location.href = "/ProductividadInnovadora/Create";
+                        window.location.href = "/digitalcv/ProductividadInnovadora/Create";
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         alert(textStatus);

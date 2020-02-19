@@ -113,11 +113,11 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "/ExperienciaLaboralExterna/EditExperiencia",
+                    url: "/digitalcv/ExperienciaLaboralExterna/EditExperiencia",
                     data: { experienciaLaboralExternaVM: ExperienciaLaboralExternaVM },
                     success: function () {
                         $("#myModal1").modal("hide");
-                        window.location.href = "/ExperienciaLaboralExterna/Create";
+                        window.location.href = "/digitalcv/ExperienciaLaboralExterna/Create";
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         alert(textStatus);

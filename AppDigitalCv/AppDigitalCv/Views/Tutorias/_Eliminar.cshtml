@@ -41,12 +41,12 @@
                 $.ajax({
 
                     type: "POST",
-                    url: "/Tutorias/DeleteTutoria",
+                    url: "/digitalcv/Tutorias/DeleteTutoria",
                     data: myformdat,
                     success: function () {
                         $("#loaderDiv").hide();
                         $("#myModal").modal("hide");
-                        window.location.href = "/Tutorias/Create";
+                        window.location.href = "/digitalcv/Tutorias/Create";
                     }
 
                 })

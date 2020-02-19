@@ -1,7 +1,7 @@
 ﻿@model AppDigitalCv.ViewModels.ExperienciaLaboralInternaVM
 @using AppDigitalCv.Security
 
-@using (Html.BeginForm(FormMethod.Post))
+@using (Html.BeginForm("Create","ExperienciaLaboralInterna",FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <div class="bs-container" style="min-height:960px;margin-top:20px;">
@@ -130,7 +130,7 @@
 
         var AddEditar = function (id) {
 
-            var url = "/ExperienciaLaboralInterna/GetExperienciaEdit?_idExperiencia=" + id;
+            var url = "/digitalcv/ExperienciaLaboralInterna/GetExperienciaEdit?_idExperiencia=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -141,7 +141,7 @@
 
         var AddEliminar = function (id) {
 
-            var url = "/ExperienciaLaboralInterna/GetExperiencia?_idExperiencia=" + id;
+            var url = "/digitalcv/ExperienciaLaboralInterna/GetExperiencia?_idExperiencia=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -162,7 +162,7 @@
 
                 $.ajax({
                     type: "Post",
-                    url: "/ExperienciaLaboralInterna/GetTipoContratoByCategoria?idCategoria=" + idCategoria,
+                    url: "/digitalcv/ExperienciaLaboralInterna/GetTipoContratoByCategoria?idCategoria=" + idCategoria,
                     contentType: "html",
                     success: function (response) {
                         $("#idTipoContrato").empty();
@@ -187,7 +187,7 @@
                     oTable = $('#tblExperienci').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/ExperienciaLaboralInterna/GetExperiencias',
+                        "sAjaxSource": '/digitalcv/ExperienciaLaboralInterna/GetExperiencias',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",

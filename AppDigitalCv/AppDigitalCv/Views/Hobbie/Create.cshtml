@@ -103,7 +103,7 @@
 
           var AddDisplay = function (id) {
 
-            var url = "/Hobbie/DisplayHobbie?id=" + id;
+            var url = "/digitalcv/Hobbie/DisplayHobbie?id=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -115,7 +115,7 @@
 
         var AddEditar = function (id) {
 
-            var url = "/Hobbie/GetHobbieUpdate?_id=" + id;
+            var url = "/digitalcv/Hobbie/GetHobbieUpdate?_id=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -126,7 +126,7 @@
 
         var AddEliminar = function (id) {
 
-            var url = "/Hobbie/GetHobbieDelete?_id=" + id;
+            var url = "/digitalcv/Hobbie/GetHobbieDelete?_id=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -153,7 +153,7 @@
                     oTable = $('#tblHobbies').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/Hobbie/GetAllHobbiesByPersonal',
+                        "sAjaxSource": '/digitalcv/Hobbie/GetAllHobbiesByPersonal',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",

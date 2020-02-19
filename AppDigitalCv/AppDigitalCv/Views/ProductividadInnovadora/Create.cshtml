@@ -132,7 +132,7 @@
 
         var AddEditar = function (id) {
 
-            var url = "/ProductividadInnovadora/GetProductividadUpdate?_idProductividad=" + id;
+            var url = "/digitalcv/ProductividadInnovadora/GetProductividadUpdate?_idProductividad=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -143,7 +143,7 @@
 
         var AddEliminar = function (id) {
 
-            var url = "/ProductividadInnovadora/GetProductividadDelete?_idProductividad=" + id;
+            var url = "/digitalcv/ProductividadInnovadora/GetProductividadDelete?_idProductividad=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -168,7 +168,7 @@
                     oTable = $('#tblProductividad').DataTable({
 
                         "bServerSide": true,
-                        "sAjaxSource": '/ProductividadInnovadora/GetProductividad',
+                        "sAjaxSource": '/digitalcv/ProductividadInnovadora/GetProductividad',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",
@@ -211,7 +211,7 @@
                                 {
                         "data": "documento.StrUrl",
                         "render": function (StrUrl) {
-                            return '<a target="_blank" href="/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
+                            return '<a target="_blank" href="/digitalcv/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
                         }
                     },
                             {

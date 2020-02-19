@@ -109,7 +109,7 @@
 
           var AddDisplay = function (id) {
 
-            var url = "/DatosFamiliares/DisplayDatosFamiliar?idFamiliar=" + id;
+            var url = "/digitalcv/DatosFamiliares/DisplayDatosFamiliar?idFamiliar=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -120,7 +120,7 @@
 
         var AddEditar = function (idFamiliar) {
 
-            var url = "/DatosFamiliares/AddEditDatosFamiliares?idFamiliar=" + idFamiliar;
+            var url = "/digitalcv/DatosFamiliares/AddEditDatosFamiliares?idFamiliar=" + idFamiliar;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -130,7 +130,7 @@
         };
         var AddDelete = function (idFamiliar) {
 
-            var url = "/DatosFamiliares/DeleteDatosFamiliaresId?idFamiliar=" + idFamiliar;
+            var url = "/digitalcv/DatosFamiliares/DeleteDatosFamiliaresId?idFamiliar=" + idFamiliar;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -157,7 +157,7 @@
 
                     oTable = $('#tblFamiliares').DataTable({
                         "bServerSide": true,
-                        "sAjaxSource": '/DatosFamiliares/GetDatosFamiliaresTable',
+                        "sAjaxSource": '/digitalcv/DatosFamiliares/GetDatosFamiliaresTable',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",

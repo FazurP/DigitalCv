@@ -110,7 +110,7 @@
 
          var AddDisplay = function (id) {
 
-            var url = "/HabitosPersonales/DisplayDeporte?_id=" + id;
+            var url = "/digitalcv/HabitosPersonales/DisplayDeporte?_id=" + id;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -121,7 +121,7 @@
 
         var AddEditar = function (idDeportePersonal) {
 
-            var url = "/HabitosPersonales/AddEditHabitosPersonales?idDeportePersonal=" + idDeportePersonal;
+            var url = "/digitalcv/HabitosPersonales/AddEditHabitosPersonales?idDeportePersonal=" + idDeportePersonal;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -131,7 +131,7 @@
         };
 
         var AddDelete = function (idDeportePersonal) {
-            var url = "/HabitosPersonales/DeleteHabitosPersonales?idDeportePersonal=" + idDeportePersonal;
+            var url = "/digitalcv/HabitosPersonales/DeleteHabitosPersonales?idDeportePersonal=" + idDeportePersonal;
 
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
@@ -156,7 +156,7 @@
                 else {
                     oTable = $('#tblDeportePersonal').DataTable({
                         "bServerSide": true,
-                        "sAjaxSource": '/HabitosPersonales/GetDeportesPersonales',
+                        "sAjaxSource": '/digitalcv/HabitosPersonales/GetDeportesPersonales',
                         "fnServerData": function (sSource, aoData, fnCallback) {
                             $.ajax({
                                 type: "Get",

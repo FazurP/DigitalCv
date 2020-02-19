@@ -45,12 +45,12 @@
                 $.ajax({
 
                     type: "POST",
-                    url: "/ManualOperacion/DeleteManualOperacion",
+                    url: "/digitalcv/ManualOperacion/DeleteManualOperacion",
                     data: myformdat,
                     success: function () {
                         $("#loaderDiv").hide();
                         $("#myModal").modal("hide");
-                        window.location.href = "/ManualOperacion/Create";
+                        window.location.href = "/digitalcv/ManualOperacion/Create";
 
                     }
 

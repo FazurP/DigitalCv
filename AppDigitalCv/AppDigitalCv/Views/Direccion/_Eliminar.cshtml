@@ -79,11 +79,11 @@
             var myformdata = $("#myForm").serialize();
             $.ajax({
                 type: "POST",
-                url: "/Direccion/EliminarDireccion",
+                url: "/digitalcv/Direccion/EliminarDireccion",
                 data: { direccionVM: DireccionVM},
                 success: function () {
                     $("#myModal1").modal("hide");
-                    window.location.href = "/Direccion/Create";
+                    window.location.href = "/digitalcv/Direccion/Create";
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     alert(textStatus);

@@ -60,15 +60,13 @@
             DeportePersonalVM.IdFrecuencia = $('#idFrecuencia').val();
             DeportePersonalVM.strHorasPractica = $('#horasPractica').val();
 
-            //serialización del formaulario
-            var myformdata = $("#myForm").serialize();
             $.ajax({
                 type: "POST",
-                url: "/HabitosPersonales/EditarHabitosPersonales",
+                url: "/digitalcv/HabitosPersonales/EditarHabitosPersonales",
                 data: { deportePersonalVM: DeportePersonalVM},
                 success: function () {
                     $("#myModal1").modal("hide");
-                    window.location.href = "/HabitosPersonales/Create";
+                    window.location.href = "/digitalcv/HabitosPersonales/Create";
                 }
             })
         });

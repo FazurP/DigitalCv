@@ -80,10 +80,10 @@
                 debugger;
             $.ajax({
                 type: "POST",
-                url: "/DialectoIdioma/EditarDialectosPersonales",
+                url: "/digitalcv/DialectoIdioma/EditarDialectosPersonales",
                 data: { lenguasVM: LenguasVM},
                 success: function () {
-                    window.location.href = "/DialectoIdioma/Create";
+                    window.location.href = "/digitalcv/DialectoIdioma/Create";
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     alert(textStatus);

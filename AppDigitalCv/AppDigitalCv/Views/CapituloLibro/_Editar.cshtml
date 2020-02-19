@@ -183,11 +183,11 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "/CapituloLibro/UpdateCapituloLibro",
+                    url: "/digitalcv/CapituloLibro/UpdateCapituloLibro",
                     data: { capituloLibroVM: CapituloLibroVM },
                     success: function () {
                         $("#myModal1").modal("hide");
-                        window.location.href = "/CapituloLibro/Create";
+                        window.location.href = "/digitalcv/CapituloLibro/Create";
                     },
                     error: function (xhr, textStatus, errorThrown) {
                         alert(textStatus);
