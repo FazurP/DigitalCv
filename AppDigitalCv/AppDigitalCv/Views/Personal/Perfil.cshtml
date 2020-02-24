@@ -20,7 +20,7 @@
         </ol>
     </section>
     <br />
-    <div class="">
+    <div class="row">
         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
             <div class="box box-success">
                 <div class="box-header with-border">
@@ -61,6 +61,7 @@
                         </li>
                     </ul>
                 </div>
+
             </div>
         </div>
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
@@ -73,14 +74,34 @@
                         <li class="list-unstyled"><label>Nacionalidad:</label> &nbsp; @Html.DisplayFor(model => model.Nacionalidad.strValor, new { @class = "form-control input-sm" })</li>
                         <li class="list-unstyled"><label>Estado Civil:</label> &nbsp; @Html.DisplayFor(model => model.EstadoCivil.StrDescripcion, new { @class = "form-control input-sm" })</li>
                         <li class="list-unstyled"><label>Sexo:</label> &nbsp; @Html.DisplayFor(model => model.StrGenero, new { @class = "form-control input-sm" })</li>
-                        <li class="list-unstyled"><label>Curp:</label> &nbsp; @Html.DisplayFor(model => model.Curp, new { @class = "form-control input-sm" })</li>
+                        <li class="list-unstyled"><label>CURP:</label> &nbsp; @Html.DisplayFor(model => model.Curp, new { @class = "form-control input-sm" })</li>
                         <li class="list-unstyled"><label>RFC:</label> &nbsp; @Html.DisplayFor(model => model.RFC, new { @class = "form-control input-sm" })</li>
                         <li class="list-unstyled"><label>Homoclave:</label> &nbsp; @Html.DisplayFor(model => model.HomoClave, new { @class = "form-control input-sm" })</li>
-                        <li class="list-unstyled"><label>Numero de Empleado:</label> &nbsp; @Html.DisplayFor(model => model.strNumeroEmpleado, new { @class = "form-control input-sm" })</li>
+                        <li class="list-unstyled"><label>Número de Empleado:</label> &nbsp; @Html.DisplayFor(model => model.strNumeroEmpleado, new { @class = "form-control input-sm" })</li>
                         <li class="list-unstyled"><label>Institución de Salud:</label> &nbsp; @Html.DisplayFor(model => model.SeguridadSocial.InstitucionesSalud.strValor, new { @class = "form-control input-sm" })</li>
-                        <li class="list-unstyled"><label>Numero de Seguridad:</label> &nbsp; @Html.DisplayFor(model => model.SeguridadSocial.strNumero, new { @class = "form-control input-sm" })</li>
+                        <li class="list-unstyled"><label>Número de Seguridad:</label> &nbsp; @Html.DisplayFor(model => model.SeguridadSocial.strNumero, new { @class = "form-control input-sm" })</li>
                     </ul>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 col-lg-offset-5 col-md-offset-5">
+            <div class="form-group">
+                <input type="button" class="btn btn-sm btn-success" value="Actualizar Información" id="btnUpdate" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#3C8DBC;color:white;">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h5 class="modal-title"><label style="font-size:medium;">Perfil</label></h5>
+            </div>
+            <div class="modal-body" id="myModalBodyDiv1">
             </div>
         </div>
     </div>
@@ -92,13 +113,28 @@
 {
     <script src="~/Scripts/toastr.min.js"></script>
     <script>
+
+
+        $('#btnUpdate').click(evt = () => {
+
+            let id = @SessionPersister.AccountSession.IdPersonal;
+
+            var url = "/digitalcv/Personal/GetUpdatePerfil?idPersonal=" + id;
+
+            $("#myModalBodyDiv1").load(url, function () {
+                $("#myModal1").modal("show");
+
+            })
+
+        });
+
         $('#fotoInputFile').change(function () {
             let img = $('#fotoInputFile').get(0).files;
             console.log(img[0].type);
             if (img[0].type == "image/jpeg") {
                 let data = new FormData;
                 data.append('Image', img[0]);
-                let urlTarget = "/Personal/GuardarImagen";
+                let urlTarget = "/digitalcv/Personal/GuardarImagen";
                 $.ajax({
                     url: urlTarget,
                     type: 'post',

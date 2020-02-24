@@ -55,7 +55,7 @@ namespace AppDigitalCv.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Create(PersonalVM personalVM)
         {
 
@@ -282,6 +282,23 @@ namespace AppDigitalCv.Controllers
                 return RedirectToAction("Login","Seguridad");
             }
            
+        }
+
+        [HttpGet]
+        public ActionResult GetUpdatePerfil(int idPersonal)
+        {
+            if (idPersonal > 0)
+            {
+                ViewBag.idNacionalidad = new SelectList(NacionalidadBusiness.GetAllNacionalidades(), "id", "strValor");
+                ViewBag.IdEstadoCivil = new SelectList(estadoCivilBusiness.GetEstadoCivil(), "IdEstadoCivil", "StrDescripcion");
+                ViewData["SeguridadSocial.idInstitucion"] = new SelectList(InstitucionesSaludBusiness.GetAllInstitucionesSalud(), "id", "strValor");
+
+                PersonalDomainModel personalDomainModel = IPersonalBussines.GetPerfil(idPersonal);
+                PersonalVM personalVM = new PersonalVM();
+                AutoMapper.Mapper.Map(personalDomainModel,personalVM);
+                return PartialView("_Editar", personalVM);
+            }
+            return PartialView();
         }
     } 
 }

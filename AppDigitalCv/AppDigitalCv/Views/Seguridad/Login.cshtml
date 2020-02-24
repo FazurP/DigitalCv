@@ -56,7 +56,7 @@
 </head>
 <body>
     @using (Html.BeginForm("Login", "Seguridad", FormMethod.Post))
-        {
+    {
         <div class="modal modal-default fade" id="modal-default">
             <div class="modal-dialog" id="modal-blur">
                 <div class="modal-content">
@@ -73,7 +73,7 @@
                                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                                         
                                         <div class="form-group has-feedback">
-                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control input-sm", @type = "text", @placeholder="Nombre de Usuario"})
+                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control input-sm", @type = "text", @placeholder = "Nombre de Usuario" })
                                             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                                             @Html.ValidationMessageFor(Model => Model.Email, "", new { @class = "text-danger" })
                                         </div>
@@ -109,14 +109,64 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <div class="text-gray">
-                            Colaboradores: Erik Guerrero Bravo, Fazur Alejandro Estrada Ponce, Jeniffer Cuevas
+                        <div class="text-black">
+                            Sabias que?
+                            <br />
+                            @{
+
+                                Random random = new Random();
+
+                                switch (random.Next(11))
+                                {
+                                    case 1:
+                        <span>Se han escrito 258,845 lineas de codigo en el sistema.</span>
+                                        break;
+
+                                    case 2:
+                        <span>Filipinas es el único país del mundo donde es ilegal divorciarse</span>
+                                        break;
+
+                                    case 3:
+                        <span>Con 2.302 puentes, Hamburgo es la ciudad con más puentes del mundo.</span>
+                                        break;
+
+                                    case 4:
+                        <span>El Gran terremoto de Chile, es el terremoto de mayor magnitud registrado en la historia del planeta.</span>
+                                        break;
+
+                                    case 5:
+                        <span>¿Sabías que el fuego no tiene sombra?</span>
+                                        break;
+
+                                    case 6:
+                        <span>¿Sabías que en Japón las personas son contratadas para empujar a los pasajeros del metro?</span>
+                                        break;
+
+                                    case 7:
+                        <span>Los perros dálmata no nacen con manchas</span>
+                                        break;
+
+                                    case 8:
+                        <span>El corazón podría mover un coche</span>
+                                        break;
+
+                                    case 9:
+                        <span>Eres el responsable de todo el polvo que se junta en tu casa</span>
+                                        break;
+
+                                    case 10:
+                        <span>Los bebés pueden curar a sus madres en el vientre</span>
+                                        break;
+                                }
+                            }
+                            <br />
+                            <span style="font-size:10px">Colaboradores: T.S.U. Fazur Alejandro Estrada Ponce, T.S.U. Jeniffer Cuevas, MTRO. Erik Guerrero Bravo</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    }
+                                }
 
 
 </body>

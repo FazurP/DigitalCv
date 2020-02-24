@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     $('#btnGuardar').click(function () {
 
-        var correoP = $('#EmailPersonal').val();
+        var correoP = $('#EmailPersonal').prop("disabled", true);
 
         var regex = new RegExp("^[a-zA-Z0-9._-]{3,25}[@]{1}(hotmail|gmail|outlook|yahoo){1}[.]{1}(com|mx|net){1}$");
 
@@ -12,12 +12,10 @@ $(document).ready(function () {
             return false;
         }
          else {
-
             return true;
         }
 
     })
-
 })
 
 
