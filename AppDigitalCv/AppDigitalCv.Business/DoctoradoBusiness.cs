@@ -15,22 +15,22 @@ namespace AppDigitalCv.Business
         private readonly IUnitOfWork unitOfWork;
         private readonly DoctoradoRepository doctoradoRepository;
         private readonly DocumentosRepository documentosRepository;
+        private readonly DocumentosProfesionalesRepository documentosProfesionalesRepository;
 
         public DoctoradoBusiness(IUnitOfWork _unitOfWork)
         {
             unitOfWork = _unitOfWork;
             doctoradoRepository = new DoctoradoRepository(unitOfWork);
             documentosRepository = new DocumentosRepository(unitOfWork);
+            documentosProfesionalesRepository = new DocumentosProfesionalesRepository(unitOfWork);
         }
 
-        public bool AddDoctorado(HistorialAcademicoDomainModel historialAcademico)
+        public int AddDoctorado(HistorialAcademicoDomainModel historialAcademico)
         {
-            bool respuesta = false;
-
             if (historialAcademico != null)
             {
                 TblDoctorado tblDoctorado = new TblDoctorado();
-                catDocumentos catDocumentos = new catDocumentos();
+                TblDocumentosProfesionales tblDocumentacionProfesional = new TblDocumentosProfesionales();              
 
                 tblDoctorado.bitReconomientoPNPC = historialAcademico.bitReconocimientePNPC;
                 tblDoctorado.idFuenteFinanciamientoDoctorado = historialAcademico.FuenteFinanciamiento;
@@ -40,16 +40,12 @@ namespace AppDigitalCv.Business
                 tblDoctorado.strNombre = historialAcademico.strNombre;
                 tblDoctorado.dteFechaInicio = historialAcademico.dteFechaInicio;
 
-                catDocumentos.strUrl = historialAcademico.Documentos.DocumentoFile.FileName;
+                doctoradoRepository.Insert(tblDoctorado);
 
-                catDocumentos.TblDoctorado.Add(tblDoctorado);
-
-                documentosRepository.Insert(catDocumentos);
-
-                respuesta = true;
+                return tblDoctorado.id;
             }
 
-            return respuesta;
+            return 0;
         }
 
         public List<DoctoradoDomainModel> GetDoctorados(int idPersonal)
@@ -65,14 +61,12 @@ namespace AppDigitalCv.Business
                 DoctoradoDomainModel doctoradoDomainModel = new DoctoradoDomainModel();
 
                 doctoradoDomainModel.id = item.id;
-                doctoradoDomainModel.idDocumento = item.idDocumento.Value;
                 doctoradoDomainModel.idFuentaFinaciamientoDoctorado = item.idFuenteFinanciamientoDoctorado.Value;
                 doctoradoDomainModel.idInstitucionAcreditaDoctorado = item.idInstitucionAcreditaDoctorado.Value;
                 doctoradoDomainModel.idPersonal = item.idPersonal.Value;
                 doctoradoDomainModel.idStatusDoctorado = item.idStatusDoctorado.Value;
                 doctoradoDomainModel.strNombre = item.strNombre;
                 doctoradoDomainModel.bitReconocimientePNPC = item.bitReconomientoPNPC.Value;
-                doctoradoDomainModel.Documentos = new DocumentosDomainModel { StrUrl = item.catDocumentos.strUrl};
                 doctoradoDomainModel.FuenteFinanciamientoDoctorado = new FuenteFinanciamientoDoctoradoDomainModel
                 {
                     id = item.CatFuenteFinanciamientoDoctorado.id,
@@ -105,17 +99,12 @@ namespace AppDigitalCv.Business
             TblDoctorado tblDoctorado = doctoradoRepository.SingleOrDefault(p => p.id == idDoctorado);
 
             doctoradoDomainModel.id = tblDoctorado.id;
-            doctoradoDomainModel.idDocumento = tblDoctorado.idDocumento.Value;
             doctoradoDomainModel.idFuentaFinaciamientoDoctorado = tblDoctorado.idFuenteFinanciamientoDoctorado.Value;
             doctoradoDomainModel.idInstitucionAcreditaDoctorado = tblDoctorado.idInstitucionAcreditaDoctorado.Value;
             doctoradoDomainModel.idPersonal = tblDoctorado.idPersonal.Value;
             doctoradoDomainModel.idStatusDoctorado = tblDoctorado.idStatusDoctorado.Value;
             doctoradoDomainModel.strNombre = tblDoctorado.strNombre;
-            doctoradoDomainModel.bitReconocimientePNPC = tblDoctorado.bitReconomientoPNPC.Value;
-            doctoradoDomainModel.Documentos = new DocumentosDomainModel
-            {
-                StrUrl = tblDoctorado.catDocumentos.strUrl
-            };
+            doctoradoDomainModel.bitReconocimientePNPC = tblDoctorado.bitReconomientoPNPC.Value;         
             doctoradoDomainModel.FuenteFinanciamientoDoctorado = new FuenteFinanciamientoDoctoradoDomainModel
             {
                 strValor = tblDoctorado.CatFuenteFinanciamientoDoctorado.strValor
@@ -128,6 +117,16 @@ namespace AppDigitalCv.Business
             {
                 strValor = tblDoctorado.CatStatusDoctorado.strValor
             };
+            doctoradoDomainModel.DocumentosProfesionales = new List<DocumentosProfesionalesDomainModel>();
+            foreach (var item in tblDoctorado.TblDocumentosProfesionales)
+            {
+                DocumentosProfesionalesDomainModel documentosProfesionalesDomainModel = new DocumentosProfesionalesDomainModel();
+
+                documentosProfesionalesDomainModel.strNombre = item.strNombre;
+                documentosProfesionalesDomainModel.id = item.id;
+
+                doctoradoDomainModel.DocumentosProfesionales.Add(documentosProfesionalesDomainModel);
+            }
 
             return doctoradoDomainModel;
         }
@@ -137,7 +136,7 @@ namespace AppDigitalCv.Business
 
             if (historialAcademicoDomainModel.Doctorado.id > 0)
             {
-                documentosRepository.Delete(p => p.idDocumento == historialAcademicoDomainModel.Doctorado.idDocumento);
+                doctoradoRepository.Delete(p => p.id == historialAcademicoDomainModel.Doctorado.id);
                 respuesta = true;
             }
 

@@ -82,6 +82,7 @@
     <Compile Include="DocumentacionPersonalV2DomainModel.cs" />
     <Compile Include="DocumentoPersonalDomainModel.cs" />
     <Compile Include="DocumentosDomainModel.cs" />
+    <Compile Include="DocumentosProfesionalesDomainModel.cs" />
     <Compile Include="EdificioDomainModel.cs" />
     <Compile Include="EmergenciaDomianModel.cs" />
     <Compile Include="EncuestaDomainModel.cs" />

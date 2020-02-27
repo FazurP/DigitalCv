@@ -26,6 +26,7 @@ namespace AppDigitalCv.Repository
         public string strNumeroExtencion { get; set; }
         public decimal dcmSalarioHoras { get; set; }
     
+        public virtual catCuerpoAcademico catCuerpoAcademico { get; set; }
         public virtual catEdificio catEdificio { get; set; }
         public virtual catProgramaEducativo catProgramaEducativo { get; set; }
         public virtual catUnidadesAcademicas catUnidadesAcademicas { get; set; }

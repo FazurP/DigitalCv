@@ -1,6 +1,8 @@
 ﻿@model AppDigitalCv.ViewModels.ProductividadInnovadoraVM
 @using AppDigitalCv.Security
-
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
+    </noscript>
 @using (Html.BeginForm("Create", "ProductividadInnovadora", FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -127,7 +129,7 @@
     <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/Scripts/Validate/ProductividadInnovadora/validate-productividad-innovadora-form.js?v=1"></script>
     <script src="~/Scripts/Validate/ProductividadInnovadora/validate-productividad-innovadora-regExp.js?v=2"></script>
-    <script src="~/Scripts/Validate/ProductividadInnovadora/validate-productividad-innovadora-upload.js?v=3"></script>
+    <script src="~/Scripts/Validate/ProductividadInnovadora/validate-productividad-innovadora-upload.js?v=4"></script>
     <script>
 
         var AddEditar = function (id) {

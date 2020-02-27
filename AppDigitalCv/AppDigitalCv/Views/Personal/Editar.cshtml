@@ -3,6 +3,9 @@
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
+    </noscript>
 @using (Html.BeginForm("","",FormMethod.Post))
 {
     @Html.AntiForgeryToken()

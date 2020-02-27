@@ -1,6 +1,8 @@
 ﻿@model AppDigitalCv.ViewModels.PrototipoVM
 @using AppDigitalCv.Security
-
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
+    </noscript>
 @using (Html.BeginForm("Create", "Prototipo", FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -135,7 +137,7 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/Scripts/Validate/Prototipo/validate-prototipo-form.js"></script>
-    <script src="~/Scripts/Validate/Prototipo/validate-prototipo-upload.js"></script>
+    <script src="~/Scripts/Validate/Prototipo/validate-prototipo-upload.js?v=1"></script>
     <script src="~/Scripts/Validate/Prototipo/validate-prototipo-regExp.js"></script>
 
     <script>

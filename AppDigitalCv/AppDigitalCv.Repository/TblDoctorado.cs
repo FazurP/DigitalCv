@@ -14,20 +14,26 @@ namespace AppDigitalCv.Repository
     
     public partial class TblDoctorado
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TblDoctorado()
+        {
+            this.TblDocumentosProfesionales = new HashSet<TblDocumentosProfesionales>();
+        }
+    
         public int id { get; set; }
         public string strNombre { get; set; }
         public Nullable<int> idInstitucionAcreditaDoctorado { get; set; }
         public Nullable<int> idStatusDoctorado { get; set; }
-        public Nullable<int> idDocumento { get; set; }
         public Nullable<int> idFuenteFinanciamientoDoctorado { get; set; }
         public Nullable<bool> bitReconomientoPNPC { get; set; }
         public Nullable<int> idPersonal { get; set; }
         public string dteFechaInicio { get; set; }
     
-        public virtual catDocumentos catDocumentos { get; set; }
         public virtual CatFuenteFinanciamientoDoctorado CatFuenteFinanciamientoDoctorado { get; set; }
         public virtual CatInstitucionAcreditaDoctorado CatInstitucionAcreditaDoctorado { get; set; }
         public virtual CatStatusDoctorado CatStatusDoctorado { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblDocumentosProfesionales> TblDocumentosProfesionales { get; set; }
     }
 }

@@ -24,8 +24,8 @@ namespace AppDigitalCv.Repository
         public Nullable<bool> bitPadecido { get; set; }
         public Nullable<int> idEnfermedadesExantemática { get; set; }
     
+        public virtual CatEnfermedadesExantemática CatEnfermedadesExantemática { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblEncuesta> TblEncuesta { get; set; }
-        public virtual CatEnfermedadesExantemática CatEnfermedadesExantemática { get; set; }
     }
 }

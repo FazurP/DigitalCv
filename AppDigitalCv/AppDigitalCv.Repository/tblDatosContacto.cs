@@ -32,8 +32,8 @@ namespace AppDigitalCv.Repository
         public int idPersonal { get; set; }
         public Nullable<bool> bitContactoEmergencia { get; set; }
     
+        public virtual tblPersonal tblPersonal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblTelefono> tblTelefono { get; set; }
-        public virtual tblPersonal tblPersonal { get; set; }
     }
 }

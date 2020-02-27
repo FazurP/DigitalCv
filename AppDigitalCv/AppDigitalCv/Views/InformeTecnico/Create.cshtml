@@ -2,7 +2,9 @@
 
 @using AppDigitalCv.Security
 
-
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
+    </noscript>
 @using (Html.BeginForm("Create", "InformeTecnico", FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -129,7 +131,7 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/Scripts/Validate/InformeTecnico/validate-informe-tecnico-form.js?v=1"></script>
-    <script src="~/Scripts/Validate/InformeTecnico/validate-informe-tecnico-upload.js"></script>
+    <script src="~/Scripts/Validate/InformeTecnico/validate-informe-tecnico-upload.js?v=2"></script>
     <script src="~/Scripts/Validate/InformeTecnico/validate-informe-tecnico-regExp.js"></script>
     <script>
 

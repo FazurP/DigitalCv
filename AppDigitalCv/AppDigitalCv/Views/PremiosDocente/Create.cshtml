@@ -5,7 +5,9 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
+    </noscript>
 @using (Html.BeginForm("Create", "PremiosDocente", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -153,7 +155,7 @@
     <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/Scripts/Validate/Premios/validate-premios-form.js?v=1"></script>
     <script src="~/Scripts/Validate/Premios/validate-premios-regExp.js"></script>
-    <script src="~/Scripts/Validate/PremiosDocente/validate-premios-docente-upload.js?v=1"></script>
+    <script src="~/Scripts/Validate/PremiosDocente/validate-premios-docente-upload.js?v=2"></script>
 
     <script>
 

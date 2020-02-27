@@ -1,6 +1,8 @@
 ﻿@model AppDigitalCv.ViewModels.EncuestaVM
 @using AppDigitalCv.Security
-
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
+    </noscript>
 @using (Html.BeginForm("Create", "EncuestaSalud", FormMethod.Post, new { name = "myForm", id = "myForm" }))
 {
     @Html.AntiForgeryToken()
@@ -23,7 +25,7 @@
                 <div class="box box-success">
                     <div class="box-header">
                     </div>
-                    @if (SessionPersister.AccountSession.Sexo != null)
+                    @if (SessionPersister.AccountSession.bitPermisoEncuesta == true)
                     {
                         <div class="box-body">
                             <div class="row">

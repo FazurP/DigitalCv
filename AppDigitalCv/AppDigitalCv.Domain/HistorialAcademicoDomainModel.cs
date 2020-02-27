@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace AppDigitalCv.Domain
 {
@@ -20,6 +21,7 @@ namespace AppDigitalCv.Domain
         public DocumentosDomainModel Documentos { get; set; }
         public int idPersonal { get; set; }
         public string dteFechaInicio { get; set; }
+        public HttpPostedFileWrapper[] DocumentosPosted { get; set; }
 
         //Distribuidores
 

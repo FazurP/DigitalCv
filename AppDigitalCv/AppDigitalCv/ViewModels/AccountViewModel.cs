@@ -28,5 +28,6 @@ namespace AppDigitalCv.ViewModels
         public string TipoPersonal { get; set; }
         public string Universidad { get; set; }
         public string Sexo { get; set; }
+        public bool bitPermisoEncuesta { get; set; }
     }
 }

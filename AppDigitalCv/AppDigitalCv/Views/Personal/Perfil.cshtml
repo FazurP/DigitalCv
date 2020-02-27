@@ -6,6 +6,9 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
+    </noscript>
 @Html.AntiForgeryToken()
 <div class="bs-container" style="min-height:1920px;">
     <section class="content-header">
@@ -132,22 +135,29 @@
             let img = $('#fotoInputFile').get(0).files;
             console.log(img[0].type);
             if (img[0].type == "image/jpeg") {
-                let data = new FormData;
-                data.append('Image', img[0]);
-                let urlTarget = "/digitalcv/Personal/GuardarImagen";
-                $.ajax({
-                    url: urlTarget,
-                    type: 'post',
-                    data: data,
-                    contentType: false,
-                    processData: false,
-                    success: function () {
-                        window.location.href = "/digitalcv/Personal/Perfil";
-                    }
-                });
+
+                if (img[0].size <= 2097152) {
+                    let data = new FormData;
+                    data.append('Image', img[0]);
+                    let urlTarget = "/digitalcv/Personal/GuardarImagen";
+                    $.ajax({
+                        url: urlTarget,
+                        type: 'post',
+                        data: data,
+                        contentType: false,
+                        processData: false,
+                        success: function () {
+                            window.location.href = "/digitalcv/Personal/Perfil";
+                        }
+                    });
+                } else
+                {
+                    toastr.error("No Puedes Cargar Imagenes Mayores a 2mb", "Digital-Cv dice ", { timeOut: 1000, closeButton: true });
+                     $(this).val("");
+                }               
             } else {
                 $(this).val("");
-                toastr.warning("Solo se Permiten Imagenes en Formato JPEG", "Digital-Cv dice", { timeOut: 1000, closeButton: true });
+                toastr.warning("Solo se Permiten Imagenes en Formato JPEG", "Digital-Cv dice ", { timeOut: 1000, closeButton: true });
             }
 
 

@@ -4,14 +4,16 @@
     ViewBag.Title = "Registrar una Participacion";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
+    </noscript>
 @using (Html.BeginForm("Create", "ParticipacionInstitucionalInterna", FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="bs-container" style="min-height:960px;">
         <section class="content-header">
             <h1>
-                Participación Institucional Dentro de la Institución
+                Participación Dentro de la Institución
                 <small>(Agregar)</small>
             </h1>
             <ol class="breadcrumb">
@@ -41,6 +43,7 @@
                                     <label>Actividad</label>
                                     @Html.TextBoxFor(model => model.strActividad, new { @class = "form-control input-sm", @id = "txtActividad" })
                                 </div>
+                              
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -120,7 +123,7 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/Scripts/Validate/ParticipacionInstitucionalInterna/validate-participacion-institucional-interna-form.js?v=1"></script>
-    <script src="~/Scripts/Validate/ParticipacionInstitucionalInterna/validate-participacion-institucional-interna-upload.js"></script>
+    <script src="~/Scripts/Validate/ParticipacionInstitucionalInterna/validate-participacion-institucional-interna-upload.js?v=1"></script>
     @*<script src="~/Scripts/Validate/ParticipacionInstitucionalInterna/validate-participacion-institucional-interna-date.js"></script>*@
     <script src="~/Scripts/Validate/ParticipacionInstitucionalInterna/validate-participacion-institucional-interna-regExp.js"></script>
     <script>

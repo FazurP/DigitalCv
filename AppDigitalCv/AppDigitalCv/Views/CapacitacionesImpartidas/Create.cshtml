@@ -1,7 +1,9 @@
 ﻿
 @model AppDigitalCv.ViewModels.CapacitacionesImpartidadVM
 @using AppDigitalCv.Security
-
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
+    </noscript>
 @using (Html.BeginForm("Create", "CapacitacionesImpartidas", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -104,7 +106,7 @@
 @section scripts
     {
     <script src="~/Scripts/Validate/CapacitacionesRecibidas/validate-capacitaciones-recibidas-regExp.js"></script>
-    <script src="~/Scripts/Validate/CapacitacionesRecibidas/validate-capacitaciones-recibidas-upload.js"></script>
+    <script src="~/Scripts/Validate/CapacitacionesRecibidas/validate-capacitaciones-recibidas-upload.js?v=1"></script>
     <script src="~/Scripts/Validate/CapacitacionesRecibidas/validate-capacitaciones-tomadas-form.js"></script>
     <script src="~/Scripts/Validate/CapacitacionesRecibidas/fixdom-capacitaciones-recibidas.js"></script>
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

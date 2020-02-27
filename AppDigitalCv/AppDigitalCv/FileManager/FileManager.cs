@@ -46,7 +46,7 @@ namespace AppDigitalCv.FileManager
         public static Object[] CheckFileIfExist(string path, DocumentosVM documentosVM) 
         {
             Object[] tupla = new Object[2];
-           
+
             string [] nuevoNombre = Directory.GetFiles(path);
 
             int cantidadArchivos = nuevoNombre.Length;
@@ -62,16 +62,18 @@ namespace AppDigitalCv.FileManager
                 documentosVM.DocumentoFile.SaveAs(newPath);
 
                 tupla[0] = true;
-                tupla[1] = nombre+cantidadArchivos+".pdf";
+                tupla[1] = nombre + cantidadArchivos + ".pdf";
             }
-            else 
+            else
             {
                 documentosVM.DocumentoFile.SaveAs(fullPath);
                 tupla[0] = true;
                 tupla[1] = documentosVM.DocumentoFile.FileName;
             };
 
+           
+
             return tupla;
-        }
+        }    
     }
 }

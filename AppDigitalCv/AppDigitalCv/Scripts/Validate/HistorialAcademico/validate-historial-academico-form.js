@@ -9,7 +9,7 @@
             case 1:
 
                 campos[0] = $('#NombreEstudioDoctorado').val();
-                campos[1] = $('#InstitucionAcredita').val();
+                campos[1] = $('#Institucion').val();
                 campos[2] = $('#Status').val();
                 campos[3] = $('#FuenteFinanciamiento').val();
                 campos[4] = $('input:radio[name=bitReconocimientePNPC]:checked').val();
@@ -30,7 +30,7 @@
             case 2:
 
                 campos[0] = $('#NombreEstudioDoctorado').val();
-                campos[1] = $('#InstitucionAcredita').val();
+                campos[1] = $('#Institucion').val();
                 campos[2] = $('#Status').val();
                 campos[3] = $('#FuenteFinanciamiento').val();
                 campos[4] = $('input:radio[name=bitReconocimientePNPC]:checked').val();
@@ -51,7 +51,7 @@
             case 3:
 
                 campos[0] = $('#NombreEstudioDoctorado').val();
-                campos[1] = $('#InstitucionAcredita').val();
+                campos[1] = $('#Institucion').val();
                 campos[2] = $('#Status').val();
                 campos[3] = $('#Documento').val();
 
@@ -66,7 +66,7 @@
             case 4:
 
                 campos[0] = $('#NombreEstudioDoctorado').val();
-                campos[1] = $('#InstitucionAcredita').val();
+                campos[1] = $('#Institucion').val();
                 campos[2] = $('#Status').val();
                 campos[3] = $('#Documento').val();
 

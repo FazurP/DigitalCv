@@ -10,11 +10,11 @@ namespace AppDigitalCv.Repository.Infraestructure
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly bdGestionDocenteEntities _dbContext;
+        private readonly bdGestionDocenteEntities1 _dbContext;
 
         public UnitOfWork()
         {
-            _dbContext = new bdGestionDocenteEntities();
+            _dbContext = new bdGestionDocenteEntities1();
         }
 
         public DbContext Db

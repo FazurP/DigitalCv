@@ -37,7 +37,7 @@
             $('#lblDte').hide();
 
             $('#divStatus').show();
-            $('#InstitucionAcredita').show();
+            $('#Institucion').show();
             $('#lblAcredita').show();
 
         }
@@ -46,7 +46,7 @@
             $('#togglePNPC').hide();
             $('#toggleFF').hide();
             $('#divStatus').hide();
-            $('#InstitucionAcredita').hide();
+            $('#Institucion').hide();
             $('#strInstitucionAcredita').hide();
             $('#lblAcredita').hide();
         } else if (data == 0) {
@@ -58,7 +58,7 @@
             $('#togglePNPC').show();
             $('#toggleFF').show();
             $('#divStatus').show();
-            $('#InstitucionAcredita').show();
+            $('#Institucion').show();
             $('#lblAcredita').show();
         }
         else
@@ -66,7 +66,7 @@
             $('#togglePNPC').show();
             $('#toggleFF').show();
             $('#divStatus').show();
-            $('#InstitucionAcredita').show();
+            $('#Institucion').show();
             $('#lblAcredita').show();
         }
     });

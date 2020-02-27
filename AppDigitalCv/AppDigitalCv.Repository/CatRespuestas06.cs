@@ -26,10 +26,10 @@ namespace AppDigitalCv.Repository
         public Nullable<int> idSustancia { get; set; }
         public Nullable<int> idAlimento { get; set; }
     
+        public virtual CatAlergiaAlimento CatAlergiaAlimento { get; set; }
         public virtual CatAlergiaMedicamento CatAlergiaMedicamento { get; set; }
         public virtual CatAlergiaSustancia CatAlergiaSustancia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblEncuesta> TblEncuesta { get; set; }
-        public virtual CatAlergiaAlimento CatAlergiaAlimento { get; set; }
     }
 }

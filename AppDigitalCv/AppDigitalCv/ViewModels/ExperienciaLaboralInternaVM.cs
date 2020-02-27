@@ -11,12 +11,12 @@ namespace AppDigitalCv.ViewModels
         public int id { get; set; }
         public int idPersonal { get; set; }
         public int idArea { get; set; }
-        public int idProgramaEducativo { get; set; }
         public int idPeriodo { get; set; }
         public string dteFechaInicio { get; set; }
         public string dteFechaTermino { get; set; }
         public string strActividadDesempeñada { get; set; }
         public string strTipoProfesor { get; set; }
+        public bool bitPuestoActual { get; set; }
 
         //Objetos de las relaciones
 

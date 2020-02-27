@@ -1,4 +1,5 @@
 ﻿using AppDigitalCv.Domain;
+using AppDigitalCv.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace AppDigitalCv.Business.Interface
 {
     public interface IDoctoradoBusiness
     {
-        bool AddDoctorado(HistorialAcademicoDomainModel historialAcademico);
+        int AddDoctorado(HistorialAcademicoDomainModel historialAcademico);
         List<DoctoradoDomainModel> GetDoctorados(int idPersonal);
         DoctoradoDomainModel GetDoctorado(int idDoctorado);
         bool DeleteDoctorado(HistorialAcademicoDomainModel historialAcademicoDomainModel);

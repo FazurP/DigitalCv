@@ -76,6 +76,11 @@ namespace AppDigitalCv.Business
                         personal.TblSeguridadSocial.strNumero = personalDM.SeguridadSocial.strNumero;
                     }
                     personalRepository.Update(personal);
+
+                    personal = new tblPersonal();
+                    personal.bitPermisoEncuesta = true;
+
+                    personalRepository.Update(personal);
                     resultado = "Se Actualizo correctamente";
 
                 }
@@ -256,16 +261,16 @@ namespace AppDigitalCv.Business
                 personalDomainModel.Nombre = tblPersonal.strNombre;
                 personalDomainModel.ApellidoPaterno = tblPersonal.strApellidoPaterno;
                 personalDomainModel.ApellidoMaterno = tblPersonal.strApellidoMaterno;
-                _ = tblPersonal.CatNacionalidad == null ? new NacionalidadDomainModel() : personalDomainModel.Nacionalidad = new NacionalidadDomainModel { strValor = tblPersonal.CatNacionalidad.strValor };
-                _ = tblPersonal.catEstadoCivil == null ? new EstadoCivilDomainModel() : personalDomainModel.EstadoCivil = new EstadoCivilDomainModel { StrDescripcion = tblPersonal.catEstadoCivil.strDescripcion };
+                _ = tblPersonal.CatNacionalidad == null ? new NacionalidadDomainModel() : personalDomainModel.Nacionalidad = new NacionalidadDomainModel { strValor = tblPersonal.CatNacionalidad.strValor,id = tblPersonal.CatNacionalidad.id };
+                _ = tblPersonal.catEstadoCivil == null ? new EstadoCivilDomainModel() : personalDomainModel.EstadoCivil = new EstadoCivilDomainModel { StrDescripcion = tblPersonal.catEstadoCivil.strDescripcion,IdEstadoCivil = tblPersonal.catEstadoCivil.idEstadoCivil };
                 personalDomainModel.strGenero = tblPersonal.strGenero;
                 personalDomainModel.Curp = tblPersonal.strCurp;
                 personalDomainModel.Rfc = tblPersonal.strRfc;
                 personalDomainModel.Homoclave = tblPersonal.strHomoclave;
                 personalDomainModel.strNumeroEmpleado = tblPersonal.strNumeroEmpleado;
-                personalDomainModel.idNacionalidad = tblPersonal.idNacionalidad.Value;
-                personalDomainModel.idEstadoCivil = tblPersonal.idEstadoCivil.Value;
-                personalDomainModel.idSeguridadSocial = tblPersonal.idSeguridadSocial.Value;
+                _ = tblPersonal.idNacionalidad == null ? 0 : tblPersonal.idNacionalidad = tblPersonal.idNacionalidad;
+                _ = tblPersonal.idEstadoCivil == null ? 0 : tblPersonal.idEstadoCivil = tblPersonal.idEstadoCivil;
+                _ = tblPersonal.idSeguridadSocial == null ? 0 : tblPersonal.idSeguridadSocial = tblPersonal.idSeguridadSocial;
                 _ = tblPersonal.TblSeguridadSocial == null ? new SeguridadSocialDomainModel() : personalDomainModel.SeguridadSocial = new SeguridadSocialDomainModel
                 {
                     idInstitucion = tblPersonal.TblSeguridadSocial.idInstitucion.Value,

@@ -4,7 +4,9 @@
     ViewBag.Title = "Registrar Documentacion Adicional";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
+    </noscript>
 @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()

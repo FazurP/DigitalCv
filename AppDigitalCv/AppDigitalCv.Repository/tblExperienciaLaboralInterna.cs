@@ -17,14 +17,13 @@ namespace AppDigitalCv.Repository
         public int id { get; set; }
         public Nullable<int> idPersonal { get; set; }
         public Nullable<int> idArea { get; set; }
-        public Nullable<int> idProgramaEduactivo { get; set; }
         public string dteFechaInicio { get; set; }
         public string dteFechaFin { get; set; }
         public string strActividadDesempenada { get; set; }
         public string strTipoProfesor { get; set; }
+        public Nullable<bool> bitPuestoActual { get; set; }
     
         public virtual catArea catArea { get; set; }
-        public virtual catProgramaEducativo catProgramaEducativo { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
     }
 }

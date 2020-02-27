@@ -14,20 +14,26 @@ namespace AppDigitalCv.Repository
     
     public partial class TblMaetria
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TblMaetria()
+        {
+            this.TblDocumentosProfesionales = new HashSet<TblDocumentosProfesionales>();
+        }
+    
         public int id { get; set; }
         public string strNombre { get; set; }
         public Nullable<int> idInstitucionAcreditaMaestria { get; set; }
         public Nullable<int> idStatusMaestria { get; set; }
-        public Nullable<int> idDocumento { get; set; }
         public Nullable<int> idFuentaFinanciamientoMaestria { get; set; }
         public Nullable<bool> bitReconocidoPNPC { get; set; }
         public Nullable<int> idPersonal { get; set; }
         public string dteFechaInicio { get; set; }
     
-        public virtual catDocumentos catDocumentos { get; set; }
         public virtual CatFuentaFinaciamientoMaestria CatFuentaFinaciamientoMaestria { get; set; }
         public virtual CatInstitucionAcreditaMaestria CatInstitucionAcreditaMaestria { get; set; }
         public virtual CatStatusMaestria CatStatusMaestria { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblDocumentosProfesionales> TblDocumentosProfesionales { get; set; }
         public virtual tblPersonal tblPersonal { get; set; }
     }
 }

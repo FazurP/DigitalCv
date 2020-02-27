@@ -1,6 +1,8 @@
 ﻿@model AppDigitalCv.ViewModels.EstadiaEmpresaVM
 @using AppDigitalCv.Security
-
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
+    </noscript>
 @using (Html.BeginForm("Create", "EstadiaEmpresa", FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()

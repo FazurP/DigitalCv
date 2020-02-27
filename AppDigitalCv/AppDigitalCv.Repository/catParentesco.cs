@@ -17,8 +17,8 @@ namespace AppDigitalCv.Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public catParentesco()
         {
-            this.tblEmergencia = new HashSet<tblEmergencia>();
             this.catFamiliar = new HashSet<catFamiliar>();
+            this.tblEmergencia = new HashSet<tblEmergencia>();
         }
     
         public int idParentesco { get; set; }
@@ -26,8 +26,8 @@ namespace AppDigitalCv.Repository
         public string strObservacion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblEmergencia> tblEmergencia { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<catFamiliar> catFamiliar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblEmergencia> tblEmergencia { get; set; }
     }
 }

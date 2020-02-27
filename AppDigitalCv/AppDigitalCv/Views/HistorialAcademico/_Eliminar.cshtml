@@ -1,5 +1,8 @@
 ﻿@model AppDigitalCv.ViewModels.HistorialAcademicoVM
 @using AppDigitalCv.Security
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
+    </noscript>
 <div>
     <form id="myForm">
         <div class="bs-container">
@@ -120,10 +123,10 @@
            
             $.ajax({
                 type: "post",
-                url: "/digitalcv/HistorialAcademico/Delete",
+                url: "/HistorialAcademico/Delete",
                 data: { historialAcademicoVM: HistorialAcademicoVM},
                 success: function () {
-                    window.location.href = "/digitalcv/HistorialAcademico/Create";
+                    window.location.href = "/HistorialAcademico/Create";
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     alert(textStatus);

@@ -11,13 +11,11 @@ namespace AppDigitalCv.ViewModels
         public string strNombre { get; set; }
         public int idInstitucionAcredita { get; set; }
         public int idStatusLicenciatura { get; set; }
-        public int idDocumento { get; set; }
         public int idPersonal { get; set; }
 
         //Objetos de las relaciones.
 
         public InstitucionAcreditaLicenciaturaVM InstitucionAcreditaLicenciatura { get; set; }
         public StatusLicenciaturaVM StatusLicenciatura { get; set; }
-        public DocumentosVM Documentos { get; set; }
     }
 }

@@ -5,8 +5,10 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-@using (Html.BeginForm("Create","Idioma",FormMethod.Post,new { enctype="multipart/form-data" }))
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
+    </noscript>
+@using (Html.BeginForm("Create", "Idioma", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -101,15 +103,16 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-    <script src="~/Scripts/Validate/IdiomasDialectos/validate-idiomas-dialectos-form.js"></script>
+    <script src="~/Scripts/Validate/IdiomasDialectos/validate-idiomas-dialectos-form.js?v=3"></script>
+    <script src="~/Scripts/Validate/IdiomasDialectos/validate-idiomas-upload.js?v=3"></script>
 
 
     <script>
-        
+
         var AddEliminar = function (id) {
-            
+
             var url = "/digitalcv/Idioma/GetIdiomaById?_id=" + id;
-            
+
             $("#myModalBodyDiv1").load(url, function () {
                 $("#myModal1").modal("show");
 
@@ -184,7 +187,7 @@
                         "dataSrc": "",
                         "columns": [
 
-                            { "data": "Idioma.strDescripcion" },                      
+                            { "data": "Idioma.strDescripcion" },
 
                             //{
                             //    "data": "id",
@@ -201,7 +204,7 @@
                                 "render": function (StrUrl) {
                                     @*return ;*@
                                     return '<a target="_blank" href="/digitalcv/Imagenes/Usuarios/@SessionPersister.AccountSession.NombreCompleto/' + StrUrl + '"><i class="btn btn-default fa fa-file-pdf-o" style="color:red;"></i></a>'+StrUrl+''
-                         
+
                             }
                             },
 

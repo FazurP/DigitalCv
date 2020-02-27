@@ -12,7 +12,6 @@ namespace AppDigitalCv.Domain
         public string strNombre { get; set; }
         public int idInstitucionAcreditaDoctorado { get; set; }
         public int idStatusDoctorado { get; set; }
-        public int idDocumento { get; set; }
         public int idFuentaFinaciamientoDoctorado { get; set; }
         public bool bitReconocimientePNPC { get; set; }
         public int idPersonal { get; set; }
@@ -21,7 +20,7 @@ namespace AppDigitalCv.Domain
 
         public InstitucionAcreditaDoctoradoDomainModel InstitucionAcreditaDoctorado { get; set; }
         public StatusDoctoradoDomainModel StatusDoctorado { get; set; }
-        public DocumentosDomainModel Documentos { get; set; }
         public FuenteFinanciamientoDoctoradoDomainModel FuenteFinanciamientoDoctorado { get; set; }
+        public List<DocumentosProfesionalesDomainModel> DocumentosProfesionales { get; set; }
     }
 }

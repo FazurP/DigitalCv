@@ -47,13 +47,13 @@ namespace AppDigitalCv.Business
                 tblDoctorado.Doctorado = new DoctoradoDomainModel
                 {
                     bitReconocimientePNPC = item.bitReconomientoPNPC.Value,
-                    id = item.id, idDocumento = item.idDocumento.Value,
+                    id = item.id,
+
                     idFuentaFinaciamientoDoctorado = item.idFuenteFinanciamientoDoctorado.Value,
                     idInstitucionAcreditaDoctorado = item.idInstitucionAcreditaDoctorado.Value,
                     idPersonal = item.idPersonal.Value,
                     idStatusDoctorado = item.idStatusDoctorado.Value,
                     strNombre = item.strNombre,
-                    Documentos = new DocumentosDomainModel { StrUrl = item.catDocumentos.strUrl },
                     FuenteFinanciamientoDoctorado = new FuenteFinanciamientoDoctoradoDomainModel
                     {
                         id = item.CatFuenteFinanciamientoDoctorado.id,
@@ -84,16 +84,14 @@ namespace AppDigitalCv.Business
                 tblMaetria.Maestria = new MaestriaDomainModel
                 {
                     bitReconocidoPNPC = item.bitReconocidoPNPC.Value,
-                    id = item.id,idDocumento = item.idDocumento.Value,
+                    id = item.id,
+                   
                     idFuenteFinanciamientoMaestria = item.idFuentaFinanciamientoMaestria.Value,
                     idInstitucionAcreditaMaestria = item.idInstitucionAcreditaMaestria.Value,
                     idPersonal = item.idPersonal.Value,
                     idStatusMaestria = item.idStatusMaestria.Value,
                     strNombre = item.strNombre,
-                    Documentos = new DocumentosDomainModel
-                    {
-                        StrUrl = item.catDocumentos.strUrl
-                    },
+                  
                     FuenteFinaciamientoMaestria = new FuenteFinaciamientoMaestriaDomainModel
                     {
                         id = item.CatFuentaFinaciamientoMaestria.id,

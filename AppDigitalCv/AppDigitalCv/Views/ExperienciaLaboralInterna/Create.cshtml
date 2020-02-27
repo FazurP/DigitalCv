@@ -1,6 +1,8 @@
 ﻿@model AppDigitalCv.ViewModels.ExperienciaLaboralInternaVM
 @using AppDigitalCv.Security
-
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
+    </noscript>
 @using (Html.BeginForm("Create","ExperienciaLaboralInterna",FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -32,17 +34,18 @@
                                     </div>
                                     <div class="form-group" style="display:none;" id="docente">
                                         <label>Tipo de Docente: </label>
-                                        @Html.DropDownList("strTipoProfesor", new SelectList(new List<string> {"Seleccionar","Profesor Titular A","Profesor Titular B","Profesor Asociado C" }), new { @class = "form-control input-sm", @id = "tipoDocente" })
+                                        @Html.DropDownList("strTipoProfesor", new SelectList(new List<string> { "Seleccionar", "Profesor Titular A", "Profesor Titular B", "Profesor Asociado C" }), new { @class = "form-control input-sm", @id = "tipoDocente" })
                                     </div>
                                     <div class="form-group">
                                         <label>Area:</label>
                                         @Html.DropDownList("idArea", null, new { @class = "form-control input-sm", @id = "idArea" })
                                     </div>
                                     <div class="form-group">
-                                        <label>Programa Educativo:</label>
-                                        @Html.DropDownList("idProgramaEducativo", null, new { @class = "form-control input-sm", @id = "idProgramaEducativo" })
+                                        <label>Es el puesto Actual?</label>
+                                        <br />
+                                        Si @Html.RadioButtonFor(model => model.bitPuestoActual,true,new { @id="paSi"})
+                                        No @Html.RadioButtonFor(model => model.bitPuestoActual,false,new { @id="paNo"})
                                     </div>
-
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
@@ -124,7 +127,7 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/Scripts/Validate/ExperienciaLaboralInterna/validate-experiencia-laboral-interna-regExp.js"></script>
-    <script src="~/Scripts/Validate/ExperienciaLaboralInterna/validate-experiencia-laboral-interna-form.js"></script>
+    <script src="~/Scripts/Validate/ExperienciaLaboralInterna/validate-experiencia-laboral-interna-form.js?v=21"></script>
     <script src="~/Scripts/Validate/ExperienciaLaboralInterna/fixdom-experiencia-laboral-interna.js"></script>
     <script>
 

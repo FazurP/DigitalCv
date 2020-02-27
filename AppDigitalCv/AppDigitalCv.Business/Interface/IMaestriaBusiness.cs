@@ -9,7 +9,7 @@ namespace AppDigitalCv.Business.Interface
 {
     public interface IMaestriaBusiness
     {
-        bool AddMaestria(HistorialAcademicoDomainModel historialAcademicoDomainModel);
+        int AddMaestria(HistorialAcademicoDomainModel historialAcademicoDomainModel);
         List<MaestriaDomainModel> GetMaestrias(int idPersonal);
         MaestriaDomainModel GetMaestria(int _id);
         bool DeleteMaestria(HistorialAcademicoDomainModel historialAcademicoDomainModel);

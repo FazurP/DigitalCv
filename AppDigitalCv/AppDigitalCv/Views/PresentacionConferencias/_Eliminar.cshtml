@@ -1,6 +1,8 @@
 ﻿@model AppDigitalCv.ViewModels.PresentacionPonenciasVM
 @using AppDigitalCv.Security
-
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
+    </noscript>
 <div>
     <form id="presentacion">
         @Html.HiddenFor(model => model.idPersonal)

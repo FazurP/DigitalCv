@@ -45,17 +45,6 @@
 
     });
 
-    $('#fUpload').change(function () {
-
-        let data = $(this).val();
-
-        if (data == "") {
-            $('#btnSubmit').prop('disabled', true);
-        } else {
-            toastr.success("Evidencia Cargada.", "Digital-Cv dice:", { timeOut: 1000, closeButton: true });
-            $('#btnSubmit').prop('disabled', false);
-        }
-    });
 
 });
     

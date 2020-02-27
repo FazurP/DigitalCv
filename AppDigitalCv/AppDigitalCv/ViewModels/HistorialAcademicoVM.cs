@@ -20,6 +20,7 @@ namespace AppDigitalCv.ViewModels
         public int idPersonal { get; set; }
         public DateTime dteFechaInicio { get; set; }
         public string strInstitucionAcredita { get; set; }
+        public HttpPostedFileWrapper[] DocumentosPosted { get; set; }
         //Distribuidores
 
         public int Type { get; set; }

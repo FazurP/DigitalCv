@@ -15,7 +15,7 @@ namespace AppDigitalCv.ViewModels
         //public virtual ICollection<PremiosDocenteVM> PremiosDocenteVM { get; set; }
         [Required(ErrorMessage = "El archivo es obligatorio")]
         public HttpPostedFileWrapper DocumentoFile { get; set; }
-
+        //public HttpPostedFileWrapper[] DocumentosFiles { get; set; }
         public virtual DocumentacionPersonalVM DocumentacionPersonalVMs { get; set; }
 
     }

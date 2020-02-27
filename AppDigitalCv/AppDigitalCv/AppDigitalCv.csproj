@@ -260,7 +260,6 @@
     <Content Include="Global.asax" />
     <Content Include="Imagenes\4K-Field-Desktop-Wallpaper-For-PC.jpg" />
     <Content Include="Imagenes\anonimo_base.gif" />
-    <Content Include="Imagenes\perfil.jpg" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <Content Include="Imagenes\conferencias.png" />
@@ -283,6 +282,7 @@
     <Content Include="Imagenes\p1_instituciones.png" />
     <Content Include="Imagenes\pdf_descargar.jpg" />
     <Content Include="Imagenes\pdf_subir.png" />
+    <Content Include="Imagenes\perfil_anonimo.jpg" />
     <Content Include="Imagenes\preloader.gif" />
     <Content Include="Imagenes\reportes.png" />
     <Content Include="Imagenes\usertest-160x160.jpg" />
@@ -478,6 +478,7 @@
     <Content Include="Scripts\Validate\Hobbie\validate-hobbie-form.js" />
     <Content Include="Scripts\Validate\Hobbie\validate-hobbie-regExp.js" />
     <Content Include="Scripts\Validate\IdiomasDialectos\validate-idiomas-dialectos-form.js" />
+    <Content Include="Scripts\Validate\IdiomasDialectos\validate-idiomas-upload.js" />
     <Content Include="Scripts\Validate\InformeTecnico\validate-informe-tecnico-form.js" />
     <Content Include="Scripts\Validate\InformeTecnico\validate-informe-tecnico-regExp.js" />
     <Content Include="Scripts\Validate\InformeTecnico\validate-informe-tecnico-upload.js" />
@@ -789,6 +790,7 @@
     <Compile Include="ViewModels\DocumentacionPersonalV2VM.cs" />
     <Compile Include="ViewModels\DocumentacionPersonalVM.cs" />
     <Compile Include="ViewModels\DocumentoPersonalVM.cs" />
+    <Compile Include="ViewModels\DocumentosProfesionalesVM.cs" />
     <Compile Include="ViewModels\DocumentosVM.cs" />
     <Compile Include="ViewModels\EdificioVM.cs" />
     <Compile Include="ViewModels\EmergenciaViewModel.cs" />

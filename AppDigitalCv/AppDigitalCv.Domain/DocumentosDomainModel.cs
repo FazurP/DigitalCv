@@ -20,5 +20,6 @@ namespace AppDigitalCv.Domain
         //listo ya tenemos vinculado  en el domain model ahora hay que modificar el viewmodel con la misma clase
         //public virtual ICollection<PremiosDocenteDomainModel> PremiosDocenteDomainModel { get; set; }
         public HttpPostedFileWrapper DocumentoFile { get; set; }
+        //public HttpPostedFileWrapper[] DocumentosFiles { get; set; }
     }
 }

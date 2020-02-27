@@ -1,6 +1,9 @@
 ﻿
 @model AppDigitalCv.ViewModels.EncuestaVM
 @using AppDigitalCv.Security
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
+    </noscript>
 <div>
     <form id="myFormulario">
         @Html.HiddenFor(model => model.id, new { @class = "form-control input-sm", id = "id" })

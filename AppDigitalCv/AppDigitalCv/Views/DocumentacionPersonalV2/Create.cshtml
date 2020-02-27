@@ -4,7 +4,9 @@
     ViewBag.Title = "Registrar Documentacion Adicional";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
+    </noscript>
 @using (Html.BeginForm("Create", "DocumentacionPersonalV2", FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -28,24 +30,35 @@
                     </div>
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12">
                                 <div class="form-group">
                                     <label>Tipo de Documento:</label>
                                     @Html.DropDownList("idTipoDocumento", null, new { @class = "form-control input-sm", id = "tipoDocumento" })
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12">
                                 <div class="form-group">
                                     <label>Fecha de Expedición:</label>
                                     <div class="input-group date">
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        @Html.TextBoxFor(model => model.dteExpedicion, new { @class = "form-control input-sm pull-rigth datepicker", id = "vigencia" })
+                                        @Html.TextBoxFor(model => model.dteExpedicion, new { @class = "form-control input-sm pull-rigth datepicker", id = "expedicion" })
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12" id="lblvigencia">
+                                <div class="form-group">
+                                    <label>Fecha de Vigencia:</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        @Html.TextBoxFor(model => model.dteVigenciaDocumento, new { @class = "form-control input-sm pull-rigth datepicker", id = "vigencia" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12">
                                 <div class="form-group">
                                     <label>Envidencia del Documento en PDF:</label>
                                     @Html.TextBoxFor(model => model.Documentos.DocumentoFile, new { @class = "form-control input-sm", id = "fUpload", type = "file" })
@@ -108,8 +121,8 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
-    <script src="~/Scripts/Validate/DocumentacionPersonal/validate-documentacion-personal-v2-form.js"></script>
-    <script src="~/Scripts/Validate/DocumentacionPersonal/validate-documentacion-personal-v2-upload.js"></script>
+    <script src="~/Scripts/Validate/DocumentacionPersonal/validate-documentacion-personal-v2-form.js?v=9"></script>
+    <script src="~/Scripts/Validate/DocumentacionPersonal/validate-documentacion-personal-v2-upload.js?v=4"></script>
 
 
     <script>

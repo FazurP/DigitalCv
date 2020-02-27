@@ -32,15 +32,15 @@ namespace AppDigitalCv.Business
 
             foreach (CatTipoDocumento item in tipoDocumento)
             {
-                if (!documentacionPersonalRepository.Exists(p => p.idPersonal == _idPersonal && p.idTipoDocumento == item.id))
-                {
+                //if (!documentacionPersonalRepository.Exists(p => p.idPersonal == _idPersonal && p.idTipoDocumento == item.id))
+                //{
                     TipoDocumentoDomainModel tipoDocumentoDomainModel = new TipoDocumentoDomainModel();
 
                     tipoDocumentoDomainModel.id = item.id;
                     tipoDocumentoDomainModel.strValor = item.strValor;
 
                     tipoDocumentoDomainModels.Add(tipoDocumentoDomainModel);
-                }
+                //}
               
             }
 

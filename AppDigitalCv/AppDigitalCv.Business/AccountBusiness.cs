@@ -54,6 +54,8 @@ namespace AppDigitalCv.Business
                     account.Universidad = t.strUniversidad;
                     account.TipoPersonal = t.strTipoPersonal;
                     account.Sexo = t.strGenero;
+                    _ = t.bitPermisoEncuesta == null ? t.bitPermisoEncuesta = false : t.bitPermisoEncuesta = t.bitPermisoEncuesta;
+                    account.bitPermisoEncuesta = t.bitPermisoEncuesta.Value;
                 }
                 account.IdUsuario = catUsuarios.idUsuario;
                 account.Email = catUsuarios.strEmailInstitucional;

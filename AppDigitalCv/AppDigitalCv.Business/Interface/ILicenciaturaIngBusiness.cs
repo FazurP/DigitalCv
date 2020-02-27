@@ -9,7 +9,7 @@ namespace AppDigitalCv.Business.Interface
 {
     public interface ILicenciaturaIngBusiness
     {
-        bool AddLicenciaturaIng(HistorialAcademicoDomainModel historialAcademicoDomainModel);
+        int AddLicenciaturaIng(HistorialAcademicoDomainModel historialAcademicoDomainModel);
         List<LicenciaturaIngenieriaDomainModel> GetLicenciaturasIngs(int idPersonal);
         List<StatusLicenciaturaDomainModel> GetStatusLicenciaturas();
         bool DeleteLicenciarturaIng(HistorialAcademicoDomainModel historialAcademicoDomainModel);

@@ -14,7 +14,7 @@
             
             case 0:
                 $('#lblNombre').html("Nombre:");
-                $('#InstitucionAcredita').empty();
+                $('#Institucion').empty();
                 $('#Status').empty();
                 $('#FuenteFinanciamiento').empty();
                 break;
@@ -27,8 +27,8 @@
                 ////////////////////////////////////////////////////////
                 $.get(url).done(function (response) {
 
-                    $('#InstitucionAcredita').empty();
-                    $('#InstitucionAcredita').append(response);
+                    $('#Institucion').empty();
+                    $('#Institucion').append(response);
 
                 }).fail(function () {
                     console.log("Service not available");
@@ -62,8 +62,8 @@
                 //////////////////////////////////////////
                 $.get(url).done(function (response) {
 
-                    $('#InstitucionAcredita').empty();
-                    $('#InstitucionAcredita').append(response);
+                    $('#Institucion').empty();
+                    $('#Institucion').append(response);
 
                 }).fail(function () {
                     console.log("Service not available");
@@ -97,8 +97,8 @@
 
                 $.get(url).done(function (response) {
 
-                    $('#InstitucionAcredita').empty();
-                    $('#InstitucionAcredita').append(response);
+                    $('#Institucion').empty();
+                    $('#Institucion').append(response);
 
                 }).fail(function () {
                     console.log("Service not available");
@@ -123,8 +123,8 @@
 
                 $.get(url).done(function (response) {
 
-                    $('#InstitucionAcredita').empty();
-                    $('#InstitucionAcredita').append(response);
+                    $('#Institucion').empty();
+                    $('#Institucion').append(response);
 
                 }).fail(function () {
                     console.log("Service not available");

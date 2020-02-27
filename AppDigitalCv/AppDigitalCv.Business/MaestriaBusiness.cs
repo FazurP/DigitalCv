@@ -23,9 +23,8 @@ namespace AppDigitalCv.Business
             documentosRepository = new DocumentosRepository(unitOfWork);
         }
 
-        public bool AddMaestria(HistorialAcademicoDomainModel historialAcademicoDomainModel)
+        public int AddMaestria(HistorialAcademicoDomainModel historialAcademicoDomainModel)
         {
-            bool respuesta = false;
 
             if (historialAcademicoDomainModel != null)
             {
@@ -38,16 +37,13 @@ namespace AppDigitalCv.Business
                 tblMaetria.idStatusMaestria = historialAcademicoDomainModel.Status;
                 tblMaetria.strNombre = historialAcademicoDomainModel.strNombre;
 
-                catDocumentos catDocumentos = new catDocumentos();
+                maestriaRepository.Insert(tblMaetria);
 
-                catDocumentos.strUrl = historialAcademicoDomainModel.Documentos.DocumentoFile.FileName;
-                catDocumentos.TblMaetria.Add(tblMaetria);
-                documentosRepository.Insert(catDocumentos);
-                respuesta = true;
+                return tblMaetria.id;
 
             }
             
-            return respuesta;
+            return 0;
         }
 
         public List<MaestriaDomainModel> GetMaestrias(int idPersonal)
@@ -62,17 +58,13 @@ namespace AppDigitalCv.Business
                 MaestriaDomainModel maestriaDomainModel = new MaestriaDomainModel();
 
                 maestriaDomainModel.id = item.id;
-                maestriaDomainModel.idDocumento = item.idDocumento.Value;
                 maestriaDomainModel.idFuenteFinanciamientoMaestria = item.idFuentaFinanciamientoMaestria.Value;
                 maestriaDomainModel.idInstitucionAcreditaMaestria = item.idInstitucionAcreditaMaestria.Value;
                 maestriaDomainModel.idPersonal = item.idPersonal.Value;
                 maestriaDomainModel.idStatusMaestria = item.idStatusMaestria.Value;
                 maestriaDomainModel.strNombre = item.strNombre;
                 maestriaDomainModel.bitReconocidoPNPC = item.bitReconocidoPNPC.Value;
-                maestriaDomainModel.Documentos = new DocumentosDomainModel
-                {
-                    StrUrl = item.catDocumentos.strUrl
-                };
+
                 maestriaDomainModel.FuenteFinaciamientoMaestria = new FuenteFinaciamientoMaestriaDomainModel
                 {
                     id = item.CatFuentaFinaciamientoMaestria.id,
@@ -92,6 +84,7 @@ namespace AppDigitalCv.Business
                     strValor =item.CatStatusMaestria.strValor
                 };
 
+
                 maestriaDomainModels.Add(maestriaDomainModel);
 
             }
@@ -105,16 +98,11 @@ namespace AppDigitalCv.Business
 
             maestriaDomainModel.bitReconocidoPNPC = tblMaetria.bitReconocidoPNPC.Value;
             maestriaDomainModel.id = tblMaetria.id;
-            maestriaDomainModel.idDocumento = tblMaetria.idDocumento.Value;
             maestriaDomainModel.idFuenteFinanciamientoMaestria = tblMaetria.idFuentaFinanciamientoMaestria.Value;
             maestriaDomainModel.idInstitucionAcreditaMaestria = tblMaetria.idInstitucionAcreditaMaestria.Value;
             maestriaDomainModel.idPersonal = tblMaetria.idPersonal.Value;
             maestriaDomainModel.idStatusMaestria = tblMaetria.idStatusMaestria.Value;
-            maestriaDomainModel.strNombre = tblMaetria.strNombre;
-            maestriaDomainModel.Documentos = new DocumentosDomainModel
-            {
-                StrUrl = tblMaetria.catDocumentos.strUrl
-            };
+            maestriaDomainModel.strNombre = tblMaetria.strNombre;         
             maestriaDomainModel.FuenteFinaciamientoMaestria = new FuenteFinaciamientoMaestriaDomainModel
             {
                 strValor = tblMaetria.CatFuentaFinaciamientoMaestria.strValor
@@ -127,6 +115,16 @@ namespace AppDigitalCv.Business
             {
                 strValor = tblMaetria.CatStatusMaestria.strValor
             };
+            maestriaDomainModel.DocumentosProfesionales = new List<DocumentosProfesionalesDomainModel>();
+            foreach (var item in tblMaetria.TblDocumentosProfesionales)
+            {
+                DocumentosProfesionalesDomainModel documentosProfesionalesDomainModel = new DocumentosProfesionalesDomainModel();
+
+                documentosProfesionalesDomainModel.strNombre = item.strNombre;
+                documentosProfesionalesDomainModel.id = item.id;
+
+                maestriaDomainModel.DocumentosProfesionales.Add(documentosProfesionalesDomainModel);
+            }
 
             return maestriaDomainModel;
         }

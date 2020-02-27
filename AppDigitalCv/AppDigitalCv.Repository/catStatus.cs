@@ -17,8 +17,8 @@ namespace AppDigitalCv.Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public catStatus()
         {
-            this.tblDireccionIndividualizada = new HashSet<tblDireccionIndividualizada>();
             this.catUsuarios = new HashSet<catUsuarios>();
+            this.tblDireccionIndividualizada = new HashSet<tblDireccionIndividualizada>();
         }
     
         public int idStatus { get; set; }
@@ -26,8 +26,8 @@ namespace AppDigitalCv.Repository
         public string strObservacion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblDireccionIndividualizada> tblDireccionIndividualizada { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<catUsuarios> catUsuarios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblDireccionIndividualizada> tblDireccionIndividualizada { get; set; }
     }
 }

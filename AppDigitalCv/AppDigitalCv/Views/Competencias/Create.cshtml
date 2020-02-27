@@ -4,6 +4,9 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
+    </noscript>
 @using (Html.BeginForm("Create","Competencias",FormMethod.Post,new { enctype = "multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
@@ -94,7 +97,7 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/Scripts/Validate/Competencias/validate-competencias-form.js"></script>
-    <script src="~/Scripts/Validate/Competencias/validate-competencias-upload.js"></script>
+    <script src="~/Scripts/Validate/Competencias/validate-competencias-upload.js?v=1"></script>
 
     <script>
         var GuardarList = function () {

@@ -48,6 +48,7 @@ namespace AppDigitalCv.Repository
         public virtual CatRespuestas06 CatRespuestas06 { get; set; }
         public virtual CatRespuestas07 CatRespuestas07 { get; set; }
         public virtual CatRespuestas08 CatRespuestas08 { get; set; }
+        public virtual CatRespuestas09 CatRespuestas09 { get; set; }
         public virtual CatRespuestas10 CatRespuestas10 { get; set; }
         public virtual CatRespuestas11 CatRespuestas11 { get; set; }
         public virtual CatRespuestas12 CatRespuestas12 { get; set; }
@@ -56,7 +57,6 @@ namespace AppDigitalCv.Repository
         public virtual CatRespuestas15 CatRespuestas15 { get; set; }
         public virtual CatRespuestas16 CatRespuestas16 { get; set; }
         public virtual CatRespuestas17 CatRespuestas17 { get; set; }
-        public virtual CatRespuestas09 CatRespuestas09 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblPersonal> tblPersonal { get; set; }
     }

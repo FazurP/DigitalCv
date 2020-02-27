@@ -55,13 +55,11 @@ namespace AppDigitalCv.Business
             return statusLicenciaturaDomainModels;
         }
 
-        public bool AddLicenciaturaIng(HistorialAcademicoDomainModel historialAcademicoDomainModel)
+        public int AddLicenciaturaIng(HistorialAcademicoDomainModel historialAcademicoDomainModel)
         {
-            bool respuesta = false;
 
             if (historialAcademicoDomainModel != null)
             {
-                catDocumentos catDocumentos = new catDocumentos();
                 TblLicenciaturaIngenieria tblLicenciaturaIngenieria = new TblLicenciaturaIngenieria();
 
                 tblLicenciaturaIngenieria.idIstitucionAcreditaLicenciatura = historialAcademicoDomainModel.InstitucionAcredita;
@@ -69,16 +67,13 @@ namespace AppDigitalCv.Business
                 tblLicenciaturaIngenieria.idStatusLicenciatura = historialAcademicoDomainModel.Status;
                 tblLicenciaturaIngenieria.strNombre = historialAcademicoDomainModel.strNombre;
 
-                catDocumentos.TblLicenciaturaIngenieria.Add(tblLicenciaturaIngenieria);
+                lecenciaturaIngenieriaRepository.Insert(tblLicenciaturaIngenieria);
 
-                catDocumentos.strUrl = historialAcademicoDomainModel.Documentos.DocumentoFile.FileName;
-
-                documentosRepository.Insert(catDocumentos);
-                respuesta = true;
+                return tblLicenciaturaIngenieria.id;
 
             }
 
-            return respuesta;
+            return 0;
         }
 
         public List<LicenciaturaIngenieriaDomainModel> GetLicenciaturasIngs(int idPersonal)
@@ -93,12 +88,10 @@ namespace AppDigitalCv.Business
                 LicenciaturaIngenieriaDomainModel licenciaturaIngenieriaDomainModel = new LicenciaturaIngenieriaDomainModel();
 
                 licenciaturaIngenieriaDomainModel.id = item.id;
-                licenciaturaIngenieriaDomainModel.idDocumento = item.idDocumento.Value;
                 licenciaturaIngenieriaDomainModel.idInstitucionAcredita = item.idIstitucionAcreditaLicenciatura.Value;
                 licenciaturaIngenieriaDomainModel.idPersonal = item.idPersonal.Value;
                 licenciaturaIngenieriaDomainModel.idStatusLicenciatura = item.idStatusLicenciatura.Value;
                 licenciaturaIngenieriaDomainModel.strNombre = item.strNombre;
-                licenciaturaIngenieriaDomainModel.Documentos = new DocumentosDomainModel { StrUrl = item.catDocumentos.strUrl};
                 licenciaturaIngenieriaDomainModel.InstitucionAcreditaLicenciatura = new InstitucionAcreditaLicenciaturaDomainModel
                 {
                     id = item.CatInstitucionAcreditaLicenciatura.id,
@@ -123,7 +116,7 @@ namespace AppDigitalCv.Business
 
             if (historialAcademicoDomainModel.LicenciaturaIngenieria.id > 0)
             {
-                documentosRepository.Delete(p => p.idDocumento == historialAcademicoDomainModel.LicenciaturaIngenieria.idDocumento);
+                lecenciaturaIngenieriaRepository.Delete(p => p.id == historialAcademicoDomainModel.LicenciaturaIngenieria.id);
                 respuesta = true;
             }
 
@@ -137,7 +130,6 @@ namespace AppDigitalCv.Business
             TblLicenciaturaIngenieria tblLicenciaturaIngenieria = lecenciaturaIngenieriaRepository.SingleOrDefault(p => p.id == _id);
 
             licenciaturaIngenieriaDomainModel.id = tblLicenciaturaIngenieria.id;
-            licenciaturaIngenieriaDomainModel.idDocumento = tblLicenciaturaIngenieria.idDocumento.Value;
             licenciaturaIngenieriaDomainModel.idInstitucionAcredita = tblLicenciaturaIngenieria.idIstitucionAcreditaLicenciatura.Value;
             licenciaturaIngenieriaDomainModel.idPersonal = tblLicenciaturaIngenieria.idPersonal.Value;
             licenciaturaIngenieriaDomainModel.idStatusLicenciatura = tblLicenciaturaIngenieria.idStatusLicenciatura.Value;
@@ -154,11 +146,17 @@ namespace AppDigitalCv.Business
                 strDescripcion =tblLicenciaturaIngenieria.CatStatusLicenciatura.strDescripcion,
                 strValor = tblLicenciaturaIngenieria.CatStatusLicenciatura.strValor
             };
-            licenciaturaIngenieriaDomainModel.Documentos = new DocumentosDomainModel
+            licenciaturaIngenieriaDomainModel.DocumentosProfesionales = new List<DocumentosProfesionalesDomainModel>();
+            foreach (var item in tblLicenciaturaIngenieria.TblDocumentosProfesionales)
             {
-                IdDocumento = tblLicenciaturaIngenieria.catDocumentos.idDocumento,
-                StrUrl = tblLicenciaturaIngenieria.catDocumentos.strUrl
-            };
+                DocumentosProfesionalesDomainModel documentosProfesionalesDomainModel = new DocumentosProfesionalesDomainModel();
+
+                documentosProfesionalesDomainModel.strNombre = item.strNombre;
+                documentosProfesionalesDomainModel.id = item.id;
+
+                licenciaturaIngenieriaDomainModel.DocumentosProfesionales.Add(documentosProfesionalesDomainModel);
+            }
+
 
             return licenciaturaIngenieriaDomainModel;
         }

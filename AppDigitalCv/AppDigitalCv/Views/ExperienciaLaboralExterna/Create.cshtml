@@ -4,7 +4,9 @@
     ViewBag.Title = "Registrar Experiencia Laboral";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+    <noscript>
+        <meta http-equiv="refresh" content="0;URL=@Url.Action("NoScript","Error")" />
+    </noscript>
 @using (Html.BeginForm("Create", "ExperienciaLaboralExterna", FormMethod.Post, new { name = "myForm", id = "myForm", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -122,7 +124,7 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/Scripts/Validate/ExperienciaLaboralExterna/validate-experiencia-laboral-externa-form.js?v=1"></script>
-    <script src="~/Scripts/Validate/ExperienciaLaboralExterna/validate-experiencia-laboral-externa-upload.js"></script>
+    <script src="~/Scripts/Validate/ExperienciaLaboralExterna/validate-experiencia-laboral-externa-upload.js?v=1"></script>
     <script src="~/Scripts/Validate/ExperienciaLaboralExterna/validate-experiencia-laboral-externa-regExp.js"></script>
     <script>
 

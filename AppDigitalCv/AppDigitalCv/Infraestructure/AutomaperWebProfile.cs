@@ -490,6 +490,9 @@ namespace AppDigitalCv.Infraestructure
 
             CreateMap<PresentacionPonenciasVM, PresentacionPonenciasDomainModel>();
             CreateMap<PresentacionPonenciasDomainModel, PresentacionPonenciasVM>();
+
+            CreateMap<DocumentosProfesionalesVM, DocumentosProfesionalesDomainModel>();
+            CreateMap<DocumentosProfesionalesDomainModel, DocumentosProfesionalesVM>();
         }
 
         public static void Run()

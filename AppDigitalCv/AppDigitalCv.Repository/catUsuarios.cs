@@ -17,8 +17,8 @@ namespace AppDigitalCv.Repository
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public catUsuarios()
         {
-            this.tblUsuarioRol = new HashSet<tblUsuarioRol>();
             this.tblPersonal = new HashSet<tblPersonal>();
+            this.tblUsuarioRol = new HashSet<tblUsuarioRol>();
         }
     
         public int idUsuario { get; set; }
@@ -31,8 +31,8 @@ namespace AppDigitalCv.Repository
     
         public virtual catStatus catStatus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblUsuarioRol> tblUsuarioRol { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblPersonal> tblPersonal { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblUsuarioRol> tblUsuarioRol { get; set; }
     }
 }
