@@ -21,9 +21,9 @@
 
             case 1:
 
-                url = "/HistorialAcademico/GetInstitucionAcreditanDoctorados";
-                urlStatus = "/HistorialAcademico/GetStatusDoctorados";
-                urlFuenteFinaciamiento = "/HistorialAcademico/GetFuentesFinanciamientoDoctorados"
+                url = "/digitalcv/HistorialAcademico/GetInstitucionAcreditanDoctorados";
+                urlStatus = "/digitalcv/HistorialAcademico/GetStatusDoctorados";
+                urlFuenteFinaciamiento = "/digitalcv/HistorialAcademico/GetFuentesFinanciamientoDoctorados"
                 ////////////////////////////////////////////////////////
                 $.get(url).done(function (response) {
 
@@ -56,9 +56,9 @@
 
             case 2:
 
-                url = "/HistorialAcademico/GetInstitucionAcreditanMaestrias";
-                urlStatus = "/HistorialAcademico/GetStatusMaestrias";
-                urlFuenteFinanciamiento = "/HistorialAcademico/GetFuentesFinanciamientoMaestrias";
+                url = "/digitalcv/HistorialAcademico/GetInstitucionAcreditanMaestrias";
+                urlStatus = "/digitalcv/HistorialAcademico/GetStatusMaestrias";
+                urlFuenteFinanciamiento = "/digitalcv/HistorialAcademico/GetFuentesFinanciamientoMaestrias";
                 //////////////////////////////////////////
                 $.get(url).done(function (response) {
 
@@ -92,8 +92,8 @@
                 break;
 
             case 3:
-                url = "/HistorialAcademico/GetInstitucionAcreditanLicenciaturaIng";
-                url2 = "/HistorialAcademico/GetStatusLicenciaturasIng";
+                url = "/digitalcv/HistorialAcademico/GetInstitucionAcreditanLicenciaturaIng";
+                url2 = "/digitalcv/HistorialAcademico/GetStatusLicenciaturasIng";
 
                 $.get(url).done(function (response) {
 
@@ -118,8 +118,8 @@
                 break;
 
             case 4:
-                url = "/HistorialAcademico/GetInstitucionAcreditanLicenciaturaIng";
-                url2 = "/HistorialAcademico/GetStatusLicenciaturasIng";
+                url = "/digitalcv/HistorialAcademico/GetInstitucionAcreditanLicenciaturaIng";
+                url2 = "/digitalcv/HistorialAcademico/GetStatusLicenciaturasIng";
 
                 $.get(url).done(function (response) {
 

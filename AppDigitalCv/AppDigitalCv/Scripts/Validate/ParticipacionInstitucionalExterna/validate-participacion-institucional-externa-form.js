@@ -42,6 +42,7 @@
             $('#inputUploadFile').val('');
         } else {
             $('#dteFechaInicio').prop('disabled', false);
+            $('#dteFechaTermino').prop('disabled', false);
             toastr.success('Institución Seleccionada', 'Digital-Cv dice', { timeOut: 1000, closeButton: true })
         }
 
